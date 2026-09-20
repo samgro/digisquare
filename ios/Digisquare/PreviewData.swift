@@ -5,7 +5,6 @@
 
 import Foundation
 
-#if DEBUG
 extension Place {
     static let preview = Place(
         id: "ChIJpreview",
@@ -43,4 +42,3 @@ extension Checkin {
         )
     }
 }
-#endif
