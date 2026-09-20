@@ -1,6 +1,6 @@
 import Foundation
 
-struct Place: Decodable, Identifiable {
+struct Place: Decodable, Identifiable, Hashable {
     let id: String
     let name: String
     let address: String?
@@ -11,7 +11,7 @@ struct Place: Decodable, Identifiable {
     let userRatingCount: Int?
 }
 
-struct PlaceLocation: Decodable {
+struct PlaceLocation: Decodable, Hashable {
     let latitude: Double
     let longitude: Double
 }
@@ -25,19 +25,11 @@ enum PlacesAPIError: Error {
 }
 
 struct PlacesAPI {
-    private let baseURL: URL = {
-        #if targetEnvironment(simulator)
-        return URL(string: "http://localhost:3000")!
-        #else
-        return URL(string: "https://digisquare-api-production.up.railway.app")!
-        #endif
-    }()
-
-    func searchPlaces(lat: Double, lng: Double, query: String? = nil, radius: Double? = nil) async throws -> [Place] {
-        var components = URLComponents(url: baseURL.appendingPathComponent("places"), resolvingAgainstBaseURL: false)!
+    func searchPlaces(latitude: Double, longitude: Double, query: String? = nil, radius: Double? = nil) async throws -> [Place] {
+        var components = URLComponents(url: APIEnvironment.baseURL.appendingPathComponent("places"), resolvingAgainstBaseURL: false)!
         var queryItems = [
-            URLQueryItem(name: "lat", value: String(lat)),
-            URLQueryItem(name: "lng", value: String(lng)),
+            URLQueryItem(name: "lat", value: String(latitude)),
+            URLQueryItem(name: "lng", value: String(longitude)),
         ]
         if let query, !query.isEmpty {
             queryItems.append(URLQueryItem(name: "q", value: query))

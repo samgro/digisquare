@@ -14,11 +14,12 @@ struct CheckInFAB: View {
         } label: {
             Image(systemName: "plus")
                 .font(.title2.weight(.semibold))
-                .foregroundStyle(.white)
-                .frame(width: 56, height: 56)
-                .background(Circle().fill(Color.blue))
+                .frame(width: 36, height: 36)
         }
-        .shadow(radius: 4)
+        .buttonStyle(.glassProminent)
+        .buttonBorderShape(.circle)
+        .tint(.blue)
+        .accessibilityLabel("Check In")
         .padding()
         .fullScreenCover(isPresented: $showingCheckIn) {
             CheckInView()
