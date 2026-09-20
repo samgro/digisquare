@@ -1,0 +1,16 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+
+# macOS
+.DS_Store
+
+# Simulator / build artifacts
+*.ipa
+*.dSYM.zip
+*.dSYM
+

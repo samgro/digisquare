@@ -1,0 +1,15 @@
+meta {
+  name: Missing Params (400)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/places
+  body: none
+  auth: none
+}
+
+docs {
+  No lat/lng provided. Expect a 400 with zod validation details.
+}

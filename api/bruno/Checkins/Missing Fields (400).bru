@@ -1,0 +1,22 @@
+meta {
+  name: Missing Fields (400)
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "placeName": "Golden Gate Park"
+  }
+}
+
+docs {
+  No userId or googlePlaceId provided. Expect a 400 with zod validation
+  details.
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Create Checkin Without Message
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "sam",
+    "googlePlaceId": "ChIJrRMgU7NZwokR8OFysXqOtaI",
+    "placeName": "Central Park"
+  }
+}
+
+docs {
+  Creates a checkin with only the required fields. Expect a 201 with
+  `placeAddress`, `placePrimaryType`, `placeTypes`, `location`, and
+  `message` all null.
+}

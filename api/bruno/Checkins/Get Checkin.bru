@@ -1,0 +1,16 @@
+meta {
+  name: Get Checkin
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/checkins/REPLACE_WITH_CHECKIN_ID
+  body: none
+  auth: none
+}
+
+docs {
+  Fetches a single checkin by id. Replace REPLACE_WITH_CHECKIN_ID with an
+  `id` returned from Create Checkin.
+}

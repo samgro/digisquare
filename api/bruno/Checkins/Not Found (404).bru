@@ -1,0 +1,15 @@
+meta {
+  name: Not Found (404)
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}/checkins/00000000-0000-0000-0000-000000000000
+  body: none
+  auth: none
+}
+
+docs {
+  A well-formed UUID that doesn't match any checkin. Expect a 404.
+}

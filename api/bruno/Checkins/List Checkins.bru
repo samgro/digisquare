@@ -1,0 +1,15 @@
+meta {
+  name: List Checkins
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/checkins
+  body: none
+  auth: none
+}
+
+docs {
+  Lists checkins, newest first, with default pagination (limit 20, offset 0).
+}

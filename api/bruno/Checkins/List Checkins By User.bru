@@ -1,0 +1,19 @@
+meta {
+  name: List Checkins By User
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/checkins?userId=sam
+  body: none
+  auth: none
+}
+
+params:query {
+  userId: sam
+}
+
+docs {
+  Lists checkins filtered to a single userId.
+}

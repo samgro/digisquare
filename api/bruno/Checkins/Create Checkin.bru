@@ -1,0 +1,31 @@
+meta {
+  name: Create Checkin
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "sam",
+    "googlePlaceId": "ChIJIQBpAG2ahYAR_6128GcTUEo",
+    "placeName": "Golden Gate Park",
+    "placeAddress": "San Francisco, CA, USA",
+    "placePrimaryType": "park",
+    "placeTypes": ["park", "point_of_interest", "establishment"],
+    "latitude": 37.7694,
+    "longitude": -122.4862,
+    "message": "Beautiful day for a walk."
+  }
+}
+
+docs {
+  Creates a checkin with a full venue snapshot and a message. Expect a 201
+  with the created row, including a generated `id` — copy it for use in
+  the Get Checkin and Update Checkin requests.
+}

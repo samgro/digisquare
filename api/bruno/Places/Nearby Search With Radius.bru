@@ -1,0 +1,21 @@
+meta {
+  name: Nearby Search With Radius
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194&radius=500
+  body: none
+  auth: none
+}
+
+params:query {
+  lat: 37.7749
+  lng: -122.4194
+  radius: 500
+}
+
+docs {
+  Same as Nearby Search but overrides the default 1500m radius down to 500m.
+}

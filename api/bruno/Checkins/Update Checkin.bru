@@ -1,0 +1,23 @@
+meta {
+  name: Update Checkin
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{baseUrl}}/checkins/REPLACE_WITH_CHECKIN_ID
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "message": "Updated note."
+  }
+}
+
+docs {
+  Updates a checkin's message. Replace REPLACE_WITH_CHECKIN_ID with an
+  `id` returned from Create Checkin. Expect the venue snapshot fields to
+  be unchanged and `updatedAt` to advance.
+}

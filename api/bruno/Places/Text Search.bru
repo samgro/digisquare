@@ -1,0 +1,22 @@
+meta {
+  name: Text Search
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194&q=coffee
+  body: none
+  auth: none
+}
+
+params:query {
+  lat: 37.7749
+  lng: -122.4194
+  q: coffee
+}
+
+docs {
+  Text search for "coffee" biased around San Francisco, ranked by relevance.
+  The `q` param routes this to Google's searchText endpoint.
+}

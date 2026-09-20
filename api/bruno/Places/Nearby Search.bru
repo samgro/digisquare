@@ -1,0 +1,21 @@
+meta {
+  name: Nearby Search
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194
+  body: none
+  auth: none
+}
+
+params:query {
+  lat: 37.7749
+  lng: -122.4194
+}
+
+docs {
+  Nearby places around San Francisco, ranked by popularity.
+  No `q` param, so the API calls Google's searchNearby endpoint.
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Invalid Id (400)
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/checkins/not-a-uuid
+  body: none
+  auth: none
+}
+
+docs {
+  The id path param is not a valid UUID. Expect a 400.
+}
