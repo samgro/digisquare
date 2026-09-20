@@ -1,0 +1,24 @@
+{
+  "places": [
+    {
+      "id": "ChIJnearby000COFFEE",
+      "displayName": { "text": "Blue Bottle Coffee", "languageCode": "en" },
+      "formattedAddress": "66 Mint St, San Francisco, CA 94103, USA",
+      "location": { "latitude": 37.7822, "longitude": -122.4092 },
+      "types": ["cafe", "point_of_interest", "establishment"],
+      "primaryType": "cafe",
+      "rating": 4.3,
+      "userRatingCount": 1502
+    },
+    {
+      "id": "ChIJnearby001PARK",
+      "displayName": { "text": "Yerba Buena Gardens", "languageCode": "en" },
+      "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
+      "location": { "latitude": 37.7845, "longitude": -122.4013 },
+      "types": ["park", "point_of_interest", "establishment"],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 8920
+    }
+  ]
+}

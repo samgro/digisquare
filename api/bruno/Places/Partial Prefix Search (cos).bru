@@ -1,0 +1,26 @@
+meta {
+  name: Partial Prefix Search (cos)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194&q=cos
+  body: none
+  auth: none
+}
+
+params:query {
+  lat: 37.7749
+  lng: -122.4194
+  q: cos
+}
+
+docs {
+  Regression case for a bug where `q=cos` returned "Cos Bar San Francisco"
+  but not "Costco" -- Google's old searchText endpoint only matches whole
+  tokens, so a partial prefix like "cos" never matched inside "Costco".
+
+  Expect "Costco Wholesale" to appear in `results`, ahead of "Cos Bar San
+  Francisco".
+}

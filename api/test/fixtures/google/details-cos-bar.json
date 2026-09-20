@@ -1,0 +1,10 @@
+{
+  "id": "ChIJcos00001COSBAR",
+  "displayName": { "text": "Cos Bar San Francisco", "languageCode": "en" },
+  "formattedAddress": "228 Grant Ave, San Francisco, CA 94108, USA",
+  "location": { "latitude": 37.7887, "longitude": -122.4045 },
+  "types": ["cosmetics_store", "point_of_interest", "establishment"],
+  "primaryType": "cosmetics_store",
+  "rating": 4.6,
+  "userRatingCount": 87
+}

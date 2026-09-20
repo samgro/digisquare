@@ -17,6 +17,8 @@ params:query {
 }
 
 docs {
-  Text search for "coffee" biased around San Francisco, ranked by relevance.
-  The `q` param routes this to Google's searchText endpoint.
+  Text search for "coffee" biased around San Francisco. The `q` param routes
+  this to Google's places:autocomplete endpoint, followed by a Place Details
+  call for each of the top predictions, so partial/prefix input matches too
+  (see "Partial Prefix Search").
 }

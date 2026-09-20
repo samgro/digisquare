@@ -1,0 +1,10 @@
+{
+  "id": "ChIJcos00000COSTCO",
+  "displayName": { "text": "Costco Wholesale", "languageCode": "en" },
+  "formattedAddress": "450 10th St, San Francisco, CA 94103, USA",
+  "location": { "latitude": 37.7706, "longitude": -122.4108 },
+  "types": ["warehouse_store", "point_of_interest", "establishment"],
+  "primaryType": "warehouse_store",
+  "rating": 4.4,
+  "userRatingCount": 5211
+}

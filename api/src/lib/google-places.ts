@@ -1,13 +1,29 @@
-const FIELD_MASK = [
-  "places.id",
-  "places.displayName",
-  "places.formattedAddress",
-  "places.location",
-  "places.types",
-  "places.primaryType",
-  "places.rating",
-  "places.userRatingCount",
-].join(",");
+const PLACES_BASE_URL = "https://places.googleapis.com/v1";
+
+const PLACE_FIELDS = [
+  "id",
+  "displayName",
+  "formattedAddress",
+  "location",
+  "types",
+  "primaryType",
+  "rating",
+  "userRatingCount",
+];
+
+// Search responses wrap places in a `places` array, so every path is prefixed.
+const SEARCH_FIELD_MASK = PLACE_FIELDS.map((field) => `places.${field}`).join(",");
+// Place Details returns a bare place object, so the paths are NOT prefixed.
+// Do not reuse SEARCH_FIELD_MASK here -- Google rejects the `places.` prefix
+// on this endpoint with a 400.
+const DETAILS_FIELD_MASK = PLACE_FIELDS.join(",");
+const AUTOCOMPLETE_FIELD_MASK = "suggestions.placePrediction.placeId";
+
+// Google's Autocomplete (New) endpoint caps responses at five suggestions
+// total, with no parameter to raise it. This constant documents that intent
+// rather than actively limiting anything -- it's a ceiling for if Google
+// ever raises the cap, since each detail lookup is a separate billable call.
+const MAXIMUM_PREDICTION_DETAIL_LOOKUPS = 5;
 
 export interface GooglePlace {
   id: string;
@@ -26,11 +42,15 @@ interface SearchNearbyParams {
   radius: number;
 }
 
-interface SearchTextParams {
+interface AutocompleteParams {
   query: string;
   latitude: number;
   longitude: number;
   radius: number;
+}
+
+interface AutocompleteSuggestion {
+  placePrediction?: { placeId?: string };
 }
 
 function apiKey(): string {
@@ -41,15 +61,20 @@ function apiKey(): string {
   return key;
 }
 
-async function postPlaces(path: string, body: unknown): Promise<GooglePlace[]> {
-  const response = await fetch(`https://places.googleapis.com/v1/places:${path}`, {
-    method: "POST",
+async function requestGoogle<ResponseBody>(options: {
+  path: string;
+  method: "GET" | "POST";
+  fieldMask: string;
+  body?: unknown;
+}): Promise<ResponseBody> {
+  const response = await fetch(`${PLACES_BASE_URL}/${options.path}`, {
+    method: options.method,
     headers: {
       "Content-Type": "application/json",
       "X-Goog-Api-Key": apiKey(),
-      "X-Goog-FieldMask": FIELD_MASK,
+      "X-Goog-FieldMask": options.fieldMask,
     },
-    body: JSON.stringify(body),
+    ...(options.body === undefined ? {} : { body: JSON.stringify(options.body) }),
   });
 
   if (!response.ok) {
@@ -57,7 +82,16 @@ async function postPlaces(path: string, body: unknown): Promise<GooglePlace[]> {
     throw new Error(`Google Places API error (${response.status}): ${responseText}`);
   }
 
-  const data = (await response.json()) as { places?: GooglePlace[] };
+  return (await response.json()) as ResponseBody;
+}
+
+async function postPlaces(path: string, body: unknown): Promise<GooglePlace[]> {
+  const data = await requestGoogle<{ places?: GooglePlace[] }>({
+    path: `places:${path}`,
+    method: "POST",
+    fieldMask: SEARCH_FIELD_MASK,
+    body,
+  });
   return data.places ?? [];
 }
 
@@ -78,21 +112,88 @@ export function searchNearby({
   });
 }
 
-export function searchText({
+export function fetchPlaceDetails(placeIdentifier: string): Promise<GooglePlace> {
+  return requestGoogle<GooglePlace>({
+    path: `places/${encodeURIComponent(placeIdentifier)}`,
+    method: "GET",
+    fieldMask: DETAILS_FIELD_MASK,
+  });
+}
+
+export async function autocompletePlaceIdentifiers({
   query,
   latitude,
   longitude,
   radius,
-}: SearchTextParams): Promise<GooglePlace[]> {
-  return postPlaces("searchText", {
-    textQuery: query,
-    pageSize: 20,
-    rankPreference: "DISTANCE",
-    locationBias: {
-      circle: {
-        center: { latitude, longitude },
-        radius,
+}: AutocompleteParams): Promise<string[]> {
+  const data = await requestGoogle<{ suggestions?: AutocompleteSuggestion[] }>({
+    path: "places:autocomplete",
+    method: "POST",
+    fieldMask: AUTOCOMPLETE_FIELD_MASK,
+    body: {
+      input: query,
+      locationBias: {
+        circle: {
+          center: { latitude, longitude },
+          radius,
+        },
       },
     },
   });
+
+  // Suggestions are a union of placePrediction/queryPrediction. Only place
+  // predictions carry a placeId; query predictions (bare search phrases) are
+  // dropped since there's no place to fetch details for.
+  return (data.suggestions ?? [])
+    .map((suggestion) => suggestion.placePrediction?.placeId)
+    .filter(
+      (placeIdentifier): placeIdentifier is string =>
+        typeof placeIdentifier === "string" && placeIdentifier.length > 0,
+    );
+}
+
+/**
+ * Substring/prefix place search. Google's searchText endpoint only matches
+ * whole tokens (so "cos" never matches "Costco"), so partial queries are
+ * routed through Autocomplete (which does prefix matching) and then resolved
+ * to full place details to keep the response shape identical to searchText's.
+ */
+export async function searchAutocomplete(params: AutocompleteParams): Promise<GooglePlace[]> {
+  const placeIdentifiers = (await autocompletePlaceIdentifiers(params)).slice(
+    0,
+    MAXIMUM_PREDICTION_DETAIL_LOOKUPS,
+  );
+  if (placeIdentifiers.length === 0) {
+    return [];
+  }
+
+  const outcomes = await Promise.allSettled(
+    placeIdentifiers.map((placeIdentifier) => fetchPlaceDetails(placeIdentifier)),
+  );
+
+  // Promise.allSettled resolves positionally aligned with its input, so this
+  // preserves Google's relevance ordering even though the lookups ran in
+  // parallel and may have resolved out of order.
+  const places: GooglePlace[] = [];
+  let firstFailure: unknown;
+  for (const [index, outcome] of outcomes.entries()) {
+    if (outcome.status === "fulfilled") {
+      places.push(outcome.value);
+      continue;
+    }
+    firstFailure ??= outcome.reason;
+    console.error(`Failed to fetch details for place ${placeIdentifiers[index]}`, outcome.reason);
+  }
+
+  // A single stale place ID among several is expected steady state and
+  // shouldn't fail the whole search. Every lookup failing means we have no
+  // results at all, which is an outage, not an empty search -- surface it as
+  // an error rather than a quiet empty list.
+  if (places.length === 0) {
+    throw firstFailure instanceof Error
+      ? firstFailure
+      : new Error("Failed to fetch place details");
+  }
+
+  return places;
 }

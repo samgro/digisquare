@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { z } from "zod";
-import { searchNearby, searchText, type GooglePlace } from "../lib/google-places.js";
+import { searchAutocomplete, searchNearby, type GooglePlace } from "../lib/google-places.js";
 
 const querySchema = z.object({
   lat: z.coerce.number().min(-90).max(90),
@@ -39,7 +39,7 @@ places.get("/", async (context) => {
 
   try {
     const googlePlaces = query
-      ? await searchText({ query, latitude, longitude, radius })
+      ? await searchAutocomplete({ query, latitude, longitude, radius })
       : await searchNearby({ latitude, longitude, radius });
 
     return context.json({ results: googlePlaces.map(toResult) });
