@@ -39,4 +39,6 @@ struct RootView: View {
 #Preview {
     RootView()
         .environment(AuthManager())
+        .environment(LocationManager())
+        .environmentObject(CheckinStore.inMemory())
 }

@@ -47,13 +47,24 @@ enum PlaceTypeSymbol {
 
 struct PlaceIconView: View {
     let primaryType: String?
+    /// Grays the icon out and swaps the filled disc for a dashed ring, marking
+    /// a checkin that has only been suggested, not made.
+    var isMuted: Bool = false
 
     var body: some View {
         Image(systemName: PlaceTypeSymbol.systemImageName(for: primaryType))
             .font(.system(size: 16, weight: .semibold))
-            .foregroundStyle(Color.orange)
+            .foregroundStyle(isMuted ? Color.secondary : Color.orange)
             .frame(width: 36, height: 36)
-            .background(Circle().fill(Color.orange.opacity(0.15)))
+            .background {
+                if isMuted {
+                    Circle()
+                        .strokeBorder(style: StrokeStyle(lineWidth: 1.5, dash: [4, 3]))
+                        .foregroundStyle(.secondary)
+                } else {
+                    Circle().fill(Color.orange.opacity(0.15))
+                }
+            }
     }
 }
 
@@ -140,6 +151,12 @@ struct TimelineEntryRow: View {
     let showTopLine: Bool
     let showBottomLine: Bool
     let onRetry: () -> Void
+    // Only used by suggested entries.
+    var onAccept: () -> Void = {}
+    var onReject: () -> Void = {}
+    var onVisibilityChange: (CheckinVisibility) -> Void = { _ in }
+
+    private var isSuggested: Bool { entry.syncStatus == .suggested }
 
     var body: some View {
         HStack(alignment: .top, spacing: TimelineMetrics.columnSpacing) {
@@ -148,11 +165,13 @@ struct TimelineEntryRow: View {
                 showBottomLine: showBottomLine,
                 topLineHeight: TimelineMetrics.iconTopInset
             ) {
-                PlaceIconView(primaryType: entry.checkin.placePrimaryType)
+                PlaceIconView(primaryType: entry.checkin.placePrimaryType, isMuted: isSuggested)
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                CheckinDetailsRow(checkin: entry.checkin, showsDate: false)
+                CheckinDetailsRow(checkin: entry.checkin, showsDate: false, suggestedVisit: entry.suggestion?.visit)
+                    // Suggested rows read as tentative until the user accepts them.
+                    .opacity(isSuggested ? 0.55 : 1)
                 statusLine
             }
             .padding(.vertical, TimelineMetrics.iconTopInset)
@@ -164,6 +183,10 @@ struct TimelineEntryRow: View {
     @ViewBuilder
     private var statusLine: some View {
         switch entry.syncStatus {
+        case .suggested:
+            if let suggestion = entry.suggestion {
+                suggestionActions(for: suggestion)
+            }
         case .saving:
             HStack(spacing: 6) {
                 ProgressView()
@@ -183,11 +206,31 @@ struct TimelineEntryRow: View {
             .tint(.red)
         }
     }
+
+    private func suggestionActions(for suggestion: PendingCheckin) -> some View {
+        HStack(spacing: 8) {
+            CheckinPrivacyToggle(
+                visibility: Binding(
+                    get: { suggestion.visibility },
+                    set: onVisibilityChange
+                )
+            )
+            Spacer(minLength: 0)
+            Button("Reject", action: onReject)
+                .buttonStyle(.bordered)
+                .tint(.gray)
+            Button("Accept", action: onAccept)
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+        }
+        .controlSize(.small)
+        .padding(.top, 6)
+    }
 }
 
 /// A day divider or a checkin, interleaved in display order so the timeline
 /// can be rendered as one flat, continuously-connected list.
-private enum TimelineRow: Identifiable {
+enum TimelineRow: Identifiable, Equatable {
     case dayHeader(Date)
     case entry(TimelineEntry)
 
@@ -202,8 +245,9 @@ private enum TimelineRow: Identifiable {
 }
 
 /// Groups entries by calendar day, most recent first, inserting a day header
-/// ahead of each group's first entry.
-private func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
+/// ahead of each group's first entry. Suggested checkins are dated by their
+/// visit's arrival, so they fall into the day the user was actually there.
+func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
     let sortedEntries = entries.sorted { $0.checkin.createdAt > $1.checkin.createdAt }
     var rows: [TimelineRow] = []
     var lastDay: Date?
@@ -225,6 +269,10 @@ private func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .cu
 struct CheckinTimelineRows: View {
     let entries: [TimelineEntry]
     var onRetry: (TimelineEntry) -> Void = { _ in }
+    // Only used by suggested entries, which only the Timeline tab has.
+    var onAccept: (TimelineEntry) -> Void = { _ in }
+    var onReject: (TimelineEntry) -> Void = { _ in }
+    var onVisibilityChange: (TimelineEntry, CheckinVisibility) -> Void = { _, _ in }
 
     var body: some View {
         let rows = timelineRows(for: entries)
@@ -237,7 +285,10 @@ struct CheckinTimelineRows: View {
                     entry: entry,
                     showTopLine: index != 0,
                     showBottomLine: index != rows.count - 1,
-                    onRetry: { onRetry(entry) }
+                    onRetry: { onRetry(entry) },
+                    onAccept: { onAccept(entry) },
+                    onReject: { onReject(entry) },
+                    onVisibilityChange: { onVisibilityChange(entry, $0) }
                 )
             }
         }
@@ -252,13 +303,25 @@ struct CheckinTimelineRows: View {
     VStack(spacing: 0) {
         TimelineDayHeaderRow(day: Date(), showTopLine: false)
         TimelineEntryRow(
+            entry: TimelineEntry(suggestion: .preview(isOngoing: true), userId: Checkin.preview().userId)!,
+            showTopLine: true,
+            showBottomLine: true,
+            onRetry: {}
+        )
+        TimelineEntryRow(
+            entry: TimelineEntry(suggestion: .preview(visibility: .onlyMe), userId: Checkin.preview().userId)!,
+            showTopLine: true,
+            showBottomLine: true,
+            onRetry: {}
+        )
+        TimelineEntryRow(
             entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(), syncStatus: .saving),
             showTopLine: true,
             showBottomLine: true,
             onRetry: {}
         )
         TimelineEntryRow(
-            entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(), syncStatus: .saved),
+            entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(visibility: .onlyMe), syncStatus: .saved),
             showTopLine: true,
             showBottomLine: true,
             onRetry: {}

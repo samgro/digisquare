@@ -22,6 +22,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     var authorizationStatus: CLAuthorizationStatus = .notDetermined
     var location: CLLocation?
 
+    /// Receives every visit Core Location reports. Set once at launch by the
+    /// app delegate, before any visit can arrive.
+    @ObservationIgnored var onVisit: (@MainActor (CLVisit) -> Void)?
+
     override init() {
         super.init()
         locationManager.delegate = self
@@ -29,6 +33,11 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         // Read after super.init(): @Observable turns this into a computed
         // setter that touches self, which is not available any earlier.
         authorizationStatus = locationManager.authorizationStatus
+        // When a visit relaunches the app in the background, the pending event
+        // is only delivered to a manager that is monitoring visits at launch.
+        if locationManager.authorizationStatus == .authorizedAlways {
+            locationManager.startMonitoringVisits()
+        }
     }
 
     func requestPermissionsIfNeeded() {
@@ -97,6 +106,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
         DevLog.location("Visit: \(visit)")
+        onVisit?(visit)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

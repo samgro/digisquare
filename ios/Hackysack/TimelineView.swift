@@ -7,6 +7,7 @@ import SwiftUI
 
 struct TimelineView: View {
     @EnvironmentObject private var checkinStore: CheckinStore
+    @State private var rejectingSuggestion: PendingCheckin?
 
     var body: some View {
         NavigationStack {
@@ -18,20 +19,34 @@ struct TimelineView: View {
             .task {
                 await checkinStore.loadTimeline()
             }
+            .sheet(item: $rejectingSuggestion) { suggestion in
+                RejectSuggestionSheet(
+                    suggestion: suggestion,
+                    onRemove: { checkinStore.remove(suggestionId: suggestion.id) },
+                    onConfirm: { place in checkinStore.confirm(suggestionId: suggestion.id, place: place) }
+                )
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+            }
         }
     }
 
     @ViewBuilder
     private var content: some View {
-        if !checkinStore.timelineEntries.isEmpty {
+        let timelineEntries = checkinStore.timelineEntries
+        if !timelineEntries.isEmpty {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 0) {
-                    CheckinTimelineRows(entries: checkinStore.timelineEntries) { entry in
-                        checkinStore.retry(entryId: entry.id)
-                    }
+                    CheckinTimelineRows(
+                        entries: timelineEntries,
+                        onRetry: { checkinStore.retry(entryId: $0.id) },
+                        onAccept: { checkinStore.accept(suggestionId: $0.id) },
+                        onReject: { rejectingSuggestion = $0.suggestion },
+                        onVisibilityChange: { checkinStore.setVisibility($1, forSuggestion: $0.id) }
+                    )
                 }
             }
-            .animation(.default, value: checkinStore.timelineEntries)
+            .animation(.default, value: timelineEntries)
             .refreshable {
                 await checkinStore.loadTimeline()
             }
@@ -61,5 +76,5 @@ struct TimelineView: View {
 #Preview {
     TimelineView()
         .environment(LocationManager())
-        .environmentObject(CheckinStore())
+        .environmentObject(CheckinStore.inMemory())
 }

@@ -5,6 +5,25 @@
 
 import Foundation
 
+/// Who can see a checkin. Raw values match the API; the case names avoid the
+/// `public` / `private` keywords.
+enum CheckinVisibility: String, Codable, Equatable, CaseIterable {
+    case everyone = "public"
+    case onlyMe = "private"
+
+    var isPrivate: Bool { self == .onlyMe }
+
+    mutating func toggle() {
+        self = isPrivate ? .everyone : .onlyMe
+    }
+}
+
+/// Whether the user checked in by hand or accepted a suggestion from a detected visit.
+enum CheckinSource: String, Codable, Equatable {
+    case manual
+    case visit
+}
+
 /// A checkin as returned by the API (`GET /checkins`, `POST /checkins`).
 struct Checkin: Decodable, Identifiable, Equatable {
     let id: String
@@ -16,6 +35,8 @@ struct Checkin: Decodable, Identifiable, Equatable {
     let placeTypes: [String]?
     let location: PlaceLocation?
     let message: String?
+    let visibility: CheckinVisibility
+    let source: CheckinSource
     let createdAt: Date
     let updatedAt: Date
 }
@@ -34,8 +55,19 @@ struct CheckinDraft: Encodable, Equatable {
     let latitude: Double?
     let longitude: Double?
     let message: String?
+    let visibility: CheckinVisibility
+    let source: CheckinSource
+    /// Only sent for checkins accepted from a visit, so the server backdates
+    /// them to the visit's arrival instead of the moment the user tapped Accept.
+    let createdAt: Date?
 
-    init(place: Place, message: String?) {
+    init(
+        place: Place,
+        message: String?,
+        visibility: CheckinVisibility = .everyone,
+        source: CheckinSource = .manual,
+        createdAt: Date? = nil
+    ) {
         googlePlaceId = place.id
         placeName = place.name
         placeAddress = Self.trimmedOrNil(place.address)
@@ -44,6 +76,9 @@ struct CheckinDraft: Encodable, Equatable {
         latitude = place.location?.latitude
         longitude = place.location?.longitude
         self.message = Self.trimmedOrNil(message)
+        self.visibility = visibility
+        self.source = source
+        self.createdAt = createdAt
     }
 
     /// The API rejects empty strings for optional text fields, so they are omitted instead.

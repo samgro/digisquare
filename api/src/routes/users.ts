@@ -205,11 +205,18 @@ users.get("/:id", async (context) => {
     }
 
     // The count is visible to anyone, friend or not; the checkins themselves
-    // are only listed for friends (see isVisibleCheckin).
+    // are only listed for friends (see isVisibleCheckin). Private checkins
+    // only count toward your own total, so the number can't reveal them.
+    const isOwnProfile = user.id === context.get("userId");
     const [checkinTotal] = await database
       .select({ value: count() })
       .from(checkinsTable)
-      .where(eq(checkinsTable.userId, user.id));
+      .where(
+        and(
+          eq(checkinsTable.userId, user.id),
+          isOwnProfile ? undefined : eq(checkinsTable.visibility, "public"),
+        ),
+      );
     // Like the checkin count, public; who the friends are is not returned.
     const [friendTotal] = await database
       .select({ value: count() })

@@ -7,8 +7,10 @@ import Foundation
 
 // These models are consumed by PlaceRanker, which is nonisolated so it can be
 // exercised from unit tests and background work alike, so they opt out of the
-// target's default @MainActor isolation the same way UserProfile does.
-nonisolated struct Place: Decodable, Identifiable, Hashable, Sendable {
+// target's default @MainActor isolation the same way UserProfile does. They
+// are Encodable too so pending suggestions can keep their candidate places on
+// disk.
+nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
     let id: String
     let name: String
     let address: String?
@@ -47,14 +49,14 @@ nonisolated struct Place: Decodable, Identifiable, Hashable, Sendable {
     }
 }
 
-nonisolated struct PlaceLocation: Decodable, Hashable, Sendable {
+nonisolated struct PlaceLocation: Codable, Hashable, Sendable {
     let latitude: Double
     let longitude: Double
 }
 
 /// A latitude/longitude bounding box: `low` is the south-west corner and
 /// `high` the north-east one, as Google reports them.
-nonisolated struct PlaceViewport: Decodable, Hashable, Sendable {
+nonisolated struct PlaceViewport: Codable, Hashable, Sendable {
     let low: PlaceLocation
     let high: PlaceLocation
 }

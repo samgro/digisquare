@@ -42,12 +42,16 @@ export function isFriendsCheckin(userId: string): SQL {
 }
 
 /**
- * Checkins the user is allowed to see: their own and their friends'. Anyone
- * else's are filtered out rather than refused, so a request for a stranger's
- * checkins looks the same as one for a user with none.
+ * Checkins the user is allowed to see: all of their own, and their friends'
+ * public ones. Anyone else's are filtered out rather than refused, so a
+ * request for a stranger's checkins, or for a friend's private one, looks the
+ * same as one for a user with none.
  */
 export function isVisibleCheckin(userId: string): SQL {
-  return or(eq(checkinsTable.userId, userId), isFriendsCheckin(userId)) as SQL;
+  return or(
+    eq(checkinsTable.userId, userId),
+    and(isFriendsCheckin(userId), eq(checkinsTable.visibility, "public")),
+  ) as SQL;
 }
 
 /** The row for the pair, in whichever direction it was created. */

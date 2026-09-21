@@ -105,8 +105,8 @@ struct CheckInView: View {
         if place.id == suggestedPlaceId {
             onChangeLocation = showRankedList
         }
-        return CheckInComposeView(place: place, onChangeLocation: onChangeLocation) { message in
-            checkinStore.submit(place: place, message: message)
+        return CheckInComposeView(place: place, onChangeLocation: onChangeLocation) { message, visibility in
+            checkinStore.submit(place: place, message: message, visibility: visibility)
             // This is the cover's dismiss (CheckInView owns the stack), so it closes
             // the whole flow rather than popping back to the place list.
             dismiss()
@@ -300,7 +300,7 @@ private struct NoPlacesNearbyView: View {
 #Preview("Check In") {
     CheckInView()
         .environment(LocationManager())
-        .environmentObject(CheckinStore())
+        .environmentObject(CheckinStore.inMemory())
 }
 
 #Preview("Check In – With Location") {
@@ -313,7 +313,7 @@ private struct NoPlacesNearbyView: View {
             locationManager.location = CLLocation(latitude: 37.7749, longitude: -122.4194)
             return locationManager
         }())
-        .environmentObject(CheckinStore())
+        .environmentObject(CheckinStore.inMemory())
 }
 
 #Preview("No Places Nearby") {

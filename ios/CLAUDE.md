@@ -33,3 +33,9 @@ The checkin ranking tests read `fixtures/ranking/*.json` at the repo root,
 shared with the API's tests and written by `npm run fixtures:record` in `api`.
 Keep the ranking model (`PlaceRanker.swift`) free of CoreLocation and other
 device-only frameworks so it stays testable from fixtures.
+
+Run the tests before finishing any change to the home/work detector
+(`FrequentPlaceDetector.swift`), the visit history, or the visit processor.
+The detector tests are driven by generated schedules in
+`HackysackTests/VisitScenarioBuilder.swift`; add a scenario there when a new
+kind of routine (a second job, a night shift, a long trip) needs covering.

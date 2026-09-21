@@ -58,3 +58,23 @@ extension Checkin {
         return "\(day) · \(formattedCheckinTime)"
     }
 }
+
+extension VisitRecord {
+    /// "2:15 – 5:40 PM" for a completed stay, or "Arrived 2:15 PM" while the
+    /// user is still there, for rows that sit under a day header.
+    var formattedSpan: String {
+        let arrival = arrivalDate.formatted(date: .omitted, time: .shortened)
+        guard let departureDate else {
+            return "Arrived \(arrival)"
+        }
+        let departure = departureDate.formatted(date: .omitted, time: .shortened)
+        return "\(arrival) – \(departure)"
+    }
+
+    /// "Yesterday · 2:15 – 5:40 PM", like `Checkin.formattedCheckinDateAndTime`,
+    /// for rows with no day header above them.
+    var formattedDateAndSpan: String {
+        let day = RelativeDay.label(for: arrivalDate, includesWeekday: false)
+        return "\(day) · \(formattedSpan)"
+    }
+}

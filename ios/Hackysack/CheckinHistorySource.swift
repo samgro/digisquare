@@ -60,6 +60,7 @@ protocol CheckinHistorySource {
 
 extension CheckinStore: CheckinHistorySource {
     var checkinHistory: [CheckinHistoryEntry] {
-        timelineEntries.map { CheckinHistoryEntry(checkin: $0.checkin) }
+        // Suggestions are left out: the user hasn't said they were there yet.
+        savedEntries.map { CheckinHistoryEntry(checkin: $0.checkin) }
     }
 }

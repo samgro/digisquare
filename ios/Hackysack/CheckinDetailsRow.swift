@@ -17,6 +17,9 @@ struct CheckinDetailsRow: View {
     var onPersonTap: (() -> Void)? = nil
     /// Off on the timeline, where day headers already say the date.
     var showsDate = true
+    /// For a suggested checkin, the detected visit. The date row then shows
+    /// when the user was there instead of a single checkin time.
+    var suggestedVisit: VisitRecord? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -48,9 +51,16 @@ struct CheckinDetailsRow: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text(showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            HStack(spacing: 4) {
+                Text(dateLine)
+                if checkin.visibility.isPrivate {
+                    Image(systemName: "lock.fill")
+                        .font(.caption)
+                        .accessibilityLabel("Private")
+                }
+            }
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
 
             if let message = checkin.message {
                 Text(message)
@@ -66,6 +76,13 @@ struct CheckinDetailsRow: View {
         let category = checkin.placePrimaryType.map { PlaceTypeSymbol.displayName(for: $0) }
         let parts = [category, checkin.locality].compactMap { $0 }
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
+    }
+
+    private var dateLine: String {
+        if let suggestedVisit {
+            return "Suggested · \(showsDate ? suggestedVisit.formattedDateAndSpan : suggestedVisit.formattedSpan)"
+        }
+        return showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime
     }
 }
 
@@ -84,6 +101,13 @@ struct CheckinDetailsRow: View {
     List {
         CheckinDetailsRow(checkin: .preview(), showsDate: false)
         CheckinDetailsRow(checkin: .preview(message: nil, primaryType: "park"), showsDate: false)
+        CheckinDetailsRow(checkin: .preview(message: "Just me", visibility: .onlyMe), showsDate: false)
+        CheckinDetailsRow(checkin: .preview(message: nil), showsDate: false, suggestedVisit: PendingCheckin.preview().visit)
+        CheckinDetailsRow(
+            checkin: .preview(message: nil),
+            showsDate: false,
+            suggestedVisit: PendingCheckin.preview(isOngoing: true).visit
+        )
     }
     .listStyle(.plain)
 }

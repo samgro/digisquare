@@ -2,11 +2,22 @@ import { Hono } from "hono";
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
-import { checkins as checkinsTable } from "../db/schema.js";
+import { CHECKIN_SOURCES, CHECKIN_VISIBILITIES, checkins as checkinsTable } from "../db/schema.js";
 import { toCheckinResult } from "../lib/checkin-result.js";
 import { isVisibleCheckin } from "../lib/friendships.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
+
+/** How far ahead of the server clock a client-supplied `createdAt` may be. */
+const MAXIMUM_CREATED_AT_SKEW_MILLISECONDS = 5 * 60 * 1000;
+
+const createdAtSchema = z
+  .string()
+  .datetime({ offset: true })
+  .transform((value) => new Date(value))
+  .refine((date) => date.getTime() <= Date.now() + MAXIMUM_CREATED_AT_SKEW_MILLISECONDS, {
+    message: "createdAt must not be in the future",
+  });
 
 // No userId here on purpose: identity comes from the access token. The
 // schema is left non-strict so an older client still sending one is simply
@@ -20,11 +31,18 @@ const createCheckinSchema = z.object({
   latitude: z.number().min(-90).max(90).nullable().optional(),
   longitude: z.number().min(-180).max(180).nullable().optional(),
   message: z.string().trim().min(1).max(2000).nullable().optional(),
+  visibility: z.enum(CHECKIN_VISIBILITIES).default("public"),
+  source: z.enum(CHECKIN_SOURCES).default("manual"),
+  // A checkin accepted from a detected visit is backdated to when the visit
+  // started, so the timeline shows when the user was there rather than when
+  // they tapped Accept.
+  createdAt: createdAtSchema.optional(),
 });
 
 const updateCheckinSchema = z
   .object({
     message: z.string().trim().min(1).max(2000).nullable(),
+    visibility: z.enum(CHECKIN_VISIBILITIES),
   })
   .partial()
   .refine((data) => Object.keys(data).length > 0, {
@@ -72,6 +90,9 @@ checkins.post("/", async (context) => {
         latitude: parsed.data.latitude ?? null,
         longitude: parsed.data.longitude ?? null,
         message: parsed.data.message ?? null,
+        visibility: parsed.data.visibility,
+        source: parsed.data.source,
+        ...(parsed.data.createdAt === undefined ? {} : { createdAt: parsed.data.createdAt }),
       })
       .returning();
 
@@ -93,9 +114,9 @@ checkins.get("/", async (context) => {
 
   const { userId, googlePlaceId, limit, offset } = parsed.data;
   const conditions = [
-    // Only your own checkins and your friends'. A stranger's userId is
-    // filtered to an empty list rather than refused, so the response does not
-    // confirm the user exists.
+    // Only your own checkins and your friends' public ones. A stranger's
+    // userId is filtered to an empty list rather than refused, so the response
+    // does not confirm the user exists.
     isVisibleCheckin(context.get("userId")),
     userId ? eq(checkinsTable.userId, userId) : undefined,
     googlePlaceId ? eq(checkinsTable.googlePlaceId, googlePlaceId) : undefined,

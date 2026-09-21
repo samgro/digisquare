@@ -1,0 +1,35 @@
+meta {
+  name: Create Visit Checkin
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "googlePlaceId": "ChIJIQBpAG2ahYAR_6128GcTUEo",
+    "placeName": "Golden Gate Park",
+    "placeAddress": "San Francisco, CA, USA",
+    "placePrimaryType": "park",
+    "latitude": 37.7694,
+    "longitude": -122.4862,
+    "source": "visit",
+    "createdAt": "2026-09-20T14:15:00.000Z"
+  }
+}
+
+docs {
+  A checkin the app created by accepting a background visit suggestion.
+  `source` is `visit` and `createdAt` is backdated to the visit's arrival so
+  the timeline shows when the user was actually there. `createdAt` must be an
+  ISO 8601 timestamp no more than five minutes in the future (400 otherwise).
+}

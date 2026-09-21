@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(AuthManager.self) private var authManager
-    @State private var locationManager = LocationManager()
-    @StateObject private var checkinStore = CheckinStore()
+    // Owned by the app delegate, which Core Location can launch without a
+    // scene to deliver a visit.
+    @Environment(LocationManager.self) private var locationManager
+    @EnvironmentObject private var checkinStore: CheckinStore
     @State private var friendsStore = FriendsStore()
     @Environment(\.scenePhase) private var scenePhase
 
@@ -39,9 +41,7 @@ struct ContentView: View {
             // Zero hides the badge.
             .badge(friendsStore.pendingRequestCount)
         }
-        .environment(locationManager)
         .environment(friendsStore)
-        .environmentObject(checkinStore)
         .onAppear {
             locationManager.requestPermissionsIfNeeded()
             // The scenePhase observer below only fires on a change. After
@@ -66,6 +66,12 @@ struct ContentView: View {
             switch newPhase {
             case .active:
                 locationManager.startUpdatingLocation()
+                // Suggestions made while the app was in the background are
+                // already in the store; this picks up anything saved from
+                // another device.
+                if checkinStore.hasLoadedTimeline {
+                    Task { await checkinStore.loadTimeline() }
+                }
                 // Keeps the Profile badge current when coming back to the
                 // app; requests arrive while it's in the background.
                 Task { await friendsStore.loadRequests() }
@@ -83,4 +89,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environment(AuthManager())
+        .environment(LocationManager())
+        .environmentObject(CheckinStore.inMemory())
 }

@@ -1,0 +1,43 @@
+//
+//  CheckinPrivacyToggle.swift
+//  Hackysack
+//
+
+import SwiftUI
+
+/// A capsule that flips a checkin between public and private. Used in the
+/// compose screen's options row and on suggested checkins in the timeline.
+struct CheckinPrivacyToggle: View {
+    @Binding var visibility: CheckinVisibility
+
+    var body: some View {
+        Button {
+            withAnimation(.snappy) {
+                visibility.toggle()
+            }
+        } label: {
+            Label(
+                visibility.isPrivate ? "Private" : "Public",
+                systemImage: visibility.isPrivate ? "lock.fill" : "globe"
+            )
+            .font(.subheadline.weight(.medium))
+            .contentTransition(.symbolEffect(.replace))
+        }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .tint(visibility.isPrivate ? .gray : .blue)
+        .accessibilityLabel("Checkin visibility")
+        .accessibilityValue(visibility.isPrivate ? "Private" : "Public")
+        .accessibilityHint(visibility.isPrivate ? "Double tap to share with friends" : "Double tap to keep it to yourself")
+    }
+}
+
+#Preview {
+    @Previewable @State var visibility: CheckinVisibility = .everyone
+    VStack(spacing: 16) {
+        CheckinPrivacyToggle(visibility: $visibility)
+        CheckinPrivacyToggle(visibility: $visibility)
+            .controlSize(.small)
+    }
+    .padding()
+}

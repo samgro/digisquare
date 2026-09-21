@@ -24,7 +24,9 @@ extension Checkin {
         userId: String = "00000000-0000-0000-0000-00000000da7a",
         message: String? = "Best cortado in the Mission",
         primaryType: String? = "cafe",
-        minutesAgo: Double = 2
+        minutesAgo: Double = 2,
+        visibility: CheckinVisibility = .everyone,
+        source: CheckinSource = .manual
     ) -> Checkin {
         let createdAt = Date().addingTimeInterval(-minutesAgo * 60)
         return Checkin(
@@ -37,6 +39,8 @@ extension Checkin {
             placeTypes: Place.preview.types,
             location: Place.preview.location,
             message: message,
+            visibility: visibility,
+            source: source,
             createdAt: createdAt,
             updatedAt: createdAt
         )
