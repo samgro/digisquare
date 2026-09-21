@@ -20,8 +20,15 @@ private struct PlacesResponse: Decodable {
     let results: [Place]
 }
 
-enum PlacesAPIError: Error {
+enum PlacesAPIError: Error, LocalizedError {
     case badResponse
+
+    var errorDescription: String? {
+        switch self {
+        case .badResponse:
+            return "We couldn't reach Digisquare. Check your connection and try again."
+        }
+    }
 }
 
 struct PlacesAPI {
