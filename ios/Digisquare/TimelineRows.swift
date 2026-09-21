@@ -5,46 +5,6 @@
 
 import SwiftUI
 
-/// Maps Google Places primary types to SF Symbols and display names.
-enum PlaceTypeSymbol {
-    static func systemImageName(for primaryType: String?) -> String {
-        guard let primaryType else { return "mappin" }
-        switch primaryType {
-        case "cafe", "coffee_shop", "bakery", "tea_house":
-            return "cup.and.saucer.fill"
-        case "bar", "pub", "wine_bar", "night_club":
-            return "wineglass.fill"
-        case "park", "hiking_area", "national_park", "garden", "dog_park":
-            return "tree.fill"
-        case "gym", "fitness_center", "sports_complex":
-            return "dumbbell.fill"
-        case "store", "shopping_mall", "grocery_store", "supermarket", "clothing_store", "convenience_store":
-            return "bag.fill"
-        case "movie_theater", "performing_arts_theater":
-            return "theatermasks.fill"
-        case "museum", "art_gallery", "library":
-            return "building.columns.fill"
-        case "hotel", "lodging":
-            return "bed.double.fill"
-        case "airport", "train_station", "subway_station", "bus_station", "transit_station":
-            return "tram.fill"
-        default:
-            if primaryType.hasSuffix("restaurant") || primaryType.hasPrefix("meal_") {
-                return "fork.knife"
-            }
-            return "mappin"
-        }
-    }
-
-    /// "coffee_shop" → "Coffee Shop"
-    static func displayName(for primaryType: String) -> String {
-        primaryType
-            .split(separator: "_")
-            .map { $0.capitalized }
-            .joined(separator: " ")
-    }
-}
-
 struct PlaceIconView: View {
     let primaryType: String?
 
