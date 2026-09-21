@@ -6,9 +6,12 @@
 import CoreLocation
 import SwiftUI
 
+/// First step of the check-in flow: pick a nearby place. Selecting one pushes
+/// `CheckInComposeView`; submitting there saves the checkin and closes this cover.
 struct CheckInView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var locationManager: LocationManager
+    @EnvironmentObject private var checkinStore: CheckinStore
 
     @State private var places: [Place] = []
     @State private var searchText = ""
@@ -24,6 +27,14 @@ struct CheckInView: View {
             content
                 .navigationTitle("Check In")
                 .navigationBarTitleDisplayMode(.inline)
+                .navigationDestination(for: Place.self) { place in
+                    CheckInComposeView(place: place) { message in
+                        checkinStore.submit(place: place, message: message)
+                        // This is the cover's dismiss (CheckInView owns the stack), so it closes
+                        // the whole flow rather than popping back to the place list.
+                        dismiss()
+                    }
+                }
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(role: .close) {
@@ -41,7 +52,7 @@ struct CheckInView: View {
                     }
                 }
                 .onAppear {
-                    if locationManager.location != nil {
+                    if !hasLoadedOnce, locationManager.location != nil {
                         search()
                     }
                 }
@@ -75,9 +86,7 @@ struct CheckInView: View {
 
     private var placesList: some View {
         List(places) { place in
-            Button {
-                print("\(place.name) selected")
-            } label: {
+            NavigationLink(value: place) {
                 PlaceRow(place: place, userLocation: locationManager.location)
             }
             // Without this the borderless style tints the row's text with the
@@ -117,8 +126,8 @@ struct CheckInView: View {
         Task {
             do {
                 let results = try await placesAPI.searchPlaces(
-                    lat: location.coordinate.latitude,
-                    lng: location.coordinate.longitude,
+                    latitude: location.coordinate.latitude,
+                    longitude: location.coordinate.longitude,
                     query: searchText
                 )
                 places = results
@@ -147,6 +156,7 @@ private struct NoPlacesNearbyView: View {
 #Preview("Check In") {
     CheckInView()
         .environmentObject(LocationManager())
+        .environmentObject(CheckinStore())
 }
 
 #Preview("Check In – With Location") {

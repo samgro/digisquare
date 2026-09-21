@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var locationManager = LocationManager()
+    @StateObject private var checkinStore = CheckinStore()
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
@@ -24,6 +25,7 @@ struct ContentView: View {
             }
         }
         .environmentObject(locationManager)
+        .environmentObject(checkinStore)
         .onAppear {
             locationManager.requestPermissionsIfNeeded()
         }
