@@ -339,7 +339,10 @@ struct UserProfileSheet: View {
 
     private func loadCheckins() async {
         do {
-            checkins = try await checkinsAPI.listCheckins(userId: user.id)
+            // The API's maximum page. There is no paging yet, so someone
+            // with more than this shows their most recent 100 under a count
+            // that is higher.
+            checkins = try await checkinsAPI.listCheckins(userId: user.id, limit: 100)
             checkinsError = nil
         } catch {
             checkinsError = error.localizedDescription

@@ -24,8 +24,10 @@ struct AddFriendsView: View {
 
     private let friendsAPI = FriendsAPI()
 
+    /// Capped at the API's 60-character limit, which is also the longest a
+    /// name can be, so an overlong search finds nothing rather than erroring.
     private var trimmedQuery: String {
-        searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        String(searchText.trimmingCharacters(in: .whitespacesAndNewlines).prefix(60))
     }
 
     var body: some View {
