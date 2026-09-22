@@ -7,7 +7,11 @@ meta {
 get {
   url: {{baseUrl}}/checkins/not-a-uuid
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 docs {

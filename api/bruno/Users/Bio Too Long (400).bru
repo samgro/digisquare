@@ -1,0 +1,28 @@
+meta {
+  name: Bio Too Long (400)
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{baseUrl}}/users/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  }
+}
+
+docs {
+  Expect 400 with details.fieldErrors.bio.
+
+  The limit is 160 characters, matching the live counter in EditProfileView —
+  the client should never let a user reach this response.
+}

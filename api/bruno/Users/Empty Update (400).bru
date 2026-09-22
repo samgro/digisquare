@@ -1,0 +1,25 @@
+meta {
+  name: Empty Update (400)
+  type: http
+  seq: 9
+}
+
+patch {
+  url: {{baseUrl}}/users/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {}
+}
+
+docs {
+  Expect 400 with "At least one field must be provided" in
+  details.formErrors — the refine on the update schema, matching the same rule
+  the checkins update schema uses.
+}

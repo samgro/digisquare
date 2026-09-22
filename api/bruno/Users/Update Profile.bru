@@ -1,0 +1,34 @@
+meta {
+  name: Update Profile
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{baseUrl}}/users/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "name": "Bruno Tester",
+    "bio": "Checking in from the terminal."
+  }
+}
+
+docs {
+  Partial update — send only the fields you want to change. Expect 200 with
+  the full updated profile.
+
+  Passing null clears a field: {"bio": null} removes the bio, and
+  {"avatarKey": null} removes the photo. Omitting a field leaves it alone,
+  which is a different thing from sending null.
+
+  iOS sends name, bio and avatarKey together in one request after an avatar
+  upload, so a profile edit is a single write with one place for errors.
+}

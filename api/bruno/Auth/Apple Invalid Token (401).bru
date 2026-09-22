@@ -1,0 +1,31 @@
+meta {
+  name: Apple Invalid Token (401)
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{baseUrl}}/auth/apple
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "identityToken": "not.a.jwt",
+    "nonce": "0123456789abcdef0123456789abcdef"
+  }
+}
+
+docs {
+  Expect 401 {"error": "Invalid Apple identity token"}.
+
+  The same 401 covers every rejection — bad signature, wrong issuer, an
+  audience that is not our bundle id, an expired token, a token older than 10
+  minutes, and a nonce that does not match. Distinguishing them would tell an
+  attacker which check to work on next.
+
+  Worth trying by hand: mint a token signed with your own key carrying
+  iss=https://appleid.apple.com and aud=samgro.Hackysack. It must still be
+  rejected, because the signature is checked against Apple's published JWKS.
+}

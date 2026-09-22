@@ -1,0 +1,54 @@
+meta {
+  name: Sign In With Apple
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/auth/apple
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "identityToken": "paste-a-real-identity-token-here",
+    "nonce": "paste-the-raw-nonce-here",
+    "fullName": {
+      "givenName": "Bruno",
+      "familyName": "Tester"
+    },
+    "email": "bruno@privaterelay.appleid.com"
+  }
+}
+
+vars:post-response {
+  accessToken: res.body.accessToken
+  refreshToken: res.body.refreshToken
+  userId: res.body.user.id
+}
+
+docs {
+  Needs a real Apple identity token, which only a device can produce. Print
+  both values from the onCompletion handler in WelcomeView and paste them
+  here. The token is rejected after 10 minutes (maxTokenAge), so work quickly.
+
+  Send the RAW nonce, not the hash. iOS hashes it before handing it to Apple;
+  the server hashes what you send here and compares against the hash Apple
+  echoed into the token. That binding is what stops a token from one sign-in
+  being replayed into another.
+
+  Expect 200 for a returning user, or 201 for a new account.
+
+  `fullName` and `email` in this body are untrusted hints, used only to name a
+  brand-new account. Identity always comes from the verified token's `sub`.
+  Editing them cannot make you sign in as anyone else — try it.
+
+  Apple returns fullName and email only on the FIRST authorization. To get
+  them again, revoke the app under Settings > Apple ID > Sign in with Apple.
+
+  If the response carries "emailConflict": true, the token's email already
+  belonged to a password account, so a SEPARATE account was created rather
+  than linking the two. See the comment in routes/auth.ts for why neither
+  linking nor a 409 is safe there.
+}

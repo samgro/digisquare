@@ -1,5 +1,5 @@
 {
-  "name": "digisquare-api",
+  "name": "hackysack-api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -14,18 +14,27 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1136.0",
+    "@aws-sdk/s3-request-presigner": "^3.1136.0",
     "@hono/node-server": "^1.13.7",
     "@neondatabase/serverless": "^0.10.3",
+    "@node-rs/argon2": "^2.2.1",
     "dotenv": "^18.0.0",
-    "drizzle-orm": "^0.36.4",
+    "drizzle-orm": "^0.45.3",
     "hono": "^4.6.11",
+    "jose": "^5.10.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.20.4",
-    "drizzle-kit": "^0.28.1",
+    "drizzle-kit": "^0.31.11",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vitest": "^5.0.1"
+  },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "^0.25.0"
+    }
   }
 }

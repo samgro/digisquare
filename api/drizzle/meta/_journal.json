@@ -8,6 +8,20 @@
       "when": 1789940913866,
       "tag": "0000_stale_hiroim",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789945986658,
+      "tag": "0001_add_users_sessions_rate_limits",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789946604309,
+      "tag": "0002_checkins_user_id_foreign_key",
+      "breakpoints": true
     }
   ]
 }

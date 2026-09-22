@@ -1,0 +1,24 @@
+meta {
+  name: Invalid Token (401)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/users/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: not.a.real.token
+}
+
+docs {
+  Expect 401 {"error": "Invalid or expired token"} with
+  WWW-Authenticate: Bearer error="invalid_token".
+
+  The same response covers a tampered signature, an expired token, a wrong
+  issuer or audience, and a forged alg:none header. Verification pins
+  algorithms to HS256 exactly so the last of those cannot work.
+}

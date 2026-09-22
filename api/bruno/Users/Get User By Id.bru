@@ -1,0 +1,24 @@
+meta {
+  name: Get User By Id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/users/{{userId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Somebody else's public profile. Expect 200 with id, name, bio, avatarUrl and
+  createdAt.
+
+  Compare against Get Me: there is no email here, and nothing about how they
+  sign in. Even though {{userId}} is your own account, this route returns the
+  public shape.
+}

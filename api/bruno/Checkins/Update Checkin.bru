@@ -5,9 +5,13 @@ meta {
 }
 
 patch {
-  url: {{baseUrl}}/checkins/REPLACE_WITH_CHECKIN_ID
+  url: {{baseUrl}}/checkins/{{checkinId}}
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 body:json {
