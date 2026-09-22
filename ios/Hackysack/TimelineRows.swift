@@ -185,6 +185,65 @@ struct TimelineEntryRow: View {
     }
 }
 
+/// A day divider or a checkin, interleaved in display order so the timeline
+/// can be rendered as one flat, continuously-connected list.
+private enum TimelineRow: Identifiable {
+    case dayHeader(Date)
+    case entry(TimelineEntry)
+
+    var id: String {
+        switch self {
+        case .dayHeader(let day):
+            return "day-\(day.timeIntervalSince1970)"
+        case .entry(let entry):
+            return "entry-\(entry.id)"
+        }
+    }
+}
+
+/// Groups entries by calendar day, most recent first, inserting a day header
+/// ahead of each group's first entry.
+private func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
+    let sortedEntries = entries.sorted { $0.checkin.createdAt > $1.checkin.createdAt }
+    var rows: [TimelineRow] = []
+    var lastDay: Date?
+    for entry in sortedEntries {
+        let day = calendar.startOfDay(for: entry.checkin.createdAt)
+        if day != lastDay {
+            rows.append(.dayHeader(day))
+            lastDay = day
+        }
+        rows.append(.entry(entry))
+    }
+    return rows
+}
+
+/// A whole timeline's rows: checkins grouped under day headers, with one
+/// connector line threaded through them. Put it in a LazyVStack with no
+/// spacing, as the line relies on consecutive rows touching. Shared by the
+/// Timeline tab and the timeline on someone's profile.
+struct CheckinTimelineRows: View {
+    let entries: [TimelineEntry]
+    var onRetry: (TimelineEntry) -> Void = { _ in }
+
+    var body: some View {
+        let rows = timelineRows(for: entries)
+        ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
+            switch row {
+            case .dayHeader(let day):
+                TimelineDayHeaderRow(day: day, showTopLine: index != 0)
+            case .entry(let entry):
+                TimelineEntryRow(
+                    entry: entry,
+                    showTopLine: index != 0,
+                    showBottomLine: index != rows.count - 1,
+                    onRetry: { onRetry(entry) }
+                )
+            }
+        }
+    }
+}
+
 #Preview("Day Header") {
     TimelineDayHeaderRow(day: Date(), showTopLine: false)
 }

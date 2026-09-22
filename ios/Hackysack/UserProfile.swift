@@ -29,12 +29,7 @@ nonisolated struct UserProfile: Codable, Identifiable, Equatable, Sendable {
         case hasPassword, hasAppleSignIn, createdAt
     }
 
-    var initials: String {
-        guard let name, !name.isEmpty else { return "?" }
-        let words = name.split(separator: " ").prefix(2)
-        let letters = words.compactMap { $0.first }.map(String.init)
-        return letters.isEmpty ? "?" : letters.joined().uppercased()
-    }
+    var initials: String { PersonName.initials(for: name) }
 
     var signInMethodDescription: String {
         switch (hasAppleSignIn, hasPassword) {

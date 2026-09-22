@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(AuthManager.self) private var authManager
     @State private var locationManager = LocationManager()
     @StateObject private var checkinStore = CheckinStore()
+    @State private var friendsStore = FriendsStore()
     @Environment(\.scenePhase) private var scenePhase
 
     /// The signed-in user's id, or nil while signing in. ContentView only
@@ -35,8 +36,11 @@ struct ContentView: View {
             Tab("Profile", systemImage: "person.crop.circle") {
                 ProfileView()
             }
+            // Zero hides the badge.
+            .badge(friendsStore.pendingRequestCount)
         }
         .environment(locationManager)
+        .environment(friendsStore)
         .environmentObject(checkinStore)
         .onAppear {
             locationManager.requestPermissionsIfNeeded()
@@ -47,6 +51,7 @@ struct ContentView: View {
                 locationManager.startUpdatingLocation()
             }
             checkinStore.currentUserId = signedInUserId
+            Task { await friendsStore.loadRequests() }
         }
         .onChange(of: signedInUserId) { _, newUserId in
             // Keeps the timeline pointed at the right account if the signed-in
@@ -57,6 +62,9 @@ struct ContentView: View {
             switch newPhase {
             case .active:
                 locationManager.startUpdatingLocation()
+                // Keeps the Profile badge current when coming back to the
+                // app; requests arrive while it's in the background.
+                Task { await friendsStore.loadRequests() }
             case .background:
                 locationManager.stopUpdatingLocation()
             case .inactive:

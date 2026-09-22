@@ -42,3 +42,35 @@ extension Checkin {
         )
     }
 }
+
+extension PublicUser {
+    static func preview(
+        id: String = "00000000-0000-0000-0000-0000000a1e70",
+        name: String? = "Alex Rivera",
+        bio: String? = "Chasing the perfect cortado."
+    ) -> PublicUser {
+        PublicUser(
+            id: id,
+            name: name,
+            bio: bio,
+            avatarURL: nil,
+            createdAt: Date().addingTimeInterval(-86_400 * 200)
+        )
+    }
+}
+
+extension FriendRequest {
+    static func preview(user: PublicUser = .preview(), minutesAgo: Double = 45) -> FriendRequest {
+        FriendRequest(
+            id: UUID().uuidString,
+            user: user,
+            createdAt: Date().addingTimeInterval(-minutesAgo * 60)
+        )
+    }
+}
+
+extension FriendCheckin {
+    static func preview(user: PublicUser = .preview()) -> FriendCheckin {
+        FriendCheckin(checkin: .preview(userId: user.id), user: user.summary)
+    }
+}

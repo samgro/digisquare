@@ -6,7 +6,10 @@
 import SwiftUI
 
 struct FriendsView: View {
-    @EnvironmentObject private var checkinStore: CheckinStore
+    @Environment(FriendsStore.self) private var friendsStore
+
+    @State private var isAddingFriends = false
+    @State private var selectedUser: UserSummary?
 
     var body: some View {
         NavigationStack {
@@ -15,41 +18,69 @@ struct FriendsView: View {
                 CheckInFAB()
             }
             .navigationTitle("Friends")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isAddingFriends = true
+                    } label: {
+                        Label("Add Friends", systemImage: "person.badge.plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $isAddingFriends) {
+                AddFriendsView()
+            }
+            .sheet(item: $selectedUser) { user in
+                UserProfileSheet(user: user)
+            }
             .task {
-                await checkinStore.loadFriends()
+                await friendsStore.loadFeed()
             }
         }
     }
 
     @ViewBuilder
     private var content: some View {
-        if !checkinStore.friendsCheckins.isEmpty {
-            List(checkinStore.friendsCheckins) { checkin in
-                FriendCheckinRow(checkin: checkin)
+        if !friendsStore.feed.isEmpty {
+            List(friendsStore.feed) { item in
+                FriendCheckinRow(item: item) { user in
+                    selectedUser = user
+                }
             }
             .listStyle(.plain)
-            .animation(.default, value: checkinStore.friendsCheckins)
+            .animation(.default, value: friendsStore.feed)
             .refreshable {
-                await checkinStore.loadFriends()
+                await friendsStore.loadFeed()
             }
-        } else if !checkinStore.hasLoadedFriends {
+        } else if !friendsStore.hasLoadedFeed {
             ProgressView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else if let friendsError = checkinStore.friendsError {
+        } else if let feedError = friendsStore.feedError {
             ContentUnavailableView {
                 Label("Couldn't Load Checkins", systemImage: "exclamationmark.triangle")
             } description: {
-                Text(friendsError)
+                Text(feedError)
             } actions: {
                 Button("Try Again") {
-                    Task { await checkinStore.loadFriends() }
+                    Task { await friendsStore.loadFeed() }
                 }
+            }
+        } else if friendsStore.friends.isEmpty {
+            ContentUnavailableView {
+                Label("No Friends Yet", systemImage: "person.2")
+            } description: {
+                Text("Find people you know to see where they check in.")
+            } actions: {
+                Button("Find Friends") {
+                    isAddingFriends = true
+                }
+                .buttonStyle(.borderedProminent)
             }
         } else {
             ContentUnavailableView(
                 "Nothing Here Yet",
                 systemImage: "person.2",
-                description: Text("Checkins from everyone will show up here.")
+                description: Text("Checkins from your friends will show up here.")
             )
         }
     }
@@ -58,5 +89,7 @@ struct FriendsView: View {
 #Preview {
     FriendsView()
         .environment(LocationManager())
+        .environment(FriendsStore())
+        .environment(AuthManager())
         .environmentObject(CheckinStore())
 }

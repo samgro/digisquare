@@ -21,20 +21,30 @@ struct TimelineEntry: Identifiable, Equatable {
     var syncStatus: CheckinSyncStatus
 }
 
+extension TimelineEntry {
+    /// A checkin that is already on the server, such as one of a friend's.
+    /// The id comes from the checkin's own, so reloading keeps row identity.
+    init(savedCheckin checkin: Checkin) {
+        self.init(
+            id: UUID(uuidString: checkin.id) ?? UUID(),
+            draft: nil,
+            checkin: checkin,
+            syncStatus: .saved
+        )
+    }
+}
+
 @MainActor
 final class CheckinStore: ObservableObject {
     @Published private(set) var timelineEntries: [TimelineEntry] = []
-    @Published private(set) var friendsCheckins: [Checkin] = []
     @Published private(set) var hasLoadedTimeline = false
-    @Published private(set) var hasLoadedFriends = false
     @Published private(set) var timelineError: String?
-    @Published private(set) var friendsError: String?
 
     private let checkinsAPI = CheckinsAPI()
 
     /// The signed-in user, set by ContentView from AuthManager. Held here
-    /// rather than passed into every call so TimelineView and FriendsView keep
-    /// calling these with no arguments.
+    /// rather than passed into every call so TimelineView keeps calling these
+    /// with no arguments.
     ///
     /// Nil only before the first assignment; ContentView is behind the auth
     /// gate, so by the time it appears there is always a signed-in user.
@@ -89,9 +99,6 @@ final class CheckinStore: ObservableObject {
                 $0.checkin = savedCheckin
                 $0.syncStatus = .saved
             }
-            if hasLoadedFriends, !friendsCheckins.contains(where: { $0.id == savedCheckin.id }) {
-                friendsCheckins.insert(savedCheckin, at: 0)
-            }
         } catch {
             updateEntry(entryId) { $0.syncStatus = .failed }
         }
@@ -122,18 +129,6 @@ final class CheckinStore: ObservableObject {
     private func updateEntry(_ entryId: UUID, _ mutate: (inout TimelineEntry) -> Void) {
         guard let index = timelineEntries.firstIndex(where: { $0.id == entryId }) else { return }
         mutate(&timelineEntries[index])
-    }
-
-    // MARK: Friends
-
-    func loadFriends() async {
-        do {
-            friendsCheckins = try await checkinsAPI.listCheckins()
-            friendsError = nil
-        } catch {
-            friendsError = error.localizedDescription
-        }
-        hasLoadedFriends = true
     }
 }
 
