@@ -1,0 +1,27 @@
+meta {
+  name: List Friend Requests
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/friends/requests
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+vars:post-response {
+  friendRequestId: res.body.results[0].id
+}
+
+docs {
+  Requests other people have sent you that are still pending, newest first:
+  { results: [{ id, user, createdAt }] } where user is the requester's public
+  profile. Requests you sent are not listed here.
+
+  Sign in as the second account to see the one Send Friend Request made.
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Remove Friend
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/friends/{{friendUserId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Ends the friendship, whichever of you sent the original request. Expect 204.
+  Afterwards neither of you sees the other's checkins.
+
+  404 if you are not friends.
+}

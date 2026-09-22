@@ -2,9 +2,16 @@ import { vi } from "vitest";
 
 type QueryResult = unknown[];
 
+/** A queued entry that makes the query reject instead of resolving. */
+class QueuedFailure {
+  constructor(readonly error: unknown) {}
+}
+
 export interface StubbedDatabase {
   /** Queue the rows the next awaited query should resolve to, in order. */
   queue: (...results: QueryResult[]) => void;
+  /** Make the next awaited query reject with `error`, as a failed write would. */
+  queueFailure: (error: unknown) => void;
   /** Every top-level operation, in order: "select", "insert", "update", … */
   operations: string[];
   reset: () => void;
@@ -27,7 +34,7 @@ export function createDatabaseStub(): {
   database: Record<string, unknown>;
   controls: StubbedDatabase;
 } {
-  const results: QueryResult[] = [];
+  const results: (QueryResult | QueuedFailure)[] = [];
   const operations: string[] = [];
 
   const makeChain = (): unknown => {
@@ -38,7 +45,12 @@ export function createDatabaseStub(): {
           return (
             onFulfilled?: (value: QueryResult) => unknown,
             onRejected?: (reason: unknown) => unknown,
-          ) => Promise.resolve(results.shift() ?? []).then(onFulfilled, onRejected);
+          ) => {
+            const next = results.shift() ?? [];
+            const settled =
+              next instanceof QueuedFailure ? Promise.reject(next.error) : Promise.resolve(next);
+            return settled.then(onFulfilled, onRejected);
+          };
         }
         return () => proxy;
       },
@@ -68,6 +80,7 @@ export function createDatabaseStub(): {
     database,
     controls: {
       queue: (...next: QueryResult[]) => results.push(...next),
+      queueFailure: (error: unknown) => results.push(new QueuedFailure(error)),
       operations,
       reset: () => {
         results.length = 0;

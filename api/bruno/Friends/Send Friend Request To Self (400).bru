@@ -1,0 +1,25 @@
+meta {
+  name: Send Friend Request To Self (400)
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/friends/requests
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "userId": "{{userId}}"
+  }
+}
+
+docs {
+  Asking yourself. Expect 400 {"error": "You can't send a friend request to yourself"}.
+}

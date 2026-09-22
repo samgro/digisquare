@@ -23,5 +23,7 @@ docs {
   the free-form string it used to be — a non-uuid value returns 400.
 
   {{userId}} is captured by Register or Login, so this shows your own
-  checkins. Any user id is accepted: checkins are public within the app.
+  checkins. Only your own and your friends' checkins are listed: anyone
+  else's user id returns an empty list, not an error, so the response doesn't
+  reveal whether that user exists.
 }

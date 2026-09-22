@@ -1,0 +1,22 @@
+meta {
+  name: Decline Friend Request
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseUrl}}/friends/requests/{{friendRequestId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Declines a pending request you received, or cancels one you sent. Expect 204.
+  The row is deleted, so either person can ask again later.
+
+  404 if there is no pending request with this id that involves you.
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Send Friend Request
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/friends/requests
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "userId": "{{friendUserId}}"
+  }
+}
+
+vars:post-response {
+  friendRequestId: res.body.id
+}
+
+docs {
+  Asks {{friendUserId}} to be friends. Expect 201 {"id", "status": "pending"}.
+
+  If they had already asked you, this accepts their request instead and
+  answers 200 with status "accepted". Sending again while a request or
+  friendship exists is 409, and asking yourself is 400.
+}

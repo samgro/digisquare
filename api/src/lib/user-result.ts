@@ -30,6 +30,18 @@ export function toPrivateUserResult(user: UserRow) {
   };
 }
 
+/**
+ * Just enough to draw someone's avatar and name next to a feed row, without
+ * repeating their bio on every checkin.
+ */
+export function toUserSummary(user: UserRow) {
+  return {
+    id: user.id,
+    name: user.name,
+    avatarUrl: avatarUrlFor(user.avatarKey),
+  };
+}
+
 /** Somebody else's profile. Never includes the email. */
 export function toPublicUserResult(user: UserRow) {
   return {
