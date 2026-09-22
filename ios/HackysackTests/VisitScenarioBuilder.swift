@@ -290,10 +290,14 @@ struct VisitScenarioBuilder {
         detector.clusterSummaries(currentVisit: currentVisit, history: visits, now: now, calendar: calendar)
     }
 
-    /// The cluster whose centroid is closest to `spot`, if one is within 400 m.
-    func summary(near spot: ScenarioSpot, detector: FrequentPlaceDetector = FrequentPlaceDetector()) -> FrequentPlaceDetector.ClusterSummary? {
+    /// The cluster whose centroid is closest to `spot`, if one is within `radius` meters.
+    func summary(
+        near spot: ScenarioSpot,
+        within radius: Double = 400,
+        detector: FrequentPlaceDetector = FrequentPlaceDetector()
+    ) -> FrequentPlaceDetector.ClusterSummary? {
         summaries(detector: detector)
-            .filter { $0.centroid.distance(to: spot.coordinate) <= 400 }
+            .filter { $0.centroid.distance(to: spot.coordinate) <= radius }
             .min { $0.centroid.distance(to: spot.coordinate) < $1.centroid.distance(to: spot.coordinate) }
     }
 }

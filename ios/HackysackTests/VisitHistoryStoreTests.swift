@@ -100,3 +100,27 @@ struct VisitHistoryStoreTests {
         #expect(store.visits.isEmpty)
     }
 }
+
+extension VisitHistoryStoreTests {
+    @Test func aStayWithNoKnownArrivalIsStillOneRecord() {
+        let store = VisitHistoryStore.inMemory()
+        let receivedArrival = arrival
+        let receivedDeparture = arrival.addingTimeInterval(3 * 3600)
+        store.record(
+            VisitRecord(coordinate: coordinate, horizontalAccuracy: 50, arrivalDate: receivedArrival, receivedAt: receivedArrival, hasKnownArrival: false)
+        )
+        let result = store.record(
+            VisitRecord(
+                coordinate: coordinate,
+                horizontalAccuracy: 50,
+                arrivalDate: receivedDeparture,
+                departureDate: receivedDeparture,
+                receivedAt: receivedDeparture,
+                hasKnownArrival: false
+            )
+        )
+        #expect(!result.isNew)
+        #expect(store.visits.count == 1)
+        #expect(store.visits[0].departureDate == receivedDeparture)
+    }
+}

@@ -39,6 +39,9 @@ struct VisitRecord: Codable, Identifiable, Equatable {
     var departureDate: Date?
     /// When the app received the delivery. Used to backfill an unknown arrival.
     var receivedAt: Date
+    /// False when Core Location did not know when the stay began (monitoring
+    /// started mid-stay) and `arrivalDate` is the delivery time instead.
+    var hasKnownArrival: Bool
 
     init(
         id: UUID = UUID(),
@@ -46,7 +49,8 @@ struct VisitRecord: Codable, Identifiable, Equatable {
         horizontalAccuracy: Double,
         arrivalDate: Date,
         departureDate: Date? = nil,
-        receivedAt: Date? = nil
+        receivedAt: Date? = nil,
+        hasKnownArrival: Bool = true
     ) {
         self.id = id
         self.coordinate = coordinate
@@ -54,6 +58,7 @@ struct VisitRecord: Codable, Identifiable, Equatable {
         self.arrivalDate = arrivalDate
         self.departureDate = departureDate
         self.receivedAt = receivedAt ?? departureDate ?? arrivalDate
+        self.hasKnownArrival = hasKnownArrival
     }
 
     var isOngoing: Bool { departureDate == nil }

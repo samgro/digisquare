@@ -292,7 +292,9 @@ struct FrequentPlaceDetectorTests {
     @Test func aBreakLongerThanTwoHoursSplitsTheDayIntoShortStays() {
         var builder = VisitScenarioBuilder()
         builder.addHomeNights(days: builder.days)
-        builder.addWorkdays(at: ScenarioSpots.office, days: builder.days, awayBreak: (startHour: 12, durationHours: 2.5))
+        // Three hours rather than two and a bit, so the ±20 minute jitter on
+        // each edge can never pull the gap under the two-hour bridge.
+        builder.addWorkdays(at: ScenarioSpots.office, days: builder.days, awayBreak: (startHour: 12, durationHours: 3))
 
         let assessment = builder.assessArrival(at: ScenarioSpots.office)
         #expect(assessment.reason == .notHabitual)
@@ -407,7 +409,9 @@ struct FrequentPlaceDetectorTests {
         let assessment = builder.assessArrival(at: ScenarioSpots.busStop)
         #expect(assessment.reason == .notHabitual)
         #expect(assessment.shouldSuggest)
-        #expect((builder.summary(near: ScenarioSpots.busStop)?.longDays ?? 0) == 0)
+        // Sub-ten-minute stops never even form a cluster; the nearest cluster
+        // within 400 m would be home, 300 m away, so look tighter than that.
+        #expect(builder.summary(near: ScenarioSpots.busStop, within: 150) == nil)
     }
 
     @Test func visitsWithHopelessAccuracyAreIgnored() {

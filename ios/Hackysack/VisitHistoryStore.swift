@@ -61,8 +61,7 @@ final class VisitHistoryStore {
     @discardableResult
     func record(_ visit: VisitRecord) -> RecordResult {
         if let index = snapshot.visits.firstIndex(where: { existing in
-            abs(existing.arrivalDate.timeIntervalSince(visit.arrivalDate)) <= Self.duplicateArrivalTolerance
-                && existing.coordinate.distance(to: visit.coordinate) <= Self.duplicateDistanceTolerance
+            isSameVisit(existing, as: visit)
         }) {
             var existing = snapshot.visits[index]
             if let departureDate = visit.departureDate {
@@ -85,6 +84,20 @@ final class VisitHistoryStore {
         snapshot.visits.append(visit)
         persist()
         return RecordResult(record: visit, isNew: true)
+    }
+
+    /// The arrival and departure deliveries of one stay share an arrival time.
+    /// When Core Location never knew the arrival, both carry a substituted time
+    /// that differs by hours, so the departure is instead matched to the still
+    /// open record at the same place.
+    private func isSameVisit(_ existing: VisitRecord, as incoming: VisitRecord) -> Bool {
+        guard existing.coordinate.distance(to: incoming.coordinate) <= Self.duplicateDistanceTolerance else {
+            return false
+        }
+        if abs(existing.arrivalDate.timeIntervalSince(incoming.arrivalDate)) <= Self.duplicateArrivalTolerance {
+            return true
+        }
+        return !incoming.hasKnownArrival && !existing.hasKnownArrival && existing.departureDate == nil
     }
 
     func visit(withId id: UUID) -> VisitRecord? {

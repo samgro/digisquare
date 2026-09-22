@@ -79,7 +79,11 @@ final class CheckinStore: ObservableObject {
         self.pendingFileStore = pendingFileStore
         let checkinsAPI = CheckinsAPI()
         self.checkinsAPI = checkinsAPI
-        self.saveCheckin = saveCheckin ?? { draft in try await checkinsAPI.createCheckin(draft) }
+        if let saveCheckin {
+            self.saveCheckin = saveCheckin
+        } else {
+            self.saveCheckin = { draft in try await checkinsAPI.createCheckin(draft) }
+        }
         suggestions = pendingFileStore?.load() ?? []
     }
 
@@ -89,10 +93,11 @@ final class CheckinStore: ObservableObject {
         visitHistory: VisitHistoryStore? = nil,
         saveCheckin: CheckinSaver? = nil
     ) -> CheckinStore {
-        CheckinStore(
+        let offline: CheckinSaver = { _ in throw APIError.transport(URLError(.notConnectedToInternet)) }
+        return CheckinStore(
             visitHistory: visitHistory ?? .inMemory(),
             pendingFileStore: nil,
-            saveCheckin: saveCheckin ?? { _ in throw APIError.transport(URLError(.notConnectedToInternet)) }
+            saveCheckin: saveCheckin ?? offline
         )
     }
 
@@ -227,10 +232,8 @@ final class CheckinStore: ObservableObject {
         }) else { return }
         if suggestions[index].visit.id == visit.id {
             suggestions[index].visit = visit
-        } else if let departureDate = visit.departureDate {
-            suggestions[index].visit.departureDate = departureDate
         } else {
-            suggestions[index].visit.departureDate = nil
+            suggestions[index].visit.departureDate = visit.departureDate
         }
         persistSuggestions()
     }

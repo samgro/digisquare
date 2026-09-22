@@ -142,10 +142,10 @@ struct FrequentPlaceDetector {
         guard let currentCluster = clusters.first(where: { $0.containsCurrentVisit }) else {
             return Assessment(shouldSuggest: true, reason: .notHabitual)
         }
-        let joinRadius = joinRadius(for: visit)
+        let clusterRadius = joinRadius(for: visit)
         let centroid = currentCluster.centroid
 
-        let rejectionsHere = rejections.filter { $0.coordinate.distance(to: centroid) <= joinRadius }
+        let rejectionsHere = rejections.filter { $0.coordinate.distance(to: centroid) <= clusterRadius }
         if rejectionsHere.count >= configuration.permanentRejectionCount {
             return Assessment(shouldSuggest: false, reason: .rejectedRepeatedly)
         }
@@ -156,7 +156,7 @@ struct FrequentPlaceDetector {
 
         let checkinWindowStart = now.addingTimeInterval(-days(configuration.checkinWindowDays))
         let checkinsHere = checkins.filter {
-            $0.date >= checkinWindowStart && $0.coordinate.distance(to: centroid) <= joinRadius
+            $0.date >= checkinWindowStart && $0.coordinate.distance(to: centroid) <= clusterRadius
         }
         let checkinsByPlace = Dictionary(grouping: checkinsHere, by: \.googlePlaceId)
         let regularPlace = checkinsByPlace

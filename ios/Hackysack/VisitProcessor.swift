@@ -14,12 +14,14 @@ extension VisitRecord {
     /// monitoring started mid-stay) and an unknown departure with
     /// `.distantFuture` (the user is still there); both become sensible values.
     init(visit: CLVisit, receivedAt: Date) {
+        let hasKnownArrival = visit.arrivalDate != .distantPast
         self.init(
             coordinate: GeoCoordinate(latitude: visit.coordinate.latitude, longitude: visit.coordinate.longitude),
             horizontalAccuracy: visit.horizontalAccuracy,
-            arrivalDate: visit.arrivalDate == .distantPast ? receivedAt : visit.arrivalDate,
+            arrivalDate: hasKnownArrival ? visit.arrivalDate : receivedAt,
             departureDate: visit.departureDate == .distantFuture ? nil : visit.departureDate,
-            receivedAt: receivedAt
+            receivedAt: receivedAt,
+            hasKnownArrival: hasKnownArrival
         )
     }
 }
