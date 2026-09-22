@@ -1,0 +1,38 @@
+meta {
+  name: Refresh Reused Token (401)
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/auth/refresh
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "refreshToken": "{{refreshToken}}"
+  }
+}
+
+docs {
+  Replay detection. To run it: send Refresh (seq 3) twice in a row WITHOUT
+  letting the second run recapture — or just run seq 3, then run this request
+  with the token seq 3 consumed.
+
+  Expect 401 {"error": "Invalid refresh token"}.
+
+  Then confirm the side effect in SQL — this is the half Bruno cannot assert:
+
+    SELECT revoked_reason, count(*) FROM sessions
+    WHERE family_id = '<the family>' GROUP BY revoked_reason;
+
+  Every row in that family must now read 'reuse_detected'. A stolen refresh
+  token is only useful until the real client next refreshes; that collision is
+  what burns the family for both of them.
+
+  Caveat: a replay within 30 seconds of the original rotation is treated as an
+  honest retry (a lost response), not an attack, and returns 200. Wait out the
+  grace window before expecting the 401.
+}

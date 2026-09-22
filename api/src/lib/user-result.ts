@@ -1,0 +1,42 @@
+import { config } from "../config.js";
+import type { users } from "../db/schema.js";
+
+type UserRow = typeof users.$inferSelect;
+
+export function avatarUrlFor(avatarKey: string | null): string | null {
+  if (!avatarKey) {
+    return null;
+  }
+  return `${config.R2_PUBLIC_BASE_URL.replace(/\/+$/, "")}/${avatarKey}`;
+}
+
+/**
+ * The caller's own profile. Carries the email and which sign-in methods are
+ * attached, so the Profile screen can render "Apple", "Email & password" or
+ * both without a second request.
+ *
+ * avatarKey is deliberately absent: clients only ever see the public URL.
+ */
+export function toPrivateUserResult(user: UserRow) {
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    bio: user.bio,
+    avatarUrl: avatarUrlFor(user.avatarKey),
+    hasPassword: user.passwordHash !== null,
+    hasAppleSignIn: user.appleUserId !== null,
+    createdAt: user.createdAt,
+  };
+}
+
+/** Somebody else's profile. Never includes the email. */
+export function toPublicUserResult(user: UserRow) {
+  return {
+    id: user.id,
+    name: user.name,
+    bio: user.bio,
+    avatarUrl: avatarUrlFor(user.avatarKey),
+    createdAt: user.createdAt,
+  };
+}

@@ -1,0 +1,42 @@
+meta {
+  name: Request Avatar Upload URL
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/users/me/avatar-upload
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "contentType": "image/jpeg",
+    "contentLength": 48213
+  }
+}
+
+docs {
+  Returns a presigned PUT url, the key to attach afterwards, and the limits.
+  Expect 200 with uploadUrl, key, expiresInSeconds (300) and maxBytes.
+
+  Image bytes never pass through this server. Upload directly:
+
+    curl -X PUT --data-binary @avatar.jpg \
+      -H "Content-Type: image/jpeg" "<uploadUrl>"
+
+  Then attach it with Update Profile, sending {"avatarKey": "<key>"}.
+
+  Two things must match the values you declared here or R2 answers 403 with
+  SignatureDoesNotMatch and no useful diagnostic: the Content-Type header,
+  byte for byte, and the body length. contentLength is signed into the url
+  precisely because it is the only size cap a presigned PUT can carry.
+
+  Do NOT send an Authorization header on the PUT — it conflicts with the
+  query-string credentials and R2 rejects it.
+}

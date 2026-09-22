@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/checkins/REPLACE_WITH_CHECKIN_ID
+  url: {{baseUrl}}/checkins/{{checkinId}}
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 docs {

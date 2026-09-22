@@ -1,0 +1,29 @@
+meta {
+  name: Refresh Unknown Token (401)
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{baseUrl}}/auth/refresh
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "refreshToken": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+}
+
+docs {
+  A token that was never issued. Expect 401 {"error": "Invalid refresh token"}.
+
+  The important half is the NON-effect: this must revoke nothing. Check that
+  your live session still works by running Refresh (seq 3) afterwards — it
+  should still return 200.
+
+  If posting garbage could revoke sessions, anyone could sign a user out by
+  guessing, which turns the reuse-detection defence into a denial-of-service
+  weapon.
+}

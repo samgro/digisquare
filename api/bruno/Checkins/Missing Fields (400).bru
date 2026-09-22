@@ -7,7 +7,11 @@ meta {
 post {
   url: {{baseUrl}}/checkins
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 body:json {
@@ -17,6 +21,9 @@ body:json {
 }
 
 docs {
-  No userId or googlePlaceId provided. Expect a 400 with zod validation
-  details.
+  No googlePlaceId provided. Expect a 400 with zod validation details.
+
+  Note there is no userId to omit any more: identity comes from the bearer
+  token, and a userId in the body is ignored rather than rejected, so an older
+  client still sending one is not broken by a 400 it cannot act on.
 }

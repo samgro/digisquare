@@ -1,0 +1,26 @@
+meta {
+  name: Get Me
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/users/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  The caller's own profile. Expect 200 with id, email, name, bio, avatarUrl,
+  hasPassword, hasAppleSignIn and createdAt.
+
+  Note avatarUrl, never avatarKey — the R2 key is server-side only.
+
+  email is null for an Apple user who chose to hide their address, and for an
+  account created by the email-collision path. The iOS Profile screen renders
+  "Hidden by Apple" rather than an empty row.
+}

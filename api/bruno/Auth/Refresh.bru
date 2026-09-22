@@ -1,0 +1,33 @@
+meta {
+  name: Refresh
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/auth/refresh
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "refreshToken": "{{refreshToken}}"
+  }
+}
+
+vars:post-response {
+  accessToken: res.body.accessToken
+  refreshToken: res.body.refreshToken
+}
+
+docs {
+  Rotates the refresh token. Expect 200 with a NEW access token and a NEW
+  refresh token — the one you sent is now spent and will never work again.
+
+  There is deliberately no `user` in this response; refresh is a hot path and
+  the client already has the profile cached.
+
+  The post-response vars overwrite the stored tokens, so running this twice in
+  a row is safe. Sending the OLD token again is what Reused Token (401) tests.
+}

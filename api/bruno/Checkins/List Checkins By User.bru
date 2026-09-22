@@ -5,15 +5,23 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/checkins?userId=sam
+  url: {{baseUrl}}/checkins?userId={{userId}}
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 params:query {
-  userId: sam
+  userId: {{userId}}
 }
 
 docs {
-  Lists checkins filtered to a single userId.
+  Lists checkins by a single user. The filter is now a user id (a uuid), not
+  the free-form string it used to be — a non-uuid value returns 400.
+
+  {{userId}} is captured by Register or Login, so this shows your own
+  checkins. Any user id is accepted: checkins are public within the app.
 }

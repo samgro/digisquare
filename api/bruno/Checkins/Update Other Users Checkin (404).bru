@@ -1,0 +1,37 @@
+meta {
+  name: Update Other Users Checkin (404)
+  type: http
+  seq: 12
+}
+
+patch {
+  url: {{baseUrl}}/checkins/{{checkinId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "message": "Trying to edit someone else's checkin."
+  }
+}
+
+docs {
+  Ownership check. To run it: create a checkin as one account, then Register a
+  SECOND account (which recaptures accessToken) and send this against the
+  first account's checkinId.
+
+  Expect 404 {"error": "Checkin not found"} — deliberately NOT 403.
+
+  A 403 would confirm the id is real, which hands an attacker a way to probe
+  which checkin ids exist. The update is scoped by owner in the WHERE clause,
+  so a checkin belonging to someone else returns no rows and falls through to
+  the same 404 as one that never existed.
+
+  Before auth this route had no ownership check at all: anyone who knew a uuid
+  could edit any checkin.
+}

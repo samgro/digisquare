@@ -7,12 +7,15 @@ meta {
 post {
   url: {{baseUrl}}/checkins
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 body:json {
   {
-    "userId": "sam",
     "googlePlaceId": "ChIJrRMgU7NZwokR8OFysXqOtaI",
     "placeName": "Central Park"
   }

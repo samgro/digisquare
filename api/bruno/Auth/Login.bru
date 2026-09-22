@@ -1,0 +1,31 @@
+meta {
+  name: Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "{{testEmail}}",
+    "password": "{{testPassword}}"
+  }
+}
+
+vars:post-response {
+  accessToken: res.body.accessToken
+  refreshToken: res.body.refreshToken
+  userId: res.body.user.id
+}
+
+docs {
+  Signs in to the account created by Register, and recaptures the tokens. Run
+  this instead of Register against a database that is already seeded.
+
+  Expect 200 with the same envelope shape Register returns.
+}

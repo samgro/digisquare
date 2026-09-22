@@ -1,0 +1,28 @@
+meta {
+  name: Register Duplicate Email (409)
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "{{testEmail}}",
+    "password": "{{testPassword}}",
+    "name": "Bruno Tester"
+  }
+}
+
+docs {
+  Re-runs the Register body after that account exists. Expect 409 with
+  {"error": "That email is already registered"}.
+
+  A 500 here is a real failure, not a cosmetic one: it means the unique-index
+  violation is not being caught, and the handler is doing a select-then-insert
+  somewhere instead of letting the database decide. That pattern IS the race.
+}

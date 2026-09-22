@@ -7,12 +7,15 @@ meta {
 post {
   url: {{baseUrl}}/checkins
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 body:json {
   {
-    "userId": "sam",
     "googlePlaceId": "ChIJIQBpAG2ahYAR_6128GcTUEo",
     "placeName": "Golden Gate Park",
     "placeAddress": "San Francisco, CA, USA",
@@ -24,8 +27,18 @@ body:json {
   }
 }
 
+vars:post-response {
+  checkinId: res.body.id
+}
+
 docs {
-  Creates a checkin with a full venue snapshot and a message. Expect a 201
-  with the created row, including a generated `id` — copy it for use in
-  the Get Checkin and Update Checkin requests.
+  Creates a checkin with a full venue snapshot and a message. Expect 201 with
+  the created row.
+
+  The checkin is attributed to whoever the bearer token identifies — there is
+  no userId in the body. Confirm `userId` in the response matches the id from
+  Register or Login.
+
+  The post-response var captures the new id for Get Checkin and Update
+  Checkin, so neither needs a hand-pasted uuid.
 }

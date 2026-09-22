@@ -1,0 +1,16 @@
+meta {
+  name: Unauthenticated (401)
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/users/me
+  body: none
+  auth: none
+}
+
+docs {
+  No Authorization header. Expect 401 {"error": "Missing bearer token"} and a
+  WWW-Authenticate: Bearer response header.
+}

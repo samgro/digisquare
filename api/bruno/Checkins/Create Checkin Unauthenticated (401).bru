@@ -1,0 +1,25 @@
+meta {
+  name: Create Checkin Unauthenticated (401)
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "googlePlaceId": "ChIJIQBpAG2ahYAR_6128GcTUEo",
+    "placeName": "Golden Gate Park"
+  }
+}
+
+docs {
+  No Authorization header. Expect 401 {"error": "Missing bearer token"}.
+
+  Every /checkins route requires auth now. Posting a checkin as an arbitrary
+  user, which the old body-supplied userId allowed, is no longer possible.
+}

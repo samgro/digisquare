@@ -1,0 +1,29 @@
+meta {
+  name: Logout
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/auth/logout
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "refreshToken": "{{refreshToken}}"
+  }
+}
+
+docs {
+  Revokes the whole session family. Expect 204 with an empty body.
+
+  No Authorization header is required — an expired access token must never
+  stop someone from signing out.
+
+  Expect 204 for an unknown or malformed token too. Sign-out is not a place to
+  tell a caller whether a token was real.
+
+  After this, Refresh with the same token returns 401.
+}

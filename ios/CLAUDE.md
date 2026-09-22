@@ -3,7 +3,7 @@
 Build the app for the simulator with:
 
 ```
-xcodebuild -project Digisquare.xcodeproj -scheme Digisquare \
+xcodebuild -project Hackysack.xcodeproj -scheme Hackysack \
   -destination 'generic/platform=iOS Simulator' -configuration Debug clean build
 ```
 

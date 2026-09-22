@@ -1,0 +1,34 @@
+meta {
+  name: Invalid Avatar Key (400)
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{baseUrl}}/users/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "avatarKey": "avatars/00000000-0000-0000-0000-000000000000/9f54a22a-2c65-4de5-b224-f1b5def25656.jpg"
+  }
+}
+
+docs {
+  A well-formed key that belongs to a DIFFERENT user. Expect 400
+  {"error": "Invalid avatar key"}.
+
+  This is the check that stops the avatar field from becoming a way to point
+  at any object in the bucket. The key is just a string the client sends, so
+  the server re-derives ownership from the user id embedded in the path rather
+  than trusting it.
+
+  Also rejected: path traversal, a non-uuid filename, a .png extension, and
+  anything with extra path segments before or after the expected shape.
+}

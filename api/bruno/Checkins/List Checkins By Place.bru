@@ -7,7 +7,11 @@ meta {
 get {
   url: {{baseUrl}}/checkins?googlePlaceId=ChIJIQBpAG2ahYAR_6128GcTUEo
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
 }
 
 params:query {

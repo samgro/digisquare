@@ -3,9 +3,13 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
 import { checkins as checkinsTable } from "../db/schema.js";
+import { requireAuth } from "../middleware/require-auth.js";
+import type { AppEnv } from "../types.js";
 
+// No userId here on purpose: identity comes from the access token. The
+// schema is left non-strict so an older client still sending one is simply
+// ignored rather than rejected with a 400 it cannot act on.
 const createCheckinSchema = z.object({
-  userId: z.string().trim().min(1),
   googlePlaceId: z.string().trim().min(1),
   placeName: z.string().trim().min(1),
   placeAddress: z.string().trim().min(1).nullable().optional(),
@@ -30,7 +34,7 @@ const idParamSchema = z.object({
 });
 
 const listQuerySchema = z.object({
-  userId: z.string().trim().min(1).optional(),
+  userId: z.string().uuid().optional(),
   googlePlaceId: z.string().trim().min(1).optional(),
   limit: z.coerce.number().int().positive().max(100).default(20),
   offset: z.coerce.number().int().min(0).default(0),
@@ -55,7 +59,9 @@ function toResult(checkin: typeof checkinsTable.$inferSelect) {
   };
 }
 
-export const checkins = new Hono();
+export const checkins = new Hono<AppEnv>();
+
+checkins.use(requireAuth);
 
 checkins.post("/", async (context) => {
   let body: unknown;
@@ -74,7 +80,7 @@ checkins.post("/", async (context) => {
     const [created] = await database
       .insert(checkinsTable)
       .values({
-        userId: parsed.data.userId,
+        userId: context.get("userId"),
         googlePlaceId: parsed.data.googlePlaceId,
         placeName: parsed.data.placeName,
         placeAddress: parsed.data.placeAddress ?? null,
@@ -169,10 +175,18 @@ checkins.patch("/:id", async (context) => {
   }
 
   try {
+    // Scoping the update by owner means a checkin that exists but belongs to
+    // someone else falls through to the same 404 as one that does not exist.
+    // A 403 would confirm the id is real.
     const [updated] = await database
       .update(checkinsTable)
       .set(bodyParsed.data)
-      .where(eq(checkinsTable.id, paramsParsed.data.id))
+      .where(
+        and(
+          eq(checkinsTable.id, paramsParsed.data.id),
+          eq(checkinsTable.userId, context.get("userId")),
+        ),
+      )
       .returning();
 
     if (!updated) {
