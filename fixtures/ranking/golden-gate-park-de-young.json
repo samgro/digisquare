@@ -1,0 +1,1291 @@
+{
+  "schemaVersion": 1,
+  "name": "golden-gate-park-de-young",
+  "description": "At the entrance of the de Young Museum, inside Golden Gate Park, with the Academy of Sciences across the concourse.",
+  "recordedAt": null,
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.771365,
+    "longitude": -122.468564,
+    "horizontalAccuracy": 30
+  },
+  "google": {
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.771365,
+              "longitude": -122.468564
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-golden-gate-park-de-young-de-young",
+            "displayName": {
+              "text": "de Young Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.7715,
+              "longitude": -122.4687
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.77015,
+                "longitude": -122.47005
+              },
+              "high": {
+                "latitude": 37.77285,
+                "longitude": -122.46735
+              }
+            },
+            "types": [
+              "museum",
+              "art_gallery",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "museum",
+            "rating": 4.7,
+            "userRatingCount": 19874
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-hamon-tower",
+            "displayName": {
+              "text": "Hamon Observation Tower",
+              "languageCode": "en"
+            },
+            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.771725,
+              "longitude": -122.468018
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.770375,
+                "longitude": -122.469368
+              },
+              "high": {
+                "latitude": 37.773075,
+                "longitude": -122.466668
+              }
+            },
+            "types": [
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "tourist_attraction",
+            "rating": 4.8,
+            "userRatingCount": 1204
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-music-concourse",
+            "displayName": {
+              "text": "Music Concourse",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Golden Gate Park, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.770512,
+              "longitude": -122.468245
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.769162,
+                "longitude": -122.469595
+              },
+              "high": {
+                "latitude": 37.771862,
+                "longitude": -122.466895
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest"
+            ],
+            "primaryType": "park",
+            "rating": 4.7,
+            "userRatingCount": 1010
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-academy",
+            "displayName": {
+              "text": "California Academy of Sciences",
+              "languageCode": "en"
+            },
+            "formattedAddress": "55 Music Concourse Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.769793,
+              "longitude": -122.468018
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.768443,
+                "longitude": -122.469368
+              },
+              "high": {
+                "latitude": 37.771143,
+                "longitude": -122.466668
+              }
+            },
+            "types": [
+              "science_museum",
+              "museum",
+              "aquarium",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "science_museum",
+            "rating": 4.7,
+            "userRatingCount": 30126
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-tea-garden",
+            "displayName": {
+              "text": "Japanese Tea Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "75 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.771141,
+              "longitude": -122.471655
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.770063,
+                "longitude": -122.473246
+              },
+              "high": {
+                "latitude": 37.772219,
+                "longitude": -122.470064
+              }
+            },
+            "types": [
+              "garden",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "garden",
+            "rating": 4.6,
+            "userRatingCount": 22190
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-botanical-garden",
+            "displayName": {
+              "text": "San Francisco Botanical Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1199 9th Ave, San Francisco, CA 94122, USA",
+            "location": {
+              "latitude": 37.768176,
+              "longitude": -122.473132
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7654811,
+                "longitude": -122.4774503
+              },
+              "high": {
+                "latitude": 37.7708709,
+                "longitude": -122.4688137
+              }
+            },
+            "types": [
+              "botanical_garden",
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "botanical_garden",
+            "rating": 4.7,
+            "userRatingCount": 9876
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-conservatory",
+            "displayName": {
+              "text": "Conservatory of Flowers",
+              "languageCode": "en"
+            },
+            "formattedAddress": "100 John F Kennedy Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.773117,
+              "longitude": -122.459836
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.771767,
+                "longitude": -122.461186
+              },
+              "high": {
+                "latitude": 37.774467,
+                "longitude": -122.458486
+              }
+            },
+            "types": [
+              "botanical_garden",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "botanical_garden",
+            "rating": 4.6,
+            "userRatingCount": 6231
+          }
+        ]
+      }
+    },
+    "popularity": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.771365,
+              "longitude": -122.468564
+            },
+            "radius": 2500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-golden-gate-park-de-young-golden-gate-park",
+            "displayName": {
+              "text": "Golden Gate Park",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco, CA, USA",
+            "location": {
+              "latitude": 37.769434,
+              "longitude": -122.486201
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7644035,
+                "longitude": -122.5146112
+              },
+              "high": {
+                "latitude": 37.7744645,
+                "longitude": -122.4577908
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "park",
+            "rating": 4.8,
+            "userRatingCount": 61307
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-academy",
+            "displayName": {
+              "text": "California Academy of Sciences",
+              "languageCode": "en"
+            },
+            "formattedAddress": "55 Music Concourse Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.769793,
+              "longitude": -122.468018
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.768443,
+                "longitude": -122.469368
+              },
+              "high": {
+                "latitude": 37.771143,
+                "longitude": -122.466668
+              }
+            },
+            "types": [
+              "science_museum",
+              "museum",
+              "aquarium",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "science_museum",
+            "rating": 4.7,
+            "userRatingCount": 30126
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-tea-garden",
+            "displayName": {
+              "text": "Japanese Tea Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "75 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.771141,
+              "longitude": -122.471655
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.770063,
+                "longitude": -122.473246
+              },
+              "high": {
+                "latitude": 37.772219,
+                "longitude": -122.470064
+              }
+            },
+            "types": [
+              "garden",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "garden",
+            "rating": 4.6,
+            "userRatingCount": 22190
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-de-young",
+            "displayName": {
+              "text": "de Young Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.7715,
+              "longitude": -122.4687
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.77015,
+                "longitude": -122.47005
+              },
+              "high": {
+                "latitude": 37.77285,
+                "longitude": -122.46735
+              }
+            },
+            "types": [
+              "museum",
+              "art_gallery",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "museum",
+            "rating": 4.7,
+            "userRatingCount": 19874
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-botanical-garden",
+            "displayName": {
+              "text": "San Francisco Botanical Garden",
+              "languageCode": "en"
+            },
+            "formattedAddress": "1199 9th Ave, San Francisco, CA 94122, USA",
+            "location": {
+              "latitude": 37.768176,
+              "longitude": -122.473132
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7654811,
+                "longitude": -122.4774503
+              },
+              "high": {
+                "latitude": 37.7708709,
+                "longitude": -122.4688137
+              }
+            },
+            "types": [
+              "botanical_garden",
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "botanical_garden",
+            "rating": 4.7,
+            "userRatingCount": 9876
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-conservatory",
+            "displayName": {
+              "text": "Conservatory of Flowers",
+              "languageCode": "en"
+            },
+            "formattedAddress": "100 John F Kennedy Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.773117,
+              "longitude": -122.459836
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.771767,
+                "longitude": -122.461186
+              },
+              "high": {
+                "latitude": 37.774467,
+                "longitude": -122.458486
+              }
+            },
+            "types": [
+              "botanical_garden",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "botanical_garden",
+            "rating": 4.6,
+            "userRatingCount": 6231
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-hamon-tower",
+            "displayName": {
+              "text": "Hamon Observation Tower",
+              "languageCode": "en"
+            },
+            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.771725,
+              "longitude": -122.468018
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.770375,
+                "longitude": -122.469368
+              },
+              "high": {
+                "latitude": 37.773075,
+                "longitude": -122.466668
+              }
+            },
+            "types": [
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "tourist_attraction",
+            "rating": 4.8,
+            "userRatingCount": 1204
+          },
+          {
+            "id": "handauthored-golden-gate-park-de-young-music-concourse",
+            "displayName": {
+              "text": "Music Concourse",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Golden Gate Park, San Francisco, CA 94118, USA",
+            "location": {
+              "latitude": 37.770512,
+              "longitude": -122.468245
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.769162,
+                "longitude": -122.469595
+              },
+              "high": {
+                "latitude": 37.771862,
+                "longitude": -122.466895
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest"
+            ],
+            "primaryType": "park",
+            "rating": 4.7,
+            "userRatingCount": 1010
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "handauthored-golden-gate-park-de-young-de-young",
+      "name": "de Young Museum",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "location": {
+        "latitude": 37.7715,
+        "longitude": -122.4687
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.77015,
+          "longitude": -122.47005
+        },
+        "high": {
+          "latitude": 37.77285,
+          "longitude": -122.46735
+        }
+      },
+      "types": [
+        "museum",
+        "art_gallery",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "museum",
+      "rating": 4.7,
+      "userRatingCount": 19874
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-hamon-tower",
+      "name": "Hamon Observation Tower",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "location": {
+        "latitude": 37.771725,
+        "longitude": -122.468018
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.770375,
+          "longitude": -122.469368
+        },
+        "high": {
+          "latitude": 37.773075,
+          "longitude": -122.466668
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "tourist_attraction",
+      "rating": 4.8,
+      "userRatingCount": 1204
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-music-concourse",
+      "name": "Music Concourse",
+      "address": "Golden Gate Park, San Francisco, CA 94118, USA",
+      "location": {
+        "latitude": 37.770512,
+        "longitude": -122.468245
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.769162,
+          "longitude": -122.469595
+        },
+        "high": {
+          "latitude": 37.771862,
+          "longitude": -122.466895
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 1010
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-academy",
+      "name": "California Academy of Sciences",
+      "address": "55 Music Concourse Dr, San Francisco, CA 94118, USA",
+      "location": {
+        "latitude": 37.769793,
+        "longitude": -122.468018
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.768443,
+          "longitude": -122.469368
+        },
+        "high": {
+          "latitude": 37.771143,
+          "longitude": -122.466668
+        }
+      },
+      "types": [
+        "science_museum",
+        "museum",
+        "aquarium",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "science_museum",
+      "rating": 4.7,
+      "userRatingCount": 30126
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-tea-garden",
+      "name": "Japanese Tea Garden",
+      "address": "75 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "location": {
+        "latitude": 37.771141,
+        "longitude": -122.471655
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.770063,
+          "longitude": -122.473246
+        },
+        "high": {
+          "latitude": 37.772219,
+          "longitude": -122.470064
+        }
+      },
+      "types": [
+        "garden",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "garden",
+      "rating": 4.6,
+      "userRatingCount": 22190
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-botanical-garden",
+      "name": "San Francisco Botanical Garden",
+      "address": "1199 9th Ave, San Francisco, CA 94122, USA",
+      "location": {
+        "latitude": 37.768176,
+        "longitude": -122.473132
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7654811,
+          "longitude": -122.4774503
+        },
+        "high": {
+          "latitude": 37.7708709,
+          "longitude": -122.4688137
+        }
+      },
+      "types": [
+        "botanical_garden",
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "botanical_garden",
+      "rating": 4.7,
+      "userRatingCount": 9876
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-conservatory",
+      "name": "Conservatory of Flowers",
+      "address": "100 John F Kennedy Dr, San Francisco, CA 94118, USA",
+      "location": {
+        "latitude": 37.773117,
+        "longitude": -122.459836
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.771767,
+          "longitude": -122.461186
+        },
+        "high": {
+          "latitude": 37.774467,
+          "longitude": -122.458486
+        }
+      },
+      "types": [
+        "botanical_garden",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "botanical_garden",
+      "rating": 4.6,
+      "userRatingCount": 6231
+    },
+    {
+      "id": "handauthored-golden-gate-park-de-young-golden-gate-park",
+      "name": "Golden Gate Park",
+      "address": "San Francisco, CA, USA",
+      "location": {
+        "latitude": 37.769434,
+        "longitude": -122.486201
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7644035,
+          "longitude": -122.5146112
+        },
+        "high": {
+          "latitude": 37.7744645,
+          "longitude": -122.4577908
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.8,
+      "userRatingCount": 61307
+    }
+  ],
+  "placeKeys": {
+    "deYoung": "handauthored-golden-gate-park-de-young-de-young",
+    "park": "handauthored-golden-gate-park-de-young-golden-gate-park",
+    "academy": "handauthored-golden-gate-park-de-young-academy",
+    "teaGarden": "handauthored-golden-gate-park-de-young-tea-garden"
+  },
+  "histories": {
+    "none": [],
+    "parkRunner": [
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-06-21T14:33:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-06-25T14:26:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-06-30T14:19:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-04T14:12:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-09T14:05:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-13T14:48:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-18T14:41:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-22T14:34:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-27T14:27:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-07-31T14:20:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-08-05T14:13:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-08-09T14:06:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-08-14T14:49:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-08-18T14:42:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-08-23T14:35:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-08-27T14:28:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-09-01T14:21:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-09-05T14:14:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-09-10T14:07:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-golden-gate-park",
+        "createdAt": "2026-09-14T14:00:00.000Z",
+        "placeName": "Golden Gate Park",
+        "placeAddress": "San Francisco, CA, USA",
+        "placePrimaryType": "park",
+        "placeTypes": [
+          "park",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.769434,
+          "longitude": -122.486201
+        }
+      }
+    ],
+    "museumMember": [
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-03-23T18:49:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-04-14T18:42:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-05-07T18:35:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-05-29T18:28:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-06-21T18:21:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-07-13T18:14:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-08-05T18:07:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-golden-gate-park-de-young-de-young",
+        "createdAt": "2026-08-27T18:00:00.000Z",
+        "placeName": "de Young Museum",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placePrimaryType": "museum",
+        "placeTypes": [
+          "museum",
+          "art_gallery",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7715,
+          "longitude": -122.4687
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "no history",
+      "now": "2026-09-19T11:00:00-07:00",
+      "horizontalAccuracy": 30,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "deYoung",
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "deYoung",
+            "academy"
+          ],
+          [
+            "park",
+            "teaGarden"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "morning park runner",
+      "now": "2026-09-19T07:10:00-07:00",
+      "horizontalAccuracy": 30,
+      "fixAgeSeconds": 5,
+      "history": "parkRunner",
+      "expect": {
+        "top": "park",
+        "suggested": "park"
+      }
+    },
+    {
+      "name": "museum member",
+      "now": "2026-09-19T11:00:00-07:00",
+      "horizontalAccuracy": 30,
+      "fixAgeSeconds": 5,
+      "history": "museumMember",
+      "expect": {
+        "top": "deYoung",
+        "suggested": "deYoung"
+      }
+    }
+  ]
+}

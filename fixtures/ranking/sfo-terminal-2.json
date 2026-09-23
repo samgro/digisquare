@@ -1,0 +1,1019 @@
+{
+  "schemaVersion": 1,
+  "name": "sfo-terminal-2",
+  "description": "In line at Peet's inside SFO Terminal 2, about 900 m from the airport's pin but well inside its viewport.",
+  "recordedAt": null,
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.615254,
+    "longitude": -122.385909,
+    "horizontalAccuracy": 65
+  },
+  "google": {
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.615254,
+              "longitude": -122.385909
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-sfo-terminal-2-peets",
+            "displayName": {
+              "text": "Peet's Coffee",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6152,
+              "longitude": -122.386
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.61385,
+                "longitude": -122.38735
+              },
+              "high": {
+                "latitude": 37.61655,
+                "longitude": -122.38465
+              }
+            },
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "coffee_shop",
+            "rating": 3.9,
+            "userRatingCount": 312
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-napa-farms",
+            "displayName": {
+              "text": "Napa Farms Market",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.615425,
+              "longitude": -122.385546
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.614075,
+                "longitude": -122.386896
+              },
+              "high": {
+                "latitude": 37.616775,
+                "longitude": -122.384196
+              }
+            },
+            "types": [
+              "grocery_store",
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "grocery_store",
+            "rating": 4.1,
+            "userRatingCount": 1187
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-lark-creek",
+            "displayName": {
+              "text": "Lark Creek Grill",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.614931,
+              "longitude": -122.385206
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.613581,
+                "longitude": -122.386556
+              },
+              "high": {
+                "latitude": 37.616281,
+                "longitude": -122.383856
+              }
+            },
+            "types": [
+              "american_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "american_restaurant",
+            "rating": 3.8,
+            "userRatingCount": 640
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-terminal-2",
+            "displayName": {
+              "text": "Terminal 2",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.616008,
+              "longitude": -122.38532
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6140317,
+                "longitude": -122.3882686
+              },
+              "high": {
+                "latitude": 37.6179843,
+                "longitude": -122.3823714
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.3,
+            "userRatingCount": 1975
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-cat-cora",
+            "displayName": {
+              "text": "Cat Cora's Kitchen",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.615559,
+              "longitude": -122.387021
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.614209,
+                "longitude": -122.388371
+              },
+              "high": {
+                "latitude": 37.616909,
+                "longitude": -122.385671
+              }
+            },
+            "types": [
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "restaurant",
+            "rating": 3.7,
+            "userRatingCount": 428
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-sfo-museum",
+            "displayName": {
+              "text": "SFO Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.616817,
+              "longitude": -122.383278
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.615467,
+                "longitude": -122.384628
+              },
+              "high": {
+                "latitude": 37.618167,
+                "longitude": -122.381928
+              }
+            },
+            "types": [
+              "museum",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "museum",
+            "rating": 4.5,
+            "userRatingCount": 356
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-harvey-milk-terminal",
+            "displayName": {
+              "text": "Harvey Milk Terminal 1",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.611427,
+              "longitude": -122.380103
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6090914,
+                "longitude": -122.383505
+              },
+              "high": {
+                "latitude": 37.6137626,
+                "longitude": -122.376701
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.4,
+            "userRatingCount": 1420
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-sfo",
+            "displayName": {
+              "text": "San Francisco International Airport",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.621309,
+              "longitude": -122.378969
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6042411,
+                "longitude": -122.4050543
+              },
+              "high": {
+                "latitude": 37.6383769,
+                "longitude": -122.3528837
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.2,
+            "userRatingCount": 20321
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-grand-hyatt",
+            "displayName": {
+              "text": "Grand Hyatt at SFO",
+              "languageCode": "en"
+            },
+            "formattedAddress": "55 S McDonnell Rd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.625081,
+              "longitude": -122.375794
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.623731,
+                "longitude": -122.377144
+              },
+              "high": {
+                "latitude": 37.626431,
+                "longitude": -122.374444
+              }
+            },
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "hotel",
+            "rating": 4.6,
+            "userRatingCount": 2802
+          }
+        ]
+      }
+    },
+    "popularity": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.615254,
+              "longitude": -122.385909
+            },
+            "radius": 2500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-sfo-terminal-2-sfo",
+            "displayName": {
+              "text": "San Francisco International Airport",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.621309,
+              "longitude": -122.378969
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6042411,
+                "longitude": -122.4050543
+              },
+              "high": {
+                "latitude": 37.6383769,
+                "longitude": -122.3528837
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.2,
+            "userRatingCount": 20321
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-grand-hyatt",
+            "displayName": {
+              "text": "Grand Hyatt at SFO",
+              "languageCode": "en"
+            },
+            "formattedAddress": "55 S McDonnell Rd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.625081,
+              "longitude": -122.375794
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.623731,
+                "longitude": -122.377144
+              },
+              "high": {
+                "latitude": 37.626431,
+                "longitude": -122.374444
+              }
+            },
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "hotel",
+            "rating": 4.6,
+            "userRatingCount": 2802
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-terminal-2",
+            "displayName": {
+              "text": "Terminal 2",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.616008,
+              "longitude": -122.38532
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6140317,
+                "longitude": -122.3882686
+              },
+              "high": {
+                "latitude": 37.6179843,
+                "longitude": -122.3823714
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.3,
+            "userRatingCount": 1975
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-harvey-milk-terminal",
+            "displayName": {
+              "text": "Harvey Milk Terminal 1",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.611427,
+              "longitude": -122.380103
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6090914,
+                "longitude": -122.383505
+              },
+              "high": {
+                "latitude": 37.6137626,
+                "longitude": -122.376701
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.4,
+            "userRatingCount": 1420
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-napa-farms",
+            "displayName": {
+              "text": "Napa Farms Market",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.615425,
+              "longitude": -122.385546
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.614075,
+                "longitude": -122.386896
+              },
+              "high": {
+                "latitude": 37.616775,
+                "longitude": -122.384196
+              }
+            },
+            "types": [
+              "grocery_store",
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "grocery_store",
+            "rating": 4.1,
+            "userRatingCount": 1187
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-lark-creek",
+            "displayName": {
+              "text": "Lark Creek Grill",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.614931,
+              "longitude": -122.385206
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.613581,
+                "longitude": -122.386556
+              },
+              "high": {
+                "latitude": 37.616281,
+                "longitude": -122.383856
+              }
+            },
+            "types": [
+              "american_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "american_restaurant",
+            "rating": 3.8,
+            "userRatingCount": 640
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-cat-cora",
+            "displayName": {
+              "text": "Cat Cora's Kitchen",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.615559,
+              "longitude": -122.387021
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.614209,
+                "longitude": -122.388371
+              },
+              "high": {
+                "latitude": 37.616909,
+                "longitude": -122.385671
+              }
+            },
+            "types": [
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "restaurant",
+            "rating": 3.7,
+            "userRatingCount": 428
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-sfo-museum",
+            "displayName": {
+              "text": "SFO Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.616817,
+              "longitude": -122.383278
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.615467,
+                "longitude": -122.384628
+              },
+              "high": {
+                "latitude": 37.618167,
+                "longitude": -122.381928
+              }
+            },
+            "types": [
+              "museum",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "museum",
+            "rating": 4.5,
+            "userRatingCount": 356
+          },
+          {
+            "id": "handauthored-sfo-terminal-2-peets",
+            "displayName": {
+              "text": "Peet's Coffee",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6152,
+              "longitude": -122.386
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.61385,
+                "longitude": -122.38735
+              },
+              "high": {
+                "latitude": 37.61655,
+                "longitude": -122.38465
+              }
+            },
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "coffee_shop",
+            "rating": 3.9,
+            "userRatingCount": 312
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "handauthored-sfo-terminal-2-peets",
+      "name": "Peet's Coffee",
+      "address": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6152,
+        "longitude": -122.386
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.61385,
+          "longitude": -122.38735
+        },
+        "high": {
+          "latitude": 37.61655,
+          "longitude": -122.38465
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 3.9,
+      "userRatingCount": 312
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-napa-farms",
+      "name": "Napa Farms Market",
+      "address": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.615425,
+        "longitude": -122.385546
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.614075,
+          "longitude": -122.386896
+        },
+        "high": {
+          "latitude": 37.616775,
+          "longitude": -122.384196
+        }
+      },
+      "types": [
+        "grocery_store",
+        "cafe",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4.1,
+      "userRatingCount": 1187
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-lark-creek",
+      "name": "Lark Creek Grill",
+      "address": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.614931,
+        "longitude": -122.385206
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.613581,
+          "longitude": -122.386556
+        },
+        "high": {
+          "latitude": 37.616281,
+          "longitude": -122.383856
+        }
+      },
+      "types": [
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "american_restaurant",
+      "rating": 3.8,
+      "userRatingCount": 640
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-terminal-2",
+      "name": "Terminal 2",
+      "address": "San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.616008,
+        "longitude": -122.38532
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6140317,
+          "longitude": -122.3882686
+        },
+        "high": {
+          "latitude": 37.6179843,
+          "longitude": -122.3823714
+        }
+      },
+      "types": [
+        "airport",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "airport",
+      "rating": 4.3,
+      "userRatingCount": 1975
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-cat-cora",
+      "name": "Cat Cora's Kitchen",
+      "address": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.615559,
+        "longitude": -122.387021
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.614209,
+          "longitude": -122.388371
+        },
+        "high": {
+          "latitude": 37.616909,
+          "longitude": -122.385671
+        }
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": 3.7,
+      "userRatingCount": 428
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-sfo-museum",
+      "name": "SFO Museum",
+      "address": "San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.616817,
+        "longitude": -122.383278
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.615467,
+          "longitude": -122.384628
+        },
+        "high": {
+          "latitude": 37.618167,
+          "longitude": -122.381928
+        }
+      },
+      "types": [
+        "museum",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "museum",
+      "rating": 4.5,
+      "userRatingCount": 356
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-harvey-milk-terminal",
+      "name": "Harvey Milk Terminal 1",
+      "address": "San Francisco International Airport, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.611427,
+        "longitude": -122.380103
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6090914,
+          "longitude": -122.383505
+        },
+        "high": {
+          "latitude": 37.6137626,
+          "longitude": -122.376701
+        }
+      },
+      "types": [
+        "airport",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "airport",
+      "rating": 4.4,
+      "userRatingCount": 1420
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-sfo",
+      "name": "San Francisco International Airport",
+      "address": "San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.621309,
+        "longitude": -122.378969
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6042411,
+          "longitude": -122.4050543
+        },
+        "high": {
+          "latitude": 37.6383769,
+          "longitude": -122.3528837
+        }
+      },
+      "types": [
+        "airport",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "airport",
+      "rating": 4.2,
+      "userRatingCount": 20321
+    },
+    {
+      "id": "handauthored-sfo-terminal-2-grand-hyatt",
+      "name": "Grand Hyatt at SFO",
+      "address": "55 S McDonnell Rd, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.625081,
+        "longitude": -122.375794
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.623731,
+          "longitude": -122.377144
+        },
+        "high": {
+          "latitude": 37.626431,
+          "longitude": -122.374444
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.6,
+      "userRatingCount": 2802
+    }
+  ],
+  "placeKeys": {
+    "airport": "handauthored-sfo-terminal-2-sfo",
+    "peets": "handauthored-sfo-terminal-2-peets",
+    "napaFarms": "handauthored-sfo-terminal-2-napa-farms"
+  },
+  "histories": {
+    "none": [],
+    "peetsRegular": [
+      {
+        "googlePlaceId": "handauthored-sfo-terminal-2-peets",
+        "createdAt": "2026-07-24T14:28:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6152,
+          "longitude": -122.386
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-sfo-terminal-2-peets",
+        "createdAt": "2026-08-05T14:21:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6152,
+          "longitude": -122.386
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-sfo-terminal-2-peets",
+        "createdAt": "2026-08-17T14:14:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6152,
+          "longitude": -122.386
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-sfo-terminal-2-peets",
+        "createdAt": "2026-08-28T14:07:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6152,
+          "longitude": -122.386
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-sfo-terminal-2-peets",
+        "createdAt": "2026-09-10T14:00:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "Terminal 2, San Francisco International Airport, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6152,
+          "longitude": -122.386
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "terminal fix, no history",
+      "now": "2026-09-22T07:30:00-07:00",
+      "horizontalAccuracy": 65,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "airport",
+            "napaFarms"
+          ],
+          [
+            "airport",
+            "peets"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tight fix, no history",
+      "now": "2026-09-22T07:30:00-07:00",
+      "horizontalAccuracy": 8,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "peets",
+            "napaFarms"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tight fix, morning coffee regular",
+      "now": "2026-09-22T07:30:00-07:00",
+      "horizontalAccuracy": 8,
+      "fixAgeSeconds": 5,
+      "history": "peetsRegular",
+      "expect": {
+        "top": "peets",
+        "suggested": "peets",
+        "rankedAbove": [
+          [
+            "peets",
+            "airport"
+          ]
+        ]
+      }
+    }
+  ]
+}

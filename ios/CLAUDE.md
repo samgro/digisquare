@@ -17,3 +17,19 @@ Run this before finishing any change to the ios app. Check the output for
 compiler before returning — do not leave warnings for the user to clean up.
 The `appintentsmetadataprocessor` "Metadata extraction skipped" warning is
 expected (the app has no AppIntents.framework dependency) and can be ignored.
+
+# Testing
+
+Unit tests live in `HackysackTests` (Swift Testing, `@testable import
+Hackysack`). Run them on a concrete simulator; `generic/` destinations cannot
+run tests:
+
+```
+xcodebuild -project Hackysack.xcodeproj -scheme Hackysack \
+  -destination 'platform=iOS Simulator,name=iPhone 17' -configuration Debug test
+```
+
+The checkin ranking tests read `fixtures/ranking/*.json` at the repo root,
+shared with the API's tests and written by `npm run fixtures:record` in `api`.
+Keep the ranking model (`PlaceRanker.swift`) free of CoreLocation and other
+device-only frameworks so it stays testable from fixtures.

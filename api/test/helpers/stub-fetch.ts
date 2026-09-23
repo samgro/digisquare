@@ -10,6 +10,12 @@ export interface StubbedFetchCall {
 export interface StubbedFetchRoute {
   /** Matched as a substring against the request URL. First match wins. */
   match: string;
+  /**
+   * Optional extra predicate on the parsed JSON body, for endpoints that are
+   * called more than once per request with different bodies (both nearby
+   * searches POST to the same `places:searchNearby` URL).
+   */
+  matchBody?: (body: unknown) => boolean;
   status?: number;
   json?: unknown;
   text?: string;
@@ -43,7 +49,10 @@ export function stubFetch(routes: StubbedFetchRoute[]): StubbedFetch {
 
     calls.push({ url, method, headers, body });
 
-    const route = routes.find((candidate) => url.includes(candidate.match));
+    const route = routes.find(
+      (candidate) =>
+        url.includes(candidate.match) && (candidate.matchBody?.(body) ?? true),
+    );
     if (!route) {
       throw new Error(`stubFetch: no route matched ${url}`);
     }

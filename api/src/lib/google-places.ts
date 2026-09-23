@@ -5,6 +5,7 @@ const PLACE_FIELDS = [
   "displayName",
   "formattedAddress",
   "location",
+  "viewport",
   "types",
   "primaryType",
   "rating",
@@ -12,7 +13,7 @@ const PLACE_FIELDS = [
 ];
 
 // Search responses wrap places in a `places` array, so every path is prefixed.
-const SEARCH_FIELD_MASK = PLACE_FIELDS.map((field) => `places.${field}`).join(",");
+export const SEARCH_FIELD_MASK = PLACE_FIELDS.map((field) => `places.${field}`).join(",");
 // Place Details returns a bare place object, so the paths are NOT prefixed.
 // Do not reuse SEARCH_FIELD_MASK here -- Google rejects the `places.` prefix
 // on this endpoint with a 400.
@@ -25,21 +26,61 @@ const AUTOCOMPLETE_FIELD_MASK = "suggestions.placePrediction.placeId";
 // ever raises the cap, since each detail lookup is a separate billable call.
 const MAXIMUM_PREDICTION_DETAIL_LOOKUPS = 5;
 
+export interface GoogleLatLng {
+  latitude: number;
+  longitude: number;
+}
+
 export interface GooglePlace {
   id: string;
   displayName?: { text: string };
   formattedAddress?: string;
-  location?: { latitude: number; longitude: number };
+  location?: GoogleLatLng;
+  /**
+   * Google's bounding box for the place. Point venues get a default box of a
+   * few hundred meters; airports, campuses and parks get their real extent,
+   * which is how the client tells a large venue apart from a storefront.
+   */
+  viewport?: { low: GoogleLatLng; high: GoogleLatLng };
   types?: string[];
   primaryType?: string;
   rating?: number;
   userRatingCount?: number;
 }
 
+export type NearbyRankPreference = "DISTANCE" | "POPULARITY";
+
 interface SearchNearbyParams {
   latitude: number;
   longitude: number;
   radius: number;
+  rankPreference?: NearbyRankPreference;
+}
+
+interface SearchNearbyCandidatesParams {
+  latitude: number;
+  longitude: number;
+  radius: number;
+  /** The phone's horizontal accuracy in meters, when it reported one. */
+  accuracy?: number;
+}
+
+/**
+ * Above this accuracy the fix is a cell-tower or reduced-accuracy guess, so
+ * "nearest to the fix" is noise and not worth a billable request.
+ */
+const MAXIMUM_ACCURACY_FOR_DISTANCE_SEARCH = 1000;
+
+/**
+ * The popularity search exists to find large venues whose pin is far from
+ * where the user stands. Golden Gate Park's pin is 1.5 km from the de Young
+ * and an airport's is often a kilometer from its terminals, so it searches at
+ * least this far regardless of the caller's radius.
+ */
+export const MINIMUM_POPULARITY_SEARCH_RADIUS = 2500;
+
+export function popularitySearchRadius(radius: number): number {
+  return Math.max(radius, MINIMUM_POPULARITY_SEARCH_RADIUS);
 }
 
 interface AutocompleteParams {
@@ -85,31 +126,124 @@ async function requestGoogle<ResponseBody>(options: {
   return (await response.json()) as ResponseBody;
 }
 
-async function postPlaces(path: string, body: unknown): Promise<GooglePlace[]> {
-  const data = await requestGoogle<{ places?: GooglePlace[] }>({
+export interface PlacesSearchResponse {
+  places?: GooglePlace[];
+}
+
+/**
+ * Raw POST to a `places:*` search endpoint. Exported for the fixture recorder,
+ * which stores the untouched response body; everything else should go through
+ * the typed wrappers below.
+ */
+export function postPlacesSearch(path: string, body: unknown): Promise<PlacesSearchResponse> {
+  return requestGoogle<PlacesSearchResponse>({
     path: `places:${path}`,
     method: "POST",
     fieldMask: SEARCH_FIELD_MASK,
     body,
   });
-  return data.places ?? [];
 }
 
-export function searchNearby({
+export function nearbySearchRequestBody({
   latitude,
   longitude,
   radius,
-}: SearchNearbyParams): Promise<GooglePlace[]> {
-  return postPlaces("searchNearby", {
+  rankPreference = "POPULARITY",
+}: SearchNearbyParams) {
+  return {
     maxResultCount: 20,
-    rankPreference: "POPULARITY",
+    rankPreference,
     locationRestriction: {
       circle: {
         center: { latitude, longitude },
         radius,
       },
     },
-  });
+  };
+}
+
+export async function searchNearby(params: SearchNearbyParams): Promise<GooglePlace[]> {
+  const data = await postPlacesSearch("searchNearby", nearbySearchRequestBody(params));
+  return data.places ?? [];
+}
+
+/**
+ * Whether a fix is precise enough for a nearest-first search to mean anything.
+ * Above the threshold the fix is a cell-tower or reduced-accuracy guess.
+ */
+export function shouldSearchByDistance(accuracy: number | undefined): boolean {
+  return accuracy === undefined || accuracy <= MAXIMUM_ACCURACY_FOR_DISTANCE_SEARCH;
+}
+
+/**
+ * Combines the two nearby searches into one candidate list: nearest places
+ * first, then popular ones that were not already nearest, deduplicated by ID.
+ * Pure so the fixture recorder can produce the exact same list from recorded
+ * responses that the route produces from live ones.
+ */
+export function mergeNearbyResults(resultLists: GooglePlace[][]): GooglePlace[] {
+  const merged: GooglePlace[] = [];
+  const seenIdentifiers = new Set<string>();
+  for (const places of resultLists) {
+    for (const place of places) {
+      if (seenIdentifiers.has(place.id)) {
+        continue;
+      }
+      seenIdentifiers.add(place.id);
+      merged.push(place);
+    }
+  }
+  return merged;
+}
+
+/**
+ * Candidate venues for a checkin, drawn from two Nearby Search calls run in
+ * parallel: the 20 nearest places (which is what finds an obscure venue the
+ * user is standing in) and the 20 most popular ones in the same circle (which
+ * is what finds an airport, stadium or park whose pin is far from where the
+ * user stands). Distance results come first; the client ranks them properly
+ * with the user's accuracy and history, so the order here is only a fallback.
+ *
+ * One call failing is tolerated the same way a stale autocomplete place ID is:
+ * log it and return the survivor. Only both failing is an outage.
+ */
+export async function searchNearbyCandidates({
+  latitude,
+  longitude,
+  radius,
+  accuracy,
+}: SearchNearbyCandidatesParams): Promise<GooglePlace[]> {
+  const searches: Promise<GooglePlace[]>[] = [];
+  if (shouldSearchByDistance(accuracy)) {
+    searches.push(searchNearby({ latitude, longitude, radius, rankPreference: "DISTANCE" }));
+  }
+  searches.push(
+    searchNearby({
+      latitude,
+      longitude,
+      radius: popularitySearchRadius(radius),
+      rankPreference: "POPULARITY",
+    }),
+  );
+
+  const outcomes = await Promise.allSettled(searches);
+
+  const resultLists: GooglePlace[][] = [];
+  let firstFailure: unknown;
+  for (const outcome of outcomes) {
+    if (outcome.status === "fulfilled") {
+      resultLists.push(outcome.value);
+      continue;
+    }
+    firstFailure ??= outcome.reason;
+    console.error("Nearby search failed", outcome.reason);
+  }
+
+  if (resultLists.length === 0) {
+    throw firstFailure instanceof Error ? firstFailure : new Error("Nearby search failed");
+  }
+
+  return mergeNearbyResults(resultLists);
 }
 
 export function fetchPlaceDetails(placeIdentifier: string): Promise<GooglePlace> {

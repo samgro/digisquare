@@ -1,0 +1,884 @@
+{
+  "schemaVersion": 1,
+  "name": "levis-stadium",
+  "description": "On the concourse inside Levi's Stadium on a Sunday afternoon, 100 m from the pin.",
+  "recordedAt": null,
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.404019,
+    "longitude": -121.970079,
+    "horizontalAccuracy": 45
+  },
+  "google": {
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.404019,
+              "longitude": -121.970079
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-levis-stadium-museum",
+            "displayName": {
+              "text": "49ers Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404288,
+              "longitude": -121.969739
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.402938,
+                "longitude": -121.971089
+              },
+              "high": {
+                "latitude": 37.405638,
+                "longitude": -121.968389
+              }
+            },
+            "types": [
+              "museum",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "museum",
+            "rating": 4.5,
+            "userRatingCount": 486
+          },
+          {
+            "id": "handauthored-levis-stadium-team-store",
+            "displayName": {
+              "text": "49ers Team Store",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403839,
+              "longitude": -121.970644
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.402489,
+                "longitude": -121.971994
+              },
+              "high": {
+                "latitude": 37.405189,
+                "longitude": -121.969294
+              }
+            },
+            "types": [
+              "sporting_goods_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "sporting_goods_store",
+            "rating": 4.1,
+            "userRatingCount": 158
+          },
+          {
+            "id": "handauthored-levis-stadium-stadium",
+            "displayName": {
+              "text": "Levi's Stadium",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4033,
+              "longitude": -121.9694
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4003356,
+                "longitude": -121.9731318
+              },
+              "high": {
+                "latitude": 37.4062644,
+                "longitude": -121.9656682
+              }
+            },
+            "types": [
+              "stadium",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "stadium",
+            "rating": 4.4,
+            "userRatingCount": 21455
+          },
+          {
+            "id": "handauthored-levis-stadium-red-lot",
+            "displayName": {
+              "text": "Levi's Stadium Red Lot 1",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404558,
+              "longitude": -121.97234
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.403208,
+                "longitude": -121.97369
+              },
+              "high": {
+                "latitude": 37.405908,
+                "longitude": -121.97099
+              }
+            },
+            "types": [
+              "parking",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "parking",
+            "rating": 3.6,
+            "userRatingCount": 41
+          },
+          {
+            "id": "handauthored-levis-stadium-vta",
+            "displayName": {
+              "text": "Great America Station",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.406264,
+              "longitude": -121.967364
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.404914,
+                "longitude": -121.968714
+              },
+              "high": {
+                "latitude": 37.407614,
+                "longitude": -121.966014
+              }
+            },
+            "types": [
+              "light_rail_station",
+              "transit_station",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "light_rail_station",
+            "rating": 4,
+            "userRatingCount": 62
+          },
+          {
+            "id": "handauthored-levis-stadium-convention-center",
+            "displayName": {
+              "text": "Santa Clara Convention Center",
+              "languageCode": "en"
+            },
+            "formattedAddress": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.402222,
+              "longitude": -121.962163
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4002457,
+                "longitude": -121.964877
+              },
+              "high": {
+                "latitude": 37.4041983,
+                "longitude": -121.959449
+              }
+            },
+            "types": [
+              "convention_center",
+              "event_venue",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "convention_center",
+            "rating": 4.4,
+            "userRatingCount": 3512
+          },
+          {
+            "id": "handauthored-levis-stadium-hyatt",
+            "displayName": {
+              "text": "Hyatt Regency Santa Clara",
+              "languageCode": "en"
+            },
+            "formattedAddress": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403839,
+              "longitude": -121.961258
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.402489,
+                "longitude": -121.962608
+              },
+              "high": {
+                "latitude": 37.405189,
+                "longitude": -121.959908
+              }
+            },
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "hotel",
+            "rating": 4.4,
+            "userRatingCount": 3927
+          },
+          {
+            "id": "handauthored-levis-stadium-great-america",
+            "displayName": {
+              "text": "California's Great America",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.397551,
+              "longitude": -121.97415
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3932391,
+                "longitude": -121.9800299
+              },
+              "high": {
+                "latitude": 37.4018629,
+                "longitude": -121.9682701
+              }
+            },
+            "types": [
+              "amusement_park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "amusement_park",
+            "rating": 4.4,
+            "userRatingCount": 25310
+          }
+        ]
+      }
+    },
+    "popularity": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.404019,
+              "longitude": -121.970079
+            },
+            "radius": 2500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-levis-stadium-great-america",
+            "displayName": {
+              "text": "California's Great America",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.397551,
+              "longitude": -121.97415
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3932391,
+                "longitude": -121.9800299
+              },
+              "high": {
+                "latitude": 37.4018629,
+                "longitude": -121.9682701
+              }
+            },
+            "types": [
+              "amusement_park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "amusement_park",
+            "rating": 4.4,
+            "userRatingCount": 25310
+          },
+          {
+            "id": "handauthored-levis-stadium-stadium",
+            "displayName": {
+              "text": "Levi's Stadium",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4033,
+              "longitude": -121.9694
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4003356,
+                "longitude": -121.9731318
+              },
+              "high": {
+                "latitude": 37.4062644,
+                "longitude": -121.9656682
+              }
+            },
+            "types": [
+              "stadium",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "stadium",
+            "rating": 4.4,
+            "userRatingCount": 21455
+          },
+          {
+            "id": "handauthored-levis-stadium-hyatt",
+            "displayName": {
+              "text": "Hyatt Regency Santa Clara",
+              "languageCode": "en"
+            },
+            "formattedAddress": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403839,
+              "longitude": -121.961258
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.402489,
+                "longitude": -121.962608
+              },
+              "high": {
+                "latitude": 37.405189,
+                "longitude": -121.959908
+              }
+            },
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "hotel",
+            "rating": 4.4,
+            "userRatingCount": 3927
+          },
+          {
+            "id": "handauthored-levis-stadium-convention-center",
+            "displayName": {
+              "text": "Santa Clara Convention Center",
+              "languageCode": "en"
+            },
+            "formattedAddress": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.402222,
+              "longitude": -121.962163
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4002457,
+                "longitude": -121.964877
+              },
+              "high": {
+                "latitude": 37.4041983,
+                "longitude": -121.959449
+              }
+            },
+            "types": [
+              "convention_center",
+              "event_venue",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "convention_center",
+            "rating": 4.4,
+            "userRatingCount": 3512
+          },
+          {
+            "id": "handauthored-levis-stadium-museum",
+            "displayName": {
+              "text": "49ers Museum",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404288,
+              "longitude": -121.969739
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.402938,
+                "longitude": -121.971089
+              },
+              "high": {
+                "latitude": 37.405638,
+                "longitude": -121.968389
+              }
+            },
+            "types": [
+              "museum",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "museum",
+            "rating": 4.5,
+            "userRatingCount": 486
+          },
+          {
+            "id": "handauthored-levis-stadium-team-store",
+            "displayName": {
+              "text": "49ers Team Store",
+              "languageCode": "en"
+            },
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403839,
+              "longitude": -121.970644
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.402489,
+                "longitude": -121.971994
+              },
+              "high": {
+                "latitude": 37.405189,
+                "longitude": -121.969294
+              }
+            },
+            "types": [
+              "sporting_goods_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "sporting_goods_store",
+            "rating": 4.1,
+            "userRatingCount": 158
+          },
+          {
+            "id": "handauthored-levis-stadium-vta",
+            "displayName": {
+              "text": "Great America Station",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.406264,
+              "longitude": -121.967364
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.404914,
+                "longitude": -121.968714
+              },
+              "high": {
+                "latitude": 37.407614,
+                "longitude": -121.966014
+              }
+            },
+            "types": [
+              "light_rail_station",
+              "transit_station",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "light_rail_station",
+            "rating": 4,
+            "userRatingCount": 62
+          },
+          {
+            "id": "handauthored-levis-stadium-red-lot",
+            "displayName": {
+              "text": "Levi's Stadium Red Lot 1",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404558,
+              "longitude": -121.97234
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.403208,
+                "longitude": -121.97369
+              },
+              "high": {
+                "latitude": 37.405908,
+                "longitude": -121.97099
+              }
+            },
+            "types": [
+              "parking",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "parking",
+            "rating": 3.6,
+            "userRatingCount": 41
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "handauthored-levis-stadium-museum",
+      "name": "49ers Museum",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.404288,
+        "longitude": -121.969739
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.402938,
+          "longitude": -121.971089
+        },
+        "high": {
+          "latitude": 37.405638,
+          "longitude": -121.968389
+        }
+      },
+      "types": [
+        "museum",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "museum",
+      "rating": 4.5,
+      "userRatingCount": 486
+    },
+    {
+      "id": "handauthored-levis-stadium-team-store",
+      "name": "49ers Team Store",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403839,
+        "longitude": -121.970644
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.402489,
+          "longitude": -121.971994
+        },
+        "high": {
+          "latitude": 37.405189,
+          "longitude": -121.969294
+        }
+      },
+      "types": [
+        "sporting_goods_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sporting_goods_store",
+      "rating": 4.1,
+      "userRatingCount": 158
+    },
+    {
+      "id": "handauthored-levis-stadium-stadium",
+      "name": "Levi's Stadium",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4033,
+        "longitude": -121.9694
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4003356,
+          "longitude": -121.9731318
+        },
+        "high": {
+          "latitude": 37.4062644,
+          "longitude": -121.9656682
+        }
+      },
+      "types": [
+        "stadium",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "stadium",
+      "rating": 4.4,
+      "userRatingCount": 21455
+    },
+    {
+      "id": "handauthored-levis-stadium-red-lot",
+      "name": "Levi's Stadium Red Lot 1",
+      "address": "Tasman Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.404558,
+        "longitude": -121.97234
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.403208,
+          "longitude": -121.97369
+        },
+        "high": {
+          "latitude": 37.405908,
+          "longitude": -121.97099
+        }
+      },
+      "types": [
+        "parking",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "parking",
+      "rating": 3.6,
+      "userRatingCount": 41
+    },
+    {
+      "id": "handauthored-levis-stadium-vta",
+      "name": "Great America Station",
+      "address": "Tasman Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.406264,
+        "longitude": -121.967364
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.404914,
+          "longitude": -121.968714
+        },
+        "high": {
+          "latitude": 37.407614,
+          "longitude": -121.966014
+        }
+      },
+      "types": [
+        "light_rail_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "light_rail_station",
+      "rating": 4,
+      "userRatingCount": 62
+    },
+    {
+      "id": "handauthored-levis-stadium-convention-center",
+      "name": "Santa Clara Convention Center",
+      "address": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.402222,
+        "longitude": -121.962163
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4002457,
+          "longitude": -121.964877
+        },
+        "high": {
+          "latitude": 37.4041983,
+          "longitude": -121.959449
+        }
+      },
+      "types": [
+        "convention_center",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "convention_center",
+      "rating": 4.4,
+      "userRatingCount": 3512
+    },
+    {
+      "id": "handauthored-levis-stadium-hyatt",
+      "name": "Hyatt Regency Santa Clara",
+      "address": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403839,
+        "longitude": -121.961258
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.402489,
+          "longitude": -121.962608
+        },
+        "high": {
+          "latitude": 37.405189,
+          "longitude": -121.959908
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.4,
+      "userRatingCount": 3927
+    },
+    {
+      "id": "handauthored-levis-stadium-great-america",
+      "name": "California's Great America",
+      "address": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.397551,
+        "longitude": -121.97415
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3932391,
+          "longitude": -121.9800299
+        },
+        "high": {
+          "latitude": 37.4018629,
+          "longitude": -121.9682701
+        }
+      },
+      "types": [
+        "amusement_park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "amusement_park",
+      "rating": 4.4,
+      "userRatingCount": 25310
+    }
+  ],
+  "placeKeys": {
+    "stadium": "handauthored-levis-stadium-stadium",
+    "museum": "handauthored-levis-stadium-museum",
+    "greatAmerica": "handauthored-levis-stadium-vta",
+    "conventionCenter": "handauthored-levis-stadium-convention-center"
+  },
+  "histories": {
+    "none": [],
+    "seasonTicketHolder": [
+      {
+        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "createdAt": "2026-05-23T20:21:00.000Z",
+        "placeName": "Levi's Stadium",
+        "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+        "placePrimaryType": "stadium",
+        "placeTypes": [
+          "stadium",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4033,
+          "longitude": -121.9694
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "createdAt": "2026-06-21T20:14:00.000Z",
+        "placeName": "Levi's Stadium",
+        "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+        "placePrimaryType": "stadium",
+        "placeTypes": [
+          "stadium",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4033,
+          "longitude": -121.9694
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "createdAt": "2026-07-19T20:07:00.000Z",
+        "placeName": "Levi's Stadium",
+        "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+        "placePrimaryType": "stadium",
+        "placeTypes": [
+          "stadium",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4033,
+          "longitude": -121.9694
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "createdAt": "2026-08-16T20:00:00.000Z",
+        "placeName": "Levi's Stadium",
+        "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+        "placePrimaryType": "stadium",
+        "placeTypes": [
+          "stadium",
+          "tourist_attraction",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4033,
+          "longitude": -121.9694
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "game day, no history",
+      "now": "2026-09-20T13:05:00-07:00",
+      "horizontalAccuracy": 45,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "stadium",
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "stadium",
+            "greatAmerica"
+          ],
+          [
+            "stadium",
+            "conventionCenter"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "game day, season ticket holder",
+      "now": "2026-09-20T13:05:00-07:00",
+      "horizontalAccuracy": 45,
+      "fixAgeSeconds": 5,
+      "history": "seasonTicketHolder",
+      "expect": {
+        "top": "stadium",
+        "suggested": "stadium"
+      }
+    }
+  ]
+}

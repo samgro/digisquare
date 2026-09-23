@@ -5,20 +5,58 @@
 
 import Foundation
 
-struct Place: Decodable, Identifiable, Hashable {
+// These models are consumed by PlaceRanker, which is nonisolated so it can be
+// exercised from unit tests and background work alike, so they opt out of the
+// target's default @MainActor isolation the same way UserProfile does.
+nonisolated struct Place: Decodable, Identifiable, Hashable, Sendable {
     let id: String
     let name: String
     let address: String?
     let location: PlaceLocation?
+    /// Google's bounding box for the place. Point venues get a default box a
+    /// few hundred meters across; airports, campuses and parks get their real
+    /// extent. Optional because older API builds do not send it.
+    let viewport: PlaceViewport?
     let types: [String]
     let primaryType: String?
     let rating: Double?
     let userRatingCount: Int?
+
+    /// Spelled out (rather than relying on the memberwise initializer) so the
+    /// many existing call sites that predate `viewport` keep compiling.
+    init(
+        id: String,
+        name: String,
+        address: String?,
+        location: PlaceLocation?,
+        viewport: PlaceViewport? = nil,
+        types: [String],
+        primaryType: String?,
+        rating: Double?,
+        userRatingCount: Int?
+    ) {
+        self.id = id
+        self.name = name
+        self.address = address
+        self.location = location
+        self.viewport = viewport
+        self.types = types
+        self.primaryType = primaryType
+        self.rating = rating
+        self.userRatingCount = userRatingCount
+    }
 }
 
-struct PlaceLocation: Decodable, Hashable {
+nonisolated struct PlaceLocation: Decodable, Hashable, Sendable {
     let latitude: Double
     let longitude: Double
+}
+
+/// A latitude/longitude bounding box: `low` is the south-west corner and
+/// `high` the north-east one, as Google reports them.
+nonisolated struct PlaceViewport: Decodable, Hashable, Sendable {
+    let low: PlaceLocation
+    let high: PlaceLocation
 }
 
 private struct PlacesResponse: Decodable {
@@ -36,7 +74,8 @@ struct PlacesAPI {
         latitude: Double,
         longitude: Double,
         query: String? = nil,
-        radius: Double? = nil
+        radius: Double? = nil,
+        horizontalAccuracy: Double? = nil
     ) async throws -> [Place] {
         // The abbreviated names here are the API's query parameters, which is
         // the one place CLAUDE.md permits them. The Swift labels above are
@@ -50,6 +89,13 @@ struct PlacesAPI {
         }
         if let radius, radius > 0 {
             queryItems.append(URLQueryItem(name: "radius", value: String(Int(radius.rounded()))))
+        }
+        // Core Location reports a negative accuracy when it has no estimate;
+        // the server treats an absent value the same way.
+        if let horizontalAccuracy, horizontalAccuracy >= 0 {
+            queryItems.append(
+                URLQueryItem(name: "accuracy", value: String(Int(horizontalAccuracy.rounded())))
+            )
         }
 
         let response: PlacesResponse = try await client.request(

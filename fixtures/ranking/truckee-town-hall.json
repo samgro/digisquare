@@ -1,0 +1,1154 @@
+{
+  "schemaVersion": 1,
+  "name": "truckee-town-hall",
+  "description": "Standing outside the council chambers at Truckee Town Hall. It is the only venue inside the accuracy circle; every popular place is hundreds of meters away.",
+  "recordedAt": null,
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 39.323308,
+    "longitude": -120.165326,
+    "horizontalAccuracy": 30
+  },
+  "google": {
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 39.323308,
+              "longitude": -120.165326
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-truckee-town-hall-town-hall",
+            "displayName": {
+              "text": "Truckee Town Hall",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3232,
+              "longitude": -120.1655
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.32185,
+                "longitude": -120.16685
+              },
+              "high": {
+                "latitude": 39.32455,
+                "longitude": -120.16415
+              }
+            },
+            "types": [
+              "city_hall",
+              "local_government_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "city_hall",
+            "rating": 4.2,
+            "userRatingCount": 38
+          },
+          {
+            "id": "handauthored-truckee-town-hall-town-hall-parking",
+            "displayName": {
+              "text": "Town Hall Parking Lot",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.323469,
+              "longitude": -120.165036
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.322119,
+                "longitude": -120.166386
+              },
+              "high": {
+                "latitude": 39.324819,
+                "longitude": -120.163686
+              }
+            },
+            "types": [
+              "parking",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "parking"
+          },
+          {
+            "id": "handauthored-truckee-town-hall-police",
+            "displayName": {
+              "text": "Truckee Police Department",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.322347,
+              "longitude": -120.164455
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.320997,
+                "longitude": -120.165805
+              },
+              "high": {
+                "latitude": 39.323697,
+                "longitude": -120.163105
+              }
+            },
+            "types": [
+              "police",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "police",
+            "rating": 3.9,
+            "userRatingCount": 27
+          },
+          {
+            "id": "handauthored-truckee-town-hall-bus-stop",
+            "displayName": {
+              "text": "Truckee Airport Rd & Brockway Rd",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.323739,
+              "longitude": -120.167706
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.322389,
+                "longitude": -120.169056
+              },
+              "high": {
+                "latitude": 39.325089,
+                "longitude": -120.166356
+              }
+            },
+            "types": [
+              "bus_stop",
+              "transit_station",
+              "point_of_interest"
+            ],
+            "primaryType": "bus_stop"
+          },
+          {
+            "id": "handauthored-truckee-town-hall-sanitation",
+            "displayName": {
+              "text": "Tahoe-Truckee Sanitation Agency",
+              "languageCode": "en"
+            },
+            "formattedAddress": "13720 Butterfield Dr, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.324458,
+              "longitude": -120.163061
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.323108,
+                "longitude": -120.164411
+              },
+              "high": {
+                "latitude": 39.325808,
+                "longitude": -120.161711
+              }
+            },
+            "types": [
+              "local_government_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "local_government_office",
+            "rating": 4,
+            "userRatingCount": 6
+          },
+          {
+            "id": "handauthored-truckee-town-hall-full-belly",
+            "displayName": {
+              "text": "Full Belly Deli",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10825 Pioneer Trail, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.325536,
+              "longitude": -120.169332
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.324186,
+                "longitude": -120.170682
+              },
+              "high": {
+                "latitude": 39.326886,
+                "longitude": -120.167982
+              }
+            },
+            "types": [
+              "deli",
+              "sandwich_shop",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "deli",
+            "rating": 4.7,
+            "userRatingCount": 1289
+          },
+          {
+            "id": "handauthored-truckee-town-hall-regional-park",
+            "displayName": {
+              "text": "Truckee River Regional Park",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10500 Brockway Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.324547,
+              "longitude": -120.172003
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3222114,
+                "longitude": -120.175719
+              },
+              "high": {
+                "latitude": 39.3268826,
+                "longitude": -120.168287
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "park",
+            "rating": 4.7,
+            "userRatingCount": 712
+          },
+          {
+            "id": "handauthored-truckee-town-hall-rec-center",
+            "displayName": {
+              "text": "Truckee Community Recreation Center",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10981 Truckee Way, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.326973,
+              "longitude": -120.171074
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.325623,
+                "longitude": -120.172424
+              },
+              "high": {
+                "latitude": 39.328323,
+                "longitude": -120.169724
+              }
+            },
+            "types": [
+              "community_center",
+              "gym",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "community_center",
+            "rating": 4.6,
+            "userRatingCount": 214
+          },
+          {
+            "id": "handauthored-truckee-town-hall-fiftyfifty",
+            "displayName": {
+              "text": "FiftyFifty Brewing Co.",
+              "languageCode": "en"
+            },
+            "formattedAddress": "11197 Brockway Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.327063,
+              "longitude": -120.180015
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.325713,
+                "longitude": -120.181365
+              },
+              "high": {
+                "latitude": 39.328413,
+                "longitude": -120.178665
+              }
+            },
+            "types": [
+              "brewery",
+              "bar",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "brewery",
+            "rating": 4.6,
+            "userRatingCount": 2487
+          },
+          {
+            "id": "handauthored-truckee-town-hall-airport",
+            "displayName": {
+              "text": "Truckee Tahoe Airport",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.320325,
+              "longitude": -120.149823
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3153843,
+                "longitude": -120.1637572
+              },
+              "high": {
+                "latitude": 39.3252657,
+                "longitude": -120.1358888
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.6,
+            "userRatingCount": 318
+          },
+          {
+            "id": "handauthored-truckee-town-hall-sunrise-cafe",
+            "displayName": {
+              "text": "Marg's Taco Bistro",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10186 Donner Pass Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.331285,
+              "longitude": -120.178274
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.329935,
+                "longitude": -120.179624
+              },
+              "high": {
+                "latitude": 39.332635,
+                "longitude": -120.176924
+              }
+            },
+            "types": [
+              "mexican_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "mexican_restaurant",
+            "rating": 4.5,
+            "userRatingCount": 1044
+          }
+        ]
+      }
+    },
+    "popularity": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 39.323308,
+              "longitude": -120.165326
+            },
+            "radius": 2500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-truckee-town-hall-fiftyfifty",
+            "displayName": {
+              "text": "FiftyFifty Brewing Co.",
+              "languageCode": "en"
+            },
+            "formattedAddress": "11197 Brockway Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.327063,
+              "longitude": -120.180015
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.325713,
+                "longitude": -120.181365
+              },
+              "high": {
+                "latitude": 39.328413,
+                "longitude": -120.178665
+              }
+            },
+            "types": [
+              "brewery",
+              "bar",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "brewery",
+            "rating": 4.6,
+            "userRatingCount": 2487
+          },
+          {
+            "id": "handauthored-truckee-town-hall-full-belly",
+            "displayName": {
+              "text": "Full Belly Deli",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10825 Pioneer Trail, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.325536,
+              "longitude": -120.169332
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.324186,
+                "longitude": -120.170682
+              },
+              "high": {
+                "latitude": 39.326886,
+                "longitude": -120.167982
+              }
+            },
+            "types": [
+              "deli",
+              "sandwich_shop",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "deli",
+            "rating": 4.7,
+            "userRatingCount": 1289
+          },
+          {
+            "id": "handauthored-truckee-town-hall-sunrise-cafe",
+            "displayName": {
+              "text": "Marg's Taco Bistro",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10186 Donner Pass Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.331285,
+              "longitude": -120.178274
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.329935,
+                "longitude": -120.179624
+              },
+              "high": {
+                "latitude": 39.332635,
+                "longitude": -120.176924
+              }
+            },
+            "types": [
+              "mexican_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "mexican_restaurant",
+            "rating": 4.5,
+            "userRatingCount": 1044
+          },
+          {
+            "id": "handauthored-truckee-town-hall-regional-park",
+            "displayName": {
+              "text": "Truckee River Regional Park",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10500 Brockway Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.324547,
+              "longitude": -120.172003
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3222114,
+                "longitude": -120.175719
+              },
+              "high": {
+                "latitude": 39.3268826,
+                "longitude": -120.168287
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "park",
+            "rating": 4.7,
+            "userRatingCount": 712
+          },
+          {
+            "id": "handauthored-truckee-town-hall-airport",
+            "displayName": {
+              "text": "Truckee Tahoe Airport",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.320325,
+              "longitude": -120.149823
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3153843,
+                "longitude": -120.1637572
+              },
+              "high": {
+                "latitude": 39.3252657,
+                "longitude": -120.1358888
+              }
+            },
+            "types": [
+              "airport",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "airport",
+            "rating": 4.6,
+            "userRatingCount": 318
+          },
+          {
+            "id": "handauthored-truckee-town-hall-rec-center",
+            "displayName": {
+              "text": "Truckee Community Recreation Center",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10981 Truckee Way, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.326973,
+              "longitude": -120.171074
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.325623,
+                "longitude": -120.172424
+              },
+              "high": {
+                "latitude": 39.328323,
+                "longitude": -120.169724
+              }
+            },
+            "types": [
+              "community_center",
+              "gym",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "community_center",
+            "rating": 4.6,
+            "userRatingCount": 214
+          },
+          {
+            "id": "handauthored-truckee-town-hall-town-hall",
+            "displayName": {
+              "text": "Truckee Town Hall",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3232,
+              "longitude": -120.1655
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.32185,
+                "longitude": -120.16685
+              },
+              "high": {
+                "latitude": 39.32455,
+                "longitude": -120.16415
+              }
+            },
+            "types": [
+              "city_hall",
+              "local_government_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "city_hall",
+            "rating": 4.2,
+            "userRatingCount": 38
+          },
+          {
+            "id": "handauthored-truckee-town-hall-police",
+            "displayName": {
+              "text": "Truckee Police Department",
+              "languageCode": "en"
+            },
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.322347,
+              "longitude": -120.164455
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.320997,
+                "longitude": -120.165805
+              },
+              "high": {
+                "latitude": 39.323697,
+                "longitude": -120.163105
+              }
+            },
+            "types": [
+              "police",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "police",
+            "rating": 3.9,
+            "userRatingCount": 27
+          },
+          {
+            "id": "handauthored-truckee-town-hall-sanitation",
+            "displayName": {
+              "text": "Tahoe-Truckee Sanitation Agency",
+              "languageCode": "en"
+            },
+            "formattedAddress": "13720 Butterfield Dr, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.324458,
+              "longitude": -120.163061
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.323108,
+                "longitude": -120.164411
+              },
+              "high": {
+                "latitude": 39.325808,
+                "longitude": -120.161711
+              }
+            },
+            "types": [
+              "local_government_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "local_government_office",
+            "rating": 4,
+            "userRatingCount": 6
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "handauthored-truckee-town-hall-town-hall",
+      "name": "Truckee Town Hall",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3232,
+        "longitude": -120.1655
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.32185,
+          "longitude": -120.16685
+        },
+        "high": {
+          "latitude": 39.32455,
+          "longitude": -120.16415
+        }
+      },
+      "types": [
+        "city_hall",
+        "local_government_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_hall",
+      "rating": 4.2,
+      "userRatingCount": 38
+    },
+    {
+      "id": "handauthored-truckee-town-hall-town-hall-parking",
+      "name": "Town Hall Parking Lot",
+      "address": "Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.323469,
+        "longitude": -120.165036
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.322119,
+          "longitude": -120.166386
+        },
+        "high": {
+          "latitude": 39.324819,
+          "longitude": -120.163686
+        }
+      },
+      "types": [
+        "parking",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "parking",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "handauthored-truckee-town-hall-police",
+      "name": "Truckee Police Department",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.322347,
+        "longitude": -120.164455
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.320997,
+          "longitude": -120.165805
+        },
+        "high": {
+          "latitude": 39.323697,
+          "longitude": -120.163105
+        }
+      },
+      "types": [
+        "police",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "police",
+      "rating": 3.9,
+      "userRatingCount": 27
+    },
+    {
+      "id": "handauthored-truckee-town-hall-bus-stop",
+      "name": "Truckee Airport Rd & Brockway Rd",
+      "address": "Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.323739,
+        "longitude": -120.167706
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.322389,
+          "longitude": -120.169056
+        },
+        "high": {
+          "latitude": 39.325089,
+          "longitude": -120.166356
+        }
+      },
+      "types": [
+        "bus_stop",
+        "transit_station",
+        "point_of_interest"
+      ],
+      "primaryType": "bus_stop",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "handauthored-truckee-town-hall-sanitation",
+      "name": "Tahoe-Truckee Sanitation Agency",
+      "address": "13720 Butterfield Dr, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.324458,
+        "longitude": -120.163061
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.323108,
+          "longitude": -120.164411
+        },
+        "high": {
+          "latitude": 39.325808,
+          "longitude": -120.161711
+        }
+      },
+      "types": [
+        "local_government_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": 4,
+      "userRatingCount": 6
+    },
+    {
+      "id": "handauthored-truckee-town-hall-full-belly",
+      "name": "Full Belly Deli",
+      "address": "10825 Pioneer Trail, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.325536,
+        "longitude": -120.169332
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.324186,
+          "longitude": -120.170682
+        },
+        "high": {
+          "latitude": 39.326886,
+          "longitude": -120.167982
+        }
+      },
+      "types": [
+        "deli",
+        "sandwich_shop",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "deli",
+      "rating": 4.7,
+      "userRatingCount": 1289
+    },
+    {
+      "id": "handauthored-truckee-town-hall-regional-park",
+      "name": "Truckee River Regional Park",
+      "address": "10500 Brockway Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.324547,
+        "longitude": -120.172003
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3222114,
+          "longitude": -120.175719
+        },
+        "high": {
+          "latitude": 39.3268826,
+          "longitude": -120.168287
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 712
+    },
+    {
+      "id": "handauthored-truckee-town-hall-rec-center",
+      "name": "Truckee Community Recreation Center",
+      "address": "10981 Truckee Way, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.326973,
+        "longitude": -120.171074
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.325623,
+          "longitude": -120.172424
+        },
+        "high": {
+          "latitude": 39.328323,
+          "longitude": -120.169724
+        }
+      },
+      "types": [
+        "community_center",
+        "gym",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "community_center",
+      "rating": 4.6,
+      "userRatingCount": 214
+    },
+    {
+      "id": "handauthored-truckee-town-hall-fiftyfifty",
+      "name": "FiftyFifty Brewing Co.",
+      "address": "11197 Brockway Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.327063,
+        "longitude": -120.180015
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.325713,
+          "longitude": -120.181365
+        },
+        "high": {
+          "latitude": 39.328413,
+          "longitude": -120.178665
+        }
+      },
+      "types": [
+        "brewery",
+        "bar",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "brewery",
+      "rating": 4.6,
+      "userRatingCount": 2487
+    },
+    {
+      "id": "handauthored-truckee-town-hall-airport",
+      "name": "Truckee Tahoe Airport",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.320325,
+        "longitude": -120.149823
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3153843,
+          "longitude": -120.1637572
+        },
+        "high": {
+          "latitude": 39.3252657,
+          "longitude": -120.1358888
+        }
+      },
+      "types": [
+        "airport",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "airport",
+      "rating": 4.6,
+      "userRatingCount": 318
+    },
+    {
+      "id": "handauthored-truckee-town-hall-sunrise-cafe",
+      "name": "Marg's Taco Bistro",
+      "address": "10186 Donner Pass Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.331285,
+        "longitude": -120.178274
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.329935,
+          "longitude": -120.179624
+        },
+        "high": {
+          "latitude": 39.332635,
+          "longitude": -120.176924
+        }
+      },
+      "types": [
+        "mexican_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "mexican_restaurant",
+      "rating": 4.5,
+      "userRatingCount": 1044
+    }
+  ],
+  "placeKeys": {
+    "townHall": "handauthored-truckee-town-hall-town-hall",
+    "regionalPark": "handauthored-truckee-town-hall-regional-park",
+    "brewery": "handauthored-truckee-town-hall-fiftyfifty",
+    "airport": "handauthored-truckee-town-hall-airport"
+  },
+  "histories": {
+    "none": [],
+    "councilRegular": [
+      {
+        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "createdAt": "2026-06-24T17:35:00.000Z",
+        "placeName": "Truckee Town Hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+        "placePrimaryType": "city_hall",
+        "placeTypes": [
+          "city_hall",
+          "local_government_office",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 39.3232,
+          "longitude": -120.1655
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "createdAt": "2026-07-09T17:28:00.000Z",
+        "placeName": "Truckee Town Hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+        "placePrimaryType": "city_hall",
+        "placeTypes": [
+          "city_hall",
+          "local_government_office",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 39.3232,
+          "longitude": -120.1655
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "createdAt": "2026-07-24T17:21:00.000Z",
+        "placeName": "Truckee Town Hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+        "placePrimaryType": "city_hall",
+        "placeTypes": [
+          "city_hall",
+          "local_government_office",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 39.3232,
+          "longitude": -120.1655
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "createdAt": "2026-08-07T17:14:00.000Z",
+        "placeName": "Truckee Town Hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+        "placePrimaryType": "city_hall",
+        "placeTypes": [
+          "city_hall",
+          "local_government_office",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 39.3232,
+          "longitude": -120.1655
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "createdAt": "2026-08-21T17:07:00.000Z",
+        "placeName": "Truckee Town Hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+        "placePrimaryType": "city_hall",
+        "placeTypes": [
+          "city_hall",
+          "local_government_office",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 39.3232,
+          "longitude": -120.1655
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "createdAt": "2026-09-07T17:00:00.000Z",
+        "placeName": "Truckee Town Hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+        "placePrimaryType": "city_hall",
+        "placeTypes": [
+          "city_hall",
+          "local_government_office",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 39.3232,
+          "longitude": -120.1655
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "accurate fix, no history",
+      "now": "2026-09-22T10:15:00-07:00",
+      "horizontalAccuracy": 30,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "townHall",
+        "suggested": "townHall",
+        "rankedAbove": [
+          [
+            "townHall",
+            "regionalPark"
+          ],
+          [
+            "townHall",
+            "brewery"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "coarse fix, no history",
+      "now": "2026-09-22T10:15:00-07:00",
+      "horizontalAccuracy": 300,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "townHall",
+            "brewery"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "coarse fix, council regular",
+      "now": "2026-09-22T10:15:00-07:00",
+      "horizontalAccuracy": 300,
+      "fixAgeSeconds": 5,
+      "history": "councilRegular",
+      "expect": {
+        "top": "townHall",
+        "suggested": null
+      }
+    },
+    {
+      "name": "stale fix, no history",
+      "now": "2026-09-22T10:15:00-07:00",
+      "horizontalAccuracy": 30,
+      "fixAgeSeconds": 120,
+      "history": "none",
+      "expect": {
+        "top": "townHall",
+        "suggested": null
+      }
+    }
+  ]
+}

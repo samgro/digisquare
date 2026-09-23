@@ -1,0 +1,1947 @@
+{
+  "schemaVersion": 1,
+  "name": "soma-mint-plaza",
+  "description": "On Mint Plaza in SoMa, between Blue Bottle and 54 Mint, with a shopping mall, a BART station and a landmark within two blocks.",
+  "recordedAt": null,
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.782264,
+    "longitude": -122.407566,
+    "horizontalAccuracy": 12
+  },
+  "google": {
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.782264,
+              "longitude": -122.407566
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-soma-mint-plaza-blue-bottle",
+            "displayName": {
+              "text": "Blue Bottle Coffee",
+              "languageCode": "en"
+            },
+            "formattedAddress": "66 Mint St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.7823,
+              "longitude": -122.4076
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78095,
+                "longitude": -122.40895
+              },
+              "high": {
+                "latitude": 37.78365,
+                "longitude": -122.40625
+              }
+            },
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "coffee_shop",
+            "rating": 4.4,
+            "userRatingCount": 1502
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-mint-plaza",
+            "displayName": {
+              "text": "Mint Plaza",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Mint Plaza, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.78212,
+              "longitude": -122.407884
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78077,
+                "longitude": -122.409234
+              },
+              "high": {
+                "latitude": 37.78347,
+                "longitude": -122.406534
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest"
+            ],
+            "primaryType": "park",
+            "rating": 4.2,
+            "userRatingCount": 231
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-54-mint",
+            "displayName": {
+              "text": "54 Mint Ristorante Italiano",
+              "languageCode": "en"
+            },
+            "formattedAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782031,
+              "longitude": -122.407327
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780681,
+                "longitude": -122.408677
+              },
+              "high": {
+                "latitude": 37.783381,
+                "longitude": -122.405977
+              }
+            },
+            "types": [
+              "italian_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "italian_restaurant",
+            "rating": 4.4,
+            "userRatingCount": 1388
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-chase-atm",
+            "displayName": {
+              "text": "Chase ATM",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Mission St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782704,
+              "longitude": -122.407259
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.781354,
+                "longitude": -122.408609
+              },
+              "high": {
+                "latitude": 37.784054,
+                "longitude": -122.405909
+              }
+            },
+            "types": [
+              "atm",
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "atm"
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-old-mint",
+            "displayName": {
+              "text": "The Old Mint",
+              "languageCode": "en"
+            },
+            "formattedAddress": "88 5th St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.781761,
+              "longitude": -122.408396
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780411,
+                "longitude": -122.409746
+              },
+              "high": {
+                "latitude": 37.783111,
+                "longitude": -122.407046
+              }
+            },
+            "types": [
+              "historical_landmark",
+              "event_venue",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "historical_landmark",
+            "rating": 4.4,
+            "userRatingCount": 1163
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-sf-centre",
+            "displayName": {
+              "text": "San Francisco Centre",
+              "languageCode": "en"
+            },
+            "formattedAddress": "865 Market St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.783647,
+              "longitude": -122.407145
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7821199,
+                "longitude": -122.4095319
+              },
+              "high": {
+                "latitude": 37.7851741,
+                "longitude": -122.4047581
+              }
+            },
+            "types": [
+              "shopping_mall",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "shopping_mall",
+            "rating": 4.3,
+            "userRatingCount": 31890
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-garage",
+            "displayName": {
+              "text": "Fifth & Mission Garage",
+              "languageCode": "en"
+            },
+            "formattedAddress": "833 Mission St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.781581,
+              "longitude": -122.409191
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780231,
+                "longitude": -122.410541
+              },
+              "high": {
+                "latitude": 37.782931,
+                "longitude": -122.407841
+              }
+            },
+            "types": [
+              "parking",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "parking",
+            "rating": 3.8,
+            "userRatingCount": 940
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-powell-bart",
+            "displayName": {
+              "text": "Powell St. BART Station",
+              "languageCode": "en"
+            },
+            "formattedAddress": "899 Market St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.784546,
+              "longitude": -122.408282
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.783196,
+                "longitude": -122.409632
+              },
+              "high": {
+                "latitude": 37.785896,
+                "longitude": -122.406932
+              }
+            },
+            "types": [
+              "subway_station",
+              "transit_station",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "subway_station",
+            "rating": 3.6,
+            "userRatingCount": 1102
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-yerba-buena",
+            "displayName": {
+              "text": "Yerba Buena Gardens",
+              "languageCode": "en"
+            },
+            "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.781671,
+              "longitude": -122.401235
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7802337,
+                "longitude": -122.4037355
+              },
+              "high": {
+                "latitude": 37.7831083,
+                "longitude": -122.3987345
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "park",
+            "rating": 4.7,
+            "userRatingCount": 8920
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-moma",
+            "displayName": {
+              "text": "SFMOMA",
+              "languageCode": "en"
+            },
+            "formattedAddress": "151 3rd St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782839,
+              "longitude": -122.398962
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.781489,
+                "longitude": -122.400312
+              },
+              "high": {
+                "latitude": 37.784189,
+                "longitude": -122.397612
+              }
+            },
+            "types": [
+              "art_gallery",
+              "museum",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "art_gallery",
+            "rating": 4.6,
+            "userRatingCount": 20544
+          }
+        ]
+      }
+    },
+    "popularity": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.782264,
+              "longitude": -122.407566
+            },
+            "radius": 2500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "handauthored-soma-mint-plaza-sf-centre",
+            "displayName": {
+              "text": "San Francisco Centre",
+              "languageCode": "en"
+            },
+            "formattedAddress": "865 Market St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.783647,
+              "longitude": -122.407145
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7821199,
+                "longitude": -122.4095319
+              },
+              "high": {
+                "latitude": 37.7851741,
+                "longitude": -122.4047581
+              }
+            },
+            "types": [
+              "shopping_mall",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "shopping_mall",
+            "rating": 4.3,
+            "userRatingCount": 31890
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-moma",
+            "displayName": {
+              "text": "SFMOMA",
+              "languageCode": "en"
+            },
+            "formattedAddress": "151 3rd St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782839,
+              "longitude": -122.398962
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.781489,
+                "longitude": -122.400312
+              },
+              "high": {
+                "latitude": 37.784189,
+                "longitude": -122.397612
+              }
+            },
+            "types": [
+              "art_gallery",
+              "museum",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "art_gallery",
+            "rating": 4.6,
+            "userRatingCount": 20544
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-yerba-buena",
+            "displayName": {
+              "text": "Yerba Buena Gardens",
+              "languageCode": "en"
+            },
+            "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.781671,
+              "longitude": -122.401235
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7802337,
+                "longitude": -122.4037355
+              },
+              "high": {
+                "latitude": 37.7831083,
+                "longitude": -122.3987345
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "park",
+            "rating": 4.7,
+            "userRatingCount": 8920
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-blue-bottle",
+            "displayName": {
+              "text": "Blue Bottle Coffee",
+              "languageCode": "en"
+            },
+            "formattedAddress": "66 Mint St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.7823,
+              "longitude": -122.4076
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78095,
+                "longitude": -122.40895
+              },
+              "high": {
+                "latitude": 37.78365,
+                "longitude": -122.40625
+              }
+            },
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "coffee_shop",
+            "rating": 4.4,
+            "userRatingCount": 1502
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-54-mint",
+            "displayName": {
+              "text": "54 Mint Ristorante Italiano",
+              "languageCode": "en"
+            },
+            "formattedAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782031,
+              "longitude": -122.407327
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780681,
+                "longitude": -122.408677
+              },
+              "high": {
+                "latitude": 37.783381,
+                "longitude": -122.405977
+              }
+            },
+            "types": [
+              "italian_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "italian_restaurant",
+            "rating": 4.4,
+            "userRatingCount": 1388
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-old-mint",
+            "displayName": {
+              "text": "The Old Mint",
+              "languageCode": "en"
+            },
+            "formattedAddress": "88 5th St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.781761,
+              "longitude": -122.408396
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780411,
+                "longitude": -122.409746
+              },
+              "high": {
+                "latitude": 37.783111,
+                "longitude": -122.407046
+              }
+            },
+            "types": [
+              "historical_landmark",
+              "event_venue",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "historical_landmark",
+            "rating": 4.4,
+            "userRatingCount": 1163
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-powell-bart",
+            "displayName": {
+              "text": "Powell St. BART Station",
+              "languageCode": "en"
+            },
+            "formattedAddress": "899 Market St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.784546,
+              "longitude": -122.408282
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.783196,
+                "longitude": -122.409632
+              },
+              "high": {
+                "latitude": 37.785896,
+                "longitude": -122.406932
+              }
+            },
+            "types": [
+              "subway_station",
+              "transit_station",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "subway_station",
+            "rating": 3.6,
+            "userRatingCount": 1102
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-garage",
+            "displayName": {
+              "text": "Fifth & Mission Garage",
+              "languageCode": "en"
+            },
+            "formattedAddress": "833 Mission St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.781581,
+              "longitude": -122.409191
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780231,
+                "longitude": -122.410541
+              },
+              "high": {
+                "latitude": 37.782931,
+                "longitude": -122.407841
+              }
+            },
+            "types": [
+              "parking",
+              "point_of_interest",
+              "establishment"
+            ],
+            "primaryType": "parking",
+            "rating": 3.8,
+            "userRatingCount": 940
+          },
+          {
+            "id": "handauthored-soma-mint-plaza-mint-plaza",
+            "displayName": {
+              "text": "Mint Plaza",
+              "languageCode": "en"
+            },
+            "formattedAddress": "Mint Plaza, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.78212,
+              "longitude": -122.407884
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78077,
+                "longitude": -122.409234
+              },
+              "high": {
+                "latitude": 37.78347,
+                "longitude": -122.406534
+              }
+            },
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest"
+            ],
+            "primaryType": "park",
+            "rating": 4.2,
+            "userRatingCount": 231
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "handauthored-soma-mint-plaza-blue-bottle",
+      "name": "Blue Bottle Coffee",
+      "address": "66 Mint St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.7823,
+        "longitude": -122.4076
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78095,
+          "longitude": -122.40895
+        },
+        "high": {
+          "latitude": 37.78365,
+          "longitude": -122.40625
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 4.4,
+      "userRatingCount": 1502
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-mint-plaza",
+      "name": "Mint Plaza",
+      "address": "Mint Plaza, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.78212,
+        "longitude": -122.407884
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78077,
+          "longitude": -122.409234
+        },
+        "high": {
+          "latitude": 37.78347,
+          "longitude": -122.406534
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest"
+      ],
+      "primaryType": "park",
+      "rating": 4.2,
+      "userRatingCount": 231
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-54-mint",
+      "name": "54 Mint Ristorante Italiano",
+      "address": "16 Mint Plaza, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.782031,
+        "longitude": -122.407327
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.780681,
+          "longitude": -122.408677
+        },
+        "high": {
+          "latitude": 37.783381,
+          "longitude": -122.405977
+        }
+      },
+      "types": [
+        "italian_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "italian_restaurant",
+      "rating": 4.4,
+      "userRatingCount": 1388
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-chase-atm",
+      "name": "Chase ATM",
+      "address": "Mission St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.782704,
+        "longitude": -122.407259
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.781354,
+          "longitude": -122.408609
+        },
+        "high": {
+          "latitude": 37.784054,
+          "longitude": -122.405909
+        }
+      },
+      "types": [
+        "atm",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "atm",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-old-mint",
+      "name": "The Old Mint",
+      "address": "88 5th St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.781761,
+        "longitude": -122.408396
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.780411,
+          "longitude": -122.409746
+        },
+        "high": {
+          "latitude": 37.783111,
+          "longitude": -122.407046
+        }
+      },
+      "types": [
+        "historical_landmark",
+        "event_venue",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "historical_landmark",
+      "rating": 4.4,
+      "userRatingCount": 1163
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-sf-centre",
+      "name": "San Francisco Centre",
+      "address": "865 Market St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.783647,
+        "longitude": -122.407145
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7821199,
+          "longitude": -122.4095319
+        },
+        "high": {
+          "latitude": 37.7851741,
+          "longitude": -122.4047581
+        }
+      },
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "shopping_mall",
+      "rating": 4.3,
+      "userRatingCount": 31890
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-garage",
+      "name": "Fifth & Mission Garage",
+      "address": "833 Mission St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.781581,
+        "longitude": -122.409191
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.780231,
+          "longitude": -122.410541
+        },
+        "high": {
+          "latitude": 37.782931,
+          "longitude": -122.407841
+        }
+      },
+      "types": [
+        "parking",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "parking",
+      "rating": 3.8,
+      "userRatingCount": 940
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-powell-bart",
+      "name": "Powell St. BART Station",
+      "address": "899 Market St, San Francisco, CA 94102, USA",
+      "location": {
+        "latitude": 37.784546,
+        "longitude": -122.408282
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.783196,
+          "longitude": -122.409632
+        },
+        "high": {
+          "latitude": 37.785896,
+          "longitude": -122.406932
+        }
+      },
+      "types": [
+        "subway_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "subway_station",
+      "rating": 3.6,
+      "userRatingCount": 1102
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-yerba-buena",
+      "name": "Yerba Buena Gardens",
+      "address": "750 Howard St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.781671,
+        "longitude": -122.401235
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7802337,
+          "longitude": -122.4037355
+        },
+        "high": {
+          "latitude": 37.7831083,
+          "longitude": -122.3987345
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 8920
+    },
+    {
+      "id": "handauthored-soma-mint-plaza-moma",
+      "name": "SFMOMA",
+      "address": "151 3rd St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.782839,
+        "longitude": -122.398962
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.781489,
+          "longitude": -122.400312
+        },
+        "high": {
+          "latitude": 37.784189,
+          "longitude": -122.397612
+        }
+      },
+      "types": [
+        "art_gallery",
+        "museum",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "art_gallery",
+      "rating": 4.6,
+      "userRatingCount": 20544
+    }
+  ],
+  "placeKeys": {
+    "blueBottle": "handauthored-soma-mint-plaza-blue-bottle",
+    "fiftyFourMint": "handauthored-soma-mint-plaza-54-mint",
+    "mintPlaza": "handauthored-soma-mint-plaza-mint-plaza",
+    "oldMint": "handauthored-soma-mint-plaza-old-mint",
+    "mall": "handauthored-soma-mint-plaza-sf-centre",
+    "bart": "handauthored-soma-mint-plaza-powell-bart"
+  },
+  "histories": {
+    "none": [],
+    "coffeeRegular": [
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-06-24T15:03:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-06-26T15:46:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-06-30T15:39:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-03T15:32:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-06T15:25:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-09T15:18:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-10T15:11:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-15T15:04:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-17T15:47:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-21T15:40:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-24T15:33:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-27T15:26:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-30T15:19:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-31T15:12:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-05T15:05:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-07T15:48:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-11T15:41:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-14T15:34:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-17T15:27:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-20T15:20:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-21T15:13:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-26T15:06:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-28T15:49:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-01T15:42:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-04T15:35:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-07T15:28:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-10T15:21:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-11T15:14:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-16T15:07:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-18T15:00:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      }
+    ],
+    "neighborhoodRegular": [
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-06-24T15:27:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-06-25T03:13:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-01T15:20:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-07-04T03:06:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-09T15:13:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-07-13T03:49:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-16T15:06:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-07-22T03:42:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-24T15:49:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-07-31T03:35:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-07-31T15:42:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-07T15:35:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-08-09T03:28:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-14T15:28:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-08-18T03:21:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-21T15:21:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-08-27T03:14:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-08-28T15:14:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-09-05T03:07:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-07T15:07:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "createdAt": "2026-09-14T03:00:00.000Z",
+        "placeName": "54 Mint Ristorante Italiano",
+        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+        "placePrimaryType": "italian_restaurant",
+        "placeTypes": [
+          "italian_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.782031,
+          "longitude": -122.407327
+        }
+      },
+      {
+        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "createdAt": "2026-09-14T15:00:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7823,
+          "longitude": -122.4076
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "tight fix, no history",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "blueBottle",
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "blueBottle",
+            "mall"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tight fix, coffee regular",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "coffeeRegular",
+      "expect": {
+        "top": "blueBottle",
+        "suggested": "blueBottle"
+      }
+    },
+    {
+      "name": "morning, regular at both",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "neighborhoodRegular",
+      "expect": {
+        "top": "blueBottle",
+        "rankedAbove": [
+          [
+            "blueBottle",
+            "fiftyFourMint"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "evening, regular at both",
+      "now": "2026-09-25T20:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "neighborhoodRegular",
+      "expect": {
+        "top": "fiftyFourMint",
+        "rankedAbove": [
+          [
+            "fiftyFourMint",
+            "blueBottle"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "coarse fix, no history",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 300,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null
+      }
+    }
+  ]
+}
