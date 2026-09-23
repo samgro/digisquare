@@ -1,0 +1,28 @@
+meta {
+  name: Clear Hometown (400)
+  type: http
+  seq: 10
+}
+
+patch {
+  url: {{baseUrl}}/users/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "hometown": null
+  }
+}
+
+docs {
+  Expect 400 with details.fieldErrors.hometown.
+
+  Every profile has a hometown, so unlike bio it cannot be cleared with null.
+  Send a new city to change it instead.
+}

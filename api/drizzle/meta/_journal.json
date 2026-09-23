@@ -43,6 +43,13 @@
       "when": 1790276252716,
       "tag": "0005_add_checkin_visibility_and_source",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1790283977688,
+      "tag": "0006_add_users_hometown",
+      "breakpoints": true
     }
   ]
 }

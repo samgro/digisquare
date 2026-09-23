@@ -17,7 +17,8 @@ auth:bearer {
 body:json {
   {
     "name": "Bruno Tester",
-    "bio": "Checking in from the terminal."
+    "bio": "Checking in from the terminal.",
+    "hometown": "Truckee, CA"
   }
 }
 
@@ -27,8 +28,9 @@ docs {
 
   Passing null clears a field: {"bio": null} removes the bio, and
   {"avatarKey": null} removes the photo. Omitting a field leaves it alone,
-  which is a different thing from sending null.
+  which is a different thing from sending null. hometown is the exception:
+  it is required, so it can be changed but not cleared.
 
-  iOS sends name, bio and avatarKey together in one request after an avatar
+  iOS sends name, bio, hometown and avatarKey together in one request after an avatar
   upload, so a profile edit is a single write with one place for errors.
 }

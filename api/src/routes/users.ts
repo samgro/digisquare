@@ -20,6 +20,9 @@ const updateProfileSchema = z
     // something the user sees rather than discovers by being rejected.
     bio: z.string().trim().max(160).nullable(),
     avatarKey: z.string().trim().max(200).nullable(),
+    // Deliberately not nullable: every profile has a hometown, so it can be
+    // changed but never cleared.
+    hometown: z.string().trim().min(1).max(100),
   })
   .partial()
   .refine((data) => Object.keys(data).length > 0, {
