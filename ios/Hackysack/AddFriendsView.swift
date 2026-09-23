@@ -5,10 +5,9 @@
 
 import SwiftUI
 
-/// Finds people by name and sends friend requests. Presented as a sheet from
-/// the Friends tab.
+/// Finds people by name and sends friend requests. Pushed onto the Friends
+/// tab's navigation stack.
 struct AddFriendsView: View {
-    @Environment(\.dismiss) private var dismiss
     @Environment(FriendsStore.self) private var friendsStore
 
     @State private var searchText = ""
@@ -20,7 +19,7 @@ struct AddFriendsView: View {
     @State private var searchTask: Task<Void, Never>?
     @State private var busyUserIds: Set<String> = []
     @State private var selectedUser: UserSummary?
-    /// Starts out true so the keyboard comes up with the sheet.
+    /// Starts out true so the keyboard comes up with the push.
     @State private var isSearchFieldFocused = true
 
     private let friendsAPI = FriendsAPI()
@@ -32,39 +31,38 @@ struct AddFriendsView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            // The ZStack gives the header one identity. Attached straight to
-            // `content`, it would be rebuilt with each branch, recreating the
-            // search field every time the results change.
-            ZStack {
-                content
+        // The ZStack gives the header one identity. Attached straight to
+        // `content`, it would be rebuilt with each branch, recreating the
+        // search field every time the results change.
+        ZStack {
+            content
+        }
+        .navigationTitle("Add Friends")
+        .navigationBarTitleDisplayMode(.inline)
+        // A custom header rather than `.searchable`, which only activates
+        // once the push has finished, so the field and keyboard would
+        // visibly arrive in a second step.
+        .safeAreaInset(edge: .top) {
+            header
+        }
+        .onChange(of: searchText) {
+            searchTask?.cancel()
+            searchTask = Task {
+                try? await Task.sleep(for: .milliseconds(300))
+                guard !Task.isCancelled else { return }
+                await search()
             }
-            // A custom header rather than `.searchable`, which only
-            // activates once the sheet has finished sliding up, so the
-            // field and keyboard would visibly arrive in a second step.
-            .toolbar(.hidden, for: .navigationBar)
-            .safeAreaInset(edge: .top) {
-                header
-            }
-            .onChange(of: searchText) {
-                searchTask?.cancel()
-                searchTask = Task {
-                    try? await Task.sleep(for: .milliseconds(300))
-                    guard !Task.isCancelled else { return }
-                    await search()
-                }
-            }
-            .navigationDestination(item: $selectedUser) { user in
-                UserProfileView(user: user)
-            }
-            // Refreshes the row after acting on someone from their
-            // profile, e.g. adding them there, and brings the keyboard
-            // back so typing can carry on.
-            .onChange(of: selectedUser) { _, newUser in
-                if newUser == nil {
-                    isSearchFieldFocused = true
-                    Task { await search() }
-                }
+        }
+        .navigationDestination(item: $selectedUser) { user in
+            UserProfileView(user: user)
+        }
+        // Refreshes the row after acting on someone from their profile,
+        // e.g. adding them there, and brings the keyboard back so typing
+        // can carry on.
+        .onChange(of: selectedUser) { _, newUser in
+            if newUser == nil {
+                isSearchFieldFocused = true
+                Task { await search() }
             }
         }
     }
@@ -72,43 +70,29 @@ struct AddFriendsView: View {
     // MARK: Content
 
     private var header: some View {
-        GlassEffectContainer {
-            HStack(spacing: 12) {
-                HStack(spacing: 8) {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(.secondary)
-                    AutofocusSearchField(
-                        text: $searchText,
-                        isFocused: $isSearchFieldFocused,
-                        prompt: "Search by name"
-                    )
-                    // Full height so the clear button can have a 44pt tap
-                    // target, which also stands in for trailing padding.
-                    .frame(maxHeight: .infinity)
-                }
-                .padding(.leading, 16)
-                .padding(.trailing, 2)
-                .frame(height: 48)
-                .contentShape(Capsule())
-                .onTapGesture {
-                    isSearchFieldFocused = true
-                }
-                .glassEffect(.regular.interactive(), in: .capsule)
-
-                Button {
-                    dismiss()
-                } label: {
-                    Label("Close", systemImage: "xmark")
-                        .labelStyle(.iconOnly)
-                        .frame(width: 32, height: 32)
-                }
-                .buttonStyle(.glass)
-                .buttonBorderShape(.circle)
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 12)
-            .padding(.bottom, 8)
+        HStack(spacing: 8) {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(.secondary)
+            AutofocusSearchField(
+                text: $searchText,
+                isFocused: $isSearchFieldFocused,
+                prompt: "Search by name"
+            )
+            // Full height so the clear button can have a 44pt tap target,
+            // which also stands in for trailing padding.
+            .frame(maxHeight: .infinity)
         }
+        .padding(.leading, 16)
+        .padding(.trailing, 2)
+        .frame(height: 48)
+        .contentShape(Capsule())
+        .onTapGesture {
+            isSearchFieldFocused = true
+        }
+        .glassEffect(.regular.interactive(), in: .capsule)
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
+        .padding(.bottom, 8)
     }
 
     @ViewBuilder
@@ -265,7 +249,9 @@ struct AddFriendsView: View {
 }
 
 #Preview {
-    AddFriendsView()
-        .environment(FriendsStore())
-        .environment(AuthManager())
+    NavigationStack {
+        AddFriendsView()
+    }
+    .environment(FriendsStore())
+    .environment(AuthManager())
 }

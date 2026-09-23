@@ -28,7 +28,7 @@ struct FriendsView: View {
                     }
                 }
             }
-            .sheet(isPresented: $isAddingFriends) {
+            .navigationDestination(isPresented: $isAddingFriends) {
                 AddFriendsView()
             }
             .navigationDestination(item: $selectedUser) { user in
