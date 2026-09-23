@@ -77,6 +77,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
 
+    /// A single fix, for callers that need to know roughly where the user is
+    /// once (profile setup's hometown prefill) rather than a running stream.
+    /// Arrives through didUpdateLocations like any other update.
+    func requestLocation() {
+        DevLog.location("requestLocation (status: \(locationManager.authorizationStatus.debugName))")
+        locationManager.requestLocation()
+    }
+
     func stopUpdatingLocation() {
         DevLog.location("stopUpdatingLocation")
         locationManager.stopUpdatingLocation()

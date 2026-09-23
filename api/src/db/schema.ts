@@ -35,7 +35,7 @@ export const users = pgTable(
 
     // Nullable because Apple returns fullName only on the very first
     // authorization; a user who reinstalls before we persist it arrives
-    // without one, and NameSetupView collects it.
+    // without one, and the profile setup screen collects it.
     name: text("name"),
     bio: text("bio"),
     // R2 object key. Never returned to clients — user-result.ts maps it to a

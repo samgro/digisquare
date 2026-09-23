@@ -24,6 +24,8 @@ enum HackysackSize {
     /// button and our own buttons line up on the welcome screen.
     static let controlHeight: CGFloat = 50
     static let avatarLarge: CGFloat = 96
+    /// The profile header and the photo at the top of Edit Profile.
+    static let avatarHero: CGFloat = 112
     static let avatarSmall: CGFloat = 40
 }
 

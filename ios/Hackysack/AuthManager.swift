@@ -12,8 +12,10 @@ enum AuthState: Equatable {
     /// the first body evaluation.
     case launching
     case signedOut
-    /// Signed in, but with no display name. Reached when Apple withheld
-    /// fullName, which it does on every authorization after the first.
+    /// Signed in, but missing a required profile field: no display name
+    /// (Apple withholds fullName on every authorization after the first) or
+    /// no hometown (every brand new account, which is how signup leads into
+    /// profile setup).
     case needsProfileSetup(UserProfile)
     case signedIn(UserProfile)
 }
@@ -59,12 +61,22 @@ final class AuthManager {
 
         if isKeychainLocked {
             Task { await retryKeychainLoad() }
+        } else {
+            refreshIfProfileLooksIncomplete()
         }
     }
 
+    /// A profile cached before hometown existed decodes with no hometown, so
+    /// an existing user would be held on profile setup even though the server
+    /// has theirs. Ask the server before believing the cache; if it really is
+    /// incomplete, nothing changes and setup stays up.
+    private func refreshIfProfileLooksIncomplete() {
+        guard case .needsProfileSetup = state else { return }
+        Task { await refreshProfile() }
+    }
+
     private static func stateFor(_ profile: UserProfile) -> AuthState {
-        let trimmedName = profile.name?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        return trimmedName.isEmpty ? .needsProfileSetup(profile) : .signedIn(profile)
+        profile.isMissingRequiredFields ? .needsProfileSetup(profile) : .signedIn(profile)
     }
 
     private func retryKeychainLoad() async {
@@ -74,6 +86,7 @@ final class AuthManager {
                 let stored = try KeychainStore.load()
                 await sessionStore.seed(stored)
                 applyCredentials(stored)
+                refreshIfProfileLooksIncomplete()
                 return
             } catch KeychainError.interactionNotAllowed {
                 continue
@@ -163,7 +176,7 @@ final class AuthManager {
         await adopt(response)
     }
 
-    /// Creates a test user with no name, which lands in NameSetupView just as
+    /// Creates a test user with no name, which lands in profile setup just as
     /// a brand-new Apple account does.
     func createTestUser() async throws {
         let response: AuthResponse = try await APIClient.shared.request(
@@ -222,15 +235,17 @@ final class AuthManager {
     func updateProfile(
         name: ProfileFieldUpdate,
         bio: ProfileFieldUpdate,
-        avatarKey: ProfileFieldUpdate
+        avatarKey: ProfileFieldUpdate,
+        hometown: ProfileFieldUpdate
     ) async throws {
         struct UpdateRequest: Encodable {
             let name: ProfileFieldUpdate
             let bio: ProfileFieldUpdate
             let avatarKey: ProfileFieldUpdate
+            let hometown: ProfileFieldUpdate
 
             enum CodingKeys: String, CodingKey {
-                case name, bio, avatarKey
+                case name, bio, avatarKey, hometown
             }
 
             // Written by hand because the synthesized conformance uses
@@ -243,13 +258,14 @@ final class AuthManager {
                 try name.encode(into: &container, forKey: .name)
                 try bio.encode(into: &container, forKey: .bio)
                 try avatarKey.encode(into: &container, forKey: .avatarKey)
+                try hometown.encode(into: &container, forKey: .hometown)
             }
         }
 
         let profile: UserProfile = try await APIClient.shared.request(
             method: "PATCH",
             path: "users/me",
-            body: UpdateRequest(name: name, bio: bio, avatarKey: avatarKey)
+            body: UpdateRequest(name: name, bio: bio, avatarKey: avatarKey, hometown: hometown)
         )
         await sessionStore.updateProfile(profile)
     }

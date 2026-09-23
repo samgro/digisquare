@@ -26,7 +26,9 @@ struct RootView: View {
                 .transition(.opacity)
 
         case .needsProfileSetup:
-            NameSetupView()
+            // Every new account lands here, because none has a hometown yet,
+            // as does anyone Apple withheld a name for.
+            EditProfileView(purpose: .setup)
                 .transition(.opacity)
 
         case .signedIn:
