@@ -57,6 +57,10 @@ struct ContentView: View {
             // Keeps the timeline pointed at the right account if the signed-in
             // user changes underneath this view.
             checkinStore.currentUserId = newUserId
+            // A fresh store, so the Profile badge and Friends feed never show
+            // the previous account's requests or friends.
+            friendsStore = FriendsStore()
+            Task { await friendsStore.loadRequests() }
         }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {

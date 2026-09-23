@@ -40,10 +40,9 @@ final class FriendsStore {
             // Both are assigned together, so an empty feed is never shown
             // against a stale friends list or the other way round, which
             // would pick the wrong empty state.
-            let loadedFriends = try await friendsAPI.friends()
-            let loadedFeed = try await friendsAPI.friendCheckins()
-            friends = loadedFriends
-            feed = loadedFeed
+            async let loadedFriends = friendsAPI.friends()
+            async let loadedFeed = friendsAPI.friendCheckins()
+            (friends, feed) = try await (loadedFriends, loadedFeed)
             feedError = nil
         } catch {
             feedError = error.localizedDescription
