@@ -1,371 +1,15 @@
 {
   "schemaVersion": 1,
   "name": "truckee-town-hall",
-  "description": "Standing outside the council chambers at Truckee Town Hall. It is the only venue inside the accuracy circle; every popular place is hundreds of meters away.",
-  "recordedAt": null,
+  "description": "Standing outside the council chambers at Truckee Town Hall. Google lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
+  "recordedAt": "2026-09-23T23:08:33.777Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
-    "latitude": 39.323308,
-    "longitude": -120.165326,
+    "latitude": 39.316962,
+    "longitude": -120.146008,
     "horizontalAccuracy": 30
   },
   "google": {
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 39.323308,
-              "longitude": -120.165326
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "handauthored-truckee-town-hall-town-hall",
-            "displayName": {
-              "text": "Truckee Town Hall",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3232,
-              "longitude": -120.1655
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.32185,
-                "longitude": -120.16685
-              },
-              "high": {
-                "latitude": 39.32455,
-                "longitude": -120.16415
-              }
-            },
-            "types": [
-              "city_hall",
-              "local_government_office",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "city_hall",
-            "rating": 4.2,
-            "userRatingCount": 38
-          },
-          {
-            "id": "handauthored-truckee-town-hall-town-hall-parking",
-            "displayName": {
-              "text": "Town Hall Parking Lot",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.323469,
-              "longitude": -120.165036
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.322119,
-                "longitude": -120.166386
-              },
-              "high": {
-                "latitude": 39.324819,
-                "longitude": -120.163686
-              }
-            },
-            "types": [
-              "parking",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "parking"
-          },
-          {
-            "id": "handauthored-truckee-town-hall-police",
-            "displayName": {
-              "text": "Truckee Police Department",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.322347,
-              "longitude": -120.164455
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.320997,
-                "longitude": -120.165805
-              },
-              "high": {
-                "latitude": 39.323697,
-                "longitude": -120.163105
-              }
-            },
-            "types": [
-              "police",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "police",
-            "rating": 3.9,
-            "userRatingCount": 27
-          },
-          {
-            "id": "handauthored-truckee-town-hall-bus-stop",
-            "displayName": {
-              "text": "Truckee Airport Rd & Brockway Rd",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.323739,
-              "longitude": -120.167706
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.322389,
-                "longitude": -120.169056
-              },
-              "high": {
-                "latitude": 39.325089,
-                "longitude": -120.166356
-              }
-            },
-            "types": [
-              "bus_stop",
-              "transit_station",
-              "point_of_interest"
-            ],
-            "primaryType": "bus_stop"
-          },
-          {
-            "id": "handauthored-truckee-town-hall-sanitation",
-            "displayName": {
-              "text": "Tahoe-Truckee Sanitation Agency",
-              "languageCode": "en"
-            },
-            "formattedAddress": "13720 Butterfield Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.324458,
-              "longitude": -120.163061
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.323108,
-                "longitude": -120.164411
-              },
-              "high": {
-                "latitude": 39.325808,
-                "longitude": -120.161711
-              }
-            },
-            "types": [
-              "local_government_office",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "local_government_office",
-            "rating": 4,
-            "userRatingCount": 6
-          },
-          {
-            "id": "handauthored-truckee-town-hall-full-belly",
-            "displayName": {
-              "text": "Full Belly Deli",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10825 Pioneer Trail, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.325536,
-              "longitude": -120.169332
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.324186,
-                "longitude": -120.170682
-              },
-              "high": {
-                "latitude": 39.326886,
-                "longitude": -120.167982
-              }
-            },
-            "types": [
-              "deli",
-              "sandwich_shop",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "deli",
-            "rating": 4.7,
-            "userRatingCount": 1289
-          },
-          {
-            "id": "handauthored-truckee-town-hall-regional-park",
-            "displayName": {
-              "text": "Truckee River Regional Park",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10500 Brockway Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.324547,
-              "longitude": -120.172003
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3222114,
-                "longitude": -120.175719
-              },
-              "high": {
-                "latitude": 39.3268826,
-                "longitude": -120.168287
-              }
-            },
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "park",
-            "rating": 4.7,
-            "userRatingCount": 712
-          },
-          {
-            "id": "handauthored-truckee-town-hall-rec-center",
-            "displayName": {
-              "text": "Truckee Community Recreation Center",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10981 Truckee Way, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.326973,
-              "longitude": -120.171074
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.325623,
-                "longitude": -120.172424
-              },
-              "high": {
-                "latitude": 39.328323,
-                "longitude": -120.169724
-              }
-            },
-            "types": [
-              "community_center",
-              "gym",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "community_center",
-            "rating": 4.6,
-            "userRatingCount": 214
-          },
-          {
-            "id": "handauthored-truckee-town-hall-fiftyfifty",
-            "displayName": {
-              "text": "FiftyFifty Brewing Co.",
-              "languageCode": "en"
-            },
-            "formattedAddress": "11197 Brockway Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.327063,
-              "longitude": -120.180015
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.325713,
-                "longitude": -120.181365
-              },
-              "high": {
-                "latitude": 39.328413,
-                "longitude": -120.178665
-              }
-            },
-            "types": [
-              "brewery",
-              "bar",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "brewery",
-            "rating": 4.6,
-            "userRatingCount": 2487
-          },
-          {
-            "id": "handauthored-truckee-town-hall-airport",
-            "displayName": {
-              "text": "Truckee Tahoe Airport",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.320325,
-              "longitude": -120.149823
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3153843,
-                "longitude": -120.1637572
-              },
-              "high": {
-                "latitude": 39.3252657,
-                "longitude": -120.1358888
-              }
-            },
-            "types": [
-              "airport",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "airport",
-            "rating": 4.6,
-            "userRatingCount": 318
-          },
-          {
-            "id": "handauthored-truckee-town-hall-sunrise-cafe",
-            "displayName": {
-              "text": "Marg's Taco Bistro",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10186 Donner Pass Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.331285,
-              "longitude": -120.178274
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.329935,
-                "longitude": -120.179624
-              },
-              "high": {
-                "latitude": 39.332635,
-                "longitude": -120.176924
-              }
-            },
-            "types": [
-              "mexican_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "mexican_restaurant",
-            "rating": 4.5,
-            "userRatingCount": 1044
-          }
-        ]
-      }
-    },
     "popularity": {
       "request": {
         "maxResultCount": 20,
@@ -373,8 +17,8 @@
         "locationRestriction": {
           "circle": {
             "center": {
-              "latitude": 39.323308,
-              "longitude": -120.165326
+              "latitude": 39.316962,
+              "longitude": -120.146008
             },
             "radius": 2500
           }
@@ -383,285 +27,1282 @@
       "response": {
         "places": [
           {
-            "id": "handauthored-truckee-town-hall-fiftyfifty",
-            "displayName": {
-              "text": "FiftyFifty Brewing Co.",
-              "languageCode": "en"
-            },
-            "formattedAddress": "11197 Brockway Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.327063,
-              "longitude": -120.180015
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.325713,
-                "longitude": -120.181365
-              },
-              "high": {
-                "latitude": 39.328413,
-                "longitude": -120.178665
-              }
-            },
+            "id": "ChIJA1EBJzhhmYARkzmG8Y7MJPA",
             "types": [
-              "brewery",
-              "bar",
-              "restaurant",
+              "grocery_store",
+              "food_store",
+              "store",
               "food",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "brewery",
-            "rating": 4.6,
-            "userRatingCount": 2487
+            "formattedAddress": "10001 Soaring Way, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3195798,
+              "longitude": -120.1552003
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3183923197085,
+                "longitude": -120.1565962302915
+              },
+              "high": {
+                "latitude": 39.32109028029149,
+                "longitude": -120.15389826970852
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 368,
+            "displayName": {
+              "text": "Raley’s O-N-E Market",
+              "languageCode": "en"
+            },
+            "primaryType": "grocery_store"
           },
           {
-            "id": "handauthored-truckee-town-hall-full-belly",
-            "displayName": {
-              "text": "Full Belly Deli",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10825 Pioneer Trail, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.325536,
-              "longitude": -120.169332
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.324186,
-                "longitude": -120.170682
-              },
-              "high": {
-                "latitude": 39.326886,
-                "longitude": -120.167982
-              }
-            },
+            "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
             "types": [
-              "deli",
-              "sandwich_shop",
-              "restaurant",
-              "food",
+              "airport",
+              "transportation_service",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "deli",
-            "rating": 4.7,
-            "userRatingCount": 1289
-          },
-          {
-            "id": "handauthored-truckee-town-hall-sunrise-cafe",
-            "displayName": {
-              "text": "Marg's Taco Bistro",
-              "languageCode": "en"
-            },
-            "formattedAddress": "10186 Donner Pass Rd, Truckee, CA 96161, USA",
+            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
             "location": {
-              "latitude": 39.331285,
-              "longitude": -120.178274
+              "latitude": 39.3195165,
+              "longitude": -120.14499269999999
             },
             "viewport": {
               "low": {
-                "latitude": 39.329935,
-                "longitude": -120.179624
+                "latitude": 39.317974569708504,
+                "longitude": -120.1465016302915
               },
               "high": {
-                "latitude": 39.332635,
-                "longitude": -120.176924
+                "latitude": 39.3206725302915,
+                "longitude": -120.14380366970852
               }
             },
-            "types": [
-              "mexican_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "mexican_restaurant",
             "rating": 4.5,
-            "userRatingCount": 1044
-          },
-          {
-            "id": "handauthored-truckee-town-hall-regional-park",
+            "userRatingCount": 93,
             "displayName": {
-              "text": "Truckee River Regional Park",
+              "text": "Truckee Tahoe Airport",
               "languageCode": "en"
             },
-            "formattedAddress": "10500 Brockway Rd, Truckee, CA 96161, USA",
+            "primaryType": "airport"
+          },
+          {
+            "id": "ChIJb2IosCxgmYARVROuggWwk44",
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "11951 CA-267, Truckee, CA 96161, USA",
             "location": {
-              "latitude": 39.324547,
-              "longitude": -120.172003
+              "latitude": 39.31774240000001,
+              "longitude": -120.1523906
             },
             "viewport": {
               "low": {
-                "latitude": 39.3222114,
-                "longitude": -120.175719
+                "latitude": 39.3162962697085,
+                "longitude": -120.15373403029149
               },
               "high": {
-                "latitude": 39.3268826,
-                "longitude": -120.168287
+                "latitude": 39.3189942302915,
+                "longitude": -120.15103606970851
               }
             },
+            "rating": 4.2,
+            "userRatingCount": 803,
+            "displayName": {
+              "text": "Martis Valley Lodge , Tapestry Collection by Hilton",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJpda5AYffm4ARhX3Bq2N_ho0",
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "11331 Brockway Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.321522,
+              "longitude": -120.161735
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3198861197085,
+                "longitude": -120.16302578029149
+              },
+              "high": {
+                "latitude": 39.3225840802915,
+                "longitude": -120.16032781970851
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 922,
+            "displayName": {
+              "text": "Best Western Plus Truckee-Tahoe Hotel",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJc37rNI7fm4AR8ZDMTpil_Bg",
+            "types": [
+              "hotel",
+              "coworking_space",
+              "gym",
+              "sports_activity_location",
+              "lodging",
+              "health",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10918 Brockway Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.323987599999995,
+              "longitude": -120.1700545
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3227033697085,
+                "longitude": -120.17112718029148
+              },
+              "high": {
+                "latitude": 39.3254013302915,
+                "longitude": -120.1684292197085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 621,
+            "displayName": {
+              "text": "Gravity Haus Truckee-Tahoe",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJPS-uXobfm4AR_0v7RfcQbGU",
+            "types": [
+              "sushi_restaurant",
+              "bar",
+              "japanese_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "11253 Brockway Rd Ste 105, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3217189,
+              "longitude": -120.1629122
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.32028261970851,
+                "longitude": -120.16411178029149
+              },
+              "high": {
+                "latitude": 39.32298058029151,
+                "longitude": -120.1614138197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 1017,
+            "displayName": {
+              "text": "Drunken Monkey Sushi",
+              "languageCode": "en"
+            },
+            "primaryType": "sushi_restaurant"
+          },
+          {
+            "id": "ChIJwV8K_7NhmYARLGJIcuWH7Jg",
+            "types": [
+              "restaurant",
+              "vegan_restaurant",
+              "vegetarian_restaurant",
+              "japanese_restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10001 Soaring Way Ste 160, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3198177,
+              "longitude": -120.15418859999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3184213197085,
+                "longitude": -120.1555214802915
+              },
+              "high": {
+                "latitude": 39.3211192802915,
+                "longitude": -120.1528235197085
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 272,
+            "displayName": {
+              "text": "RAKKAN Ramen - Truckee",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJjdFAEvphmYARxmkNO4FxSTc",
+            "types": [
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10001 Soaring Way Unit a suite 110, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3200248,
+              "longitude": -120.1545103
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3186280197085,
+                "longitude": -120.15597558029148
+              },
+              "high": {
+                "latitude": 39.3213259802915,
+                "longitude": -120.1532776197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 203,
+            "displayName": {
+              "text": "Truckee Brewing Company",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJS_GO74bfm4ARZ92Ws6DxAnA",
+            "types": [
+              "dentist",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10021 Martis Valley Rd Ste b, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.320956599999995,
+              "longitude": -120.1626659
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.31958976970849,
+                "longitude": -120.16412483029148
+              },
+              "high": {
+                "latitude": 39.32228773029149,
+                "longitude": -120.1614268697085
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 20,
+            "displayName": {
+              "text": "West Orthodontics - Jerad West, DDS",
+              "languageCode": "en"
+            },
+            "primaryType": "dentist"
+          },
+          {
+            "id": "ChIJn8x9smTfm4ARyHcuXHkyLWA",
+            "types": [
+              "sports_club",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "9000 Heartwood Dr, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3051824,
+              "longitude": -120.16422169999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.303864519708505,
+                "longitude": -120.16553993029149
+              },
+              "high": {
+                "latitude": 39.306562480291504,
+                "longitude": -120.1628419697085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 103,
+            "displayName": {
+              "text": "Schaffer's Mill",
+              "languageCode": "en"
+            },
+            "primaryType": "sports_club"
+          },
+          {
+            "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
             "types": [
               "park",
               "tourist_attraction",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "park",
+            "formattedAddress": "12200 Joerger Dr, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3292632,
+              "longitude": -120.15625539999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.32800211970851,
+                "longitude": -120.15758223029148
+              },
+              "high": {
+                "latitude": 39.3307000802915,
+                "longitude": -120.1548842697085
+              }
+            },
             "rating": 4.7,
-            "userRatingCount": 712
-          },
-          {
-            "id": "handauthored-truckee-town-hall-airport",
+            "userRatingCount": 167,
             "displayName": {
-              "text": "Truckee Tahoe Airport",
+              "text": "Riverview Sports Park",
               "languageCode": "en"
             },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJ42ZPWIbfm4AR08GHnWjbwuQ",
+            "types": [
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "11253 Brockway Rd #101, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3219261,
+              "longitude": -120.16265920000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3205666197085,
+                "longitude": -120.16392473029151
+              },
+              "high": {
+                "latitude": 39.3232645802915,
+                "longitude": -120.16122676970852
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 339,
+            "displayName": {
+              "text": "Thai Delicacy",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJAQDcTdNhmYARPxJpbomkak8",
+            "types": [
+              "gas_station",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "11991 CA-267, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316964299999995,
+              "longitude": -120.1523223
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3156496697085,
+                "longitude": -120.15376153029149
+              },
+              "high": {
+                "latitude": 39.31834763029149,
+                "longitude": -120.1510635697085
+              }
+            },
+            "rating": 3.2,
+            "userRatingCount": 9,
+            "displayName": {
+              "text": "Chevron",
+              "languageCode": "en"
+            },
+            "primaryType": "gas_station"
+          },
+          {
+            "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
+            "types": [
+              "park",
+              "non_profit_organization",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "12200 Joerger Dr, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3298561,
+              "longitude": -120.1572441
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.32828206970851,
+                "longitude": -120.1584364802915
+              },
+              "high": {
+                "latitude": 39.33098003029151,
+                "longitude": -120.1557385197085
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 115,
+            "displayName": {
+              "text": "Riverview Bike Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJtQw5YMlhmYARwZ02ZDwEeSg",
+            "types": [
+              "sports_club",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "12700 Lodge Trail Dr, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.2947275,
+              "longitude": -120.15034430000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.2934151697085,
+                "longitude": -120.15185563029151
+              },
+              "high": {
+                "latitude": 39.2961131302915,
+                "longitude": -120.14915766970852
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 46,
+            "displayName": {
+              "text": "Lahontan Golf Club",
+              "languageCode": "en"
+            },
+            "primaryType": "sports_club"
+          },
+          {
+            "id": "ChIJcSAJVZBhmYARzgK_2BUwZdU",
+            "types": [
+              "hardware_store",
+              "building_materials_store",
+              "home_improvement_store",
+              "home_goods_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10001 Soaring Way Ste 105, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3194482,
+              "longitude": -120.15496200000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3182358197085,
+                "longitude": -120.15624708029151
+              },
+              "high": {
+                "latitude": 39.3209337802915,
+                "longitude": -120.15354911970852
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 98,
+            "displayName": {
+              "text": "Mountain Hardware and Sports",
+              "languageCode": "en"
+            },
+            "primaryType": "hardware_store"
+          },
+          {
+            "id": "ChIJOzxbjSplmYARNTIOCWoatG4",
+            "types": [
+              "secondary_school",
+              "preschool",
+              "primary_school",
+              "child_care_agency",
+              "school",
+              "educational_institution",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "9765 Schaffer Mill Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3111114,
+              "longitude": -120.15542599999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.30982566970851,
+                "longitude": -120.15677213029149
+              },
+              "high": {
+                "latitude": 39.31252363029151,
+                "longitude": -120.15407416970851
+              }
+            },
+            "displayName": {
+              "text": "Tahoe Expedition Academy",
+              "languageCode": "en"
+            },
+            "primaryType": "school"
+          },
+          {
+            "id": "ChIJUUSZNp_fm4ARFEwei72V7tY",
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "11177 Brockway Rd Ste F101, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3224589,
+              "longitude": -120.16325289999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3210402197085,
+                "longitude": -120.16458773029149
+              },
+              "high": {
+                "latitude": 39.3237381802915,
+                "longitude": -120.16188976970851
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 171,
+            "displayName": {
+              "text": "Café Lupine",
+              "languageCode": "en"
+            },
+            "primaryType": "coffee_shop"
+          },
+          {
+            "id": "ChIJJ_USK81hmYAR2TCb91hi6SQ",
+            "types": [
+              "cafe",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
             "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
             "location": {
-              "latitude": 39.320325,
-              "longitude": -120.149823
+              "latitude": 39.319302400000005,
+              "longitude": -120.14503189999998
             },
             "viewport": {
               "low": {
-                "latitude": 39.3153843,
-                "longitude": -120.1637572
+                "latitude": 39.3178268197085,
+                "longitude": -120.1464591302915
               },
               "high": {
-                "latitude": 39.3252657,
-                "longitude": -120.1358888
+                "latitude": 39.3205247802915,
+                "longitude": -120.14376116970851
               }
             },
-            "types": [
-              "airport",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "airport",
-            "rating": 4.6,
-            "userRatingCount": 318
-          },
-          {
-            "id": "handauthored-truckee-town-hall-rec-center",
+            "rating": 4.7,
+            "userRatingCount": 296,
             "displayName": {
-              "text": "Truckee Community Recreation Center",
+              "text": "Red Truck",
               "languageCode": "en"
             },
-            "formattedAddress": "10981 Truckee Way, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.326973,
-              "longitude": -120.171074
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.325623,
-                "longitude": -120.172424
-              },
-              "high": {
-                "latitude": 39.328323,
-                "longitude": -120.169724
-              }
-            },
+            "primaryType": "cafe"
+          },
+          {
+            "id": "ChIJCWcYBKxhmYARWIyz-gWJIFo",
             "types": [
-              "community_center",
-              "gym",
+              "campground",
+              "lodging",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "community_center",
-            "rating": 4.6,
-            "userRatingCount": 214
-          },
-          {
-            "id": "handauthored-truckee-town-hall-town-hall",
+            "formattedAddress": "Alpine Meadow Camp, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3209662,
+              "longitude": -120.12234029999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.319457469708496,
+                "longitude": -120.12361408029147
+              },
+              "high": {
+                "latitude": 39.322155430291495,
+                "longitude": -120.12091611970848
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 47,
             "displayName": {
-              "text": "Truckee Town Hall",
+              "text": "Alpine Meadow Campground",
               "languageCode": "en"
             },
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "primaryType": "campground"
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 39.316962,
+              "longitude": -120.146008
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
+            "types": [
+              "government_office",
+              "police",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, USA",
             "location": {
-              "latitude": 39.3232,
-              "longitude": -120.1655
+              "latitude": 39.3168657,
+              "longitude": -120.14598459999999
             },
             "viewport": {
               "low": {
-                "latitude": 39.32185,
-                "longitude": -120.16685
+                "latitude": 39.315632619708495,
+                "longitude": -120.14746868029148
               },
               "high": {
-                "latitude": 39.32455,
-                "longitude": -120.16415
+                "latitude": 39.318330580291494,
+                "longitude": -120.1447707197085
               }
             },
-            "types": [
-              "city_hall",
-              "local_government_office",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "city_hall",
-            "rating": 4.2,
-            "userRatingCount": 38
-          },
-          {
-            "id": "handauthored-truckee-town-hall-police",
+            "rating": 3.8,
+            "userRatingCount": 27,
             "displayName": {
               "text": "Truckee Police Department",
               "languageCode": "en"
             },
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.322347,
-              "longitude": -120.164455
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.320997,
-                "longitude": -120.165805
-              },
-              "high": {
-                "latitude": 39.323697,
-                "longitude": -120.163105
-              }
-            },
-            "types": [
-              "police",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "police",
-            "rating": 3.9,
-            "userRatingCount": 27
+            "primaryType": "government_office"
           },
           {
-            "id": "handauthored-truckee-town-hall-sanitation",
-            "displayName": {
-              "text": "Tahoe-Truckee Sanitation Agency",
-              "languageCode": "en"
-            },
-            "formattedAddress": "13720 Butterfield Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.324458,
-              "longitude": -120.163061
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.323108,
-                "longitude": -120.164411
-              },
-              "high": {
-                "latitude": 39.325808,
-                "longitude": -120.161711
-              }
-            },
+            "id": "ChIJoaqkkXVhmYAR81eoce-A2Bk",
             "types": [
-              "local_government_office",
+              "government_office",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "local_government_office",
-            "rating": 4,
-            "userRatingCount": 6
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Keep Truckee Green",
+              "languageCode": "en"
+            },
+            "primaryType": "government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARUf0DzdWiRbk",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Truckee Engineering Department",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJe_1ZJbjfm4ARkLzrF8ghx3Y",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "rating": 3.7,
+            "userRatingCount": 3,
+            "displayName": {
+              "text": "Truckee Planning Department",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARB6TjIBwaSoM",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Truckee Town Redevelopment",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARUtBhW1WNhpQ",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Truckee Town Human Resources",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARrExesWHRIQA",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Truckee Town Engineer",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARmm3dcVwxJhY",
+            "types": [
+              "general_contractor",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Public Works Department",
+              "languageCode": "en"
+            },
+            "primaryType": "general_contractor"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYAR2psVNlEPYb4",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Truckee Encroachment Permits",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARPxUgkLaIUVA",
+            "types": [
+              "accounting",
+              "finance",
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Finance Department",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARuW7aywQ2t94",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316905399999996,
+              "longitude": -120.1461501
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315622769708504,
+                "longitude": -120.1476433802915
+              },
+              "high": {
+                "latitude": 39.318320730291504,
+                "longitude": -120.1449454197085
+              }
+            },
+            "displayName": {
+              "text": "Truckee Town Facilities",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+            "types": [
+              "city_hall",
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.31685470000001,
+              "longitude": -120.1461822
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.31557321970851,
+                "longitude": -120.14767803029149
+              },
+              "high": {
+                "latitude": 39.31827118029151,
+                "longitude": -120.1449800697085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Truckee Town Hall & Town Clerk",
+              "languageCode": "en"
+            },
+            "primaryType": "city_hall"
+          },
+          {
+            "id": "ChIJuf3q4IphmYARYQ6NMwRJ73w",
+            "types": [
+              "consultant",
+              "association_or_organization",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3168007,
+              "longitude": -120.1462009
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315523069708505,
+                "longitude": -120.14770513029148
+              },
+              "high": {
+                "latitude": 39.3182210302915,
+                "longitude": -120.1450071697085
+              }
+            },
+            "rating": 3,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Truckee Chamber of Commerce - Administration Offices",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARhGSgf0nmIx8",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd #202, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3168007,
+              "longitude": -120.1462009
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.315523069708505,
+                "longitude": -120.14770513029148
+              },
+              "high": {
+                "latitude": 39.3182210302915,
+                "longitude": -120.1450071697085
+              }
+            },
+            "displayName": {
+              "text": "Truckee Town Code Compliance",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJqwSYds1hmYARkPz4Cxu8Ajk",
+            "types": [
+              "electric_vehicle_charging_station",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316798,
+              "longitude": -120.146344
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3154964197085,
+                "longitude": -120.1477961302915
+              },
+              "high": {
+                "latitude": 39.3181943802915,
+                "longitude": -120.1450981697085
+              }
+            },
+            "displayName": {
+              "text": "ChargePoint Charging Station",
+              "languageCode": "en"
+            },
+            "primaryType": "electric_vehicle_charging_station"
+          },
+          {
+            "id": "ChIJdfVNbs1hmYARMbjicKB-uPE",
+            "types": [
+              "bus_stop",
+              "transit_stop",
+              "transit_station",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3172465,
+              "longitude": -120.14646320000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.3159216697085,
+                "longitude": -120.14778883029147
+              },
+              "high": {
+                "latitude": 39.3186196302915,
+                "longitude": -120.14509086970848
+              }
+            },
+            "displayName": {
+              "text": "Airport Rd and Truckee Town Hall",
+              "languageCode": "en"
+            },
+            "primaryType": "bus_stop"
+          },
+          {
+            "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
+            "types": [
+              "fire_station",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10277 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3175662,
+              "longitude": -120.14602310000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.316137169708504,
+                "longitude": -120.1474220302915
+              },
+              "high": {
+                "latitude": 39.318835130291504,
+                "longitude": -120.1447240697085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 2,
+            "displayName": {
+              "text": "Truckee Fire Protection District Station 96",
+              "languageCode": "en"
+            },
+            "primaryType": "fire_station"
+          },
+          {
+            "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3175822,
+              "longitude": -120.1458042
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.316146319708494,
+                "longitude": -120.14696978029149
+              },
+              "high": {
+                "latitude": 39.31884428029149,
+                "longitude": -120.14427181970851
+              }
+            },
+            "displayName": {
+              "text": "Truckee Parking District",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJjxd7Dc1hmYARrlQyDTtBX1g",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.3175822,
+              "longitude": -120.1458042
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.316146319708494,
+                "longitude": -120.14696978029149
+              },
+              "high": {
+                "latitude": 39.31884428029149,
+                "longitude": -120.14427181970851
+              }
+            },
+            "displayName": {
+              "text": "Truckee Town Safety & Building",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJyZOme81hmYARH3HPxCwOCbU",
+            "types": [
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
+            "location": {
+              "latitude": 39.316849,
+              "longitude": -120.146902
+            },
+            "viewport": {
+              "low": {
+                "latitude": 39.31549416970851,
+                "longitude": -120.14823733029148
+              },
+              "high": {
+                "latitude": 39.3181921302915,
+                "longitude": -120.14553936970849
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 19,
+            "displayName": {
+              "text": "TRUCKEE FLIGHT TRAINING",
+              "languageCode": "en"
+            },
+            "primaryType": "educational_institution"
           }
         ]
       }
@@ -669,187 +1310,893 @@
   },
   "places": [
     {
-      "id": "handauthored-truckee-town-hall-town-hall",
-      "name": "Truckee Town Hall",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "id": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
+      "name": "Truckee Police Department",
+      "address": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.3232,
-        "longitude": -120.1655
+        "latitude": 39.3168657,
+        "longitude": -120.14598459999999
       },
       "viewport": {
         "low": {
-          "latitude": 39.32185,
-          "longitude": -120.16685
+          "latitude": 39.315632619708495,
+          "longitude": -120.14746868029148
         },
         "high": {
-          "latitude": 39.32455,
-          "longitude": -120.16415
+          "latitude": 39.318330580291494,
+          "longitude": -120.1447707197085
+        }
+      },
+      "types": [
+        "government_office",
+        "police",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "government_office",
+      "rating": 3.8,
+      "userRatingCount": 27
+    },
+    {
+      "id": "ChIJoaqkkXVhmYAR81eoce-A2Bk",
+      "name": "Keep Truckee Green",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "government_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARUf0DzdWiRbk",
+      "name": "Truckee Engineering Department",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJe_1ZJbjfm4ARkLzrF8ghx3Y",
+      "name": "Truckee Planning Department",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": 3.7,
+      "userRatingCount": 3
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARB6TjIBwaSoM",
+      "name": "Truckee Town Redevelopment",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "association_or_organization",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARUtBhW1WNhpQ",
+      "name": "Truckee Town Human Resources",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARrExesWHRIQA",
+      "name": "Truckee Town Engineer",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARmm3dcVwxJhY",
+      "name": "Public Works Department",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "general_contractor",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "general_contractor",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYAR2psVNlEPYb4",
+      "name": "Truckee Encroachment Permits",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARPxUgkLaIUVA",
+      "name": "Finance Department",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "accounting",
+        "finance",
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARuW7aywQ2t94",
+      "name": "Truckee Town Facilities",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316905399999996,
+        "longitude": -120.1461501
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315622769708504,
+          "longitude": -120.1476433802915
+        },
+        "high": {
+          "latitude": 39.318320730291504,
+          "longitude": -120.1449454197085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+      "name": "Truckee Town Hall & Town Clerk",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.31685470000001,
+        "longitude": -120.1461822
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.31557321970851,
+          "longitude": -120.14767803029149
+        },
+        "high": {
+          "latitude": 39.31827118029151,
+          "longitude": -120.1449800697085
         }
       },
       "types": [
         "city_hall",
         "local_government_office",
+        "government_office",
         "point_of_interest",
+        "service",
         "establishment"
       ],
       "primaryType": "city_hall",
-      "rating": 4.2,
-      "userRatingCount": 38
+      "rating": 5,
+      "userRatingCount": 1
     },
     {
-      "id": "handauthored-truckee-town-hall-town-hall-parking",
-      "name": "Town Hall Parking Lot",
-      "address": "Truckee Airport Rd, Truckee, CA 96161, USA",
+      "id": "ChIJuf3q4IphmYARYQ6NMwRJ73w",
+      "name": "Truckee Chamber of Commerce - Administration Offices",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.323469,
-        "longitude": -120.165036
+        "latitude": 39.3168007,
+        "longitude": -120.1462009
       },
       "viewport": {
         "low": {
-          "latitude": 39.322119,
-          "longitude": -120.166386
+          "latitude": 39.315523069708505,
+          "longitude": -120.14770513029148
         },
         "high": {
-          "latitude": 39.324819,
-          "longitude": -120.163686
+          "latitude": 39.3182210302915,
+          "longitude": -120.1450071697085
         }
       },
       "types": [
-        "parking",
+        "consultant",
+        "association_or_organization",
         "point_of_interest",
+        "service",
         "establishment"
       ],
-      "primaryType": "parking",
+      "primaryType": "association_or_organization",
+      "rating": 3,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJjxd7Dc1hmYARhGSgf0nmIx8",
+      "name": "Truckee Town Code Compliance",
+      "address": "10183 Truckee Airport Rd #202, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3168007,
+        "longitude": -120.1462009
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.315523069708505,
+          "longitude": -120.14770513029148
+        },
+        "high": {
+          "latitude": 39.3182210302915,
+          "longitude": -120.1450071697085
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
       "rating": null,
       "userRatingCount": null
     },
     {
-      "id": "handauthored-truckee-town-hall-police",
-      "name": "Truckee Police Department",
+      "id": "ChIJqwSYds1hmYARkPz4Cxu8Ajk",
+      "name": "ChargePoint Charging Station",
       "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.322347,
-        "longitude": -120.164455
+        "latitude": 39.316798,
+        "longitude": -120.146344
       },
       "viewport": {
         "low": {
-          "latitude": 39.320997,
-          "longitude": -120.165805
+          "latitude": 39.3154964197085,
+          "longitude": -120.1477961302915
         },
         "high": {
-          "latitude": 39.323697,
-          "longitude": -120.163105
+          "latitude": 39.3181943802915,
+          "longitude": -120.1450981697085
         }
       },
       "types": [
-        "police",
+        "electric_vehicle_charging_station",
+        "transportation_service",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "police",
-      "rating": 3.9,
-      "userRatingCount": 27
+      "primaryType": "electric_vehicle_charging_station",
+      "rating": null,
+      "userRatingCount": null
     },
     {
-      "id": "handauthored-truckee-town-hall-bus-stop",
-      "name": "Truckee Airport Rd & Brockway Rd",
+      "id": "ChIJdfVNbs1hmYARMbjicKB-uPE",
+      "name": "Airport Rd and Truckee Town Hall",
       "address": "Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.323739,
-        "longitude": -120.167706
+        "latitude": 39.3172465,
+        "longitude": -120.14646320000001
       },
       "viewport": {
         "low": {
-          "latitude": 39.322389,
-          "longitude": -120.169056
+          "latitude": 39.3159216697085,
+          "longitude": -120.14778883029147
         },
         "high": {
-          "latitude": 39.325089,
-          "longitude": -120.166356
+          "latitude": 39.3186196302915,
+          "longitude": -120.14509086970848
         }
       },
       "types": [
         "bus_stop",
+        "transit_stop",
         "transit_station",
-        "point_of_interest"
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
       ],
       "primaryType": "bus_stop",
       "rating": null,
       "userRatingCount": null
     },
     {
-      "id": "handauthored-truckee-town-hall-sanitation",
-      "name": "Tahoe-Truckee Sanitation Agency",
-      "address": "13720 Butterfield Dr, Truckee, CA 96161, USA",
+      "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
+      "name": "Truckee Fire Protection District Station 96",
+      "address": "10277 Truckee Airport Rd, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.324458,
-        "longitude": -120.163061
+        "latitude": 39.3175662,
+        "longitude": -120.14602310000001
       },
       "viewport": {
         "low": {
-          "latitude": 39.323108,
-          "longitude": -120.164411
+          "latitude": 39.316137169708504,
+          "longitude": -120.1474220302915
         },
         "high": {
-          "latitude": 39.325808,
-          "longitude": -120.161711
+          "latitude": 39.318835130291504,
+          "longitude": -120.1447240697085
+        }
+      },
+      "types": [
+        "fire_station",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "fire_station",
+      "rating": 5,
+      "userRatingCount": 2
+    },
+    {
+      "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
+      "name": "Truckee Parking District",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3175822,
+        "longitude": -120.1458042
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.316146319708494,
+          "longitude": -120.14696978029149
+        },
+        "high": {
+          "latitude": 39.31884428029149,
+          "longitude": -120.14427181970851
         }
       },
       "types": [
         "local_government_office",
+        "government_office",
         "point_of_interest",
+        "service",
         "establishment"
       ],
       "primaryType": "local_government_office",
-      "rating": 4,
-      "userRatingCount": 6
+      "rating": null,
+      "userRatingCount": null
     },
     {
-      "id": "handauthored-truckee-town-hall-full-belly",
-      "name": "Full Belly Deli",
-      "address": "10825 Pioneer Trail, Truckee, CA 96161, USA",
+      "id": "ChIJjxd7Dc1hmYARrlQyDTtBX1g",
+      "name": "Truckee Town Safety & Building",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.325536,
-        "longitude": -120.169332
+        "latitude": 39.3175822,
+        "longitude": -120.1458042
       },
       "viewport": {
         "low": {
-          "latitude": 39.324186,
-          "longitude": -120.170682
+          "latitude": 39.316146319708494,
+          "longitude": -120.14696978029149
         },
         "high": {
-          "latitude": 39.326886,
-          "longitude": -120.167982
+          "latitude": 39.31884428029149,
+          "longitude": -120.14427181970851
         }
       },
       "types": [
-        "deli",
-        "sandwich_shop",
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJyZOme81hmYARH3HPxCwOCbU",
+      "name": "TRUCKEE FLIGHT TRAINING",
+      "address": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316849,
+        "longitude": -120.146902
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.31549416970851,
+          "longitude": -120.14823733029148
+        },
+        "high": {
+          "latitude": 39.3181921302915,
+          "longitude": -120.14553936970849
+        }
+      },
+      "types": [
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "educational_institution",
+      "rating": 5,
+      "userRatingCount": 19
+    },
+    {
+      "id": "ChIJA1EBJzhhmYARkzmG8Y7MJPA",
+      "name": "Raley’s O-N-E Market",
+      "address": "10001 Soaring Way, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3195798,
+        "longitude": -120.1552003
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3183923197085,
+          "longitude": -120.1565962302915
+        },
+        "high": {
+          "latitude": 39.32109028029149,
+          "longitude": -120.15389826970852
+        }
+      },
+      "types": [
+        "grocery_store",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4.2,
+      "userRatingCount": 368
+    },
+    {
+      "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
+      "name": "Truckee Tahoe Airport",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3195165,
+        "longitude": -120.14499269999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.317974569708504,
+          "longitude": -120.1465016302915
+        },
+        "high": {
+          "latitude": 39.3206725302915,
+          "longitude": -120.14380366970852
+        }
+      },
+      "types": [
+        "airport",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "airport",
+      "rating": 4.5,
+      "userRatingCount": 93
+    },
+    {
+      "id": "ChIJb2IosCxgmYARVROuggWwk44",
+      "name": "Martis Valley Lodge , Tapestry Collection by Hilton",
+      "address": "11951 CA-267, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.31774240000001,
+        "longitude": -120.1523906
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3162962697085,
+          "longitude": -120.15373403029149
+        },
+        "high": {
+          "latitude": 39.3189942302915,
+          "longitude": -120.15103606970851
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.2,
+      "userRatingCount": 803
+    },
+    {
+      "id": "ChIJpda5AYffm4ARhX3Bq2N_ho0",
+      "name": "Best Western Plus Truckee-Tahoe Hotel",
+      "address": "11331 Brockway Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.321522,
+        "longitude": -120.161735
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3198861197085,
+          "longitude": -120.16302578029149
+        },
+        "high": {
+          "latitude": 39.3225840802915,
+          "longitude": -120.16032781970851
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.3,
+      "userRatingCount": 922
+    },
+    {
+      "id": "ChIJc37rNI7fm4AR8ZDMTpil_Bg",
+      "name": "Gravity Haus Truckee-Tahoe",
+      "address": "10918 Brockway Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.323987599999995,
+        "longitude": -120.1700545
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3227033697085,
+          "longitude": -120.17112718029148
+        },
+        "high": {
+          "latitude": 39.3254013302915,
+          "longitude": -120.1684292197085
+        }
+      },
+      "types": [
+        "hotel",
+        "coworking_space",
+        "gym",
+        "sports_activity_location",
+        "lodging",
+        "health",
         "restaurant",
         "food",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "deli",
+      "primaryType": "hotel",
       "rating": 4.7,
-      "userRatingCount": 1289
+      "userRatingCount": 621
     },
     {
-      "id": "handauthored-truckee-town-hall-regional-park",
-      "name": "Truckee River Regional Park",
-      "address": "10500 Brockway Rd, Truckee, CA 96161, USA",
+      "id": "ChIJPS-uXobfm4AR_0v7RfcQbGU",
+      "name": "Drunken Monkey Sushi",
+      "address": "11253 Brockway Rd Ste 105, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.324547,
-        "longitude": -120.172003
+        "latitude": 39.3217189,
+        "longitude": -120.1629122
       },
       "viewport": {
         "low": {
-          "latitude": 39.3222114,
-          "longitude": -120.175719
+          "latitude": 39.32028261970851,
+          "longitude": -120.16411178029149
         },
         "high": {
-          "latitude": 39.3268826,
-          "longitude": -120.168287
+          "latitude": 39.32298058029151,
+          "longitude": -120.1614138197085
+        }
+      },
+      "types": [
+        "sushi_restaurant",
+        "bar",
+        "japanese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sushi_restaurant",
+      "rating": 4.2,
+      "userRatingCount": 1017
+    },
+    {
+      "id": "ChIJwV8K_7NhmYARLGJIcuWH7Jg",
+      "name": "RAKKAN Ramen - Truckee",
+      "address": "10001 Soaring Way Ste 160, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3198177,
+        "longitude": -120.15418859999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3184213197085,
+          "longitude": -120.1555214802915
+        },
+        "high": {
+          "latitude": 39.3211192802915,
+          "longitude": -120.1528235197085
+        }
+      },
+      "types": [
+        "restaurant",
+        "vegan_restaurant",
+        "vegetarian_restaurant",
+        "japanese_restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": 4.3,
+      "userRatingCount": 272
+    },
+    {
+      "id": "ChIJjdFAEvphmYARxmkNO4FxSTc",
+      "name": "Truckee Brewing Company",
+      "address": "10001 Soaring Way Unit a suite 110, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3200248,
+        "longitude": -120.1545103
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3186280197085,
+          "longitude": -120.15597558029148
+        },
+        "high": {
+          "latitude": 39.3213259802915,
+          "longitude": -120.1532776197085
+        }
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": 4.2,
+      "userRatingCount": 203
+    },
+    {
+      "id": "ChIJS_GO74bfm4ARZ92Ws6DxAnA",
+      "name": "West Orthodontics - Jerad West, DDS",
+      "address": "10021 Martis Valley Rd Ste b, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.320956599999995,
+        "longitude": -120.1626659
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.31958976970849,
+          "longitude": -120.16412483029148
+        },
+        "high": {
+          "latitude": 39.32228773029149,
+          "longitude": -120.1614268697085
+        }
+      },
+      "types": [
+        "dentist",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "dentist",
+      "rating": 4.4,
+      "userRatingCount": 20
+    },
+    {
+      "id": "ChIJn8x9smTfm4ARyHcuXHkyLWA",
+      "name": "Schaffer's Mill",
+      "address": "9000 Heartwood Dr, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3051824,
+        "longitude": -120.16422169999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.303864519708505,
+          "longitude": -120.16553993029149
+        },
+        "high": {
+          "latitude": 39.306562480291504,
+          "longitude": -120.1628419697085
+        }
+      },
+      "types": [
+        "sports_club",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sports_club",
+      "rating": 4.7,
+      "userRatingCount": 103
+    },
+    {
+      "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
+      "name": "Riverview Sports Park",
+      "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3292632,
+        "longitude": -120.15625539999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.32800211970851,
+          "longitude": -120.15758223029148
+        },
+        "high": {
+          "latitude": 39.3307000802915,
+          "longitude": -120.1548842697085
         }
       },
       "types": [
@@ -860,232 +2207,396 @@
       ],
       "primaryType": "park",
       "rating": 4.7,
-      "userRatingCount": 712
+      "userRatingCount": 167
     },
     {
-      "id": "handauthored-truckee-town-hall-rec-center",
-      "name": "Truckee Community Recreation Center",
-      "address": "10981 Truckee Way, Truckee, CA 96161, USA",
+      "id": "ChIJ42ZPWIbfm4AR08GHnWjbwuQ",
+      "name": "Thai Delicacy",
+      "address": "11253 Brockway Rd #101, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.326973,
-        "longitude": -120.171074
+        "latitude": 39.3219261,
+        "longitude": -120.16265920000001
       },
       "viewport": {
         "low": {
-          "latitude": 39.325623,
-          "longitude": -120.172424
+          "latitude": 39.3205666197085,
+          "longitude": -120.16392473029151
         },
         "high": {
-          "latitude": 39.328323,
-          "longitude": -120.169724
+          "latitude": 39.3232645802915,
+          "longitude": -120.16122676970852
         }
       },
       "types": [
-        "community_center",
-        "gym",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "community_center",
-      "rating": 4.6,
-      "userRatingCount": 214
-    },
-    {
-      "id": "handauthored-truckee-town-hall-fiftyfifty",
-      "name": "FiftyFifty Brewing Co.",
-      "address": "11197 Brockway Rd, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.327063,
-        "longitude": -120.180015
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.325713,
-          "longitude": -120.181365
-        },
-        "high": {
-          "latitude": 39.328413,
-          "longitude": -120.178665
-        }
-      },
-      "types": [
-        "brewery",
-        "bar",
         "restaurant",
         "food",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "brewery",
-      "rating": 4.6,
-      "userRatingCount": 2487
+      "primaryType": "restaurant",
+      "rating": 4,
+      "userRatingCount": 339
     },
     {
-      "id": "handauthored-truckee-town-hall-airport",
-      "name": "Truckee Tahoe Airport",
+      "id": "ChIJAQDcTdNhmYARPxJpbomkak8",
+      "name": "Chevron",
+      "address": "11991 CA-267, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.316964299999995,
+        "longitude": -120.1523223
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3156496697085,
+          "longitude": -120.15376153029149
+        },
+        "high": {
+          "latitude": 39.31834763029149,
+          "longitude": -120.1510635697085
+        }
+      },
+      "types": [
+        "gas_station",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "gas_station",
+      "rating": 3.2,
+      "userRatingCount": 9
+    },
+    {
+      "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
+      "name": "Riverview Bike Park",
+      "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3298561,
+        "longitude": -120.1572441
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.32828206970851,
+          "longitude": -120.1584364802915
+        },
+        "high": {
+          "latitude": 39.33098003029151,
+          "longitude": -120.1557385197085
+        }
+      },
+      "types": [
+        "park",
+        "non_profit_organization",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.9,
+      "userRatingCount": 115
+    },
+    {
+      "id": "ChIJtQw5YMlhmYARwZ02ZDwEeSg",
+      "name": "Lahontan Golf Club",
+      "address": "12700 Lodge Trail Dr, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.2947275,
+        "longitude": -120.15034430000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.2934151697085,
+          "longitude": -120.15185563029151
+        },
+        "high": {
+          "latitude": 39.2961131302915,
+          "longitude": -120.14915766970852
+        }
+      },
+      "types": [
+        "sports_club",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sports_club",
+      "rating": 4.9,
+      "userRatingCount": 46
+    },
+    {
+      "id": "ChIJcSAJVZBhmYARzgK_2BUwZdU",
+      "name": "Mountain Hardware and Sports",
+      "address": "10001 Soaring Way Ste 105, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3194482,
+        "longitude": -120.15496200000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3182358197085,
+          "longitude": -120.15624708029151
+        },
+        "high": {
+          "latitude": 39.3209337802915,
+          "longitude": -120.15354911970852
+        }
+      },
+      "types": [
+        "hardware_store",
+        "building_materials_store",
+        "home_improvement_store",
+        "home_goods_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "hardware_store",
+      "rating": 4.7,
+      "userRatingCount": 98
+    },
+    {
+      "id": "ChIJOzxbjSplmYARNTIOCWoatG4",
+      "name": "Tahoe Expedition Academy",
+      "address": "9765 Schaffer Mill Rd, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3111114,
+        "longitude": -120.15542599999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.30982566970851,
+          "longitude": -120.15677213029149
+        },
+        "high": {
+          "latitude": 39.31252363029151,
+          "longitude": -120.15407416970851
+        }
+      },
+      "types": [
+        "secondary_school",
+        "preschool",
+        "primary_school",
+        "child_care_agency",
+        "school",
+        "educational_institution",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "school",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJUUSZNp_fm4ARFEwei72V7tY",
+      "name": "Café Lupine",
+      "address": "11177 Brockway Rd Ste F101, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3224589,
+        "longitude": -120.16325289999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.3210402197085,
+          "longitude": -120.16458773029149
+        },
+        "high": {
+          "latitude": 39.3237381802915,
+          "longitude": -120.16188976970851
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 4.8,
+      "userRatingCount": 171
+    },
+    {
+      "id": "ChIJJ_USK81hmYAR2TCb91hi6SQ",
+      "name": "Red Truck",
       "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.320325,
-        "longitude": -120.149823
+        "latitude": 39.319302400000005,
+        "longitude": -120.14503189999998
       },
       "viewport": {
         "low": {
-          "latitude": 39.3153843,
-          "longitude": -120.1637572
+          "latitude": 39.3178268197085,
+          "longitude": -120.1464591302915
         },
         "high": {
-          "latitude": 39.3252657,
-          "longitude": -120.1358888
+          "latitude": 39.3205247802915,
+          "longitude": -120.14376116970851
         }
       },
       "types": [
-        "airport",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "airport",
-      "rating": 4.6,
-      "userRatingCount": 318
-    },
-    {
-      "id": "handauthored-truckee-town-hall-sunrise-cafe",
-      "name": "Marg's Taco Bistro",
-      "address": "10186 Donner Pass Rd, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.331285,
-        "longitude": -120.178274
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.329935,
-          "longitude": -120.179624
-        },
-        "high": {
-          "latitude": 39.332635,
-          "longitude": -120.176924
-        }
-      },
-      "types": [
-        "mexican_restaurant",
-        "restaurant",
+        "cafe",
         "food",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "mexican_restaurant",
-      "rating": 4.5,
-      "userRatingCount": 1044
+      "primaryType": "cafe",
+      "rating": 4.7,
+      "userRatingCount": 296
+    },
+    {
+      "id": "ChIJCWcYBKxhmYARWIyz-gWJIFo",
+      "name": "Alpine Meadow Campground",
+      "address": "Alpine Meadow Camp, Truckee, CA 96161, USA",
+      "location": {
+        "latitude": 39.3209662,
+        "longitude": -120.12234029999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 39.319457469708496,
+          "longitude": -120.12361408029147
+        },
+        "high": {
+          "latitude": 39.322155430291495,
+          "longitude": -120.12091611970848
+        }
+      },
+      "types": [
+        "campground",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "campground",
+      "rating": 4.4,
+      "userRatingCount": 47
     }
   ],
   "placeKeys": {
-    "townHall": "handauthored-truckee-town-hall-town-hall",
-    "regionalPark": "handauthored-truckee-town-hall-regional-park",
-    "brewery": "handauthored-truckee-town-hall-fiftyfifty",
-    "airport": "handauthored-truckee-town-hall-airport"
+    "townHall": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+    "police": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
+    "sportsPark": "ChIJn9PrISdgmYARWfGaRaZBLE0",
+    "brewery": "ChIJjdFAEvphmYARxmkNO4FxSTc",
+    "airport": "ChIJ8-hbhsthmYARcPdss0-xprU"
   },
   "histories": {
     "none": [],
     "councilRegular": [
       {
-        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-06-24T17:35:00.000Z",
-        "placeName": "Truckee Town Hall",
+        "placeName": "Truckee Town Hall & Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
         "placePrimaryType": "city_hall",
         "placeTypes": [
           "city_hall",
           "local_government_office",
+          "government_office",
           "point_of_interest",
+          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 39.3232,
-          "longitude": -120.1655
+          "latitude": 39.31685470000001,
+          "longitude": -120.1461822
         }
       },
       {
-        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-07-09T17:28:00.000Z",
-        "placeName": "Truckee Town Hall",
+        "placeName": "Truckee Town Hall & Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
         "placePrimaryType": "city_hall",
         "placeTypes": [
           "city_hall",
           "local_government_office",
+          "government_office",
           "point_of_interest",
+          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 39.3232,
-          "longitude": -120.1655
+          "latitude": 39.31685470000001,
+          "longitude": -120.1461822
         }
       },
       {
-        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-07-24T17:21:00.000Z",
-        "placeName": "Truckee Town Hall",
+        "placeName": "Truckee Town Hall & Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
         "placePrimaryType": "city_hall",
         "placeTypes": [
           "city_hall",
           "local_government_office",
+          "government_office",
           "point_of_interest",
+          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 39.3232,
-          "longitude": -120.1655
+          "latitude": 39.31685470000001,
+          "longitude": -120.1461822
         }
       },
       {
-        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-08-07T17:14:00.000Z",
-        "placeName": "Truckee Town Hall",
+        "placeName": "Truckee Town Hall & Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
         "placePrimaryType": "city_hall",
         "placeTypes": [
           "city_hall",
           "local_government_office",
+          "government_office",
           "point_of_interest",
+          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 39.3232,
-          "longitude": -120.1655
+          "latitude": 39.31685470000001,
+          "longitude": -120.1461822
         }
       },
       {
-        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-08-21T17:07:00.000Z",
-        "placeName": "Truckee Town Hall",
+        "placeName": "Truckee Town Hall & Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
         "placePrimaryType": "city_hall",
         "placeTypes": [
           "city_hall",
           "local_government_office",
+          "government_office",
           "point_of_interest",
+          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 39.3232,
-          "longitude": -120.1655
+          "latitude": 39.31685470000001,
+          "longitude": -120.1461822
         }
       },
       {
-        "googlePlaceId": "handauthored-truckee-town-hall-town-hall",
+        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-09-07T17:00:00.000Z",
-        "placeName": "Truckee Town Hall",
+        "placeName": "Truckee Town Hall & Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
         "placePrimaryType": "city_hall",
         "placeTypes": [
           "city_hall",
           "local_government_office",
+          "government_office",
           "point_of_interest",
+          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 39.3232,
-          "longitude": -120.1655
+          "latitude": 39.31685470000001,
+          "longitude": -120.1461822
         }
       }
     ]
@@ -1099,17 +2610,36 @@
       "history": "none",
       "expect": {
         "top": "townHall",
-        "suggested": "townHall",
+        "suggested": null,
         "rankedAbove": [
           [
             "townHall",
-            "regionalPark"
+            "police"
+          ],
+          [
+            "townHall",
+            "airport"
+          ],
+          [
+            "townHall",
+            "sportsPark"
           ],
           [
             "townHall",
             "brewery"
           ]
         ]
+      }
+    },
+    {
+      "name": "accurate fix, council regular",
+      "now": "2026-09-22T10:15:00-07:00",
+      "horizontalAccuracy": 30,
+      "fixAgeSeconds": 5,
+      "history": "councilRegular",
+      "expect": {
+        "top": "townHall",
+        "suggested": "townHall"
       }
     },
     {

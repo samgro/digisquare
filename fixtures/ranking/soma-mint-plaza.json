@@ -1,343 +1,15 @@
 {
   "schemaVersion": 1,
   "name": "soma-mint-plaza",
-  "description": "On Mint Plaza in SoMa, between Blue Bottle and 54 Mint, with a shopping mall, a BART station and a landmark within two blocks.",
-  "recordedAt": null,
+  "description": "Outside Blue Bottle on Mint Plaza in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; SFMOMA, Moscone and a BART station are 250-350 m away.",
+  "recordedAt": "2026-09-23T23:08:36.532Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
-    "latitude": 37.782264,
-    "longitude": -122.407566,
+    "latitude": 37.78697,
+    "longitude": -122.398863,
     "horizontalAccuracy": 12
   },
   "google": {
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 37.782264,
-              "longitude": -122.407566
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "handauthored-soma-mint-plaza-blue-bottle",
-            "displayName": {
-              "text": "Blue Bottle Coffee",
-              "languageCode": "en"
-            },
-            "formattedAddress": "66 Mint St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.7823,
-              "longitude": -122.4076
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.78095,
-                "longitude": -122.40895
-              },
-              "high": {
-                "latitude": 37.78365,
-                "longitude": -122.40625
-              }
-            },
-            "types": [
-              "coffee_shop",
-              "cafe",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "coffee_shop",
-            "rating": 4.4,
-            "userRatingCount": 1502
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-mint-plaza",
-            "displayName": {
-              "text": "Mint Plaza",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Mint Plaza, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.78212,
-              "longitude": -122.407884
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.78077,
-                "longitude": -122.409234
-              },
-              "high": {
-                "latitude": 37.78347,
-                "longitude": -122.406534
-              }
-            },
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest"
-            ],
-            "primaryType": "park",
-            "rating": 4.2,
-            "userRatingCount": 231
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-54-mint",
-            "displayName": {
-              "text": "54 Mint Ristorante Italiano",
-              "languageCode": "en"
-            },
-            "formattedAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.782031,
-              "longitude": -122.407327
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.780681,
-                "longitude": -122.408677
-              },
-              "high": {
-                "latitude": 37.783381,
-                "longitude": -122.405977
-              }
-            },
-            "types": [
-              "italian_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "italian_restaurant",
-            "rating": 4.4,
-            "userRatingCount": 1388
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-chase-atm",
-            "displayName": {
-              "text": "Chase ATM",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Mission St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.782704,
-              "longitude": -122.407259
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.781354,
-                "longitude": -122.408609
-              },
-              "high": {
-                "latitude": 37.784054,
-                "longitude": -122.405909
-              }
-            },
-            "types": [
-              "atm",
-              "finance",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "atm"
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-old-mint",
-            "displayName": {
-              "text": "The Old Mint",
-              "languageCode": "en"
-            },
-            "formattedAddress": "88 5th St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.781761,
-              "longitude": -122.408396
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.780411,
-                "longitude": -122.409746
-              },
-              "high": {
-                "latitude": 37.783111,
-                "longitude": -122.407046
-              }
-            },
-            "types": [
-              "historical_landmark",
-              "event_venue",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "historical_landmark",
-            "rating": 4.4,
-            "userRatingCount": 1163
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-sf-centre",
-            "displayName": {
-              "text": "San Francisco Centre",
-              "languageCode": "en"
-            },
-            "formattedAddress": "865 Market St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.783647,
-              "longitude": -122.407145
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7821199,
-                "longitude": -122.4095319
-              },
-              "high": {
-                "latitude": 37.7851741,
-                "longitude": -122.4047581
-              }
-            },
-            "types": [
-              "shopping_mall",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "shopping_mall",
-            "rating": 4.3,
-            "userRatingCount": 31890
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-garage",
-            "displayName": {
-              "text": "Fifth & Mission Garage",
-              "languageCode": "en"
-            },
-            "formattedAddress": "833 Mission St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.781581,
-              "longitude": -122.409191
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.780231,
-                "longitude": -122.410541
-              },
-              "high": {
-                "latitude": 37.782931,
-                "longitude": -122.407841
-              }
-            },
-            "types": [
-              "parking",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "parking",
-            "rating": 3.8,
-            "userRatingCount": 940
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-powell-bart",
-            "displayName": {
-              "text": "Powell St. BART Station",
-              "languageCode": "en"
-            },
-            "formattedAddress": "899 Market St, San Francisco, CA 94102, USA",
-            "location": {
-              "latitude": 37.784546,
-              "longitude": -122.408282
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.783196,
-                "longitude": -122.409632
-              },
-              "high": {
-                "latitude": 37.785896,
-                "longitude": -122.406932
-              }
-            },
-            "types": [
-              "subway_station",
-              "transit_station",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "subway_station",
-            "rating": 3.6,
-            "userRatingCount": 1102
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-yerba-buena",
-            "displayName": {
-              "text": "Yerba Buena Gardens",
-              "languageCode": "en"
-            },
-            "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.781671,
-              "longitude": -122.401235
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7802337,
-                "longitude": -122.4037355
-              },
-              "high": {
-                "latitude": 37.7831083,
-                "longitude": -122.3987345
-              }
-            },
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "park",
-            "rating": 4.7,
-            "userRatingCount": 8920
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-moma",
-            "displayName": {
-              "text": "SFMOMA",
-              "languageCode": "en"
-            },
-            "formattedAddress": "151 3rd St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.782839,
-              "longitude": -122.398962
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.781489,
-                "longitude": -122.400312
-              },
-              "high": {
-                "latitude": 37.784189,
-                "longitude": -122.397612
-              }
-            },
-            "types": [
-              "art_gallery",
-              "museum",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "art_gallery",
-            "rating": 4.6,
-            "userRatingCount": 20544
-          }
-        ]
-      }
-    },
     "popularity": {
       "request": {
         "maxResultCount": 20,
@@ -345,8 +17,8 @@
         "locationRestriction": {
           "circle": {
             "center": {
-              "latitude": 37.782264,
-              "longitude": -122.407566
+              "latitude": 37.78697,
+              "longitude": -122.398863
             },
             "radius": 2500
           }
@@ -355,284 +27,1270 @@
       "response": {
         "places": [
           {
-            "id": "handauthored-soma-mint-plaza-sf-centre",
-            "displayName": {
-              "text": "San Francisco Centre",
-              "languageCode": "en"
-            },
-            "formattedAddress": "865 Market St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.783647,
-              "longitude": -122.407145
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7821199,
-                "longitude": -122.4095319
-              },
-              "high": {
-                "latitude": 37.7851741,
-                "longitude": -122.4047581
-              }
-            },
+            "id": "ChIJWTGPjmaAhYARxz6l1hOj92w",
             "types": [
-              "shopping_mall",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "shopping_mall",
-            "rating": 4.3,
-            "userRatingCount": 31890
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-moma",
-            "displayName": {
-              "text": "SFMOMA",
-              "languageCode": "en"
-            },
-            "formattedAddress": "151 3rd St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.782839,
-              "longitude": -122.398962
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.781489,
-                "longitude": -122.400312
-              },
-              "high": {
-                "latitude": 37.784189,
-                "longitude": -122.397612
-              }
-            },
-            "types": [
-              "art_gallery",
-              "museum",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "art_gallery",
-            "rating": 4.6,
-            "userRatingCount": 20544
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-yerba-buena",
-            "displayName": {
-              "text": "Yerba Buena Gardens",
-              "languageCode": "en"
-            },
-            "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.781671,
-              "longitude": -122.401235
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7802337,
-                "longitude": -122.4037355
-              },
-              "high": {
-                "latitude": 37.7831083,
-                "longitude": -122.3987345
-              }
-            },
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "park",
-            "rating": 4.7,
-            "userRatingCount": 8920
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-blue-bottle",
-            "displayName": {
-              "text": "Blue Bottle Coffee",
-              "languageCode": "en"
-            },
-            "formattedAddress": "66 Mint St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.7823,
-              "longitude": -122.4076
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.78095,
-                "longitude": -122.40895
-              },
-              "high": {
-                "latitude": 37.78365,
-                "longitude": -122.40625
-              }
-            },
-            "types": [
-              "coffee_shop",
-              "cafe",
+              "historical_landmark",
+              "ferry_service",
+              "market",
+              "historical_place",
+              "grocery_store",
+              "transportation_service",
+              "food_store",
+              "store",
               "food",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "coffee_shop",
-            "rating": 4.4,
-            "userRatingCount": 1502
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-54-mint",
-            "displayName": {
-              "text": "54 Mint Ristorante Italiano",
-              "languageCode": "en"
-            },
-            "formattedAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
+            "formattedAddress": "1 Ferry Building, San Francisco, CA 94105, USA",
             "location": {
-              "latitude": 37.782031,
-              "longitude": -122.407327
+              "latitude": 37.7954425,
+              "longitude": -122.3936136
             },
             "viewport": {
               "low": {
-                "latitude": 37.780681,
-                "longitude": -122.408677
+                "latitude": 37.794089469708496,
+                "longitude": -122.39486943029148
               },
               "high": {
-                "latitude": 37.783381,
-                "longitude": -122.405977
+                "latitude": 37.796787430291495,
+                "longitude": -122.39217146970849
               }
             },
+            "rating": 4.6,
+            "userRatingCount": 38470,
+            "displayName": {
+              "text": "Ferry Building",
+              "languageCode": "en"
+            },
+            "primaryType": "historical_landmark"
+          },
+          {
+            "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
             "types": [
-              "italian_restaurant",
+              "stadium",
+              "tourist_attraction",
+              "event_venue",
+              "sports_complex",
+              "sports_activity_location",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.7783654,
+              "longitude": -122.38991619999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7745563,
+                "longitude": -122.3917657802915
+              },
+              "high": {
+                "latitude": 37.7798683,
+                "longitude": -122.3890678197085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 32786,
+            "displayName": {
+              "text": "Oracle Park",
+              "languageCode": "en"
+            },
+            "primaryType": "stadium"
+          },
+          {
+            "id": "ChIJ1dIqa2OAhYAREimtEtfBLyc",
+            "types": [
+              "corporate_office",
+              "business_center",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "415 Mission St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7897442,
+              "longitude": -122.3972337
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78855716970851,
+                "longitude": -122.39849158029149
+              },
+              "high": {
+                "latitude": 37.79125513029151,
+                "longitude": -122.39579361970851
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 1046,
+            "displayName": {
+              "text": "Salesforce Tower",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJ1f5_4_KAhYAR-rIwsCEGAvk",
+            "types": [
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "855 Stockton St # B, San Francisco, CA 94108, USA",
+            "location": {
+              "latitude": 37.793977999999996,
+              "longitude": -122.40808299999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.792640469708495,
+                "longitude": -122.4093459802915
+              },
+              "high": {
+                "latitude": 37.795338430291494,
+                "longitude": -122.40664801970853
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 11239,
+            "displayName": {
+              "text": "Chinatown San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "tourist_attraction"
+          },
+          {
+            "id": "ChIJiX4p7X2AhYARbDw5qoA4Vdk",
+            "types": [
+              "convention_center",
+              "event_venue",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "747 Howard St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.7843234,
+              "longitude": -122.40069
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7830034197085,
+                "longitude": -122.40222723029149
+              },
+              "high": {
+                "latitude": 37.7857013802915,
+                "longitude": -122.39952926970851
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 6802,
+            "displayName": {
+              "text": "Moscone Center",
+              "languageCode": "en"
+            },
+            "primaryType": "convention_center"
+          },
+          {
+            "id": "ChIJC2juwih-j4ARvLq4f6Oyeuc",
+            "types": [
+              "warehouse_store",
+              "department_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "450 10th St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.7703137,
+              "longitude": -122.41092400000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.76937796970851,
+                "longitude": -122.4118680802915
+              },
+              "high": {
+                "latitude": 37.77207593029151,
+                "longitude": -122.40917011970852
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 7746,
+            "displayName": {
+              "text": "Costco Wholesale",
+              "languageCode": "en"
+            },
+            "primaryType": "warehouse_store"
+          },
+          {
+            "id": "ChIJFQYlk9Z_j4AR2IMIzaEcYbc",
+            "types": [
+              "train_station",
+              "transit_station",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "700 4th St, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.776669999999996,
+              "longitude": -122.39484
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7751976197085,
+                "longitude": -122.39622163029148
+              },
+              "high": {
+                "latitude": 37.7778955802915,
+                "longitude": -122.39352366970849
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 768,
+            "displayName": {
+              "text": "San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "train_station"
+          },
+          {
+            "id": "ChIJ53I1Yn2AhYAR_Vl1vNygfMg",
+            "types": [
+              "tourist_attraction",
+              "art_gallery",
+              "art_museum",
+              "museum",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "151 3rd St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.7857182,
+              "longitude": -122.40105080000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.784301969708494,
+                "longitude": -122.40248313029151
+              },
+              "high": {
+                "latitude": 37.78699993029149,
+                "longitude": -122.39978516970854
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 16721,
+            "displayName": {
+              "text": "San Francisco Museum of Modern Art",
+              "languageCode": "en"
+            },
+            "primaryType": "art_museum"
+          },
+          {
+            "id": "ChIJcT5nNoaAhYARVdbyW3zPwus",
+            "types": [
+              "hotel",
+              "wedding_venue",
+              "event_venue",
+              "lodging",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "780 Mission St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.7853366,
+              "longitude": -122.40440679999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7837845697085,
+                "longitude": -122.40570498029149
+              },
+              "high": {
+                "latitude": 37.7864825302915,
+                "longitude": -122.4030070197085
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 10354,
+            "displayName": {
+              "text": "San Francisco Marriott Marquis",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJeSJHoI-AhYARembxZUVcNEk",
+            "types": [
+              "hotel",
+              "lodging",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "333 O'Farrell St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.7857306,
+              "longitude": -122.41011719999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7843209197085,
+                "longitude": -122.41155868029148
+              },
+              "high": {
+                "latitude": 37.7870188802915,
+                "longitude": -122.4088607197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 11744,
+            "displayName": {
+              "text": "Hilton San Francisco Union Square",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJUwxMuvmAhYARWPFJI3P6Iq8",
+            "types": [
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "San Francisco, CA 94133, USA",
+            "location": {
+              "latitude": 37.8068469,
+              "longitude": -122.40515419999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.8053084197085,
+                "longitude": -122.4064903302915
+              },
+              "high": {
+                "latitude": 37.8080063802915,
+                "longitude": -122.40379236970851
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 10114,
+            "displayName": {
+              "text": "Pier 33",
+              "languageCode": "en"
+            },
+            "primaryType": "tourist_attraction"
+          },
+          {
+            "id": "ChIJ5y1zsoeAhYARJl9k0fuMdRs",
+            "types": [
+              "department_store",
+              "child_care_agency",
+              "electronics_store",
+              "shoe_store",
+              "furniture_store",
+              "home_improvement_store",
+              "supplier",
+              "home_goods_store",
+              "clothing_store",
+              "toy_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "789 Mission St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.784403999999995,
+              "longitude": -122.40381039999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.783181969708494,
+                "longitude": -122.40524693029148
+              },
+              "high": {
+                "latitude": 37.78587993029149,
+                "longitude": -122.40254896970849
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 1730,
+            "displayName": {
+              "text": "Target",
+              "languageCode": "en"
+            },
+            "primaryType": "department_store"
+          },
+          {
+            "id": "ChIJk2vl5NSGhYARwPGvs_ubIws",
+            "types": [
+              "tourist_attraction",
+              "art_museum",
+              "event_venue",
+              "museum",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Pier 15 Embarcadero at, Green St, San Francisco, CA 94111, USA",
+            "location": {
+              "latitude": 37.8016649,
+              "longitude": -122.397348
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7999566697085,
+                "longitude": -122.3995333802915
+              },
+              "high": {
+                "latitude": 37.80265463029149,
+                "longitude": -122.39683541970851
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 8737,
+            "displayName": {
+              "text": "Exploratorium",
+              "languageCode": "en"
+            },
+            "primaryType": "museum"
+          },
+          {
+            "id": "ChIJAQAAQIyAhYARRN3yIQG4hd4",
+            "types": [
+              "historical_landmark",
+              "tourist_attraction",
+              "landmark",
+              "historical_place",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1 Telegraph Hill Blvd, San Francisco, CA 94133, USA",
+            "location": {
+              "latitude": 37.802394899999996,
+              "longitude": -122.40582219999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.8012256697085,
+                "longitude": -122.40716028029148
+              },
+              "high": {
+                "latitude": 37.8039236302915,
+                "longitude": -122.4044623197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 16008,
+            "displayName": {
+              "text": "Coit Tower",
+              "languageCode": "en"
+            },
+            "primaryType": "historical_landmark"
+          },
+          {
+            "id": "ChIJN2S4EI2AhYAR9J4Qeh1U8Aw",
+            "types": [
+              "hotel",
+              "lodging",
               "restaurant",
               "food",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "italian_restaurant",
-            "rating": 4.4,
-            "userRatingCount": 1388
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-old-mint",
-            "displayName": {
-              "text": "The Old Mint",
-              "languageCode": "en"
-            },
-            "formattedAddress": "88 5th St, San Francisco, CA 94103, USA",
+            "formattedAddress": "950 Mason St, San Francisco, CA 94108, USA",
             "location": {
-              "latitude": 37.781761,
-              "longitude": -122.408396
+              "latitude": 37.7923897,
+              "longitude": -122.41044429999998
             },
             "viewport": {
               "low": {
-                "latitude": 37.780411,
-                "longitude": -122.409746
+                "latitude": 37.790941119708506,
+                "longitude": -122.41139958029149
               },
               "high": {
-                "latitude": 37.783111,
-                "longitude": -122.407046
+                "latitude": 37.793639080291506,
+                "longitude": -122.40870161970851
               }
             },
+            "rating": 4.5,
+            "userRatingCount": 7629,
+            "displayName": {
+              "text": "Fairmont San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJY-bqepmAhYARSk9Xg_9tcLI",
             "types": [
-              "historical_landmark",
-              "event_venue",
-              "tourist_attraction",
+              "city_hall",
+              "local_government_office",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.779275,
+              "longitude": -122.4192417
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7779407697085,
+                "longitude": -122.4205752302915
+              },
+              "high": {
+                "latitude": 37.7806387302915,
+                "longitude": -122.41787726970851
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 1845,
+            "displayName": {
+              "text": "San Francisco City Hall",
+              "languageCode": "en"
+            },
+            "primaryType": "city_hall"
+          },
+          {
+            "id": "ChIJX2AfTWGAhYARK51ADFAMZoQ",
+            "types": [
+              "hotel",
+              "lodging",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "historical_landmark",
-            "rating": 4.4,
-            "userRatingCount": 1163
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-powell-bart",
-            "displayName": {
-              "text": "Powell St. BART Station",
-              "languageCode": "en"
-            },
-            "formattedAddress": "899 Market St, San Francisco, CA 94102, USA",
+            "formattedAddress": "5 Embarcadero Ctr, San Francisco, CA 94111, USA",
             "location": {
-              "latitude": 37.784546,
-              "longitude": -122.408282
+              "latitude": 37.794216899999995,
+              "longitude": -122.3956663
             },
             "viewport": {
               "low": {
-                "latitude": 37.783196,
-                "longitude": -122.409632
+                "latitude": 37.7928466697085,
+                "longitude": -122.3973856302915
               },
               "high": {
-                "latitude": 37.785896,
-                "longitude": -122.406932
+                "latitude": 37.7955446302915,
+                "longitude": -122.39468766970852
               }
             },
+            "rating": 4.4,
+            "userRatingCount": 7371,
+            "displayName": {
+              "text": "Hyatt Regency San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJi1J5_0ojh1QRSEAyfPSzO94",
+            "types": [
+              "hotel",
+              "wedding_venue",
+              "event_venue",
+              "lodging",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "335 Powell St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.7876827,
+              "longitude": -122.4087648
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.786418269708506,
+                "longitude": -122.41007288029151
+              },
+              "high": {
+                "latitude": 37.789116230291505,
+                "longitude": -122.40737491970852
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 6255,
+            "displayName": {
+              "text": "The Westin St. Francis San Francisco on Union Square",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJ150MH4iAhYARy399PwjhCb4",
+            "types": [
+              "hotel",
+              "wedding_venue",
+              "event_venue",
+              "lodging",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2 New Montgomery St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7881241,
+              "longitude": -122.4019021
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7868673697085,
+                "longitude": -122.4030707302915
+              },
+              "high": {
+                "latitude": 37.7895653302915,
+                "longitude": -122.40037276970853
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 5583,
+            "displayName": {
+              "text": "Palace Hotel, a Luxury Collection Hotel, San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJo7HdhWKAhYARp5lDOzOnnK0",
             "types": [
               "subway_station",
               "transit_station",
+              "transportation_service",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "subway_station",
-            "rating": 3.6,
-            "userRatingCount": 1102
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-garage",
-            "displayName": {
-              "text": "Fifth & Mission Garage",
-              "languageCode": "en"
-            },
-            "formattedAddress": "833 Mission St, San Francisco, CA 94103, USA",
+            "formattedAddress": "598 Market St, San Francisco, CA 94104, USA",
             "location": {
-              "latitude": 37.781581,
-              "longitude": -122.409191
+              "latitude": 37.7894171,
+              "longitude": -122.401109
             },
             "viewport": {
               "low": {
-                "latitude": 37.780231,
-                "longitude": -122.410541
+                "latitude": 37.788077769708494,
+                "longitude": -122.4029710802915
               },
               "high": {
-                "latitude": 37.782931,
-                "longitude": -122.407841
+                "latitude": 37.79077573029149,
+                "longitude": -122.4002731197085
               }
             },
+            "rating": 3.9,
+            "userRatingCount": 248,
+            "displayName": {
+              "text": "Montgomery",
+              "languageCode": "en"
+            },
+            "primaryType": "subway_station"
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.78697,
+              "longitude": -122.398863
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJKyGeO8uBhYARGBl0pZptD8c",
             "types": [
-              "parking",
+              "coffee_shop",
+              "cafe",
+              "food_store",
+              "store",
+              "food",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "parking",
-            "rating": 3.8,
-            "userRatingCount": 940
-          },
-          {
-            "id": "handauthored-soma-mint-plaza-mint-plaza",
-            "displayName": {
-              "text": "Mint Plaza",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Mint Plaza, San Francisco, CA 94103, USA",
+            "formattedAddress": "168 2nd St, San Francisco, CA 94105, USA",
             "location": {
-              "latitude": 37.78212,
-              "longitude": -122.407884
+              "latitude": 37.7870063,
+              "longitude": -122.3988975
             },
             "viewport": {
               "low": {
-                "latitude": 37.78077,
-                "longitude": -122.409234
+                "latitude": 37.7857284697085,
+                "longitude": -122.40015788029149
               },
               "high": {
-                "latitude": 37.78347,
-                "longitude": -122.406534
+                "latitude": 37.7884264302915,
+                "longitude": -122.3974599197085
               }
             },
+            "rating": 4.4,
+            "userRatingCount": 365,
+            "displayName": {
+              "text": "Blue Bottle Coffee",
+              "languageCode": "en"
+            },
+            "primaryType": "coffee_shop"
+          },
+          {
+            "id": "ChIJV9R36eeBhYARF2uurzMq6QQ",
             "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest"
+              "embassy",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
             ],
-            "primaryType": "park",
-            "rating": 4.2,
-            "userRatingCount": 231
+            "formattedAddress": "101 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785629619708494,
+                "longitude": -122.40037258029147
+              },
+              "high": {
+                "latitude": 37.788327580291494,
+                "longitude": -122.3976746197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 10,
+            "displayName": {
+              "text": "Consulate General of Estonia in San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "embassy"
+          },
+          {
+            "id": "ChIJ4WaysimBhYAR-yjaLweDnzk",
+            "types": [
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St 2nd Floor, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785642019708504,
+                "longitude": -122.40035628029148
+              },
+              "high": {
+                "latitude": 37.7883399802915,
+                "longitude": -122.39765831970848
+              }
+            },
+            "displayName": {
+              "text": "Nexus Venture Partners",
+              "languageCode": "en"
+            },
+            "primaryType": "finance"
+          },
+          {
+            "id": "ChIJKxneI32AhYAR833jC2vvfCA",
+            "types": [
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785629619708494,
+                "longitude": -122.40037258029147
+              },
+              "high": {
+                "latitude": 37.788327580291494,
+                "longitude": -122.3976746197085
+              }
+            },
+            "displayName": {
+              "text": "Princeville Global",
+              "languageCode": "en"
+            },
+            "primaryType": "finance"
+          },
+          {
+            "id": "ChIJ21TrI32AhYARHdx-RBOn1hk",
+            "types": [
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785629619708494,
+                "longitude": -122.40037258029147
+              },
+              "high": {
+                "latitude": 37.788327580291494,
+                "longitude": -122.3976746197085
+              }
+            },
+            "displayName": {
+              "text": "Ira & Leonore Gershwin Trusts",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
+          },
+          {
+            "id": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+            "types": [
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "176 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.786858699999996,
+              "longitude": -122.39876919999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78559061970849,
+                "longitude": -122.40001448029149
+              },
+              "high": {
+                "latitude": 37.78828858029149,
+                "longitude": -122.39731651970851
+              }
+            },
+            "displayName": {
+              "text": "Social Fit Club",
+              "languageCode": "en"
+            },
+            "primaryType": "health"
+          },
+          {
+            "id": "ChIJz7Zh7-2BhYARwniWSsZz2t0",
+            "types": [
+              "corporate_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St Ste 506, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7870314,
+              "longitude": -122.39909779999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7856638197085,
+                "longitude": -122.4004833302915
+              },
+              "high": {
+                "latitude": 37.7883617802915,
+                "longitude": -122.3977853697085
+              }
+            },
+            "displayName": {
+              "text": "Clearpol",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJqV_2Fzm3j4ARDUIzZOdjZUQ",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "108 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871285,
+              "longitude": -122.39898659999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7857792197085,
+                "longitude": -122.40033513029147
+              },
+              "high": {
+                "latitude": 37.788477180291494,
+                "longitude": -122.39763716970849
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 11,
+            "displayName": {
+              "text": "PlanetScale",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJm7imNNZ_j4ARBoCdxAdlv-w",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.39906649999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031653029149
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.3976185697085
+              }
+            },
+            "displayName": {
+              "text": "Zunos Headquarters",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARePCF3Sx3m1s",
+            "types": [
+              "corporate_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "The BioPharma Agency",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJgQefPMqBhYARx9DobysV78I",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "rating": 3.4,
+            "userRatingCount": 5,
+            "displayName": {
+              "text": "Kintsugi AI",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJdZgmUWhvU0sRaF6G-IglMX4",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St Unit 505, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78580401970849,
+                "longitude": -122.40033783029149
+              },
+              "high": {
+                "latitude": 37.78850198029149,
+                "longitude": -122.3976398697085
+              }
+            },
+            "displayName": {
+              "text": "Rize",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARJjK1VANOcEY",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Vendisys",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARQam0rw6BbMc",
+            "types": [
+              "doctor",
+              "medical_clinic",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Dr. Roger Ayres",
+              "languageCode": "en"
+            },
+            "primaryType": "doctor"
+          },
+          {
+            "id": "ChIJ18wocEtjx4kRCZUJwModXJk",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 26,
+            "displayName": {
+              "text": "Awesomic",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJYxGcmauBhYARg-k8m0coQZ0",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Spendesk USA",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARXnBc-xMjLQ4",
+            "types": [
+              "doctor",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Shomir Banerjee",
+              "languageCode": "en"
+            },
+            "primaryType": "doctor"
+          },
+          {
+            "id": "ChIJ06x5mNmBhYARz-maNNKKjwk",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "We Work SOMA 2, 156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Advanced Communities",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARjKzoyb7NJqI",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "G1 Software",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARZJLVR00fB_g",
+            "types": [
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St Ste 627, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78580401970849,
+                "longitude": -122.40033783029149
+              },
+              "high": {
+                "latitude": 37.78850198029149,
+                "longitude": -122.3976398697085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "CAI California North Chapter",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
           }
         ]
       }
@@ -640,1234 +1298,2168 @@
   },
   "places": [
     {
-      "id": "handauthored-soma-mint-plaza-blue-bottle",
+      "id": "ChIJKyGeO8uBhYARGBl0pZptD8c",
       "name": "Blue Bottle Coffee",
-      "address": "66 Mint St, San Francisco, CA 94103, USA",
+      "address": "168 2nd St, San Francisco, CA 94105, USA",
       "location": {
-        "latitude": 37.7823,
-        "longitude": -122.4076
+        "latitude": 37.7870063,
+        "longitude": -122.3988975
       },
       "viewport": {
         "low": {
-          "latitude": 37.78095,
-          "longitude": -122.40895
+          "latitude": 37.7857284697085,
+          "longitude": -122.40015788029149
         },
         "high": {
-          "latitude": 37.78365,
-          "longitude": -122.40625
+          "latitude": 37.7884264302915,
+          "longitude": -122.3974599197085
         }
       },
       "types": [
         "coffee_shop",
         "cafe",
+        "food_store",
+        "store",
         "food",
         "point_of_interest",
         "establishment"
       ],
       "primaryType": "coffee_shop",
       "rating": 4.4,
-      "userRatingCount": 1502
+      "userRatingCount": 365
     },
     {
-      "id": "handauthored-soma-mint-plaza-mint-plaza",
-      "name": "Mint Plaza",
-      "address": "Mint Plaza, San Francisco, CA 94103, USA",
+      "id": "ChIJV9R36eeBhYARF2uurzMq6QQ",
+      "name": "Consulate General of Estonia in San Francisco",
+      "address": "101 Natoma St, San Francisco, CA 94105, USA",
       "location": {
-        "latitude": 37.78212,
-        "longitude": -122.407884
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
       },
       "viewport": {
         "low": {
-          "latitude": 37.78077,
-          "longitude": -122.409234
+          "latitude": 37.785629619708494,
+          "longitude": -122.40037258029147
         },
         "high": {
-          "latitude": 37.78347,
-          "longitude": -122.406534
+          "latitude": 37.788327580291494,
+          "longitude": -122.3976746197085
         }
       },
       "types": [
-        "park",
-        "tourist_attraction",
-        "point_of_interest"
+        "embassy",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
       ],
-      "primaryType": "park",
-      "rating": 4.2,
-      "userRatingCount": 231
+      "primaryType": "embassy",
+      "rating": 4.6,
+      "userRatingCount": 10
     },
     {
-      "id": "handauthored-soma-mint-plaza-54-mint",
-      "name": "54 Mint Ristorante Italiano",
-      "address": "16 Mint Plaza, San Francisco, CA 94103, USA",
+      "id": "ChIJ4WaysimBhYAR-yjaLweDnzk",
+      "name": "Nexus Venture Partners",
+      "address": "101 Natoma St 2nd Floor, San Francisco, CA 94105, USA",
       "location": {
-        "latitude": 37.782031,
-        "longitude": -122.407327
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
       },
       "viewport": {
         "low": {
-          "latitude": 37.780681,
-          "longitude": -122.408677
+          "latitude": 37.785642019708504,
+          "longitude": -122.40035628029148
         },
         "high": {
-          "latitude": 37.783381,
-          "longitude": -122.405977
+          "latitude": 37.7883399802915,
+          "longitude": -122.39765831970848
         }
       },
       "types": [
-        "italian_restaurant",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "finance",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJKxneI32AhYAR833jC2vvfCA",
+      "name": "Princeville Global",
+      "address": "101 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.785629619708494,
+          "longitude": -122.40037258029147
+        },
+        "high": {
+          "latitude": 37.788327580291494,
+          "longitude": -122.3976746197085
+        }
+      },
+      "types": [
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "finance",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ21TrI32AhYARHdx-RBOn1hk",
+      "name": "Ira & Leonore Gershwin Trusts",
+      "address": "101 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.785629619708494,
+          "longitude": -122.40037258029147
+        },
+        "high": {
+          "latitude": 37.788327580291494,
+          "longitude": -122.3976746197085
+        }
+      },
+      "types": [
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "association_or_organization",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+      "name": "Social Fit Club",
+      "address": "176 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.786858699999996,
+        "longitude": -122.39876919999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78559061970849,
+          "longitude": -122.40001448029149
+        },
+        "high": {
+          "latitude": 37.78828858029149,
+          "longitude": -122.39731651970851
+        }
+      },
+      "types": [
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "health",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJz7Zh7-2BhYARwniWSsZz2t0",
+      "name": "Clearpol",
+      "address": "156 2nd St Ste 506, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7870314,
+        "longitude": -122.39909779999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7856638197085,
+          "longitude": -122.4004833302915
+        },
+        "high": {
+          "latitude": 37.7883617802915,
+          "longitude": -122.3977853697085
+        }
+      },
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJqV_2Fzm3j4ARDUIzZOdjZUQ",
+      "name": "PlanetScale",
+      "address": "108 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871285,
+        "longitude": -122.39898659999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7857792197085,
+          "longitude": -122.40033513029147
+        },
+        "high": {
+          "latitude": 37.788477180291494,
+          "longitude": -122.39763716970849
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 4.6,
+      "userRatingCount": 11
+    },
+    {
+      "id": "ChIJm7imNNZ_j4ARBoCdxAdlv-w",
+      "name": "Zunos Headquarters",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.39906649999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031653029149
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.3976185697085
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARePCF3Sx3m1s",
+      "name": "The BioPharma Agency",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJgQefPMqBhYARx9DobysV78I",
+      "name": "Kintsugi AI",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 3.4,
+      "userRatingCount": 5
+    },
+    {
+      "id": "ChIJdZgmUWhvU0sRaF6G-IglMX4",
+      "name": "Rize",
+      "address": "156 2nd St Unit 505, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78580401970849,
+          "longitude": -122.40033783029149
+        },
+        "high": {
+          "latitude": 37.78850198029149,
+          "longitude": -122.3976398697085
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARJjK1VANOcEY",
+      "name": "Vendisys",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARQam0rw6BbMc",
+      "name": "Dr. Roger Ayres",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "doctor",
+        "medical_clinic",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "doctor",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ18wocEtjx4kRCZUJwModXJk",
+      "name": "Awesomic",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 4.8,
+      "userRatingCount": 26
+    },
+    {
+      "id": "ChIJYxGcmauBhYARg-k8m0coQZ0",
+      "name": "Spendesk USA",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARXnBc-xMjLQ4",
+      "name": "Shomir Banerjee",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "doctor",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "doctor",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ06x5mNmBhYARz-maNNKKjwk",
+      "name": "Advanced Communities",
+      "address": "We Work SOMA 2, 156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARjKzoyb7NJqI",
+      "name": "G1 Software",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARZJLVR00fB_g",
+      "name": "CAI California North Chapter",
+      "address": "156 2nd St Ste 627, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78580401970849,
+          "longitude": -122.40033783029149
+        },
+        "high": {
+          "latitude": 37.78850198029149,
+          "longitude": -122.3976398697085
+        }
+      },
+      "types": [
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "association_or_organization",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJWTGPjmaAhYARxz6l1hOj92w",
+      "name": "Ferry Building",
+      "address": "1 Ferry Building, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7954425,
+        "longitude": -122.3936136
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.794089469708496,
+          "longitude": -122.39486943029148
+        },
+        "high": {
+          "latitude": 37.796787430291495,
+          "longitude": -122.39217146970849
+        }
+      },
+      "types": [
+        "historical_landmark",
+        "ferry_service",
+        "market",
+        "historical_place",
+        "grocery_store",
+        "transportation_service",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "historical_landmark",
+      "rating": 4.6,
+      "userRatingCount": 38470
+    },
+    {
+      "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
+      "name": "Oracle Park",
+      "address": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.7783654,
+        "longitude": -122.38991619999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7745563,
+          "longitude": -122.3917657802915
+        },
+        "high": {
+          "latitude": 37.7798683,
+          "longitude": -122.3890678197085
+        }
+      },
+      "types": [
+        "stadium",
+        "tourist_attraction",
+        "event_venue",
+        "sports_complex",
+        "sports_activity_location",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "stadium",
+      "rating": 4.7,
+      "userRatingCount": 32786
+    },
+    {
+      "id": "ChIJ1dIqa2OAhYAREimtEtfBLyc",
+      "name": "Salesforce Tower",
+      "address": "415 Mission St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7897442,
+        "longitude": -122.3972337
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78855716970851,
+          "longitude": -122.39849158029149
+        },
+        "high": {
+          "latitude": 37.79125513029151,
+          "longitude": -122.39579361970851
+        }
+      },
+      "types": [
+        "corporate_office",
+        "business_center",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": 4.6,
+      "userRatingCount": 1046
+    },
+    {
+      "id": "ChIJ1f5_4_KAhYAR-rIwsCEGAvk",
+      "name": "Chinatown San Francisco",
+      "address": "855 Stockton St # B, San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.793977999999996,
+        "longitude": -122.40808299999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.792640469708495,
+          "longitude": -122.4093459802915
+        },
+        "high": {
+          "latitude": 37.795338430291494,
+          "longitude": -122.40664801970853
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "tourist_attraction",
+      "rating": 4.3,
+      "userRatingCount": 11239
+    },
+    {
+      "id": "ChIJiX4p7X2AhYARbDw5qoA4Vdk",
+      "name": "Moscone Center",
+      "address": "747 Howard St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.7843234,
+        "longitude": -122.40069
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7830034197085,
+          "longitude": -122.40222723029149
+        },
+        "high": {
+          "latitude": 37.7857013802915,
+          "longitude": -122.39952926970851
+        }
+      },
+      "types": [
+        "convention_center",
+        "event_venue",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "convention_center",
+      "rating": 4.5,
+      "userRatingCount": 6802
+    },
+    {
+      "id": "ChIJC2juwih-j4ARvLq4f6Oyeuc",
+      "name": "Costco Wholesale",
+      "address": "450 10th St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.7703137,
+        "longitude": -122.41092400000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.76937796970851,
+          "longitude": -122.4118680802915
+        },
+        "high": {
+          "latitude": 37.77207593029151,
+          "longitude": -122.40917011970852
+        }
+      },
+      "types": [
+        "warehouse_store",
+        "department_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "warehouse_store",
+      "rating": 4.4,
+      "userRatingCount": 7746
+    },
+    {
+      "id": "ChIJFQYlk9Z_j4AR2IMIzaEcYbc",
+      "name": "San Francisco",
+      "address": "700 4th St, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.776669999999996,
+        "longitude": -122.39484
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7751976197085,
+          "longitude": -122.39622163029148
+        },
+        "high": {
+          "latitude": 37.7778955802915,
+          "longitude": -122.39352366970849
+        }
+      },
+      "types": [
+        "train_station",
+        "transit_station",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "train_station",
+      "rating": 4.2,
+      "userRatingCount": 768
+    },
+    {
+      "id": "ChIJ53I1Yn2AhYAR_Vl1vNygfMg",
+      "name": "San Francisco Museum of Modern Art",
+      "address": "151 3rd St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.7857182,
+        "longitude": -122.40105080000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.784301969708494,
+          "longitude": -122.40248313029151
+        },
+        "high": {
+          "latitude": 37.78699993029149,
+          "longitude": -122.39978516970854
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "art_gallery",
+        "art_museum",
+        "museum",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "art_museum",
+      "rating": 4.6,
+      "userRatingCount": 16721
+    },
+    {
+      "id": "ChIJcT5nNoaAhYARVdbyW3zPwus",
+      "name": "San Francisco Marriott Marquis",
+      "address": "780 Mission St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.7853366,
+        "longitude": -122.40440679999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7837845697085,
+          "longitude": -122.40570498029149
+        },
+        "high": {
+          "latitude": 37.7864825302915,
+          "longitude": -122.4030070197085
+        }
+      },
+      "types": [
+        "hotel",
+        "wedding_venue",
+        "event_venue",
+        "lodging",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.3,
+      "userRatingCount": 10354
+    },
+    {
+      "id": "ChIJeSJHoI-AhYARembxZUVcNEk",
+      "name": "Hilton San Francisco Union Square",
+      "address": "333 O'Farrell St, San Francisco, CA 94102, USA",
+      "location": {
+        "latitude": 37.7857306,
+        "longitude": -122.41011719999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7843209197085,
+          "longitude": -122.41155868029148
+        },
+        "high": {
+          "latitude": 37.7870188802915,
+          "longitude": -122.4088607197085
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.2,
+      "userRatingCount": 11744
+    },
+    {
+      "id": "ChIJUwxMuvmAhYARWPFJI3P6Iq8",
+      "name": "Pier 33",
+      "address": "San Francisco, CA 94133, USA",
+      "location": {
+        "latitude": 37.8068469,
+        "longitude": -122.40515419999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.8053084197085,
+          "longitude": -122.4064903302915
+        },
+        "high": {
+          "latitude": 37.8080063802915,
+          "longitude": -122.40379236970851
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "tourist_attraction",
+      "rating": 4.6,
+      "userRatingCount": 10114
+    },
+    {
+      "id": "ChIJ5y1zsoeAhYARJl9k0fuMdRs",
+      "name": "Target",
+      "address": "789 Mission St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.784403999999995,
+        "longitude": -122.40381039999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.783181969708494,
+          "longitude": -122.40524693029148
+        },
+        "high": {
+          "latitude": 37.78587993029149,
+          "longitude": -122.40254896970849
+        }
+      },
+      "types": [
+        "department_store",
+        "child_care_agency",
+        "electronics_store",
+        "shoe_store",
+        "furniture_store",
+        "home_improvement_store",
+        "supplier",
+        "home_goods_store",
+        "clothing_store",
+        "toy_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "department_store",
+      "rating": 4,
+      "userRatingCount": 1730
+    },
+    {
+      "id": "ChIJk2vl5NSGhYARwPGvs_ubIws",
+      "name": "Exploratorium",
+      "address": "Pier 15 Embarcadero at, Green St, San Francisco, CA 94111, USA",
+      "location": {
+        "latitude": 37.8016649,
+        "longitude": -122.397348
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7999566697085,
+          "longitude": -122.3995333802915
+        },
+        "high": {
+          "latitude": 37.80265463029149,
+          "longitude": -122.39683541970851
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "art_museum",
+        "event_venue",
+        "museum",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "museum",
+      "rating": 4.7,
+      "userRatingCount": 8737
+    },
+    {
+      "id": "ChIJAQAAQIyAhYARRN3yIQG4hd4",
+      "name": "Coit Tower",
+      "address": "1 Telegraph Hill Blvd, San Francisco, CA 94133, USA",
+      "location": {
+        "latitude": 37.802394899999996,
+        "longitude": -122.40582219999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.8012256697085,
+          "longitude": -122.40716028029148
+        },
+        "high": {
+          "latitude": 37.8039236302915,
+          "longitude": -122.4044623197085
+        }
+      },
+      "types": [
+        "historical_landmark",
+        "tourist_attraction",
+        "landmark",
+        "historical_place",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "historical_landmark",
+      "rating": 4.6,
+      "userRatingCount": 16008
+    },
+    {
+      "id": "ChIJN2S4EI2AhYAR9J4Qeh1U8Aw",
+      "name": "Fairmont San Francisco",
+      "address": "950 Mason St, San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.7923897,
+        "longitude": -122.41044429999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.790941119708506,
+          "longitude": -122.41139958029149
+        },
+        "high": {
+          "latitude": 37.793639080291506,
+          "longitude": -122.40870161970851
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
         "restaurant",
         "food",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "italian_restaurant",
-      "rating": 4.4,
-      "userRatingCount": 1388
+      "primaryType": "hotel",
+      "rating": 4.5,
+      "userRatingCount": 7629
     },
     {
-      "id": "handauthored-soma-mint-plaza-chase-atm",
-      "name": "Chase ATM",
-      "address": "Mission St, San Francisco, CA 94103, USA",
+      "id": "ChIJY-bqepmAhYARSk9Xg_9tcLI",
+      "name": "San Francisco City Hall",
+      "address": "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102, USA",
       "location": {
-        "latitude": 37.782704,
-        "longitude": -122.407259
+        "latitude": 37.779275,
+        "longitude": -122.4192417
       },
       "viewport": {
         "low": {
-          "latitude": 37.781354,
-          "longitude": -122.408609
+          "latitude": 37.7779407697085,
+          "longitude": -122.4205752302915
         },
         "high": {
-          "latitude": 37.784054,
-          "longitude": -122.405909
+          "latitude": 37.7806387302915,
+          "longitude": -122.41787726970851
         }
       },
       "types": [
-        "atm",
-        "finance",
+        "city_hall",
+        "local_government_office",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "city_hall",
+      "rating": 4.6,
+      "userRatingCount": 1845
+    },
+    {
+      "id": "ChIJX2AfTWGAhYARK51ADFAMZoQ",
+      "name": "Hyatt Regency San Francisco",
+      "address": "5 Embarcadero Ctr, San Francisco, CA 94111, USA",
+      "location": {
+        "latitude": 37.794216899999995,
+        "longitude": -122.3956663
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7928466697085,
+          "longitude": -122.3973856302915
+        },
+        "high": {
+          "latitude": 37.7955446302915,
+          "longitude": -122.39468766970852
+        }
+      },
+      "types": [
+        "hotel",
+        "lodging",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "atm",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "hotel",
+      "rating": 4.4,
+      "userRatingCount": 7371
     },
     {
-      "id": "handauthored-soma-mint-plaza-old-mint",
-      "name": "The Old Mint",
-      "address": "88 5th St, San Francisco, CA 94103, USA",
+      "id": "ChIJi1J5_0ojh1QRSEAyfPSzO94",
+      "name": "The Westin St. Francis San Francisco on Union Square",
+      "address": "335 Powell St, San Francisco, CA 94102, USA",
       "location": {
-        "latitude": 37.781761,
-        "longitude": -122.408396
+        "latitude": 37.7876827,
+        "longitude": -122.4087648
       },
       "viewport": {
         "low": {
-          "latitude": 37.780411,
-          "longitude": -122.409746
+          "latitude": 37.786418269708506,
+          "longitude": -122.41007288029151
         },
         "high": {
-          "latitude": 37.783111,
-          "longitude": -122.407046
+          "latitude": 37.789116230291505,
+          "longitude": -122.40737491970852
         }
       },
       "types": [
-        "historical_landmark",
+        "hotel",
+        "wedding_venue",
         "event_venue",
-        "tourist_attraction",
+        "lodging",
         "point_of_interest",
+        "service",
         "establishment"
       ],
-      "primaryType": "historical_landmark",
-      "rating": 4.4,
-      "userRatingCount": 1163
-    },
-    {
-      "id": "handauthored-soma-mint-plaza-sf-centre",
-      "name": "San Francisco Centre",
-      "address": "865 Market St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.783647,
-        "longitude": -122.407145
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7821199,
-          "longitude": -122.4095319
-        },
-        "high": {
-          "latitude": 37.7851741,
-          "longitude": -122.4047581
-        }
-      },
-      "types": [
-        "shopping_mall",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "shopping_mall",
+      "primaryType": "hotel",
       "rating": 4.3,
-      "userRatingCount": 31890
+      "userRatingCount": 6255
     },
     {
-      "id": "handauthored-soma-mint-plaza-garage",
-      "name": "Fifth & Mission Garage",
-      "address": "833 Mission St, San Francisco, CA 94103, USA",
+      "id": "ChIJ150MH4iAhYARy399PwjhCb4",
+      "name": "Palace Hotel, a Luxury Collection Hotel, San Francisco",
+      "address": "2 New Montgomery St, San Francisco, CA 94105, USA",
       "location": {
-        "latitude": 37.781581,
-        "longitude": -122.409191
+        "latitude": 37.7881241,
+        "longitude": -122.4019021
       },
       "viewport": {
         "low": {
-          "latitude": 37.780231,
-          "longitude": -122.410541
+          "latitude": 37.7868673697085,
+          "longitude": -122.4030707302915
         },
         "high": {
-          "latitude": 37.782931,
-          "longitude": -122.407841
+          "latitude": 37.7895653302915,
+          "longitude": -122.40037276970853
         }
       },
       "types": [
-        "parking",
+        "hotel",
+        "wedding_venue",
+        "event_venue",
+        "lodging",
         "point_of_interest",
+        "service",
         "establishment"
       ],
-      "primaryType": "parking",
-      "rating": 3.8,
-      "userRatingCount": 940
+      "primaryType": "hotel",
+      "rating": 4.5,
+      "userRatingCount": 5583
     },
     {
-      "id": "handauthored-soma-mint-plaza-powell-bart",
-      "name": "Powell St. BART Station",
-      "address": "899 Market St, San Francisco, CA 94102, USA",
+      "id": "ChIJo7HdhWKAhYARp5lDOzOnnK0",
+      "name": "Montgomery",
+      "address": "598 Market St, San Francisco, CA 94104, USA",
       "location": {
-        "latitude": 37.784546,
-        "longitude": -122.408282
+        "latitude": 37.7894171,
+        "longitude": -122.401109
       },
       "viewport": {
         "low": {
-          "latitude": 37.783196,
-          "longitude": -122.409632
+          "latitude": 37.788077769708494,
+          "longitude": -122.4029710802915
         },
         "high": {
-          "latitude": 37.785896,
-          "longitude": -122.406932
+          "latitude": 37.79077573029149,
+          "longitude": -122.4002731197085
         }
       },
       "types": [
         "subway_station",
         "transit_station",
+        "transportation_service",
         "point_of_interest",
         "establishment"
       ],
       "primaryType": "subway_station",
-      "rating": 3.6,
-      "userRatingCount": 1102
-    },
-    {
-      "id": "handauthored-soma-mint-plaza-yerba-buena",
-      "name": "Yerba Buena Gardens",
-      "address": "750 Howard St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.781671,
-        "longitude": -122.401235
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7802337,
-          "longitude": -122.4037355
-        },
-        "high": {
-          "latitude": 37.7831083,
-          "longitude": -122.3987345
-        }
-      },
-      "types": [
-        "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "park",
-      "rating": 4.7,
-      "userRatingCount": 8920
-    },
-    {
-      "id": "handauthored-soma-mint-plaza-moma",
-      "name": "SFMOMA",
-      "address": "151 3rd St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.782839,
-        "longitude": -122.398962
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.781489,
-          "longitude": -122.400312
-        },
-        "high": {
-          "latitude": 37.784189,
-          "longitude": -122.397612
-        }
-      },
-      "types": [
-        "art_gallery",
-        "museum",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "art_gallery",
-      "rating": 4.6,
-      "userRatingCount": 20544
+      "rating": 3.9,
+      "userRatingCount": 248
     }
   ],
   "placeKeys": {
-    "blueBottle": "handauthored-soma-mint-plaza-blue-bottle",
-    "fiftyFourMint": "handauthored-soma-mint-plaza-54-mint",
-    "mintPlaza": "handauthored-soma-mint-plaza-mint-plaza",
-    "oldMint": "handauthored-soma-mint-plaza-old-mint",
-    "mall": "handauthored-soma-mint-plaza-sf-centre",
-    "bart": "handauthored-soma-mint-plaza-powell-bart"
+    "blueBottle": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+    "gym": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+    "museum": "ChIJ53I1Yn2AhYAR_Vl1vNygfMg",
+    "bart": "ChIJo7HdhWKAhYARp5lDOzOnnK0"
   },
   "histories": {
     "none": [],
     "coffeeRegular": [
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-06-24T15:03:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-06-26T15:46:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-06-30T15:39:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-03T15:32:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-06T15:25:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-09T15:18:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-10T15:11:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-15T15:04:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-17T15:47:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-21T15:40:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-24T15:33:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-27T15:26:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-30T15:19:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-31T15:12:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-05T15:05:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-07T15:48:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-11T15:41:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-14T15:34:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-17T15:27:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-20T15:20:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-21T15:13:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-26T15:06:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-28T15:49:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-01T15:42:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-04T15:35:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-07T15:28:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-10T15:21:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-11T15:14:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-16T15:07:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-18T15:00:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       }
     ],
     "neighborhoodRegular": [
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-06-24T15:27:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-06-25T03:13:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-01T15:20:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-07-04T03:06:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-09T15:13:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-07-13T03:49:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-16T15:06:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-07-22T03:42:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-24T15:49:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-07-31T03:35:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-07-31T15:42:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-07T15:35:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-08-09T03:28:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-14T15:28:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-08-18T03:21:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-21T15:21:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-08-27T03:14:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-08-28T15:14:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-09-05T03:07:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-07T15:07:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-54-mint",
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
         "createdAt": "2026-09-14T03:00:00.000Z",
-        "placeName": "54 Mint Ristorante Italiano",
-        "placeAddress": "16 Mint Plaza, San Francisco, CA 94103, USA",
-        "placePrimaryType": "italian_restaurant",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
         "placeTypes": [
-          "italian_restaurant",
-          "restaurant",
-          "food",
+          "health",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.782031,
-          "longitude": -122.407327
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
         }
       },
       {
-        "googlePlaceId": "handauthored-soma-mint-plaza-blue-bottle",
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
         "createdAt": "2026-09-14T15:00:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "66 Mint St, San Francisco, CA 94103, USA",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
+          "food_store",
+          "store",
           "food",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.7823,
-          "longitude": -122.4076
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
         }
       }
     ]
@@ -1885,7 +3477,7 @@
         "rankedAbove": [
           [
             "blueBottle",
-            "mall"
+            "museum"
           ]
         ]
       }
@@ -1912,7 +3504,7 @@
         "rankedAbove": [
           [
             "blueBottle",
-            "fiftyFourMint"
+            "gym"
           ]
         ]
       }
@@ -1924,10 +3516,10 @@
       "fixAgeSeconds": 5,
       "history": "neighborhoodRegular",
       "expect": {
-        "top": "fiftyFourMint",
+        "top": "gym",
         "rankedAbove": [
           [
-            "fiftyFourMint",
+            "gym",
             "blueBottle"
           ]
         ]

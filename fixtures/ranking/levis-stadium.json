@@ -2,280 +2,14 @@
   "schemaVersion": 1,
   "name": "levis-stadium",
   "description": "On the concourse inside Levi's Stadium on a Sunday afternoon, 100 m from the pin.",
-  "recordedAt": null,
+  "recordedAt": "2026-09-23T23:08:35.081Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
-    "latitude": 37.404019,
-    "longitude": -121.970079,
+    "latitude": 37.404035,
+    "longitude": -121.970056,
     "horizontalAccuracy": 45
   },
   "google": {
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 37.404019,
-              "longitude": -121.970079
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "handauthored-levis-stadium-museum",
-            "displayName": {
-              "text": "49ers Museum",
-              "languageCode": "en"
-            },
-            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.404288,
-              "longitude": -121.969739
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.402938,
-                "longitude": -121.971089
-              },
-              "high": {
-                "latitude": 37.405638,
-                "longitude": -121.968389
-              }
-            },
-            "types": [
-              "museum",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "museum",
-            "rating": 4.5,
-            "userRatingCount": 486
-          },
-          {
-            "id": "handauthored-levis-stadium-team-store",
-            "displayName": {
-              "text": "49ers Team Store",
-              "languageCode": "en"
-            },
-            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.403839,
-              "longitude": -121.970644
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.402489,
-                "longitude": -121.971994
-              },
-              "high": {
-                "latitude": 37.405189,
-                "longitude": -121.969294
-              }
-            },
-            "types": [
-              "sporting_goods_store",
-              "store",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "sporting_goods_store",
-            "rating": 4.1,
-            "userRatingCount": 158
-          },
-          {
-            "id": "handauthored-levis-stadium-stadium",
-            "displayName": {
-              "text": "Levi's Stadium",
-              "languageCode": "en"
-            },
-            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.4033,
-              "longitude": -121.9694
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4003356,
-                "longitude": -121.9731318
-              },
-              "high": {
-                "latitude": 37.4062644,
-                "longitude": -121.9656682
-              }
-            },
-            "types": [
-              "stadium",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "stadium",
-            "rating": 4.4,
-            "userRatingCount": 21455
-          },
-          {
-            "id": "handauthored-levis-stadium-red-lot",
-            "displayName": {
-              "text": "Levi's Stadium Red Lot 1",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.404558,
-              "longitude": -121.97234
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.403208,
-                "longitude": -121.97369
-              },
-              "high": {
-                "latitude": 37.405908,
-                "longitude": -121.97099
-              }
-            },
-            "types": [
-              "parking",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "parking",
-            "rating": 3.6,
-            "userRatingCount": 41
-          },
-          {
-            "id": "handauthored-levis-stadium-vta",
-            "displayName": {
-              "text": "Great America Station",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.406264,
-              "longitude": -121.967364
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.404914,
-                "longitude": -121.968714
-              },
-              "high": {
-                "latitude": 37.407614,
-                "longitude": -121.966014
-              }
-            },
-            "types": [
-              "light_rail_station",
-              "transit_station",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "light_rail_station",
-            "rating": 4,
-            "userRatingCount": 62
-          },
-          {
-            "id": "handauthored-levis-stadium-convention-center",
-            "displayName": {
-              "text": "Santa Clara Convention Center",
-              "languageCode": "en"
-            },
-            "formattedAddress": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.402222,
-              "longitude": -121.962163
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4002457,
-                "longitude": -121.964877
-              },
-              "high": {
-                "latitude": 37.4041983,
-                "longitude": -121.959449
-              }
-            },
-            "types": [
-              "convention_center",
-              "event_venue",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "convention_center",
-            "rating": 4.4,
-            "userRatingCount": 3512
-          },
-          {
-            "id": "handauthored-levis-stadium-hyatt",
-            "displayName": {
-              "text": "Hyatt Regency Santa Clara",
-              "languageCode": "en"
-            },
-            "formattedAddress": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.403839,
-              "longitude": -121.961258
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.402489,
-                "longitude": -121.962608
-              },
-              "high": {
-                "latitude": 37.405189,
-                "longitude": -121.959908
-              }
-            },
-            "types": [
-              "hotel",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "hotel",
-            "rating": 4.4,
-            "userRatingCount": 3927
-          },
-          {
-            "id": "handauthored-levis-stadium-great-america",
-            "displayName": {
-              "text": "California's Great America",
-              "languageCode": "en"
-            },
-            "formattedAddress": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.397551,
-              "longitude": -121.97415
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.3932391,
-                "longitude": -121.9800299
-              },
-              "high": {
-                "latitude": 37.4018629,
-                "longitude": -121.9682701
-              }
-            },
-            "types": [
-              "amusement_park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "primaryType": "amusement_park",
-            "rating": 4.4,
-            "userRatingCount": 25310
-          }
-        ]
-      }
-    },
     "popularity": {
       "request": {
         "maxResultCount": 20,
@@ -283,8 +17,8 @@
         "locationRestriction": {
           "circle": {
             "center": {
-              "latitude": 37.404019,
-              "longitude": -121.970079
+              "latitude": 37.404035,
+              "longitude": -121.970056
             },
             "radius": 2500
           }
@@ -293,251 +27,1350 @@
       "response": {
         "places": [
           {
-            "id": "handauthored-levis-stadium-great-america",
-            "displayName": {
-              "text": "California's Great America",
-              "languageCode": "en"
-            },
-            "formattedAddress": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.397551,
-              "longitude": -121.97415
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.3932391,
-                "longitude": -121.9800299
-              },
-              "high": {
-                "latitude": 37.4018629,
-                "longitude": -121.9682701
-              }
-            },
+            "id": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
             "types": [
-              "amusement_park",
-              "tourist_attraction",
+              "stadium",
+              "event_venue",
+              "sports_complex",
+              "sports_activity_location",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "amusement_park",
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403316499999995,
+              "longitude": -121.96937739999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3999273,
+                "longitude": -121.9766548
+              },
+              "high": {
+                "latitude": 37.4049343,
+                "longitude": -121.9685212
+              }
+            },
             "rating": 4.4,
-            "userRatingCount": 25310
-          },
-          {
-            "id": "handauthored-levis-stadium-stadium",
+            "userRatingCount": 13335,
             "displayName": {
               "text": "Levi's Stadium",
               "languageCode": "en"
             },
-            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
-            "location": {
-              "latitude": 37.4033,
-              "longitude": -121.9694
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4003356,
-                "longitude": -121.9731318
-              },
-              "high": {
-                "latitude": 37.4062644,
-                "longitude": -121.9656682
-              }
-            },
+            "primaryType": "stadium"
+          },
+          {
+            "id": "ChIJq7iF28bJj4ARdWUD6DQUr3I",
             "types": [
-              "stadium",
+              "amusement_park",
               "tourist_attraction",
+              "amusement_center",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "stadium",
-            "rating": 4.4,
-            "userRatingCount": 21455
-          },
-          {
-            "id": "handauthored-levis-stadium-hyatt",
-            "displayName": {
-              "text": "Hyatt Regency Santa Clara",
-              "languageCode": "en"
-            },
-            "formattedAddress": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "formattedAddress": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
             "location": {
-              "latitude": 37.403839,
-              "longitude": -121.961258
+              "latitude": 37.3973529,
+              "longitude": -121.9744083
             },
             "viewport": {
               "low": {
-                "latitude": 37.402489,
-                "longitude": -121.962608
+                "latitude": 37.3972775197085,
+                "longitude": -121.97666503029149
               },
               "high": {
-                "latitude": 37.405189,
-                "longitude": -121.959908
+                "latitude": 37.3999754802915,
+                "longitude": -121.97396706970851
               }
             },
+            "rating": 4.4,
+            "userRatingCount": 16659,
+            "displayName": {
+              "text": "California's Great America",
+              "languageCode": "en"
+            },
+            "primaryType": "amusement_park"
+          },
+          {
+            "id": "ChIJU8UslLbJj4ARFdF6yKlXPJ8",
+            "types": [
+              "restaurant",
+              "sports_bar",
+              "golf_course",
+              "bar",
+              "event_venue",
+              "athletic_field",
+              "sports_school",
+              "american_restaurant",
+              "sports_activity_location",
+              "sports_coaching",
+              "health",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10 Topgolf Dr, San Jose, CA 95002, USA",
+            "location": {
+              "latitude": 37.4231191,
+              "longitude": -121.9697688
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.421918669708504,
+                "longitude": -121.97106958029148
+              },
+              "high": {
+                "latitude": 37.4246166302915,
+                "longitude": -121.9683716197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 2373,
+            "displayName": {
+              "text": "Topgolf",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJRxpmaN3Jj4AR8UKnsvpVnoE",
+            "types": [
+              "movie_theater",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "3111 Mission College Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.3891813,
+              "longitude": -121.98301989999997
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.38766811970849,
+                "longitude": -121.98440963029148
+              },
+              "high": {
+                "latitude": 37.39036608029149,
+                "longitude": -121.9817116697085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 7715,
+            "displayName": {
+              "text": "AMC Mercado 20",
+              "languageCode": "en"
+            },
+            "primaryType": "movie_theater"
+          },
+          {
+            "id": "ChIJuVD6TcnJj4AR5NJwB-b368E",
+            "types": [
+              "convention_center",
+              "event_venue",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404670599999996,
+              "longitude": -121.97524700000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4035072197085,
+                "longitude": -121.97659598029149
+              },
+              "high": {
+                "latitude": 37.4062051802915,
+                "longitude": -121.97389801970851
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 2901,
+            "displayName": {
+              "text": "Santa Clara Convention Center",
+              "languageCode": "en"
+            },
+            "primaryType": "convention_center"
+          },
+          {
+            "id": "ChIJh7uPvNzJj4ARWHz7sFfkSQw",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "3000 Mission College Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.3925485,
+              "longitude": -121.98280369999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.38983509999999,
+                "longitude": -121.9863925
+              },
+              "high": {
+                "latitude": 37.394893599999996,
+                "longitude": -121.9791648
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 208,
+            "displayName": {
+              "text": "Mission College",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJ9wHG-1LIj4ARwze438TiAf0",
+            "types": [
+              "department_store",
+              "child_care_agency",
+              "electronics_store",
+              "shoe_store",
+              "furniture_store",
+              "home_improvement_store",
+              "supplier",
+              "home_goods_store",
+              "clothing_store",
+              "toy_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "95 Holger Way, San Jose, CA 95134, USA",
+            "location": {
+              "latitude": 37.4181795,
+              "longitude": -121.9561986
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.41681096970851,
+                "longitude": -121.95707808029147
+              },
+              "high": {
+                "latitude": 37.4195089302915,
+                "longitude": -121.95438011970849
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 1467,
+            "displayName": {
+              "text": "Target",
+              "languageCode": "en"
+            },
+            "primaryType": "department_store"
+          },
+          {
+            "id": "ChIJZS4fLMLJj4ARRUt4ybRvZxk",
+            "types": [
+              "hotel",
+              "wedding_venue",
+              "event_venue",
+              "lodging",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2700 Mission College Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.3903561,
+              "longitude": -121.97445679999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3892159197085,
+                "longitude": -121.97581858029149
+              },
+              "high": {
+                "latitude": 37.3919138802915,
+                "longitude": -121.9731206197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 3620,
+            "displayName": {
+              "text": "Santa Clara Marriott",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJMcjCStzJj4ARatfT398YVfw",
+            "types": [
+              "grocery_store",
+              "discount_supermarket",
+              "discount_store",
+              "cake_shop",
+              "department_store",
+              "market",
+              "deli",
+              "bakery",
+              "supermarket",
+              "manufacturer",
+              "food_store",
+              "wholesaler",
+              "store",
+              "food",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "3255 Mission College Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.390084,
+              "longitude": -121.9854336
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3885682197085,
+                "longitude": -121.98690728029148
+              },
+              "high": {
+                "latitude": 37.3912661802915,
+                "longitude": -121.98420931970848
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 2994,
+            "displayName": {
+              "text": "Walmart Neighborhood Market",
+              "languageCode": "en"
+            },
+            "primaryType": "grocery_store"
+          },
+          {
+            "id": "ChIJT5_kVKzJj4AReRYNNcInaWE",
+            "types": [
+              "real_estate_agency",
+              "apartment_building",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "99 Vista Montaña, San Jose, CA 95134, USA",
+            "location": {
+              "latitude": 37.4124385,
+              "longitude": -121.95670369999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.41097911970851,
+                "longitude": -121.9579028302915
+              },
+              "high": {
+                "latitude": 37.41367708029151,
+                "longitude": -121.95520486970852
+              }
+            },
+            "rating": 3.5,
+            "userRatingCount": 357,
+            "displayName": {
+              "text": "Vista 99 Apartments",
+              "languageCode": "en"
+            },
+            "primaryType": "real_estate_agency"
+          },
+          {
+            "id": "ChIJec-odnbJj4AR3thv0aceyaE",
+            "types": [
+              "grocery_store",
+              "butcher_shop",
+              "florist",
+              "market",
+              "deli",
+              "bakery",
+              "food_delivery",
+              "supermarket",
+              "manufacturer",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "3970 Rivermark Plaza, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.394745,
+              "longitude": -121.94763400000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3932310697085,
+                "longitude": -121.94882778029148
+              },
+              "high": {
+                "latitude": 37.39592903029149,
+                "longitude": -121.94612981970849
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 3512,
+            "displayName": {
+              "text": "Safeway",
+              "languageCode": "en"
+            },
+            "primaryType": "grocery_store"
+          },
+          {
+            "id": "ChIJh5SseSnIj4ARPMHbEJSbw1w",
+            "types": [
+              "supplier",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "5488 Marvell Ln, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4118299,
+              "longitude": -121.9821463
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4102713197085,
+                "longitude": -121.98343783029148
+              },
+              "high": {
+                "latitude": 37.4129692802915,
+                "longitude": -121.9807398697085
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 79,
+            "displayName": {
+              "text": "Marvell Technology, Inc.",
+              "languageCode": "en"
+            },
+            "primaryType": "supplier"
+          },
+          {
+            "id": "ChIJY12_ccbJj4ARcrFhVuI9FEE",
             "types": [
               "hotel",
               "lodging",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "hotel",
-            "rating": 4.4,
-            "userRatingCount": 3927
-          },
-          {
-            "id": "handauthored-levis-stadium-convention-center",
-            "displayName": {
-              "text": "Santa Clara Convention Center",
-              "languageCode": "en"
-            },
-            "formattedAddress": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
+            "formattedAddress": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
             "location": {
-              "latitude": 37.402222,
-              "longitude": -121.962163
+              "latitude": 37.4051338,
+              "longitude": -121.9769213
             },
             "viewport": {
               "low": {
-                "latitude": 37.4002457,
-                "longitude": -121.964877
+                "latitude": 37.4037446197085,
+                "longitude": -121.97828308029148
               },
               "high": {
-                "latitude": 37.4041983,
-                "longitude": -121.959449
+                "latitude": 37.4064425802915,
+                "longitude": -121.97558511970848
               }
             },
+            "rating": 4.3,
+            "userRatingCount": 3724,
+            "displayName": {
+              "text": "Hyatt Regency Santa Clara",
+              "languageCode": "en"
+            },
+            "primaryType": "hotel"
+          },
+          {
+            "id": "ChIJ00mzfx_Jj4ARFlQ8hqu5Sz4",
             "types": [
-              "convention_center",
-              "event_venue",
+              "corporate_office",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "convention_center",
-            "rating": 4.4,
-            "userRatingCount": 3512
-          },
-          {
-            "id": "handauthored-levis-stadium-museum",
-            "displayName": {
-              "text": "49ers Museum",
-              "languageCode": "en"
-            },
-            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "formattedAddress": "2795 Augustine Dr, Santa Clara, CA 95054, USA",
             "location": {
-              "latitude": 37.404288,
-              "longitude": -121.969739
+              "latitude": 37.382930699999996,
+              "longitude": -121.97612760000001
             },
             "viewport": {
               "low": {
-                "latitude": 37.402938,
-                "longitude": -121.971089
+                "latitude": 37.3815613697085,
+                "longitude": -121.97769758029149
               },
               "high": {
-                "latitude": 37.405638,
-                "longitude": -121.968389
+                "latitude": 37.3842593302915,
+                "longitude": -121.9749996197085
               }
             },
+            "rating": 3.7,
+            "userRatingCount": 31,
+            "displayName": {
+              "text": "Amazon",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJ-SOj-ufJj4ARdA0LHl3Siq8",
             "types": [
-              "museum",
-              "tourist_attraction",
+              "hamburger_restaurant",
+              "diner",
+              "fast_food_restaurant",
+              "american_restaurant",
+              "restaurant",
+              "food",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "museum",
+            "formattedAddress": "3001 Mission College Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.3880553,
+              "longitude": -121.9820575
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3866977197085,
+                "longitude": -121.9835521302915
+              },
+              "high": {
+                "latitude": 37.38939568029149,
+                "longitude": -121.98085416970851
+              }
+            },
             "rating": 4.5,
-            "userRatingCount": 486
-          },
-          {
-            "id": "handauthored-levis-stadium-team-store",
+            "userRatingCount": 6528,
             "displayName": {
-              "text": "49ers Team Store",
+              "text": "In-N-Out Burger",
               "languageCode": "en"
             },
-            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "primaryType": "hamburger_restaurant"
+          },
+          {
+            "id": "ChIJcZJRlUzJj4ARvdgy5l27B78",
+            "types": [
+              "corporate_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "3655 N First St, San Jose, CA 95134, USA",
             "location": {
-              "latitude": 37.403839,
-              "longitude": -121.970644
+              "latitude": 37.4094069,
+              "longitude": -121.94620580000002
             },
             "viewport": {
               "low": {
-                "latitude": 37.402489,
-                "longitude": -121.971994
+                "latitude": 37.407625369708505,
+                "longitude": -121.94777353029149
               },
               "high": {
-                "latitude": 37.405189,
-                "longitude": -121.969294
+                "latitude": 37.4103233302915,
+                "longitude": -121.9450755697085
               }
             },
+            "rating": 3.2,
+            "userRatingCount": 140,
+            "displayName": {
+              "text": "Samsung",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJWXLTm93Jj4ARwki3xfmmYh8",
             "types": [
-              "sporting_goods_store",
+              "department_store",
+              "womens_clothing_store",
+              "jewelry_store",
+              "clothing_store",
               "store",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "sporting_goods_store",
-            "rating": 4.1,
-            "userRatingCount": 158
-          },
-          {
-            "id": "handauthored-levis-stadium-vta",
-            "displayName": {
-              "text": "Great America Station",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "formattedAddress": "3201 Mission College Blvd, Santa Clara, CA 95054, USA",
             "location": {
-              "latitude": 37.406264,
-              "longitude": -121.967364
+              "latitude": 37.3899085,
+              "longitude": -121.9847552
             },
             "viewport": {
               "low": {
-                "latitude": 37.404914,
-                "longitude": -121.968714
+                "latitude": 37.388403619708505,
+                "longitude": -121.98624568029149
               },
               "high": {
-                "latitude": 37.407614,
-                "longitude": -121.966014
+                "latitude": 37.3911015802915,
+                "longitude": -121.98354771970851
               }
             },
+            "rating": 4.2,
+            "userRatingCount": 1591,
+            "displayName": {
+              "text": "T.J. Maxx & HomeGoods",
+              "languageCode": "en"
+            },
+            "primaryType": "department_store"
+          },
+          {
+            "id": "ChIJW6PZhHbJj4ARjetaCEf86Ao",
             "types": [
-              "light_rail_station",
-              "transit_station",
+              "corporate_office",
+              "manufacturer",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "6280 America Center Dr, San Jose, CA 95002, USA",
+            "location": {
+              "latitude": 37.4191639,
+              "longitude": -121.97883230000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.417679819708496,
+                "longitude": -121.98006388029147
+              },
+              "high": {
+                "latitude": 37.420377780291496,
+                "longitude": -121.97736591970849
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 332,
+            "displayName": {
+              "text": "Hewlett Packard Enterprise",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJvTxWLHTJj4AR_fQ0Lro-dCA",
+            "types": [
+              "apartment_complex",
+              "real_estate_agency",
+              "apartment_building",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "550 Moreland Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.3958503,
+              "longitude": -121.9446035
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.394565019708494,
+                "longitude": -121.9459939302915
+              },
+              "high": {
+                "latitude": 37.397262980291494,
+                "longitude": -121.9432959697085
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 288,
+            "displayName": {
+              "text": "550 Moreland Apartments",
+              "languageCode": "en"
+            },
+            "primaryType": "apartment_complex"
+          },
+          {
+            "id": "ChIJe8fHvenJj4ARzqoUoQpRxbQ",
+            "types": [
+              "church",
+              "place_of_worship",
+              "association_or_organization",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "light_rail_station",
-            "rating": 4,
-            "userRatingCount": 62
-          },
-          {
-            "id": "handauthored-levis-stadium-red-lot",
-            "displayName": {
-              "text": "Levi's Stadium Red Lot 1",
-              "languageCode": "en"
-            },
-            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "formattedAddress": "2800 Mission College Blvd, Santa Clara, CA 95054, USA",
             "location": {
-              "latitude": 37.404558,
-              "longitude": -121.97234
+              "latitude": 37.389340000000004,
+              "longitude": -121.9772931
             },
             "viewport": {
               "low": {
-                "latitude": 37.403208,
-                "longitude": -121.97369
+                "latitude": 37.3880882197085,
+                "longitude": -121.97858338029148
               },
               "high": {
-                "latitude": 37.405908,
-                "longitude": -121.97099
+                "latitude": 37.3907861802915,
+                "longitude": -121.9758854197085
               }
             },
+            "rating": 4.8,
+            "userRatingCount": 1333,
+            "displayName": {
+              "text": "Our Lady of Peace Church & Shrine",
+              "languageCode": "en"
+            },
+            "primaryType": "church"
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.404035,
+              "longitude": -121.970056
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJ87zR1cnJj4ARJlsFslkfyrE",
             "types": [
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404317,
+              "longitude": -121.97014709999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4032209697085,
+                "longitude": -121.97137703029149
+              },
+              "high": {
+                "latitude": 37.4059189302915,
+                "longitude": -121.96867906970851
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 41,
+            "displayName": {
+              "text": "Visa Box Office",
+              "languageCode": "en"
+            },
+            "primaryType": "store"
+          },
+          {
+            "id": "ChIJpeCR1snJj4AR1upgaMGvX9c",
+            "types": [
+              "gym",
+              "sports_activity_location",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4043823,
+              "longitude": -121.9702851
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.403143969708495,
+                "longitude": -121.9717084302915
+              },
+              "high": {
+                "latitude": 37.405841930291494,
+                "longitude": -121.96901046970851
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Sports Bay Area",
+              "languageCode": "en"
+            },
+            "primaryType": "gym"
+          },
+          {
+            "id": "ChIJ15TnhbnJj4AR005LNqvCH8g",
+            "types": [
+              "parking_lot",
+              "parking_garage",
               "parking",
+              "transportation_service",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4043468,
+              "longitude": -121.9706691
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4030588697085,
+                "longitude": -121.9720591302915
+              },
+              "high": {
+                "latitude": 37.405756830291494,
+                "longitude": -121.9693611697085
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 12,
+            "displayName": {
+              "text": "Levi's Stadium Parking (Propark)",
+              "languageCode": "en"
+            },
+            "primaryType": "parking_lot"
+          },
+          {
+            "id": "ChIJXyp9-bfJj4ARK2gwp7IpVGE",
+            "types": [
+              "sportswear_store",
+              "sporting_goods_store",
+              "clothing_store",
+              "store",
               "point_of_interest",
               "establishment"
             ],
-            "primaryType": "parking",
-            "rating": 3.6,
-            "userRatingCount": 41
+            "formattedAddress": "4900 Centennial Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4040606,
+              "longitude": -121.97087029999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.40285111970851,
+                "longitude": -121.97231418029148
+              },
+              "high": {
+                "latitude": 37.4055490802915,
+                "longitude": -121.9696162197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 551,
+            "displayName": {
+              "text": "49ers Team Store",
+              "languageCode": "en"
+            },
+            "primaryType": "store"
+          },
+          {
+            "id": "ChIJN-Tv3rfJj4ARe7IAFw2Ffdc",
+            "types": [
+              "steak_house",
+              "pub",
+              "bar",
+              "american_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Levi’s® Stadium, 4900 Marie P. DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404281399999995,
+              "longitude": -121.9692529
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4029908197085,
+                "longitude": -121.97048498029149
+              },
+              "high": {
+                "latitude": 37.4056887802915,
+                "longitude": -121.9677870197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 557,
+            "displayName": {
+              "text": "Bourbon Steak Santa Clara",
+              "languageCode": "en"
+            },
+            "primaryType": "steak_house"
+          },
+          {
+            "id": "ChIJO8NleKDJj4ARMBuIJqgf4vs",
+            "types": [
+              "chicken_restaurant",
+              "sandwich_shop",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403937299999996,
+              "longitude": -121.9691684
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4026803697085,
+                "longitude": -121.9703331302915
+              },
+              "high": {
+                "latitude": 37.4053783302915,
+                "longitude": -121.9676351697085
+              }
+            },
+            "rating": 3.2,
+            "userRatingCount": 17,
+            "displayName": {
+              "text": "Chicken Guy!",
+              "languageCode": "en"
+            },
+            "primaryType": "chicken_restaurant"
+          },
+          {
+            "id": "ChIJUQECmPfJj4AROgbZ06JAZFQ",
+            "types": [
+              "museum",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4041654,
+              "longitude": -121.9709552
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4029008197085,
+                "longitude": -121.97235933029151
+              },
+              "high": {
+                "latitude": 37.4055987802915,
+                "longitude": -121.96966136970852
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 108,
+            "displayName": {
+              "text": "The 49ers Museum",
+              "languageCode": "en"
+            },
+            "primaryType": "museum"
+          },
+          {
+            "id": "ChIJydawaFrJj4ARIjXq-qOmYug",
+            "types": [
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4047315,
+              "longitude": -121.96938469999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.40340071970849,
+                "longitude": -121.9706972302915
+              },
+              "high": {
+                "latitude": 37.40609868029149,
+                "longitude": -121.96799926970851
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 11,
+            "displayName": {
+              "text": "San Francisco 49ers Giant Helmet",
+              "languageCode": "en"
+            },
+            "primaryType": "tourist_attraction"
+          },
+          {
+            "id": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
+            "types": [
+              "stadium",
+              "event_venue",
+              "sports_complex",
+              "sports_activity_location",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403316499999995,
+              "longitude": -121.96937739999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.3999273,
+                "longitude": -121.9766548
+              },
+              "high": {
+                "latitude": 37.4049343,
+                "longitude": -121.9685212
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 13335,
+            "displayName": {
+              "text": "Levi's Stadium",
+              "languageCode": "en"
+            },
+            "primaryType": "stadium"
+          },
+          {
+            "id": "ChIJfaY5snjJj4ARXrYlSgOGYAM",
+            "types": [
+              "pizza_restaurant",
+              "chicken_wings_restaurant",
+              "salad_shop",
+              "italian_restaurant",
+              "pizza_delivery",
+              "meal_delivery",
+              "food_delivery",
+              "european_restaurant",
+              "meal_takeaway",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Levi Stadium, 4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403213699999995,
+              "longitude": -121.96929139999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.40099196970849,
+                "longitude": -121.9706357802915
+              },
+              "high": {
+                "latitude": 37.40368993029149,
+                "longitude": -121.96793781970851
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 4,
+            "displayName": {
+              "text": "Slice House by Tony Gemignani - Levi Stadium",
+              "languageCode": "en"
+            },
+            "primaryType": "pizza_restaurant"
+          },
+          {
+            "id": "ChIJ306YTePJj4ARyy8kCAFx4P4",
+            "types": [
+              "asian_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way Section 108, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403213699999995,
+              "longitude": -121.96929139999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.40099196970849,
+                "longitude": -121.9706357802915
+              },
+              "high": {
+                "latitude": 37.40368993029149,
+                "longitude": -121.96793781970851
+              }
+            },
+            "displayName": {
+              "text": "Asian Street Eats",
+              "languageCode": "en"
+            },
+            "primaryType": "asian_restaurant"
+          },
+          {
+            "id": "ChIJv1-p78TJj4AR9w3pVpDw5Jg",
+            "types": [
+              "laundry",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Marie P DeBartolo Way #474, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403213699999995,
+              "longitude": -121.96929139999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.40099196970849,
+                "longitude": -121.9706357802915
+              },
+              "high": {
+                "latitude": 37.40368993029149,
+                "longitude": -121.96793781970851
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 39,
+            "displayName": {
+              "text": "Finest Santa Clara Carpet Cleaners",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJ6zZqwbfJj4ARz97fSoFWtEY",
+            "types": [
+              "hamburger_restaurant",
+              "food_court",
+              "american_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4900 Centennial Blvd, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.403340899999996,
+              "longitude": -121.96875840000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4020733697085,
+                "longitude": -121.96985713029149
+              },
+              "high": {
+                "latitude": 37.4047713302915,
+                "longitude": -121.96715916970851
+              }
+            },
+            "rating": 3.4,
+            "userRatingCount": 19,
+            "displayName": {
+              "text": "Super Duper Burgers",
+              "languageCode": "en"
+            },
+            "primaryType": "hamburger_restaurant"
+          },
+          {
+            "id": "ChIJcwEU0EfJj4ARXRRSdBZrjmg",
+            "types": [
+              "parking_garage",
+              "parking_lot",
+              "parking",
+              "transportation_service",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2525 Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404562999999996,
+              "longitude": -121.97174189999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4032130197085,
+                "longitude": -121.97309003029147
+              },
+              "high": {
+                "latitude": 37.4059109802915,
+                "longitude": -121.9703920697085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 7,
+            "displayName": {
+              "text": "City of Santa Clara Tasman Garage",
+              "languageCode": "en"
+            },
+            "primaryType": "parking_garage"
+          },
+          {
+            "id": "ChIJ_d8GkcnJj4ARi79Rf361ozY",
+            "types": [
+              "electric_vehicle_charging_station",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2525 Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404883999999996,
+              "longitude": -121.972129
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.403248819708494,
+                "longitude": -121.97319583029149
+              },
+              "high": {
+                "latitude": 37.405946780291494,
+                "longitude": -121.97049786970851
+              }
+            },
+            "rating": 2.3,
+            "userRatingCount": 3,
+            "displayName": {
+              "text": "EVgo Charging Station",
+              "languageCode": "en"
+            },
+            "primaryType": "electric_vehicle_charging_station"
+          },
+          {
+            "id": "ChIJhSTJu0bJj4ARiME5uKdix3Q",
+            "types": [
+              "parking_lot",
+              "parking",
+              "transportation_service",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "5166 Stars and Stripes Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404933,
+              "longitude": -121.97215800000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4035897697085,
+                "longitude": -121.97349478029147
+              },
+              "high": {
+                "latitude": 37.4062877302915,
+                "longitude": -121.9707968197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 39,
+            "displayName": {
+              "text": "Yellow Lot 1 | Levi's Stadium",
+              "languageCode": "en"
+            },
+            "primaryType": "parking_lot"
+          },
+          {
+            "id": "ChIJ61iLmMnJj4ARj6Fg__O58Ic",
+            "types": [
+              "electric_vehicle_charging_station",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "5166 Stars and Stripes Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404668,
+              "longitude": -121.972394
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.403302619708505,
+                "longitude": -121.97377753029151
+              },
+              "high": {
+                "latitude": 37.406000580291504,
+                "longitude": -121.97107956970852
+              }
+            },
+            "displayName": {
+              "text": "ChargePoint Charging Station",
+              "languageCode": "en"
+            },
+            "primaryType": "electric_vehicle_charging_station"
+          },
+          {
+            "id": "ChIJHVWkbszJj4ARy-RBw2VJ4Mg",
+            "types": [
+              "sports_club",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4949 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4028901,
+              "longitude": -121.9678401
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.40167356970851,
+                "longitude": -121.96927293029147
+              },
+              "high": {
+                "latitude": 37.404371530291506,
+                "longitude": -121.96657496970849
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 120,
+            "displayName": {
+              "text": "San Francisco 49ers",
+              "languageCode": "en"
+            },
+            "primaryType": "sports_club"
+          },
+          {
+            "id": "ChIJAzijCbfJj4ARIUm3zTxr39k",
+            "types": [
+              "athletic_field",
+              "sports_activity_location",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "5020 Stars and Stripes Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.404961199999995,
+              "longitude": -121.96760889999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4030387197085,
+                "longitude": -121.96854888029151
+              },
+              "high": {
+                "latitude": 37.4057366802915,
+                "longitude": -121.96585091970853
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 82,
+            "displayName": {
+              "text": "Santa Clara Youth Soccer Park",
+              "languageCode": "en"
+            },
+            "primaryType": "athletic_field"
+          },
+          {
+            "id": "ChIJbwhx-sjJj4ARuJ7fTtuuKQ4",
+            "types": [
+              "parking_lot",
+              "parking",
+              "transportation_service",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "Tasman Dr, Santa Clara, CA 95054, USA",
+            "location": {
+              "latitude": 37.4021505,
+              "longitude": -121.97214600000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4008309697085,
+                "longitude": -121.97351168029147
+              },
+              "high": {
+                "latitude": 37.4035289302915,
+                "longitude": -121.97081371970849
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 22,
+            "displayName": {
+              "text": "Red Lot VIP",
+              "languageCode": "en"
+            },
+            "primaryType": "parking_lot"
           }
         ]
       }
@@ -545,188 +1378,969 @@
   },
   "places": [
     {
-      "id": "handauthored-levis-stadium-museum",
-      "name": "49ers Museum",
+      "id": "ChIJ87zR1cnJj4ARJlsFslkfyrE",
+      "name": "Visa Box Office",
       "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.404288,
-        "longitude": -121.969739
+        "latitude": 37.404317,
+        "longitude": -121.97014709999999
       },
       "viewport": {
         "low": {
-          "latitude": 37.402938,
-          "longitude": -121.971089
+          "latitude": 37.4032209697085,
+          "longitude": -121.97137703029149
         },
         "high": {
-          "latitude": 37.405638,
-          "longitude": -121.968389
+          "latitude": 37.4059189302915,
+          "longitude": -121.96867906970851
         }
       },
       "types": [
-        "museum",
-        "tourist_attraction",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "store",
+      "rating": 4.3,
+      "userRatingCount": 41
+    },
+    {
+      "id": "ChIJpeCR1snJj4AR1upgaMGvX9c",
+      "name": "Sports Bay Area",
+      "address": "Tasman Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4043823,
+        "longitude": -121.9702851
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.403143969708495,
+          "longitude": -121.9717084302915
+        },
+        "high": {
+          "latitude": 37.405841930291494,
+          "longitude": -121.96901046970851
+        }
+      },
+      "types": [
+        "gym",
+        "sports_activity_location",
+        "health",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "museum",
-      "rating": 4.5,
-      "userRatingCount": 486
+      "primaryType": "gym",
+      "rating": 5,
+      "userRatingCount": 1
     },
     {
-      "id": "handauthored-levis-stadium-team-store",
-      "name": "49ers Team Store",
+      "id": "ChIJ15TnhbnJj4AR005LNqvCH8g",
+      "name": "Levi's Stadium Parking (Propark)",
       "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.403839,
-        "longitude": -121.970644
+        "latitude": 37.4043468,
+        "longitude": -121.9706691
       },
       "viewport": {
         "low": {
-          "latitude": 37.402489,
-          "longitude": -121.971994
+          "latitude": 37.4030588697085,
+          "longitude": -121.9720591302915
         },
         "high": {
-          "latitude": 37.405189,
-          "longitude": -121.969294
+          "latitude": 37.405756830291494,
+          "longitude": -121.9693611697085
         }
       },
       "types": [
+        "parking_lot",
+        "parking_garage",
+        "parking",
+        "transportation_service",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "parking_lot",
+      "rating": 4.1,
+      "userRatingCount": 12
+    },
+    {
+      "id": "ChIJXyp9-bfJj4ARK2gwp7IpVGE",
+      "name": "49ers Team Store",
+      "address": "4900 Centennial Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4040606,
+        "longitude": -121.97087029999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.40285111970851,
+          "longitude": -121.97231418029148
+        },
+        "high": {
+          "latitude": 37.4055490802915,
+          "longitude": -121.9696162197085
+        }
+      },
+      "types": [
+        "sportswear_store",
         "sporting_goods_store",
+        "clothing_store",
         "store",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "sporting_goods_store",
-      "rating": 4.1,
-      "userRatingCount": 158
+      "primaryType": "store",
+      "rating": 4.6,
+      "userRatingCount": 551
     },
     {
-      "id": "handauthored-levis-stadium-stadium",
-      "name": "Levi's Stadium",
-      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "id": "ChIJN-Tv3rfJj4ARe7IAFw2Ffdc",
+      "name": "Bourbon Steak Santa Clara",
+      "address": "Levi’s® Stadium, 4900 Marie P. DeBartolo Way, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.4033,
-        "longitude": -121.9694
+        "latitude": 37.404281399999995,
+        "longitude": -121.9692529
       },
       "viewport": {
         "low": {
-          "latitude": 37.4003356,
-          "longitude": -121.9731318
+          "latitude": 37.4029908197085,
+          "longitude": -121.97048498029149
         },
         "high": {
-          "latitude": 37.4062644,
-          "longitude": -121.9656682
+          "latitude": 37.4056887802915,
+          "longitude": -121.9677870197085
+        }
+      },
+      "types": [
+        "steak_house",
+        "pub",
+        "bar",
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "steak_house",
+      "rating": 4.2,
+      "userRatingCount": 557
+    },
+    {
+      "id": "ChIJO8NleKDJj4ARMBuIJqgf4vs",
+      "name": "Chicken Guy!",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403937299999996,
+        "longitude": -121.9691684
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4026803697085,
+          "longitude": -121.9703331302915
+        },
+        "high": {
+          "latitude": 37.4053783302915,
+          "longitude": -121.9676351697085
+        }
+      },
+      "types": [
+        "chicken_restaurant",
+        "sandwich_shop",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "chicken_restaurant",
+      "rating": 3.2,
+      "userRatingCount": 17
+    },
+    {
+      "id": "ChIJUQECmPfJj4AROgbZ06JAZFQ",
+      "name": "The 49ers Museum",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4041654,
+        "longitude": -121.9709552
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4029008197085,
+          "longitude": -121.97235933029151
+        },
+        "high": {
+          "latitude": 37.4055987802915,
+          "longitude": -121.96966136970852
+        }
+      },
+      "types": [
+        "museum",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "museum",
+      "rating": 4.3,
+      "userRatingCount": 108
+    },
+    {
+      "id": "ChIJydawaFrJj4ARIjXq-qOmYug",
+      "name": "San Francisco 49ers Giant Helmet",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4047315,
+        "longitude": -121.96938469999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.40340071970849,
+          "longitude": -121.9706972302915
+        },
+        "high": {
+          "latitude": 37.40609868029149,
+          "longitude": -121.96799926970851
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "tourist_attraction",
+      "rating": 4.9,
+      "userRatingCount": 11
+    },
+    {
+      "id": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
+      "name": "Levi's Stadium",
+      "address": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403316499999995,
+        "longitude": -121.96937739999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3999273,
+          "longitude": -121.9766548
+        },
+        "high": {
+          "latitude": 37.4049343,
+          "longitude": -121.9685212
         }
       },
       "types": [
         "stadium",
-        "tourist_attraction",
+        "event_venue",
+        "sports_complex",
+        "sports_activity_location",
         "point_of_interest",
         "establishment"
       ],
       "primaryType": "stadium",
       "rating": 4.4,
-      "userRatingCount": 21455
+      "userRatingCount": 13335
     },
     {
-      "id": "handauthored-levis-stadium-red-lot",
-      "name": "Levi's Stadium Red Lot 1",
-      "address": "Tasman Dr, Santa Clara, CA 95054, USA",
+      "id": "ChIJfaY5snjJj4ARXrYlSgOGYAM",
+      "name": "Slice House by Tony Gemignani - Levi Stadium",
+      "address": "Levi Stadium, 4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.404558,
-        "longitude": -121.97234
+        "latitude": 37.403213699999995,
+        "longitude": -121.96929139999999
       },
       "viewport": {
         "low": {
-          "latitude": 37.403208,
-          "longitude": -121.97369
+          "latitude": 37.40099196970849,
+          "longitude": -121.9706357802915
         },
         "high": {
-          "latitude": 37.405908,
-          "longitude": -121.97099
+          "latitude": 37.40368993029149,
+          "longitude": -121.96793781970851
         }
       },
       "types": [
+        "pizza_restaurant",
+        "chicken_wings_restaurant",
+        "salad_shop",
+        "italian_restaurant",
+        "pizza_delivery",
+        "meal_delivery",
+        "food_delivery",
+        "european_restaurant",
+        "meal_takeaway",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "pizza_restaurant",
+      "rating": 4.8,
+      "userRatingCount": 4
+    },
+    {
+      "id": "ChIJ306YTePJj4ARyy8kCAFx4P4",
+      "name": "Asian Street Eats",
+      "address": "4900 Marie P DeBartolo Way Section 108, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403213699999995,
+        "longitude": -121.96929139999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.40099196970849,
+          "longitude": -121.9706357802915
+        },
+        "high": {
+          "latitude": 37.40368993029149,
+          "longitude": -121.96793781970851
+        }
+      },
+      "types": [
+        "asian_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "asian_restaurant",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJv1-p78TJj4AR9w3pVpDw5Jg",
+      "name": "Finest Santa Clara Carpet Cleaners",
+      "address": "4900 Marie P DeBartolo Way #474, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403213699999995,
+        "longitude": -121.96929139999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.40099196970849,
+          "longitude": -121.9706357802915
+        },
+        "high": {
+          "latitude": 37.40368993029149,
+          "longitude": -121.96793781970851
+        }
+      },
+      "types": [
+        "laundry",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 4.7,
+      "userRatingCount": 39
+    },
+    {
+      "id": "ChIJ6zZqwbfJj4ARz97fSoFWtEY",
+      "name": "Super Duper Burgers",
+      "address": "4900 Centennial Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.403340899999996,
+        "longitude": -121.96875840000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4020733697085,
+          "longitude": -121.96985713029149
+        },
+        "high": {
+          "latitude": 37.4047713302915,
+          "longitude": -121.96715916970851
+        }
+      },
+      "types": [
+        "hamburger_restaurant",
+        "food_court",
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hamburger_restaurant",
+      "rating": 3.4,
+      "userRatingCount": 19
+    },
+    {
+      "id": "ChIJcwEU0EfJj4ARXRRSdBZrjmg",
+      "name": "City of Santa Clara Tasman Garage",
+      "address": "2525 Tasman Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.404562999999996,
+        "longitude": -121.97174189999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4032130197085,
+          "longitude": -121.97309003029147
+        },
+        "high": {
+          "latitude": 37.4059109802915,
+          "longitude": -121.9703920697085
+        }
+      },
+      "types": [
+        "parking_garage",
+        "parking_lot",
         "parking",
+        "transportation_service",
         "point_of_interest",
+        "service",
         "establishment"
       ],
-      "primaryType": "parking",
-      "rating": 3.6,
-      "userRatingCount": 41
+      "primaryType": "parking_garage",
+      "rating": 5,
+      "userRatingCount": 7
     },
     {
-      "id": "handauthored-levis-stadium-vta",
-      "name": "Great America Station",
-      "address": "Tasman Dr, Santa Clara, CA 95054, USA",
+      "id": "ChIJ_d8GkcnJj4ARi79Rf361ozY",
+      "name": "EVgo Charging Station",
+      "address": "2525 Tasman Dr, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.406264,
-        "longitude": -121.967364
+        "latitude": 37.404883999999996,
+        "longitude": -121.972129
       },
       "viewport": {
         "low": {
-          "latitude": 37.404914,
-          "longitude": -121.968714
+          "latitude": 37.403248819708494,
+          "longitude": -121.97319583029149
         },
         "high": {
-          "latitude": 37.407614,
-          "longitude": -121.966014
+          "latitude": 37.405946780291494,
+          "longitude": -121.97049786970851
         }
       },
       "types": [
-        "light_rail_station",
-        "transit_station",
+        "electric_vehicle_charging_station",
+        "transportation_service",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "light_rail_station",
-      "rating": 4,
-      "userRatingCount": 62
+      "primaryType": "electric_vehicle_charging_station",
+      "rating": 2.3,
+      "userRatingCount": 3
     },
     {
-      "id": "handauthored-levis-stadium-convention-center",
+      "id": "ChIJhSTJu0bJj4ARiME5uKdix3Q",
+      "name": "Yellow Lot 1 | Levi's Stadium",
+      "address": "5166 Stars and Stripes Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.404933,
+        "longitude": -121.97215800000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4035897697085,
+          "longitude": -121.97349478029147
+        },
+        "high": {
+          "latitude": 37.4062877302915,
+          "longitude": -121.9707968197085
+        }
+      },
+      "types": [
+        "parking_lot",
+        "parking",
+        "transportation_service",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "parking_lot",
+      "rating": 4.6,
+      "userRatingCount": 39
+    },
+    {
+      "id": "ChIJ61iLmMnJj4ARj6Fg__O58Ic",
+      "name": "ChargePoint Charging Station",
+      "address": "5166 Stars and Stripes Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.404668,
+        "longitude": -121.972394
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.403302619708505,
+          "longitude": -121.97377753029151
+        },
+        "high": {
+          "latitude": 37.406000580291504,
+          "longitude": -121.97107956970852
+        }
+      },
+      "types": [
+        "electric_vehicle_charging_station",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "electric_vehicle_charging_station",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJHVWkbszJj4ARy-RBw2VJ4Mg",
+      "name": "San Francisco 49ers",
+      "address": "4949 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4028901,
+        "longitude": -121.9678401
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.40167356970851,
+          "longitude": -121.96927293029147
+        },
+        "high": {
+          "latitude": 37.404371530291506,
+          "longitude": -121.96657496970849
+        }
+      },
+      "types": [
+        "sports_club",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sports_club",
+      "rating": 4.1,
+      "userRatingCount": 120
+    },
+    {
+      "id": "ChIJAzijCbfJj4ARIUm3zTxr39k",
+      "name": "Santa Clara Youth Soccer Park",
+      "address": "5020 Stars and Stripes Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.404961199999995,
+        "longitude": -121.96760889999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4030387197085,
+          "longitude": -121.96854888029151
+        },
+        "high": {
+          "latitude": 37.4057366802915,
+          "longitude": -121.96585091970853
+        }
+      },
+      "types": [
+        "athletic_field",
+        "sports_activity_location",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "athletic_field",
+      "rating": 4.6,
+      "userRatingCount": 82
+    },
+    {
+      "id": "ChIJbwhx-sjJj4ARuJ7fTtuuKQ4",
+      "name": "Red Lot VIP",
+      "address": "Tasman Dr, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4021505,
+        "longitude": -121.97214600000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4008309697085,
+          "longitude": -121.97351168029147
+        },
+        "high": {
+          "latitude": 37.4035289302915,
+          "longitude": -121.97081371970849
+        }
+      },
+      "types": [
+        "parking_lot",
+        "parking",
+        "transportation_service",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "parking_lot",
+      "rating": 4.6,
+      "userRatingCount": 22
+    },
+    {
+      "id": "ChIJq7iF28bJj4ARdWUD6DQUr3I",
+      "name": "California's Great America",
+      "address": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.3973529,
+        "longitude": -121.9744083
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3972775197085,
+          "longitude": -121.97666503029149
+        },
+        "high": {
+          "latitude": 37.3999754802915,
+          "longitude": -121.97396706970851
+        }
+      },
+      "types": [
+        "amusement_park",
+        "tourist_attraction",
+        "amusement_center",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "amusement_park",
+      "rating": 4.4,
+      "userRatingCount": 16659
+    },
+    {
+      "id": "ChIJU8UslLbJj4ARFdF6yKlXPJ8",
+      "name": "Topgolf",
+      "address": "10 Topgolf Dr, San Jose, CA 95002, USA",
+      "location": {
+        "latitude": 37.4231191,
+        "longitude": -121.9697688
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.421918669708504,
+          "longitude": -121.97106958029148
+        },
+        "high": {
+          "latitude": 37.4246166302915,
+          "longitude": -121.9683716197085
+        }
+      },
+      "types": [
+        "restaurant",
+        "sports_bar",
+        "golf_course",
+        "bar",
+        "event_venue",
+        "athletic_field",
+        "sports_school",
+        "american_restaurant",
+        "sports_activity_location",
+        "sports_coaching",
+        "health",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": 4.2,
+      "userRatingCount": 2373
+    },
+    {
+      "id": "ChIJRxpmaN3Jj4AR8UKnsvpVnoE",
+      "name": "AMC Mercado 20",
+      "address": "3111 Mission College Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.3891813,
+        "longitude": -121.98301989999997
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.38766811970849,
+          "longitude": -121.98440963029148
+        },
+        "high": {
+          "latitude": 37.39036608029149,
+          "longitude": -121.9817116697085
+        }
+      },
+      "types": [
+        "movie_theater",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "movie_theater",
+      "rating": 4.2,
+      "userRatingCount": 7715
+    },
+    {
+      "id": "ChIJuVD6TcnJj4AR5NJwB-b368E",
       "name": "Santa Clara Convention Center",
       "address": "5001 Great America Pkwy, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.402222,
-        "longitude": -121.962163
+        "latitude": 37.404670599999996,
+        "longitude": -121.97524700000001
       },
       "viewport": {
         "low": {
-          "latitude": 37.4002457,
-          "longitude": -121.964877
+          "latitude": 37.4035072197085,
+          "longitude": -121.97659598029149
         },
         "high": {
-          "latitude": 37.4041983,
-          "longitude": -121.959449
+          "latitude": 37.4062051802915,
+          "longitude": -121.97389801970851
         }
       },
       "types": [
         "convention_center",
         "event_venue",
         "point_of_interest",
+        "service",
         "establishment"
       ],
       "primaryType": "convention_center",
-      "rating": 4.4,
-      "userRatingCount": 3512
+      "rating": 4.3,
+      "userRatingCount": 2901
     },
     {
-      "id": "handauthored-levis-stadium-hyatt",
-      "name": "Hyatt Regency Santa Clara",
-      "address": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "id": "ChIJh7uPvNzJj4ARWHz7sFfkSQw",
+      "name": "Mission College",
+      "address": "3000 Mission College Blvd, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.403839,
-        "longitude": -121.961258
+        "latitude": 37.3925485,
+        "longitude": -121.98280369999999
       },
       "viewport": {
         "low": {
-          "latitude": 37.402489,
-          "longitude": -121.962608
+          "latitude": 37.38983509999999,
+          "longitude": -121.9863925
         },
         "high": {
-          "latitude": 37.405189,
-          "longitude": -121.959908
+          "latitude": 37.394893599999996,
+          "longitude": -121.9791648
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.3,
+      "userRatingCount": 208
+    },
+    {
+      "id": "ChIJ9wHG-1LIj4ARwze438TiAf0",
+      "name": "Target",
+      "address": "95 Holger Way, San Jose, CA 95134, USA",
+      "location": {
+        "latitude": 37.4181795,
+        "longitude": -121.9561986
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.41681096970851,
+          "longitude": -121.95707808029147
+        },
+        "high": {
+          "latitude": 37.4195089302915,
+          "longitude": -121.95438011970849
+        }
+      },
+      "types": [
+        "department_store",
+        "child_care_agency",
+        "electronics_store",
+        "shoe_store",
+        "furniture_store",
+        "home_improvement_store",
+        "supplier",
+        "home_goods_store",
+        "clothing_store",
+        "toy_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "department_store",
+      "rating": 4.2,
+      "userRatingCount": 1467
+    },
+    {
+      "id": "ChIJZS4fLMLJj4ARRUt4ybRvZxk",
+      "name": "Santa Clara Marriott",
+      "address": "2700 Mission College Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.3903561,
+        "longitude": -121.97445679999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3892159197085,
+          "longitude": -121.97581858029149
+        },
+        "high": {
+          "latitude": 37.3919138802915,
+          "longitude": -121.9731206197085
+        }
+      },
+      "types": [
+        "hotel",
+        "wedding_venue",
+        "event_venue",
+        "lodging",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "hotel",
+      "rating": 4.2,
+      "userRatingCount": 3620
+    },
+    {
+      "id": "ChIJMcjCStzJj4ARatfT398YVfw",
+      "name": "Walmart Neighborhood Market",
+      "address": "3255 Mission College Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.390084,
+        "longitude": -121.9854336
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3885682197085,
+          "longitude": -121.98690728029148
+        },
+        "high": {
+          "latitude": 37.3912661802915,
+          "longitude": -121.98420931970848
+        }
+      },
+      "types": [
+        "grocery_store",
+        "discount_supermarket",
+        "discount_store",
+        "cake_shop",
+        "department_store",
+        "market",
+        "deli",
+        "bakery",
+        "supermarket",
+        "manufacturer",
+        "food_store",
+        "wholesaler",
+        "store",
+        "food",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4,
+      "userRatingCount": 2994
+    },
+    {
+      "id": "ChIJT5_kVKzJj4AReRYNNcInaWE",
+      "name": "Vista 99 Apartments",
+      "address": "99 Vista Montaña, San Jose, CA 95134, USA",
+      "location": {
+        "latitude": 37.4124385,
+        "longitude": -121.95670369999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.41097911970851,
+          "longitude": -121.9579028302915
+        },
+        "high": {
+          "latitude": 37.41367708029151,
+          "longitude": -121.95520486970852
+        }
+      },
+      "types": [
+        "real_estate_agency",
+        "apartment_building",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "real_estate_agency",
+      "rating": 3.5,
+      "userRatingCount": 357
+    },
+    {
+      "id": "ChIJec-odnbJj4AR3thv0aceyaE",
+      "name": "Safeway",
+      "address": "3970 Rivermark Plaza, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.394745,
+        "longitude": -121.94763400000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3932310697085,
+          "longitude": -121.94882778029148
+        },
+        "high": {
+          "latitude": 37.39592903029149,
+          "longitude": -121.94612981970849
+        }
+      },
+      "types": [
+        "grocery_store",
+        "butcher_shop",
+        "florist",
+        "market",
+        "deli",
+        "bakery",
+        "food_delivery",
+        "supermarket",
+        "manufacturer",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4.3,
+      "userRatingCount": 3512
+    },
+    {
+      "id": "ChIJh5SseSnIj4ARPMHbEJSbw1w",
+      "name": "Marvell Technology, Inc.",
+      "address": "5488 Marvell Ln, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4118299,
+        "longitude": -121.9821463
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4102713197085,
+          "longitude": -121.98343783029148
+        },
+        "high": {
+          "latitude": 37.4129692802915,
+          "longitude": -121.9807398697085
+        }
+      },
+      "types": [
+        "supplier",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "supplier",
+      "rating": 4.4,
+      "userRatingCount": 79
+    },
+    {
+      "id": "ChIJY12_ccbJj4ARcrFhVuI9FEE",
+      "name": "Hyatt Regency Santa Clara",
+      "address": "5101 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.4051338,
+        "longitude": -121.9769213
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4037446197085,
+          "longitude": -121.97828308029148
+        },
+        "high": {
+          "latitude": 37.4064425802915,
+          "longitude": -121.97558511970848
         }
       },
       "types": [
@@ -736,113 +2350,298 @@
         "establishment"
       ],
       "primaryType": "hotel",
-      "rating": 4.4,
-      "userRatingCount": 3927
+      "rating": 4.3,
+      "userRatingCount": 3724
     },
     {
-      "id": "handauthored-levis-stadium-great-america",
-      "name": "California's Great America",
-      "address": "4701 Great America Pkwy, Santa Clara, CA 95054, USA",
+      "id": "ChIJ00mzfx_Jj4ARFlQ8hqu5Sz4",
+      "name": "Amazon",
+      "address": "2795 Augustine Dr, Santa Clara, CA 95054, USA",
       "location": {
-        "latitude": 37.397551,
-        "longitude": -121.97415
+        "latitude": 37.382930699999996,
+        "longitude": -121.97612760000001
       },
       "viewport": {
         "low": {
-          "latitude": 37.3932391,
-          "longitude": -121.9800299
+          "latitude": 37.3815613697085,
+          "longitude": -121.97769758029149
         },
         "high": {
-          "latitude": 37.4018629,
-          "longitude": -121.9682701
+          "latitude": 37.3842593302915,
+          "longitude": -121.9749996197085
         }
       },
       "types": [
-        "amusement_park",
-        "tourist_attraction",
+        "corporate_office",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "amusement_park",
+      "primaryType": "corporate_office",
+      "rating": 3.7,
+      "userRatingCount": 31
+    },
+    {
+      "id": "ChIJ-SOj-ufJj4ARdA0LHl3Siq8",
+      "name": "In-N-Out Burger",
+      "address": "3001 Mission College Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.3880553,
+        "longitude": -121.9820575
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3866977197085,
+          "longitude": -121.9835521302915
+        },
+        "high": {
+          "latitude": 37.38939568029149,
+          "longitude": -121.98085416970851
+        }
+      },
+      "types": [
+        "hamburger_restaurant",
+        "diner",
+        "fast_food_restaurant",
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hamburger_restaurant",
+      "rating": 4.5,
+      "userRatingCount": 6528
+    },
+    {
+      "id": "ChIJcZJRlUzJj4ARvdgy5l27B78",
+      "name": "Samsung",
+      "address": "3655 N First St, San Jose, CA 95134, USA",
+      "location": {
+        "latitude": 37.4094069,
+        "longitude": -121.94620580000002
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.407625369708505,
+          "longitude": -121.94777353029149
+        },
+        "high": {
+          "latitude": 37.4103233302915,
+          "longitude": -121.9450755697085
+        }
+      },
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": 3.2,
+      "userRatingCount": 140
+    },
+    {
+      "id": "ChIJWXLTm93Jj4ARwki3xfmmYh8",
+      "name": "T.J. Maxx & HomeGoods",
+      "address": "3201 Mission College Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.3899085,
+        "longitude": -121.9847552
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.388403619708505,
+          "longitude": -121.98624568029149
+        },
+        "high": {
+          "latitude": 37.3911015802915,
+          "longitude": -121.98354771970851
+        }
+      },
+      "types": [
+        "department_store",
+        "womens_clothing_store",
+        "jewelry_store",
+        "clothing_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "department_store",
+      "rating": 4.2,
+      "userRatingCount": 1591
+    },
+    {
+      "id": "ChIJW6PZhHbJj4ARjetaCEf86Ao",
+      "name": "Hewlett Packard Enterprise",
+      "address": "6280 America Center Dr, San Jose, CA 95002, USA",
+      "location": {
+        "latitude": 37.4191639,
+        "longitude": -121.97883230000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.417679819708496,
+          "longitude": -121.98006388029147
+        },
+        "high": {
+          "latitude": 37.420377780291496,
+          "longitude": -121.97736591970849
+        }
+      },
+      "types": [
+        "corporate_office",
+        "manufacturer",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": 4.3,
+      "userRatingCount": 332
+    },
+    {
+      "id": "ChIJvTxWLHTJj4AR_fQ0Lro-dCA",
+      "name": "550 Moreland Apartments",
+      "address": "550 Moreland Way, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.3958503,
+        "longitude": -121.9446035
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.394565019708494,
+          "longitude": -121.9459939302915
+        },
+        "high": {
+          "latitude": 37.397262980291494,
+          "longitude": -121.9432959697085
+        }
+      },
+      "types": [
+        "apartment_complex",
+        "real_estate_agency",
+        "apartment_building",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "apartment_complex",
       "rating": 4.4,
-      "userRatingCount": 25310
+      "userRatingCount": 288
+    },
+    {
+      "id": "ChIJe8fHvenJj4ARzqoUoQpRxbQ",
+      "name": "Our Lady of Peace Church & Shrine",
+      "address": "2800 Mission College Blvd, Santa Clara, CA 95054, USA",
+      "location": {
+        "latitude": 37.389340000000004,
+        "longitude": -121.9772931
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.3880882197085,
+          "longitude": -121.97858338029148
+        },
+        "high": {
+          "latitude": 37.3907861802915,
+          "longitude": -121.9758854197085
+        }
+      },
+      "types": [
+        "church",
+        "place_of_worship",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "church",
+      "rating": 4.8,
+      "userRatingCount": 1333
     }
   ],
   "placeKeys": {
-    "stadium": "handauthored-levis-stadium-stadium",
-    "museum": "handauthored-levis-stadium-museum",
-    "greatAmerica": "handauthored-levis-stadium-vta",
-    "conventionCenter": "handauthored-levis-stadium-convention-center"
+    "stadium": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
+    "museum": "ChIJUQECmPfJj4AROgbZ06JAZFQ",
+    "greatAmerica": "ChIJq7iF28bJj4ARdWUD6DQUr3I",
+    "conventionCenter": "ChIJuVD6TcnJj4AR5NJwB-b368E"
   },
   "histories": {
     "none": [],
     "seasonTicketHolder": [
       {
-        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "googlePlaceId": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
         "createdAt": "2026-05-23T20:21:00.000Z",
         "placeName": "Levi's Stadium",
         "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
         "placePrimaryType": "stadium",
         "placeTypes": [
           "stadium",
-          "tourist_attraction",
+          "event_venue",
+          "sports_complex",
+          "sports_activity_location",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4033,
-          "longitude": -121.9694
+          "latitude": 37.403316499999995,
+          "longitude": -121.96937739999998
         }
       },
       {
-        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "googlePlaceId": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
         "createdAt": "2026-06-21T20:14:00.000Z",
         "placeName": "Levi's Stadium",
         "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
         "placePrimaryType": "stadium",
         "placeTypes": [
           "stadium",
-          "tourist_attraction",
+          "event_venue",
+          "sports_complex",
+          "sports_activity_location",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4033,
-          "longitude": -121.9694
+          "latitude": 37.403316499999995,
+          "longitude": -121.96937739999998
         }
       },
       {
-        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "googlePlaceId": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
         "createdAt": "2026-07-19T20:07:00.000Z",
         "placeName": "Levi's Stadium",
         "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
         "placePrimaryType": "stadium",
         "placeTypes": [
           "stadium",
-          "tourist_attraction",
+          "event_venue",
+          "sports_complex",
+          "sports_activity_location",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4033,
-          "longitude": -121.9694
+          "latitude": 37.403316499999995,
+          "longitude": -121.96937739999998
         }
       },
       {
-        "googlePlaceId": "handauthored-levis-stadium-stadium",
+        "googlePlaceId": "ChIJ3_DFJ8jJj4ARGH0fLjdaRRE",
         "createdAt": "2026-08-16T20:00:00.000Z",
         "placeName": "Levi's Stadium",
         "placeAddress": "4900 Marie P DeBartolo Way, Santa Clara, CA 95054, USA",
         "placePrimaryType": "stadium",
         "placeTypes": [
           "stadium",
-          "tourist_attraction",
+          "event_venue",
+          "sports_complex",
+          "sports_activity_location",
           "point_of_interest",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4033,
-          "longitude": -121.9694
+          "latitude": 37.403316499999995,
+          "longitude": -121.96937739999998
         }
       }
     ]
@@ -856,8 +2655,12 @@
       "history": "none",
       "expect": {
         "top": "stadium",
-        "suggested": null,
+        "suggested": "stadium",
         "rankedAbove": [
+          [
+            "stadium",
+            "museum"
+          ],
           [
             "stadium",
             "greatAmerica"

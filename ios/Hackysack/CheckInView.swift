@@ -28,7 +28,9 @@ struct CheckInView: View {
     /// another search without every GPS tick doing so.
     @State private var lastSearchedFix: LocationFix?
     @State private var nearbySearchCount = 0
-    @State private var appearedAt: Date?
+    /// When the ranked list was first on screen. A suggestion may only skip
+    /// the list before this or shortly after it, never once the user is reading.
+    @State private var listFirstShownAt: Date?
     /// Set once a suggestion has been pushed (or declined), so later re-ranks
     /// never yank the user off the list.
     @State private var hasOfferedSuggestion = false
@@ -42,7 +44,8 @@ struct CheckInView: View {
     /// A better fix can arrive seconds after the first, coarse one. Re-searching
     /// is capped so a phone that keeps refining never keeps reloading.
     private static let maximumNearbySearches = 3
-    /// Only the initial load may skip the list; after this the user is reading it.
+    /// A better fix arriving this soon after the list first appears may still
+    /// skip it; after this the user is reading it.
     private static let suggestionWindow: TimeInterval = 3
 
     var body: some View {
@@ -51,16 +54,7 @@ struct CheckInView: View {
                 .navigationTitle("Check In")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationDestination(for: Place.self) { place in
-                    let isSuggested = place.id == suggestedPlaceId
-                    CheckInComposeView(
-                        place: place,
-                        onChangeLocation: isSuggested ? showRankedList : nil
-                    ) { message in
-                        checkinStore.submit(place: place, message: message)
-                        // This is the cover's dismiss (CheckInView owns the stack), so it closes
-                        // the whole flow rather than popping back to the place list.
-                        dismiss()
-                    }
+                    composeView(for: place)
                 }
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
@@ -83,7 +77,6 @@ struct CheckInView: View {
                         "CheckInView appeared, has location: \(locationManager.location != nil), "
                         + "status: \(locationManager.authorizationStatus.debugName)"
                     )
-                    appearedAt = Date()
                     if let location = locationManager.location {
                         considerNearbySearch(for: location)
                     }
@@ -92,11 +85,31 @@ struct CheckInView: View {
                     guard let newLocation, searchText.isEmpty else { return }
                     considerNearbySearch(for: newLocation)
                 }
+                .onChange(of: navigationPath) {
+                    // Once the user has left the suggested compose screen,
+                    // picking that place from the list is an ordinary choice.
+                    if navigationPath.isEmpty {
+                        suggestedPlaceId = nil
+                    }
+                }
                 .onDisappear {
                     debounceTask?.cancel()
                     loadTask?.cancel()
                     isLoading = false
                 }
+        }
+    }
+
+    private func composeView(for place: Place) -> CheckInComposeView {
+        var onChangeLocation: (() -> Void)?
+        if place.id == suggestedPlaceId {
+            onChangeLocation = showRankedList
+        }
+        return CheckInComposeView(place: place, onChangeLocation: onChangeLocation) { message in
+            checkinStore.submit(place: place, message: message)
+            // This is the cover's dismiss (CheckInView owns the stack), so it closes
+            // the whole flow rather than popping back to the place list.
+            dismiss()
         }
     }
 
@@ -216,25 +229,18 @@ struct CheckInView: View {
     }
 
     private func present(results: [Place], query: String, fix: LocationFix) {
+        let now = Date()
+        let listShownAt = listFirstShownAt ?? now
+        if !results.isEmpty, listFirstShownAt == nil {
+            listFirstShownAt = now
+        }
+
         let history = checkinStore.checkinHistory
         guard query.isEmpty else {
-            // A typed query is already in relevance order; only float places
-            // the user has been to before.
-            let visited = Set(history.map(\.googlePlaceId))
-            rankedPlaces = ranker.orderForQuery(candidates: results, history: history).map { place in
-                RankedPlace(
-                    place: place,
-                    score: 0,
-                    probability: 0,
-                    visitCount: visited.contains(place.id) ? history.filter { $0.googlePlaceId == place.id }.count : 0,
-                    effectiveDistance: nil,
-                    typePrior: 0
-                )
-            }
+            rankedPlaces = ranker.orderForQuery(candidates: results, history: history)
             return
         }
 
-        let now = Date()
         let ranking = ranker.rank(
             candidates: results,
             fix: fix,
@@ -251,8 +257,7 @@ struct CheckInView: View {
         guard let suggestion = ranking.suggestion,
               !hasOfferedSuggestion,
               navigationPath.isEmpty,
-              let appearedAt,
-              now.timeIntervalSince(appearedAt) <= Self.suggestionWindow else {
+              now.timeIntervalSince(listShownAt) <= Self.suggestionWindow else {
             return
         }
         hasOfferedSuggestion = true

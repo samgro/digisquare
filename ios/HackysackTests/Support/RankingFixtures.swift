@@ -37,7 +37,7 @@ nonisolated struct RankingFixture: Decodable, Sendable {
             rankedAbove = try container.decodeIfPresent([[String]].self, forKey: .rankedAbove) ?? []
             if container.contains(.suggested) {
                 if try container.decodeNil(forKey: .suggested) {
-                    suggested = .none
+                    suggested = .noSuggestion
                 } else {
                     suggested = .place(try container.decode(String.self, forKey: .suggested))
                 }
@@ -49,7 +49,7 @@ nonisolated struct RankingFixture: Decodable, Sendable {
 
     enum SuggestionExpectation: Equatable, Sendable {
         /// `"suggested": null` in the file: the picker must show the list.
-        case none
+        case noSuggestion
         /// `"suggested": "<key>"`: the picker must jump to that place.
         case place(String)
     }

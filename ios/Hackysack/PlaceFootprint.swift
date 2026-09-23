@@ -45,7 +45,7 @@ nonisolated struct PlaceFootprint: Sendable {
     /// means the venue is modeled as a disc of `radius` around its pin.
     let rectangle: PlaceViewport?
 
-    /// Google returns a default box roughly 300 m across for point venues, so a
+    /// Google returns a default box roughly 250 m across for point venues, so a
     /// box only counts as the venue's real extent when its shorter half-side
     /// clears that comfortably.
     static let informativeViewportHalfSide = 200.0
@@ -79,12 +79,13 @@ nonisolated struct PlaceFootprint: Sendable {
         "campground": TableEntry(radius: 150, kind: .container),
         "marina": TableEntry(radius: 150, kind: .container),
         "botanical_garden": TableEntry(radius: 150, kind: .container),
+        // The building is the checkin; the listings inside are its offices.
+        "city_hall": TableEntry(radius: 60, kind: .destination),
+        "courthouse": TableEntry(radius: 60, kind: .destination),
         "hotel": TableEntry(radius: 60, kind: .container),
         "resort_hotel": TableEntry(radius: 60, kind: .container),
         "museum": TableEntry(radius: 60, kind: .container),
         "school": TableEntry(radius: 60, kind: .container),
-        "city_hall": TableEntry(radius: 60, kind: .container),
-        "courthouse": TableEntry(radius: 60, kind: .container),
         "local_government_office": TableEntry(radius: 60, kind: .container),
         "garden": TableEntry(radius: 60, kind: .container),
         "plaza": TableEntry(radius: 60, kind: .container),
@@ -95,6 +96,21 @@ nonisolated struct PlaceFootprint: Sendable {
     /// so the places stay in the list for the rare time they are wanted.
     private static let typePriors: [String: Double] = [
         "parking": -1.5,
+        "parking_lot": -1.5,
+        "parking_garage": -1.5,
+        "public_bathroom": -1.5,
+        "electric_vehicle_charging_station": -1.0,
+        // Offices listed inside a building someone would actually check in at:
+        // a town hall's departments, the startups registered at a coworking
+        // address. Recorded fixtures have a dozen of these within 25 m.
+        "government_office": -1.0,
+        "local_government_office": -1.0,
+        "corporate_office": -1.0,
+        "association_or_organization": -1.0,
+        "general_contractor": -1.0,
+        "consultant": -1.0,
+        "finance": -1.0,
+        "service": -1.0,
         "atm": -1.0,
         "bus_stop": -0.5,
         "storage": -0.5,
@@ -117,8 +133,14 @@ nonisolated struct PlaceFootprint: Sendable {
         return nil
     }
 
+    /// Judged on the primary type alone when there is one: a town hall is
+    /// also tagged `local_government_office`, and that must not count
+    /// against it.
     static func typePrior(for place: Place) -> Double {
-        lookup(typePriors, for: place) ?? 0
+        if let primaryType = place.primaryType {
+            return typePriors[primaryType] ?? 0
+        }
+        return lookup(typePriors, for: place) ?? 0
     }
 
     init(for place: Place) {
@@ -142,7 +164,16 @@ nonisolated struct PlaceFootprint: Sendable {
         }
 
         radius = tabled.radius
-        kind = tabled.kind
+        // Google sends a real viewport for venues it knows are big, so a table
+        // radius beyond its default box is a guess: without that confirmation
+        // the venue does not get the smaller destination size price. This is
+        // what keeps a regional airport 300 m away from beating the building
+        // the user is standing in.
+        if tabled.kind == .destination, tabled.radius > Self.informativeViewportHalfSide {
+            kind = .container
+        } else {
+            kind = tabled.kind
+        }
         rectangle = nil
     }
 

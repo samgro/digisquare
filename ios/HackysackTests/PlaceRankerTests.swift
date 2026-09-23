@@ -68,7 +68,7 @@ struct RankingScenarioTests {
         }
 
         switch rankingCase.expect.suggested {
-        case .none?:
+        case .noSuggestion?:
             #expect(
                 ranking.suggestion == nil,
                 "expected no suggestion, got \(ranking.suggestion?.name ?? "none"); \(leaderboard)"
@@ -230,9 +230,9 @@ struct PlaceRankerModelTests {
         let evening = ranker.rank(candidates: candidates, fix: fix(accuracy: 15, now: night), history: history, now: night, calendar: pacific)
 
         let difference = morning.ranked[0].score - evening.ranked[0].score
-        // One full swing of the time-of-day term is 2 × 0.5; decay over the
+        // One full swing of the time-of-day term is 2 × 1.0; decay over the
         // fourteen hours between the two evaluations is negligible.
-        #expect(difference > 0.9 && difference < 1.1)
+        #expect(difference > 1.9 && difference < 2.1)
     }
 
     @Test("Weekend visits count for more on a weekend")
@@ -266,7 +266,7 @@ struct PlaceRankerModelTests {
         let toEdge = try #require(footprint.effectiveDistance(from: outside, to: airport))
         #expect(abs(toEdge - 200) < 1)
 
-        // Google's default ~300 m box is not informative.
+        // Google's default ~250 m box is not informative.
         let defaultBox = PlaceViewport(low: location(north: -150, east: -150), high: location(north: 150, east: 150))
         let cafe = place("cafe", north: 0, east: 0, viewport: defaultBox)
         let cafeFootprint = PlaceFootprint(for: cafe)
@@ -304,6 +304,35 @@ struct PlaceRankerModelTests {
 
         let onlyParking = ranker.rank(candidates: [candidates[0]], fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
         #expect(onlyParking.suggestion == nil)
+    }
+
+    @Test("A type prior comes from the primary type when there is one")
+    func typePriorUsesPrimaryType() {
+        let townHall = place("town-hall", north: 0, east: 0, primaryType: "city_hall", types: ["city_hall", "local_government_office"])
+        let department = place("planning", north: 0, east: 0, primaryType: "local_government_office", types: ["local_government_office"])
+        let untyped = place("office", north: 0, east: 0, primaryType: nil, types: ["corporate_office"])
+
+        #expect(PlaceFootprint.typePrior(for: townHall) == 0)
+        #expect(PlaceFootprint.typePrior(for: department) < 0)
+        #expect(PlaceFootprint.typePrior(for: untyped) < 0)
+    }
+
+    @Test("A large venue type without a real viewport pays the full size price")
+    func unconfirmedDestination() {
+        let airport = place("airport", north: 300, east: 0, primaryType: "airport", types: ["airport"], ratings: 90)
+        #expect(PlaceFootprint(for: airport).kind == .container)
+
+        // The building the user is standing in beats a regional airport whose
+        // extent Google does not know.
+        let townHall = place("town-hall", north: 15, east: 0, primaryType: "city_hall", types: ["city_hall"], ratings: 1)
+        let ranking = ranker.rank(
+            candidates: [airport, townHall],
+            fix: fix(accuracy: 30, now: tuesdayMorning),
+            history: [],
+            now: tuesdayMorning,
+            calendar: pacific
+        )
+        #expect(ranking.ranked.first?.place.id == "town-hall")
     }
 
     @Test("A history place Google left out is added when it is close by")
@@ -379,6 +408,6 @@ struct PlaceRankerModelTests {
 
         let ordered = ranker.orderForQuery(candidates: candidates, history: history)
 
-        #expect(ordered.map(\.id) == ["c", "a", "b"])
+        #expect(ordered.map(\.place.id) == ["c", "a", "b"])
     }
 }

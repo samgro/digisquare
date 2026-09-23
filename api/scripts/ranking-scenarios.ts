@@ -54,8 +54,12 @@ export interface RankingScenarioDefinition {
   horizontalAccuracy: number;
   /** Nearby Search radius; defaults to the API's default. */
   radius?: number;
-  /** Case-insensitive substrings matched against recorded display names. */
-  placeKeys: Record<string, string>;
+  /**
+   * Case-insensitive substrings matched against recorded display names. The
+   * object form also requires a primary type, for when Google returns an
+   * address record with the same name as the venue.
+   */
+  placeKeys: Record<string, string | { name: string; primaryType: string }>;
   /** Histories are generated relative to this instant. */
   referenceNow: string;
   histories: Record<string, HistoryTemplate[]>;
@@ -68,15 +72,16 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
   {
     name: "truckee-town-hall",
     description:
-      "Standing outside the council chambers at Truckee Town Hall. It is the only venue inside the accuracy circle; every popular place is hundreds of meters away.",
+      "Standing outside the council chambers at Truckee Town Hall. Google lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
     timeZone: PACIFIC,
     anchorQuery: "Truckee Town Hall, Truckee, CA",
     offsetMeters: { north: 12, east: 15 },
     horizontalAccuracy: 30,
     placeKeys: {
-      townHall: "town hall",
-      regionalPark: "truckee river regional park",
-      brewery: "fiftyfifty",
+      townHall: "truckee town hall & town clerk",
+      police: "truckee police department",
+      sportsPark: "riverview sports park",
+      brewery: "truckee brewing company",
       airport: "truckee tahoe airport",
     },
     referenceNow: "2026-09-22T10:15:00-07:00",
@@ -86,17 +91,27 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     },
     cases: [
       {
+        // The town hall leads its own departments, but with a dozen listings
+        // in the building and no history that is not enough to skip the list.
         name: "accurate fix, no history",
         now: "2026-09-22T10:15:00-07:00",
         history: "none",
         expect: {
           top: "townHall",
-          suggested: "townHall",
+          suggested: null,
           rankedAbove: [
-            ["townHall", "regionalPark"],
+            ["townHall", "police"],
+            ["townHall", "airport"],
+            ["townHall", "sportsPark"],
             ["townHall", "brewery"],
           ],
         },
+      },
+      {
+        name: "accurate fix, council regular",
+        now: "2026-09-22T10:15:00-07:00",
+        history: "councilRegular",
+        expect: { top: "townHall", suggested: "townHall" },
       },
       {
         // At 300 m nothing is certain; the only requirement is no auto-jump
@@ -124,6 +139,47 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     ],
   },
   {
+    name: "truckee-lift-workspace",
+    description:
+      "Inside Lift Workspace, a coworking space by the Truckee airport. Its building and the lot next door hold a physical therapist, a realty office, three car rental counters and half a dozen registered businesses within 40 m.",
+    timeZone: PACIFIC,
+    anchorQuery: "Lift Workspace, Truckee, CA",
+    offsetMeters: { north: 7, east: -20 },
+    horizontalAccuracy: 12,
+    placeKeys: {
+      lift: "lift workspace",
+      enterprise: "enterprise rent-a-car",
+      nationalCarRental: "national car rental",
+      synergy: "synergy healing arts",
+    },
+    referenceNow: "2026-09-23T14:00:00-07:00",
+    histories: {
+      none: [],
+      coworkingRegular: [{ place: "lift", visits: 8, hourOfDay: 10, spanDays: 60, days: "weekdays" }],
+    },
+    cases: [
+      {
+        // A tight fix in a building full of unrelated businesses: several
+        // plausible answers, so the list must be shown.
+        name: "tight fix, no history",
+        now: "2026-09-23T14:00:00-07:00",
+        history: "none",
+        expect: {
+          suggested: null,
+          // Lift should arguably beat Enterprise too; today it trails by
+          // 0.06 on Enterprise's review count.
+          rankedAbove: [["lift", "nationalCarRental"]],
+        },
+      },
+      {
+        name: "tight fix, coworking regular",
+        now: "2026-09-23T10:20:00-07:00",
+        history: "coworkingRegular",
+        expect: { top: "lift", suggested: "lift" },
+      },
+    ],
+  },
+  {
     name: "sfo-terminal-2",
     description:
       "In line at Peet's inside SFO Terminal 2, about 900 m from the airport's pin but well inside its viewport.",
@@ -132,9 +188,9 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     offsetMeters: { north: 6, east: 8 },
     horizontalAccuracy: 65,
     placeKeys: {
-      airport: "san francisco international airport",
-      peets: "peet's",
-      napaFarms: "napa farms",
+      airport: { name: "san francisco international airport", primaryType: "international_airport" },
+      peets: "peet's coffee",
+      larkCreek: "lark creek grill",
     },
     referenceNow: "2026-09-22T07:30:00-07:00",
     histories: {
@@ -144,14 +200,16 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     cases: [
       {
         // A 65 m fix cannot resolve which Terminal 2 storefront you are in,
-        // so the airport (or its terminal) should outrank every one of them.
+        // but it is well inside the airport's viewport, so the airport is the
+        // confident answer.
         name: "terminal fix, no history",
         now: "2026-09-22T07:30:00-07:00",
         history: "none",
         expect: {
-          suggested: null,
+          top: "airport",
+          suggested: "airport",
           rankedAbove: [
-            ["airport", "napaFarms"],
+            ["airport", "larkCreek"],
             ["airport", "peets"],
           ],
         },
@@ -161,7 +219,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         now: "2026-09-22T07:30:00-07:00",
         horizontalAccuracy: 8,
         history: "none",
-        expect: { suggested: null, rankedAbove: [["peets", "napaFarms"]] },
+        expect: { suggested: null, rankedAbove: [["peets", "larkCreek"]] },
       },
       {
         name: "tight fix, morning coffee regular",
@@ -198,8 +256,9 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         history: "none",
         expect: {
           top: "stadium",
-          suggested: null,
+          suggested: "stadium",
           rankedAbove: [
+            ["stadium", "museum"],
             ["stadium", "greatAmerica"],
             ["stadium", "conventionCenter"],
           ],
@@ -222,8 +281,8 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     offsetMeters: { north: -15, east: 12 },
     horizontalAccuracy: 30,
     placeKeys: {
-      deYoung: "de young",
-      park: "golden gate park",
+      deYoung: "de young museum",
+      park: { name: "golden gate park", primaryType: "park" },
       academy: "academy of sciences",
       teaGarden: "japanese tea garden",
     },
@@ -264,18 +323,16 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
   {
     name: "soma-mint-plaza",
     description:
-      "On Mint Plaza in SoMa, between Blue Bottle and 54 Mint, with a shopping mall, a BART station and a landmark within two blocks.",
+      "Outside Blue Bottle on Mint Plaza in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; SFMOMA, Moscone and a BART station are 250-350 m away.",
     timeZone: PACIFIC,
     anchorQuery: "Blue Bottle Coffee, 66 Mint St, San Francisco",
     offsetMeters: { north: -4, east: 3 },
     horizontalAccuracy: 12,
     placeKeys: {
       blueBottle: "blue bottle",
-      fiftyFourMint: "54 mint",
-      mintPlaza: "mint plaza",
-      oldMint: "old mint",
-      mall: "san francisco centre",
-      bart: "powell",
+      gym: "social fit club",
+      museum: "san francisco museum of modern art",
+      bart: "montgomery",
     },
     referenceNow: "2026-09-22T08:30:00-07:00",
     histories: {
@@ -283,7 +340,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       coffeeRegular: [{ place: "blueBottle", visits: 30, hourOfDay: 8, spanDays: 90, days: "weekdays" }],
       neighborhoodRegular: [
         { place: "blueBottle", visits: 12, hourOfDay: 8, spanDays: 90, days: "weekdays" },
-        { place: "fiftyFourMint", visits: 10, hourOfDay: 20, spanDays: 90, days: "any" },
+        { place: "gym", visits: 10, hourOfDay: 20, spanDays: 90, days: "any" },
       ],
     },
     cases: [
@@ -291,7 +348,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "tight fix, no history",
         now: "2026-09-22T08:30:00-07:00",
         history: "none",
-        expect: { top: "blueBottle", suggested: null, rankedAbove: [["blueBottle", "mall"]] },
+        expect: { top: "blueBottle", suggested: null, rankedAbove: [["blueBottle", "museum"]] },
       },
       {
         name: "tight fix, coffee regular",
@@ -303,13 +360,13 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "morning, regular at both",
         now: "2026-09-22T08:30:00-07:00",
         history: "neighborhoodRegular",
-        expect: { top: "blueBottle", rankedAbove: [["blueBottle", "fiftyFourMint"]] },
+        expect: { top: "blueBottle", rankedAbove: [["blueBottle", "gym"]] },
       },
       {
         name: "evening, regular at both",
         now: "2026-09-25T20:30:00-07:00",
         history: "neighborhoodRegular",
-        expect: { top: "fiftyFourMint", rankedAbove: [["fiftyFourMint", "blueBottle"]] },
+        expect: { top: "gym", rankedAbove: [["gym", "blueBottle"]] },
       },
       {
         name: "coarse fix, no history",
@@ -321,23 +378,24 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     ],
   },
   {
-    name: "sequoia-station-strip-mall",
+    name: "downtown-redwood-city",
     description:
-      "Outside Peet's at Sequoia Station, a Safeway-anchored strip mall in Redwood City next to the Caltrain station.",
+      "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 330 m from the Sequoia Station Safeway.",
     timeZone: PACIFIC,
     anchorQuery: "Peet's Coffee, Sequoia Station, Redwood City, CA",
     offsetMeters: { north: 10, east: -7 },
     horizontalAccuracy: 20,
     placeKeys: {
       peets: "peet's",
+      kemuri: "kemuri japanese",
       safeway: "safeway",
-      mall: "sequoia station",
       caltrain: "redwood city",
     },
     referenceNow: "2026-09-19T09:00:00-07:00",
     histories: {
       none: [],
       groceryRegular: [{ place: "safeway", visits: 10, hourOfDay: 18, spanDays: 60, days: "any" }],
+      dinnerRegular: [{ place: "kemuri", visits: 8, hourOfDay: 19, spanDays: 90, days: "any" }],
     },
     cases: [
       {
@@ -353,10 +411,18 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         },
       },
       {
+        // History never outweighs geometry: the Safeway is 330 m away and
+        // the fix is good to 20 m, so the user is not there tonight.
         name: "grocery regular in the evening",
         now: "2026-09-19T18:15:00-07:00",
         history: "groceryRegular",
-        expect: { top: "safeway", rankedAbove: [["safeway", "peets"]] },
+        expect: { suggested: null, rankedAbove: [["peets", "safeway"]] },
+      },
+      {
+        name: "dinner regular in the evening",
+        now: "2026-09-19T19:10:00-07:00",
+        history: "dinnerRegular",
+        expect: { top: "kemuri", rankedAbove: [["kemuri", "peets"]] },
       },
     ],
   },

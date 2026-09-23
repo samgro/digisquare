@@ -44,7 +44,7 @@ nonisolated struct RankingWeights: Sendable {
     var popularity = 0.2
     var history = 1.0
     var historyHalfLifeDays = 90.0
-    var timeOfDay = 0.5
+    var timeOfDay = 1.0
     var dayKind = 0.3
     /// Score for a place with no coordinate: still listed, never suggested.
     var missingLocation = -6.0
@@ -125,7 +125,10 @@ nonisolated struct PlaceRanker: Sendable {
         for (index, place) in allCandidates.enumerated() {
             let footprint = PlaceFootprint(for: place)
             let effectiveDistance = footprint.effectiveDistance(from: fixCoordinate, to: place)
-            let typePrior = PlaceFootprint.typePrior(for: place)
+            let placeStatistics = statistics.byPlace[place.id]
+            // The user's own checkins are direct evidence that this is a
+            // place they check in at, whatever its type says about everyone else.
+            let typePrior = placeStatistics == nil ? PlaceFootprint.typePrior(for: place) : 0
             var score = 0.0
 
             if let effectiveDistance {
@@ -156,7 +159,7 @@ nonisolated struct PlaceRanker: Sendable {
             score += typePrior
 
             var visitCount = 0
-            if let placeStatistics = statistics.byPlace[place.id], placeStatistics.decayedVisits > 0 {
+            if let placeStatistics, placeStatistics.decayedVisits > 0 {
                 visitCount = placeStatistics.visitCount
                 score += weights.history * log(1 + placeStatistics.decayedVisits)
 
@@ -208,11 +211,21 @@ nonisolated struct PlaceRanker: Sendable {
 
     /// Google's relevance order for a typed query is the right order; the only
     /// adjustment is to float places the user has been to before.
-    func orderForQuery(candidates: [Place], history: [CheckinHistoryEntry]) -> [Place] {
-        let visited = Set(history.map(\.googlePlaceId))
-        let known = candidates.filter { visited.contains($0.id) }
-        let unknown = candidates.filter { !visited.contains($0.id) }
-        return known + unknown
+    func orderForQuery(candidates: [Place], history: [CheckinHistoryEntry]) -> [RankedPlace] {
+        let visitCounts = history.reduce(into: [String: Int]()) { counts, entry in
+            counts[entry.googlePlaceId, default: 0] += 1
+        }
+        let rankedPlaces = candidates.map { place in
+            RankedPlace(
+                place: place,
+                score: 0,
+                probability: 0,
+                visitCount: visitCounts[place.id] ?? 0,
+                effectiveDistance: nil,
+                typePrior: 0
+            )
+        }
+        return rankedPlaces.filter { $0.visitCount > 0 } + rankedPlaces.filter { $0.visitCount == 0 }
     }
 
     // MARK: - Pieces

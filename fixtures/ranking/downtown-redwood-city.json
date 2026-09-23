@@ -1,0 +1,3173 @@
+{
+  "schemaVersion": 1,
+  "name": "downtown-redwood-city",
+  "description": "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 330 m from the Sequoia Station Safeway.",
+  "recordedAt": "2026-09-23T23:08:37.196Z",
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.486525,
+    "longitude": -122.233389,
+    "horizontalAccuracy": 20
+  },
+  "google": {
+    "popularity": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.486525,
+              "longitude": -122.233389
+            },
+            "radius": 2500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJo6wg-wijj4ARau3zQUzPzE8",
+            "types": [
+              "warehouse_store",
+              "department_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4784321,
+              "longitude": -122.2162829
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4773177197085,
+                "longitude": -122.21787353029148
+              },
+              "high": {
+                "latitude": 37.4800156802915,
+                "longitude": -122.21517556970849
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 4960,
+            "displayName": {
+              "text": "Costco Wholesale",
+              "languageCode": "en"
+            },
+            "primaryType": "warehouse_store"
+          },
+          {
+            "id": "ChIJw3cEKQqjj4ARywep3n0-Svo",
+            "types": [
+              "department_store",
+              "child_care_agency",
+              "electronics_store",
+              "shoe_store",
+              "furniture_store",
+              "home_improvement_store",
+              "supplier",
+              "home_goods_store",
+              "clothing_store",
+              "toy_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2485 El Camino Real, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4754186,
+              "longitude": -122.21724919999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4739240697085,
+                "longitude": -122.2189670302915
+              },
+              "high": {
+                "latitude": 37.4766220302915,
+                "longitude": -122.2162690697085
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 844,
+            "displayName": {
+              "text": "Target",
+              "languageCode": "en"
+            },
+            "primaryType": "department_store"
+          },
+          {
+            "id": "ChIJeXNiHs-jj4ARmQN_Xuuww0I",
+            "types": [
+              "mediterranean_restaurant",
+              "barbecue_restaurant",
+              "middle_eastern_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2021 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4864235,
+              "longitude": -122.22685489999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4851678197085,
+                "longitude": -122.22846928029148
+              },
+              "high": {
+                "latitude": 37.4878657802915,
+                "longitude": -122.22577131970849
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 1817,
+            "displayName": {
+              "text": "MAZRA",
+              "languageCode": "en"
+            },
+            "primaryType": "mediterranean_restaurant"
+          },
+          {
+            "id": "ChIJ72rH3FSij4AReB-jZ2NK3Xc",
+            "types": [
+              "medical_center",
+              "hospital",
+              "health",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1100 Veterans Blvd, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4888897,
+              "longitude": -122.2241739
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4875287697085,
+                "longitude": -122.22550193029149
+              },
+              "high": {
+                "latitude": 37.490226730291496,
+                "longitude": -122.2228039697085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 1338,
+            "displayName": {
+              "text": "Redwood City Medical Center",
+              "languageCode": "en"
+            },
+            "primaryType": "medical_center"
+          },
+          {
+            "id": "ChIJdxVs-wijj4ARvm7Rt2HDTVw",
+            "types": [
+              "gas_station",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.478706599999995,
+              "longitude": -122.2176677
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4774370197085,
+                "longitude": -122.21922018029147
+              },
+              "high": {
+                "latitude": 37.480134980291496,
+                "longitude": -122.21652221970848
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 827,
+            "displayName": {
+              "text": "Costco Gas Station",
+              "languageCode": "en"
+            },
+            "primaryType": "gas_station"
+          },
+          {
+            "id": "ChIJSzHQdLKjj4AR182EZGl5Hgk",
+            "types": [
+              "grocery_store",
+              "liquor_store",
+              "health_food_store",
+              "market",
+              "supermarket",
+              "food_store",
+              "store",
+              "health",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1250 Jefferson Ave, Redwood City, CA 94062, USA",
+            "location": {
+              "latitude": 37.4822223,
+              "longitude": -122.2316198
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.48110506970849,
+                "longitude": -122.2327849302915
+              },
+              "high": {
+                "latitude": 37.48380303029149,
+                "longitude": -122.23008696970852
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 1645,
+            "displayName": {
+              "text": "Whole Foods Market",
+              "languageCode": "en"
+            },
+            "primaryType": "grocery_store"
+          },
+          {
+            "id": "ChIJyc7rXBaij4ARyinNzBzVYuY",
+            "types": [
+              "home_improvement_store",
+              "hardware_store",
+              "garden_center",
+              "building_materials_store",
+              "furniture_store",
+              "home_goods_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1125 Old County Rd, San Carlos, CA 94070, USA",
+            "location": {
+              "latitude": 37.5011398,
+              "longitude": -122.24984929999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4996698697085,
+                "longitude": -122.25141798029149
+              },
+              "high": {
+                "latitude": 37.5023678302915,
+                "longitude": -122.2487200197085
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 1720,
+            "displayName": {
+              "text": "The Home Depot",
+              "languageCode": "en"
+            },
+            "primaryType": "home_improvement_store"
+          },
+          {
+            "id": "ChIJd6l_wRKjj4AReSHqIm_I6F4",
+            "types": [
+              "pakistani_restaurant",
+              "halal_restaurant",
+              "catering_service",
+              "indian_restaurant",
+              "food_delivery",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2039 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4864509,
+              "longitude": -122.2270514
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4851773697085,
+                "longitude": -122.22854578029148
+              },
+              "high": {
+                "latitude": 37.487875330291494,
+                "longitude": -122.2258478197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 1812,
+            "displayName": {
+              "text": "Zareen's",
+              "languageCode": "en"
+            },
+            "primaryType": "pakistani_restaurant"
+          },
+          {
+            "id": "ChIJXWh3PhSij4ARougdfWNOfek",
+            "types": [
+              "bicycle_store",
+              "sporting_goods_store",
+              "shoe_store",
+              "clothing_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1119 Industrial Rd Ste A, San Carlos, CA 94070, USA",
+            "location": {
+              "latitude": 37.504513599999996,
+              "longitude": -122.2465382
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.503182469708506,
+                "longitude": -122.24797683029148
+              },
+              "high": {
+                "latitude": 37.5058804302915,
+                "longitude": -122.24527886970849
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 712,
+            "displayName": {
+              "text": "REI",
+              "languageCode": "en"
+            },
+            "primaryType": "store"
+          },
+          {
+            "id": "ChIJ0erYxVOij4ARL7SN0fmfWkE",
+            "types": [
+              "hamburger_restaurant",
+              "diner",
+              "fast_food_restaurant",
+              "american_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "949 Veterans Blvd, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.490584999999996,
+              "longitude": -122.22785999999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4892807197085,
+                "longitude": -122.22900533029149
+              },
+              "high": {
+                "latitude": 37.4919786802915,
+                "longitude": -122.2263073697085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 4675,
+            "displayName": {
+              "text": "In-N-Out Burger",
+              "languageCode": "en"
+            },
+            "primaryType": "hamburger_restaurant"
+          },
+          {
+            "id": "ChIJO6ZFgz6ij4ARKO_zrQUstAc",
+            "types": [
+              "grocery_store",
+              "liquor_store",
+              "health_food_store",
+              "market",
+              "supermarket",
+              "food_store",
+              "store",
+              "health",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1482 El Camino Real, San Carlos, CA 94070, USA",
+            "location": {
+              "latitude": 37.4963882,
+              "longitude": -122.2485572
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.49513656970849,
+                "longitude": -122.24981208029148
+              },
+              "high": {
+                "latitude": 37.49783453029149,
+                "longitude": -122.24711411970848
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 1675,
+            "displayName": {
+              "text": "Trader Joe's",
+              "languageCode": "en"
+            },
+            "primaryType": "grocery_store"
+          },
+          {
+            "id": "ChIJczknVE2ij4AR6rvEXfV3TKo",
+            "types": [
+              "train_station",
+              "transit_station",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1 James Ave, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4858291,
+              "longitude": -122.23172590000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.484568969708505,
+                "longitude": -122.23308518029148
+              },
+              "high": {
+                "latitude": 37.4872669302915,
+                "longitude": -122.2303872197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 100,
+            "displayName": {
+              "text": "Redwood City",
+              "languageCode": "en"
+            },
+            "primaryType": "train_station"
+          },
+          {
+            "id": "ChIJW0q6La2jj4ARfAm-rgZ5HoY",
+            "types": [
+              "movie_theater",
+              "snack_bar",
+              "meal_takeaway",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "825 Middlefield Rd, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.486259499999996,
+              "longitude": -122.2286872
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4847148697085,
+                "longitude": -122.2300976802915
+              },
+              "high": {
+                "latitude": 37.4874128302915,
+                "longitude": -122.22739971970852
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 2960,
+            "displayName": {
+              "text": "Cinemark Century Redwood Downtown 20 and XD",
+              "languageCode": "en"
+            },
+            "primaryType": "movie_theater"
+          },
+          {
+            "id": "ChIJI26VRs2jj4ARm-PG77gIDzA",
+            "types": [
+              "sporting_goods_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "202 Walnut St, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.493074199999995,
+              "longitude": -122.22621219999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4918766697085,
+                "longitude": -122.22743438029148
+              },
+              "high": {
+                "latitude": 37.494574630291496,
+                "longitude": -122.22473641970849
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 1226,
+            "displayName": {
+              "text": "Sports Basement Redwood City",
+              "languageCode": "en"
+            },
+            "primaryType": "sporting_goods_store"
+          },
+          {
+            "id": "ChIJOYaeo1Gij4ARnt4-4t4CFhk",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "300 Brewster Ave, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4926052,
+              "longitude": -122.229061
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4913308697085,
+                "longitude": -122.2305093302915
+              },
+              "high": {
+                "latitude": 37.4940288302915,
+                "longitude": -122.22781136970852
+              }
+            },
+            "rating": 2.6,
+            "userRatingCount": 761,
+            "displayName": {
+              "text": "Redwood City DMV",
+              "languageCode": "en"
+            },
+            "primaryType": "local_government_office"
+          },
+          {
+            "id": "ChIJ0UxfnxWij4AR8jiWTR06izk",
+            "types": [
+              "electronics_store",
+              "home_goods_store",
+              "store",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1127 Industrial Rd, San Carlos, CA 94070, USA",
+            "location": {
+              "latitude": 37.5023947,
+              "longitude": -122.2441346
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.501154419708506,
+                "longitude": -122.24564178029148
+              },
+              "high": {
+                "latitude": 37.503852380291505,
+                "longitude": -122.2429438197085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 3359,
+            "displayName": {
+              "text": "Best Buy",
+              "languageCode": "en"
+            },
+            "primaryType": "electronics_store"
+          },
+          {
+            "id": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+            "types": [
+              "grocery_store",
+              "butcher_shop",
+              "florist",
+              "market",
+              "deli",
+              "bakery",
+              "food_delivery",
+              "supermarket",
+              "manufacturer",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4846345,
+              "longitude": -122.23045
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4830709197085,
+                "longitude": -122.23177513029147
+              },
+              "high": {
+                "latitude": 37.4857688802915,
+                "longitude": -122.22907716970849
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 1894,
+            "displayName": {
+              "text": "Safeway",
+              "languageCode": "en"
+            },
+            "primaryType": "grocery_store"
+          },
+          {
+            "id": "ChIJ6y3krEyij4ARd2-2II63C_w",
+            "types": [
+              "secondary_school",
+              "school",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1201 Brewster Ave, Redwood City, CA 94062, USA",
+            "location": {
+              "latitude": 37.4848468,
+              "longitude": -122.2370459
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4830107,
+                "longitude": -122.2396391
+              },
+              "high": {
+                "latitude": 37.486068599999996,
+                "longitude": -122.2348619
+              }
+            },
+            "displayName": {
+              "text": "Sequoia High School",
+              "languageCode": "en"
+            },
+            "primaryType": "secondary_school"
+          },
+          {
+            "id": "ChIJ1RgDeAOjj4ARd5TgSZVGPsc",
+            "types": [
+              "gym",
+              "yoga_studio",
+              "fitness_center",
+              "sauna",
+              "swimming_pool",
+              "spa",
+              "public_bath",
+              "sports_complex",
+              "sports_school",
+              "sports_activity_location",
+              "health",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1050 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4874599,
+              "longitude": -122.2109995
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4861711197085,
+                "longitude": -122.21251108029149
+              },
+              "high": {
+                "latitude": 37.4888690802915,
+                "longitude": -122.2098131197085
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 1854,
+            "displayName": {
+              "text": "24 Hour Fitness",
+              "languageCode": "en"
+            },
+            "primaryType": "gym"
+          },
+          {
+            "id": "ChIJ5a6JnRWij4ARrz_upHXFl1k",
+            "types": [
+              "department_store",
+              "womens_clothing_store",
+              "jewelry_store",
+              "clothing_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1251 Industrial Rd, San Carlos, CA 94070, USA",
+            "location": {
+              "latitude": 37.5016925,
+              "longitude": -122.2451077
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.500526969708496,
+                "longitude": -122.24653473029147
+              },
+              "high": {
+                "latitude": 37.503224930291495,
+                "longitude": -122.2438367697085
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 1163,
+            "displayName": {
+              "text": "T.J. Maxx & HomeGoods",
+              "languageCode": "en"
+            },
+            "primaryType": "department_store"
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.486525,
+              "longitude": -122.233389
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJy5gdFk2ij4ARWyg1ub68B7w",
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2600 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.486435,
+              "longitude": -122.23330999999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.485016369708504,
+                "longitude": -122.23463568029148
+              },
+              "high": {
+                "latitude": 37.4877143302915,
+                "longitude": -122.23193771970848
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 508,
+            "displayName": {
+              "text": "Peet's Coffee",
+              "languageCode": "en"
+            },
+            "primaryType": "coffee_shop"
+          },
+          {
+            "id": "ChIJYY_yF02ij4ARVovIxH-GmjU",
+            "types": [
+              "hair_salon",
+              "nail_salon",
+              "hair_care",
+              "beauty_salon",
+              "body_art_service",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2606 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.486445599999996,
+              "longitude": -122.2334587
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4850174697085,
+                "longitude": -122.2348548302915
+              },
+              "high": {
+                "latitude": 37.4877154302915,
+                "longitude": -122.2321568697085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 136,
+            "displayName": {
+              "text": "Natalie's Salon",
+              "languageCode": "en"
+            },
+            "primaryType": "hair_salon"
+          },
+          {
+            "id": "ChIJM16jGU2ij4ARBWfI6Y1foik",
+            "types": [
+              "vietnamese_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2610 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4865049,
+              "longitude": -122.23363359999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.485141719708494,
+                "longitude": -122.23492263029146
+              },
+              "high": {
+                "latitude": 37.48783968029149,
+                "longitude": -122.23222466970847
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 391,
+            "displayName": {
+              "text": "Phở Đông Restaurant",
+              "languageCode": "en"
+            },
+            "primaryType": "vietnamese_restaurant"
+          },
+          {
+            "id": "ChIJJ5LAG02ij4ARjhdpJwrd7FY",
+            "types": [
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.486441,
+              "longitude": -122.23368300000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4850098197085,
+                "longitude": -122.23505923029148
+              },
+              "high": {
+                "latitude": 37.4877077802915,
+                "longitude": -122.23236126970849
+              }
+            },
+            "displayName": {
+              "text": "Chainey Hauling",
+              "languageCode": "en"
+            },
+            "primaryType": "transportation_service"
+          },
+          {
+            "id": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+            "types": [
+              "japanese_restaurant",
+              "ramen_restaurant",
+              "bar_and_grill",
+              "tonkatsu_restaurant",
+              "seafood_restaurant",
+              "bar",
+              "japanese_curry_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4864227,
+              "longitude": -122.2337074
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.48499736970851,
+                "longitude": -122.2350492302915
+              },
+              "high": {
+                "latitude": 37.48769533029151,
+                "longitude": -122.2323512697085
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 679,
+            "displayName": {
+              "text": "Kemuri Japanese Barú",
+              "languageCode": "en"
+            },
+            "primaryType": "japanese_restaurant"
+          },
+          {
+            "id": "ChIJNcz4IACjj4AR5FEUZIfxrKQ",
+            "types": [
+              "irish_pub",
+              "pub",
+              "bar",
+              "european_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2620 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4865127,
+              "longitude": -122.23381380000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4850443197085,
+                "longitude": -122.2351460802915
+              },
+              "high": {
+                "latitude": 37.4877422802915,
+                "longitude": -122.23244811970851
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 44,
+            "displayName": {
+              "text": "The Wild Rover",
+              "languageCode": "en"
+            },
+            "primaryType": "irish_pub"
+          },
+          {
+            "id": "ChIJH2t7pOGjj4ARGoPG0gjvMYs",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2601 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4861688,
+              "longitude": -122.23327350000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848869697085,
+                "longitude": -122.23462903029152
+              },
+              "high": {
+                "latitude": 37.4875849302915,
+                "longitude": -122.23193106970852
+              }
+            },
+            "displayName": {
+              "text": "Beacon Route Mover's",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJuXZmPE2ij4ARxIQ1zfuiRPE",
+            "types": [
+              "yoga_studio",
+              "fitness_center",
+              "gym",
+              "sports_complex",
+              "sports_school",
+              "sports_activity_location",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2603 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.486134,
+              "longitude": -122.23330800000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848693197085,
+                "longitude": -122.2346477802915
+              },
+              "high": {
+                "latitude": 37.4875672802915,
+                "longitude": -122.2319498197085
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 44,
+            "displayName": {
+              "text": "Peacebank Yoga",
+              "languageCode": "en"
+            },
+            "primaryType": "yoga_studio"
+          },
+          {
+            "id": "ChIJucp5spOjj4AROrx91EqMF44",
+            "types": [
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "7965 SW 136th St, Miami, FL 33156, USA",
+            "location": {
+              "latitude": 37.486086199999995,
+              "longitude": -122.23326770000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.48484396970849,
+                "longitude": -122.2346297802915
+              },
+              "high": {
+                "latitude": 37.48754193029149,
+                "longitude": -122.2319318197085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 16,
+            "displayName": {
+              "text": "LYRI YOGA",
+              "languageCode": "en"
+            }
+          },
+          {
+            "id": "ChIJjbZIg3-jj4ARV-xbzS0BhYA",
+            "types": [
+              "ice_cream_shop",
+              "cafe",
+              "dessert_shop",
+              "confectionery",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2621 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4861515,
+              "longitude": -122.2336991
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.484866519708504,
+                "longitude": -122.23503318029148
+              },
+              "high": {
+                "latitude": 37.4875644802915,
+                "longitude": -122.23233521970849
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 115,
+            "displayName": {
+              "text": "SF Gelateria",
+              "languageCode": "en"
+            },
+            "primaryType": "ice_cream_shop"
+          },
+          {
+            "id": "ChIJLxAUqT6ij4AR6StFnt1BqV8",
+            "types": [
+              "clothing_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2626 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4864106,
+              "longitude": -122.2339405
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.484988519708494,
+                "longitude": -122.2353024802915
+              },
+              "high": {
+                "latitude": 37.487686480291494,
+                "longitude": -122.2326045197085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 75,
+            "displayName": {
+              "text": "Peninsula Uniforms & Equipment, Inc.",
+              "languageCode": "en"
+            },
+            "primaryType": "clothing_store"
+          },
+          {
+            "id": "ChIJl1qBtV2jj4ARRNnksn6VW1U",
+            "types": [
+              "coworking_space",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2625 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4861412,
+              "longitude": -122.2337153
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848600197085,
+                "longitude": -122.23506853029149
+              },
+              "high": {
+                "latitude": 37.4875579802915,
+                "longitude": -122.2323705697085
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 55,
+            "displayName": {
+              "text": "Sound Union",
+              "languageCode": "en"
+            }
+          },
+          {
+            "id": "ChIJnzqbI02ij4AReQzA15DnBcc",
+            "types": [
+              "massage",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2625 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4861412,
+              "longitude": -122.2337153
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.48485996970851,
+                "longitude": -122.23507008029151
+              },
+              "high": {
+                "latitude": 37.48755793029151,
+                "longitude": -122.23237211970851
+              }
+            },
+            "displayName": {
+              "text": "Chair Massage at Avast",
+              "languageCode": "en"
+            },
+            "primaryType": "massage"
+          },
+          {
+            "id": "ChIJ_V6kIk2ij4ARmonRgzkKIkI",
+            "types": [
+              "german_restaurant",
+              "beer_garden",
+              "liquor_store",
+              "brewpub",
+              "pub",
+              "bar",
+              "grocery_store",
+              "food_store",
+              "european_restaurant",
+              "store",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2615 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.486053999999996,
+              "longitude": -122.233447
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848209197085,
+                "longitude": -122.2348499802915
+              },
+              "high": {
+                "latitude": 37.487518880291496,
+                "longitude": -122.23215201970851
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 1972,
+            "displayName": {
+              "text": "Gourmet Haus Staudt",
+              "languageCode": "en"
+            },
+            "primaryType": "german_restaurant"
+          },
+          {
+            "id": "ChIJIVZY_rijj4ARA7FDtWlumk0",
+            "types": [
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "10 California St, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.485962,
+              "longitude": -122.23324029999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.484588969708504,
+                "longitude": -122.2345207802915
+              },
+              "high": {
+                "latitude": 37.4872869302915,
+                "longitude": -122.23182281970851
+              }
+            },
+            "displayName": {
+              "text": "Sozo Ventures",
+              "languageCode": "en"
+            },
+            "primaryType": "finance"
+          },
+          {
+            "id": "ChIJXbd1HU2ij4ARtxlSp-ZARxY",
+            "types": [
+              "gym",
+              "fitness_center",
+              "consultant",
+              "sports_activity_location",
+              "health",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2636 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4864835,
+              "longitude": -122.23411739999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4850208697085,
+                "longitude": -122.23546693029147
+              },
+              "high": {
+                "latitude": 37.4877188302915,
+                "longitude": -122.23276896970849
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 88,
+            "displayName": {
+              "text": "ObstaCourse Fitness",
+              "languageCode": "en"
+            },
+            "primaryType": "gym"
+          },
+          {
+            "id": "ChIJHdigVRSjj4ARqNYTH8JLqUo",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "2629 Broadway Ste 23, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4860398,
+              "longitude": -122.23382280000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848062197085,
+                "longitude": -122.2351628802915
+              },
+              "high": {
+                "latitude": 37.4875041802915,
+                "longitude": -122.2324649197085
+              }
+            },
+            "displayName": {
+              "text": "My Elite Events",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJaRwJQQCjj4AR-eHgyEwyzy0",
+            "types": [
+              "corporate_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2629 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4860398,
+              "longitude": -122.23382280000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848064697085,
+                "longitude": -122.23517658029148
+              },
+              "high": {
+                "latitude": 37.4875044302915,
+                "longitude": -122.23247861970849
+              }
+            },
+            "displayName": {
+              "text": "Bellota Labs",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJVVXlQE2ij4ARMWdImbmmd5s",
+            "types": [
+              "plaza",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4862903,
+              "longitude": -122.23263920000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4849691697085,
+                "longitude": -122.23410563029147
+              },
+              "high": {
+                "latitude": 37.4876671302915,
+                "longitude": -122.23140766970847
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Arguello Plaza",
+              "languageCode": "en"
+            },
+            "primaryType": "plaza"
+          },
+          {
+            "id": "ChIJi_lwH02ij4ARSEaUQwB1TBo",
+            "types": [
+              "korean_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2639 Broadway, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4861028,
+              "longitude": -122.2339889
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4848333697085,
+                "longitude": -122.23534668029149
+              },
+              "high": {
+                "latitude": 37.487531330291496,
+                "longitude": -122.23264871970851
+              }
+            },
+            "rating": 4.2,
+            "userRatingCount": 225,
+            "displayName": {
+              "text": "Seoul Kitchen",
+              "languageCode": "en"
+            },
+            "primaryType": "korean_restaurant"
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "ChIJy5gdFk2ij4ARWyg1ub68B7w",
+      "name": "Peet's Coffee",
+      "address": "2600 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.486435,
+        "longitude": -122.23330999999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.485016369708504,
+          "longitude": -122.23463568029148
+        },
+        "high": {
+          "latitude": 37.4877143302915,
+          "longitude": -122.23193771970848
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 4.3,
+      "userRatingCount": 508
+    },
+    {
+      "id": "ChIJYY_yF02ij4ARVovIxH-GmjU",
+      "name": "Natalie's Salon",
+      "address": "2606 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.486445599999996,
+        "longitude": -122.2334587
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4850174697085,
+          "longitude": -122.2348548302915
+        },
+        "high": {
+          "latitude": 37.4877154302915,
+          "longitude": -122.2321568697085
+        }
+      },
+      "types": [
+        "hair_salon",
+        "nail_salon",
+        "hair_care",
+        "beauty_salon",
+        "body_art_service",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "hair_salon",
+      "rating": 4.5,
+      "userRatingCount": 136
+    },
+    {
+      "id": "ChIJM16jGU2ij4ARBWfI6Y1foik",
+      "name": "Phở Đông Restaurant",
+      "address": "2610 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4865049,
+        "longitude": -122.23363359999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.485141719708494,
+          "longitude": -122.23492263029146
+        },
+        "high": {
+          "latitude": 37.48783968029149,
+          "longitude": -122.23222466970847
+        }
+      },
+      "types": [
+        "vietnamese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "vietnamese_restaurant",
+      "rating": 4,
+      "userRatingCount": 391
+    },
+    {
+      "id": "ChIJJ5LAG02ij4ARjhdpJwrd7FY",
+      "name": "Chainey Hauling",
+      "address": "2616 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.486441,
+        "longitude": -122.23368300000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4850098197085,
+          "longitude": -122.23505923029148
+        },
+        "high": {
+          "latitude": 37.4877077802915,
+          "longitude": -122.23236126970849
+        }
+      },
+      "types": [
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "transportation_service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+      "name": "Kemuri Japanese Barú",
+      "address": "2616 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4864227,
+        "longitude": -122.2337074
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.48499736970851,
+          "longitude": -122.2350492302915
+        },
+        "high": {
+          "latitude": 37.48769533029151,
+          "longitude": -122.2323512697085
+        }
+      },
+      "types": [
+        "japanese_restaurant",
+        "ramen_restaurant",
+        "bar_and_grill",
+        "tonkatsu_restaurant",
+        "seafood_restaurant",
+        "bar",
+        "japanese_curry_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "japanese_restaurant",
+      "rating": 4.4,
+      "userRatingCount": 679
+    },
+    {
+      "id": "ChIJNcz4IACjj4AR5FEUZIfxrKQ",
+      "name": "The Wild Rover",
+      "address": "2620 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4865127,
+        "longitude": -122.23381380000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4850443197085,
+          "longitude": -122.2351460802915
+        },
+        "high": {
+          "latitude": 37.4877422802915,
+          "longitude": -122.23244811970851
+        }
+      },
+      "types": [
+        "irish_pub",
+        "pub",
+        "bar",
+        "european_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "irish_pub",
+      "rating": 4.8,
+      "userRatingCount": 44
+    },
+    {
+      "id": "ChIJH2t7pOGjj4ARGoPG0gjvMYs",
+      "name": "Beacon Route Mover's",
+      "address": "2601 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4861688,
+        "longitude": -122.23327350000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848869697085,
+          "longitude": -122.23462903029152
+        },
+        "high": {
+          "latitude": 37.4875849302915,
+          "longitude": -122.23193106970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJuXZmPE2ij4ARxIQ1zfuiRPE",
+      "name": "Peacebank Yoga",
+      "address": "2603 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.486134,
+        "longitude": -122.23330800000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848693197085,
+          "longitude": -122.2346477802915
+        },
+        "high": {
+          "latitude": 37.4875672802915,
+          "longitude": -122.2319498197085
+        }
+      },
+      "types": [
+        "yoga_studio",
+        "fitness_center",
+        "gym",
+        "sports_complex",
+        "sports_school",
+        "sports_activity_location",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "yoga_studio",
+      "rating": 4.8,
+      "userRatingCount": 44
+    },
+    {
+      "id": "ChIJucp5spOjj4AROrx91EqMF44",
+      "name": "LYRI YOGA",
+      "address": "7965 SW 136th St, Miami, FL 33156, USA",
+      "location": {
+        "latitude": 37.486086199999995,
+        "longitude": -122.23326770000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.48484396970849,
+          "longitude": -122.2346297802915
+        },
+        "high": {
+          "latitude": 37.48754193029149,
+          "longitude": -122.2319318197085
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": null,
+      "rating": 5,
+      "userRatingCount": 16
+    },
+    {
+      "id": "ChIJjbZIg3-jj4ARV-xbzS0BhYA",
+      "name": "SF Gelateria",
+      "address": "2621 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4861515,
+        "longitude": -122.2336991
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.484866519708504,
+          "longitude": -122.23503318029148
+        },
+        "high": {
+          "latitude": 37.4875644802915,
+          "longitude": -122.23233521970849
+        }
+      },
+      "types": [
+        "ice_cream_shop",
+        "cafe",
+        "dessert_shop",
+        "confectionery",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "ice_cream_shop",
+      "rating": 4.5,
+      "userRatingCount": 115
+    },
+    {
+      "id": "ChIJLxAUqT6ij4AR6StFnt1BqV8",
+      "name": "Peninsula Uniforms & Equipment, Inc.",
+      "address": "2626 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4864106,
+        "longitude": -122.2339405
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.484988519708494,
+          "longitude": -122.2353024802915
+        },
+        "high": {
+          "latitude": 37.487686480291494,
+          "longitude": -122.2326045197085
+        }
+      },
+      "types": [
+        "clothing_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "clothing_store",
+      "rating": 4.7,
+      "userRatingCount": 75
+    },
+    {
+      "id": "ChIJl1qBtV2jj4ARRNnksn6VW1U",
+      "name": "Sound Union",
+      "address": "2625 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4861412,
+        "longitude": -122.2337153
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848600197085,
+          "longitude": -122.23506853029149
+        },
+        "high": {
+          "latitude": 37.4875579802915,
+          "longitude": -122.2323705697085
+        }
+      },
+      "types": [
+        "coworking_space",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": null,
+      "rating": 4.9,
+      "userRatingCount": 55
+    },
+    {
+      "id": "ChIJnzqbI02ij4AReQzA15DnBcc",
+      "name": "Chair Massage at Avast",
+      "address": "2625 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4861412,
+        "longitude": -122.2337153
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.48485996970851,
+          "longitude": -122.23507008029151
+        },
+        "high": {
+          "latitude": 37.48755793029151,
+          "longitude": -122.23237211970851
+        }
+      },
+      "types": [
+        "massage",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "massage",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ_V6kIk2ij4ARmonRgzkKIkI",
+      "name": "Gourmet Haus Staudt",
+      "address": "2615 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.486053999999996,
+        "longitude": -122.233447
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848209197085,
+          "longitude": -122.2348499802915
+        },
+        "high": {
+          "latitude": 37.487518880291496,
+          "longitude": -122.23215201970851
+        }
+      },
+      "types": [
+        "german_restaurant",
+        "beer_garden",
+        "liquor_store",
+        "brewpub",
+        "pub",
+        "bar",
+        "grocery_store",
+        "food_store",
+        "european_restaurant",
+        "store",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "german_restaurant",
+      "rating": 4.7,
+      "userRatingCount": 1972
+    },
+    {
+      "id": "ChIJIVZY_rijj4ARA7FDtWlumk0",
+      "name": "Sozo Ventures",
+      "address": "10 California St, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.485962,
+        "longitude": -122.23324029999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.484588969708504,
+          "longitude": -122.2345207802915
+        },
+        "high": {
+          "latitude": 37.4872869302915,
+          "longitude": -122.23182281970851
+        }
+      },
+      "types": [
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "finance",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJXbd1HU2ij4ARtxlSp-ZARxY",
+      "name": "ObstaCourse Fitness",
+      "address": "2636 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4864835,
+        "longitude": -122.23411739999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4850208697085,
+          "longitude": -122.23546693029147
+        },
+        "high": {
+          "latitude": 37.4877188302915,
+          "longitude": -122.23276896970849
+        }
+      },
+      "types": [
+        "gym",
+        "fitness_center",
+        "consultant",
+        "sports_activity_location",
+        "health",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "gym",
+      "rating": 4.9,
+      "userRatingCount": 88
+    },
+    {
+      "id": "ChIJHdigVRSjj4ARqNYTH8JLqUo",
+      "name": "My Elite Events",
+      "address": "2629 Broadway Ste 23, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4860398,
+        "longitude": -122.23382280000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848062197085,
+          "longitude": -122.2351628802915
+        },
+        "high": {
+          "latitude": 37.4875041802915,
+          "longitude": -122.2324649197085
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJaRwJQQCjj4AR-eHgyEwyzy0",
+      "name": "Bellota Labs",
+      "address": "2629 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4860398,
+        "longitude": -122.23382280000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848064697085,
+          "longitude": -122.23517658029148
+        },
+        "high": {
+          "latitude": 37.4875044302915,
+          "longitude": -122.23247861970849
+        }
+      },
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJVVXlQE2ij4ARMWdImbmmd5s",
+      "name": "Arguello Plaza",
+      "address": "Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4862903,
+        "longitude": -122.23263920000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4849691697085,
+          "longitude": -122.23410563029147
+        },
+        "high": {
+          "latitude": 37.4876671302915,
+          "longitude": -122.23140766970847
+        }
+      },
+      "types": [
+        "plaza",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "plaza",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJi_lwH02ij4ARSEaUQwB1TBo",
+      "name": "Seoul Kitchen",
+      "address": "2639 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4861028,
+        "longitude": -122.2339889
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4848333697085,
+          "longitude": -122.23534668029149
+        },
+        "high": {
+          "latitude": 37.487531330291496,
+          "longitude": -122.23264871970851
+        }
+      },
+      "types": [
+        "korean_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "korean_restaurant",
+      "rating": 4.2,
+      "userRatingCount": 225
+    },
+    {
+      "id": "ChIJo6wg-wijj4ARau3zQUzPzE8",
+      "name": "Costco Wholesale",
+      "address": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4784321,
+        "longitude": -122.2162829
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4773177197085,
+          "longitude": -122.21787353029148
+        },
+        "high": {
+          "latitude": 37.4800156802915,
+          "longitude": -122.21517556970849
+        }
+      },
+      "types": [
+        "warehouse_store",
+        "department_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "warehouse_store",
+      "rating": 4.5,
+      "userRatingCount": 4960
+    },
+    {
+      "id": "ChIJw3cEKQqjj4ARywep3n0-Svo",
+      "name": "Target",
+      "address": "2485 El Camino Real, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4754186,
+        "longitude": -122.21724919999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4739240697085,
+          "longitude": -122.2189670302915
+        },
+        "high": {
+          "latitude": 37.4766220302915,
+          "longitude": -122.2162690697085
+        }
+      },
+      "types": [
+        "department_store",
+        "child_care_agency",
+        "electronics_store",
+        "shoe_store",
+        "furniture_store",
+        "home_improvement_store",
+        "supplier",
+        "home_goods_store",
+        "clothing_store",
+        "toy_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "department_store",
+      "rating": 4,
+      "userRatingCount": 844
+    },
+    {
+      "id": "ChIJeXNiHs-jj4ARmQN_Xuuww0I",
+      "name": "MAZRA",
+      "address": "2021 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4864235,
+        "longitude": -122.22685489999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4851678197085,
+          "longitude": -122.22846928029148
+        },
+        "high": {
+          "latitude": 37.4878657802915,
+          "longitude": -122.22577131970849
+        }
+      },
+      "types": [
+        "mediterranean_restaurant",
+        "barbecue_restaurant",
+        "middle_eastern_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "mediterranean_restaurant",
+      "rating": 4.6,
+      "userRatingCount": 1817
+    },
+    {
+      "id": "ChIJ72rH3FSij4AReB-jZ2NK3Xc",
+      "name": "Redwood City Medical Center",
+      "address": "1100 Veterans Blvd, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4888897,
+        "longitude": -122.2241739
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4875287697085,
+          "longitude": -122.22550193029149
+        },
+        "high": {
+          "latitude": 37.490226730291496,
+          "longitude": -122.2228039697085
+        }
+      },
+      "types": [
+        "medical_center",
+        "hospital",
+        "health",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "medical_center",
+      "rating": 4.6,
+      "userRatingCount": 1338
+    },
+    {
+      "id": "ChIJdxVs-wijj4ARvm7Rt2HDTVw",
+      "name": "Costco Gas Station",
+      "address": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.478706599999995,
+        "longitude": -122.2176677
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4774370197085,
+          "longitude": -122.21922018029147
+        },
+        "high": {
+          "latitude": 37.480134980291496,
+          "longitude": -122.21652221970848
+        }
+      },
+      "types": [
+        "gas_station",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "gas_station",
+      "rating": 4.6,
+      "userRatingCount": 827
+    },
+    {
+      "id": "ChIJSzHQdLKjj4AR182EZGl5Hgk",
+      "name": "Whole Foods Market",
+      "address": "1250 Jefferson Ave, Redwood City, CA 94062, USA",
+      "location": {
+        "latitude": 37.4822223,
+        "longitude": -122.2316198
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.48110506970849,
+          "longitude": -122.2327849302915
+        },
+        "high": {
+          "latitude": 37.48380303029149,
+          "longitude": -122.23008696970852
+        }
+      },
+      "types": [
+        "grocery_store",
+        "liquor_store",
+        "health_food_store",
+        "market",
+        "supermarket",
+        "food_store",
+        "store",
+        "health",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4.2,
+      "userRatingCount": 1645
+    },
+    {
+      "id": "ChIJyc7rXBaij4ARyinNzBzVYuY",
+      "name": "The Home Depot",
+      "address": "1125 Old County Rd, San Carlos, CA 94070, USA",
+      "location": {
+        "latitude": 37.5011398,
+        "longitude": -122.24984929999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4996698697085,
+          "longitude": -122.25141798029149
+        },
+        "high": {
+          "latitude": 37.5023678302915,
+          "longitude": -122.2487200197085
+        }
+      },
+      "types": [
+        "home_improvement_store",
+        "hardware_store",
+        "garden_center",
+        "building_materials_store",
+        "furniture_store",
+        "home_goods_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "home_improvement_store",
+      "rating": 4.1,
+      "userRatingCount": 1720
+    },
+    {
+      "id": "ChIJd6l_wRKjj4AReSHqIm_I6F4",
+      "name": "Zareen's",
+      "address": "2039 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4864509,
+        "longitude": -122.2270514
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4851773697085,
+          "longitude": -122.22854578029148
+        },
+        "high": {
+          "latitude": 37.487875330291494,
+          "longitude": -122.2258478197085
+        }
+      },
+      "types": [
+        "pakistani_restaurant",
+        "halal_restaurant",
+        "catering_service",
+        "indian_restaurant",
+        "food_delivery",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "pakistani_restaurant",
+      "rating": 4.6,
+      "userRatingCount": 1812
+    },
+    {
+      "id": "ChIJXWh3PhSij4ARougdfWNOfek",
+      "name": "REI",
+      "address": "1119 Industrial Rd Ste A, San Carlos, CA 94070, USA",
+      "location": {
+        "latitude": 37.504513599999996,
+        "longitude": -122.2465382
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.503182469708506,
+          "longitude": -122.24797683029148
+        },
+        "high": {
+          "latitude": 37.5058804302915,
+          "longitude": -122.24527886970849
+        }
+      },
+      "types": [
+        "bicycle_store",
+        "sporting_goods_store",
+        "shoe_store",
+        "clothing_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "store",
+      "rating": 4.5,
+      "userRatingCount": 712
+    },
+    {
+      "id": "ChIJ0erYxVOij4ARL7SN0fmfWkE",
+      "name": "In-N-Out Burger",
+      "address": "949 Veterans Blvd, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.490584999999996,
+        "longitude": -122.22785999999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4892807197085,
+          "longitude": -122.22900533029149
+        },
+        "high": {
+          "latitude": 37.4919786802915,
+          "longitude": -122.2263073697085
+        }
+      },
+      "types": [
+        "hamburger_restaurant",
+        "diner",
+        "fast_food_restaurant",
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hamburger_restaurant",
+      "rating": 4.5,
+      "userRatingCount": 4675
+    },
+    {
+      "id": "ChIJO6ZFgz6ij4ARKO_zrQUstAc",
+      "name": "Trader Joe's",
+      "address": "1482 El Camino Real, San Carlos, CA 94070, USA",
+      "location": {
+        "latitude": 37.4963882,
+        "longitude": -122.2485572
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.49513656970849,
+          "longitude": -122.24981208029148
+        },
+        "high": {
+          "latitude": 37.49783453029149,
+          "longitude": -122.24711411970848
+        }
+      },
+      "types": [
+        "grocery_store",
+        "liquor_store",
+        "health_food_store",
+        "market",
+        "supermarket",
+        "food_store",
+        "store",
+        "health",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4.5,
+      "userRatingCount": 1675
+    },
+    {
+      "id": "ChIJczknVE2ij4AR6rvEXfV3TKo",
+      "name": "Redwood City",
+      "address": "1 James Ave, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4858291,
+        "longitude": -122.23172590000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.484568969708505,
+          "longitude": -122.23308518029148
+        },
+        "high": {
+          "latitude": 37.4872669302915,
+          "longitude": -122.2303872197085
+        }
+      },
+      "types": [
+        "train_station",
+        "transit_station",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "train_station",
+      "rating": 4.2,
+      "userRatingCount": 100
+    },
+    {
+      "id": "ChIJW0q6La2jj4ARfAm-rgZ5HoY",
+      "name": "Cinemark Century Redwood Downtown 20 and XD",
+      "address": "825 Middlefield Rd, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.486259499999996,
+        "longitude": -122.2286872
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4847148697085,
+          "longitude": -122.2300976802915
+        },
+        "high": {
+          "latitude": 37.4874128302915,
+          "longitude": -122.22739971970852
+        }
+      },
+      "types": [
+        "movie_theater",
+        "snack_bar",
+        "meal_takeaway",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "movie_theater",
+      "rating": 4.4,
+      "userRatingCount": 2960
+    },
+    {
+      "id": "ChIJI26VRs2jj4ARm-PG77gIDzA",
+      "name": "Sports Basement Redwood City",
+      "address": "202 Walnut St, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.493074199999995,
+        "longitude": -122.22621219999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4918766697085,
+          "longitude": -122.22743438029148
+        },
+        "high": {
+          "latitude": 37.494574630291496,
+          "longitude": -122.22473641970849
+        }
+      },
+      "types": [
+        "sporting_goods_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sporting_goods_store",
+      "rating": 4.7,
+      "userRatingCount": 1226
+    },
+    {
+      "id": "ChIJOYaeo1Gij4ARnt4-4t4CFhk",
+      "name": "Redwood City DMV",
+      "address": "300 Brewster Ave, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4926052,
+        "longitude": -122.229061
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4913308697085,
+          "longitude": -122.2305093302915
+        },
+        "high": {
+          "latitude": 37.4940288302915,
+          "longitude": -122.22781136970852
+        }
+      },
+      "types": [
+        "local_government_office",
+        "government_office",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "local_government_office",
+      "rating": 2.6,
+      "userRatingCount": 761
+    },
+    {
+      "id": "ChIJ0UxfnxWij4AR8jiWTR06izk",
+      "name": "Best Buy",
+      "address": "1127 Industrial Rd, San Carlos, CA 94070, USA",
+      "location": {
+        "latitude": 37.5023947,
+        "longitude": -122.2441346
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.501154419708506,
+          "longitude": -122.24564178029148
+        },
+        "high": {
+          "latitude": 37.503852380291505,
+          "longitude": -122.2429438197085
+        }
+      },
+      "types": [
+        "electronics_store",
+        "home_goods_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "electronics_store",
+      "rating": 4.2,
+      "userRatingCount": 3359
+    },
+    {
+      "id": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+      "name": "Safeway",
+      "address": "1071 El Camino Real, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4846345,
+        "longitude": -122.23045
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4830709197085,
+          "longitude": -122.23177513029147
+        },
+        "high": {
+          "latitude": 37.4857688802915,
+          "longitude": -122.22907716970849
+        }
+      },
+      "types": [
+        "grocery_store",
+        "butcher_shop",
+        "florist",
+        "market",
+        "deli",
+        "bakery",
+        "food_delivery",
+        "supermarket",
+        "manufacturer",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "grocery_store",
+      "rating": 4,
+      "userRatingCount": 1894
+    },
+    {
+      "id": "ChIJ6y3krEyij4ARd2-2II63C_w",
+      "name": "Sequoia High School",
+      "address": "1201 Brewster Ave, Redwood City, CA 94062, USA",
+      "location": {
+        "latitude": 37.4848468,
+        "longitude": -122.2370459
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4830107,
+          "longitude": -122.2396391
+        },
+        "high": {
+          "latitude": 37.486068599999996,
+          "longitude": -122.2348619
+        }
+      },
+      "types": [
+        "secondary_school",
+        "school",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "secondary_school",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ1RgDeAOjj4ARd5TgSZVGPsc",
+      "name": "24 Hour Fitness",
+      "address": "1050 Broadway, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4874599,
+        "longitude": -122.2109995
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4861711197085,
+          "longitude": -122.21251108029149
+        },
+        "high": {
+          "latitude": 37.4888690802915,
+          "longitude": -122.2098131197085
+        }
+      },
+      "types": [
+        "gym",
+        "yoga_studio",
+        "fitness_center",
+        "sauna",
+        "swimming_pool",
+        "spa",
+        "public_bath",
+        "sports_complex",
+        "sports_school",
+        "sports_activity_location",
+        "health",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "gym",
+      "rating": 4.3,
+      "userRatingCount": 1854
+    },
+    {
+      "id": "ChIJ5a6JnRWij4ARrz_upHXFl1k",
+      "name": "T.J. Maxx & HomeGoods",
+      "address": "1251 Industrial Rd, San Carlos, CA 94070, USA",
+      "location": {
+        "latitude": 37.5016925,
+        "longitude": -122.2451077
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.500526969708496,
+          "longitude": -122.24653473029147
+        },
+        "high": {
+          "latitude": 37.503224930291495,
+          "longitude": -122.2438367697085
+        }
+      },
+      "types": [
+        "department_store",
+        "womens_clothing_store",
+        "jewelry_store",
+        "clothing_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "department_store",
+      "rating": 4.2,
+      "userRatingCount": 1163
+    }
+  ],
+  "placeKeys": {
+    "peets": "ChIJy5gdFk2ij4ARWyg1ub68B7w",
+    "kemuri": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+    "safeway": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+    "caltrain": "ChIJczknVE2ij4AR6rvEXfV3TKo"
+  },
+  "histories": {
+    "none": [],
+    "groceryRegular": [
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-07-22T01:13:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-07-28T01:06:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-08-03T01:49:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-08-09T01:42:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-08-15T01:35:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-08-21T01:28:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-08-27T01:21:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-09-02T01:14:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-09-08T01:07:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      },
+      {
+        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "createdAt": "2026-09-14T01:00:00.000Z",
+        "placeName": "Safeway",
+        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
+        "placePrimaryType": "grocery_store",
+        "placeTypes": [
+          "grocery_store",
+          "butcher_shop",
+          "florist",
+          "market",
+          "deli",
+          "bakery",
+          "food_delivery",
+          "supermarket",
+          "manufacturer",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "service",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4846345,
+          "longitude": -122.23045
+        }
+      }
+    ],
+    "dinnerRegular": [
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-06-22T02:49:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-07-03T02:42:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-07-14T02:35:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-07-26T02:28:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-08-06T02:21:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-08-17T02:14:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-08-28T02:07:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      },
+      {
+        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "createdAt": "2026-09-09T02:00:00.000Z",
+        "placeName": "Kemuri Japanese Barú",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placePrimaryType": "japanese_restaurant",
+        "placeTypes": [
+          "japanese_restaurant",
+          "ramen_restaurant",
+          "bar_and_grill",
+          "tonkatsu_restaurant",
+          "seafood_restaurant",
+          "bar",
+          "japanese_curry_restaurant",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.4864227,
+          "longitude": -122.2337074
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "no history",
+      "now": "2026-09-19T09:00:00-07:00",
+      "horizontalAccuracy": 20,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "peets",
+            "safeway"
+          ],
+          [
+            "peets",
+            "caltrain"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "grocery regular in the evening",
+      "now": "2026-09-19T18:15:00-07:00",
+      "horizontalAccuracy": 20,
+      "fixAgeSeconds": 5,
+      "history": "groceryRegular",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "peets",
+            "safeway"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "dinner regular in the evening",
+      "now": "2026-09-19T19:10:00-07:00",
+      "horizontalAccuracy": 20,
+      "fixAgeSeconds": 5,
+      "history": "dinnerRegular",
+      "expect": {
+        "top": "kemuri",
+        "rankedAbove": [
+          [
+            "kemuri",
+            "peets"
+          ]
+        ]
+      }
+    }
+  ]
+}

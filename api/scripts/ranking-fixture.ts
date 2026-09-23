@@ -84,17 +84,25 @@ export function resolvePlaceKeys(
 ): Record<string, string> {
   const resolved: Record<string, string> = {};
   const problems: string[] = [];
-  for (const [key, nameFragment] of Object.entries(definition.placeKeys)) {
+  for (const [key, matcher] of Object.entries(definition.placeKeys)) {
+    const { name: nameFragment, primaryType } =
+      typeof matcher === "string" ? { name: matcher, primaryType: undefined } : matcher;
     const needle = nameFragment.toLowerCase();
-    const matches = places.filter((place) => place.name.toLowerCase().includes(needle));
+    const matches = places.filter(
+      (place) =>
+        place.name.toLowerCase().includes(needle) &&
+        (primaryType === undefined || place.primaryType === primaryType),
+    );
     if (matches.length === 0) {
       problems.push(`"${key}" (${nameFragment}) matched no recorded place`);
       continue;
     }
-    // Several matches are fine as long as the first is the intended one:
+    // An exact name wins, so "de young museum" is the museum and not the
+    // "de Young Museum Store" next to it. Otherwise the first match is used:
     // the recorded list is nearest-first, so "peet's" resolves to the Peet's
     // the user is standing at rather than one across the terminal.
-    resolved[key] = matches[0].id;
+    const exactMatch = matches.find((place) => place.name.toLowerCase() === needle);
+    resolved[key] = (exactMatch ?? matches[0]).id;
   }
   if (problems.length > 0) {
     throw new Error(
