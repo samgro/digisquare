@@ -86,17 +86,29 @@ struct FriendRequestsView: View {
             .buttonStyle(.plain)
             .accessibilityHint("Shows their profile")
 
-            Button("Accept") {
-                respond(to: request) { try await friendsStore.accept(requestId: request.id) }
-            }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.small)
+            // Icon-only circles, as in Game Center and LinkedIn: the row
+            // already says what's being asked, so the words would only crowd
+            // out the name. Decline is neutral and comes first, keeping the
+            // prominent Accept at the trailing edge where the thumb lands.
+            HStack(spacing: 10) {
+                Button {
+                    respond(to: request) { try await friendsStore.deleteRequest(requestId: request.id) }
+                } label: {
+                    Label("Decline", systemImage: "xmark")
+                }
+                .buttonStyle(.bordered)
+                .tint(.secondary)
 
-            Button("Decline") {
-                respond(to: request) { try await friendsStore.deleteRequest(requestId: request.id) }
+                Button {
+                    respond(to: request) { try await friendsStore.accept(requestId: request.id) }
+                } label: {
+                    Label("Accept", systemImage: "checkmark")
+                }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.bordered)
-            .controlSize(.small)
+            .labelStyle(.iconOnly)
+            .buttonBorderShape(.circle)
+            .fontWeight(.semibold)
         }
         .disabled(isBusy)
         .padding(.vertical, 4)

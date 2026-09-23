@@ -184,15 +184,19 @@ struct UserProfileSheet: View {
                     .foregroundStyle(.secondary)
 
                 HStack(spacing: HackysackSpacing.small) {
-                    Button("Accept") {
-                        perform { try await acceptRequest(profile.friendship.friendRequestId) }
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
-
-                    Button("Decline") {
+                    Button {
                         perform { try await deleteRequest(profile.friendship.friendRequestId) }
+                    } label: {
+                        Label("Decline", systemImage: "xmark")
                     }
                     .buttonStyle(SecondaryButtonStyle())
+
+                    Button {
+                        perform { try await acceptRequest(profile.friendship.friendRequestId) }
+                    } label: {
+                        Label("Accept", systemImage: "checkmark")
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
                 }
                 .disabled(isPerformingAction)
             }
