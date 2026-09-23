@@ -91,8 +91,8 @@ struct FriendsAPI {
         )
     }
 
-    /// Declines a request you received, or cancels one you sent: the server
-    /// deletes the request either way.
+    /// Declines a request you received, or cancels one you sent. A declined
+    /// request still looks pending to its sender; a cancelled one is deleted.
     func delete(requestId: String) async throws {
         try await client.send(method: "DELETE", path: "friends/requests/\(requestId)", body: Optional<EmptyRequestBody>.none)
     }
