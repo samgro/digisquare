@@ -20,7 +20,8 @@ struct AddFriendsView: View {
     @State private var searchTask: Task<Void, Never>?
     @State private var busyUserIds: Set<String> = []
     @State private var selectedUser: UserSummary?
-    @FocusState private var isSearchFieldFocused: Bool
+    /// Starts out true so the keyboard comes up with the sheet.
+    @State private var isSearchFieldFocused = true
 
     private let friendsAPI = FriendsAPI()
 
@@ -32,52 +33,83 @@ struct AddFriendsView: View {
 
     var body: some View {
         NavigationStack {
-            content
-                .navigationTitle("Add Friends")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button(role: .close) {
-                            dismiss()
-                        }
-                    }
+            // The ZStack gives the header one identity. Attached straight to
+            // `content`, it would be rebuilt with each branch, recreating the
+            // search field every time the results change.
+            ZStack {
+                content
+            }
+            // A custom header rather than `.searchable`, which only
+            // activates once the sheet has finished sliding up, so the
+            // field and keyboard would visibly arrive in a second step.
+            .toolbar(.hidden, for: .navigationBar)
+            .safeAreaInset(edge: .top) {
+                header
+            }
+            .onChange(of: searchText) {
+                searchTask?.cancel()
+                searchTask = Task {
+                    try? await Task.sleep(for: .milliseconds(300))
+                    guard !Task.isCancelled else { return }
+                    await search()
                 }
-                .searchable(
-                    text: $searchText,
-                    placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "Search by name"
-                )
-                .searchFocused($isSearchFieldFocused)
-                .onAppear {
-                    // Searching is the only thing to do here, so start with
-                    // the keyboard up. Not when coming back from a profile,
-                    // where there are results to look at instead.
-                    if trimmedQuery.isEmpty {
-                        isSearchFieldFocused = true
-                    }
+            }
+            .navigationDestination(item: $selectedUser) { user in
+                UserProfileView(user: user)
+            }
+            // Refreshes the row after acting on someone from their
+            // profile, e.g. adding them there, and brings the keyboard
+            // back so typing can carry on.
+            .onChange(of: selectedUser) { _, newUser in
+                if newUser == nil {
+                    isSearchFieldFocused = true
+                    Task { await search() }
                 }
-                .onChange(of: searchText) {
-                    searchTask?.cancel()
-                    searchTask = Task {
-                        try? await Task.sleep(for: .milliseconds(300))
-                        guard !Task.isCancelled else { return }
-                        await search()
-                    }
-                }
-                .navigationDestination(item: $selectedUser) { user in
-                    UserProfileView(user: user)
-                }
-                // Refreshes the row after acting on someone from their
-                // profile, e.g. adding them there.
-                .onChange(of: selectedUser) { _, newUser in
-                    if newUser == nil {
-                        Task { await search() }
-                    }
-                }
+            }
         }
     }
 
     // MARK: Content
+
+    private var header: some View {
+        GlassEffectContainer {
+            HStack(spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.secondary)
+                    AutofocusSearchField(
+                        text: $searchText,
+                        isFocused: $isSearchFieldFocused,
+                        prompt: "Search by name"
+                    )
+                    // Full height so the clear button can have a 44pt tap
+                    // target, which also stands in for trailing padding.
+                    .frame(maxHeight: .infinity)
+                }
+                .padding(.leading, 16)
+                .padding(.trailing, 2)
+                .frame(height: 48)
+                .contentShape(Capsule())
+                .onTapGesture {
+                    isSearchFieldFocused = true
+                }
+                .glassEffect(.regular.interactive(), in: .capsule)
+
+                Button {
+                    dismiss()
+                } label: {
+                    Label("Close", systemImage: "xmark")
+                        .labelStyle(.iconOnly)
+                        .frame(width: 32, height: 32)
+                }
+                .buttonStyle(.glass)
+                .buttonBorderShape(.circle)
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 12)
+            .padding(.bottom, 8)
+        }
+    }
 
     @ViewBuilder
     private var content: some View {
@@ -100,9 +132,12 @@ struct AddFriendsView: View {
         } else if !results.isEmpty {
             List(results) { result in
                 row(for: result)
+                    .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
-            .scrollDismissesKeyboard(.interactively)
+            // Searching is the only thing to do here, so the keyboard stays
+            // up while scrolling results.
+            .scrollDismissesKeyboard(.never)
         } else if searchedQuery == trimmedQuery {
             ContentUnavailableView.search(text: trimmedQuery)
         } else {
