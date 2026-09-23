@@ -24,8 +24,8 @@ struct CheckinDetailsRow: View {
                     // target rather than the whole row.
                     Button(action: onPersonTap) {
                         Text(personName)
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.primary)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
                     }
                     .buttonStyle(.plain)
                     .accessibilityHint("Shows their profile")

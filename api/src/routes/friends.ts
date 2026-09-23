@@ -9,7 +9,7 @@ import {
 } from "../db/schema.js";
 import { toCheckinResult } from "../lib/checkin-result.js";
 import { isUniqueViolation } from "../lib/database-errors.js";
-import { friendIdsOf, isFriendsCheckin, isPairFriendship } from "../lib/friendships.js";
+import { friendIdsOf, isPairFriendship, isVisibleCheckin } from "../lib/friendships.js";
 import { toPublicUserResult, toUserSummary } from "../lib/user-result.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
@@ -46,8 +46,8 @@ friends.get("/", async (context) => {
   }
 });
 
-// Friends' checkins only. Your own live on the Timeline tab; repeating them
-// here would bury the thing this feed is for.
+// Your friends' checkins and your own, so the feed reads as the whole group's
+// activity and a checkin you just made shows up alongside theirs.
 friends.get("/checkins", async (context) => {
   const parsed = feedQuerySchema.safeParse(context.req.query());
   if (!parsed.success) {
@@ -62,7 +62,7 @@ friends.get("/checkins", async (context) => {
       .select({ checkin: checkinsTable, user: usersTable })
       .from(checkinsTable)
       .innerJoin(usersTable, eq(usersTable.id, checkinsTable.userId))
-      .where(isFriendsCheckin(context.get("userId")))
+      .where(isVisibleCheckin(context.get("userId")))
       .orderBy(desc(checkinsTable.createdAt))
       .limit(parsed.data.limit)
       .offset(parsed.data.offset);
