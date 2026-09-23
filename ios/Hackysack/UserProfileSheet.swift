@@ -81,6 +81,11 @@ struct UserProfileSheet: View {
                     .font(.title2.bold())
                     .multilineTextAlignment(.center)
 
+                Text("Joined \(AppInfo.name) \(joinedDate)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .redacted(reason: profile == nil ? .placeholder : [])
+
                 if let bio = profile?.user.bio, !bio.isEmpty {
                     Text(bio)
                         .font(.subheadline)
@@ -101,6 +106,10 @@ struct UserProfileSheet: View {
         }
     }
 
+    private var joinedDate: String {
+        (profile?.user.createdAt ?? .now).formatted(.dateTime.month(.wide).year())
+    }
+
     private var statsRow: some View {
         HStack(spacing: 0) {
             statColumn(
@@ -112,8 +121,8 @@ struct UserProfileSheet: View {
                 .frame(height: 32)
 
             statColumn(
-                value: (profile?.user.createdAt ?? .now).formatted(.dateTime.month(.wide).year()),
-                label: "Joined \(AppInfo.name)"
+                value: profile.map { $0.friendCount.formatted() } ?? "0",
+                label: profile?.friendCount == 1 ? "Friend" : "Friends"
             )
         }
         .padding(.vertical, 12)

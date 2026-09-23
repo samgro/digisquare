@@ -122,8 +122,8 @@ describe("GET /search", () => {
 });
 
 describe("GET /:id", () => {
-  it("includes the checkin count and friendship status", async () => {
-    controls.queue([userRow()], [{ value: 12 }], [friendshipRow({ status: "accepted" })]);
+  it("includes the checkin and friend counts and friendship status", async () => {
+    controls.queue([userRow()], [{ value: 12 }], [{ value: 3 }], [friendshipRow({ status: "accepted" })]);
 
     const response = await get(`/${OTHER_USER_ID}`);
 
@@ -135,6 +135,7 @@ describe("GET /:id", () => {
       avatarUrl: null,
       createdAt: "2026-01-01T00:00:00.000Z",
       checkinCount: 12,
+      friendCount: 3,
       friendshipStatus: "friends",
       friendRequestId: null,
     });

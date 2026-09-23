@@ -106,26 +106,30 @@ struct UserSearchResult: Decodable, Identifiable, Equatable {
     }
 }
 
-/// `GET /users/:id`. The checkin count is visible to anyone; the checkins
-/// themselves are only listed for friends.
+/// `GET /users/:id`. The checkin and friend counts are visible to anyone; the
+/// checkins themselves are only listed for friends.
 struct PublicProfile: Decodable, Equatable {
     let user: PublicUser
     let checkinCount: Int
+    let friendCount: Int
     var friendship: FriendshipState
 
     enum CodingKeys: String, CodingKey {
-        case checkinCount
+        case checkinCount, friendCount
     }
 
     init(from decoder: Decoder) throws {
         user = try PublicUser(from: decoder)
         friendship = try FriendshipState(from: decoder)
-        checkinCount = try decoder.container(keyedBy: CodingKeys.self).decode(Int.self, forKey: .checkinCount)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        checkinCount = try container.decode(Int.self, forKey: .checkinCount)
+        friendCount = try container.decode(Int.self, forKey: .friendCount)
     }
 
-    init(user: PublicUser, checkinCount: Int, friendship: FriendshipState) {
+    init(user: PublicUser, checkinCount: Int, friendCount: Int, friendship: FriendshipState) {
         self.user = user
         self.checkinCount = checkinCount
+        self.friendCount = friendCount
         self.friendship = friendship
     }
 }

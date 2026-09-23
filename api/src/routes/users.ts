@@ -1,8 +1,12 @@
 import { Hono } from "hono";
-import { and, asc, count, eq, ilike, isNotNull, ne } from "drizzle-orm";
+import { and, asc, count, eq, ilike, isNotNull, ne, or } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
-import { checkins as checkinsTable, users as usersTable } from "../db/schema.js";
+import {
+  checkins as checkinsTable,
+  friendships as friendshipsTable,
+  users as usersTable,
+} from "../db/schema.js";
 import { loadFriendshipStates } from "../lib/friendships.js";
 import { AVATAR_MAX_BYTES, createAvatarUploadUrl, isOwnedAvatarKey } from "../lib/r2.js";
 import { toPrivateUserResult, toPublicUserResult } from "../lib/user-result.js";
@@ -206,6 +210,16 @@ users.get("/:id", async (context) => {
       .select({ value: count() })
       .from(checkinsTable)
       .where(eq(checkinsTable.userId, user.id));
+    // Like the checkin count, public; who the friends are is not returned.
+    const [friendTotal] = await database
+      .select({ value: count() })
+      .from(friendshipsTable)
+      .where(
+        and(
+          eq(friendshipsTable.status, "accepted"),
+          or(eq(friendshipsTable.requesterId, user.id), eq(friendshipsTable.addresseeId, user.id)),
+        ),
+      );
     const friendshipStateFor = await loadFriendshipStates(context.get("userId"), [user.id]);
     const friendshipState = friendshipStateFor(user.id);
 
@@ -213,6 +227,7 @@ users.get("/:id", async (context) => {
     return context.json({
       ...toPublicUserResult(user),
       checkinCount: checkinTotal?.value ?? 0,
+      friendCount: friendTotal?.value ?? 0,
       friendshipStatus: friendshipState.status,
       friendRequestId: friendshipState.friendRequestId,
     });
