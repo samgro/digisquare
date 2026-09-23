@@ -14,6 +14,7 @@ import {
   pruneRateLimitsOccasionally,
 } from "../lib/rate-limit.js";
 import { verifyAppleIdentityToken } from "../lib/apple.js";
+import { isUniqueViolation } from "../lib/database-errors.js";
 import { createAccessToken, createRefreshToken, hashRefreshToken } from "../lib/tokens.js";
 import { toPrivateUserResult } from "../lib/user-result.js";
 import type { AppEnv } from "../types.js";
@@ -26,8 +27,6 @@ import type { AppEnv } from "../types.js";
  * client's honest retry looks exactly like a replay and burns the family.
  */
 const REFRESH_GRACE_MILLISECONDS = 30_000;
-
-const POSTGRES_UNIQUE_VIOLATION = "23505";
 
 const registerSchema = z.object({
   email: z.string().trim().toLowerCase().email().max(254),
@@ -69,15 +68,6 @@ const appleSignInSchema = z.object({
     .optional(),
   email: z.string().trim().toLowerCase().email().max(254).nullable().optional(),
 });
-
-function isUniqueViolation(error: unknown): boolean {
-  return (
-    typeof error === "object" &&
-    error !== null &&
-    "code" in error &&
-    (error as { code?: unknown }).code === POSTGRES_UNIQUE_VIOLATION
-  );
-}
 
 function refreshTokenExpiresAt(): Date {
   return new Date(Date.now() + config.REFRESH_TOKEN_TTL_DAYS * 86_400_000);

@@ -15,8 +15,9 @@ auth:bearer {
 }
 
 docs {
-  Somebody else's public profile. Expect 200 with id, name, bio, avatarUrl and
-  createdAt.
+  Somebody else's public profile. Expect 200 with id, name, bio, avatarUrl,
+  createdAt, checkinCount, friendshipStatus and friendRequestId. The count is
+  visible to anyone; their checkins are only listed for friends.
 
   Compare against Get Me: there is no email here, and nothing about how they
   sign in. Even though {{userId}} is your own account, this route returns the

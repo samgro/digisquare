@@ -7,8 +7,10 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(AuthManager.self) private var authManager
+    @Environment(FriendsStore.self) private var friendsStore
 
     @State private var isEditing = false
+    @State private var isShowingFriendRequests = false
     @State private var isConfirmingSignOut = false
     @State private var didFailToRefresh = false
 
@@ -40,6 +42,9 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $isEditing) {
                 EditProfileView()
+            }
+            .fullScreenCover(isPresented: $isShowingFriendRequests) {
+                FriendRequestsView()
             }
         }
     }
@@ -84,6 +89,19 @@ struct ProfileView: View {
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
 
+            // Directly under the header, where it's the first thing seen
+            // after tapping the badged tab, and gone entirely when there is
+            // nothing to review.
+            if !friendsStore.incomingRequests.isEmpty {
+                Section {
+                    Button {
+                        isShowingFriendRequests = true
+                    } label: {
+                        FriendRequestsBanner(requests: friendsStore.incomingRequests)
+                    }
+                }
+            }
+
             Section("Account") {
                 // An Apple user who hid their address, or one created by the
                 // email-collision path, genuinely has no email. Saying so
@@ -125,7 +143,9 @@ struct ProfileView: View {
             }
         }
         .listStyle(.insetGrouped)
+        .animation(.default, value: friendsStore.incomingRequests.isEmpty)
         .refreshable {
+            await friendsStore.loadRequests()
             await authManager.refreshProfile()
             didFailToRefresh = authManager.lastError != nil
         }
@@ -143,4 +163,5 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
         .environment(AuthManager())
+        .environment(FriendsStore())
 }

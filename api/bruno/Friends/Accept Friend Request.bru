@@ -1,0 +1,22 @@
+meta {
+  name: Accept Friend Request
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/friends/requests/{{friendRequestId}}/accept
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Accepts a request addressed to you. Expect 200 {"id", "status": "accepted"}.
+
+  Only the person who was asked can accept: the sender, an unrelated user, or
+  a request already answered all get the same 404.
+}

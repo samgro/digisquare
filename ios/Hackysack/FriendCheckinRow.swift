@@ -5,25 +5,40 @@
 
 import SwiftUI
 
-struct UserAvatarView: View {
-    let userId: String
-
-    var body: some View {
-        Text(String(userId.prefix(1)).uppercased())
-            .font(.headline)
-            .foregroundStyle(.white)
-            .frame(width: 36, height: 36)
-            .background(Circle().fill(Color.blue))
-    }
-}
-
+/// A checkin in the Friends feed, a friend's or your own. The avatar and name both open the
+/// friend's profile; the rest of the row is not a button.
 struct FriendCheckinRow: View {
-    let checkin: Checkin
+    let item: FriendCheckin
+    let onSelectUser: (UserSummary) -> Void
+
+    /// Read only so the row redraws when the text size changes, which moves
+    /// the name's cap height and so where the avatar should sit.
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            UserAvatarView(userId: checkin.userId)
-            CheckinDetailsRow(checkin: checkin, personName: checkin.userId)
+        // Aligned on the name's baseline, then the avatar is lowered so its
+        // top meets the top of the name's capitals rather than the taller
+        // top of the text line, which sits above them.
+        HStack(alignment: .firstTextBaseline, spacing: 12) {
+            Button {
+                onSelectUser(item.user)
+            } label: {
+                AvatarView(url: item.user.avatarURL, initials: item.user.initials)
+            }
+            // Plain, so inside a List the avatar and name are separate tap
+            // targets instead of the whole row firing the first button.
+            .buttonStyle(.plain)
+            .alignmentGuide(.firstTextBaseline) { dimensions in
+                dimensions[.top] + UIFont.preferredFont(forTextStyle: .subheadline).capHeight
+            }
+            .accessibilityLabel(item.user.displayName)
+            .accessibilityHint("Shows their profile")
+
+            CheckinDetailsRow(
+                checkin: item.checkin,
+                personName: item.user.displayName,
+                onPersonTap: { onSelectUser(item.user) }
+            )
         }
         .padding(.vertical, 4)
     }
@@ -31,8 +46,14 @@ struct FriendCheckinRow: View {
 
 #Preview {
     List {
-        FriendCheckinRow(checkin: .preview())
-        FriendCheckinRow(checkin: .preview(userId: "alex", message: nil, primaryType: "park", minutesAgo: 90))
+        FriendCheckinRow(item: .preview(), onSelectUser: { _ in })
+        FriendCheckinRow(
+            item: FriendCheckin(
+                checkin: .preview(message: nil, primaryType: "park", minutesAgo: 90),
+                user: UserSummary(id: "alex", name: "Alex Rivera", avatarURL: nil)
+            ),
+            onSelectUser: { _ in }
+        )
     }
     .listStyle(.plain)
 }

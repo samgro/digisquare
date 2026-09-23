@@ -1,0 +1,21 @@
+meta {
+  name: Friends Checkins
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/friends/checkins
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  The Friends tab feed: your friends' checkins, newest first, not including
+  your own. Each is the usual checkin plus user: { id, name, avatarUrl }.
+  Accepts limit (default 20, max 100) and offset.
+}

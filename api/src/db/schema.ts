@@ -139,3 +139,45 @@ export const checkins = pgTable(
     index("checkins_google_place_id_idx").on(table.googlePlaceId),
   ],
 );
+
+// One row per pair of users. A pending row is a friend request from
+// requesterId to addresseeId; an accepted row is a friendship, which is
+// symmetric no matter who asked. Declining, cancelling and unfriending all
+// delete the row, so there is no "declined" state to get stuck in and either
+// person can ask again later.
+export const friendships = pgTable(
+  "friendships",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    requesterId: uuid("requester_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    addresseeId: uuid("addressee_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+
+    status: text("status", { enum: ["pending", "accepted"] })
+      .notNull()
+      .default("pending"),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => [
+    // Unique on the unordered pair, so A→B and B→A cannot both exist. This is
+    // what settles two people tapping Add on each other at the same moment:
+    // neon-http has no interactive transactions, so a select-then-insert
+    // check would race.
+    uniqueIndex("friendships_pair_unique_idx").on(
+      sql`least(${table.requesterId}, ${table.addresseeId})`,
+      sql`greatest(${table.requesterId}, ${table.addresseeId})`,
+    ),
+    index("friendships_requester_status_idx").on(table.requesterId, table.status),
+    index("friendships_addressee_status_idx").on(table.addresseeId, table.status),
+    check("friendships_not_self_check", sql`${table.requesterId} <> ${table.addresseeId}`),
+  ],
+);

@@ -1,0 +1,19 @@
+meta {
+  name: List Friends
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/friends
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Everyone you are friends with, as public profiles ordered by name.
+}

@@ -13,13 +13,27 @@ struct CheckinDetailsRow: View {
     /// A small byline above the place name. `nil` on the timeline, where
     /// every row is already known to be the current user's own checkin.
     var personName: String? = nil
+    /// Makes the byline a button, for opening that person's profile.
+    var onPersonTap: (() -> Void)? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             if let personName {
-                Text(personName)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                if let onPersonTap {
+                    // Plain, so inside a List only the name itself is the tap
+                    // target rather than the whole row.
+                    Button(action: onPersonTap) {
+                        Text(personName)
+                            .font(.subheadline).fontWeight(.semibold)
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityHint("Shows their profile")
+                } else {
+                    Text(personName)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             Text(checkin.placeName)

@@ -3,6 +3,8 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
 import { checkins as checkinsTable } from "../db/schema.js";
+import { toCheckinResult } from "../lib/checkin-result.js";
+import { isVisibleCheckin } from "../lib/friendships.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
 
@@ -40,25 +42,6 @@ const listQuerySchema = z.object({
   offset: z.coerce.number().int().min(0).default(0),
 });
 
-function toResult(checkin: typeof checkinsTable.$inferSelect) {
-  return {
-    id: checkin.id,
-    userId: checkin.userId,
-    googlePlaceId: checkin.googlePlaceId,
-    placeName: checkin.placeName,
-    placeAddress: checkin.placeAddress,
-    placePrimaryType: checkin.placePrimaryType,
-    placeTypes: checkin.placeTypes,
-    location:
-      checkin.latitude !== null && checkin.longitude !== null
-        ? { latitude: checkin.latitude, longitude: checkin.longitude }
-        : null,
-    message: checkin.message,
-    createdAt: checkin.createdAt,
-    updatedAt: checkin.updatedAt,
-  };
-}
-
 export const checkins = new Hono<AppEnv>();
 
 checkins.use(requireAuth);
@@ -92,7 +75,7 @@ checkins.post("/", async (context) => {
       })
       .returning();
 
-    return context.json(toResult(created), 201);
+    return context.json(toCheckinResult(created), 201);
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to create checkin" }, 500);
@@ -110,6 +93,10 @@ checkins.get("/", async (context) => {
 
   const { userId, googlePlaceId, limit, offset } = parsed.data;
   const conditions = [
+    // Only your own checkins and your friends'. A stranger's userId is
+    // filtered to an empty list rather than refused, so the response does not
+    // confirm the user exists.
+    isVisibleCheckin(context.get("userId")),
     userId ? eq(checkinsTable.userId, userId) : undefined,
     googlePlaceId ? eq(checkinsTable.googlePlaceId, googlePlaceId) : undefined,
   ].filter((condition) => condition !== undefined);
@@ -118,12 +105,12 @@ checkins.get("/", async (context) => {
     const rows = await database
       .select()
       .from(checkinsTable)
-      .where(conditions.length > 0 ? and(...conditions) : undefined)
+      .where(and(...conditions))
       .orderBy(desc(checkinsTable.createdAt))
       .limit(limit)
       .offset(offset);
 
-    return context.json({ results: rows.map(toResult) });
+    return context.json({ results: rows.map(toCheckinResult) });
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to fetch checkins" }, 500);
@@ -140,13 +127,14 @@ checkins.get("/:id", async (context) => {
     const [checkin] = await database
       .select()
       .from(checkinsTable)
-      .where(eq(checkinsTable.id, parsed.data.id));
+      .where(and(eq(checkinsTable.id, parsed.data.id), isVisibleCheckin(context.get("userId"))));
 
+    // A stranger's checkin is the same 404 as one that does not exist.
     if (!checkin) {
       return context.json({ error: "Checkin not found" }, 404);
     }
 
-    return context.json(toResult(checkin));
+    return context.json(toCheckinResult(checkin));
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to fetch checkin" }, 500);
@@ -193,7 +181,7 @@ checkins.patch("/:id", async (context) => {
       return context.json({ error: "Checkin not found" }, 404);
     }
 
-    return context.json(toResult(updated));
+    return context.json(toCheckinResult(updated));
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to update checkin" }, 500);
