@@ -24,7 +24,7 @@ struct CheckinDetailsRow: View {
                     // target rather than the whole row.
                     Button(action: onPersonTap) {
                         Text(personName)
-                            .font(.subheadline)
+                            .font(.subheadline).fontWeight(.semibold)
                             .foregroundStyle(.secondary)
                     }
                     .buttonStyle(.plain)

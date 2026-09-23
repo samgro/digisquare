@@ -33,8 +33,8 @@ struct FriendRequestsView: View {
                             .padding(.horizontal, HackysackSpacing.medium)
                     }
                 }
-                .sheet(item: $selectedUser) { user in
-                    UserProfileSheet(user: user)
+                .navigationDestination(item: $selectedUser) { user in
+                    UserProfileView(user: user)
                 }
                 .task {
                     await friendsStore.loadRequests()

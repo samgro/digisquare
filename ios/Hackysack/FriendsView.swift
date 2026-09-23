@@ -31,8 +31,8 @@ struct FriendsView: View {
             .sheet(isPresented: $isAddingFriends) {
                 AddFriendsView()
             }
-            .sheet(item: $selectedUser) { user in
-                UserProfileSheet(user: user)
+            .navigationDestination(item: $selectedUser) { user in
+                UserProfileView(user: user)
             }
             .task {
                 await friendsStore.loadFeed()

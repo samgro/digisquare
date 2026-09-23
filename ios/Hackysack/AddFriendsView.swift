@@ -50,8 +50,11 @@ struct AddFriendsView: View {
                 .searchFocused($isSearchFieldFocused)
                 .onAppear {
                     // Searching is the only thing to do here, so start with
-                    // the keyboard up.
-                    isSearchFieldFocused = true
+                    // the keyboard up. Not when coming back from a profile,
+                    // where there are results to look at instead.
+                    if trimmedQuery.isEmpty {
+                        isSearchFieldFocused = true
+                    }
                 }
                 .onChange(of: searchText) {
                     searchTask?.cancel()
@@ -61,12 +64,15 @@ struct AddFriendsView: View {
                         await search()
                     }
                 }
+                .navigationDestination(item: $selectedUser) { user in
+                    UserProfileView(user: user)
+                }
                 // Refreshes the row after acting on someone from their
                 // profile, e.g. adding them there.
-                .sheet(item: $selectedUser, onDismiss: {
-                    Task { await search() }
-                }) { user in
-                    UserProfileSheet(user: user)
+                .onChange(of: selectedUser) { _, newUser in
+                    if newUser == nil {
+                        Task { await search() }
+                    }
                 }
         }
     }
@@ -108,7 +114,7 @@ struct AddFriendsView: View {
     private func row(for result: UserSearchResult) -> some View {
         HStack(spacing: 12) {
             Button {
-                // Put the keyboard away before the sheet covers the field.
+                // Put the keyboard away before the profile is pushed over it.
                 isSearchFieldFocused = false
                 selectedUser = result.user.summary
             } label: {

@@ -1,20 +1,21 @@
 //
-//  UserProfileSheet.swift
+//  UserProfileView.swift
 //  Hackysack
 //
 
 import SwiftUI
 
-/// Someone else's profile, as a half sheet that drags up to full height.
+/// Someone's profile, pushed onto whichever navigation stack it was opened
+/// from, as other social apps do, so back and further taps behave as expected.
 ///
 /// Opened with the summary the caller already has, so the avatar and name
 /// render immediately while the bio, stats and friendship load. Their
 /// checkins are only shown to friends; everyone sees the count.
 ///
-/// Present it with `.sheet(item:)` bound to stored `@State`, not a computed
-/// binding: a fresh value on every body evaluation re-presents the sheet in a
-/// loop (see EditProfileView).
-struct UserProfileSheet: View {
+/// Push it with `.navigationDestination(item:)` bound to stored `@State`, not
+/// a computed binding, which would hand it a fresh value on every body
+/// evaluation.
+struct UserProfileView: View {
     let user: UserSummary
 
     @Environment(AuthManager.self) private var authManager
@@ -37,15 +38,22 @@ struct UserProfileSheet: View {
             VStack(spacing: 0) {
                 header
                     .padding(.horizontal, HackysackSpacing.large)
-                    .padding(.top, HackysackSpacing.extraLarge)
+                    .padding(.top, HackysackSpacing.medium)
                     .padding(.bottom, HackysackSpacing.large)
 
                 checkinsSection
             }
             .frame(maxWidth: .infinity)
         }
-        .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.visible)
+        .navigationTitle(displayName)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if isFriend {
+                ToolbarItem(placement: .topBarTrailing) {
+                    moreMenu
+                }
+            }
+        }
         .task {
             await loadProfile()
         }
@@ -85,6 +93,13 @@ struct UserProfileSheet: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .redacted(reason: profile == nil ? .placeholder : [])
+
+                if isFriend {
+                    Label("Friends", systemImage: "checkmark.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .transition(.opacity)
+                }
 
                 if let bio = profile?.user.bio, !bio.isEmpty {
                     Text(bio)
@@ -202,34 +217,38 @@ struct UserProfileSheet: View {
             }
 
         case .friends:
-            HStack(spacing: HackysackSpacing.medium) {
-                Label("Friends", systemImage: "checkmark.circle.fill")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.secondary)
+            // Shown under the join date instead; removing is in the menu.
+            EmptyView()
+        }
+    }
 
-                Button("Remove Friend", role: .destructive) {
-                    isConfirmingRemoval = true
-                }
-                .buttonStyle(.bordered)
-                .controlSize(.small)
-                .tint(.red)
-                .disabled(isPerformingAction)
-                // Attached to the button rather than the sheet: on iOS 26 the
-                // dialog presents as a popover anchored to the view it hangs
-                // off, so this is what makes its arrow point at the button.
-                .confirmationDialog(
-                    "Remove \(displayName) as a friend?",
-                    isPresented: $isConfirmingRemoval,
-                    titleVisibility: .visible
-                ) {
-                    Button("Remove Friend", role: .destructive) {
-                        perform { try await removeFriend() }
-                    }
-                    Button("Cancel", role: .cancel) {}
-                } message: {
-                    Text("They won't be notified, and you'll stop seeing each other's checkins.")
-                }
+    private var isFriend: Bool {
+        !isCurrentUser && profile?.friendship.status == .friends
+    }
+
+    private var moreMenu: some View {
+        Menu {
+            Button("Remove Friend", systemImage: "person.badge.minus", role: .destructive) {
+                isConfirmingRemoval = true
             }
+        } label: {
+            Label("More", systemImage: "ellipsis")
+        }
+        .disabled(isPerformingAction)
+        // Attached to the menu rather than the whole view: on iOS 26 the dialog
+        // presents as a popover anchored to the view it hangs off, so this is
+        // what makes its arrow point at the menu button.
+        .confirmationDialog(
+            "Remove \(displayName) as a friend?",
+            isPresented: $isConfirmingRemoval,
+            titleVisibility: .visible
+        ) {
+            Button("Remove Friend", role: .destructive) {
+                perform { try await removeFriend() }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("They won't be notified, and you'll stop seeing each other's checkins.")
         }
     }
 
@@ -365,10 +384,9 @@ struct UserProfileSheet: View {
 }
 
 #Preview {
-    Text("Timeline")
-        .sheet(isPresented: .constant(true)) {
-            UserProfileSheet(user: PublicUser.preview().summary)
-        }
-        .environment(AuthManager())
+    NavigationStack {
+        UserProfileView(user: PublicUser.preview().summary)
+    }
+    .environment(AuthManager())
         .environment(FriendsStore())
 }

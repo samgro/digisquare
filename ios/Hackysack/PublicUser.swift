@@ -26,7 +26,7 @@ nonisolated enum PersonName {
 }
 
 /// Just enough of someone to draw them in a row: what feed checkins carry,
-/// and what the profile sheet is opened with so its header can render before
+/// and what a profile is opened with so its header can render before
 /// the full profile has loaded.
 struct UserSummary: Decodable, Identifiable, Hashable {
     let id: String
