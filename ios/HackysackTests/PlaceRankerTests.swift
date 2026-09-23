@@ -373,6 +373,20 @@ struct PlaceRankerModelTests {
         #expect(alone.suggestion == nil)
     }
 
+    @Test("A clear leader among many listings still shows the list")
+    func suggestionNeedsProbability() {
+        let leader = place("leader", north: 0, east: 0, ratings: 20_000)
+        let crowded = [leader] + (1...15).map { place("tenant-\($0)", north: 5, east: 0, ratings: nil) }
+        let crowdedRanking = ranker.rank(candidates: crowded, fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(crowdedRanking.ranked.first?.place.id == "leader")
+        #expect(crowdedRanking.ranked[0].score - crowdedRanking.ranked[1].score >= RankingWeights.standard.suggestionMinimumMargin)
+        #expect(crowdedRanking.suggestion == nil)
+
+        let quiet = Array(crowded.prefix(3))
+        let quietRanking = ranker.rank(candidates: quiet, fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(quietRanking.suggestion?.id == "leader")
+    }
+
     @Test("No suggestion from a coarse, stale or invalid fix")
     func suggestionGates() {
         let candidates = [place("cafe", north: 5, east: 0, ratings: 300)]

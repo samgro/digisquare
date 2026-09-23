@@ -55,6 +55,11 @@ nonisolated struct RankingWeights: Sendable {
     /// The top place must beat the runner-up by this many nats (about 3:1
     /// odds) before the picker skips the list.
     var suggestionMinimumMargin = 1.1
+    /// And the chance the user is inside the top place must be at least
+    /// this: its own probability plus that of every candidate within its
+    /// footprint (a shop in the terminal is still the airport). A storefront
+    /// in a building with twenty other listings cannot reach it.
+    var suggestionMinimumProbability = 0.5
     var suggestionMaximumAccuracy = 100.0
     var suggestionMaximumFixAgeSeconds = 60.0
     /// The top place must be within the accuracy radius, or this close when
@@ -241,7 +246,27 @@ nonisolated struct PlaceRanker: Sendable {
             return nil
         }
         guard top.typePrior == 0 else { return nil }
+        guard probabilityOfBeingInside(top, among: ranked) >= weights.suggestionMinimumProbability else {
+            return nil
+        }
         return top.place
+    }
+
+    private func probabilityOfBeingInside(_ venue: RankedPlace, among ranked: [RankedPlace]) -> Double {
+        let footprint = PlaceFootprint(for: venue.place)
+        // A storefront's radius only absorbs the pin error, so its neighbors
+        // are alternatives to it, not parts of it.
+        guard footprint.kind != .point else { return venue.probability }
+        return ranked.reduce(0) { total, candidate in
+            if candidate.id == venue.id {
+                return total + candidate.probability
+            }
+            guard let location = candidate.place.location,
+                  footprint.effectiveDistance(from: location, to: venue.place) == 0 else {
+                return total
+            }
+            return total + candidate.probability
+        }
     }
 
     /// In a dense area Google's twenty results can miss the very place the
