@@ -7,9 +7,9 @@ import SwiftUI
 import UIKit
 
 /// A text field that is focused before the screen it's on appears, so the
-/// keyboard rises in the same animation as a sheet rather than after it.
-/// Neither `.searchable` nor `@FocusState` can do this: both focus only once
-/// the sheet has finished presenting.
+/// keyboard rises in the same animation as a push or sheet rather than after
+/// it. Neither `.searchable` nor `@FocusState` can do this: both focus only
+/// once the screen has finished appearing.
 struct AutofocusSearchField: UIViewRepresentable {
     @Binding var text: String
     @Binding var isFocused: Bool
@@ -86,7 +86,7 @@ struct AutofocusSearchField: UIViewRepresentable {
 
 final class AutofocusTextField: UITextField {
     /// Whether to focus the first time the field is added to a window. This
-    /// happens before a sheet starts animating in, which is what lets the
+    /// happens before a screen starts animating in, which is what lets the
     /// keyboard animate up alongside it.
     var focusesWhenAddedToWindow = false
 

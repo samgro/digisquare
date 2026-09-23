@@ -142,9 +142,10 @@ export const checkins = pgTable(
 
 // One row per pair of users. A pending row is a friend request from
 // requesterId to addresseeId; an accepted row is a friendship, which is
-// symmetric no matter who asked. Declining, cancelling and unfriending all
-// delete the row, so there is no "declined" state to get stuck in and either
-// person can ask again later.
+// symmetric no matter who asked. Declining keeps the row as "declined", which
+// the requester still sees as pending so they never learn they were declined;
+// the addressee can take it back by adding the requester. Cancelling and
+// unfriending delete the row.
 export const friendships = pgTable(
   "friendships",
   {
@@ -157,7 +158,7 @@ export const friendships = pgTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
 
-    status: text("status", { enum: ["pending", "accepted"] })
+    status: text("status", { enum: ["pending", "accepted", "declined"] })
       .notNull()
       .default("pending"),
 

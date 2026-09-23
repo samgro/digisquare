@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { and, asc, desc, eq, inArray, or } from "drizzle-orm";
+import { and, asc, desc, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
 import {
@@ -137,7 +137,8 @@ friends.post("/requests", async (context) => {
     }
 
     // They already asked you. Adding them back is an answer, not a second
-    // request, and the pair index would reject a second row anyway.
+    // request, and the pair index would reject a second row anyway. This
+    // also takes back a request of theirs you declined earlier.
     const [accepted] = await database
       .update(friendshipsTable)
       .set({ status: "accepted" })
@@ -145,7 +146,7 @@ friends.post("/requests", async (context) => {
         and(
           eq(friendshipsTable.requesterId, otherUserId),
           eq(friendshipsTable.addresseeId, currentUserId),
-          eq(friendshipsTable.status, "pending"),
+          inArray(friendshipsTable.status, ["pending", "declined"]),
         ),
       )
       .returning();
@@ -201,7 +202,9 @@ friends.post("/requests/:id/accept", async (context) => {
   }
 });
 
-// Declines a request you received, or cancels one you sent.
+// Declines a request you received, or cancels one you sent. Declining keeps
+// the row as "declined" so the requester still sees it as pending; cancelling
+// deletes it, whether or not it was declined.
 friends.delete("/requests/:id", async (context) => {
   const parsed = idParamSchema.safeParse({ id: context.req.param("id") });
   if (!parsed.success) {
@@ -211,21 +214,33 @@ friends.delete("/requests/:id", async (context) => {
   const currentUserId = context.get("userId");
 
   try {
-    const [deleted] = await database
+    const [declined] = await database
+      .update(friendshipsTable)
+      .set({ status: "declined" })
+      .where(
+        and(
+          eq(friendshipsTable.id, parsed.data.id),
+          eq(friendshipsTable.addresseeId, currentUserId),
+          eq(friendshipsTable.status, "pending"),
+        ),
+      )
+      .returning({ id: friendshipsTable.id });
+    if (declined) {
+      return context.body(null, 204);
+    }
+
+    const [cancelled] = await database
       .delete(friendshipsTable)
       .where(
         and(
           eq(friendshipsTable.id, parsed.data.id),
-          eq(friendshipsTable.status, "pending"),
-          or(
-            eq(friendshipsTable.requesterId, currentUserId),
-            eq(friendshipsTable.addresseeId, currentUserId),
-          ),
+          eq(friendshipsTable.requesterId, currentUserId),
+          inArray(friendshipsTable.status, ["pending", "declined"]),
         ),
       )
       .returning({ id: friendshipsTable.id });
 
-    if (!deleted) {
+    if (!cancelled) {
       return context.json({ error: "Friend request not found" }, 404);
     }
 

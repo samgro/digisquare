@@ -9,7 +9,10 @@ export type FriendshipStatus = "none" | "friends" | "outgoingRequest" | "incomin
 
 export interface FriendshipState {
   status: FriendshipStatus;
-  /** The pending request's id, so the client can accept, decline or cancel it. */
+  /**
+   * The pending request's id, so the client can accept, decline or cancel it.
+   * A declined request keeps its id for the requester, who can still cancel.
+   */
   friendRequestId: string | null;
 }
 
@@ -70,6 +73,11 @@ export function toFriendshipState(
   }
   if (friendship.status === "accepted") {
     return { status: "friends", friendRequestId: null };
+  }
+  // The requester sees a declined request as still pending; the addressee
+  // sees nothing, as if they had never been asked.
+  if (friendship.status === "declined" && friendship.addresseeId === currentUserId) {
+    return NO_FRIENDSHIP;
   }
   return {
     status: friendship.requesterId === currentUserId ? "outgoingRequest" : "incomingRequest",

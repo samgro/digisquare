@@ -182,6 +182,17 @@ describe("POST /requests", () => {
     expect(controls.operations).toEqual(["select", "update"]);
   });
 
+  // Adding someone whose request you declined takes the decline back.
+  it("accepts a request you previously declined", async () => {
+    controls.queue([{ id: OTHER_USER_ID }], [friendshipRow({ status: "accepted" })]);
+
+    const response = await send("POST", "/requests", { userId: OTHER_USER_ID });
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ id: REQUEST_ID, status: "accepted" });
+    expect(controls.operations).toEqual(["select", "update"]);
+  });
+
   it("answers 409 when the pair already has a request or friendship", async () => {
     controls.queue([{ id: OTHER_USER_ID }], []);
     controls.queueFailure(uniqueViolation());
@@ -220,17 +231,28 @@ describe("POST /requests/:id/accept", () => {
 });
 
 describe("DELETE /requests/:id", () => {
-  it("declines or cancels a pending request", async () => {
+  // Declining keeps the row so the requester still sees "Requested" and
+  // never learns they were declined.
+  it("declines a request you received without deleting it", async () => {
     controls.queue([{ id: REQUEST_ID }]);
 
     const response = await send("DELETE", `/requests/${REQUEST_ID}`);
 
     expect(response.status).toBe(204);
-    expect(controls.operations).toEqual(["delete"]);
+    expect(controls.operations).toEqual(["update"]);
+  });
+
+  it("cancels a request you sent by deleting it", async () => {
+    controls.queue([], [{ id: REQUEST_ID }]);
+
+    const response = await send("DELETE", `/requests/${REQUEST_ID}`);
+
+    expect(response.status).toBe(204);
+    expect(controls.operations).toEqual(["update", "delete"]);
   });
 
   it("answers 404 when there is no such request of yours", async () => {
-    controls.queue([]);
+    controls.queue([], []);
 
     const response = await send("DELETE", `/requests/${REQUEST_ID}`);
 
