@@ -26,7 +26,10 @@ extension Checkin {
         primaryType: String? = "cafe",
         minutesAgo: Double = 2,
         visibility: CheckinVisibility = .friends,
-        source: CheckinSource = .manual
+        source: CheckinSource = .manual,
+        likeCount: Int = 0,
+        commentCount: Int = 0,
+        likedByMe: Bool = false
     ) -> Checkin {
         let createdAt = Date().addingTimeInterval(-minutesAgo * 60)
         return Checkin(
@@ -41,6 +44,9 @@ extension Checkin {
             message: message,
             visibility: visibility,
             source: source,
+            likeCount: likeCount,
+            commentCount: commentCount,
+            likedByMe: likedByMe,
             createdAt: createdAt,
             updatedAt: createdAt
         )
@@ -64,18 +70,48 @@ extension PublicUser {
     }
 }
 
-extension FriendRequest {
-    static func preview(user: PublicUser = .preview(), minutesAgo: Double = 45) -> FriendRequest {
-        FriendRequest(
+extension FriendCheckin {
+    static func preview(user: PublicUser = .preview()) -> FriendCheckin {
+        FriendCheckin(checkin: .preview(userId: user.id), user: user.summary)
+    }
+}
+
+extension CheckinComment {
+    static func preview(
+        user: PublicUser = .preview(),
+        body: String = "Best seat in the house.",
+        minutesAgo: Double = 12
+    ) -> CheckinComment {
+        CheckinComment(
             id: UUID().uuidString,
-            user: user,
-            createdAt: Date().addingTimeInterval(-minutesAgo * 60)
+            checkinId: "checkin-preview",
+            body: body,
+            createdAt: Date().addingTimeInterval(-minutesAgo * 60),
+            user: user.summary
         )
     }
 }
 
-extension FriendCheckin {
-    static func preview(user: PublicUser = .preview()) -> FriendCheckin {
-        FriendCheckin(checkin: .preview(userId: user.id), user: user.summary)
+extension AppNotification {
+    static func preview(
+        kind: NotificationKind,
+        actor: PublicUser = .preview(),
+        isUnread: Bool = true,
+        minutesAgo: Double = 30
+    ) -> AppNotification {
+        let isAboutCheckin = kind == .like || kind == .comment
+        return AppNotification(
+            id: UUID().uuidString,
+            kind: kind,
+            actor: actor.summary,
+            checkin: isAboutCheckin ? CheckinReference(id: "checkin-preview", placeName: Place.preview.name) : nil,
+            comment: kind == .comment ? CommentReference(id: "comment-preview", body: "Best seat in the house.") : nil,
+            friendship: isAboutCheckin ? nil : FriendshipReference(
+                id: "friendship-preview",
+                status: kind == .friendRequest ? .pending : .accepted
+            ),
+            readAt: isUnread ? nil : Date().addingTimeInterval(-60),
+            createdAt: Date().addingTimeInterval(-minutesAgo * 60)
+        )
     }
 }

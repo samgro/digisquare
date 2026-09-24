@@ -195,6 +195,13 @@ final class CheckinStore: ObservableObject {
         }
     }
 
+    /// A like, comment or edit changed the checkin; the timeline's copy
+    /// follows. Placeholders and suggestions have local ids and never match.
+    func apply(_ checkin: Checkin) {
+        guard let index = savedEntries.firstIndex(where: { $0.checkin.id == checkin.id }) else { return }
+        savedEntries[index].checkin = checkin
+    }
+
     private func updateEntry(_ entryId: UUID, _ mutate: (inout TimelineEntry) -> Void) {
         guard let index = savedEntries.firstIndex(where: { $0.id == entryId }) else { return }
         mutate(&savedEntries[index])

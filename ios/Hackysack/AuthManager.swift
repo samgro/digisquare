@@ -26,6 +26,17 @@ final class AuthManager {
     private(set) var state: AuthState = .launching
     var lastError: APIError?
 
+    /// The signed-in user's profile, whether or not they have finished
+    /// setting it up. Nil only before sign-in resolves.
+    var currentProfile: UserProfile? {
+        switch state {
+        case .signedIn(let profile), .needsProfileSetup(let profile):
+            return profile
+        case .launching, .signedOut:
+            return nil
+        }
+    }
+
     @ObservationIgnored private var sessionStore: AuthSessionStore!
 
     init() {

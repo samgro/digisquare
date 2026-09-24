@@ -42,6 +42,10 @@ nonisolated struct UserProfile: Codable, Identifiable, Equatable, Sendable {
         return trimmedName.isEmpty || trimmedHometown.isEmpty
     }
 
+    /// The signed-in user in the shape feed rows use, for drawing them as the
+    /// author of their own checkins.
+    var summary: UserSummary { UserSummary(id: id, name: name, avatarURL: avatarURL) }
+
     /// Apple is the only real sign-in method, so an account without it is a
     /// test user from the debug build's picker.
     var signInMethodDescription: String {

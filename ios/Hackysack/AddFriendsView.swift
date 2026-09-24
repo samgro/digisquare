@@ -39,6 +39,7 @@ struct AddFriendsView: View {
         }
         .navigationTitle("Add Friends")
         .navigationBarTitleDisplayMode(.inline)
+        .accentNavigationBar()
         // A custom header rather than `.searchable`, which only activates
         // once the push has finished, so the field and keyboard would
         // visibly arrive in a second step.

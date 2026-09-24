@@ -58,14 +58,7 @@ struct EditProfileView: View {
     /// Matches the server's z.string().max(160).
     private static let bioCharacterLimit = 160
 
-    private var profile: UserProfile? {
-        switch authManager.state {
-        case .signedIn(let profile), .needsProfileSetup(let profile):
-            return profile
-        case .launching, .signedOut:
-            return nil
-        }
-    }
+    private var profile: UserProfile? { authManager.currentProfile }
 
     private var trimmedName: String {
         name.trimmingCharacters(in: .whitespacesAndNewlines)

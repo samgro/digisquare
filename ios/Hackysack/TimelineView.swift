@@ -7,7 +7,10 @@ import SwiftUI
 
 struct TimelineView: View {
     @EnvironmentObject private var checkinStore: CheckinStore
+    @Environment(AuthManager.self) private var authManager
     @State private var editingSuggestion: PendingCheckin?
+    @State private var selectedCheckin: CheckinDetailDestination?
+    @State private var commentingCheckin: Checkin?
 
     var body: some View {
         NavigationStack {
@@ -16,13 +19,24 @@ struct TimelineView: View {
                 CheckInFAB()
             }
             .navigationTitle("Timeline")
+            .homeNavigationBar(
+                searchTitle: "Search Checkins",
+                searchPrompt: "Search your checkins",
+                searchDescription: "Searching your checkins is coming soon."
+            )
             #if DEBUG
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     DebugVisitMenu()
                 }
             }
             #endif
+            .navigationDestination(item: $selectedCheckin) { destination in
+                CheckinDetailView(destination: destination)
+            }
+            .sheet(item: $commentingCheckin) { checkin in
+                CommentsSheet(checkin: checkin)
+            }
             .task {
                 await checkinStore.loadTimeline()
             }
@@ -40,6 +54,12 @@ struct TimelineView: View {
         }
     }
 
+    /// Every row here is the signed-in user's own checkin.
+    private var author: UserSummary {
+        authManager.currentProfile?.summary
+            ?? UserSummary(id: checkinStore.currentUserId ?? "", name: nil, avatarURL: nil)
+    }
+
     @ViewBuilder
     private var content: some View {
         let timelineEntries = checkinStore.timelineEntries
@@ -50,7 +70,9 @@ struct TimelineView: View {
                         entries: timelineEntries,
                         onRetry: { checkinStore.retry(entryId: $0.id) },
                         onConfirm: { checkinStore.accept(suggestionId: $0.id) },
-                        onReject: { editingSuggestion = $0.suggestion }
+                        onReject: { editingSuggestion = $0.suggestion },
+                        onSelect: { selectedCheckin = CheckinDetailDestination(checkin: $0, author: author) },
+                        onComment: { commentingCheckin = $0 }
                     )
                 }
             }
@@ -84,5 +106,8 @@ struct TimelineView: View {
 #Preview {
     TimelineView()
         .environment(LocationManager())
+        .environment(AuthManager())
+        .environment(NotificationsStore())
+        .environment(CheckinSocialStore())
         .environmentObject(CheckinStore.inMemory())
 }
