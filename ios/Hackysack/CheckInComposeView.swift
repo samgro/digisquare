@@ -15,7 +15,7 @@ struct CheckInComposeView: View {
     let onSubmit: (_ message: String?, _ visibility: CheckinVisibility) -> Void
 
     @State private var message = ""
-    @State private var visibility: CheckinVisibility = .everyone
+    @State private var visibility: CheckinVisibility = .friends
     @FocusState private var isMessageFocused: Bool
 
     var body: some View {

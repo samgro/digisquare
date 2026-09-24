@@ -25,7 +25,7 @@ extension Checkin {
         message: String? = "Best cortado in the Mission",
         primaryType: String? = "cafe",
         minutesAgo: Double = 2,
-        visibility: CheckinVisibility = .everyone,
+        visibility: CheckinVisibility = .friends,
         source: CheckinSource = .manual
     ) -> Checkin {
         let createdAt = Date().addingTimeInterval(-minutesAgo * 60)

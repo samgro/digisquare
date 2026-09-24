@@ -99,7 +99,7 @@ async function seed() {
           checkinNumber % 2 === 0
             ? SEEDED_CHECKIN_MESSAGES[(checkinNumber / 2) % SEEDED_CHECKIN_MESSAGES.length]
             : null,
-        visibility: checkinNumber % 3 === 1 ? "private" : "public",
+        visibility: checkinNumber % 3 === 1 ? "private" : "friends",
         source: checkinNumber % 4 === 2 ? "visit" : "manual",
         createdAt: seededCheckinTime(userIndex, chainIndex),
       });

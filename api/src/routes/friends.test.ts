@@ -137,9 +137,9 @@ describe("GET /checkins", () => {
 
     const whereCall = controls.chainedCalls.find((call) => call.method === "where");
     const condition = new PgDialect().sqlToQuery(whereCall?.arguments[0] as SQL);
-    // The public check applies to the whole condition, not only to friends'.
+    // The visibility check applies to the whole condition, not only to friends'.
     expect(condition.sql).toMatch(/\) and "checkins"\."visibility" = \$\d+\)$/);
-    expect(condition.params).toContain("public");
+    expect(condition.params).toContain("friends");
   });
 
   it("rejects an out-of-range limit", async () => {

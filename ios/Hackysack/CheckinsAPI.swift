@@ -5,16 +5,16 @@
 
 import Foundation
 
-/// Who can see a checkin. Raw values match the API; the case names avoid the
-/// `public` / `private` keywords.
+/// Who can see a checkin: the owner's friends, or only the owner. Raw values
+/// match the API; `onlyMe` avoids the `private` keyword.
 enum CheckinVisibility: String, Codable, Equatable, CaseIterable {
-    case everyone = "public"
+    case friends
     case onlyMe = "private"
 
     var isPrivate: Bool { self == .onlyMe }
 
     mutating func toggle() {
-        self = isPrivate ? .everyone : .onlyMe
+        self = isPrivate ? .friends : .onlyMe
     }
 }
 
@@ -64,7 +64,7 @@ struct CheckinDraft: Encodable, Equatable {
     init(
         place: Place,
         message: String?,
-        visibility: CheckinVisibility = .everyone,
+        visibility: CheckinVisibility = .friends,
         source: CheckinSource = .manual,
         createdAt: Date? = nil
     ) {

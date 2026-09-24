@@ -25,7 +25,7 @@ struct PendingCheckin: Codable, Identifiable, Equatable {
         visit: VisitRecord,
         candidatePlaces: [Place],
         selectedPlaceId: String? = nil,
-        visibility: CheckinVisibility = .everyone,
+        visibility: CheckinVisibility = .friends,
         createdAt: Date = Date()
     ) {
         self.id = id
@@ -48,7 +48,7 @@ struct PendingCheckin: Codable, Identifiable, Equatable {
 
 extension PendingCheckin {
     static func preview(
-        visibility: CheckinVisibility = .everyone,
+        visibility: CheckinVisibility = .friends,
         arrivedMinutesAgo: Double = 95,
         isOngoing: Bool = false
     ) -> PendingCheckin {
