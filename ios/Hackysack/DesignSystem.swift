@@ -85,31 +85,47 @@ struct AvatarView: View {
     let initials: String
     var size: CGFloat = HackysackSize.avatarSmall
 
+    /// Paired with the URL it was loaded for, so a stale image from a previous
+    /// URL is never shown while the new one loads.
+    @State private var loadedImage: (url: URL, image: UIImage)?
+    @State private var failedURL: URL?
+
+    /// Checks the memory cache first, which is what lets a row scrolling back
+    /// on screen show its avatar immediately rather than the spinner.
+    private var displayedImage: UIImage? {
+        guard let url else { return nil }
+        if let loadedImage, loadedImage.url == url {
+            return loadedImage.image
+        }
+        return AvatarImageCache.shared.cachedImage(for: url)
+    }
+
     var body: some View {
         Group {
-            if let url {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image.resizable().scaledToFill()
-                    case .failure:
-                        initialsCircle
-                    case .empty:
-                        ZStack {
-                            Color.accentColor.opacity(0.12)
-                            ProgressView()
-                        }
-                    @unknown default:
-                        initialsCircle
-                    }
-                }
-            } else {
+            if let displayedImage {
+                Image(uiImage: displayedImage).resizable().scaledToFill()
+            } else if url == nil || failedURL == url {
                 initialsCircle
+            } else {
+                ZStack {
+                    Color.accentColor.opacity(0.12)
+                    ProgressView()
+                }
             }
         }
         .frame(width: size, height: size)
         .clipShape(Circle())
         .overlay(Circle().strokeBorder(Color.primary.opacity(0.08), lineWidth: 1))
+        .task(id: url) {
+            guard let url, displayedImage == nil else { return }
+            failedURL = nil
+            do {
+                let image = try await AvatarImageCache.shared.image(for: url)
+                loadedImage = (url, image)
+            } catch {
+                failedURL = url
+            }
+        }
     }
 
     private var initialsCircle: some View {
