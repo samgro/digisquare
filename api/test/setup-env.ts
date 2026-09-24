@@ -11,6 +11,7 @@
  * These are only shapes, not credentials. Nothing here reaches a real service:
  * tests stub fetch and never touch the database.
  * */
+process.env.OVERTURE_RELEASE ??= "2026-09-23.0";
 process.env.DATABASE_URL ??= "postgres://user:password@localhost:5432/hackysack_test";
 process.env.AUTH_JWT_SECRET ??= "test-secret-at-least-thirty-two-characters-long";
 process.env.APPLE_BUNDLE_IDENTIFIER ??= "samgro.Hackysack";

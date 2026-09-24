@@ -2,8 +2,10 @@ import { Hono } from "hono";
 import { z } from "zod";
 import { database } from "../db/index.js";
 import { places as placesTable } from "../db/schema.js";
+import { describeCoverage, type CoverageReport } from "../lib/coverage.js";
 import { toPlaceResult } from "../lib/place-result.js";
 import { findPlaceById, searchByName, searchNearbyCandidates } from "../lib/places-search.js";
+import { optionalAuth } from "../middleware/optional-auth.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
 
@@ -33,7 +35,9 @@ const optionalText = (maximumLength: number) =>
 
 /**
  * A venue the user is adding by hand. The pin is mandatory: a place with no
- * coordinate could never be found by a nearby search, only by name.
+ * coordinate could never be found by a nearby search, only by name. Private
+ * unless the user says otherwise, so a home or an office is not published
+ * to strangers by default.
  */
 const createPlaceSchema = z.object({
   name: z.string().trim().min(1).max(200),
@@ -55,12 +59,14 @@ const createPlaceSchema = z.object({
   longitude: z.number().min(-180).max(180),
   website: z.string().trim().url().max(500).nullable().optional(),
   phone: optionalText(40),
+  isPrivate: z.boolean().default(true),
 });
 
 export const places = new Hono<AppEnv>();
 
-// Open: the checkin flow must keep working while a token refresh is in flight.
-places.get("/", async (context) => {
+// Open to anonymous callers; a signed-in one also sees their private venues
+// and may trigger a fetch of an uncovered area.
+places.get("/", optionalAuth, async (context) => {
   const parsed = querySchema.safeParse(context.req.query());
   if (!parsed.success) {
     return context.json(
@@ -70,27 +76,34 @@ places.get("/", async (context) => {
   }
 
   const { lat: latitude, lng: longitude, q: query, radius, accuracy } = parsed.data;
+  const viewerUserId = context.get("viewerUserId");
 
   try {
-    const candidates = query
-      ? await searchByName({ query, latitude, longitude, radius })
-      : await searchNearbyCandidates({ latitude, longitude, radius, accuracy });
+    const [candidates, coverage] = await Promise.all([
+      query
+        ? searchByName({ query, latitude, longitude, radius, viewerUserId })
+        : searchNearbyCandidates({ latitude, longitude, radius, accuracy, viewerUserId }),
+      describeCoverage({ latitude, longitude, viewerUserId }),
+    ]);
 
-    return context.json({ results: candidates.map(toPlaceResult) });
+    return context.json({ results: candidates.map(toPlaceResult), coverage } satisfies {
+      results: unknown[];
+      coverage: CoverageReport;
+    });
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to search places" }, 500);
   }
 });
 
-places.get("/:id", async (context) => {
+places.get("/:id", optionalAuth, async (context) => {
   const parsed = idParamSchema.safeParse({ id: context.req.param("id") });
   if (!parsed.success) {
     return context.json({ error: "Invalid place id" }, 400);
   }
 
   try {
-    const place = await findPlaceById(parsed.data.id);
+    const place = await findPlaceById(parsed.data.id, context.get("viewerUserId"));
     if (!place) {
       return context.json({ error: "Place not found" }, 404);
     }
@@ -137,11 +150,24 @@ places.post("/", requireAuth, async (context) => {
         longitude: draft.longitude,
         website: draft.website ?? null,
         phone: draft.phone ?? null,
+        isPrivate: draft.isPrivate,
         createdByUserId: context.get("userId"),
       })
       .returning();
 
-    return context.json(toPlaceResult({ ...created, checkinCount: 0 }), 201);
+    return context.json(
+      toPlaceResult({
+        ...created,
+        checkinCount: 0,
+        extentGeoJson: null,
+        extentSouth: null,
+        extentWest: null,
+        extentNorth: null,
+        extentEast: null,
+        distanceMeters: null,
+      }),
+      201,
+    );
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to create place" }, 500);

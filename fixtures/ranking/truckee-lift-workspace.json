@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "name": "truckee-lift-workspace",
   "description": "Inside Lift Workspace, a coworking space by the Truckee airport. Its building and the lot next door hold a physical therapist, a realty office, three car rental counters and half a dozen registered businesses within 40 m.",
   "recordedAt": null,
@@ -24,6 +24,8 @@
         "latitude": 39.3186113,
         "longitude": -120.146379
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "physiotherapist",
         "doctor",
@@ -31,6 +33,8 @@
       ],
       "primaryType": "physiotherapist",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -48,11 +52,15 @@
         "latitude": 39.3186515,
         "longitude": -120.14627759999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "transportation_service"
       ],
       "primaryType": "transportation_service",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -70,12 +78,16 @@
         "latitude": 39.3185922,
         "longitude": -120.146284
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "real_estate_agency",
         "professional_services"
       ],
       "primaryType": "real_estate_agency",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -93,12 +105,16 @@
         "latitude": 39.318604,
         "longitude": -120.14619359999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "car_rental",
         "professional_services"
       ],
       "primaryType": "car_rental",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -116,6 +132,8 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "physiotherapist",
         "medical_clinic",
@@ -124,6 +142,8 @@
       ],
       "primaryType": "physiotherapist",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -141,12 +161,16 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "non_profit_organization",
         "public_and_government_association"
       ],
       "primaryType": "non_profit_organization",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -164,9 +188,13 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -184,11 +212,15 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -206,11 +238,15 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -228,11 +264,15 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -250,11 +290,15 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -272,6 +316,8 @@
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "coworking_space",
         "gym",
@@ -288,6 +334,8 @@
       ],
       "primaryType": "coworking_space",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -305,12 +353,16 @@
         "latitude": 39.3185954,
         "longitude": -120.14597930000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "car_rental",
         "professional_services"
       ],
       "primaryType": "car_rental",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -328,12 +380,16 @@
         "latitude": 39.3185055,
         "longitude": -120.1460113
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "car_rental",
         "professional_services"
       ],
       "primaryType": "car_rental",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -351,9 +407,13 @@
         "latitude": 39.3184703,
         "longitude": -120.14574239999997
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -371,6 +431,8 @@
         "latitude": 39.3175662,
         "longitude": -120.14602310000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "fire_station",
         "government_services",
@@ -378,6 +440,8 @@
       ],
       "primaryType": "fire_station",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -395,11 +459,15 @@
         "latitude": 39.319294,
         "longitude": -120.14515000000002
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_and_government_association"
       ],
       "primaryType": "public_and_government_association",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -417,6 +485,8 @@
         "latitude": 39.319286999999996,
         "longitude": -120.14513099999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "tour_agency",
         "attractions_and_activities",
@@ -426,6 +496,8 @@
       ],
       "primaryType": "tour_agency",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -443,6 +515,8 @@
         "latitude": 39.319286999999996,
         "longitude": -120.14513099999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "transportation_service",
         "tour_agency",
@@ -451,6 +525,8 @@
       ],
       "primaryType": "transportation_service",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -468,6 +544,8 @@
         "latitude": 39.3175822,
         "longitude": -120.1458042
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "local_and_state_government_offices",
         "government_services",
@@ -475,6 +553,8 @@
       ],
       "primaryType": "local_and_state_government_offices",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -492,12 +572,16 @@
         "latitude": 39.3195165,
         "longitude": -120.14499269999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
         "transportation_service"
       ],
       "primaryType": "airport",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -515,12 +599,16 @@
         "latitude": 39.3292632,
         "longitude": -120.15625539999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -538,6 +626,8 @@
         "latitude": 39.3298561,
         "longitude": -120.1572441
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "non_profit_organization",
@@ -545,6 +635,8 @@
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -562,6 +654,8 @@
         "latitude": 39.324411999999995,
         "longitude": -120.16790509999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "golf_course",
         "attractions_and_activities",
@@ -571,6 +665,8 @@
       ],
       "primaryType": "golf_course",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -588,12 +684,16 @@
         "latitude": 39.319265699999995,
         "longitude": -120.14508239999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
         "transportation_service"
       ],
       "primaryType": "airport",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     }

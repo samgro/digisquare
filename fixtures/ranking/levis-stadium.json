@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "name": "levis-stadium",
   "description": "On the concourse inside Levi's Stadium on a Sunday afternoon, 100 m from the pin.",
   "recordedAt": null,
@@ -24,12 +24,16 @@
         "latitude": 37.404317,
         "longitude": -121.97014709999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "shopping",
         "professional_services"
       ],
       "primaryType": "shopping",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -47,6 +51,8 @@
         "latitude": 37.4043823,
         "longitude": -121.9702851
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "gym",
         "sports_activity_location",
@@ -54,6 +60,8 @@
       ],
       "primaryType": "gym",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -71,6 +79,8 @@
         "latitude": 37.4043468,
         "longitude": -121.9706691
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "parking_lot",
         "parking_garage",
@@ -80,6 +90,8 @@
       ],
       "primaryType": "parking_lot",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -97,6 +109,8 @@
         "latitude": 37.4040606,
         "longitude": -121.97087029999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "shopping",
         "sportswear_store",
@@ -105,6 +119,8 @@
       ],
       "primaryType": "shopping",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -122,6 +138,8 @@
         "latitude": 37.404281399999995,
         "longitude": -121.9692529
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "steak_house",
         "pub",
@@ -132,6 +150,8 @@
       ],
       "primaryType": "steak_house",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -149,6 +169,8 @@
         "latitude": 37.403937299999996,
         "longitude": -121.9691684
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "chicken_restaurant",
         "sandwich_shop",
@@ -157,6 +179,8 @@
       ],
       "primaryType": "chicken_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -174,11 +198,15 @@
         "latitude": 37.4041654,
         "longitude": -121.9709552
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "museum"
       ],
       "primaryType": "museum",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -196,11 +224,15 @@
         "latitude": 37.4047315,
         "longitude": -121.96938469999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "attractions_and_activities"
       ],
       "primaryType": "attractions_and_activities",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -218,6 +250,8 @@
         "latitude": 37.403316499999995,
         "longitude": -121.96937739999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "stadium_arena",
         "event_venue",
@@ -226,6 +260,8 @@
       ],
       "primaryType": "stadium_arena",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -243,6 +279,8 @@
         "latitude": 37.403213699999995,
         "longitude": -121.96929139999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "pizza_restaurant",
         "salad_shop",
@@ -258,6 +296,8 @@
       ],
       "primaryType": "pizza_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -275,6 +315,8 @@
         "latitude": 37.403213699999995,
         "longitude": -121.96929139999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "asian_restaurant",
         "restaurant",
@@ -282,6 +324,8 @@
       ],
       "primaryType": "asian_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -299,12 +343,16 @@
         "latitude": 37.403213699999995,
         "longitude": -121.96929139999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services",
         "laundry"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -322,6 +370,8 @@
         "latitude": 37.403340899999996,
         "longitude": -121.96875840000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "hamburger_restaurant",
         "food_court",
@@ -331,6 +381,8 @@
       ],
       "primaryType": "hamburger_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -348,6 +400,8 @@
         "latitude": 37.404562999999996,
         "longitude": -121.97174189999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "parking_garage",
         "parking_lot",
@@ -357,6 +411,8 @@
       ],
       "primaryType": "parking_garage",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -374,12 +430,16 @@
         "latitude": 37.404883999999996,
         "longitude": -121.972129
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "ev_charging_station",
         "transportation_service"
       ],
       "primaryType": "ev_charging_station",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -397,6 +457,8 @@
         "latitude": 37.404933,
         "longitude": -121.97215800000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "parking_lot",
         "parking",
@@ -405,6 +467,8 @@
       ],
       "primaryType": "parking_lot",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -422,12 +486,16 @@
         "latitude": 37.404668,
         "longitude": -121.972394
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "ev_charging_station",
         "transportation_service"
       ],
       "primaryType": "ev_charging_station",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -445,12 +513,16 @@
         "latitude": 37.4028901,
         "longitude": -121.9678401
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "sports_club",
         "public_and_government_association"
       ],
       "primaryType": "sports_club",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -468,12 +540,16 @@
         "latitude": 37.404961199999995,
         "longitude": -121.96760889999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "athletic_field",
         "sports_activity_location"
       ],
       "primaryType": "athletic_field",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -491,6 +567,8 @@
         "latitude": 37.4021505,
         "longitude": -121.97214600000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "parking_lot",
         "parking",
@@ -499,6 +577,8 @@
       ],
       "primaryType": "parking_lot",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -516,6 +596,8 @@
         "latitude": 37.3973529,
         "longitude": -121.9744083
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "amusement_park",
         "amusement_center",
@@ -523,6 +605,8 @@
       ],
       "primaryType": "amusement_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -540,12 +624,16 @@
         "latitude": 37.3925485,
         "longitude": -121.98280369999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -563,11 +651,15 @@
         "latitude": 37.413961,
         "longitude": -121.95363139999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -585,12 +677,16 @@
         "latitude": 37.4038071,
         "longitude": -121.95440859999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -608,6 +704,8 @@
         "latitude": 37.3957386,
         "longitude": -121.9718967
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "water_park",
         "amusement_park",
@@ -615,6 +713,8 @@
       ],
       "primaryType": "water_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -632,6 +732,8 @@
         "latitude": 37.3920411,
         "longitude": -121.9832284
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "art_gallery",
         "college_university",
@@ -639,6 +741,8 @@
       ],
       "primaryType": "art_gallery",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -656,12 +760,16 @@
         "latitude": 37.3956692,
         "longitude": -121.989639
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -679,11 +787,15 @@
         "latitude": 37.4036426,
         "longitude": -121.95664099999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -701,6 +813,8 @@
         "latitude": 37.4100763,
         "longitude": -121.9770126
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "stadium_arena",
         "sports_and_recreation_venue",
@@ -709,6 +823,8 @@
       ],
       "primaryType": "stadium_arena",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -726,11 +842,15 @@
         "latitude": 37.4005684,
         "longitude": -121.9773816
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "amusement_park"
       ],
       "primaryType": "amusement_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -748,11 +868,15 @@
         "latitude": 37.3949269,
         "longitude": -121.9718436
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "amusement_park"
       ],
       "primaryType": "amusement_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -770,11 +894,15 @@
         "latitude": 37.3930899,
         "longitude": -121.95478890000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -792,11 +920,15 @@
         "latitude": 37.404955099999995,
         "longitude": -121.96141859999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -814,11 +946,15 @@
         "latitude": 37.397588,
         "longitude": -121.9649715
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -836,11 +972,15 @@
         "latitude": 37.392807499999996,
         "longitude": -121.961828
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -858,11 +998,15 @@
         "latitude": 37.3935818,
         "longitude": -121.9719714
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "amusement_park"
       ],
       "primaryType": "amusement_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -880,11 +1024,15 @@
         "latitude": 37.3917836,
         "longitude": -121.9842821
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -902,11 +1050,15 @@
         "latitude": 37.4127447,
         "longitude": -121.95648739999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -924,12 +1076,16 @@
         "latitude": 37.3923767,
         "longitude": -121.97059490000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "amusement_park",
         "picnic_ground"
       ],
       "primaryType": "amusement_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     }

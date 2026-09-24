@@ -21,6 +21,9 @@ struct CreatePlaceView: View {
 
     @State private var name: String
     @State private var category: PlaceCategory?
+    /// On by default: a home or an office should not be published to
+    /// strangers by accident. Friends can still find a private place.
+    @State private var isPrivate = true
     @State private var street = ""
     @State private var locality = ""
     @State private var region = ""
@@ -55,8 +58,13 @@ struct CreatePlaceView: View {
                         Text(category.displayName).tag(Optional(category))
                     }
                 }
+                Toggle("Private", isOn: $isPrivate)
             } header: {
                 Text("Place")
+            } footer: {
+                Text(isPrivate
+                     ? "Only you and your friends can find a private place. Your checkins there still show up for friends."
+                     : "Anyone can find a public place.")
             }
 
             Section {
@@ -180,6 +188,7 @@ struct CreatePlaceView: View {
         let draft = PlaceDraft(
             name: trimmedName,
             primaryType: category?.code,
+            isPrivate: isPrivate,
             street: street,
             locality: locality,
             region: region,

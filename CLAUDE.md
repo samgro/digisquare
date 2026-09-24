@@ -1,7 +1,8 @@
 Hackysack is a simple open source app for checking into places and sharing with
 your friends. It is hosted on Railway/Neon. Place data comes from Overture
-Maps, imported into our own `places` table, plus venues users create in the
-app.
+Maps, fetched area by area into our own PostGIS `places` table (seeded for the
+Bay Area and New York, and on demand wherever users search from), plus venues
+users create in the app.
 
 # Breaking changes
 

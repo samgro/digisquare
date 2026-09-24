@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "name": "soma-second-street",
   "description": "Outside Blue Bottle on 2nd Street in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; Yerba Buena Gardens and Salesforce Park are 400 m away and Oracle Park 1.2 km.",
   "recordedAt": null,
@@ -24,6 +24,8 @@
         "latitude": 37.7870063,
         "longitude": -122.3988975
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "coffee_shop",
         "cafe",
@@ -33,6 +35,8 @@
       ],
       "primaryType": "coffee_shop",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -50,6 +54,8 @@
         "latitude": 37.7869508,
         "longitude": -122.39895839999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "embassy",
         "government_services",
@@ -57,6 +63,8 @@
       ],
       "primaryType": "embassy",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -74,11 +82,15 @@
         "latitude": 37.7869508,
         "longitude": -122.39895839999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "financial_service"
       ],
       "primaryType": "financial_service",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -96,11 +108,15 @@
         "latitude": 37.7869508,
         "longitude": -122.39895839999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "financial_service"
       ],
       "primaryType": "financial_service",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -118,11 +134,15 @@
         "latitude": 37.7869508,
         "longitude": -122.39895839999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_and_government_association"
       ],
       "primaryType": "public_and_government_association",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -140,11 +160,15 @@
         "latitude": 37.786858699999996,
         "longitude": -122.39876919999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "health"
       ],
       "primaryType": "health",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -162,12 +186,16 @@
         "latitude": 37.7870314,
         "longitude": -122.39909779999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "corporate_office",
         "professional_services"
       ],
       "primaryType": "corporate_office",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -185,11 +213,15 @@
         "latitude": 37.7871285,
         "longitude": -122.39898659999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -207,11 +239,15 @@
         "latitude": 37.7871077,
         "longitude": -122.39906649999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -229,11 +265,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "corporate_office"
       ],
       "primaryType": "corporate_office",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -251,11 +291,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -273,11 +317,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -295,11 +343,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -317,6 +369,8 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "doctor",
         "medical_clinic",
@@ -324,6 +378,8 @@
       ],
       "primaryType": "doctor",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -341,11 +397,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -363,11 +423,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -385,12 +449,16 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "doctor",
         "health"
       ],
       "primaryType": "doctor",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -408,11 +476,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -430,11 +502,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -452,11 +528,15 @@
         "latitude": 37.7871077,
         "longitude": -122.3990666
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_and_government_association"
       ],
       "primaryType": "public_and_government_association",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -474,6 +554,8 @@
         "latitude": 37.7783654,
         "longitude": -122.38991619999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "stadium_arena",
         "attractions_and_activities",
@@ -483,6 +565,8 @@
       ],
       "primaryType": "stadium_arena",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -500,6 +584,8 @@
         "latitude": 37.7879358,
         "longitude": -122.40751389999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "historical_landmark",
         "historical_place",
@@ -509,6 +595,8 @@
       ],
       "primaryType": "historical_landmark",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -526,6 +614,8 @@
         "latitude": 37.789739499999996,
         "longitude": -122.39616559999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "city_park",
@@ -533,6 +623,8 @@
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -550,12 +642,16 @@
         "latitude": 37.77949290000001,
         "longitude": -122.4176986
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -573,6 +669,8 @@
         "latitude": 37.784988399999996,
         "longitude": -122.4023514
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "garden",
@@ -581,6 +679,8 @@
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -598,6 +698,8 @@
         "latitude": 37.8007752,
         "longitude": -122.41024639999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "playground",
@@ -606,6 +708,8 @@
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -623,6 +727,8 @@
         "latitude": 37.7982745,
         "longitude": -122.4134592
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "attractions_and_activities",
@@ -630,6 +736,8 @@
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -647,12 +755,16 @@
         "latitude": 37.781122499999995,
         "longitude": -122.4157619
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "educational_institution",
         "college_university"
       ],
       "primaryType": "educational_institution",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -670,12 +782,16 @@
         "latitude": 37.7948896,
         "longitude": -122.4052341
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "park"
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -693,12 +809,16 @@
         "latitude": 37.7764193,
         "longitude": -122.38795479999997
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -716,6 +836,8 @@
         "latitude": 37.782254099999996,
         "longitude": -122.40531739999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "dentist",
@@ -724,6 +846,8 @@
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -741,12 +865,16 @@
         "latitude": 37.7951195,
         "longitude": -122.39520069999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "plaza"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -764,12 +892,16 @@
         "latitude": 37.7956036,
         "longitude": -122.4047237
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -787,6 +919,8 @@
         "latitude": 37.772168199999996,
         "longitude": -122.39259570000002
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "playground",
@@ -795,6 +929,8 @@
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -812,11 +948,15 @@
         "latitude": 37.7783727,
         "longitude": -122.3877444
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -834,12 +974,16 @@
         "latitude": 37.7893349,
         "longitude": -122.39882419999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -857,12 +1001,16 @@
         "latitude": 37.7916129,
         "longitude": -122.38995059999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -880,6 +1028,8 @@
         "latitude": 37.770569099999996,
         "longitude": -122.39380120000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "athletic_field",
         "park",
@@ -889,6 +1039,8 @@
       ],
       "primaryType": "athletic_field",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -906,12 +1058,16 @@
         "latitude": 37.7908872,
         "longitude": -122.39253049999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -929,6 +1085,8 @@
         "latitude": 37.789698400000006,
         "longitude": -122.3931459
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "beer_garden",
         "bar",
@@ -938,6 +1096,8 @@
       ],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     }

@@ -16,10 +16,18 @@ struct PlaceRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(title)
-                .font(.headline)
-                .foregroundStyle(.primary)
-                .lineLimit(2)
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                    .lineLimit(2)
+                if place.isPrivate {
+                    Image(systemName: "lock.fill")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .accessibilityLabel("Private place")
+                }
+            }
 
             if let subtitle = place.subtitle(from: userLocation) {
                 Text(subtitle)
@@ -109,7 +117,7 @@ private let previewPlaces: [Place] = [
         types: ["park"],
         primaryType: "park"
     ),
-    // A street line with no city.
+    // A private venue the user added, with a street line and no city.
     Place(
         id: "5",
         source: .user,
@@ -118,7 +126,8 @@ private let previewPlaces: [Place] = [
         street: "Pier 39",
         location: PlaceLocation(latitude: 37.8087, longitude: -122.4098),
         types: ["attractions_and_activities"],
-        primaryType: "attractions_and_activities"
+        primaryType: "attractions_and_activities",
+        isPrivate: true
     ),
     // Neither distance nor address — subtitle is omitted entirely.
     Place(

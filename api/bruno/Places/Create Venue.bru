@@ -27,7 +27,8 @@ body:json {
     "latitude": 37.7751,
     "longitude": -122.4189,
     "website": "https://example.com",
-    "phone": "+1 415-555-0100"
+    "phone": "+1 415-555-0100",
+    "isPrivate": false
   }
 }
 
@@ -39,6 +40,8 @@ docs {
   Adds a venue by hand. Only `name`, `latitude` and `longitude` are required;
   `primaryType` and `types` are Overture category codes (coffee_shop, bar,
   park...), `region` an ISO 3166-2 code and `country` a two-letter ISO code.
+  `isPrivate` defaults to true (only the creator and their friends can find
+  it); this one is public so the anonymous Places requests can see it.
   Expect 201 with `source: "user"` and `checkinCount: 0`.
 
   The post-response var captures the new id for Get Place and the Checkins

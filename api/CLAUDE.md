@@ -12,12 +12,22 @@ test that fails on the old behavior first, then fix it.
 
 # Place data
 
-Places live in the `places` table: Overture Maps places imported with
-`npm run overture:import` (see SETUP.md), venues users add from the app, and
-rows backfilled from pre-Overture checkins. `primaryType` and `types` hold
-Overture category codes (`coffee_shop`, `airport`, `stadium_arena`...); the
-iOS footprint and icon tables are keyed on them, so use the Overture spelling
-everywhere, never Google's.
+Places live in the `places` table (PostGIS): Overture Maps places fetched by
+the coverage worker (`src/lib/coverage-worker.ts`, straight from the release
+files with DuckDB) or seeded with `npm run coverage:seed`, venues users add
+from the app, and rows backfilled from pre-Overture checkins. `primaryType`
+and `types` hold Overture category codes (`coffee_shop`, `airport`,
+`stadium_arena`...); the iOS footprint and icon tables are keyed on them, so
+use the Overture spelling everywhere, never Google's. Venue grounds
+(`extent`) come from Overture's base theme polygons, matched in
+`src/lib/extent-matching.ts`.
+
+The searches in `src/lib/places-search.ts` cast to geography and the GiST
+indexes are on that cast; a plain geometry index would go unused. Anything
+that touches SQL there, a migration, or the worker needs a real PostGIS to
+check against (a local Postgres with `postgresql-16-postgis-3` works; the
+Overture fetch can be pointed at local parquet files with
+`test/helpers/overture-parquet.ts`).
 
 # Ranking fixtures
 

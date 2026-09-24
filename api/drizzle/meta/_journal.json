@@ -64,6 +64,13 @@
       "when": 1790379642724,
       "tag": "0008_add_places",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1790379726457,
+      "tag": "0009_postgis_extents_privacy_coverage",
+      "breakpoints": true
     }
   ]
 }

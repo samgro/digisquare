@@ -23,9 +23,17 @@ struct PlaceDecodingTests {
           "postcode": "94117",
           "country": "US",
           "location": { "latitude": 37.7694, "longitude": -122.4862 },
+          "extent": {
+            "boundingBox": { "south": 37.7644, "west": -122.5107, "north": 37.7745, "east": -122.4544 },
+            "rings": [[[-122.5107, 37.7644], [-122.4544, 37.7644], [-122.4544, 37.7745], [-122.5107, 37.7745], [-122.5107, 37.7644]]],
+            "areaSquareMeters": 4100000
+          },
+          "distanceMeters": 0,
           "types": ["park", "garden"],
           "primaryType": "park",
           "checkinCount": 61,
+          "isPrivate": true,
+          "retired": false,
           "website": "https://sfrecpark.org",
           "phone": null
         }
@@ -37,9 +45,22 @@ struct PlaceDecodingTests {
         #expect(place.locality == "San Francisco")
         #expect(place.region == "US-CA")
         #expect(place.checkinCount == 61)
+        #expect(place.isPrivate == true)
+        #expect(place.retired == false)
+        #expect(place.distanceMeters == 0)
         #expect(place.website == "https://sfrecpark.org")
         #expect(place.phone == nil)
-        #expect(PlaceFootprint(for: place).kind == .container)
+
+        // Rings arrive as GeoJSON positions, longitude first.
+        let extent = try #require(place.extent)
+        #expect(extent.rings[0][0].latitude == 37.7644)
+        #expect(extent.rings[0][0].longitude == -122.5107)
+        #expect(extent.contains(PlaceLocation(latitude: 37.7715, longitude: -122.4686)))
+        #expect(!extent.contains(PlaceLocation(latitude: 37.7600, longitude: -122.5115)))
+        let footprint = PlaceFootprint(for: place)
+        #expect(footprint.kind == .container)
+        #expect(footprint.polygon != nil)
+        #expect(footprint.effectiveDistance(from: PlaceLocation(latitude: 37.7715, longitude: -122.4686), to: place) == 0)
     }
 
     @Test("Decodes a minimal result, defaulting the fields an older API build omits")
@@ -57,9 +78,40 @@ struct PlaceDecodingTests {
 
         #expect(place.source == .overture)
         #expect(place.location == nil)
+        #expect(place.extent == nil)
+        #expect(place.distanceMeters == nil)
         #expect(place.types.isEmpty)
         #expect(place.checkinCount == 0)
+        #expect(place.isPrivate == false)
+        #expect(place.retired == false)
         #expect(place.streetLine == nil)
+    }
+
+    @Test("A search response without coverage reads as ready; one with it decodes the wait")
+    func decodesCoverage() throws {
+        let bare = try RankingFixtures.makeDecoder().decode(PlaceSearchResult.self, from: Data("{\"results\": []}".utf8))
+        #expect(bare.coverage.status == .ready)
+        #expect(bare.coverage.waitDescription == nil)
+
+        let importing = try RankingFixtures.makeDecoder().decode(
+            PlaceSearchResult.self,
+            from: Data("{\"results\": [], \"coverage\": {\"status\": \"importing\", \"estimatedSecondsRemaining\": 150}}".utf8)
+        )
+        #expect(importing.coverage.status == .importing)
+        #expect(importing.coverage.waitDescription == "3 minutes")
+
+        let limited = try RankingFixtures.makeDecoder().decode(
+            PlaceSearchResult.self,
+            from: Data("{\"results\": [], \"coverage\": {\"status\": \"missing\", \"retryAfterSeconds\": 40}}".utf8)
+        )
+        #expect(limited.coverage.status == .missing)
+        #expect(limited.coverage.waitDescription == "a minute")
+
+        let unknown = try RankingFixtures.makeDecoder().decode(
+            PlaceSearchResult.self,
+            from: Data("{\"results\": [], \"coverage\": {\"status\": \"whatever\"}}".utf8)
+        )
+        #expect(unknown.coverage.status == .ready)
     }
 
     @Test("An unknown source decodes rather than failing the whole list")
@@ -82,6 +134,12 @@ struct PlaceDecodingTests {
             primaryType: "coffee_shop"
         )
         let draft = CheckinDraft(place: place, message: "  hello  ")
+        let venue = PlaceDraft(name: "Home", primaryType: nil, isPrivate: true, street: nil, locality: nil, region: nil, postcode: nil, country: "us", latitude: 1, longitude: 2, website: "", phone: nil)
+        let venueObject = try #require(try JSONSerialization.jsonObject(with: JSONEncoder().encode(venue)) as? [String: Any])
+        #expect(venueObject["isPrivate"] as? Bool == true)
+        #expect(venueObject["country"] as? String == "US")
+        // Blank optional fields are left out rather than sent as empty strings.
+        #expect(venueObject["website"] == nil)
         let encoded = try JSONEncoder().encode(draft)
         let object = try #require(try JSONSerialization.jsonObject(with: encoded) as? [String: Any])
 

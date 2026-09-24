@@ -129,15 +129,37 @@ private func place(
     east: Double,
     primaryType: String? = "cafe",
     types: [String] = ["cafe"],
-    checkins: Int = 5
+    checkins: Int = 5,
+    extent: PlaceExtent? = nil
 ) -> Place {
     Place(
         id: id,
         name: id,
         location: location(north: north, east: east),
+        extent: extent,
         types: types,
         primaryType: primaryType,
         checkinCount: checkins
+    )
+}
+
+/// An axis-aligned rectangle of grounds, in meters from the origin.
+private func rectangleExtent(south: Double, west: Double, north: Double, east: Double) -> PlaceExtent {
+    let southWest = location(north: south, east: west)
+    let northEast = location(north: north, east: east)
+    let ring = [
+        southWest,
+        PlaceLocation(latitude: southWest.latitude, longitude: northEast.longitude),
+        northEast,
+        PlaceLocation(latitude: northEast.latitude, longitude: southWest.longitude),
+        southWest,
+    ]
+    return PlaceExtent(
+        boundingBox: PlaceExtent.BoundingBox(
+            south: southWest.latitude, west: southWest.longitude, north: northEast.latitude, east: northEast.longitude
+        ),
+        rings: [ring],
+        areaSquareMeters: (north - south) * (east - west)
     )
 }
 
@@ -266,6 +288,49 @@ struct PlaceRankerModelTests {
         let cafe = place("cafe", north: 0, east: 0)
         #expect(PlaceFootprint(for: cafe).kind == .point)
         #expect(PlaceFootprint(for: cafe).radius == PlaceFootprint.pointRadius)
+    }
+
+    @Test("Recorded grounds become the footprint: zero inside, distance to the edge outside")
+    func polygonFootprint() throws {
+        // The pin is a kilometer away but the grounds cover the fix.
+        let grounds = rectangleExtent(south: -500, west: -1500, north: 500, east: 1500)
+        let airport = place("airport", north: 100, east: 1000, primaryType: "airport", types: ["airport"], extent: grounds)
+        let footprint = PlaceFootprint(for: airport)
+        #expect(footprint.kind == .destination)
+        #expect(footprint.polygon != nil)
+        #expect(abs(footprint.radius - 500) < 1)
+        #expect(footprint.effectiveDistance(from: origin, to: airport) == 0)
+
+        // Outside the grounds the distance is measured to their edge, not the pin.
+        let outside = location(north: 700, east: 0)
+        let toEdge = try #require(footprint.effectiveDistance(from: outside, to: airport))
+        #expect(abs(toEdge - 200) < 1)
+        let corner = location(north: 800, east: 1900)
+        let toCorner = try #require(footprint.effectiveDistance(from: corner, to: airport))
+        #expect(abs(toCorner - 500) < 1)
+
+        // A building outline is not informative; the storefront radius stands.
+        let outline = rectangleExtent(south: -20, west: -30, north: 20, east: 30)
+        let cafe = place("cafe", north: 0, east: 0, extent: outline)
+        #expect(PlaceFootprint(for: cafe).polygon == nil)
+        #expect(PlaceFootprint(for: cafe).kind == .point)
+
+        // Big grounds around something the table calls a storefront make it a container.
+        let campus = rectangleExtent(south: -400, west: -400, north: 400, east: 400)
+        let office = place("office", north: 0, east: 0, primaryType: "corporate_office", types: ["corporate_office"], extent: campus)
+        #expect(PlaceFootprint(for: office).kind == .container)
+    }
+
+    @Test("A coarse fix inside recorded grounds ranks the venue first even 1.3 km from its pin")
+    func groundsBeatDistanceToPin() {
+        let parkGrounds = rectangleExtent(south: -300, west: -1500, north: 300, east: 200)
+        let park = place("park", north: 0, east: -1300, primaryType: "park", types: ["park"], checkins: 40, extent: parkGrounds)
+        let museum = place("museum", north: 30, east: 0, primaryType: "museum", types: ["museum"], checkins: 20)
+        let coarse = ranker.rank(candidates: [museum, park], fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(coarse.ranked.first?.place.id == "park")
+
+        let tight = ranker.rank(candidates: [museum, park], fix: fix(accuracy: 8, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(tight.ranked.first?.place.id == "museum")
     }
 
     @Test("Overture's specific museum and stadium categories fold onto the generic entry")

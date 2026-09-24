@@ -12,9 +12,10 @@ import type { HistoryTemplate, RankingScenarioDefinition } from "./ranking-scena
  * Version 2 dropped the raw Google responses (`google`) along with the
  * viewport and rating fields on each place, and renamed `googlePlaceId` to
  * `placeId` in histories. Places are now exactly what `GET /places` returns
- * from the Overture-backed database.
+ * from the Overture-backed database. Version 3 added `extent`,
+ * `distanceMeters`, `isPrivate` and `retired` to each place.
  */
-export const RANKING_FIXTURE_SCHEMA_VERSION = 2;
+export const RANKING_FIXTURE_SCHEMA_VERSION = 3;
 
 export interface FixtureHistoryEntry {
   placeId: string;

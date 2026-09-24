@@ -26,6 +26,57 @@ nonisolated enum PlaceSource: String, Codable, Sendable {
 // target's default @MainActor isolation the same way UserProfile does. They
 // are Encodable too so pending suggestions can keep their candidate places on
 // disk.
+/// The venue's grounds, when Overture's base theme has a polygon for it (an
+/// airport, a park, a campus). Rings are the polygon outlines, simplified to
+/// a few meters; the bounding box is what the ranker sizes the venue by.
+nonisolated struct PlaceExtent: Codable, Hashable, Sendable {
+    struct BoundingBox: Codable, Hashable, Sendable {
+        let south: Double
+        let west: Double
+        let north: Double
+        let east: Double
+    }
+
+    let boundingBox: BoundingBox
+    /// One outline per polygon, as longitude/latitude pairs.
+    let rings: [[PlaceLocation]]
+    let areaSquareMeters: Double
+
+    private enum CodingKeys: String, CodingKey {
+        case boundingBox, rings, areaSquareMeters
+    }
+
+    init(boundingBox: BoundingBox, rings: [[PlaceLocation]], areaSquareMeters: Double) {
+        self.boundingBox = boundingBox
+        self.rings = rings
+        self.areaSquareMeters = areaSquareMeters
+    }
+
+    /// The API sends rings as GeoJSON positions, `[longitude, latitude]`.
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        boundingBox = try container.decode(BoundingBox.self, forKey: .boundingBox)
+        areaSquareMeters = try container.decode(Double.self, forKey: .areaSquareMeters)
+        let positions = try container.decode([[[Double]]].self, forKey: .rings)
+        rings = positions.map { ring in
+            ring.compactMap { position in
+                guard position.count >= 2 else { return nil }
+                return PlaceLocation(latitude: position[1], longitude: position[0])
+            }
+        }
+    }
+
+    /// Written back in the same GeoJSON shape, so a place saved to disk with
+    /// a pending suggestion decodes again.
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(boundingBox, forKey: .boundingBox)
+        try container.encode(areaSquareMeters, forKey: .areaSquareMeters)
+        let positions = rings.map { ring in ring.map { [$0.longitude, $0.latitude] } }
+        try container.encode(positions, forKey: .rings)
+    }
+}
+
 nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
     let id: String
     let source: PlaceSource
@@ -40,11 +91,20 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
     let postcode: String?
     let country: String?
     let location: PlaceLocation?
+    let extent: PlaceExtent?
+    /// Meters from the searched fix to the venue's grounds (zero inside) or
+    /// its pin, as the server measured it. Display only: the ranker measures
+    /// against the latest fix itself.
+    let distanceMeters: Double?
     /// Overture category codes, the primary one first.
     let types: [String]
     let primaryType: String?
     /// Checkins here from everyone. The app's stand-in for popularity.
     let checkinCount: Int
+    /// Only its creator and their friends can find it.
+    let isPrivate: Bool
+    /// Dropped by a newer Overture release; only old checkins still show it.
+    let retired: Bool
     let website: String?
     let phone: String?
 
@@ -59,9 +119,13 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
         postcode: String? = nil,
         country: String? = nil,
         location: PlaceLocation?,
+        extent: PlaceExtent? = nil,
+        distanceMeters: Double? = nil,
         types: [String] = [],
         primaryType: String? = nil,
         checkinCount: Int = 0,
+        isPrivate: Bool = false,
+        retired: Bool = false,
         website: String? = nil,
         phone: String? = nil
     ) {
@@ -75,16 +139,20 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
         self.postcode = postcode
         self.country = country
         self.location = location
+        self.extent = extent
+        self.distanceMeters = distanceMeters
         self.types = types
         self.primaryType = primaryType
         self.checkinCount = checkinCount
+        self.isPrivate = isPrivate
+        self.retired = retired
         self.website = website
         self.phone = phone
     }
 
     private enum CodingKeys: String, CodingKey {
         case id, source, name, address, street, locality, region, postcode, country
-        case location, types, primaryType, checkinCount, website, phone
+        case location, extent, distanceMeters, types, primaryType, checkinCount, isPrivate, retired, website, phone
     }
 
     /// Spelled out so the fields the API added over time (`source`,
@@ -101,9 +169,13 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
         postcode = try container.decodeIfPresent(String.self, forKey: .postcode)
         country = try container.decodeIfPresent(String.self, forKey: .country)
         location = try container.decodeIfPresent(PlaceLocation.self, forKey: .location)
+        extent = try container.decodeIfPresent(PlaceExtent.self, forKey: .extent)
+        distanceMeters = try container.decodeIfPresent(Double.self, forKey: .distanceMeters)
         types = try container.decodeIfPresent([String].self, forKey: .types) ?? []
         primaryType = try container.decodeIfPresent(String.self, forKey: .primaryType)
         checkinCount = try container.decodeIfPresent(Int.self, forKey: .checkinCount) ?? 0
+        isPrivate = try container.decodeIfPresent(Bool.self, forKey: .isPrivate) ?? false
+        retired = try container.decodeIfPresent(Bool.self, forKey: .retired) ?? false
         website = try container.decodeIfPresent(String.self, forKey: .website)
         phone = try container.decodeIfPresent(String.self, forKey: .phone)
     }
@@ -121,6 +193,8 @@ nonisolated struct PlaceLocation: Codable, Hashable, Sendable {
 struct PlaceDraft: Encodable, Equatable {
     let name: String
     let primaryType: String?
+    /// Only the creator and their friends can find a private venue.
+    let isPrivate: Bool
     let street: String?
     let locality: String?
     let region: String?
@@ -134,6 +208,7 @@ struct PlaceDraft: Encodable, Equatable {
     init(
         name: String,
         primaryType: String?,
+        isPrivate: Bool,
         street: String?,
         locality: String?,
         region: String?,
@@ -146,6 +221,7 @@ struct PlaceDraft: Encodable, Equatable {
     ) {
         self.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         self.primaryType = primaryType
+        self.isPrivate = isPrivate
         self.street = Self.trimmedOrNil(street)
         self.locality = Self.trimmedOrNil(locality)
         self.region = Self.trimmedOrNil(region)
@@ -165,8 +241,73 @@ struct PlaceDraft: Encodable, Equatable {
     }
 }
 
-private struct PlacesResponse: Decodable {
+/// Whether the server holds place data around the searched fix. When it does
+/// not, the API is fetching it in the background (`importing`) or could not
+/// (`missing`, `failed`), and the app tells the user when to try again.
+nonisolated struct PlaceCoverage: Decodable, Hashable, Sendable {
+    enum Status: String, Decodable, Sendable {
+        case ready, importing, missing, failed
+
+        /// Unknown values from a newer API read as ready, which shows whatever
+        /// results came back rather than an alarming empty state.
+        init(from decoder: Decoder) throws {
+            let rawValue = try decoder.singleValueContainer().decode(String.self)
+            self = Status(rawValue: rawValue) ?? .ready
+        }
+    }
+
+    let status: Status
+    /// Present while importing: how long until the data should be there.
+    let estimatedSecondsRemaining: Double?
+    /// Present when a limit stopped a fetch: when asking again may work.
+    let retryAfterSeconds: Double?
+
+    static let ready = PlaceCoverage(status: .ready, estimatedSecondsRemaining: nil, retryAfterSeconds: nil)
+
+    init(status: Status, estimatedSecondsRemaining: Double?, retryAfterSeconds: Double?) {
+        self.status = status
+        self.estimatedSecondsRemaining = estimatedSecondsRemaining
+        self.retryAfterSeconds = retryAfterSeconds
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case status, estimatedSecondsRemaining, retryAfterSeconds
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        status = try container.decodeIfPresent(Status.self, forKey: .status) ?? .ready
+        estimatedSecondsRemaining = try container.decodeIfPresent(Double.self, forKey: .estimatedSecondsRemaining)
+        retryAfterSeconds = try container.decodeIfPresent(Double.self, forKey: .retryAfterSeconds)
+    }
+
+    /// "a minute", "3 minutes": the wait rounded up, never promising under a minute.
+    var waitDescription: String? {
+        guard let seconds = estimatedSecondsRemaining ?? retryAfterSeconds else { return nil }
+        let minutes = max(1, Int((seconds / 60).rounded(.up)))
+        return minutes == 1 ? "a minute" : "\(minutes) minutes"
+    }
+}
+
+nonisolated struct PlaceSearchResult: Decodable, Sendable {
     let results: [Place]
+    let coverage: PlaceCoverage
+
+    private enum CodingKeys: String, CodingKey {
+        case results, coverage
+    }
+
+    init(results: [Place], coverage: PlaceCoverage) {
+        self.results = results
+        self.coverage = coverage
+    }
+
+    /// `coverage` is absent from an older API build; that reads as ready.
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        results = try container.decode([Place].self, forKey: .results)
+        coverage = try container.decodeIfPresent(PlaceCoverage.self, forKey: .coverage) ?? .ready
+    }
 }
 
 struct PlacesAPI {
@@ -182,7 +323,7 @@ struct PlacesAPI {
         query: String? = nil,
         radius: Double? = nil,
         horizontalAccuracy: Double? = nil
-    ) async throws -> [Place] {
+    ) async throws -> PlaceSearchResult {
         // The abbreviated names here are the API's query parameters, which is
         // the one place CLAUDE.md permits them. The Swift labels above are
         // spelled out.
@@ -204,14 +345,11 @@ struct PlacesAPI {
             )
         }
 
-        let response: PlacesResponse = try await client.request(
-            path: "places",
-            queryItems: queryItems,
-            // Searching is open, and the checkin flow must keep working while
-            // a token refresh is in flight.
-            authenticated: false
-        )
-        return response.results
+        // Sent with the token: the server includes the user's private venues
+        // and may start fetching an uncovered area for them. A stale token gets
+        // a 401, which APIClient answers by refreshing and retrying once, so a
+        // refresh in flight never blocks the checkin flow.
+        return try await client.request(path: "places", queryItems: queryItems)
     }
 
     /// Adds a venue to the shared database. Needs a signed-in user, who is

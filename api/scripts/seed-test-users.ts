@@ -5,9 +5,10 @@
  * the lock icon and the friends feed's privacy rule can be checked by signing
  * in as one user and then as a friend.
  *
- * The branches come from the `places` table, so import Overture for each
- * test user's home city first (see SETUP.md). A chain with no branch there is
- * skipped with a warning.
+ * The branches come from the `places` table. Any of the home cities not
+ * loaded yet are fetched from Overture first, the same way `coverage:seed`
+ * loads a region, so this needs OVERTURE_RELEASE too. A chain with no branch
+ * there is skipped with a warning.
  *
  * Safe to run repeatedly: the users are upserted by fixed id, and their
  * checkins and friendships with each other are replaced each run.
@@ -22,6 +23,9 @@ import {
   friendships as friendshipsTable,
   users as usersTable,
 } from "../src/db/schema.js";
+import { cellsAround } from "../src/lib/coverage-cells.js";
+import { seedCellsNow } from "../src/lib/coverage-worker.js";
+import { s3Source } from "../src/lib/overture-remote.js";
 import { formatAddress } from "../src/lib/place-result.js";
 import { searchByName, type PlaceCandidate } from "../src/lib/places-search.js";
 import {
@@ -48,6 +52,7 @@ async function findBranch(chain: string, testUser: SeededTestUser): Promise<Plac
     latitude: testUser.homeCity.latitude,
     longitude: testUser.homeCity.longitude,
     radius: SEARCH_RADIUS_METERS,
+    viewerUserId: testUser.id,
   });
   return (
     results.find((place) =>
@@ -63,7 +68,18 @@ function seededCheckinTime(userIndex: number, chainIndex: number): Date {
   return new Date(Date.now() - hoursAgo * 3_600_000);
 }
 
+async function loadHomeCities() {
+  const source = s3Source(config.OVERTURE_RELEASE);
+  for (const testUser of SEEDED_TEST_USERS) {
+    const { latitude, longitude, name } = testUser.homeCity;
+    const fetched = await seedCellsNow(source, cellsAround(latitude, longitude, SEARCH_RADIUS_METERS));
+    console.log(`${name}: ${fetched ? "fetched from Overture" : "already loaded"}`);
+  }
+}
+
 async function seed() {
+  await loadHomeCities();
+
   const testUserIds = SEEDED_TEST_USERS.map((testUser) => testUser.id);
 
   await database

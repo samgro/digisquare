@@ -46,6 +46,17 @@ function placeRow() {
     website: null,
     phone: null,
     createdByUserId: null,
+    extentOvertureId: null,
+    extentAreaSquareMeters: null,
+    isPrivate: false,
+    lastSeenRelease: null,
+    retiredAt: null,
+    extentGeoJson: null,
+    extentSouth: null,
+    extentWest: null,
+    extentNorth: null,
+    extentEast: null,
+    distanceMeters: null,
     createdAt: new Date("2026-09-01T00:00:00.000Z"),
     updatedAt: new Date("2026-09-01T00:00:00.000Z"),
     checkinCount: 4,
@@ -110,6 +121,14 @@ describe("POST /checkins", () => {
       message: "Cortado o'clock",
     });
     expect(body).not.toHaveProperty("googlePlaceId");
+  });
+
+  it("404s at a place a newer Overture release dropped", async () => {
+    controls.queue([{ ...placeRow(), retiredAt: new Date("2026-09-20T00:00:00.000Z") }]);
+
+    const response = await send("POST", "/", { placeId: PLACE_ID });
+    expect(response.status).toBe(404);
+    expect(controls.operations).toEqual(["select"]);
   });
 
   it("404s when the place does not exist, before inserting anything", async () => {

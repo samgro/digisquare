@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "name": "downtown-redwood-city",
   "description": "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 650 m from Mezes Park.",
   "recordedAt": null,
@@ -24,6 +24,8 @@
         "latitude": 37.486435,
         "longitude": -122.23330999999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "coffee_shop",
         "cafe",
@@ -33,6 +35,8 @@
       ],
       "primaryType": "coffee_shop",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -50,6 +54,8 @@
         "latitude": 37.486445599999996,
         "longitude": -122.2334587
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "hair_salon",
         "nail_salon",
@@ -60,6 +66,8 @@
       ],
       "primaryType": "hair_salon",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -77,6 +85,8 @@
         "latitude": 37.4865049,
         "longitude": -122.23363359999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "vietnamese_restaurant",
         "restaurant",
@@ -84,6 +94,8 @@
       ],
       "primaryType": "vietnamese_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -101,11 +113,15 @@
         "latitude": 37.486441,
         "longitude": -122.23368300000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "transportation_service"
       ],
       "primaryType": "transportation_service",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -123,6 +139,8 @@
         "latitude": 37.4864227,
         "longitude": -122.2337074
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "japanese_restaurant",
         "ramen_restaurant",
@@ -136,6 +154,8 @@
       ],
       "primaryType": "japanese_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -153,6 +173,8 @@
         "latitude": 37.4865127,
         "longitude": -122.23381380000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "irish_pub",
         "pub",
@@ -163,6 +185,8 @@
       ],
       "primaryType": "irish_pub",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -180,11 +204,15 @@
         "latitude": 37.4861688,
         "longitude": -122.23327350000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -202,6 +230,8 @@
         "latitude": 37.486134,
         "longitude": -122.23330800000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "yoga_studio",
         "gym",
@@ -212,6 +242,8 @@
       ],
       "primaryType": "yoga_studio",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -229,9 +261,13 @@
         "latitude": 37.486086199999995,
         "longitude": -122.23326770000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -249,6 +285,8 @@
         "latitude": 37.4861515,
         "longitude": -122.2336991
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "ice_cream_shop",
         "cafe",
@@ -260,6 +298,8 @@
       ],
       "primaryType": "ice_cream_shop",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -277,12 +317,16 @@
         "latitude": 37.4864106,
         "longitude": -122.2339405
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "clothing_store",
         "shopping"
       ],
       "primaryType": "clothing_store",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -300,12 +344,16 @@
         "latitude": 37.4861412,
         "longitude": -122.2337153
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "coworking_space",
         "public_and_government_association"
       ],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -323,12 +371,16 @@
         "latitude": 37.4861412,
         "longitude": -122.2337153
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "massage",
         "professional_services"
       ],
       "primaryType": "massage",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -346,6 +398,8 @@
         "latitude": 37.486053999999996,
         "longitude": -122.233447
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "german_restaurant",
         "beer_garden",
@@ -362,6 +416,8 @@
       ],
       "primaryType": "german_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -379,11 +435,15 @@
         "latitude": 37.485962,
         "longitude": -122.23324029999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "financial_service"
       ],
       "primaryType": "financial_service",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -401,6 +461,8 @@
         "latitude": 37.4864835,
         "longitude": -122.23411739999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "gym",
         "professional_services",
@@ -409,6 +471,8 @@
       ],
       "primaryType": "gym",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -426,11 +490,15 @@
         "latitude": 37.4860398,
         "longitude": -122.23382280000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "professional_services"
       ],
       "primaryType": "professional_services",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -448,11 +516,15 @@
         "latitude": 37.4860398,
         "longitude": -122.23382280000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "corporate_office"
       ],
       "primaryType": "corporate_office",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -470,11 +542,15 @@
         "latitude": 37.4862903,
         "longitude": -122.23263920000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "plaza"
       ],
       "primaryType": "plaza",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -492,6 +568,8 @@
         "latitude": 37.4861028,
         "longitude": -122.2339889
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "korean_restaurant",
         "restaurant",
@@ -499,6 +577,8 @@
       ],
       "primaryType": "korean_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -516,12 +596,16 @@
         "latitude": 37.4716062,
         "longitude": -122.2387476
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -539,12 +623,16 @@
         "latitude": 37.4820037,
         "longitude": -122.24747900000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -562,6 +650,8 @@
         "latitude": 37.4720385,
         "longitude": -122.23547710000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "community_center",
         "event_venue",
@@ -570,6 +660,8 @@
       ],
       "primaryType": "community_center",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -587,12 +679,16 @@
         "latitude": 37.483597499999995,
         "longitude": -122.21574319999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -610,6 +706,8 @@
         "latitude": 37.498947699999995,
         "longitude": -122.2245801
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "wildlife_refuge",
         "attractions_and_activities",
@@ -617,6 +715,8 @@
       ],
       "primaryType": "wildlife_refuge",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -634,12 +734,16 @@
         "latitude": 37.4919812,
         "longitude": -122.2361299
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -657,12 +761,16 @@
         "latitude": 37.4811019,
         "longitude": -122.23569130000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -680,11 +788,15 @@
         "latitude": 37.4722402,
         "longitude": -122.2310303
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -702,6 +814,8 @@
         "latitude": 37.4780517,
         "longitude": -122.2247841
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "indoor_golf_course",
         "golf_course",
@@ -710,6 +824,8 @@
       ],
       "primaryType": "indoor_golf_course",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -727,11 +843,15 @@
         "latitude": 37.4819931,
         "longitude": -122.22204560000002
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -749,11 +869,15 @@
         "latitude": 37.472305399999996,
         "longitude": -122.22083320000002
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -771,11 +895,15 @@
         "latitude": 37.490286000000005,
         "longitude": -122.24323179999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -793,11 +921,15 @@
         "latitude": 37.4707509,
         "longitude": -122.22701010000002
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -815,6 +947,8 @@
         "latitude": 37.4998542,
         "longitude": -122.2479295
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "sports_school",
         "indoor_golf_course",
@@ -830,6 +964,8 @@
       ],
       "primaryType": "sports_school",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -847,6 +983,8 @@
         "latitude": 37.4881759,
         "longitude": -122.2375349
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "sports_school",
         "indoor_golf_course",
@@ -860,6 +998,8 @@
       ],
       "primaryType": "sports_school",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -877,12 +1017,16 @@
         "latitude": 37.4709047,
         "longitude": -122.23855759999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms",
         "park"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -900,11 +1044,15 @@
         "latitude": 37.4705057,
         "longitude": -122.23976139999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -922,11 +1070,15 @@
         "latitude": 37.479065299999995,
         "longitude": -122.25377909999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -944,6 +1096,8 @@
         "latitude": 37.470833299999995,
         "longitude": -122.2369444
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "local_and_state_government_offices",
         "government_services",
@@ -952,6 +1106,8 @@
       ],
       "primaryType": "local_and_state_government_offices",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -969,11 +1125,15 @@
         "latitude": 37.4703641,
         "longitude": -122.23958409999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     }

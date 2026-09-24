@@ -3,11 +3,17 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createDatabaseStub } from "../../test/helpers/stub-database.js";
 import { listRankingFixtureNames, loadRankingFixture } from "../../test/helpers/fixtures.js";
 import { createAccessToken } from "../lib/tokens.js";
+import type { CoverageReport } from "../lib/coverage.js";
 import type { PlaceResult } from "../lib/place-result.js";
 
 const { database, controls } = createDatabaseStub();
 
 vi.mock("../db/index.js", () => ({ database }));
+
+// Coverage has its own tests; here it is a canned report so the route tests
+// script only the place queries.
+const describeCoverage = vi.fn(async (): Promise<CoverageReport> => ({ status: "ready" }));
+vi.mock("../lib/coverage.js", () => ({ describeCoverage }));
 
 const { places } = await import("./places.js");
 
@@ -18,6 +24,8 @@ const accessToken = await createAccessToken(CURRENT_USER_ID, SESSION_ID);
 
 beforeEach(() => {
   controls.reset();
+  describeCoverage.mockClear();
+  describeCoverage.mockResolvedValue({ status: "ready" });
 });
 
 function placeRow(overrides: Record<string, unknown> = {}) {
@@ -40,6 +48,17 @@ function placeRow(overrides: Record<string, unknown> = {}) {
     website: null,
     phone: null,
     createdByUserId: null,
+    extentOvertureId: null,
+    extentAreaSquareMeters: null,
+    isPrivate: false,
+    lastSeenRelease: "2026-09-23.0",
+    retiredAt: null,
+    extentGeoJson: null,
+    extentSouth: null,
+    extentWest: null,
+    extentNorth: null,
+    extentEast: null,
+    distanceMeters: null,
     createdAt: new Date("2026-09-01T00:00:00.000Z"),
     updatedAt: new Date("2026-09-01T00:00:00.000Z"),
     checkinCount: 2,
@@ -67,6 +86,9 @@ function rowFromResult(result: PlaceResult) {
     website: result.website,
     phone: result.phone,
     checkinCount: result.checkinCount,
+    isPrivate: result.isPrivate,
+    retiredAt: result.retired ? new Date("2026-09-01T00:00:00.000Z") : null,
+    distanceMeters: result.distanceMeters,
   });
 }
 
@@ -114,12 +136,71 @@ describe("GET /places?q=", () => {
       postcode: "94103",
       country: "US",
       location: { latitude: 37.7706, longitude: -122.4108 },
+      extent: null,
+      distanceMeters: null,
       types: ["wholesale_store", "grocery_store"],
       primaryType: "wholesale_store",
       checkinCount: 2,
+      isPrivate: false,
+      retired: false,
       website: null,
       phone: null,
     });
+  });
+
+  it("returns the extent and the distance the search computed", async () => {
+    controls.queue([
+      placeRow({
+        name: "Golden Gate Park",
+        primaryType: "park",
+        types: ["park"],
+        extentGeoJson: JSON.stringify({ type: "MultiPolygon", coordinates: [[[[-122.51, 37.76], [-122.45, 37.76], [-122.45, 37.77], [-122.51, 37.77], [-122.51, 37.76]]]] }),
+        extentSouth: 37.76,
+        extentWest: -122.51,
+        extentNorth: 37.77,
+        extentEast: -122.45,
+        extentAreaSquareMeters: 4_100_000,
+        distanceMeters: 0,
+      }),
+    ]);
+
+    const response = await places.request(`/?lat=37.7694&lng=-122.4862&q=golden`);
+    const body = (await response.json()) as { results: Array<Record<string, unknown>> };
+
+    expect(body.results[0].distanceMeters).toBe(0);
+    expect(body.results[0].extent).toEqual({
+      boundingBox: { south: 37.76, west: -122.51, north: 37.77, east: -122.45 },
+      rings: [[[-122.51, 37.76], [-122.45, 37.76], [-122.45, 37.77], [-122.51, 37.77], [-122.51, 37.76]]],
+      areaSquareMeters: 4_100_000,
+    });
+  });
+
+  it("includes the coverage report alongside the results", async () => {
+    controls.queue([]);
+    describeCoverage.mockResolvedValue({ status: "importing", estimatedSecondsRemaining: 90 });
+
+    const response = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&q=cos`);
+    const body = (await response.json()) as { coverage: unknown };
+
+    expect(body.coverage).toEqual({ status: "importing", estimatedSecondsRemaining: 90 });
+    expect(describeCoverage).toHaveBeenCalledWith({ latitude: 37.7749, longitude: -122.4194, viewerUserId: null });
+  });
+
+  it("passes the signed-in viewer to the search and to coverage", async () => {
+    controls.queue([]);
+    const response = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&q=cos`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    expect(response.status).toBe(200);
+    expect(describeCoverage).toHaveBeenCalledWith(expect.objectContaining({ viewerUserId: CURRENT_USER_ID }));
+  });
+
+  it("401s on a bad token instead of treating the caller as anonymous", async () => {
+    const response = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&q=cos`, {
+      headers: { Authorization: "Bearer not-a-token" },
+    });
+    expect(response.status).toBe(401);
+    expect(controls.operations).toEqual([]);
   });
 
   it("maps missing optional fields to null", async () => {
@@ -162,14 +243,15 @@ describe("GET /places?q=", () => {
       `/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&q=zzzznotaplace`,
     );
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ results: [] });
+    expect(await response.json()).toEqual({ results: [], coverage: { status: "ready" } });
   });
 });
 
 describe("GET /places without q", () => {
-  it("searches nearest-first and for large venues, nearest first in the output", async () => {
+  it("searches nearest pins, then grounds, then large venues, in that order in the output", async () => {
     controls.queue(
       [placeRow({ id: "11111111-1111-4111-8111-111111111111", name: "Blue Bottle Coffee" })],
+      [placeRow({ id: "33333333-3333-4333-8333-333333333333", name: "SFO", types: ["airport"] })],
       [placeRow({ id: "22222222-2222-4222-8222-222222222222", name: "Golden Gate Park", types: ["park"] })],
     );
 
@@ -181,14 +263,15 @@ describe("GET /places without q", () => {
     const body = (await response.json()) as { results: Array<{ name: string }> };
     expect(body.results.map((result) => result.name)).toEqual([
       "Blue Bottle Coffee",
+      "SFO",
       "Golden Gate Park",
     ]);
-    expect(controls.operations).toEqual(["select", "select"]);
+    expect(controls.operations).toEqual(["select", "select", "select"]);
   });
 
-  it("lists a large venue once when both searches return it", async () => {
+  it("lists a large venue once when several searches return it", async () => {
     const park = placeRow({ id: "22222222-2222-4222-8222-222222222222", name: "Golden Gate Park", types: ["park"] });
-    controls.queue([placeRow(), park], [park]);
+    controls.queue([placeRow(), park], [park], [park]);
 
     const response = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}`);
     const body = (await response.json()) as { results: Array<{ name: string }> };
@@ -196,14 +279,14 @@ describe("GET /places without q", () => {
     expect(body.results.map((result) => result.name)).toEqual(["Costco Wholesale", "Golden Gate Park"]);
   });
 
-  it("only searches for large venues when the fix is too coarse to rank by distance", async () => {
-    controls.queue([placeRow({ name: "Golden Gate Park", types: ["park"] })]);
+  it("skips the nearest-pin search when the fix is too coarse to rank by distance", async () => {
+    controls.queue([], [placeRow({ name: "Golden Gate Park", types: ["park"] })]);
 
     const response = await places.request(
       `/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&accuracy=2500`,
     );
     expect(response.status).toBe(200);
-    expect(controls.operations).toEqual(["select"]);
+    expect(controls.operations).toEqual(["select", "select"]);
   });
 
   it("400s on a negative accuracy", async () => {
@@ -216,6 +299,7 @@ describe("GET /places without q", () => {
 
   it("500s when the database fails", async () => {
     vi.spyOn(console, "error").mockImplementation(() => {});
+    controls.queueFailure(new Error("connection reset"));
     controls.queueFailure(new Error("connection reset"));
     controls.queueFailure(new Error("connection reset"));
 
@@ -240,14 +324,14 @@ describe("GET /places ranking scenarios", () => {
   for (const fixtureName of fixtureNames) {
     it(`replays ${fixtureName} into the recorded places`, async () => {
       const fixture = loadRankingFixture(fixtureName);
-      expect(fixture.schemaVersion).toBe(2);
+      expect(fixture.schemaVersion).toBe(3);
 
       const rows = fixture.places.map(rowFromResult);
       const searchesByDistance = fixture.fix.horizontalAccuracy <= 1000;
       if (searchesByDistance) {
-        controls.queue(rows, []);
+        controls.queue(rows, [], []);
       } else {
-        controls.queue(rows);
+        controls.queue(rows, []);
       }
 
       const response = await places.request(
@@ -257,7 +341,7 @@ describe("GET /places ranking scenarios", () => {
 
       const body = (await response.json()) as { results: unknown[] };
       expect(body.results).toEqual(fixture.places);
-      expect(controls.operations).toHaveLength(searchesByDistance ? 2 : 1);
+      expect(controls.operations).toHaveLength(searchesByDistance ? 3 : 2);
     });
   }
 });
@@ -318,7 +402,7 @@ describe("POST /places", () => {
     phone: "+1 530-555-0100",
   };
 
-  it("creates a user venue for the signed-in user", async () => {
+  it("creates a user venue for the signed-in user, private by default", async () => {
     controls.queue([
       placeRow({
         id: "c3c1f0e4-6b7d-4e3a-9c1f-1d2e3f4a5b6c",
@@ -336,6 +420,7 @@ describe("POST /places", () => {
         longitude: venue.longitude,
         website: venue.website,
         phone: venue.phone,
+        isPrivate: true,
         createdByUserId: CURRENT_USER_ID,
       }),
     ]);
@@ -352,8 +437,15 @@ describe("POST /places", () => {
       types: ["bar", "cocktail_bar"],
       location: { latitude: 39.3279, longitude: -120.1833 },
       checkinCount: 0,
+      isPrivate: true,
+      retired: false,
     });
     expect(controls.operations).toEqual(["insert"]);
+  });
+
+  it("400s on a non-boolean isPrivate", async () => {
+    const response = await post({ ...venue, isPrivate: "yes" });
+    expect(response.status).toBe(400);
   });
 
   it("401s without a token", async () => {

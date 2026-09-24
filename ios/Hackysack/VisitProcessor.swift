@@ -72,12 +72,15 @@ final class VisitProcessor {
         checkinStore: CheckinStore,
         detector: FrequentPlaceDetector? = nil,
         calendar: Calendar = .current,
+        // An area still being fetched from Overture just comes back empty,
+        // like one with nothing nearby: there is no user waiting to be told
+        // to try again.
         lookupPlaces: @escaping PlacesLookup = { coordinate, radius in
             try await PlacesAPI().searchPlaces(
                 latitude: coordinate.latitude,
                 longitude: coordinate.longitude,
                 radius: radius
-            )
+            ).results
         }
     ) {
         self.visitHistory = visitHistory

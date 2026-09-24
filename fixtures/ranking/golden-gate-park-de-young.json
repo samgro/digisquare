@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "name": "golden-gate-park-de-young",
   "description": "At the entrance of the de Young Museum, inside Golden Gate Park, with the Academy of Sciences across the concourse.",
   "recordedAt": null,
@@ -24,11 +24,15 @@
         "latitude": 37.771392399999996,
         "longitude": -122.46842900000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -46,11 +50,15 @@
         "latitude": 37.771361999999996,
         "longitude": -122.4684069
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -68,6 +76,8 @@
         "latitude": 37.7713393,
         "longitude": -122.46837929999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "gift_shop",
         "book_store",
@@ -75,6 +85,8 @@
       ],
       "primaryType": "gift_shop",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -92,11 +104,15 @@
         "latitude": 37.771191099999996,
         "longitude": -122.46864459999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -114,11 +130,15 @@
         "latitude": 37.7714658,
         "longitude": -122.4686651
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "health"
       ],
       "primaryType": "health",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -136,6 +156,8 @@
         "latitude": 37.771468999999996,
         "longitude": -122.46867549999997
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "art_museum",
         "attractions_and_activities",
@@ -143,6 +165,8 @@
       ],
       "primaryType": "art_museum",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -160,11 +184,15 @@
         "latitude": 37.7711687,
         "longitude": -122.4686722
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -182,12 +210,16 @@
         "latitude": 37.771516,
         "longitude": -122.46864699999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "non_profit_organization",
         "public_and_government_association"
       ],
       "primaryType": "non_profit_organization",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -205,12 +237,16 @@
         "latitude": 37.771581999999995,
         "longitude": -122.46833090000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "subpremise",
         "street_address"
       ],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -228,11 +264,15 @@
         "latitude": 37.7714041,
         "longitude": -122.4681291
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "sculpture"
       ],
       "primaryType": "sculpture",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -250,12 +290,16 @@
         "latitude": 37.7716512,
         "longitude": -122.46837569999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "subpremise",
         "street_address"
       ],
       "primaryType": null,
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -273,11 +317,15 @@
         "latitude": 37.771597899999996,
         "longitude": -122.46884909999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -295,11 +343,15 @@
         "latitude": 37.7716139,
         "longitude": -122.4682687
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -317,11 +369,15 @@
         "latitude": 37.7716165,
         "longitude": -122.46884909999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -339,11 +395,15 @@
         "latitude": 37.7716634,
         "longitude": -122.46827420000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -361,11 +421,15 @@
         "latitude": 37.771628,
         "longitude": -122.46820790000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -383,11 +447,15 @@
         "latitude": 37.771658699999996,
         "longitude": -122.46889329999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -405,6 +473,8 @@
         "latitude": 37.770955,
         "longitude": -122.4688688
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "cafe",
         "cafeteria",
@@ -414,6 +484,8 @@
       ],
       "primaryType": "cafe",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -431,11 +503,15 @@
         "latitude": 37.7716138,
         "longitude": -122.467937
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -453,6 +529,8 @@
         "latitude": 37.7689203,
         "longitude": -122.482977
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "garden",
@@ -460,6 +538,8 @@
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -477,12 +557,16 @@
         "latitude": 37.762645899999995,
         "longitude": -122.45871059999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -500,6 +584,8 @@
         "latitude": 37.767709599999996,
         "longitude": -122.4693109
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "botanical_garden",
         "garden",
@@ -509,6 +595,8 @@
       ],
       "primaryType": "botanical_garden",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -526,12 +614,16 @@
         "latitude": 37.7765643,
         "longitude": -122.4507187
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -549,6 +641,8 @@
         "latitude": 37.7668135,
         "longitude": -122.45601250000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "stadium_arena",
         "sports_and_recreation_venue",
@@ -558,6 +652,8 @@
       ],
       "primaryType": "stadium_arena",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -575,11 +671,15 @@
         "latitude": 37.768728599999996,
         "longitude": -122.47344450000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -597,12 +697,16 @@
         "latitude": 37.778863,
         "longitude": -122.44850509999998
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -620,12 +724,16 @@
         "latitude": 37.7792783,
         "longitude": -122.45205779999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -643,6 +751,8 @@
         "latitude": 37.771776599999995,
         "longitude": -122.4547685
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "historical_landmark",
         "historical_place",
@@ -651,6 +761,8 @@
       ],
       "primaryType": "historical_landmark",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -668,6 +780,8 @@
         "latitude": 37.7718863,
         "longitude": -122.47133950000001
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "garden",
         "state_park",
@@ -676,6 +790,8 @@
       ],
       "primaryType": "garden",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -693,12 +809,16 @@
         "latitude": 37.7740693,
         "longitude": -122.4471193
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "college_university",
         "educational_institution"
       ],
       "primaryType": "college_university",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -716,6 +836,8 @@
         "latitude": 37.771128499999996,
         "longitude": -122.48615799999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "athletic_field",
         "golf_course",
@@ -723,6 +845,8 @@
       ],
       "primaryType": "athletic_field",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -740,6 +864,8 @@
         "latitude": 37.756422199999996,
         "longitude": -122.4717361
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "city_park",
@@ -748,6 +874,8 @@
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -765,6 +893,8 @@
         "latitude": 37.7872822,
         "longitude": -122.4697225
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "attractions_and_activities",
@@ -772,6 +902,8 @@
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -789,12 +921,16 @@
         "latitude": 37.7697139,
         "longitude": -122.4620104
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "attractions_and_activities"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -812,6 +948,8 @@
         "latitude": 37.768639799999995,
         "longitude": -122.47531989999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "hiking_trail",
         "park",
@@ -819,6 +957,8 @@
       ],
       "primaryType": "hiking_trail",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -836,6 +976,8 @@
         "latitude": 37.771571,
         "longitude": -122.457653
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "picnic_ground",
         "attractions_and_activities",
@@ -843,6 +985,8 @@
       ],
       "primaryType": "picnic_ground",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -860,6 +1004,8 @@
         "latitude": 37.7592201,
         "longitude": -122.4572304
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "nature_preserve",
         "attractions_and_activities",
@@ -867,6 +1013,8 @@
       ],
       "primaryType": "nature_preserve",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -884,6 +1032,8 @@
         "latitude": 37.768895799999996,
         "longitude": -122.4672329
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "garden",
         "attractions_and_activities",
@@ -891,6 +1041,8 @@
       ],
       "primaryType": "garden",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -908,12 +1060,16 @@
         "latitude": 37.7852403,
         "longitude": -122.4781632
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
         "park"
       ],
       "primaryType": "city_park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     }

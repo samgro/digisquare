@@ -31,6 +31,8 @@ struct CheckInView: View {
 
     @State private var navigationPath: [CheckInRoute] = []
     @State private var rankedPlaces: [RankedPlace] = []
+    /// Whether the server has place data for the area, from the last search.
+    @State private var coverage: PlaceCoverage = .ready
     @State private var searchText = ""
     @State private var isLoading = false
     @State private var errorMessage: String?
@@ -47,6 +49,8 @@ struct CheckInView: View {
     @State private var suggestedPlaceId: String?
     @State private var debounceTask: Task<Void, Never>?
     @State private var loadTask: Task<Void, Never>?
+    /// One automatic retry once the server's estimate for an area elapses.
+    @State private var coverageRetryTask: Task<Void, Never>?
 
     private let placesAPI = PlacesAPI()
     private let ranker = PlaceRanker()
@@ -114,6 +118,7 @@ struct CheckInView: View {
                 .onDisappear {
                     debounceTask?.cancel()
                     loadTask?.cancel()
+                    coverageRetryTask?.cancel()
                     isLoading = false
                 }
         }
@@ -160,6 +165,9 @@ struct CheckInView: View {
 
     private var placesList: some View {
         List {
+            if coverage.status == .importing {
+                CoverageBanner(coverage: coverage)
+            }
             ForEach(rankedPlaces) { rankedPlace in
                 NavigationLink(value: CheckInRoute.compose(rankedPlace.place)) {
                     PlaceRow(
@@ -184,17 +192,24 @@ struct CheckInView: View {
 
     @ViewBuilder
     private var emptyState: some View {
-        if searchText.isEmpty {
-            NoPlacesNearbyView {
-                navigationPath.append(.createPlace)
-            }
-        } else {
-            ContentUnavailableView {
-                Label("No Results for \"\(searchText)\"", systemImage: "magnifyingglass")
-            } description: {
-                Text("Check the spelling, or add it as a new place.")
-            } actions: {
-                addPlaceButton
+        switch coverage.status {
+        case .importing:
+            AreaLoadingView(coverage: coverage, onRetry: search, onAddPlace: { navigationPath.append(.createPlace) })
+        case .missing, .failed:
+            NoAreaDataView(coverage: coverage, onAddPlace: { navigationPath.append(.createPlace) })
+        case .ready:
+            if searchText.isEmpty {
+                NoPlacesNearbyView {
+                    navigationPath.append(.createPlace)
+                }
+            } else {
+                ContentUnavailableView {
+                    Label("No Results for \"\(searchText)\"", systemImage: "magnifyingglass")
+                } description: {
+                    Text("Check the spelling, or add it as a new place.")
+                } actions: {
+                    addPlaceButton
+                }
             }
         }
     }
@@ -255,19 +270,35 @@ struct CheckInView: View {
         loadTask?.cancel()
         loadTask = Task {
             do {
-                let results = try await placesAPI.searchPlaces(
+                let searchResult = try await placesAPI.searchPlaces(
                     latitude: fix.latitude,
                     longitude: fix.longitude,
                     query: query,
                     horizontalAccuracy: fix.horizontalAccuracy
                 )
                 guard !Task.isCancelled else { return }
-                present(results: results, query: query, fix: fix)
+                coverage = searchResult.coverage
+                scheduleCoverageRetry()
+                present(results: searchResult.results, query: query, fix: fix)
             } catch {
                 guard !Task.isCancelled else { return }
                 errorMessage = error.localizedDescription
             }
             isLoading = false
+        }
+    }
+
+    /// While the server is fetching the area, search again once when its
+    /// estimate elapses, so a user who waits on this screen sees the places
+    /// appear without tapping anything.
+    private func scheduleCoverageRetry() {
+        coverageRetryTask?.cancel()
+        guard coverage.status == .importing else { return }
+        let delay = max(coverage.estimatedSecondsRemaining ?? 60, 30)
+        coverageRetryTask = Task {
+            try? await Task.sleep(for: .seconds(delay))
+            guard !Task.isCancelled else { return }
+            search()
         }
     }
 
@@ -326,6 +357,74 @@ private extension LocationFix {
     }
 }
 
+/// Shown while the server fetches place data for an area nobody has searched
+/// from before. The wait comes from the server's own estimate.
+private struct AreaLoadingView: View {
+    let coverage: PlaceCoverage
+    let onRetry: () -> Void
+    let onAddPlace: () -> Void
+
+    var body: some View {
+        ContentUnavailableView {
+            Label("Getting Places for This Area", systemImage: "arrow.down.circle.dotted")
+        } description: {
+            Text(
+                "This is the first search around here, so we're downloading places for it. "
+                + "Try again in about \(coverage.waitDescription ?? "a few minutes")."
+            )
+        } actions: {
+            Button(action: onRetry) {
+                Label("Try Again", systemImage: "arrow.clockwise")
+            }
+            .buttonStyle(.borderedProminent)
+            Button(action: onAddPlace) {
+                Label("Add a Place", systemImage: "plus")
+            }
+        }
+    }
+}
+
+/// The server has no data for the area and is not fetching it: the user is
+/// over their daily allowance, the fetch failed, or they are signed out.
+private struct NoAreaDataView: View {
+    let coverage: PlaceCoverage
+    let onAddPlace: () -> Void
+
+    var body: some View {
+        ContentUnavailableView {
+            Label("No Place Data Here Yet", systemImage: "map")
+        } description: {
+            if let wait = coverage.waitDescription {
+                Text("We can't download this area right now. Try again in \(wait), or add the place yourself.")
+            } else if coverage.status == .failed {
+                Text("Downloading this area didn't work. We'll try again later; meanwhile you can add the place yourself.")
+            } else {
+                Text("Search for a place by name, or add one.")
+            }
+        } actions: {
+            Button(action: onAddPlace) {
+                Label("Add a Place", systemImage: "plus")
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
+}
+
+/// A thin row above the list while more places for the area are on the way.
+private struct CoverageBanner: View {
+    let coverage: PlaceCoverage
+
+    var body: some View {
+        Label(
+            "More places for this area are on the way (about \(coverage.waitDescription ?? "a few minutes")).",
+            systemImage: "arrow.down.circle.dotted"
+        )
+        .font(.footnote)
+        .foregroundStyle(.secondary)
+        .listRowBackground(Color.clear)
+    }
+}
+
 /// Extracted so the empty state can be previewed and iterated on without booting
 /// the whole screen against a running API.
 private struct NoPlacesNearbyView: View {
@@ -371,6 +470,29 @@ private struct NoPlacesNearbyView: View {
         NoPlacesNearbyView()
             .navigationTitle("Check In")
             .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview("Area Loading") {
+    NavigationStack {
+        AreaLoadingView(
+            coverage: PlaceCoverage(status: .importing, estimatedSecondsRemaining: 150, retryAfterSeconds: nil),
+            onRetry: {},
+            onAddPlace: {}
+        )
+        .navigationTitle("Check In")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview("No Area Data") {
+    NavigationStack {
+        NoAreaDataView(
+            coverage: PlaceCoverage(status: .missing, estimatedSecondsRemaining: nil, retryAfterSeconds: 3600),
+            onAddPlace: {}
+        )
+        .navigationTitle("Check In")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

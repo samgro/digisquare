@@ -4,6 +4,9 @@ import { z } from "zod";
 const environmentSchema = z.object({
   DATABASE_URL: z.string().min(1),
   PORT: z.coerce.number().int().positive().default(3000),
+  // The Overture Maps release the database should hold, e.g. 2026-09-23.0.
+  // Bumping it makes the coverage worker roll every ready cell forward.
+  OVERTURE_RELEASE: z.string().regex(/^\d{4}-\d{2}-\d{2}\.\d+$/, "Expected a release like 2026-09-23.0"),
 
   AUTH_JWT_SECRET: z.string().min(32),
   ACCESS_TOKEN_TTL_SECONDS: z.coerce.number().int().positive().default(900),

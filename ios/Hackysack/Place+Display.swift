@@ -25,14 +25,29 @@ extension Place {
     /// "5 ft" / "350 ft" / "0.62 mi" in the US, "5 yd" / "0.62 mi" in the UK,
     /// "5 m" / "1,5 km" in metric locales.
     ///
-    /// Returns `nil` when either the user's location or the place's coordinate is
-    /// unknown. The format style already defaults to `Locale.autoupdatingCurrent`,
-    /// so it tracks Settings changes and is cheap enough not to need caching.
+    /// Measured to the venue's grounds when it has them (so an airport reads
+    /// "0 ft" from a gate, not "0.9 mi" to its pin), else to its pin. Falls
+    /// back to the distance the server measured when the user's location is
+    /// unknown. Returns `nil` when neither is available. The format style
+    /// already defaults to `Locale.autoupdatingCurrent`, so it tracks
+    /// Settings changes and is cheap enough not to need caching.
     func formattedDistance(from userLocation: CLLocation?) -> String? {
-        guard let userLocation, let coordinateLocation else { return nil }
-        let distanceInMeters = userLocation.distance(from: coordinateLocation)
+        guard let distanceInMeters = distanceInMeters(from: userLocation) else { return nil }
         let distance = Measurement<UnitLength>(value: distanceInMeters, unit: .meters)
         return distance.formatted(.measurement(width: .abbreviated, usage: .road))
+    }
+
+    private func distanceInMeters(from userLocation: CLLocation?) -> Double? {
+        guard let userLocation else { return distanceMeters }
+        let fix = PlaceLocation(
+            latitude: userLocation.coordinate.latitude,
+            longitude: userLocation.coordinate.longitude
+        )
+        if let extent, extent.rings.contains(where: { !$0.isEmpty }) {
+            return extent.contains(fix) ? 0 : extent.distanceToEdge(from: fix)
+        }
+        guard let coordinateLocation else { return distanceMeters }
+        return userLocation.distance(from: coordinateLocation)
     }
 
     /// "60 ft · 450 10th St", or whichever of the two parts is available, or `nil`

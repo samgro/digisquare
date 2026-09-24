@@ -1,5 +1,12 @@
 import type { PlaceCandidate } from "./places-search.js";
 
+export interface PlaceExtentResult {
+  boundingBox: { south: number; west: number; north: number; east: number };
+  /** Outer rings only, as [longitude, latitude] pairs, simplified to about 5 m. */
+  rings: [number, number][][];
+  areaSquareMeters: number;
+}
+
 export interface PlaceResult {
   id: string;
   source: "overture" | "user" | "google";
@@ -12,11 +19,23 @@ export interface PlaceResult {
   postcode: string | null;
   country: string | null;
   location: { latitude: number; longitude: number } | null;
+  /** The venue's grounds, when Overture's base theme has a polygon for it. */
+  extent: PlaceExtentResult | null;
+  /**
+   * Meters from the searched fix to the venue: to the edge of its grounds
+   * (zero inside) when it has an extent, else to its pin. Null when the
+   * result did not come from a search around a fix.
+   */
+  distanceMeters: number | null;
   /** Overture category codes, the primary one first. */
   types: string[];
   primaryType: string | null;
   /** Checkins here from everyone, the app's stand-in for popularity. */
   checkinCount: number;
+  /** Only its creator and their friends can find it. */
+  isPrivate: boolean;
+  /** Dropped by a newer Overture release; kept for the checkins that point at it. */
+  retired: boolean;
   website: string | null;
   phone: string | null;
 }
@@ -55,6 +74,46 @@ export function formatAddress(parts: AddressParts): string | null {
   return components.length > 0 ? components.join(", ") : null;
 }
 
+interface GeoJsonMultiPolygon {
+  type: "MultiPolygon";
+  coordinates: [number, number][][][];
+}
+
+interface GeoJsonPolygon {
+  type: "Polygon";
+  coordinates: [number, number][][];
+}
+
+/**
+ * The extent as the search selected it: PostGIS's GeoJSON for the
+ * simplified polygon (a string), its area, and its bounding box corners.
+ */
+export function toExtentResult(candidate: PlaceCandidate): PlaceExtentResult | null {
+  if (!candidate.extentGeoJson || candidate.extentAreaSquareMeters === null) {
+    return null;
+  }
+  if (
+    candidate.extentSouth === null ||
+    candidate.extentWest === null ||
+    candidate.extentNorth === null ||
+    candidate.extentEast === null
+  ) {
+    return null;
+  }
+  const geometry = JSON.parse(candidate.extentGeoJson) as GeoJsonMultiPolygon | GeoJsonPolygon;
+  const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+  return {
+    boundingBox: {
+      south: candidate.extentSouth,
+      west: candidate.extentWest,
+      north: candidate.extentNorth,
+      east: candidate.extentEast,
+    },
+    rings: polygons.map((rings) => rings[0]).filter((ring) => ring !== undefined),
+    areaSquareMeters: candidate.extentAreaSquareMeters,
+  };
+}
+
 export function toPlaceResult(place: PlaceCandidate): PlaceResult {
   return {
     id: place.id,
@@ -70,9 +129,13 @@ export function toPlaceResult(place: PlaceCandidate): PlaceResult {
       place.latitude !== null && place.longitude !== null
         ? { latitude: place.latitude, longitude: place.longitude }
         : null,
+    extent: toExtentResult(place),
+    distanceMeters: place.distanceMeters ?? null,
     types: place.types,
     primaryType: place.primaryType,
     checkinCount: place.checkinCount,
+    isPrivate: place.isPrivate,
+    retired: place.retiredAt !== null,
     website: place.website,
     phone: place.phone,
   };

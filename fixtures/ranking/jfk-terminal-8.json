@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "name": "jfk-terminal-8",
   "description": "At a bar in JFK Terminal 8, 1.4 km from the airport's pin. The twenty nearest places from here are rental counters and hotels but never the airport; the large-venue search finds it.",
   "recordedAt": null,
@@ -24,11 +24,15 @@
         "latitude": 40.6491129,
         "longitude": -73.7953406
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "bar"
       ],
       "primaryType": "bar",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -46,6 +50,8 @@
         "latitude": 40.649028099999995,
         "longitude": -73.7951358
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "bakery",
         "food_store",
@@ -54,6 +60,8 @@
       ],
       "primaryType": "bakery",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -71,6 +79,8 @@
         "latitude": 40.6491654,
         "longitude": -73.7948385
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "fast_food_restaurant",
         "restaurant",
@@ -78,6 +88,8 @@
       ],
       "primaryType": "fast_food_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -95,11 +107,15 @@
         "latitude": 40.6493803,
         "longitude": -73.794836
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "shopping"
       ],
       "primaryType": "shopping",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -117,6 +133,8 @@
         "latitude": 40.6494035,
         "longitude": -73.79483239999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "convenience_store",
         "food_store",
@@ -125,6 +143,8 @@
       ],
       "primaryType": "convenience_store",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -142,11 +162,15 @@
         "latitude": 40.6494384,
         "longitude": -73.7947657
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -164,12 +188,16 @@
         "latitude": 40.6493013,
         "longitude": -73.7946917
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "atms",
         "financial_service"
       ],
       "primaryType": "atms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -187,11 +215,15 @@
         "latitude": 40.6494552,
         "longitude": -73.7946966
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -209,11 +241,15 @@
         "latitude": 40.649766199999995,
         "longitude": -73.79394359999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -231,11 +267,15 @@
         "latitude": 40.6500802,
         "longitude": -73.79320369999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -253,6 +293,8 @@
         "latitude": 40.650059999999996,
         "longitude": -73.79279
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "restaurant",
         "salad_shop",
@@ -261,6 +303,8 @@
       ],
       "primaryType": "restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -278,12 +322,16 @@
         "latitude": 40.6501053,
         "longitude": -73.7927708
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "atms",
         "financial_service"
       ],
       "primaryType": "atms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -301,12 +349,16 @@
         "latitude": 40.647267,
         "longitude": -73.7935905
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "restaurant",
         "food"
       ],
       "primaryType": "restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -324,6 +376,8 @@
         "latitude": 40.6473756,
         "longitude": -73.7931909
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "sandwich_shop",
         "pastry_shop",
@@ -341,6 +395,8 @@
       ],
       "primaryType": "sandwich_shop",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -358,11 +414,15 @@
         "latitude": 40.6501777,
         "longitude": -73.7924529
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "shopping"
       ],
       "primaryType": "shopping",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -380,11 +440,15 @@
         "latitude": 40.647049599999995,
         "longitude": -73.7935973
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -402,6 +466,8 @@
         "latitude": 40.650110399999996,
         "longitude": -73.7923212
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "lounge_bar",
         "bar",
@@ -409,6 +475,8 @@
       ],
       "primaryType": "lounge_bar",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -426,11 +494,15 @@
         "latitude": 40.6470929,
         "longitude": -73.7934908
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "shopping"
       ],
       "primaryType": "shopping",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -448,11 +520,15 @@
         "latitude": 40.647348,
         "longitude": -73.7929059
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "public_restrooms"
       ],
       "primaryType": "public_restrooms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -470,12 +546,16 @@
         "latitude": 40.6474665,
         "longitude": -73.7927526
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "atms",
         "financial_service"
       ],
       "primaryType": "atms",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -493,11 +573,15 @@
         "latitude": 40.6474756,
         "longitude": -73.77808519999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park"
       ],
       "primaryType": "park",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -515,6 +599,8 @@
         "latitude": 40.6374029,
         "longitude": -73.78107
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "lounge_bar",
         "dance_club",
@@ -524,6 +610,8 @@
       ],
       "primaryType": "lounge_bar",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -541,6 +629,8 @@
         "latitude": 40.658676899999996,
         "longitude": -73.7953211
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "mexican_restaurant",
         "airport",
@@ -550,6 +640,8 @@
       ],
       "primaryType": "mexican_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -567,6 +659,8 @@
         "latitude": 40.645990399999995,
         "longitude": -73.77553569999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "italian_restaurant",
         "airport",
@@ -577,6 +671,8 @@
       ],
       "primaryType": "italian_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -594,6 +690,8 @@
         "latitude": 40.6456012,
         "longitude": -73.77550169999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "pizza_restaurant",
         "airport",
@@ -603,6 +701,8 @@
       ],
       "primaryType": "pizza_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -620,6 +720,8 @@
         "latitude": 40.6460102,
         "longitude": -73.77498109999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "food_court",
         "convenience_store",
@@ -631,6 +733,8 @@
       ],
       "primaryType": "food_court",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -648,6 +752,8 @@
         "latitude": 40.6453681,
         "longitude": -73.7754921
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "hamburger_restaurant",
         "fast_food_restaurant",
@@ -659,6 +765,8 @@
       ],
       "primaryType": "hamburger_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -676,6 +784,8 @@
         "latitude": 40.6458145,
         "longitude": -73.77529059999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "american_restaurant",
         "airport",
@@ -685,6 +795,8 @@
       ],
       "primaryType": "american_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -702,6 +814,8 @@
         "latitude": 40.639574599999996,
         "longitude": -73.78118909999999
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "pet_care",
         "dog_park",
@@ -709,6 +823,8 @@
       ],
       "primaryType": "pet_care",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -726,6 +842,8 @@
         "latitude": 40.6448368,
         "longitude": -73.776309
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "bakery",
         "coffee_shop",
@@ -738,6 +856,8 @@
       ],
       "primaryType": "bakery",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -755,6 +875,8 @@
         "latitude": 40.658676899999996,
         "longitude": -73.7953211
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "tapas_restaurant",
         "spanish_restaurant",
@@ -767,6 +889,8 @@
       ],
       "primaryType": "tapas_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -784,6 +908,8 @@
         "latitude": 40.658676899999996,
         "longitude": -73.7953211
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "bar",
         "cocktail_bar",
@@ -794,6 +920,8 @@
       ],
       "primaryType": "bar",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -811,6 +939,8 @@
         "latitude": 40.658676899999996,
         "longitude": -73.7953211
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "american_restaurant",
         "airport",
@@ -820,6 +950,8 @@
       ],
       "primaryType": "american_restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -837,6 +969,8 @@
         "latitude": 40.6433507,
         "longitude": -73.7889689
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "attractions_and_activities",
         "airport",
@@ -844,6 +978,8 @@
       ],
       "primaryType": "attractions_and_activities",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -861,6 +997,8 @@
         "latitude": 40.658676899999996,
         "longitude": -73.7953211
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "restaurant",
         "airport",
@@ -869,6 +1007,8 @@
       ],
       "primaryType": "restaurant",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     },
@@ -886,12 +1026,16 @@
         "latitude": 40.6446124,
         "longitude": -73.7797278
       },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
         "transportation_service"
       ],
       "primaryType": "airport",
       "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
       "website": null,
       "phone": null
     }

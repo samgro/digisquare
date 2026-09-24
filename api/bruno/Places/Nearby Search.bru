@@ -18,9 +18,12 @@ params:query {
 
 docs {
   Nearby places around San Francisco from the `places` table: the twenty
-  nearest, followed by large venues (parks, airports, stadiums...) within at
-  least 2 km that were not already listed. Empty until Overture data for the
-  area has been imported (see SETUP.md) or someone has created a venue there.
+  nearest, then venues whose recorded grounds contain the point (each with
+  `extent` and `distanceMeters: 0`), then large venues by category within
+  2 km. `coverage` reports whether the area is loaded: `ready`, `importing`
+  (with `estimatedSecondsRemaining`), `missing` or `failed`. Anonymous
+  requests never trigger a fetch; send the bearer token to have an uncovered
+  area fetched, and to see your private venues.
 
   `accuracy` is the phone's horizontal accuracy in meters; above 1000 the
   nearest-first search is skipped and only large venues are returned.

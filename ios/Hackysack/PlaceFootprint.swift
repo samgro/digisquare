@@ -38,20 +38,29 @@ nonisolated enum PlaceFootprintClass: Sendable {
 /// The physical extent of a place, used to turn "distance to the pin" into
 /// "distance to the venue".
 ///
-/// Overture places are points, so the extent is a guess from the category:
-/// every airport is modeled as a 1.5 km disc, every park as a 150 m one. That
-/// finds the airport from a terminal gate, but it also means a regional
-/// airfield's disc covers the town next to it, and a city park the size of
-/// Golden Gate Park is treated as a neighborhood one. Recording real extents
-/// (Overture's base theme has the polygons) is the way to do better.
+/// A place with recorded grounds (a polygon from Overture's base theme:
+/// airports, parks, campuses, stadium grounds) is measured against them:
+/// zero inside, else the distance to the nearest edge. Without one the
+/// extent is a guess from the category: every airport is a 1.5 km disc,
+/// every park a 150 m one, which finds an airport from a gate but also lets
+/// a regional airfield's disc cover the town next to it.
 nonisolated struct PlaceFootprint: Sendable {
-    /// Half the venue's extent in meters.
+    /// Half the venue's extent in meters: for recorded grounds, half the
+    /// shorter side of their bounding box.
     let radius: Double
     let kind: PlaceFootprintClass
+    /// The recorded grounds when they are big enough to be informative. Nil
+    /// means the venue is modeled as a disc of `radius` around its pin.
+    let polygon: PlaceExtent?
 
     /// Storefront radius. Generous on purpose: pins are often a shop width
     /// off, and the user is somewhere inside the shop, not at the pin.
     static let pointRadius = 25.0
+
+    /// A polygon only counts as the venue's extent when its shorter half-side
+    /// clears this: a mapped building outline says nothing the storefront
+    /// radius does not, and a park-sized one says a lot.
+    static let informativeExtentHalfSide = 200.0
 
     private struct TableEntry {
         let radius: Double
@@ -162,14 +171,106 @@ nonisolated struct PlaceFootprint: Sendable {
     init(for place: Place) {
         let tabled = Self.lookup(for: place, Self.tableEntry)
             ?? TableEntry(radius: Self.pointRadius, kind: .point)
+
+        if let extent = place.extent, !extent.rings.isEmpty {
+            let box = extent.boundingBox
+            let halfNorth = (box.north - box.south) / 2 * GeoDistance.metersPerDegreeLatitude
+            let centerLatitude = (box.north + box.south) / 2
+            let halfEast = (box.east - box.west) / 2
+                * GeoDistance.metersPerDegreeLongitude(atLatitude: centerLatitude)
+            let shorterHalfSide = min(halfNorth, halfEast)
+            if shorterHalfSide > Self.informativeExtentHalfSide {
+                radius = shorterHalfSide
+                // A big polygon around something the table calls a storefront is
+                // still a big venue; treat it as one whose parts matter.
+                kind = tabled.kind == .point ? .container : tabled.kind
+                polygon = extent
+                return
+            }
+        }
+
         radius = tabled.radius
         kind = tabled.kind
+        polygon = nil
     }
 
     /// Meters from `fix` to the nearest point of the venue; zero inside it.
     /// Nil when the place has no coordinate at all.
     func effectiveDistance(from fix: PlaceLocation, to place: Place) -> Double? {
+        if let polygon {
+            if polygon.contains(fix) { return 0 }
+            return polygon.distanceToEdge(from: fix)
+        }
         guard let location = place.location else { return nil }
         return max(0, GeoDistance.meters(from: fix, to: location) - radius)
+    }
+}
+
+nonisolated extension PlaceExtent {
+    /// Point-in-polygon by ray casting over every ring.
+    func contains(_ point: PlaceLocation) -> Bool {
+        rings.contains { ring in Self.ringContains(ring, point) }
+    }
+
+    private static func ringContains(_ ring: [PlaceLocation], _ point: PlaceLocation) -> Bool {
+        guard ring.count >= 3 else { return false }
+        var inside = false
+        var previous = ring.count - 1
+        for index in ring.indices {
+            let current = ring[index]
+            let earlier = ring[previous]
+            let crosses = (current.latitude > point.latitude) != (earlier.latitude > point.latitude)
+            if crosses {
+                let intersection = (earlier.longitude - current.longitude)
+                    * (point.latitude - current.latitude)
+                    / (earlier.latitude - current.latitude)
+                    + current.longitude
+                if point.longitude < intersection {
+                    inside.toggle()
+                }
+            }
+            previous = index
+        }
+        return inside
+    }
+
+    /// Meters from a point outside the grounds to their nearest edge. Flat
+    /// earth, like the rest of the ranker.
+    func distanceToEdge(from point: PlaceLocation) -> Double {
+        let metersPerDegreeLongitude = GeoDistance.metersPerDegreeLongitude(atLatitude: point.latitude)
+        func planar(_ location: PlaceLocation) -> (x: Double, y: Double) {
+            (
+                (location.longitude - point.longitude) * metersPerDegreeLongitude,
+                (location.latitude - point.latitude) * GeoDistance.metersPerDegreeLatitude
+            )
+        }
+        var nearest = Double.infinity
+        for ring in rings where ring.count >= 2 {
+            var previous = planar(ring[ring.count - 1])
+            for vertex in ring {
+                let current = planar(vertex)
+                nearest = min(nearest, Self.distanceToSegment(from: previous, to: current))
+                previous = current
+            }
+        }
+        return nearest.isFinite ? nearest : 0
+    }
+
+    /// Distance from the origin to the segment between two planar points.
+    private static func distanceToSegment(
+        from start: (x: Double, y: Double),
+        to end: (x: Double, y: Double)
+    ) -> Double {
+        let deltaX = end.x - start.x
+        let deltaY = end.y - start.y
+        let lengthSquared = deltaX * deltaX + deltaY * deltaY
+        var fraction = 0.0
+        if lengthSquared > 0 {
+            fraction = -(start.x * deltaX + start.y * deltaY) / lengthSquared
+            fraction = min(max(fraction, 0), 1)
+        }
+        let closestX = start.x + fraction * deltaX
+        let closestY = start.y + fraction * deltaY
+        return (closestX * closestX + closestY * closestY).squareRoot()
     }
 }

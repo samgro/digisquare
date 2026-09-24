@@ -104,8 +104,10 @@ checkins.post("/", async (context) => {
   }
 
   try {
-    const place = await findPlaceById(parsed.data.placeId);
-    if (!place) {
+    // Looked up as the caller, so a stranger's private venue and a place
+    // Overture has since dropped are both "not found".
+    const place = await findPlaceById(parsed.data.placeId, context.get("userId"));
+    if (!place || place.retiredAt !== null) {
       return context.json({ error: "Place not found" }, 404);
     }
 
