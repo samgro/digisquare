@@ -20,12 +20,12 @@ function userRow(overrides: Record<string, unknown> = {}) {
     id: USER_ID,
     email: "someone@example.com",
     emailVerifiedAt: null,
-    passwordHash: null,
     appleUserId: null,
     appleEmail: null,
     name: "Someone",
     bio: null,
     avatarKey: null,
+    isTestUser: false,
     createdAt: new Date("2026-01-01T00:00:00.000Z"),
     updatedAt: new Date("2026-01-01T00:00:00.000Z"),
     ...overrides,
@@ -61,74 +61,6 @@ function post(path: string, body: unknown) {
 
 beforeEach(() => {
   controls.reset();
-});
-
-describe("POST /login", () => {
-  // The two failure branches must be indistinguishable. Different wording for
-  // "no such user" hands an attacker a list of registered addresses.
-  it("answers an unknown email and a wrong password identically", async () => {
-    controls.queue(UNDER_LIMIT, UNDER_LIMIT, []); // both limits, then no user
-    const unknownEmail = await post("/login", {
-      email: "nobody@example.com",
-      password: "some-password",
-    });
-    const unknownBody = await unknownEmail.text();
-
-    controls.reset();
-    // A real account whose password will not verify.
-    controls.queue(UNDER_LIMIT, UNDER_LIMIT, [
-      userRow({ passwordHash: "$argon2id$v=19$m=19456,t=2,p=1$c2FsdHNhbHQ$aGFzaA" }),
-    ]);
-    const wrongPassword = await post("/login", {
-      email: "someone@example.com",
-      password: "wrong-password",
-    });
-
-    expect(unknownEmail.status).toBe(401);
-    expect(wrongPassword.status).toBe(401);
-    expect(unknownBody).toBe(await wrongPassword.text());
-    expect(JSON.parse(unknownBody)).toEqual({ error: "Incorrect email or password" });
-  });
-
-  // An Apple-only account has no password to check, and must not be
-  // distinguishable from an address that was never registered.
-  it("answers an Apple-only account the same way", async () => {
-    controls.queue(UNDER_LIMIT, UNDER_LIMIT, [
-      userRow({ passwordHash: null, appleUserId: "001234.apple" }),
-    ]);
-    const response = await post("/login", {
-      email: "someone@example.com",
-      password: "some-password",
-    });
-
-    expect(response.status).toBe(401);
-    expect(await response.json()).toEqual({ error: "Incorrect email or password" });
-  });
-
-  it("rate limits before looking the user up", async () => {
-    controls.queue([{ attemptCount: 99 }], [{ attemptCount: 99 }]);
-    const response = await post("/login", {
-      email: "someone@example.com",
-      password: "some-password",
-    });
-
-    expect(response.status).toBe(429);
-    expect(response.headers.get("Retry-After")).toBeTruthy();
-    // Only the two rate-limit upserts ran: the users table was never touched.
-    expect(controls.operations).toEqual(["insert", "insert"]);
-  });
-
-  it("rejects a malformed body before doing any work", async () => {
-    const response = await auth.request("/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: "not json",
-    });
-
-    expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({ error: "Invalid JSON body" });
-    expect(controls.operations).toEqual([]);
-  });
 });
 
 describe("POST /refresh", () => {

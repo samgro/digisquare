@@ -5,6 +5,7 @@ import {
   integer,
   doublePrecision,
   timestamp,
+  boolean,
   index,
   uniqueIndex,
   check,
@@ -24,7 +25,6 @@ export const users = pgTable(
     // "fix" this by making the column NOT NULL.
     email: text("email"),
     emailVerifiedAt: timestamp("email_verified_at", { withTimezone: true }),
-    passwordHash: text("password_hash"),
 
     // Apple's stable `sub` claim. The only identifier we ever match an Apple
     // sign-in on — never the email, which the user can hide or change.
@@ -42,6 +42,10 @@ export const users = pgTable(
     // public avatarUrl instead.
     avatarKey: text("avatar_key"),
 
+    // Seeded or created through /auth/test-users, which only exists when
+    // ENABLE_TEST_USERS is set. Test users have no credential of their own.
+    isTestUser: boolean("is_test_user").notNull().default(false),
+
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
@@ -53,7 +57,7 @@ export const users = pgTable(
     uniqueIndex("users_apple_user_id_unique_idx").on(table.appleUserId),
     check(
       "users_has_credential_check",
-      sql`${table.passwordHash} is not null or ${table.appleUserId} is not null`,
+      sql`${table.appleUserId} is not null or ${table.isTestUser}`,
     ),
   ],
 );

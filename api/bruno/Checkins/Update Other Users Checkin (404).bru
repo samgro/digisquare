@@ -21,9 +21,9 @@ body:json {
 }
 
 docs {
-  Ownership check. To run it: create a checkin as one account, then Register a
-  SECOND account (which recaptures accessToken) and send this against the
-  first account's checkinId.
+  Ownership check. To run it: create a checkin as one account, then run Create
+  Test User (which recaptures accessToken) and send this against the first
+  account's checkinId.
 
   Expect 404 {"error": "Checkin not found"} — deliberately NOT 403.
 

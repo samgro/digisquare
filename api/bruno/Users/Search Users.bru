@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/users/search?q=bruno
+  url: {{baseUrl}}/users/search?q=test
   body: none
   auth: bearer
 }
@@ -24,10 +24,10 @@ docs {
   { results: [...] }, each a public profile plus friendshipStatus ("none",
   "friends", "outgoingRequest" or "incomingRequest") and friendRequestId.
 
-  Register a second account first (change testEmail, Register, Update Profile
-  with a different name, then switch back) so there is someone to find. The
-  post-response var captures the first result as {{friendUserId}} for the
-  Friends requests.
+  Search for "test" to find the seeded test users. The post-response var
+  captures the first result as {{friendUserId}} for the Friends requests.
+  The seeded test users are already friends with each other, so use Create
+  Test User and Update Profile to make someone new to send a request to.
 
   % and _ are matched literally, not as wildcards.
 }

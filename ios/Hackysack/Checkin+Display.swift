@@ -6,9 +6,16 @@
 import Foundation
 
 enum RelativeDay {
-    /// "Today", "Yesterday", a weekday name for the rest of the past week, or a
-    /// numeric date beyond that.
-    static func label(for date: Date, now: Date = Date(), calendar: Calendar = .current) -> String {
+    /// "Today", "Yesterday", a weekday name for the rest of the past week, or
+    /// "Tuesday, Sep 12" beyond that, with the year added ("Tuesday, Sep 12,
+    /// 2025") only when it isn't the current one. Without the weekday, dates
+    /// beyond the past week read "Sep 12" or "Sep 12, 2025".
+    static func label(
+        for date: Date,
+        includesWeekday: Bool = true,
+        now: Date = Date(),
+        calendar: Calendar = .current
+    ) -> String {
         if calendar.isDateInToday(date) { return "Today" }
         if calendar.isDateInYesterday(date) { return "Yesterday" }
         let startOfDay = calendar.startOfDay(for: date)
@@ -17,7 +24,12 @@ enum RelativeDay {
            daysAgo > 0, daysAgo < 7 {
             return date.formatted(.dateTime.weekday(.wide))
         }
-        return date.formatted(date: .numeric, time: .omitted)
+        let monthAndDay = Date.FormatStyle.dateTime.month(.abbreviated).day()
+        let dayFormat = includesWeekday ? monthAndDay.weekday(.wide) : monthAndDay
+        if calendar.isDate(date, equalTo: now, toGranularity: .year) {
+            return date.formatted(dayFormat)
+        }
+        return date.formatted(dayFormat.year())
     }
 }
 
@@ -33,11 +45,16 @@ extension Checkin {
         return trimmed.isEmpty ? nil : trimmed
     }
 
-    /// "7:12 PM" today, "Yesterday 7:12 PM", "Thursday 7:12 PM" within the past
-    /// week, or "8/12/2026 7:12 PM" further back.
+    /// Just the time, "7:12 PM", for rows that sit under a day header.
     var formattedCheckinTime: String {
-        let time = createdAt.formatted(date: .omitted, time: .shortened)
-        guard !Calendar.current.isDateInToday(createdAt) else { return time }
-        return "\(RelativeDay.label(for: createdAt)) \(time)"
+        createdAt.formatted(date: .omitted, time: .shortened)
+    }
+
+    /// "Today · 7:12 PM", "Yesterday · 7:12 PM", "Thursday · 7:12 PM" within
+    /// the past week, or "Sep 12 · 7:12 PM" further back, for rows with no day
+    /// header above them.
+    var formattedCheckinDateAndTime: String {
+        let day = RelativeDay.label(for: createdAt, includesWeekday: false)
+        return "\(day) · \(formattedCheckinTime)"
     }
 }

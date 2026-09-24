@@ -57,7 +57,7 @@ export async function verifyAccessToken(
  * Refresh tokens are opaque, not JWTs: they must be revocable, and a JWT is
  * not. 256 bits of entropy means there is no offline-guessing surface, so a
  * plain SHA-256 is the right store — it also has to be an indexed lookup on
- * every refresh, which argon2 could not be.
+ * every refresh, which a slow password hash could not be.
  */
 export function createRefreshToken(): { token: string; tokenHash: string } {
   const token = randomBytes(32).toString("base64url");

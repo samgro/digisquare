@@ -29,6 +29,13 @@
       "when": 1790103747302,
       "tag": "0003_add_friendships",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790268449455,
+      "tag": "0004_remove_passwords_add_test_users",
+      "breakpoints": true
     }
   ]
 }

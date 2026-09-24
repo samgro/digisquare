@@ -126,6 +126,13 @@ interface AutocompleteParams {
   radius: number;
 }
 
+interface SearchTextParams {
+  query: string;
+  latitude: number;
+  longitude: number;
+  radius: number;
+}
+
 interface AutocompleteSuggestion {
   placePrediction?: { placeId?: string };
 }
@@ -275,6 +282,29 @@ export async function searchNearbyCandidates({
   }
 
   return mergeNearbyResults(resultLists);
+}
+
+/**
+ * Whole-token text search, biased toward a point. Used by the test user seed
+ * script to find real branches of a chain; the /places route goes through
+ * searchAutocomplete instead, because searchText cannot match prefixes.
+ */
+export function searchText({
+  query,
+  latitude,
+  longitude,
+  radius,
+}: SearchTextParams): Promise<GooglePlace[]> {
+  return postPlaces("searchText", {
+    textQuery: query,
+    maxResultCount: 5,
+    locationBias: {
+      circle: {
+        center: { latitude, longitude },
+        radius,
+      },
+    },
+  });
 }
 
 export function fetchPlaceDetails(placeIdentifier: string): Promise<GooglePlace> {

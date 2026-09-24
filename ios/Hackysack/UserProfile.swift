@@ -17,7 +17,6 @@ nonisolated struct UserProfile: Codable, Identifiable, Equatable, Sendable {
     let name: String?
     let bio: String?
     let avatarURL: URL?
-    let hasPassword: Bool
     let hasAppleSignIn: Bool
     let createdAt: Date
 
@@ -26,18 +25,15 @@ nonisolated struct UserProfile: Codable, Identifiable, Equatable, Sendable {
         // Spelled avatarURL in Swift per the API Design Guidelines, which
         // uppercase acronyms; the wire format stays camelCase.
         case avatarURL = "avatarUrl"
-        case hasPassword, hasAppleSignIn, createdAt
+        case hasAppleSignIn, createdAt
     }
 
     var initials: String { PersonName.initials(for: name) }
 
+    /// Apple is the only real sign-in method, so an account without it is a
+    /// test user from the debug build's picker.
     var signInMethodDescription: String {
-        switch (hasAppleSignIn, hasPassword) {
-        case (true, true): return "Apple and email"
-        case (true, false): return "Apple"
-        case (false, true): return "Email & password"
-        case (false, false): return "None"
-        }
+        hasAppleSignIn ? "Apple" : "Test user"
     }
 }
 
@@ -56,7 +52,7 @@ struct AuthResponse: Decodable, Sendable {
     let accessTokenExpiresIn: Int
     let refreshToken: String
     let refreshTokenExpiresAt: Date
-    /// Set when Sign in with Apple hit an email already held by a password
+    /// Set when Sign in with Apple hit an email already held by another
     /// account, so a separate account was created rather than linking them.
     let emailConflict: Bool?
 }

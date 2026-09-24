@@ -1,0 +1,17 @@
+meta {
+  name: List Test Users
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/auth/test-users
+  body: none
+  auth: none
+}
+
+docs {
+  Every test user, oldest first, as `{ results: [{ id, name, avatarUrl }] }`.
+  The four seeded users come first; any made with Create Test User follow,
+  some possibly with a null name. Needs ENABLE_TEST_USERS=true on the server.
+}

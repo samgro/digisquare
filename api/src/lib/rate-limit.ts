@@ -10,9 +10,6 @@ export interface RateLimitRule {
 }
 
 export const RATE_LIMIT_RULES = {
-  loginByIpAddress: { windowSeconds: 900, maxAttempts: 20 },
-  loginByEmail: { windowSeconds: 900, maxAttempts: 5 },
-  registerByIpAddress: { windowSeconds: 3600, maxAttempts: 5 },
   appleByIpAddress: { windowSeconds: 900, maxAttempts: 30 },
   refreshByIpAddress: { windowSeconds: 900, maxAttempts: 60 },
 } as const satisfies Record<string, RateLimitRule>;
@@ -26,7 +23,7 @@ export interface RateLimitResult {
  * Fixed-window counter, incremented with a single atomic upsert so concurrent
  * requests cannot race past the limit.
  *
- * The identifier is hashed before it becomes part of the key so that email
+ * The identifier is hashed before it becomes part of the key so that IP
  * addresses are not stored in plaintext in a table that exists purely for
  * counting.
  */
@@ -95,8 +92,8 @@ export function pruneRateLimitsOccasionally(): void {
 
 /**
  * Note this is only as trustworthy as the proxy in front of us: a client can
- * put anything in x-forwarded-for. The per-email bucket is the one doing real
- * work against a brute-force attempt; the per-IP bucket is noise reduction.
+ * put anything in x-forwarded-for, so the per-IP buckets are noise reduction
+ * rather than a hard guarantee.
  */
 export function clientIpAddress(context: Context): string {
   const forwardedFor = context.req.header("x-forwarded-for");

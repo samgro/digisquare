@@ -6,7 +6,7 @@
 import SwiftUI
 
 /// The content shared by every place a checkin is shown: the place name as
-/// the title, its category/neighborhood/city, and an exact time — used by
+/// the title, its category/neighborhood/city, and when it happened — used by
 /// both the timeline and friends feed so the two stay visually identical.
 struct CheckinDetailsRow: View {
     let checkin: Checkin
@@ -15,6 +15,8 @@ struct CheckinDetailsRow: View {
     var personName: String? = nil
     /// Makes the byline a button, for opening that person's profile.
     var onPersonTap: (() -> Void)? = nil
+    /// Off on the timeline, where day headers already say the date.
+    var showsDate = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -46,7 +48,7 @@ struct CheckinDetailsRow: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text(checkin.formattedCheckinTime)
+            Text(showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
 
@@ -80,8 +82,8 @@ struct CheckinDetailsRow: View {
 
 #Preview("Timeline") {
     List {
-        CheckinDetailsRow(checkin: .preview())
-        CheckinDetailsRow(checkin: .preview(message: nil, primaryType: "park"))
+        CheckinDetailsRow(checkin: .preview(), showsDate: false)
+        CheckinDetailsRow(checkin: .preview(message: nil, primaryType: "park"), showsDate: false)
     }
     .listStyle(.plain)
 }

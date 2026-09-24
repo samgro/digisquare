@@ -9,84 +9,71 @@ import SwiftUI
 struct WelcomeView: View {
     @Environment(AuthManager.self) private var authManager
 
-    @State private var path: [AuthRoute] = []
     @State private var currentNonce: String?
     @State private var isAuthenticating = false
     @State private var errorMessage: String?
+    #if DEBUG
+    @State private var isShowingTestUsers = false
+    #endif
 
     var body: some View {
-        NavigationStack(path: $path) {
-            VStack(spacing: HackysackSpacing.large) {
-                Spacer()
+        VStack(spacing: HackysackSpacing.large) {
+            Spacer()
 
-                VStack(spacing: HackysackSpacing.medium) {
-                    Image(systemName: "mappin.and.ellipse")
-                        .font(.system(size: 56, weight: .medium))
-                        .foregroundStyle(Color.accentColor)
-                    Text(AppInfo.name)
-                        .font(.largeTitle.bold())
-                    Text("Check in. Share where you've been.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-
-                Spacer()
-
-                if let errorMessage {
-                    FormErrorBanner(message: errorMessage)
-                }
-
-                VStack(spacing: HackysackSpacing.medium) {
-                    // Apple leads deliberately. There is no password reset
-                    // flow, so every account created with a password is one
-                    // forgotten password away from being unrecoverable —
-                    // steering people here is the cheapest mitigation we have.
-                    SignInWithAppleButton(.signIn) { request in
-                        let nonce = AppleSignInSupport.randomNonce()
-                        currentNonce = nonce
-                        request.requestedScopes = [.fullName, .email]
-                        request.nonce = AppleSignInSupport.sha256Hexadecimal(nonce)
-                    } onCompletion: { result in
-                        handleAppleCompletion(result)
-                    }
-                    .signInWithAppleButtonStyle(.black)
-                    .frame(height: HackysackSize.controlHeight)
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: HackysackRadius.control, style: .continuous)
-                    )
-                    .disabled(isAuthenticating)
-
-                    Button("Continue with Email") {
-                        path.append(.signIn)
-                    }
-                    .buttonStyle(SecondaryButtonStyle())
-                    .disabled(isAuthenticating)
-
-                    HStack(spacing: HackysackSpacing.small / 2) {
-                        Text("New here?")
-                            .foregroundStyle(.secondary)
-                        Button("Create an account") {
-                            path.append(.signUp)
-                        }
-                    }
-                    .font(.footnote)
-                    .disabled(isAuthenticating)
-                }
-
-                if isAuthenticating {
-                    ProgressView()
-                }
+            VStack(spacing: HackysackSpacing.medium) {
+                Image(systemName: "mappin.and.ellipse")
+                    .font(.system(size: 56, weight: .medium))
+                    .foregroundStyle(Color.accentColor)
+                Text(AppInfo.name)
+                    .font(.largeTitle.bold())
+                Text("Check in. Share where you've been.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
             }
-            .padding(.horizontal, HackysackSpacing.large)
-            .padding(.bottom, HackysackSpacing.extraLarge)
-            .navigationDestination(for: AuthRoute.self) { route in
-                switch route {
-                case .signIn: SignInView(path: $path)
-                case .signUp: SignUpView(path: $path)
+
+            Spacer()
+
+            if let errorMessage {
+                FormErrorBanner(message: errorMessage)
+            }
+
+            VStack(spacing: HackysackSpacing.medium) {
+                SignInWithAppleButton(.signIn) { request in
+                    let nonce = AppleSignInSupport.randomNonce()
+                    currentNonce = nonce
+                    request.requestedScopes = [.fullName, .email]
+                    request.nonce = AppleSignInSupport.sha256Hexadecimal(nonce)
+                } onCompletion: { result in
+                    handleAppleCompletion(result)
                 }
+                .signInWithAppleButtonStyle(.black)
+                .frame(height: HackysackSize.controlHeight)
+                .clipShape(
+                    RoundedRectangle(cornerRadius: HackysackRadius.control, style: .continuous)
+                )
+                .disabled(isAuthenticating)
+
+                #if DEBUG
+                Button("Log In as Test User") {
+                    isShowingTestUsers = true
+                }
+                .buttonStyle(SecondaryButtonStyle())
+                .disabled(isAuthenticating)
+                #endif
+            }
+
+            if isAuthenticating {
+                ProgressView()
             }
         }
+        .padding(.horizontal, HackysackSpacing.large)
+        .padding(.bottom, HackysackSpacing.extraLarge)
+        #if DEBUG
+        .fullScreenCover(isPresented: $isShowingTestUsers) {
+            TestUsersView()
+        }
+        #endif
     }
 
     private func handleAppleCompletion(
@@ -119,8 +106,7 @@ struct WelcomeView: View {
                     if emailConflict {
                         errorMessage = """
                             We created a new account for you. An account with this \
-                            email address already exists and is signed in with a \
-                            password.
+                            email address already exists.
                             """
                     }
                 } catch {
@@ -139,11 +125,6 @@ struct WelcomeView: View {
             errorMessage = "Couldn't sign in with Apple."
         }
     }
-}
-
-enum AuthRoute: Hashable {
-    case signIn
-    case signUp
 }
 
 #Preview {

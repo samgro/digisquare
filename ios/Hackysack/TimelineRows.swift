@@ -152,7 +152,7 @@ struct TimelineEntryRow: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                CheckinDetailsRow(checkin: entry.checkin)
+                CheckinDetailsRow(checkin: entry.checkin, showsDate: false)
                 statusLine
             }
             .padding(.vertical, TimelineMetrics.iconTopInset)

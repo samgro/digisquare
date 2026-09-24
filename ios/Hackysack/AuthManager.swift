@@ -95,47 +95,6 @@ final class AuthManager {
 
     // MARK: - Sign in
 
-    func register(email: String, password: String, name: String) async throws {
-        struct RegisterRequest: Encodable {
-            let email: String
-            let password: String
-            let name: String?
-        }
-
-        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        let response: AuthResponse = try await APIClient.shared.request(
-            method: "POST",
-            path: "auth/register",
-            body: RegisterRequest(
-                email: email.trimmingCharacters(in: .whitespacesAndNewlines),
-                // Deliberately not trimmed: leading and trailing spaces are
-                // part of the password.
-                password: password,
-                name: trimmedName.isEmpty ? nil : trimmedName
-            ),
-            authenticated: false
-        )
-        await adopt(response)
-    }
-
-    func signIn(email: String, password: String) async throws {
-        struct LoginRequest: Encodable {
-            let email: String
-            let password: String
-        }
-
-        let response: AuthResponse = try await APIClient.shared.request(
-            method: "POST",
-            path: "auth/login",
-            body: LoginRequest(
-                email: email.trimmingCharacters(in: .whitespacesAndNewlines),
-                password: password
-            ),
-            authenticated: false
-        )
-        await adopt(response)
-    }
-
     /// - Parameter nonce: the RAW nonce. iOS sends Apple the SHA-256 of it;
     ///   the server hashes this and compares against what Apple echoed back.
     func signInWithApple(
@@ -177,6 +136,44 @@ final class AuthManager {
         await adopt(response)
         return response.emailConflict == true
     }
+
+    #if DEBUG
+    // MARK: - Test users
+
+    /// Every test user, oldest first. The API only serves these when
+    /// ENABLE_TEST_USERS is set.
+    func fetchTestUsers() async throws -> [UserSummary] {
+        struct TestUsersResponse: Decodable {
+            let results: [UserSummary]
+        }
+
+        let response: TestUsersResponse = try await APIClient.shared.request(
+            path: "auth/test-users",
+            authenticated: false
+        )
+        return response.results
+    }
+
+    func signInAsTestUser(id: String) async throws {
+        let response: AuthResponse = try await APIClient.shared.request(
+            method: "POST",
+            path: "auth/test-users/\(id)/session",
+            authenticated: false
+        )
+        await adopt(response)
+    }
+
+    /// Creates a test user with no name, which lands in NameSetupView just as
+    /// a brand-new Apple account does.
+    func createTestUser() async throws {
+        let response: AuthResponse = try await APIClient.shared.request(
+            method: "POST",
+            path: "auth/test-users",
+            authenticated: false
+        )
+        await adopt(response)
+    }
+    #endif
 
     private func adopt(_ response: AuthResponse) async {
         await sessionStore.adopt(

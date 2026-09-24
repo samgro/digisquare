@@ -1,7 +1,7 @@
 meta {
   name: Refresh Unknown Token (401)
   type: http
-  seq: 12
+  seq: 8
 }
 
 post {
@@ -20,7 +20,7 @@ docs {
   A token that was never issued. Expect 401 {"error": "Invalid refresh token"}.
 
   The important half is the NON-effect: this must revoke nothing. Check that
-  your live session still works by running Refresh (seq 3) afterwards — it
+  your live session still works by running Refresh (seq 4) afterwards — it
   should still return 200.
 
   If posting garbage could revoke sessions, anyone could sign a user out by
