@@ -1,0 +1,2304 @@
+{
+  "schemaVersion": 1,
+  "name": "jfk-terminal-8",
+  "description": "At a bar in JFK Terminal 8, 1.4 km from the airport's pin. An untyped popularity search from here returns rental counters and hotels but never the airport; the large-venue search finds it.",
+  "recordedAt": "2026-09-24T00:12:54.869Z",
+  "timeZone": "America/New_York",
+  "fix": {
+    "latitude": 40.649158,
+    "longitude": -73.795435,
+    "horizontalAccuracy": 40
+  },
+  "google": {
+    "largeVenues": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 40.649158,
+              "longitude": -73.795435
+            },
+            "radius": 2000
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJkzVU9vVmwokRIMb4ksb4VHU",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6474756,
+              "longitude": -73.77808519999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.645974669708494,
+                "longitude": -73.7793678302915
+              },
+              "high": {
+                "latitude": 40.64867263029149,
+                "longitude": -73.7766698697085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 320,
+            "displayName": {
+              "text": "Terminal 5 Rooftop And Outdoor Lounge",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJIxOKSGBnwokRzsVdH5d_iSY",
+            "types": [
+              "lounge_bar",
+              "night_club",
+              "bar",
+              "airport",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "3-03 30th St, Queens, NY 10001, USA",
+            "location": {
+              "latitude": 40.6374029,
+              "longitude": -73.78107
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6374029,
+                "longitude": -73.7849188
+              },
+              "high": {
+                "latitude": 40.6425695,
+                "longitude": -73.7809491
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 334,
+            "displayName": {
+              "text": "Minute Suites JFK",
+              "languageCode": "en"
+            },
+            "primaryType": "lounge_bar"
+          },
+          {
+            "id": "ChIJ_eQYpFdmwokRfCYi6Mw-7v0",
+            "types": [
+              "mexican_restaurant",
+              "airport",
+              "transportation_service",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11445, USA",
+            "location": {
+              "latitude": 40.658676899999996,
+              "longitude": -73.7953211
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6573275197085,
+                "longitude": -73.79662988029152
+              },
+              "high": {
+                "latitude": 40.660025480291495,
+                "longitude": -73.7939319197085
+              }
+            },
+            "rating": 2.5,
+            "userRatingCount": 351,
+            "displayName": {
+              "text": "Revolucion",
+              "languageCode": "en"
+            },
+            "primaryType": "mexican_restaurant"
+          },
+          {
+            "id": "ChIJ_eQYpFdmwokRLUz4fI01hQk",
+            "types": [
+              "italian_restaurant",
+              "airport",
+              "transportation_service",
+              "european_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, 1 Terminal 5, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.645990399999995,
+              "longitude": -73.77553569999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.644565669708506,
+                "longitude": -73.7771383802915
+              },
+              "high": {
+                "latitude": 40.647263630291505,
+                "longitude": -73.7744404197085
+              }
+            },
+            "rating": 2.9,
+            "userRatingCount": 365,
+            "displayName": {
+              "text": "AeroNuova",
+              "languageCode": "en"
+            },
+            "primaryType": "italian_restaurant"
+          },
+          {
+            "id": "ChIJVzXoFHZnwokRrwIbg5QY7yg",
+            "types": [
+              "pizza_restaurant",
+              "airport",
+              "transportation_service",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, Terminal 5, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6456012,
+              "longitude": -73.77550169999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.644365569708505,
+                "longitude": -73.77747033029151
+              },
+              "high": {
+                "latitude": 40.647063530291504,
+                "longitude": -73.7747723697085
+              }
+            },
+            "rating": 1.5,
+            "userRatingCount": 248,
+            "displayName": {
+              "text": "Artichoke",
+              "languageCode": "en"
+            },
+            "primaryType": "pizza_restaurant"
+          },
+          {
+            "id": "ChIJQ26SwllmwokRFhWlPHU3kMw",
+            "types": [
+              "food_court",
+              "convenience_store",
+              "airport",
+              "transportation_service",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "& S Cargo, Terminal 5, Airport, JFK Expy Rd, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6460102,
+              "longitude": -73.77498109999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.644584419708494,
+                "longitude": -73.7772117302915
+              },
+              "high": {
+                "latitude": 40.64728238029149,
+                "longitude": -73.77451376970849
+              }
+            },
+            "rating": 1.8,
+            "userRatingCount": 171,
+            "displayName": {
+              "text": "CIBO Express Gourmet Market",
+              "languageCode": "en"
+            },
+            "primaryType": "food_court"
+          },
+          {
+            "id": "ChIJISmZZZNnwokRxUh2WRCjd7Q",
+            "types": [
+              "hamburger_restaurant",
+              "fast_food_restaurant",
+              "american_restaurant",
+              "airport",
+              "transportation_service",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, JFK Terminal 5, 6 Central Terminal Area, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6453681,
+              "longitude": -73.7754921
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6441026697085,
+                "longitude": -73.7774545802915
+              },
+              "high": {
+                "latitude": 40.646800630291494,
+                "longitude": -73.7747566197085
+              }
+            },
+            "rating": 1.4,
+            "userRatingCount": 233,
+            "displayName": {
+              "text": "Custom Burger",
+              "languageCode": "en"
+            },
+            "primaryType": "hamburger_restaurant"
+          },
+          {
+            "id": "ChIJ2RLF0nBnwokRavpfzLG6KTw",
+            "types": [
+              "american_restaurant",
+              "airport",
+              "transportation_service",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, Terminal 5, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6458145,
+              "longitude": -73.77529059999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.64445656970851,
+                "longitude": -73.7773634802915
+              },
+              "high": {
+                "latitude": 40.64715453029151,
+                "longitude": -73.77466551970849
+              }
+            },
+            "rating": 2,
+            "userRatingCount": 112,
+            "displayName": {
+              "text": "Loft",
+              "languageCode": "en"
+            },
+            "primaryType": "american_restaurant"
+          },
+          {
+            "id": "ChIJCVSO9lpmwokRzDjZRGMQ-BI",
+            "types": [
+              "dog_park",
+              "park",
+              "pet_care",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "4 Central Terminal Area, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.639574599999996,
+              "longitude": -73.78118909999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.63957459999999,
+                "longitude": -73.7849188
+              },
+              "high": {
+                "latitude": 40.6425695,
+                "longitude": -73.78118909999999
+              }
+            },
+            "rating": 3.8,
+            "userRatingCount": 15,
+            "displayName": {
+              "text": "Pet Relief Station",
+              "languageCode": "en"
+            },
+            "primaryType": "pet_care"
+          },
+          {
+            "id": "ChIJy-QevoVnwokRa6BK2XYjlhM",
+            "types": [
+              "bakery",
+              "coffee_shop",
+              "cafe",
+              "airport",
+              "transportation_service",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, Terminal 5, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6448368,
+              "longitude": -73.776309
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6434623697085,
+                "longitude": -73.7776295802915
+              },
+              "high": {
+                "latitude": 40.6461603302915,
+                "longitude": -73.7749316197085
+              }
+            },
+            "rating": 1,
+            "userRatingCount": 6,
+            "displayName": {
+              "text": "Horizon Bakery Café",
+              "languageCode": "en"
+            },
+            "primaryType": "bakery"
+          },
+          {
+            "id": "ChIJ09nTyWJnwokRTmefObCVc2I",
+            "types": [
+              "tapas_restaurant",
+              "spanish_restaurant",
+              "bar",
+              "airport",
+              "transportation_service",
+              "european_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11446, USA",
+            "location": {
+              "latitude": 40.658676899999996,
+              "longitude": -73.7953211
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6573275197085,
+                "longitude": -73.79662988029152
+              },
+              "high": {
+                "latitude": 40.660025480291495,
+                "longitude": -73.7939319197085
+              }
+            },
+            "rating": 1.8,
+            "userRatingCount": 13,
+            "displayName": {
+              "text": "Piquillo",
+              "languageCode": "en"
+            },
+            "primaryType": "tapas_restaurant"
+          },
+          {
+            "id": "ChIJ2ZDaEflnwokR-eZULzByX10",
+            "types": [
+              "bar",
+              "cocktail_bar",
+              "cafe",
+              "airport",
+              "transportation_service",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11443, USA",
+            "location": {
+              "latitude": 40.658676899999996,
+              "longitude": -73.7953211
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6573275197085,
+                "longitude": -73.79662988029152
+              },
+              "high": {
+                "latitude": 40.660025480291495,
+                "longitude": -73.7939319197085
+              }
+            },
+            "displayName": {
+              "text": "Re:Vive Bars",
+              "languageCode": "en"
+            },
+            "primaryType": "bar"
+          },
+          {
+            "id": "ChIJt1z_ZVlnwokR132VrboOnVo",
+            "types": [
+              "american_restaurant",
+              "airport",
+              "transportation_service",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11469, USA",
+            "location": {
+              "latitude": 40.658676899999996,
+              "longitude": -73.7953211
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6573275197085,
+                "longitude": -73.79662988029152
+              },
+              "high": {
+                "latitude": 40.660025480291495,
+                "longitude": -73.7939319197085
+              }
+            },
+            "displayName": {
+              "text": "Philly Cheesesteak",
+              "languageCode": "en"
+            },
+            "primaryType": "american_restaurant"
+          },
+          {
+            "id": "ChIJiX3M4cRnwokR3Dg2mZK1IJE",
+            "types": [
+              "tourist_attraction",
+              "international_airport",
+              "airport",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Room 126.001, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6433507,
+              "longitude": -73.7889689
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.64180741970849,
+                "longitude": -73.79075158029151
+              },
+              "high": {
+                "latitude": 40.64450538029149,
+                "longitude": -73.78805361970849
+              }
+            },
+            "displayName": {
+              "text": "Allways",
+              "languageCode": "en"
+            },
+            "primaryType": "tourist_attraction"
+          },
+          {
+            "id": "ChIJmQCWzWRnwokRIdsFqJ1iAOk",
+            "types": [
+              "restaurant",
+              "airport",
+              "transportation_service",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11464, USA",
+            "location": {
+              "latitude": 40.658676899999996,
+              "longitude": -73.7953211
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6573275197085,
+                "longitude": -73.79662988029152
+              },
+              "high": {
+                "latitude": 40.660025480291495,
+                "longitude": -73.7939319197085
+              }
+            },
+            "displayName": {
+              "text": "Carribean Kitchen",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJR0lA1VBmwokR8BGfSBOyT-w",
+            "types": [
+              "international_airport",
+              "airport",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Jamaica, NY 11430, USA",
+            "location": {
+              "latitude": 40.6446124,
+              "longitude": -73.7797278
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6344475,
+                "longitude": -73.8019194
+              },
+              "high": {
+                "latitude": 40.652985799999996,
+                "longitude": -73.7657241
+              }
+            },
+            "rating": 3.9,
+            "userRatingCount": 57205,
+            "displayName": {
+              "text": "John F. Kennedy International Airport",
+              "languageCode": "en"
+            },
+            "primaryType": "international_airport"
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 40.649158,
+              "longitude": -73.795435
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJuRkBjjJnwokRcUc1yPwjPpE",
+            "types": [
+              "bar",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, JFK Terminal 8, Concourse C Gate 32, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6491129,
+              "longitude": -73.7953406
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.647768819708496,
+                "longitude": -73.79724663029151
+              },
+              "high": {
+                "latitude": 40.650466780291495,
+                "longitude": -73.79454866970849
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 11,
+            "displayName": {
+              "text": "Dos Toros Tequila Bar",
+              "languageCode": "en"
+            },
+            "primaryType": "bar"
+          },
+          {
+            "id": "ChIJX0ADigxnwokRt2z9pO-_wjM",
+            "types": [
+              "bakery",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, JFK Terminal 8, Concourse C Gate 33, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.649028099999995,
+              "longitude": -73.7951358
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.64768496970849,
+                "longitude": -73.7971448802915
+              },
+              "high": {
+                "latitude": 40.65038293029149,
+                "longitude": -73.79444691970849
+              }
+            },
+            "rating": 3.9,
+            "userRatingCount": 19,
+            "displayName": {
+              "text": "Zaro's Family Bakery",
+              "languageCode": "en"
+            },
+            "primaryType": "bakery"
+          },
+          {
+            "id": "ChIJq6qqlVVmwokRi8u6cirFZO8",
+            "types": [
+              "fast_food_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport Terminal 8, Concourse C Gate 31, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6491654,
+              "longitude": -73.7948385
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6478235697085,
+                "longitude": -73.7969951302915
+              },
+              "high": {
+                "latitude": 40.6505215302915,
+                "longitude": -73.79429716970849
+              }
+            },
+            "rating": 3.9,
+            "userRatingCount": 115,
+            "displayName": {
+              "text": "Dos Toros Taqueria",
+              "languageCode": "en"
+            },
+            "primaryType": "fast_food_restaurant"
+          },
+          {
+            "id": "ChIJFxwf_v9mwokRBYcnpn05D4s",
+            "types": [
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Van Wyck Expy, JFK International Airport, NY 11422, USA",
+            "location": {
+              "latitude": 40.6493803,
+              "longitude": -73.794836
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6480385697085,
+                "longitude": -73.7969922302915
+              },
+              "high": {
+                "latitude": 40.650736530291496,
+                "longitude": -73.79429426970849
+              }
+            },
+            "displayName": {
+              "text": "Hudson News",
+              "languageCode": "en"
+            },
+            "primaryType": "store"
+          },
+          {
+            "id": "ChIJK7VzIitnwokRkDbCREGGMow",
+            "types": [
+              "convenience_store",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "JFK Access Rd, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6494035,
+              "longitude": -73.79483239999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.64801776970851,
+                "longitude": -73.79695698029153
+              },
+              "high": {
+                "latitude": 40.6507157302915,
+                "longitude": -73.7942590197085
+              }
+            },
+            "rating": 3.2,
+            "userRatingCount": 11,
+            "displayName": {
+              "text": "Hudson at Gate 34",
+              "languageCode": "sv"
+            },
+            "primaryType": "convenience_store"
+          },
+          {
+            "id": "ChIJl58K_v9mwokRFVy3uaBW-9A",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.6494384,
+              "longitude": -73.7947657
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6485759197085,
+                "longitude": -73.7964750302915
+              },
+              "high": {
+                "latitude": 40.6512738802915,
+                "longitude": -73.7937770697085
+              }
+            },
+            "displayName": {
+              "text": "Men's Restroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJdyxR_v9mwokRF56ip5WqoGk",
+            "types": [
+              "atm",
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.6493013,
+              "longitude": -73.7946917
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.64795231970851,
+                "longitude": -73.79604068029151
+              },
+              "high": {
+                "latitude": 40.65065028029151,
+                "longitude": -73.79334271970849
+              }
+            },
+            "displayName": {
+              "text": "ATM",
+              "languageCode": "en"
+            },
+            "primaryType": "atm"
+          },
+          {
+            "id": "ChIJtxLR_f9mwokRyCqBCA7r4Ew",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.6494552,
+              "longitude": -73.7946966
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.648602519708504,
+                "longitude": -73.7964132302915
+              },
+              "high": {
+                "latitude": 40.6513004802915,
+                "longitude": -73.79371526970849
+              }
+            },
+            "displayName": {
+              "text": "Women's Restroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJJSap6oNnwokRqmIy3d4EtjI",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Level 3 • Departures/Check-In, JFK Terminal 8 Satellite, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.649766199999995,
+              "longitude": -73.79394359999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6489242197085,
+                "longitude": -73.79566613029151
+              },
+              "high": {
+                "latitude": 40.6516221802915,
+                "longitude": -73.7929681697085
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 13,
+            "displayName": {
+              "text": "Toilets at Gate 36",
+              "languageCode": "sv"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJf8F1lf9mwokRw-SPCcp3TIA",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.6500802,
+              "longitude": -73.79320369999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6492404197085,
+                "longitude": -73.79493063029149
+              },
+              "high": {
+                "latitude": 40.6519383802915,
+                "longitude": -73.79223266970848
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 2,
+            "displayName": {
+              "text": "Restroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJx6gqVBRnwokRM1bMXVUH2yU",
+            "types": [
+              "salad_shop",
+              "cafeteria",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F Kennedy International Airport Located across from gate 40 on the left, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.650059999999996,
+              "longitude": -73.79279
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.649321119708496,
+                "longitude": -73.7942800302915
+              },
+              "high": {
+                "latitude": 40.652019080291495,
+                "longitude": -73.7915820697085
+              }
+            },
+            "displayName": {
+              "text": "Farmer's Fridge",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJb1lkvf9mwokRzQraaqZ1ixY",
+            "types": [
+              "atm",
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.6501053,
+              "longitude": -73.7927708
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6487563197085,
+                "longitude": -73.7941197802915
+              },
+              "high": {
+                "latitude": 40.651454280291496,
+                "longitude": -73.79142181970849
+              }
+            },
+            "displayName": {
+              "text": "ATM",
+              "languageCode": "en"
+            },
+            "primaryType": "atm"
+          },
+          {
+            "id": "ChIJERQMIQBnwokR5UhRgP8xWZg",
+            "types": [
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "JFK Terminal 8, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.647267,
+              "longitude": -73.7935905
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.645918019708496,
+                "longitude": -73.79493948029149
+              },
+              "high": {
+                "latitude": 40.648615980291495,
+                "longitude": -73.79224151970848
+              }
+            },
+            "displayName": {
+              "text": "Pret A Manger",
+              "languageCode": "en"
+            },
+            "primaryType": "restaurant"
+          },
+          {
+            "id": "ChIJgZcgLM9nwokR50B-2mvmiic",
+            "types": [
+              "sandwich_shop",
+              "pastry_shop",
+              "salad_shop",
+              "breakfast_restaurant",
+              "coffee_shop",
+              "cafe",
+              "dessert_shop",
+              "bakery",
+              "confectionery",
+              "food_store",
+              "store",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "John F. Kennedy International Airport, JFK Terminal 8, Concourse B, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.6473756,
+              "longitude": -73.7931909
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6455859197085,
+                "longitude": -73.7954407802915
+              },
+              "high": {
+                "latitude": 40.648283880291494,
+                "longitude": -73.79274281970848
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 10,
+            "displayName": {
+              "text": "Pret A Manger",
+              "languageCode": "en"
+            },
+            "primaryType": "sandwich_shop"
+          },
+          {
+            "id": "ChIJsahVov9mwokRlFFKavOBKWg",
+            "types": [
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Van Wyck Expy, JFK International Airport, NY 11422, USA",
+            "location": {
+              "latitude": 40.6501777,
+              "longitude": -73.7924529
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6495130697085,
+                "longitude": -73.7935135802915
+              },
+              "high": {
+                "latitude": 40.6522110302915,
+                "longitude": -73.7908156197085
+              }
+            },
+            "displayName": {
+              "text": "Hudson News",
+              "languageCode": "en"
+            },
+            "primaryType": "store"
+          },
+          {
+            "id": "ChIJ43gkI1VmwokR3V25QvW8fLI",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.647049599999995,
+              "longitude": -73.7935973
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6454487197085,
+                "longitude": -73.79563178029152
+              },
+              "high": {
+                "latitude": 40.6481466802915,
+                "longitude": -73.79293381970851
+              }
+            },
+            "rating": 1,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Restroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJzWJLof9mwokRIEghYHzWE98",
+            "types": [
+              "lounge_bar",
+              "bar",
+              "night_club",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "JFK Terminal 8 Satellite, Concourse C Gate B42, JFK International Airport, NY 11430, USA",
+            "location": {
+              "latitude": 40.650110399999996,
+              "longitude": -73.7923212
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.649461819708506,
+                "longitude": -73.7933751302915
+              },
+              "high": {
+                "latitude": 40.6521597802915,
+                "longitude": -73.79067716970849
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 1670,
+            "displayName": {
+              "text": "Admirals Club",
+              "languageCode": "en"
+            },
+            "primaryType": "lounge_bar"
+          },
+          {
+            "id": "ChIJ1bU0PVVmwokRN0YH73rBfnk",
+            "types": [
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Van Wyck Expy, JFK International Airport, NY 11422, USA",
+            "location": {
+              "latitude": 40.6470929,
+              "longitude": -73.7934908
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6454274197085,
+                "longitude": -73.7955778802915
+              },
+              "high": {
+                "latitude": 40.648125380291496,
+                "longitude": -73.7928799197085
+              }
+            },
+            "displayName": {
+              "text": "Hudson News",
+              "languageCode": "en"
+            },
+            "primaryType": "store"
+          },
+          {
+            "id": "ChIJ6fHcE1VmwokRff3PEhCRHIU",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.647348,
+              "longitude": -73.7929059
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.6455040697085,
+                "longitude": -73.7933106302915
+              },
+              "high": {
+                "latitude": 40.6482020302915,
+                "longitude": -73.7906126697085
+              }
+            },
+            "displayName": {
+              "text": "Women's Restroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJM3D0ElVmwokRBbxSyOk70Kk",
+            "types": [
+              "atm",
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Queens, NY 11430, USA",
+            "location": {
+              "latitude": 40.6474665,
+              "longitude": -73.7927526
+            },
+            "viewport": {
+              "low": {
+                "latitude": 40.64611751970851,
+                "longitude": -73.79410158029151
+              },
+              "high": {
+                "latitude": 40.64881548029151,
+                "longitude": -73.7914036197085
+              }
+            },
+            "displayName": {
+              "text": "ATM",
+              "languageCode": "en"
+            },
+            "primaryType": "atm"
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "ChIJuRkBjjJnwokRcUc1yPwjPpE",
+      "name": "Dos Toros Tequila Bar",
+      "address": "John F. Kennedy International Airport, JFK Terminal 8, Concourse C Gate 32, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6491129,
+        "longitude": -73.7953406
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.647768819708496,
+          "longitude": -73.79724663029151
+        },
+        "high": {
+          "latitude": 40.650466780291495,
+          "longitude": -73.79454866970849
+        }
+      },
+      "types": [
+        "bar",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "bar",
+      "rating": 4.3,
+      "userRatingCount": 11
+    },
+    {
+      "id": "ChIJX0ADigxnwokRt2z9pO-_wjM",
+      "name": "Zaro's Family Bakery",
+      "address": "John F. Kennedy International Airport, JFK Terminal 8, Concourse C Gate 33, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.649028099999995,
+        "longitude": -73.7951358
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.64768496970849,
+          "longitude": -73.7971448802915
+        },
+        "high": {
+          "latitude": 40.65038293029149,
+          "longitude": -73.79444691970849
+        }
+      },
+      "types": [
+        "bakery",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "bakery",
+      "rating": 3.9,
+      "userRatingCount": 19
+    },
+    {
+      "id": "ChIJq6qqlVVmwokRi8u6cirFZO8",
+      "name": "Dos Toros Taqueria",
+      "address": "John F. Kennedy International Airport Terminal 8, Concourse C Gate 31, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6491654,
+        "longitude": -73.7948385
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6478235697085,
+          "longitude": -73.7969951302915
+        },
+        "high": {
+          "latitude": 40.6505215302915,
+          "longitude": -73.79429716970849
+        }
+      },
+      "types": [
+        "fast_food_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "fast_food_restaurant",
+      "rating": 3.9,
+      "userRatingCount": 115
+    },
+    {
+      "id": "ChIJFxwf_v9mwokRBYcnpn05D4s",
+      "name": "Hudson News",
+      "address": "Van Wyck Expy, JFK International Airport, NY 11422, USA",
+      "location": {
+        "latitude": 40.6493803,
+        "longitude": -73.794836
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6480385697085,
+          "longitude": -73.7969922302915
+        },
+        "high": {
+          "latitude": 40.650736530291496,
+          "longitude": -73.79429426970849
+        }
+      },
+      "types": [
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "store",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJK7VzIitnwokRkDbCREGGMow",
+      "name": "Hudson at Gate 34",
+      "address": "JFK Access Rd, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6494035,
+        "longitude": -73.79483239999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.64801776970851,
+          "longitude": -73.79695698029153
+        },
+        "high": {
+          "latitude": 40.6507157302915,
+          "longitude": -73.7942590197085
+        }
+      },
+      "types": [
+        "convenience_store",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "convenience_store",
+      "rating": 3.2,
+      "userRatingCount": 11
+    },
+    {
+      "id": "ChIJl58K_v9mwokRFVy3uaBW-9A",
+      "name": "Men's Restroom",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.6494384,
+        "longitude": -73.7947657
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6485759197085,
+          "longitude": -73.7964750302915
+        },
+        "high": {
+          "latitude": 40.6512738802915,
+          "longitude": -73.7937770697085
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJdyxR_v9mwokRF56ip5WqoGk",
+      "name": "ATM",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.6493013,
+        "longitude": -73.7946917
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.64795231970851,
+          "longitude": -73.79604068029151
+        },
+        "high": {
+          "latitude": 40.65065028029151,
+          "longitude": -73.79334271970849
+        }
+      },
+      "types": [
+        "atm",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "atm",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJtxLR_f9mwokRyCqBCA7r4Ew",
+      "name": "Women's Restroom",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.6494552,
+        "longitude": -73.7946966
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.648602519708504,
+          "longitude": -73.7964132302915
+        },
+        "high": {
+          "latitude": 40.6513004802915,
+          "longitude": -73.79371526970849
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJJSap6oNnwokRqmIy3d4EtjI",
+      "name": "Toilets at Gate 36",
+      "address": "Level 3 • Departures/Check-In, JFK Terminal 8 Satellite, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.649766199999995,
+        "longitude": -73.79394359999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6489242197085,
+          "longitude": -73.79566613029151
+        },
+        "high": {
+          "latitude": 40.6516221802915,
+          "longitude": -73.7929681697085
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": 4,
+      "userRatingCount": 13
+    },
+    {
+      "id": "ChIJf8F1lf9mwokRw-SPCcp3TIA",
+      "name": "Restroom",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.6500802,
+        "longitude": -73.79320369999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6492404197085,
+          "longitude": -73.79493063029149
+        },
+        "high": {
+          "latitude": 40.6519383802915,
+          "longitude": -73.79223266970848
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": 5,
+      "userRatingCount": 2
+    },
+    {
+      "id": "ChIJx6gqVBRnwokRM1bMXVUH2yU",
+      "name": "Farmer's Fridge",
+      "address": "John F Kennedy International Airport Located across from gate 40 on the left, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.650059999999996,
+        "longitude": -73.79279
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.649321119708496,
+          "longitude": -73.7942800302915
+        },
+        "high": {
+          "latitude": 40.652019080291495,
+          "longitude": -73.7915820697085
+        }
+      },
+      "types": [
+        "salad_shop",
+        "cafeteria",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJb1lkvf9mwokRzQraaqZ1ixY",
+      "name": "ATM",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.6501053,
+        "longitude": -73.7927708
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6487563197085,
+          "longitude": -73.7941197802915
+        },
+        "high": {
+          "latitude": 40.651454280291496,
+          "longitude": -73.79142181970849
+        }
+      },
+      "types": [
+        "atm",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "atm",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJERQMIQBnwokR5UhRgP8xWZg",
+      "name": "Pret A Manger",
+      "address": "JFK Terminal 8, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.647267,
+        "longitude": -73.7935905
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.645918019708496,
+          "longitude": -73.79493948029149
+        },
+        "high": {
+          "latitude": 40.648615980291495,
+          "longitude": -73.79224151970848
+        }
+      },
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJgZcgLM9nwokR50B-2mvmiic",
+      "name": "Pret A Manger",
+      "address": "John F. Kennedy International Airport, JFK Terminal 8, Concourse B, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6473756,
+        "longitude": -73.7931909
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6455859197085,
+          "longitude": -73.7954407802915
+        },
+        "high": {
+          "latitude": 40.648283880291494,
+          "longitude": -73.79274281970848
+        }
+      },
+      "types": [
+        "sandwich_shop",
+        "pastry_shop",
+        "salad_shop",
+        "breakfast_restaurant",
+        "coffee_shop",
+        "cafe",
+        "dessert_shop",
+        "bakery",
+        "confectionery",
+        "food_store",
+        "store",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sandwich_shop",
+      "rating": 4.1,
+      "userRatingCount": 10
+    },
+    {
+      "id": "ChIJsahVov9mwokRlFFKavOBKWg",
+      "name": "Hudson News",
+      "address": "Van Wyck Expy, JFK International Airport, NY 11422, USA",
+      "location": {
+        "latitude": 40.6501777,
+        "longitude": -73.7924529
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6495130697085,
+          "longitude": -73.7935135802915
+        },
+        "high": {
+          "latitude": 40.6522110302915,
+          "longitude": -73.7908156197085
+        }
+      },
+      "types": [
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "store",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ43gkI1VmwokR3V25QvW8fLI",
+      "name": "Restroom",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.647049599999995,
+        "longitude": -73.7935973
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6454487197085,
+          "longitude": -73.79563178029152
+        },
+        "high": {
+          "latitude": 40.6481466802915,
+          "longitude": -73.79293381970851
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": 1,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJzWJLof9mwokRIEghYHzWE98",
+      "name": "Admirals Club",
+      "address": "JFK Terminal 8 Satellite, Concourse C Gate B42, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.650110399999996,
+        "longitude": -73.7923212
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.649461819708506,
+          "longitude": -73.7933751302915
+        },
+        "high": {
+          "latitude": 40.6521597802915,
+          "longitude": -73.79067716970849
+        }
+      },
+      "types": [
+        "lounge_bar",
+        "bar",
+        "night_club",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "lounge_bar",
+      "rating": 4.1,
+      "userRatingCount": 1670
+    },
+    {
+      "id": "ChIJ1bU0PVVmwokRN0YH73rBfnk",
+      "name": "Hudson News",
+      "address": "Van Wyck Expy, JFK International Airport, NY 11422, USA",
+      "location": {
+        "latitude": 40.6470929,
+        "longitude": -73.7934908
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6454274197085,
+          "longitude": -73.7955778802915
+        },
+        "high": {
+          "latitude": 40.648125380291496,
+          "longitude": -73.7928799197085
+        }
+      },
+      "types": [
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "store",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ6fHcE1VmwokRff3PEhCRHIU",
+      "name": "Women's Restroom",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.647348,
+        "longitude": -73.7929059
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6455040697085,
+          "longitude": -73.7933106302915
+        },
+        "high": {
+          "latitude": 40.6482020302915,
+          "longitude": -73.7906126697085
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJM3D0ElVmwokRBbxSyOk70Kk",
+      "name": "ATM",
+      "address": "Queens, NY 11430, USA",
+      "location": {
+        "latitude": 40.6474665,
+        "longitude": -73.7927526
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.64611751970851,
+          "longitude": -73.79410158029151
+        },
+        "high": {
+          "latitude": 40.64881548029151,
+          "longitude": -73.7914036197085
+        }
+      },
+      "types": [
+        "atm",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "atm",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJkzVU9vVmwokRIMb4ksb4VHU",
+      "name": "Terminal 5 Rooftop And Outdoor Lounge",
+      "address": "JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6474756,
+        "longitude": -73.77808519999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.645974669708494,
+          "longitude": -73.7793678302915
+        },
+        "high": {
+          "latitude": 40.64867263029149,
+          "longitude": -73.7766698697085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.5,
+      "userRatingCount": 320
+    },
+    {
+      "id": "ChIJIxOKSGBnwokRzsVdH5d_iSY",
+      "name": "Minute Suites JFK",
+      "address": "3-03 30th St, Queens, NY 10001, USA",
+      "location": {
+        "latitude": 40.6374029,
+        "longitude": -73.78107
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6374029,
+          "longitude": -73.7849188
+        },
+        "high": {
+          "latitude": 40.6425695,
+          "longitude": -73.7809491
+        }
+      },
+      "types": [
+        "lounge_bar",
+        "night_club",
+        "bar",
+        "airport",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "lounge_bar",
+      "rating": 4,
+      "userRatingCount": 334
+    },
+    {
+      "id": "ChIJ_eQYpFdmwokRfCYi6Mw-7v0",
+      "name": "Revolucion",
+      "address": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11445, USA",
+      "location": {
+        "latitude": 40.658676899999996,
+        "longitude": -73.7953211
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6573275197085,
+          "longitude": -73.79662988029152
+        },
+        "high": {
+          "latitude": 40.660025480291495,
+          "longitude": -73.7939319197085
+        }
+      },
+      "types": [
+        "mexican_restaurant",
+        "airport",
+        "transportation_service",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "mexican_restaurant",
+      "rating": 2.5,
+      "userRatingCount": 351
+    },
+    {
+      "id": "ChIJ_eQYpFdmwokRLUz4fI01hQk",
+      "name": "AeroNuova",
+      "address": "John F. Kennedy International Airport, 1 Terminal 5, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.645990399999995,
+        "longitude": -73.77553569999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.644565669708506,
+          "longitude": -73.7771383802915
+        },
+        "high": {
+          "latitude": 40.647263630291505,
+          "longitude": -73.7744404197085
+        }
+      },
+      "types": [
+        "italian_restaurant",
+        "airport",
+        "transportation_service",
+        "european_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "italian_restaurant",
+      "rating": 2.9,
+      "userRatingCount": 365
+    },
+    {
+      "id": "ChIJVzXoFHZnwokRrwIbg5QY7yg",
+      "name": "Artichoke",
+      "address": "John F. Kennedy International Airport, Terminal 5, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6456012,
+        "longitude": -73.77550169999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.644365569708505,
+          "longitude": -73.77747033029151
+        },
+        "high": {
+          "latitude": 40.647063530291504,
+          "longitude": -73.7747723697085
+        }
+      },
+      "types": [
+        "pizza_restaurant",
+        "airport",
+        "transportation_service",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "pizza_restaurant",
+      "rating": 1.5,
+      "userRatingCount": 248
+    },
+    {
+      "id": "ChIJQ26SwllmwokRFhWlPHU3kMw",
+      "name": "CIBO Express Gourmet Market",
+      "address": "& S Cargo, Terminal 5, Airport, JFK Expy Rd, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6460102,
+        "longitude": -73.77498109999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.644584419708494,
+          "longitude": -73.7772117302915
+        },
+        "high": {
+          "latitude": 40.64728238029149,
+          "longitude": -73.77451376970849
+        }
+      },
+      "types": [
+        "food_court",
+        "convenience_store",
+        "airport",
+        "transportation_service",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "food_court",
+      "rating": 1.8,
+      "userRatingCount": 171
+    },
+    {
+      "id": "ChIJISmZZZNnwokRxUh2WRCjd7Q",
+      "name": "Custom Burger",
+      "address": "John F. Kennedy International Airport, JFK Terminal 5, 6 Central Terminal Area, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6453681,
+        "longitude": -73.7754921
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6441026697085,
+          "longitude": -73.7774545802915
+        },
+        "high": {
+          "latitude": 40.646800630291494,
+          "longitude": -73.7747566197085
+        }
+      },
+      "types": [
+        "hamburger_restaurant",
+        "fast_food_restaurant",
+        "american_restaurant",
+        "airport",
+        "transportation_service",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "hamburger_restaurant",
+      "rating": 1.4,
+      "userRatingCount": 233
+    },
+    {
+      "id": "ChIJ2RLF0nBnwokRavpfzLG6KTw",
+      "name": "Loft",
+      "address": "John F. Kennedy International Airport, Terminal 5, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6458145,
+        "longitude": -73.77529059999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.64445656970851,
+          "longitude": -73.7773634802915
+        },
+        "high": {
+          "latitude": 40.64715453029151,
+          "longitude": -73.77466551970849
+        }
+      },
+      "types": [
+        "american_restaurant",
+        "airport",
+        "transportation_service",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "american_restaurant",
+      "rating": 2,
+      "userRatingCount": 112
+    },
+    {
+      "id": "ChIJCVSO9lpmwokRzDjZRGMQ-BI",
+      "name": "Pet Relief Station",
+      "address": "4 Central Terminal Area, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.639574599999996,
+        "longitude": -73.78118909999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.63957459999999,
+          "longitude": -73.7849188
+        },
+        "high": {
+          "latitude": 40.6425695,
+          "longitude": -73.78118909999999
+        }
+      },
+      "types": [
+        "dog_park",
+        "park",
+        "pet_care",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "pet_care",
+      "rating": 3.8,
+      "userRatingCount": 15
+    },
+    {
+      "id": "ChIJy-QevoVnwokRa6BK2XYjlhM",
+      "name": "Horizon Bakery Café",
+      "address": "John F. Kennedy International Airport, Terminal 5, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6448368,
+        "longitude": -73.776309
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6434623697085,
+          "longitude": -73.7776295802915
+        },
+        "high": {
+          "latitude": 40.6461603302915,
+          "longitude": -73.7749316197085
+        }
+      },
+      "types": [
+        "bakery",
+        "coffee_shop",
+        "cafe",
+        "airport",
+        "transportation_service",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "bakery",
+      "rating": 1,
+      "userRatingCount": 6
+    },
+    {
+      "id": "ChIJ09nTyWJnwokRTmefObCVc2I",
+      "name": "Piquillo",
+      "address": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11446, USA",
+      "location": {
+        "latitude": 40.658676899999996,
+        "longitude": -73.7953211
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6573275197085,
+          "longitude": -73.79662988029152
+        },
+        "high": {
+          "latitude": 40.660025480291495,
+          "longitude": -73.7939319197085
+        }
+      },
+      "types": [
+        "tapas_restaurant",
+        "spanish_restaurant",
+        "bar",
+        "airport",
+        "transportation_service",
+        "european_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "tapas_restaurant",
+      "rating": 1.8,
+      "userRatingCount": 13
+    },
+    {
+      "id": "ChIJ2ZDaEflnwokR-eZULzByX10",
+      "name": "Re:Vive Bars",
+      "address": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11443, USA",
+      "location": {
+        "latitude": 40.658676899999996,
+        "longitude": -73.7953211
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6573275197085,
+          "longitude": -73.79662988029152
+        },
+        "high": {
+          "latitude": 40.660025480291495,
+          "longitude": -73.7939319197085
+        }
+      },
+      "types": [
+        "bar",
+        "cocktail_bar",
+        "cafe",
+        "airport",
+        "transportation_service",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "bar",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJt1z_ZVlnwokR132VrboOnVo",
+      "name": "Philly Cheesesteak",
+      "address": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11469, USA",
+      "location": {
+        "latitude": 40.658676899999996,
+        "longitude": -73.7953211
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6573275197085,
+          "longitude": -73.79662988029152
+        },
+        "high": {
+          "latitude": 40.660025480291495,
+          "longitude": -73.7939319197085
+        }
+      },
+      "types": [
+        "american_restaurant",
+        "airport",
+        "transportation_service",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "american_restaurant",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJiX3M4cRnwokR3Dg2mZK1IJE",
+      "name": "Allways",
+      "address": "Room 126.001, JFK International Airport, NY 11430, USA",
+      "location": {
+        "latitude": 40.6433507,
+        "longitude": -73.7889689
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.64180741970849,
+          "longitude": -73.79075158029151
+        },
+        "high": {
+          "latitude": 40.64450538029149,
+          "longitude": -73.78805361970849
+        }
+      },
+      "types": [
+        "tourist_attraction",
+        "international_airport",
+        "airport",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "tourist_attraction",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJmQCWzWRnwokRIdsFqJ1iAOk",
+      "name": "Carribean Kitchen",
+      "address": "Terminal 5, John F. Kennedy International Airport, Queens, NY 11464, USA",
+      "location": {
+        "latitude": 40.658676899999996,
+        "longitude": -73.7953211
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6573275197085,
+          "longitude": -73.79662988029152
+        },
+        "high": {
+          "latitude": 40.660025480291495,
+          "longitude": -73.7939319197085
+        }
+      },
+      "types": [
+        "restaurant",
+        "airport",
+        "transportation_service",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "restaurant",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJR0lA1VBmwokR8BGfSBOyT-w",
+      "name": "John F. Kennedy International Airport",
+      "address": "Jamaica, NY 11430, USA",
+      "location": {
+        "latitude": 40.6446124,
+        "longitude": -73.7797278
+      },
+      "viewport": {
+        "low": {
+          "latitude": 40.6344475,
+          "longitude": -73.8019194
+        },
+        "high": {
+          "latitude": 40.652985799999996,
+          "longitude": -73.7657241
+        }
+      },
+      "types": [
+        "international_airport",
+        "airport",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "international_airport",
+      "rating": 3.9,
+      "userRatingCount": 57205
+    }
+  ],
+  "placeKeys": {
+    "airport": "ChIJR0lA1VBmwokR8BGfSBOyT-w",
+    "bar": "ChIJuRkBjjJnwokRcUc1yPwjPpE"
+  },
+  "histories": {
+    "none": []
+  },
+  "cases": [
+    {
+      "name": "terminal fix, no history",
+      "now": "2026-09-22T17:30:00-04:00",
+      "horizontalAccuracy": 40,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "airport",
+        "suggested": "airport",
+        "rankedAbove": [
+          [
+            "airport",
+            "bar"
+          ]
+        ]
+      }
+    }
+  ]
+}

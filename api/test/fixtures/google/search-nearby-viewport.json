@@ -1,0 +1,25 @@
+{
+  "places": [
+    {
+      "id": "ChIJnearby002GGPARK",
+      "displayName": { "text": "Golden Gate Park", "languageCode": "en" },
+      "formattedAddress": "San Francisco, CA, USA",
+      "location": { "latitude": 37.7694, "longitude": -122.4862 },
+      "viewport": {
+        "low": { "latitude": 37.7644, "longitude": -122.5107 },
+        "high": { "latitude": 37.7745, "longitude": -122.4544 }
+      },
+      "types": ["park", "tourist_attraction", "point_of_interest", "establishment"],
+      "primaryType": "park",
+      "rating": 4.8,
+      "userRatingCount": 61307
+    },
+    {
+      "id": "ChIJnearby003NOVIEWPORT",
+      "displayName": { "text": "Unmapped Kiosk", "languageCode": "en" },
+      "location": { "latitude": 37.7700, "longitude": -122.4700 },
+      "types": ["store", "point_of_interest", "establishment"],
+      "primaryType": "store"
+    }
+  ]
+}

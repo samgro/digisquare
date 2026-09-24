@@ -1,0 +1,1841 @@
+{
+  "schemaVersion": 1,
+  "name": "sfo-terminal-2",
+  "description": "In line at Peet's inside SFO Terminal 2, about 900 m from the airport's pin but well inside its viewport.",
+  "recordedAt": "2026-09-24T00:12:55.447Z",
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.618002,
+    "longitude": -122.3814,
+    "horizontalAccuracy": 65
+  },
+  "google": {
+    "largeVenues": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.618002,
+              "longitude": -122.3814
+            },
+            "radius": 2000
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJVVVVVYx3j4ARP-3NGldc8qQ",
+            "types": [
+              "international_airport",
+              "airport",
+              "transportation_service",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.619114499999995,
+              "longitude": -122.38162740000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.609474899999995,
+                "longitude": -122.3957966
+              },
+              "high": {
+                "latitude": 37.6217811,
+                "longitude": -122.37856900000001
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 38562,
+            "displayName": {
+              "text": "San Francisco International Airport",
+              "languageCode": "en"
+            },
+            "primaryType": "international_airport"
+          },
+          {
+            "id": "ChIJh4JT0sd3j4ARRUs8pfcWYVY",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2-198;1-99 Old Bayshore Hwy, Millbrae, CA 94030, USA",
+            "location": {
+              "latitude": 37.6049946,
+              "longitude": -122.3764138
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.60245681970849,
+                "longitude": -122.37700729999999
+              },
+              "high": {
+                "latitude": 37.60515478029149,
+                "longitude": -122.37090630000002
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 1212,
+            "displayName": {
+              "text": "Bayfront Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJgQByj7x3j4ARwhrbm19lu_o",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "301 Santa Paula Ave, Millbrae, CA 94030, USA",
+            "location": {
+              "latitude": 37.6044254,
+              "longitude": -122.38685779999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6030484697085,
+                "longitude": -122.38822033029147
+              },
+              "high": {
+                "latitude": 37.6057464302915,
+                "longitude": -122.38552236970848
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 45,
+            "displayName": {
+              "text": "Bayside Manor Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJvUqR4wKij4ARwHvDpEr1dnA",
+            "types": [
+              "airport",
+              "transportation_service",
+              "local_government_office",
+              "government_office",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "166 N Rollins Rd, Millbrae, CA 94030, USA",
+            "location": {
+              "latitude": 37.6005599,
+              "longitude": -122.38571569999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.5992262197085,
+                "longitude": -122.38693158029149
+              },
+              "high": {
+                "latitude": 37.6019241802915,
+                "longitude": -122.3842336197085
+              }
+            },
+            "rating": 2.6,
+            "userRatingCount": 28,
+            "displayName": {
+              "text": "San Mateo County Transit District",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
+          },
+          {
+            "id": "ChIJVVXlI5l3j4ARSXYkG07KArk",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Millbrae, CA 94030, USA",
+            "location": {
+              "latitude": 37.610687299999995,
+              "longitude": -122.3946484
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.609289519708504,
+                "longitude": -122.3960480302915
+              },
+              "high": {
+                "latitude": 37.611987480291496,
+                "longitude": -122.3933500697085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Marina Vista Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJE-08ZSJ3j4ARCGyBveyMTuI",
+            "types": [
+              "general_store",
+              "gift_shop",
+              "airport",
+              "transportation_service",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 1, Near, Gate B6, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6133156,
+              "longitude": -122.3843144
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.612846819708494,
+                "longitude": -122.3861865802915
+              },
+              "high": {
+                "latitude": 37.61554478029149,
+                "longitude": -122.3834886197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 9,
+            "displayName": {
+              "text": "PACK-N-GO",
+              "languageCode": "en"
+            },
+            "primaryType": "general_store"
+          },
+          {
+            "id": "ChIJ1fvgWAB3j4ARq8VtV34SAzI",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1 Adrian Ct, Burlingame, CA 94010, USA",
+            "location": {
+              "latitude": 37.6003709,
+              "longitude": -122.37852369999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.5990832697085,
+                "longitude": -122.37994858029148
+              },
+              "high": {
+                "latitude": 37.6017812302915,
+                "longitude": -122.37725061970849
+              }
+            },
+            "rating": 2,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Adrian Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.618002,
+              "longitude": -122.3814
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJAQAkdZN3j4ARAZ5ndeQ_n3Y",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.6179293,
+              "longitude": -122.38143749999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6161667697085,
+                "longitude": -122.38428749999999
+              },
+              "high": {
+                "latitude": 37.6188647302915,
+                "longitude": -122.38143749999999
+              }
+            },
+            "displayName": {
+              "text": "Male Bathroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6179479,
+              "longitude": -122.3814904
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6161197197085,
+                "longitude": -122.38428749999999
+              },
+              "high": {
+                "latitude": 37.6188176802915,
+                "longitude": -122.3814904
+              }
+            },
+            "rating": 2.3,
+            "userRatingCount": 88,
+            "displayName": {
+              "text": "Peet's Coffee",
+              "languageCode": "en"
+            },
+            "primaryType": "coffee_shop"
+          },
+          {
+            "id": "ChIJVVX5dJN3j4ARf2E6AoH57CE",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.6178682,
+              "longitude": -122.3813932
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6161022697085,
+                "longitude": -122.3842732
+              },
+              "high": {
+                "latitude": 37.6188002302915,
+                "longitude": -122.381296
+              }
+            },
+            "displayName": {
+              "text": "Female Bathroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJFZB7s5J3j4ARxx5K7n9rBAg",
+            "types": [
+              "transportation_service",
+              "consultant",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "San Francisco International Airport Tram, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6182197,
+              "longitude": -122.38153639999997
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.616282719708494,
+                "longitude": -122.3843426
+              },
+              "high": {
+                "latitude": 37.61898068029149,
+                "longitude": -122.38153639999997
+              }
+            },
+            "rating": 3.5,
+            "userRatingCount": 4,
+            "displayName": {
+              "text": "Immaculate Flight",
+              "languageCode": "en"
+            },
+            "primaryType": "consultant"
+          },
+          {
+            "id": "ChIJKzskdJN3j4ARTaR96MyZ14k",
+            "types": [
+              "asian_restaurant",
+              "sushi_restaurant",
+              "japanese_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "780 S Airport Blvd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.617732499999995,
+              "longitude": -122.38134889999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6159748697085,
+                "longitude": -122.38420730000001
+              },
+              "high": {
+                "latitude": 37.6186728302915,
+                "longitude": -122.38127679999998
+              }
+            },
+            "rating": 3.4,
+            "userRatingCount": 468,
+            "displayName": {
+              "text": "Wakaba",
+              "languageCode": "en"
+            },
+            "primaryType": "asian_restaurant"
+          },
+          {
+            "id": "ChIJAYTNdZN3j4ARKgXwQ6aMIJg",
+            "types": [
+              "atm",
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.617728199999995,
+              "longitude": -122.3814278
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6163792197085,
+                "longitude": -122.3827767802915
+              },
+              "high": {
+                "latitude": 37.61907718029149,
+                "longitude": -122.3800788197085
+              }
+            },
+            "displayName": {
+              "text": "ATM",
+              "languageCode": "en"
+            },
+            "primaryType": "atm"
+          },
+          {
+            "id": "ChIJJYsX4l13j4AR9q75pqhm17A",
+            "types": [
+              "atm",
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 2, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6177278,
+              "longitude": -122.38143029999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.615974919708506,
+                "longitude": -122.38422039999998
+              },
+              "high": {
+                "latitude": 37.618672880291506,
+                "longitude": -122.38143029999999
+              }
+            },
+            "rating": 3,
+            "userRatingCount": 2,
+            "displayName": {
+              "text": "Bank of America ATM near Gate D15",
+              "languageCode": "en"
+            },
+            "primaryType": "atm"
+          },
+          {
+            "id": "ChIJN9QXnJN3j4ARA2Ks5ZsGe1k",
+            "types": [
+              "american_restaurant",
+              "hamburger_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "806 S Airport Blvd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6177257,
+              "longitude": -122.38161450000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.61601536970849,
+                "longitude": -122.3842740802915
+              },
+              "high": {
+                "latitude": 37.61871333029149,
+                "longitude": -122.38157611970851
+              }
+            },
+            "rating": 3.7,
+            "userRatingCount": 476,
+            "displayName": {
+              "text": "Burger Joint",
+              "languageCode": "en"
+            },
+            "primaryType": "american_restaurant"
+          },
+          {
+            "id": "ChIJ7Xk_cZN3j4AR-069UZiNPQs",
+            "types": [
+              "american_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 2, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.617684499999996,
+              "longitude": -122.3811587
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6159018697085,
+                "longitude": -122.38416449999998
+              },
+              "high": {
+                "latitude": 37.6185998302915,
+                "longitude": -122.38114279999999
+              }
+            },
+            "rating": 3.9,
+            "userRatingCount": 364,
+            "displayName": {
+              "text": "Cat Cora’s Kitchen",
+              "languageCode": "en"
+            },
+            "primaryType": "american_restaurant"
+          },
+          {
+            "id": "ChIJlR9SmJp3j4ARiAFcj_PhhU0",
+            "types": [
+              "mexican_restaurant",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "173 Airport Access Rd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6176191,
+              "longitude": -122.381667
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.615897769708496,
+                "longitude": -122.3842479802915
+              },
+              "high": {
+                "latitude": 37.618595730291496,
+                "longitude": -122.38155001970851
+              }
+            },
+            "rating": 2.9,
+            "userRatingCount": 538,
+            "displayName": {
+              "text": "Andalé",
+              "languageCode": "en"
+            },
+            "primaryType": "mexican_restaurant"
+          },
+          {
+            "id": "ChIJextgoet3j4AREKpcq9VbhxA",
+            "types": [
+              "travel_agency",
+              "transportation_service",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 2, Boarding Area D, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6175067,
+              "longitude": -122.3814257
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6157908697085,
+                "longitude": -122.38415160000001
+              },
+              "high": {
+                "latitude": 37.6184888302915,
+                "longitude": -122.3814257
+              }
+            },
+            "displayName": {
+              "text": "Air Tickets (Booking & Change & Cancelling)",
+              "languageCode": "ru"
+            },
+            "primaryType": "transportation_service"
+          },
+          {
+            "id": "ChIJ13RXeJN3j4AReQSzKwlKXsw",
+            "types": [
+              "ice_cream_shop",
+              "dessert_shop",
+              "confectionery",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Sfo International Airport, Terminal 2 Boarding Area D, Quick Serve, Sector 8 Space 9-D.2.350, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6175067,
+              "longitude": -122.3814257
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6157908697085,
+                "longitude": -122.38415160000001
+              },
+              "high": {
+                "latitude": 37.6184888302915,
+                "longitude": -122.3814257
+              }
+            },
+            "rating": 3.7,
+            "userRatingCount": 196,
+            "displayName": {
+              "text": "Pinkberry",
+              "languageCode": "en"
+            },
+            "primaryType": "dessert_shop"
+          },
+          {
+            "id": "ChIJZ4U7nJN3j4ARUjLXWoNvu-8",
+            "types": [
+              "subpremise",
+              "point_of_interest",
+              "establishment",
+              "street_address"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.6175346,
+              "longitude": -122.38172999999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.616185305145706,
+                "longitude": -122.38307906515479
+              },
+              "high": {
+                "latitude": 37.6188832657287,
+                "longitude": -122.38038110457181
+              }
+            },
+            "displayName": {
+              "text": "San Mateo County",
+              "languageCode": "en"
+            }
+          },
+          {
+            "id": "ChIJZ4U7nJN3j4ARUjLXWoNvu-8",
+            "types": [
+              "subpremise",
+              "point_of_interest",
+              "establishment",
+              "street_address"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.6175346,
+              "longitude": -122.38172999999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.616185305145706,
+                "longitude": -122.38307906515479
+              },
+              "high": {
+                "latitude": 37.6188832657287,
+                "longitude": -122.38038110457181
+              }
+            },
+            "displayName": {
+              "text": "San Mateo County",
+              "languageCode": "en"
+            }
+          },
+          {
+            "id": "ChIJn245nJN3j4ARUPm-OdjS7Zg",
+            "types": [
+              "book_store",
+              "store",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Terminal 2, Terminal 2, Boarding Area D Boarding Area D, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.617507599999996,
+              "longitude": -122.38181189999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6158183197085,
+                "longitude": -122.38431258029149
+              },
+              "high": {
+                "latitude": 37.6185162802915,
+                "longitude": -122.3816146197085
+              }
+            },
+            "rating": 1.7,
+            "userRatingCount": 13,
+            "displayName": {
+              "text": "Sunset News",
+              "languageCode": "en"
+            },
+            "primaryType": "book_store"
+          },
+          {
+            "id": "ChIJ__9snJN3j4ARu4vBBZCSxDY",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.6174637,
+              "longitude": -122.38189109999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.615788719708505,
+                "longitude": -122.38434203029149
+              },
+              "high": {
+                "latitude": 37.6184866802915,
+                "longitude": -122.3816440697085
+              }
+            },
+            "displayName": {
+              "text": "Wheelchair Accessible Bathroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJD0vBnJN3j4ARXBlnrpt7nM4",
+            "types": [
+              "american_restaurant",
+              "family_restaurant",
+              "bar",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Boarding Area D, Terminal 2, S McDonnell Rd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6173729,
+              "longitude": -122.38179149999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.6157343697085,
+                "longitude": -122.38427858029151
+              },
+              "high": {
+                "latitude": 37.6184323302915,
+                "longitude": -122.38158061970852
+              }
+            },
+            "rating": 3.9,
+            "userRatingCount": 2224,
+            "displayName": {
+              "text": "Lark Creek Grill",
+              "languageCode": "en"
+            },
+            "primaryType": "american_restaurant"
+          },
+          {
+            "id": "ChIJVVXhm5N3j4AR-RcETyyL3QI",
+            "types": [
+              "public_bathroom",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "California 94128, USA",
+            "location": {
+              "latitude": 37.617491699999995,
+              "longitude": -122.38201289999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.61585426970851,
+                "longitude": -122.3844496802915
+              },
+              "high": {
+                "latitude": 37.618552230291506,
+                "longitude": -122.3817517197085
+              }
+            },
+            "displayName": {
+              "text": "Male Bathroom",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJM1x1eZN3j4ARHdzVOIOIOm8",
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "San Francisco International Airport Terminal 2 - Departure Level - Inside Security near Gate 54 100 Upper International Loop, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6173076,
+              "longitude": -122.38120339999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.61562176970849,
+                "longitude": -122.38412559999999
+              },
+              "high": {
+                "latitude": 37.61831973029149,
+                "longitude": -122.38120339999999
+              }
+            },
+            "rating": 2.2,
+            "userRatingCount": 121,
+            "displayName": {
+              "text": "Peet's Coffee - Gate 8",
+              "languageCode": "en"
+            },
+            "primaryType": "coffee_shop"
+          },
+          {
+            "id": "ChIJFf9SeJN3j4ARthOky8oNKUM",
+            "types": [
+              "cafe",
+              "vegetarian_restaurant",
+              "californian_restaurant",
+              "grocery_store",
+              "american_restaurant",
+              "food_store",
+              "store",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "173 Airport Access Rd, San Francisco, CA 94128, USA",
+            "location": {
+              "latitude": 37.6172452,
+              "longitude": -122.38140419999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.61562201970851,
+                "longitude": -122.3841193
+              },
+              "high": {
+                "latitude": 37.61831998029151,
+                "longitude": -122.3813782
+              }
+            },
+            "rating": 3.3,
+            "userRatingCount": 540,
+            "displayName": {
+              "text": "The Plant Café Organic",
+              "languageCode": "en"
+            },
+            "primaryType": "cafe"
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "ChIJAQAkdZN3j4ARAZ5ndeQ_n3Y",
+      "name": "Male Bathroom",
+      "address": "California 94128, USA",
+      "location": {
+        "latitude": 37.6179293,
+        "longitude": -122.38143749999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6161667697085,
+          "longitude": -122.38428749999999
+        },
+        "high": {
+          "latitude": 37.6188647302915,
+          "longitude": -122.38143749999999
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+      "name": "Peet's Coffee",
+      "address": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6179479,
+        "longitude": -122.3814904
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6161197197085,
+          "longitude": -122.38428749999999
+        },
+        "high": {
+          "latitude": 37.6188176802915,
+          "longitude": -122.3814904
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 2.3,
+      "userRatingCount": 88
+    },
+    {
+      "id": "ChIJVVX5dJN3j4ARf2E6AoH57CE",
+      "name": "Female Bathroom",
+      "address": "California 94128, USA",
+      "location": {
+        "latitude": 37.6178682,
+        "longitude": -122.3813932
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6161022697085,
+          "longitude": -122.3842732
+        },
+        "high": {
+          "latitude": 37.6188002302915,
+          "longitude": -122.381296
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJFZB7s5J3j4ARxx5K7n9rBAg",
+      "name": "Immaculate Flight",
+      "address": "San Francisco International Airport Tram, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6182197,
+        "longitude": -122.38153639999997
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.616282719708494,
+          "longitude": -122.3843426
+        },
+        "high": {
+          "latitude": 37.61898068029149,
+          "longitude": -122.38153639999997
+        }
+      },
+      "types": [
+        "transportation_service",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "consultant",
+      "rating": 3.5,
+      "userRatingCount": 4
+    },
+    {
+      "id": "ChIJKzskdJN3j4ARTaR96MyZ14k",
+      "name": "Wakaba",
+      "address": "780 S Airport Blvd, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.617732499999995,
+        "longitude": -122.38134889999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6159748697085,
+          "longitude": -122.38420730000001
+        },
+        "high": {
+          "latitude": 37.6186728302915,
+          "longitude": -122.38127679999998
+        }
+      },
+      "types": [
+        "asian_restaurant",
+        "sushi_restaurant",
+        "japanese_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "asian_restaurant",
+      "rating": 3.4,
+      "userRatingCount": 468
+    },
+    {
+      "id": "ChIJAYTNdZN3j4ARKgXwQ6aMIJg",
+      "name": "ATM",
+      "address": "California 94128, USA",
+      "location": {
+        "latitude": 37.617728199999995,
+        "longitude": -122.3814278
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6163792197085,
+          "longitude": -122.3827767802915
+        },
+        "high": {
+          "latitude": 37.61907718029149,
+          "longitude": -122.3800788197085
+        }
+      },
+      "types": [
+        "atm",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "atm",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJJYsX4l13j4AR9q75pqhm17A",
+      "name": "Bank of America ATM near Gate D15",
+      "address": "Terminal 2, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6177278,
+        "longitude": -122.38143029999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.615974919708506,
+          "longitude": -122.38422039999998
+        },
+        "high": {
+          "latitude": 37.618672880291506,
+          "longitude": -122.38143029999999
+        }
+      },
+      "types": [
+        "atm",
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "atm",
+      "rating": 3,
+      "userRatingCount": 2
+    },
+    {
+      "id": "ChIJN9QXnJN3j4ARA2Ks5ZsGe1k",
+      "name": "Burger Joint",
+      "address": "806 S Airport Blvd, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6177257,
+        "longitude": -122.38161450000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.61601536970849,
+          "longitude": -122.3842740802915
+        },
+        "high": {
+          "latitude": 37.61871333029149,
+          "longitude": -122.38157611970851
+        }
+      },
+      "types": [
+        "american_restaurant",
+        "hamburger_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "american_restaurant",
+      "rating": 3.7,
+      "userRatingCount": 476
+    },
+    {
+      "id": "ChIJ7Xk_cZN3j4AR-069UZiNPQs",
+      "name": "Cat Cora’s Kitchen",
+      "address": "Terminal 2, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.617684499999996,
+        "longitude": -122.3811587
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6159018697085,
+          "longitude": -122.38416449999998
+        },
+        "high": {
+          "latitude": 37.6185998302915,
+          "longitude": -122.38114279999999
+        }
+      },
+      "types": [
+        "american_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "american_restaurant",
+      "rating": 3.9,
+      "userRatingCount": 364
+    },
+    {
+      "id": "ChIJlR9SmJp3j4ARiAFcj_PhhU0",
+      "name": "Andalé",
+      "address": "173 Airport Access Rd, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6176191,
+        "longitude": -122.381667
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.615897769708496,
+          "longitude": -122.3842479802915
+        },
+        "high": {
+          "latitude": 37.618595730291496,
+          "longitude": -122.38155001970851
+        }
+      },
+      "types": [
+        "mexican_restaurant",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "mexican_restaurant",
+      "rating": 2.9,
+      "userRatingCount": 538
+    },
+    {
+      "id": "ChIJextgoet3j4AREKpcq9VbhxA",
+      "name": "Air Tickets (Booking & Change & Cancelling)",
+      "address": "Terminal 2, Boarding Area D, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6175067,
+        "longitude": -122.3814257
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6157908697085,
+          "longitude": -122.38415160000001
+        },
+        "high": {
+          "latitude": 37.6184888302915,
+          "longitude": -122.3814257
+        }
+      },
+      "types": [
+        "travel_agency",
+        "transportation_service",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "transportation_service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ13RXeJN3j4AReQSzKwlKXsw",
+      "name": "Pinkberry",
+      "address": "Sfo International Airport, Terminal 2 Boarding Area D, Quick Serve, Sector 8 Space 9-D.2.350, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6175067,
+        "longitude": -122.3814257
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6157908697085,
+          "longitude": -122.38415160000001
+        },
+        "high": {
+          "latitude": 37.6184888302915,
+          "longitude": -122.3814257
+        }
+      },
+      "types": [
+        "ice_cream_shop",
+        "dessert_shop",
+        "confectionery",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "dessert_shop",
+      "rating": 3.7,
+      "userRatingCount": 196
+    },
+    {
+      "id": "ChIJZ4U7nJN3j4ARUjLXWoNvu-8",
+      "name": "San Mateo County",
+      "address": "California 94128, USA",
+      "location": {
+        "latitude": 37.6175346,
+        "longitude": -122.38172999999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.616185305145706,
+          "longitude": -122.38307906515479
+        },
+        "high": {
+          "latitude": 37.6188832657287,
+          "longitude": -122.38038110457181
+        }
+      },
+      "types": [
+        "subpremise",
+        "point_of_interest",
+        "establishment",
+        "street_address"
+      ],
+      "primaryType": null,
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJn245nJN3j4ARUPm-OdjS7Zg",
+      "name": "Sunset News",
+      "address": "Terminal 2, Terminal 2, Boarding Area D Boarding Area D, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.617507599999996,
+        "longitude": -122.38181189999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6158183197085,
+          "longitude": -122.38431258029149
+        },
+        "high": {
+          "latitude": 37.6185162802915,
+          "longitude": -122.3816146197085
+        }
+      },
+      "types": [
+        "book_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "book_store",
+      "rating": 1.7,
+      "userRatingCount": 13
+    },
+    {
+      "id": "ChIJ__9snJN3j4ARu4vBBZCSxDY",
+      "name": "Wheelchair Accessible Bathroom",
+      "address": "California 94128, USA",
+      "location": {
+        "latitude": 37.6174637,
+        "longitude": -122.38189109999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.615788719708505,
+          "longitude": -122.38434203029149
+        },
+        "high": {
+          "latitude": 37.6184866802915,
+          "longitude": -122.3816440697085
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJD0vBnJN3j4ARXBlnrpt7nM4",
+      "name": "Lark Creek Grill",
+      "address": "Boarding Area D, Terminal 2, S McDonnell Rd, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6173729,
+        "longitude": -122.38179149999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6157343697085,
+          "longitude": -122.38427858029151
+        },
+        "high": {
+          "latitude": 37.6184323302915,
+          "longitude": -122.38158061970852
+        }
+      },
+      "types": [
+        "american_restaurant",
+        "family_restaurant",
+        "bar",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "american_restaurant",
+      "rating": 3.9,
+      "userRatingCount": 2224
+    },
+    {
+      "id": "ChIJVVXhm5N3j4AR-RcETyyL3QI",
+      "name": "Male Bathroom",
+      "address": "California 94128, USA",
+      "location": {
+        "latitude": 37.617491699999995,
+        "longitude": -122.38201289999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.61585426970851,
+          "longitude": -122.3844496802915
+        },
+        "high": {
+          "latitude": 37.618552230291506,
+          "longitude": -122.3817517197085
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJM1x1eZN3j4ARHdzVOIOIOm8",
+      "name": "Peet's Coffee - Gate 8",
+      "address": "San Francisco International Airport Terminal 2 - Departure Level - Inside Security near Gate 54 100 Upper International Loop, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6173076,
+        "longitude": -122.38120339999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.61562176970849,
+          "longitude": -122.38412559999999
+        },
+        "high": {
+          "latitude": 37.61831973029149,
+          "longitude": -122.38120339999999
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 2.2,
+      "userRatingCount": 121
+    },
+    {
+      "id": "ChIJFf9SeJN3j4ARthOky8oNKUM",
+      "name": "The Plant Café Organic",
+      "address": "173 Airport Access Rd, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6172452,
+        "longitude": -122.38140419999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.61562201970851,
+          "longitude": -122.3841193
+        },
+        "high": {
+          "latitude": 37.61831998029151,
+          "longitude": -122.3813782
+        }
+      },
+      "types": [
+        "cafe",
+        "vegetarian_restaurant",
+        "californian_restaurant",
+        "grocery_store",
+        "american_restaurant",
+        "food_store",
+        "store",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "cafe",
+      "rating": 3.3,
+      "userRatingCount": 540
+    },
+    {
+      "id": "ChIJVVVVVYx3j4ARP-3NGldc8qQ",
+      "name": "San Francisco International Airport",
+      "address": "San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.619114499999995,
+        "longitude": -122.38162740000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.609474899999995,
+          "longitude": -122.3957966
+        },
+        "high": {
+          "latitude": 37.6217811,
+          "longitude": -122.37856900000001
+        }
+      },
+      "types": [
+        "international_airport",
+        "airport",
+        "transportation_service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "international_airport",
+      "rating": 4.3,
+      "userRatingCount": 38562
+    },
+    {
+      "id": "ChIJh4JT0sd3j4ARRUs8pfcWYVY",
+      "name": "Bayfront Park",
+      "address": "2-198;1-99 Old Bayshore Hwy, Millbrae, CA 94030, USA",
+      "location": {
+        "latitude": 37.6049946,
+        "longitude": -122.3764138
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.60245681970849,
+          "longitude": -122.37700729999999
+        },
+        "high": {
+          "latitude": 37.60515478029149,
+          "longitude": -122.37090630000002
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.6,
+      "userRatingCount": 1212
+    },
+    {
+      "id": "ChIJgQByj7x3j4ARwhrbm19lu_o",
+      "name": "Bayside Manor Park",
+      "address": "301 Santa Paula Ave, Millbrae, CA 94030, USA",
+      "location": {
+        "latitude": 37.6044254,
+        "longitude": -122.38685779999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6030484697085,
+          "longitude": -122.38822033029147
+        },
+        "high": {
+          "latitude": 37.6057464302915,
+          "longitude": -122.38552236970848
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4,
+      "userRatingCount": 45
+    },
+    {
+      "id": "ChIJvUqR4wKij4ARwHvDpEr1dnA",
+      "name": "San Mateo County Transit District",
+      "address": "166 N Rollins Rd, Millbrae, CA 94030, USA",
+      "location": {
+        "latitude": 37.6005599,
+        "longitude": -122.38571569999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.5992262197085,
+          "longitude": -122.38693158029149
+        },
+        "high": {
+          "latitude": 37.6019241802915,
+          "longitude": -122.3842336197085
+        }
+      },
+      "types": [
+        "airport",
+        "transportation_service",
+        "local_government_office",
+        "government_office",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "association_or_organization",
+      "rating": 2.6,
+      "userRatingCount": 28
+    },
+    {
+      "id": "ChIJVVXlI5l3j4ARSXYkG07KArk",
+      "name": "Marina Vista Park",
+      "address": "Millbrae, CA 94030, USA",
+      "location": {
+        "latitude": 37.610687299999995,
+        "longitude": -122.3946484
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.609289519708504,
+          "longitude": -122.3960480302915
+        },
+        "high": {
+          "latitude": 37.611987480291496,
+          "longitude": -122.3933500697085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJE-08ZSJ3j4ARCGyBveyMTuI",
+      "name": "PACK-N-GO",
+      "address": "Terminal 1, Near, Gate B6, San Francisco, CA 94128, USA",
+      "location": {
+        "latitude": 37.6133156,
+        "longitude": -122.3843144
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.612846819708494,
+          "longitude": -122.3861865802915
+        },
+        "high": {
+          "latitude": 37.61554478029149,
+          "longitude": -122.3834886197085
+        }
+      },
+      "types": [
+        "general_store",
+        "gift_shop",
+        "airport",
+        "transportation_service",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "general_store",
+      "rating": 4.6,
+      "userRatingCount": 9
+    },
+    {
+      "id": "ChIJ1fvgWAB3j4ARq8VtV34SAzI",
+      "name": "Adrian Park",
+      "address": "1 Adrian Ct, Burlingame, CA 94010, USA",
+      "location": {
+        "latitude": 37.6003709,
+        "longitude": -122.37852369999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.5990832697085,
+          "longitude": -122.37994858029148
+        },
+        "high": {
+          "latitude": 37.6017812302915,
+          "longitude": -122.37725061970849
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 2,
+      "userRatingCount": 1
+    }
+  ],
+  "placeKeys": {
+    "airport": "ChIJVVVVVYx3j4ARP-3NGldc8qQ",
+    "peets": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+    "larkCreek": "ChIJD0vBnJN3j4ARXBlnrpt7nM4"
+  },
+  "histories": {
+    "none": [],
+    "peetsRegular": [
+      {
+        "googlePlaceId": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+        "createdAt": "2026-07-24T14:28:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6179479,
+          "longitude": -122.3814904
+        }
+      },
+      {
+        "googlePlaceId": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+        "createdAt": "2026-08-05T14:21:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6179479,
+          "longitude": -122.3814904
+        }
+      },
+      {
+        "googlePlaceId": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+        "createdAt": "2026-08-17T14:14:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6179479,
+          "longitude": -122.3814904
+        }
+      },
+      {
+        "googlePlaceId": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+        "createdAt": "2026-08-28T14:07:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6179479,
+          "longitude": -122.3814904
+        }
+      },
+      {
+        "googlePlaceId": "ChIJjY82dZN3j4ARgMS9f7c9xKw",
+        "createdAt": "2026-09-10T14:00:00.000Z",
+        "placeName": "Peet's Coffee",
+        "placeAddress": "San Francisco International Airport, Terminal 2, San Francisco, CA 94128, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.6179479,
+          "longitude": -122.3814904
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "terminal fix, no history",
+      "now": "2026-09-22T07:30:00-07:00",
+      "horizontalAccuracy": 65,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "airport",
+        "suggested": "airport",
+        "rankedAbove": [
+          [
+            "airport",
+            "larkCreek"
+          ],
+          [
+            "airport",
+            "peets"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tight fix, no history",
+      "now": "2026-09-22T07:30:00-07:00",
+      "horizontalAccuracy": 8,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "peets",
+            "larkCreek"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tight fix, morning coffee regular",
+      "now": "2026-09-22T07:30:00-07:00",
+      "horizontalAccuracy": 8,
+      "fixAgeSeconds": 5,
+      "history": "peetsRegular",
+      "expect": {
+        "top": "peets",
+        "suggested": "peets",
+        "rankedAbove": [
+          [
+            "peets",
+            "airport"
+          ]
+        ]
+      }
+    }
+  ]
+}

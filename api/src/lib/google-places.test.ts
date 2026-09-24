@@ -1,9 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  LARGE_VENUE_TYPES,
   autocompletePlaceIdentifiers,
   fetchPlaceDetails,
+  mergeNearbyResults,
   searchAutocomplete,
   searchNearby,
+  searchNearbyCandidates,
 } from "./google-places.js";
 import { stubFetch, type StubbedFetch } from "../../test/helpers/stub-fetch.js";
 import { loadGoogleFixture } from "../../test/helpers/fixtures.js";
@@ -34,7 +37,7 @@ describe("searchNearby", () => {
     expect(call.url).toBe("https://places.googleapis.com/v1/places:searchNearby");
     expect(call.headers["x-goog-api-key"]).toBe("test-api-key");
     expect(call.headers["x-goog-fieldmask"]).toBe(
-      "places.id,places.displayName,places.formattedAddress,places.location,places.types,places.primaryType,places.rating,places.userRatingCount",
+      "places.id,places.displayName,places.formattedAddress,places.location,places.viewport,places.types,places.primaryType,places.rating,places.userRatingCount",
     );
     expect(call.body).toEqual({
       maxResultCount: 20,
@@ -52,6 +55,129 @@ describe("searchNearby", () => {
     const results = await searchNearby(LOCATION);
 
     expect(results).toEqual([]);
+  });
+
+  it("sends the requested rank preference", async () => {
+    stub = stubFetch([{ match: "places:searchNearby", json: {} }]);
+
+    await searchNearby({ ...LOCATION, rankPreference: "DISTANCE" });
+
+    expect((stub.calls[0].body as { rankPreference: string }).rankPreference).toBe("DISTANCE");
+  });
+});
+
+function isRankedBy(rankPreference: string) {
+  return (body: unknown) => (body as { rankPreference?: string }).rankPreference === rankPreference;
+}
+
+describe("searchNearbyCandidates", () => {
+  const nearest = { places: [{ id: "near-1" }, { id: "shared" }, { id: "near-2" }] };
+  const popular = { places: [{ id: "popular-1" }, { id: "shared" }, { id: "popular-2" }] };
+
+  it("runs a distance search at the given radius and a large-venue search at least 2000 m wide", async () => {
+    stub = stubFetch([
+      { match: "places:searchNearby", matchBody: isRankedBy("DISTANCE"), json: nearest },
+      { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: popular },
+    ]);
+
+    await searchNearbyCandidates({ ...LOCATION, accuracy: 30 });
+
+    expect(stub.calls).toHaveLength(2);
+    const bodies = stub.calls.map(
+      (call) =>
+        call.body as {
+          rankPreference: string;
+          includedTypes?: string[];
+          locationRestriction: { circle: { radius: number } };
+        },
+    );
+    expect(bodies.map((body) => body.rankPreference).sort()).toEqual(["DISTANCE", "POPULARITY"]);
+    const distance = bodies.find((body) => body.rankPreference === "DISTANCE");
+    const largeVenues = bodies.find((body) => body.rankPreference === "POPULARITY");
+    expect(distance?.locationRestriction.circle.radius).toBe(1500);
+    expect(distance?.includedTypes).toBeUndefined();
+    expect(largeVenues?.locationRestriction.circle.radius).toBe(2000);
+    expect(largeVenues?.includedTypes).toEqual([...LARGE_VENUE_TYPES]);
+  });
+
+  it("keeps a caller radius wider than 2000 m for the large-venue search too", async () => {
+    stub = stubFetch([{ match: "places:searchNearby", json: {} }]);
+
+    await searchNearbyCandidates({ ...LOCATION, radius: 4000 });
+
+    const radii = stub.calls.map(
+      (call) => (call.body as { locationRestriction: { circle: { radius: number } } }).locationRestriction.circle.radius,
+    );
+    expect(radii).toEqual([4000, 4000]);
+  });
+
+  it("lists nearest places first and drops duplicates from the large-venue search", async () => {
+    stub = stubFetch([
+      { match: "places:searchNearby", matchBody: isRankedBy("DISTANCE"), json: nearest },
+      { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: popular },
+    ]);
+
+    const results = await searchNearbyCandidates({ ...LOCATION, accuracy: 30 });
+
+    expect(results.map((place) => place.id)).toEqual([
+      "near-1",
+      "shared",
+      "near-2",
+      "popular-1",
+      "popular-2",
+    ]);
+  });
+
+  it("skips the distance search when the fix is coarser than 1000 m", async () => {
+    stub = stubFetch([
+      { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: popular },
+    ]);
+
+    const results = await searchNearbyCandidates({ ...LOCATION, accuracy: 3000 });
+
+    expect(stub.calls).toHaveLength(1);
+    expect(results.map((place) => place.id)).toEqual(["popular-1", "shared", "popular-2"]);
+  });
+
+  it("still runs the distance search when no accuracy was reported", async () => {
+    stub = stubFetch([{ match: "places:searchNearby", json: {} }]);
+
+    await searchNearbyCandidates(LOCATION);
+
+    expect(stub.calls).toHaveLength(2);
+  });
+
+  it("returns the surviving search when the other one fails", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    stub = stubFetch([
+      { match: "places:searchNearby", matchBody: isRankedBy("DISTANCE"), status: 500, text: "boom" },
+      { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: popular },
+    ]);
+
+    const results = await searchNearbyCandidates({ ...LOCATION, accuracy: 30 });
+
+    expect(results.map((place) => place.id)).toEqual(["popular-1", "shared", "popular-2"]);
+    expect(console.error).toHaveBeenCalledTimes(1);
+  });
+
+  it("throws when both searches fail", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    stub = stubFetch([{ match: "places:searchNearby", status: 500, text: "boom" }]);
+
+    await expect(searchNearbyCandidates({ ...LOCATION, accuracy: 30 })).rejects.toThrow(
+      "Google Places API error (500): boom",
+    );
+  });
+});
+
+describe("mergeNearbyResults", () => {
+  it("is a stable, first-wins merge", () => {
+    const merged = mergeNearbyResults([
+      [{ id: "a", primaryType: "first" }, { id: "b" }],
+      [{ id: "b", primaryType: "second" }, { id: "c" }],
+    ]);
+
+    expect(merged).toEqual([{ id: "a", primaryType: "first" }, { id: "b" }, { id: "c" }]);
   });
 });
 
@@ -111,7 +237,7 @@ describe("fetchPlaceDetails", () => {
     // Regression guard: the search field mask is `places.`-prefixed and
     // Google rejects that prefix on the details endpoint with a 400.
     expect(call.headers["x-goog-fieldmask"]).toBe(
-      "id,displayName,formattedAddress,location,types,primaryType,rating,userRatingCount",
+      "id,displayName,formattedAddress,location,viewport,types,primaryType,rating,userRatingCount",
     );
     expect(call.headers["x-goog-fieldmask"]).not.toContain("places.");
     expect(place.id).toBe("ChIJcos00000COSTCO");

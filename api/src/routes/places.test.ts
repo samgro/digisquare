@@ -2,7 +2,11 @@ import { Hono } from "hono";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { places } from "./places.js";
 import { stubFetch, type StubbedFetch } from "../../test/helpers/stub-fetch.js";
-import { loadGoogleFixture } from "../../test/helpers/fixtures.js";
+import {
+  listRankingFixtureNames,
+  loadGoogleFixture,
+  loadRankingFixture,
+} from "../../test/helpers/fixtures.js";
 
 const SAN_FRANCISCO = { lat: "37.7749", lng: "-122.4194" };
 
@@ -80,6 +84,7 @@ describe("GET /places?q=", () => {
       name: "Costco Wholesale",
       address: "450 10th St, San Francisco, CA 94103, USA",
       location: { latitude: 37.7706, longitude: -122.4108 },
+      viewport: null,
       types: ["warehouse_store", "point_of_interest", "establishment"],
       primaryType: "warehouse_store",
       rating: 4.4,
@@ -111,6 +116,7 @@ describe("GET /places?q=", () => {
       name: "COS",
       address: null,
       location: null,
+      viewport: null,
       types: [],
       primaryType: null,
       rating: null,
@@ -142,6 +148,10 @@ describe("GET /places?q=", () => {
   });
 });
 
+function isRankedBy(rankPreference: string) {
+  return (body: unknown) => (body as { rankPreference?: string }).rankPreference === rankPreference;
+}
+
 describe("GET /places without q", () => {
   it("calls searchNearby, not autocomplete", async () => {
     stub = stubFetch([
@@ -155,6 +165,119 @@ describe("GET /places without q", () => {
     expect(body.results.map((result) => result.name)).toContain("Blue Bottle Coffee");
     expect(stub.calls.every((call) => !call.url.includes("autocomplete"))).toBe(true);
   });
+
+  it("searches nearest-first and for large venues", async () => {
+    stub = stubFetch([
+      { match: "places:searchNearby", json: loadGoogleFixture("search-nearby.json") },
+    ]);
+
+    await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&accuracy=42`);
+
+    const rankPreferences = stub.calls
+      .map((call) => (call.body as { rankPreference: string }).rankPreference)
+      .sort();
+    expect(rankPreferences).toEqual(["DISTANCE", "POPULARITY"]);
+  });
+
+  it("only searches for large venues when the fix is too coarse to rank by distance", async () => {
+    stub = stubFetch([
+      { match: "places:searchNearby", json: loadGoogleFixture("search-nearby.json") },
+    ]);
+
+    await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&accuracy=2500`);
+
+    expect(stub.calls).toHaveLength(1);
+    expect((stub.calls[0].body as { rankPreference: string }).rankPreference).toBe("POPULARITY");
+  });
+
+  it("includes the viewport so the client can tell large venues from storefronts", async () => {
+    stub = stubFetch([
+      { match: "places:searchNearby", json: loadGoogleFixture("search-nearby-viewport.json") },
+    ]);
+
+    const response = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}`);
+    const body = (await response.json()) as { results: Array<Record<string, unknown>> };
+
+    expect(body.results[0].viewport).toEqual({
+      low: { latitude: 37.7644, longitude: -122.5107 },
+      high: { latitude: 37.7745, longitude: -122.4544 },
+    });
+    expect(body.results[1].viewport).toBeNull();
+  });
+
+  it("400s on a negative accuracy", async () => {
+    stub = stubFetch([]);
+
+    const response = await places.request(
+      `/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&accuracy=-1`,
+    );
+    expect(response.status).toBe(400);
+    expect(stub.calls).toHaveLength(0);
+  });
+
+  it("502s only when both nearby searches fail", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    stub = stubFetch([
+      { match: "places:searchNearby", matchBody: isRankedBy("DISTANCE"), status: 500, text: "boom" },
+      { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: loadGoogleFixture("search-nearby.json") },
+    ]);
+
+    const survivor = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}`);
+    expect(survivor.status).toBe(200);
+
+    stub.restore();
+    stub = stubFetch([{ match: "places:searchNearby", status: 500, text: "boom" }]);
+
+    const outage = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}`);
+    expect(outage.status).toBe(502);
+  });
+});
+
+describe("GET /places ranking scenarios", () => {
+  // Golden tests: each fixture in fixtures/ranking/ stores the raw Google
+  // responses for both nearby searches together with the exact `/places`
+  // output the recorder derived from them. The iOS ranking tests consume the
+  // same `places` array, so this is what keeps the two sides in agreement.
+  const fixtureNames = listRankingFixtureNames();
+
+  it("has recorded scenarios to replay", () => {
+    expect(fixtureNames.length).toBeGreaterThan(0);
+  });
+
+  for (const fixtureName of fixtureNames) {
+    it(`replays ${fixtureName} into the recorded places`, async () => {
+      const fixture = loadRankingFixture(fixtureName);
+      const routes = [
+        {
+          match: "places:searchNearby",
+          matchBody: isRankedBy("POPULARITY"),
+          json: fixture.google.largeVenues.response,
+        },
+      ];
+      if (fixture.google.distance) {
+        routes.push({
+          match: "places:searchNearby",
+          matchBody: isRankedBy("DISTANCE"),
+          json: fixture.google.distance.response,
+        });
+      }
+      stub = stubFetch(routes);
+
+      const response = await places.request(
+        `/?lat=${fixture.fix.latitude}&lng=${fixture.fix.longitude}&accuracy=${fixture.fix.horizontalAccuracy}`,
+      );
+      expect(response.status).toBe(200);
+
+      const body = (await response.json()) as { results: unknown[] };
+      expect(body.results).toEqual(fixture.places);
+
+      const requestBodies = stub.calls.map((call) => call.body);
+      expect(requestBodies).toContainEqual(fixture.google.largeVenues.request);
+      if (fixture.google.distance) {
+        expect(requestBodies).toContainEqual(fixture.google.distance.request);
+      }
+    });
+  }
 });
 
 describe("GET /places validation", () => {

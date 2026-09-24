@@ -5,3 +5,19 @@ The api has vitest tests in `api/src/**/*.test.ts`. Run them with `npm test` in
 
 Run the tests before finishing any change to the api. When fixing a bug, add a
 test that fails on the old behavior first, then fix it.
+
+# Ranking fixtures
+
+`fixtures/ranking/*.json` at the repo root hold recorded Google Places
+responses for real venues plus sample checkin histories. The API replays them
+as golden tests for `GET /places`, and the iOS `PlaceRanker` tests read the
+same files. Scenarios are defined in `scripts/ranking-scenarios.ts`; record or
+refresh them against the live API with:
+
+```
+GOOGLE_PLACES_API_KEY=... npm run fixtures:record            # every scenario
+GOOGLE_PLACES_API_KEY=... npm run fixtures:record -- sfo-terminal-2
+```
+
+Each scenario costs three billable requests. A file whose `recordedAt` is
+null is hand-authored stand-in data and should be re-recorded.

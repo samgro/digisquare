@@ -11,6 +11,8 @@ struct PlaceRow: View {
 
     let place: Place
     let userLocation: CLLocation?
+    /// How many times the user has checked in here before; zero hides the line.
+    var visitCount: Int = 0
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -26,6 +28,13 @@ struct PlaceRow: View {
                     .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                     .truncationMode(.tail)
             }
+
+            if let visitLine {
+                Label(visitLine, systemImage: "checkmark.circle")
+                    .font(.caption)
+                    .foregroundStyle(Color.accentColor)
+                    .lineLimit(1)
+            }
         }
         // Together these make the whole row width tappable, including the gap
         // between the two lines. Without the frame the VStack hugs its text.
@@ -38,6 +47,16 @@ struct PlaceRow: View {
     private var title: String {
         let trimmed = place.name.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? "Unnamed Place" : trimmed
+    }
+
+    private var visitLine: String? {
+        if visitCount < 1 {
+            return nil
+        }
+        if visitCount == 1 {
+            return "You've checked in here before"
+        }
+        return "You've checked in \(visitCount) times"
     }
 }
 
@@ -131,6 +150,15 @@ private let previewPlaces: [Place] = [
             PlaceRow(place: place, userLocation: previewUserLocation)
         }
         .buttonStyle(.plain)
+    }
+    .listStyle(.plain)
+}
+
+#Preview("Rows – With History") {
+    List {
+        PlaceRow(place: previewPlaces[0], userLocation: previewUserLocation, visitCount: 12)
+        PlaceRow(place: previewPlaces[1], userLocation: previewUserLocation, visitCount: 1)
+        PlaceRow(place: previewPlaces[2], userLocation: previewUserLocation)
     }
     .listStyle(.plain)
 }

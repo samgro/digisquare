@@ -1,0 +1,3505 @@
+{
+  "schemaVersion": 1,
+  "name": "soma-second-street",
+  "description": "Outside Blue Bottle on 2nd Street in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; Yerba Buena Gardens and Salesforce Park are 400 m away and Oracle Park 1.2 km.",
+  "recordedAt": "2026-09-24T00:12:57.153Z",
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.78697,
+    "longitude": -122.398863,
+    "horizontalAccuracy": 12
+  },
+  "google": {
+    "largeVenues": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.78697,
+              "longitude": -122.398863
+            },
+            "radius": 2000
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
+            "types": [
+              "stadium",
+              "tourist_attraction",
+              "sports_complex",
+              "event_venue",
+              "sports_activity_location",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.7783654,
+              "longitude": -122.38991619999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7745563,
+                "longitude": -122.3917657802915
+              },
+              "high": {
+                "latitude": 37.7798683,
+                "longitude": -122.3890678197085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 32788,
+            "displayName": {
+              "text": "Oracle Park",
+              "languageCode": "en"
+            },
+            "primaryType": "stadium"
+          },
+          {
+            "id": "ChIJW5D3LYmAhYARb92CmHj1bOM",
+            "types": [
+              "historical_landmark",
+              "historical_place",
+              "tourist_attraction",
+              "plaza",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "San Francisco, CA 94108, USA",
+            "location": {
+              "latitude": 37.7879358,
+              "longitude": -122.40751389999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7865940697085,
+                "longitude": -122.4089130302915
+              },
+              "high": {
+                "latitude": 37.7892920302915,
+                "longitude": -122.40621506970851
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 37486,
+            "displayName": {
+              "text": "Union Square",
+              "languageCode": "en"
+            },
+            "primaryType": "historical_landmark"
+          },
+          {
+            "id": "ChIJC9y2SGOAhYARSaejL5ecgmg",
+            "types": [
+              "park",
+              "city_park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "425 Mission St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.789739499999996,
+              "longitude": -122.39616559999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.787448569708495,
+                "longitude": -122.39866333029147
+              },
+              "high": {
+                "latitude": 37.790146530291494,
+                "longitude": -122.39596536970848
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 5054,
+            "displayName": {
+              "text": "Salesforce Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJE_PHY3yAhYAR5uBdYH1Racs",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "335 McAllister St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.77949290000001,
+              "longitude": -122.4176986
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7781159197085,
+                "longitude": -122.4190031302915
+              },
+              "high": {
+                "latitude": 37.7808138802915,
+                "longitude": -122.41630516970851
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 2200,
+            "displayName": {
+              "text": "Civic Center Plaza",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJCUsDnIeAhYARWCBpPTrHJpQ",
+            "types": [
+              "city_park",
+              "garden",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.784988399999996,
+              "longitude": -122.4023514
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.782392599999994,
+                "longitude": -122.40346479999998
+              },
+              "high": {
+                "latitude": 37.7855721,
+                "longitude": -122.4007424
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 4544,
+            "displayName": {
+              "text": "Yerba Buena Gardens",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJoYiOqfGAhYAR8J-KiogVyCQ",
+            "types": [
+              "city_park",
+              "playground",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Filbert St & Stockton Street, San Francisco, CA 94133, USA",
+            "location": {
+              "latitude": 37.8007752,
+              "longitude": -122.41024639999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7995049697085,
+                "longitude": -122.4114491802915
+              },
+              "high": {
+                "latitude": 37.8022029302915,
+                "longitude": -122.4087512197085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 5445,
+            "displayName": {
+              "text": "Washington Square",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJdx6kBe6AhYARsPFmpUAvvcY",
+            "types": [
+              "city_park",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Vallejo & Taylor, Vallejo St, San Francisco, CA 94133, USA",
+            "location": {
+              "latitude": 37.7982745,
+              "longitude": -122.4134592
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.79683721970849,
+                "longitude": -122.41449223029149
+              },
+              "high": {
+                "latitude": 37.79953518029149,
+                "longitude": -122.41179426970851
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 1688,
+            "displayName": {
+              "text": "Ina Coolbrith Park",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJ0X_WV5qAhYARN-ZYTWDj2KY",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "200 McAllister St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.781122499999995,
+              "longitude": -122.4157619
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.779553819708504,
+                "longitude": -122.41617053029151
+              },
+              "high": {
+                "latitude": 37.7822517802915,
+                "longitude": -122.41347256970852
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 84,
+            "displayName": {
+              "text": "UC Law San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "educational_institution"
+          },
+          {
+            "id": "ChIJ-RJFNouAhYARHU0SXkyCGn8",
+            "types": [
+              "city_park",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "745 Kearny St, San Francisco, CA 94108, USA",
+            "location": {
+              "latitude": 37.7948896,
+              "longitude": -122.4052341
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7935158197085,
+                "longitude": -122.4066937802915
+              },
+              "high": {
+                "latitude": 37.7962137802915,
+                "longitude": -122.40399581970853
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 506,
+            "displayName": {
+              "text": "Portsmouth Square Park",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJ-VUxItp_j4ARBgyteXdSZ-g",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1 China Basin Park, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.7764193,
+              "longitude": -122.38795479999997
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7745676197085,
+                "longitude": -122.3903431302915
+              },
+              "high": {
+                "latitude": 37.7772655802915,
+                "longitude": -122.38764516970852
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 237,
+            "displayName": {
+              "text": "China Basin Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJd_edWMaAhYARGcVcwBNgCd4",
+            "types": [
+              "university",
+              "dentist",
+              "educational_institution",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "155 5th St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782254099999996,
+              "longitude": -122.40531739999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780833519708494,
+                "longitude": -122.40695133029146
+              },
+              "high": {
+                "latitude": 37.783531480291494,
+                "longitude": -122.40425336970848
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 349,
+            "displayName": {
+              "text": "University of the Pacific, Arthur A. Dugoni School of Dentistry",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJWS0hyGaAhYARrci3Bdxh0fI",
+            "types": [
+              "park",
+              "plaza",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Market St &, Steuart St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7951195,
+              "longitude": -122.39520069999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7938338697085,
+                "longitude": -122.39619663029148
+              },
+              "high": {
+                "latitude": 37.7965318302915,
+                "longitude": -122.39349866970849
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 681,
+            "displayName": {
+              "text": "Embarcadero Plaza",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJFQPEvO-AhYARsCOkX_YCzoM",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "808 Kearny St, San Francisco, CA 94108, USA",
+            "location": {
+              "latitude": 37.7956036,
+              "longitude": -122.4047237
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7941934697085,
+                "longitude": -122.40622138029148
+              },
+              "high": {
+                "latitude": 37.7968914302915,
+                "longitude": -122.40352341970849
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 50,
+            "displayName": {
+              "text": "City College of San Francisco - Chinatown Center",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJW_cCS9B_j4ARigbJMyKq_x8",
+            "types": [
+              "city_park",
+              "playground",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Long Bridge Street & China Basin St, 690 Long Bridge St, San Francisco, CA 94158, USA",
+            "location": {
+              "latitude": 37.772168199999996,
+              "longitude": -122.39259570000002
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7706859197085,
+                "longitude": -122.3940443802915
+              },
+              "high": {
+                "latitude": 37.7733838802915,
+                "longitude": -122.39134641970851
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 656,
+            "displayName": {
+              "text": "Mission Bay Kids Park",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJI7ES6tl_j4ARXdMklSPsJl4",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.7783727,
+              "longitude": -122.3877444
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7771647697085,
+                "longitude": -122.3890886802915
+              },
+              "high": {
+                "latitude": 37.7798627302915,
+                "longitude": -122.3863907197085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 173,
+            "displayName": {
+              "text": "Giants Promenade",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJO7R-32KAhYARA4Fpef70tjk",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "536 Mission St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7893349,
+              "longitude": -122.39882419999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7878819197085,
+                "longitude": -122.40022093029148
+              },
+              "high": {
+                "latitude": 37.790579880291496,
+                "longitude": -122.39752296970849
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 88,
+            "displayName": {
+              "text": "Golden Gate University",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJkZyW-2-AhYARzCwWSe3qHMQ",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "The Embarcadero & Folsom St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7916129,
+              "longitude": -122.38995059999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7899214697085,
+                "longitude": -122.3913586802915
+              },
+              "high": {
+                "latitude": 37.7926194302915,
+                "longitude": -122.38866071970853
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 3013,
+            "displayName": {
+              "text": "Rincon Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJZ0Mj1s9_j4ARt4-u90l2X84",
+            "types": [
+              "park",
+              "athletic_field",
+              "sports_activity_location",
+              "sports_club",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "701 Mission Bay Blvd North, San Francisco, CA 94158, USA",
+            "location": {
+              "latitude": 37.770569099999996,
+              "longitude": -122.39380120000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7693669197085,
+                "longitude": -122.39468403029149
+              },
+              "high": {
+                "latitude": 37.7720648802915,
+                "longitude": -122.39198606970851
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 160,
+            "displayName": {
+              "text": "SFF Soccer - Mission Bay Field",
+              "languageCode": "en"
+            },
+            "primaryType": "athletic_field"
+          },
+          {
+            "id": "ChIJt0fDI2WAhYAR4WGEx4Nstqs",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Howard St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7908872,
+              "longitude": -122.39253049999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.789588969708504,
+                "longitude": -122.39408833029147
+              },
+              "high": {
+                "latitude": 37.7922869302915,
+                "longitude": -122.39139036970849
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 25,
+            "displayName": {
+              "text": "University of San Francisco - Downtown Campus",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJy2xD5l2BhYAR5t-1BYCtbyI",
+            "types": [
+              "beer_garden",
+              "bar",
+              "park",
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "250 Main St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.789698400000006,
+              "longitude": -122.3931459
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.788493369708505,
+                "longitude": -122.39422648029151
+              },
+              "high": {
+                "latitude": 37.791191330291504,
+                "longitude": -122.39152851970852
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 99,
+            "displayName": {
+              "text": "The Crossing at East Cut",
+              "languageCode": "en"
+            }
+          }
+        ]
+      }
+    },
+    "distance": {
+      "request": {
+        "maxResultCount": 20,
+        "rankPreference": "DISTANCE",
+        "locationRestriction": {
+          "circle": {
+            "center": {
+              "latitude": 37.78697,
+              "longitude": -122.398863
+            },
+            "radius": 1500
+          }
+        }
+      },
+      "response": {
+        "places": [
+          {
+            "id": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+            "types": [
+              "coffee_shop",
+              "cafe",
+              "food_store",
+              "store",
+              "food",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "168 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7870063,
+              "longitude": -122.3988975
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7857284697085,
+                "longitude": -122.40015788029149
+              },
+              "high": {
+                "latitude": 37.7884264302915,
+                "longitude": -122.3974599197085
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 365,
+            "displayName": {
+              "text": "Blue Bottle Coffee",
+              "languageCode": "en"
+            },
+            "primaryType": "coffee_shop"
+          },
+          {
+            "id": "ChIJV9R36eeBhYARF2uurzMq6QQ",
+            "types": [
+              "embassy",
+              "government_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785629619708494,
+                "longitude": -122.40037258029147
+              },
+              "high": {
+                "latitude": 37.788327580291494,
+                "longitude": -122.3976746197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 10,
+            "displayName": {
+              "text": "Consulate General of Estonia in San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "embassy"
+          },
+          {
+            "id": "ChIJ4WaysimBhYAR-yjaLweDnzk",
+            "types": [
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St 2nd Floor, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785642019708504,
+                "longitude": -122.40035628029148
+              },
+              "high": {
+                "latitude": 37.7883399802915,
+                "longitude": -122.39765831970848
+              }
+            },
+            "displayName": {
+              "text": "Nexus Venture Partners",
+              "languageCode": "en"
+            },
+            "primaryType": "finance"
+          },
+          {
+            "id": "ChIJKxneI32AhYAR833jC2vvfCA",
+            "types": [
+              "finance",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785629619708494,
+                "longitude": -122.40037258029147
+              },
+              "high": {
+                "latitude": 37.788327580291494,
+                "longitude": -122.3976746197085
+              }
+            },
+            "displayName": {
+              "text": "Princeville Global",
+              "languageCode": "en"
+            },
+            "primaryType": "finance"
+          },
+          {
+            "id": "ChIJ21TrI32AhYARHdx-RBOn1hk",
+            "types": [
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7869508,
+              "longitude": -122.39895839999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.785629619708494,
+                "longitude": -122.40037258029147
+              },
+              "high": {
+                "latitude": 37.788327580291494,
+                "longitude": -122.3976746197085
+              }
+            },
+            "displayName": {
+              "text": "Ira & Leonore Gershwin Trusts",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
+          },
+          {
+            "id": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+            "types": [
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "176 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.786858699999996,
+              "longitude": -122.39876919999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78559061970849,
+                "longitude": -122.40001448029149
+              },
+              "high": {
+                "latitude": 37.78828858029149,
+                "longitude": -122.39731651970851
+              }
+            },
+            "displayName": {
+              "text": "Social Fit Club",
+              "languageCode": "en"
+            },
+            "primaryType": "health"
+          },
+          {
+            "id": "ChIJz7Zh7-2BhYARwniWSsZz2t0",
+            "types": [
+              "corporate_office",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St Ste 506, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7870314,
+              "longitude": -122.39909779999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7856638197085,
+                "longitude": -122.4004833302915
+              },
+              "high": {
+                "latitude": 37.7883617802915,
+                "longitude": -122.3977853697085
+              }
+            },
+            "displayName": {
+              "text": "Clearpol",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJqV_2Fzm3j4ARDUIzZOdjZUQ",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "108 Natoma St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871285,
+              "longitude": -122.39898659999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7857792197085,
+                "longitude": -122.40033513029147
+              },
+              "high": {
+                "latitude": 37.788477180291494,
+                "longitude": -122.39763716970849
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 11,
+            "displayName": {
+              "text": "PlanetScale",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJm7imNNZ_j4ARBoCdxAdlv-w",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.39906649999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031653029149
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.3976185697085
+              }
+            },
+            "displayName": {
+              "text": "Zunos Headquarters",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARePCF3Sx3m1s",
+            "types": [
+              "corporate_office",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "The BioPharma Agency",
+              "languageCode": "en"
+            },
+            "primaryType": "corporate_office"
+          },
+          {
+            "id": "ChIJgQefPMqBhYARx9DobysV78I",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "rating": 3.4,
+            "userRatingCount": 5,
+            "displayName": {
+              "text": "Kintsugi AI",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJdZgmUWhvU0sRaF6G-IglMX4",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St Unit 505, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78580401970849,
+                "longitude": -122.40033783029149
+              },
+              "high": {
+                "latitude": 37.78850198029149,
+                "longitude": -122.3976398697085
+              }
+            },
+            "displayName": {
+              "text": "Rize",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARJjK1VANOcEY",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Vendisys",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARQam0rw6BbMc",
+            "types": [
+              "doctor",
+              "medical_clinic",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Dr. Roger Ayres",
+              "languageCode": "en"
+            },
+            "primaryType": "doctor"
+          },
+          {
+            "id": "ChIJ18wocEtjx4kRCZUJwModXJk",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 26,
+            "displayName": {
+              "text": "Awesomic",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJYxGcmauBhYARg-k8m0coQZ0",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Spendesk USA",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARXnBc-xMjLQ4",
+            "types": [
+              "doctor",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Shomir Banerjee",
+              "languageCode": "en"
+            },
+            "primaryType": "doctor"
+          },
+          {
+            "id": "ChIJ06x5mNmBhYARz-maNNKKjwk",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "We Work SOMA 2, 156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "Advanced Communities",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARjKzoyb7NJqI",
+            "types": [
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7858374697085,
+                "longitude": -122.40031658029152
+              },
+              "high": {
+                "latitude": 37.788535430291496,
+                "longitude": -122.39761861970852
+              }
+            },
+            "displayName": {
+              "text": "G1 Software",
+              "languageCode": "en"
+            },
+            "primaryType": "service"
+          },
+          {
+            "id": "ChIJoZFPJH2AhYARZJLVR00fB_g",
+            "types": [
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "156 2nd St Ste 627, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7871077,
+              "longitude": -122.3990666
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.78580401970849,
+                "longitude": -122.40033783029149
+              },
+              "high": {
+                "latitude": 37.78850198029149,
+                "longitude": -122.3976398697085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "CAI California North Chapter",
+              "languageCode": "en"
+            },
+            "primaryType": "association_or_organization"
+          }
+        ]
+      }
+    }
+  },
+  "places": [
+    {
+      "id": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+      "name": "Blue Bottle Coffee",
+      "address": "168 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7870063,
+        "longitude": -122.3988975
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7857284697085,
+          "longitude": -122.40015788029149
+        },
+        "high": {
+          "latitude": 37.7884264302915,
+          "longitude": -122.3974599197085
+        }
+      },
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "food_store",
+        "store",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "coffee_shop",
+      "rating": 4.4,
+      "userRatingCount": 365
+    },
+    {
+      "id": "ChIJV9R36eeBhYARF2uurzMq6QQ",
+      "name": "Consulate General of Estonia in San Francisco",
+      "address": "101 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.785629619708494,
+          "longitude": -122.40037258029147
+        },
+        "high": {
+          "latitude": 37.788327580291494,
+          "longitude": -122.3976746197085
+        }
+      },
+      "types": [
+        "embassy",
+        "government_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "embassy",
+      "rating": 4.6,
+      "userRatingCount": 10
+    },
+    {
+      "id": "ChIJ4WaysimBhYAR-yjaLweDnzk",
+      "name": "Nexus Venture Partners",
+      "address": "101 Natoma St 2nd Floor, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.785642019708504,
+          "longitude": -122.40035628029148
+        },
+        "high": {
+          "latitude": 37.7883399802915,
+          "longitude": -122.39765831970848
+        }
+      },
+      "types": [
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "finance",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJKxneI32AhYAR833jC2vvfCA",
+      "name": "Princeville Global",
+      "address": "101 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.785629619708494,
+          "longitude": -122.40037258029147
+        },
+        "high": {
+          "latitude": 37.788327580291494,
+          "longitude": -122.3976746197085
+        }
+      },
+      "types": [
+        "finance",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "finance",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ21TrI32AhYARHdx-RBOn1hk",
+      "name": "Ira & Leonore Gershwin Trusts",
+      "address": "101 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7869508,
+        "longitude": -122.39895839999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.785629619708494,
+          "longitude": -122.40037258029147
+        },
+        "high": {
+          "latitude": 37.788327580291494,
+          "longitude": -122.3976746197085
+        }
+      },
+      "types": [
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "association_or_organization",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+      "name": "Social Fit Club",
+      "address": "176 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.786858699999996,
+        "longitude": -122.39876919999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78559061970849,
+          "longitude": -122.40001448029149
+        },
+        "high": {
+          "latitude": 37.78828858029149,
+          "longitude": -122.39731651970851
+        }
+      },
+      "types": [
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "health",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJz7Zh7-2BhYARwniWSsZz2t0",
+      "name": "Clearpol",
+      "address": "156 2nd St Ste 506, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7870314,
+        "longitude": -122.39909779999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7856638197085,
+          "longitude": -122.4004833302915
+        },
+        "high": {
+          "latitude": 37.7883617802915,
+          "longitude": -122.3977853697085
+        }
+      },
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJqV_2Fzm3j4ARDUIzZOdjZUQ",
+      "name": "PlanetScale",
+      "address": "108 Natoma St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871285,
+        "longitude": -122.39898659999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7857792197085,
+          "longitude": -122.40033513029147
+        },
+        "high": {
+          "latitude": 37.788477180291494,
+          "longitude": -122.39763716970849
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 4.6,
+      "userRatingCount": 11
+    },
+    {
+      "id": "ChIJm7imNNZ_j4ARBoCdxAdlv-w",
+      "name": "Zunos Headquarters",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.39906649999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031653029149
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.3976185697085
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARePCF3Sx3m1s",
+      "name": "The BioPharma Agency",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "corporate_office",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJgQefPMqBhYARx9DobysV78I",
+      "name": "Kintsugi AI",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 3.4,
+      "userRatingCount": 5
+    },
+    {
+      "id": "ChIJdZgmUWhvU0sRaF6G-IglMX4",
+      "name": "Rize",
+      "address": "156 2nd St Unit 505, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78580401970849,
+          "longitude": -122.40033783029149
+        },
+        "high": {
+          "latitude": 37.78850198029149,
+          "longitude": -122.3976398697085
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARJjK1VANOcEY",
+      "name": "Vendisys",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARQam0rw6BbMc",
+      "name": "Dr. Roger Ayres",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "doctor",
+        "medical_clinic",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "doctor",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ18wocEtjx4kRCZUJwModXJk",
+      "name": "Awesomic",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": 4.8,
+      "userRatingCount": 26
+    },
+    {
+      "id": "ChIJYxGcmauBhYARg-k8m0coQZ0",
+      "name": "Spendesk USA",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARXnBc-xMjLQ4",
+      "name": "Shomir Banerjee",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "doctor",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "doctor",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJ06x5mNmBhYARz-maNNKKjwk",
+      "name": "Advanced Communities",
+      "address": "We Work SOMA 2, 156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARjKzoyb7NJqI",
+      "name": "G1 Software",
+      "address": "156 2nd St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7858374697085,
+          "longitude": -122.40031658029152
+        },
+        "high": {
+          "latitude": 37.788535430291496,
+          "longitude": -122.39761861970852
+        }
+      },
+      "types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "service",
+      "rating": null,
+      "userRatingCount": null
+    },
+    {
+      "id": "ChIJoZFPJH2AhYARZJLVR00fB_g",
+      "name": "CAI California North Chapter",
+      "address": "156 2nd St Ste 627, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7871077,
+        "longitude": -122.3990666
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.78580401970849,
+          "longitude": -122.40033783029149
+        },
+        "high": {
+          "latitude": 37.78850198029149,
+          "longitude": -122.3976398697085
+        }
+      },
+      "types": [
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "association_or_organization",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
+      "name": "Oracle Park",
+      "address": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.7783654,
+        "longitude": -122.38991619999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7745563,
+          "longitude": -122.3917657802915
+        },
+        "high": {
+          "latitude": 37.7798683,
+          "longitude": -122.3890678197085
+        }
+      },
+      "types": [
+        "stadium",
+        "tourist_attraction",
+        "sports_complex",
+        "event_venue",
+        "sports_activity_location",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "stadium",
+      "rating": 4.7,
+      "userRatingCount": 32788
+    },
+    {
+      "id": "ChIJW5D3LYmAhYARb92CmHj1bOM",
+      "name": "Union Square",
+      "address": "San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.7879358,
+        "longitude": -122.40751389999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7865940697085,
+          "longitude": -122.4089130302915
+        },
+        "high": {
+          "latitude": 37.7892920302915,
+          "longitude": -122.40621506970851
+        }
+      },
+      "types": [
+        "historical_landmark",
+        "historical_place",
+        "tourist_attraction",
+        "plaza",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "historical_landmark",
+      "rating": 4.4,
+      "userRatingCount": 37486
+    },
+    {
+      "id": "ChIJC9y2SGOAhYARSaejL5ecgmg",
+      "name": "Salesforce Park",
+      "address": "425 Mission St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.789739499999996,
+        "longitude": -122.39616559999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.787448569708495,
+          "longitude": -122.39866333029147
+        },
+        "high": {
+          "latitude": 37.790146530291494,
+          "longitude": -122.39596536970848
+        }
+      },
+      "types": [
+        "park",
+        "city_park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.8,
+      "userRatingCount": 5054
+    },
+    {
+      "id": "ChIJE_PHY3yAhYAR5uBdYH1Racs",
+      "name": "Civic Center Plaza",
+      "address": "335 McAllister St, San Francisco, CA 94102, USA",
+      "location": {
+        "latitude": 37.77949290000001,
+        "longitude": -122.4176986
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7781159197085,
+          "longitude": -122.4190031302915
+        },
+        "high": {
+          "latitude": 37.7808138802915,
+          "longitude": -122.41630516970851
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.4,
+      "userRatingCount": 2200
+    },
+    {
+      "id": "ChIJCUsDnIeAhYARWCBpPTrHJpQ",
+      "name": "Yerba Buena Gardens",
+      "address": "750 Howard St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.784988399999996,
+        "longitude": -122.4023514
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.782392599999994,
+          "longitude": -122.40346479999998
+        },
+        "high": {
+          "latitude": 37.7855721,
+          "longitude": -122.4007424
+        }
+      },
+      "types": [
+        "city_park",
+        "garden",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.6,
+      "userRatingCount": 4544
+    },
+    {
+      "id": "ChIJoYiOqfGAhYAR8J-KiogVyCQ",
+      "name": "Washington Square",
+      "address": "Filbert St & Stockton Street, San Francisco, CA 94133, USA",
+      "location": {
+        "latitude": 37.8007752,
+        "longitude": -122.41024639999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7995049697085,
+          "longitude": -122.4114491802915
+        },
+        "high": {
+          "latitude": 37.8022029302915,
+          "longitude": -122.4087512197085
+        }
+      },
+      "types": [
+        "city_park",
+        "playground",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.5,
+      "userRatingCount": 5445
+    },
+    {
+      "id": "ChIJdx6kBe6AhYARsPFmpUAvvcY",
+      "name": "Ina Coolbrith Park",
+      "address": "Vallejo & Taylor, Vallejo St, San Francisco, CA 94133, USA",
+      "location": {
+        "latitude": 37.7982745,
+        "longitude": -122.4134592
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.79683721970849,
+          "longitude": -122.41449223029149
+        },
+        "high": {
+          "latitude": 37.79953518029149,
+          "longitude": -122.41179426970851
+        }
+      },
+      "types": [
+        "city_park",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.8,
+      "userRatingCount": 1688
+    },
+    {
+      "id": "ChIJ0X_WV5qAhYARN-ZYTWDj2KY",
+      "name": "UC Law San Francisco",
+      "address": "200 McAllister St, San Francisco, CA 94102, USA",
+      "location": {
+        "latitude": 37.781122499999995,
+        "longitude": -122.4157619
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.779553819708504,
+          "longitude": -122.41617053029151
+        },
+        "high": {
+          "latitude": 37.7822517802915,
+          "longitude": -122.41347256970852
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "educational_institution",
+      "rating": 4.3,
+      "userRatingCount": 84
+    },
+    {
+      "id": "ChIJ-RJFNouAhYARHU0SXkyCGn8",
+      "name": "Portsmouth Square Park",
+      "address": "745 Kearny St, San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.7948896,
+        "longitude": -122.4052341
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7935158197085,
+          "longitude": -122.4066937802915
+        },
+        "high": {
+          "latitude": 37.7962137802915,
+          "longitude": -122.40399581970853
+        }
+      },
+      "types": [
+        "city_park",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.1,
+      "userRatingCount": 506
+    },
+    {
+      "id": "ChIJ-VUxItp_j4ARBgyteXdSZ-g",
+      "name": "China Basin Park",
+      "address": "1 China Basin Park, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.7764193,
+        "longitude": -122.38795479999997
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7745676197085,
+          "longitude": -122.3903431302915
+        },
+        "high": {
+          "latitude": 37.7772655802915,
+          "longitude": -122.38764516970852
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 237
+    },
+    {
+      "id": "ChIJd_edWMaAhYARGcVcwBNgCd4",
+      "name": "University of the Pacific, Arthur A. Dugoni School of Dentistry",
+      "address": "155 5th St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.782254099999996,
+        "longitude": -122.40531739999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.780833519708494,
+          "longitude": -122.40695133029146
+        },
+        "high": {
+          "latitude": 37.783531480291494,
+          "longitude": -122.40425336970848
+        }
+      },
+      "types": [
+        "university",
+        "dentist",
+        "educational_institution",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4,
+      "userRatingCount": 349
+    },
+    {
+      "id": "ChIJWS0hyGaAhYARrci3Bdxh0fI",
+      "name": "Embarcadero Plaza",
+      "address": "Market St &, Steuart St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7951195,
+        "longitude": -122.39520069999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7938338697085,
+          "longitude": -122.39619663029148
+        },
+        "high": {
+          "latitude": 37.7965318302915,
+          "longitude": -122.39349866970849
+        }
+      },
+      "types": [
+        "park",
+        "plaza",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.4,
+      "userRatingCount": 681
+    },
+    {
+      "id": "ChIJFQPEvO-AhYARsCOkX_YCzoM",
+      "name": "City College of San Francisco - Chinatown Center",
+      "address": "808 Kearny St, San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.7956036,
+        "longitude": -122.4047237
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7941934697085,
+          "longitude": -122.40622138029148
+        },
+        "high": {
+          "latitude": 37.7968914302915,
+          "longitude": -122.40352341970849
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.5,
+      "userRatingCount": 50
+    },
+    {
+      "id": "ChIJW_cCS9B_j4ARigbJMyKq_x8",
+      "name": "Mission Bay Kids Park",
+      "address": "Long Bridge Street & China Basin St, 690 Long Bridge St, San Francisco, CA 94158, USA",
+      "location": {
+        "latitude": 37.772168199999996,
+        "longitude": -122.39259570000002
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7706859197085,
+          "longitude": -122.3940443802915
+        },
+        "high": {
+          "latitude": 37.7733838802915,
+          "longitude": -122.39134641970851
+        }
+      },
+      "types": [
+        "city_park",
+        "playground",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.7,
+      "userRatingCount": 656
+    },
+    {
+      "id": "ChIJI7ES6tl_j4ARXdMklSPsJl4",
+      "name": "Giants Promenade",
+      "address": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.7783727,
+        "longitude": -122.3877444
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7771647697085,
+          "longitude": -122.3890886802915
+        },
+        "high": {
+          "latitude": 37.7798627302915,
+          "longitude": -122.3863907197085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 173
+    },
+    {
+      "id": "ChIJO7R-32KAhYARA4Fpef70tjk",
+      "name": "Golden Gate University",
+      "address": "536 Mission St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7893349,
+        "longitude": -122.39882419999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7878819197085,
+          "longitude": -122.40022093029148
+        },
+        "high": {
+          "latitude": 37.790579880291496,
+          "longitude": -122.39752296970849
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.1,
+      "userRatingCount": 88
+    },
+    {
+      "id": "ChIJkZyW-2-AhYARzCwWSe3qHMQ",
+      "name": "Rincon Park",
+      "address": "The Embarcadero & Folsom St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7916129,
+        "longitude": -122.38995059999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7899214697085,
+          "longitude": -122.3913586802915
+        },
+        "high": {
+          "latitude": 37.7926194302915,
+          "longitude": -122.38866071970853
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.6,
+      "userRatingCount": 3013
+    },
+    {
+      "id": "ChIJZ0Mj1s9_j4ARt4-u90l2X84",
+      "name": "SFF Soccer - Mission Bay Field",
+      "address": "701 Mission Bay Blvd North, San Francisco, CA 94158, USA",
+      "location": {
+        "latitude": 37.770569099999996,
+        "longitude": -122.39380120000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7693669197085,
+          "longitude": -122.39468403029149
+        },
+        "high": {
+          "latitude": 37.7720648802915,
+          "longitude": -122.39198606970851
+        }
+      },
+      "types": [
+        "park",
+        "athletic_field",
+        "sports_activity_location",
+        "sports_club",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "athletic_field",
+      "rating": 4.6,
+      "userRatingCount": 160
+    },
+    {
+      "id": "ChIJt0fDI2WAhYAR4WGEx4Nstqs",
+      "name": "University of San Francisco - Downtown Campus",
+      "address": "101 Howard St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7908872,
+        "longitude": -122.39253049999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.789588969708504,
+          "longitude": -122.39408833029147
+        },
+        "high": {
+          "latitude": 37.7922869302915,
+          "longitude": -122.39139036970849
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.6,
+      "userRatingCount": 25
+    },
+    {
+      "id": "ChIJy2xD5l2BhYAR5t-1BYCtbyI",
+      "name": "The Crossing at East Cut",
+      "address": "250 Main St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.789698400000006,
+        "longitude": -122.3931459
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.788493369708505,
+          "longitude": -122.39422648029151
+        },
+        "high": {
+          "latitude": 37.791191330291504,
+          "longitude": -122.39152851970852
+        }
+      },
+      "types": [
+        "beer_garden",
+        "bar",
+        "park",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": null,
+      "rating": 4.4,
+      "userRatingCount": 99
+    }
+  ],
+  "placeKeys": {
+    "blueBottle": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+    "gym": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+    "ballpark": "ChIJ_T25cNd_j4ARehGmHe0pT84"
+  },
+  "histories": {
+    "none": [],
+    "coffeeRegular": [
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-06-24T15:03:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-06-26T15:46:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-06-30T15:39:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-03T15:32:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-06T15:25:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-09T15:18:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-10T15:11:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-15T15:04:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-17T15:47:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-21T15:40:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-24T15:33:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-27T15:26:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-30T15:19:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-31T15:12:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-05T15:05:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-07T15:48:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-11T15:41:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-14T15:34:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-17T15:27:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-20T15:20:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-21T15:13:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-26T15:06:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-28T15:49:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-01T15:42:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-04T15:35:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-07T15:28:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-10T15:21:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-11T15:14:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-16T15:07:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-18T15:00:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      }
+    ],
+    "neighborhoodRegular": [
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-06-24T15:27:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-06-25T03:13:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-01T15:20:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-07-04T03:06:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-09T15:13:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-07-13T03:49:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-16T15:06:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-07-22T03:42:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-24T15:49:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-07-31T03:35:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-07-31T15:42:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-07T15:35:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-08-09T03:28:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-14T15:28:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-08-18T03:21:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-21T15:21:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-08-27T03:14:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-08-28T15:14:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-09-05T03:07:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-07T15:07:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      },
+      {
+        "googlePlaceId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "createdAt": "2026-09-14T03:00:00.000Z",
+        "placeName": "Social Fit Club",
+        "placeAddress": "176 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "health",
+        "placeTypes": [
+          "health",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.786858699999996,
+          "longitude": -122.39876919999999
+        }
+      },
+      {
+        "googlePlaceId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "createdAt": "2026-09-14T15:00:00.000Z",
+        "placeName": "Blue Bottle Coffee",
+        "placeAddress": "168 2nd St, San Francisco, CA 94105, USA",
+        "placePrimaryType": "coffee_shop",
+        "placeTypes": [
+          "coffee_shop",
+          "cafe",
+          "food_store",
+          "store",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "location": {
+          "latitude": 37.7870063,
+          "longitude": -122.3988975
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "tight fix, no history",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "top": "blueBottle",
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "blueBottle",
+            "ballpark"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tight fix, coffee regular",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "coffeeRegular",
+      "expect": {
+        "top": "blueBottle",
+        "suggested": "blueBottle"
+      }
+    },
+    {
+      "name": "morning, regular at both",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "neighborhoodRegular",
+      "expect": {
+        "top": "blueBottle",
+        "rankedAbove": [
+          [
+            "blueBottle",
+            "gym"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "evening, regular at both",
+      "now": "2026-09-25T20:30:00-07:00",
+      "horizontalAccuracy": 12,
+      "fixAgeSeconds": 5,
+      "history": "neighborhoodRegular",
+      "expect": {
+        "top": "gym",
+        "rankedAbove": [
+          [
+            "gym",
+            "blueBottle"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "coarse fix, no history",
+      "now": "2026-09-22T08:30:00-07:00",
+      "horizontalAccuracy": 300,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null
+      }
+    }
+  ]
+}

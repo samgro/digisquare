@@ -8,6 +8,9 @@ import SwiftUI
 /// Second step of the checkin flow: write a message for the selected place and submit.
 struct CheckInComposeView: View {
     let place: Place
+    /// Present when the picker skipped the list because it was confident about
+    /// `place`. Shows a Change Location button that returns to the ranked list.
+    var onChangeLocation: (() -> Void)? = nil
     let onSubmit: (String?) -> Void
 
     @State private var message = ""
@@ -20,6 +23,16 @@ struct CheckInComposeView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .padding(.horizontal)
+            }
+
+            if let onChangeLocation {
+                Button(action: onChangeLocation) {
+                    Label("Change Location", systemImage: "mappin.and.ellipse")
+                        .font(.subheadline.weight(.medium))
+                }
+                .padding(.horizontal)
+                .padding(.top, 4)
+                .accessibilityHint("Shows the list of nearby places")
             }
 
             TextEditor(text: $message)
@@ -77,6 +90,14 @@ struct CheckInComposeView: View {
 #Preview {
     NavigationStack {
         CheckInComposeView(place: .preview) { message in
+            print("Submitted: \(message ?? "<no message>")")
+        }
+    }
+}
+
+#Preview("Suggested") {
+    NavigationStack {
+        CheckInComposeView(place: .preview, onChangeLocation: { print("Change location") }) { message in
             print("Submitted: \(message ?? "<no message>")")
         }
     }
