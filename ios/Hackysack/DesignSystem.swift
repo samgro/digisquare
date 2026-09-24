@@ -126,12 +126,10 @@ struct AvatarView: View {
 
 /// A labelled text field that can show a validation message underneath.
 ///
-/// The error text comes from the API's `details.fieldErrors`, which is why the
-/// field names on the sign-up screen match the server's schema exactly.
+/// The error text comes from the API's `details.fieldErrors`.
 struct AuthField: View {
     let label: String?
     @Binding var text: String
-    var isSecure: Bool = false
     var errorMessage: String?
     /// Optional, because .focused() binds the view it is applied to and does
     /// NOT propagate into a container's children — a caller putting it on an
@@ -174,13 +172,8 @@ struct AuthField: View {
         }
     }
 
-    @ViewBuilder
     private var field: some View {
-        if isSecure {
-            SecureField("", text: $text)
-        } else {
-            TextField("", text: $text)
-        }
+        TextField("", text: $text)
     }
 }
 
@@ -207,12 +200,11 @@ struct FormErrorBanner: View {
 #Preview {
     VStack(spacing: HackysackSpacing.large) {
         AvatarView(url: nil, initials: "SG", size: HackysackSize.avatarLarge)
-        AuthField(label: "Email", text: .constant("sam@example.com"))
-        AuthField(label: "Password", text: .constant("secret"), isSecure: true,
-                  errorMessage: "At least 10 characters")
-        FormErrorBanner(message: "That email is already registered")
-        Button("Create Account") {}.buttonStyle(PrimaryButtonStyle())
-        Button("Continue with Email") {}.buttonStyle(SecondaryButtonStyle())
+        AuthField(label: "Name", text: .constant("Sam"))
+        AuthField(label: "Bio", text: .constant(""), errorMessage: "At most 160 characters")
+        FormErrorBanner(message: "Couldn't save your profile")
+        Button("Continue") {}.buttonStyle(PrimaryButtonStyle())
+        Button("Log In as Test User") {}.buttonStyle(SecondaryButtonStyle())
     }
     .padding()
 }

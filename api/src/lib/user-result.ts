@@ -12,8 +12,7 @@ export function avatarUrlFor(avatarKey: string | null): string | null {
 
 /**
  * The caller's own profile. Carries the email and which sign-in methods are
- * attached, so the Profile screen can render "Apple", "Email & password" or
- * both without a second request.
+ * attached, so the Profile screen can render them without a second request.
  *
  * avatarKey is deliberately absent: clients only ever see the public URL.
  */
@@ -24,7 +23,6 @@ export function toPrivateUserResult(user: UserRow) {
     name: user.name,
     bio: user.bio,
     avatarUrl: avatarUrlFor(user.avatarKey),
-    hasPassword: user.passwordHash !== null,
     hasAppleSignIn: user.appleUserId !== null,
     createdAt: user.createdAt,
   };

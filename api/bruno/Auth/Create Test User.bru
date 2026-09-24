@@ -1,0 +1,26 @@
+meta {
+  name: Create Test User
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/test-users
+  body: none
+  auth: none
+}
+
+vars:post-response {
+  accessToken: res.body.accessToken
+  refreshToken: res.body.refreshToken
+  userId: res.body.user.id
+}
+
+docs {
+  Creates a brand-new test user with no name and signs in as them. Expect a
+  201 with the auth envelope and `user.name` null, which is what sends the
+  app to name setup. Run Update Profile to give them a name.
+
+  Handy as a second account: run this, then switch back with Sign In As Test
+  User. Needs ENABLE_TEST_USERS=true on the server.
+}

@@ -22,6 +22,11 @@ npm run db:migrate    # applies any pending migrations to DATABASE_URL
 Migrations are applied manually — they do not run at boot or as part of the
 Railway build, so a deploy that needs a new table needs `db:migrate` first.
 
+> **Before applying `0004_remove_passwords_add_test_users`, create a Neon
+> branch too.** It deletes every account without an Apple ID, along with their
+> checkins and friendships, because email/password sign in no longer exists
+> and those accounts have no way left to sign in.
+
 > **Before applying `0002_checkins_user_id_foreign_key` to a database with real
 > data, create a Neon branch.** That migration begins with `DELETE FROM
 > checkins` and cannot be undone. It is needed because `checkins.user_id` used
@@ -142,14 +147,22 @@ query-string credentials.
    curl "http://localhost:3000/places?lat=37.7749&lng=-122.4194&radius=500"
    ```
 
-   `/places` is open, but `/checkins` and `/users` need a bearer token. Create
-   an account and use the token it returns:
+   `/places` is open, but `/checkins` and `/users` need a bearer token. The
+   only real sign in is Apple, which needs a device, so locally sign in as a
+   test user instead. Set `ENABLE_TEST_USERS=true` in `.env`, seed the test
+   users (Alice, Bob, Catherine and David, each with checkins at real chain
+   locations in their home city, and all friends with each other), then use
+   the token it returns:
    ```bash
-   curl -X POST http://localhost:3000/auth/register \
-     -H "Content-Type: application/json" \
-     -d '{"email":"you@example.com","password":"a-long-enough-password","name":"You"}'
+   npm run db:seed-test-users
+
+   curl -X POST http://localhost:3000/auth/test-users/7e570000-0000-4000-8000-000000000001/session
 
    curl http://localhost:3000/users/me -H "Authorization: Bearer <accessToken>"
    ```
+   The seed calls Google Places, and can be rerun at any time. It replaces the
+   test users' checkins and friendships with each other each run. Leave
+   `ENABLE_TEST_USERS` off anywhere real people have accounts: the
+   `/auth/test-users` routes sign in with no credential.
    The Bruno collection in `bruno/` captures the token automatically and covers
    the error cases too.

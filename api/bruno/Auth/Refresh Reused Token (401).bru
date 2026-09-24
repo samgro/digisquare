@@ -1,7 +1,7 @@
 meta {
   name: Refresh Reused Token (401)
   type: http
-  seq: 11
+  seq: 7
 }
 
 post {
@@ -17,9 +17,9 @@ body:json {
 }
 
 docs {
-  Replay detection. To run it: send Refresh (seq 3) twice in a row WITHOUT
-  letting the second run recapture — or just run seq 3, then run this request
-  with the token seq 3 consumed.
+  Replay detection. To run it: send Refresh (seq 4) twice in a row WITHOUT
+  letting the second run recapture — or just run seq 4, then run this request
+  with the token seq 4 consumed.
 
   Expect 401 {"error": "Invalid refresh token"}.
 

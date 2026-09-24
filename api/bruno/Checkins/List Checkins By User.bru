@@ -22,7 +22,7 @@ docs {
   Lists checkins by a single user. The filter is now a user id (a uuid), not
   the free-form string it used to be — a non-uuid value returns 400.
 
-  {{userId}} is captured by Register or Login, so this shows your own
+  {{userId}} is captured by Sign In As Test User, so this shows your own
   checkins. Only your own and your friends' checkins are listed: anyone
   else's user id returns an empty list, not an error, so the response doesn't
   reveal whether that user exists.

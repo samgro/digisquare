@@ -1,0 +1,32 @@
+meta {
+  name: Sign In As Test User
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/test-users/{{testUserId}}/session
+  body: none
+  auth: none
+}
+
+vars:post-response {
+  accessToken: res.body.accessToken
+  refreshToken: res.body.refreshToken
+  userId: res.body.user.id
+}
+
+docs {
+  Signs in as a seeded test user with no credential. {{testUserId}} defaults
+  to Alice Testberg; see List Test Users for the others. Expect a 200 with
+  the auth envelope: `user`, `accessToken`, `accessTokenExpiresIn`,
+  `refreshToken` and `refreshTokenExpiresAt`.
+
+  The post-response vars capture the tokens and the user id, so every other
+  request in this collection can run without editing anything by hand.
+
+  Needs ENABLE_TEST_USERS=true on the server and the seed to have run:
+    ENABLE_TEST_USERS=true npm run db:seed-test-users
+  Without the flag every /auth/test-users route answers 404. An id that
+  belongs to a real account also answers 404.
+}

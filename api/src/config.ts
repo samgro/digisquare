@@ -16,6 +16,13 @@ const environmentSchema = z.object({
   REFRESH_TOKEN_ABSOLUTE_TTL_DAYS: z.coerce.number().int().positive().default(180),
   APPLE_BUNDLE_IDENTIFIER: z.string().min(1).default("samgro.Hackysack"),
 
+  // Turns on /auth/test-users, which signs anyone in as a test user with no
+  // credential at all. Leave it off anywhere real people have accounts.
+  ENABLE_TEST_USERS: z
+    .enum(["true", "false"])
+    .default("false")
+    .transform((value) => value === "true"),
+
   R2_ACCOUNT_ID: z.string().min(1),
   R2_ACCESS_KEY_ID: z.string().min(1),
   R2_SECRET_ACCESS_KEY: z.string().min(1),

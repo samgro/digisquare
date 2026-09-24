@@ -106,7 +106,10 @@ struct ProfileView: View {
                 // An Apple user who hid their address, or one created by the
                 // email-collision path, genuinely has no email. Saying so
                 // reads better than an empty row that looks like a bug.
-                LabeledContent("Email", value: profile.email ?? "Hidden by Apple")
+                LabeledContent(
+                    "Email",
+                    value: profile.email ?? (profile.hasAppleSignIn ? "Hidden by Apple" : "None")
+                )
                 LabeledContent("Sign-in method", value: profile.signInMethodDescription)
                 LabeledContent(
                     "Member since",
@@ -130,11 +133,6 @@ struct ProfileView: View {
                         Task { await authManager.signOut() }
                     }
                     Button("Cancel", role: .cancel) {}
-                } message: {
-                    // Worth spelling out while there is no password reset: signing out
-                    // of a password account is not cheaply reversible if the password
-                    // has been forgotten.
-                    Text("You'll need your email and password to sign back in.")
                 }
             } footer: {
                 Text("\(AppInfo.name) \(Self.appVersion) (\(Self.buildNumber))")

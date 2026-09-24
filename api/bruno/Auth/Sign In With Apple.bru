@@ -1,7 +1,7 @@
 meta {
   name: Sign In With Apple
   type: http
-  seq: 4
+  seq: 5
 }
 
 post {
@@ -48,7 +48,7 @@ docs {
   them again, revoke the app under Settings > Apple ID > Sign in with Apple.
 
   If the response carries "emailConflict": true, the token's email already
-  belonged to a password account, so a SEPARATE account was created rather
+  belonged to another account, so a SEPARATE account was created rather
   than linking the two. See the comment in routes/auth.ts for why neither
   linking nor a 409 is safe there.
 }
