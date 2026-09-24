@@ -9,7 +9,7 @@
  * left off. Needs DATABASE_URL and OVERTURE_RELEASE; no rate limits apply.
  */
 
-import "dotenv/config";
+import "../src/load-environment.js";
 import { config } from "../src/config.js";
 import { cellsInBounds, groupCellsIntoTiles } from "../src/lib/coverage-cells.js";
 import { seedCellsNow } from "../src/lib/coverage-worker.js";

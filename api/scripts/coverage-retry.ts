@@ -4,7 +4,7 @@
  *   npm run coverage:retry
  */
 
-import "dotenv/config";
+import "../src/load-environment.js";
 import { retryFailedJobs } from "../src/lib/coverage-worker.js";
 
 retryFailedJobs()

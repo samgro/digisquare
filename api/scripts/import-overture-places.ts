@@ -15,7 +15,7 @@
  * SETUP.md), and `npm run coverage:seed` loads whole regions.
  */
 
-import "dotenv/config";
+import "../src/load-environment.js";
 import { config } from "../src/config.js";
 import { cellForPoint, cellKey, type Cell } from "../src/lib/coverage-cells.js";
 import { parseOverturePlace, type OverturePlaceFeature, type OverturePlaceInsert, type SkipReason } from "../src/lib/overture.js";

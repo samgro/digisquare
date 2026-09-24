@@ -192,6 +192,11 @@ query-string credentials.
    names anything missing. A local Postgres needs the PostGIS extension
    installed (`postgresql-16-postgis-3` on Debian and Ubuntu, `postgis` on
    Homebrew); the migration enables it.
+
+   To work against a Neon branch instead, put its `DATABASE_URL` (and
+   anything else that differs) in `.env.branch` at the repo root. It is
+   gitignored and overrides both `.env` and the shell, for the server, the
+   scripts and `db:migrate` alike.
 3. Install dependencies and run the dev server:
    ```bash
    npm install

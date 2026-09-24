@@ -14,7 +14,7 @@
  * The coverage worker does this on its own for areas it fetches.
  */
 
-import "dotenv/config";
+import "../src/load-environment.js";
 import { attachExtents } from "../src/lib/extent-matching.js";
 import { parseOvertureExtent, type OvertureExtentFeature, type ParsedExtent } from "../src/lib/overture-extents.js";
 import { fileArguments, readGeoJsonFeatures } from "./overture-files.js";

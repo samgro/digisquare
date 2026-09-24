@@ -7,7 +7,7 @@
  * Enqueues one refresh job per stale 1 degree tile and runs them here.
  */
 
-import "dotenv/config";
+import "../src/load-environment.js";
 import { config } from "../src/config.js";
 import { claimNextJob, runJob, scheduleRefreshJobs } from "../src/lib/coverage-worker.js";
 import { s3Source } from "../src/lib/overture-remote.js";
