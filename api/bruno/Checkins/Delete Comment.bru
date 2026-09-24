@@ -1,0 +1,22 @@
+meta {
+  name: Delete Comment
+  type: http
+  seq: 20
+}
+
+delete {
+  url: {{baseUrl}}/checkins/{{checkinId}}/comments/{{commentId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Deletes the comment from Add Comment. Expect 204.
+
+  Allowed for the comment's author and for the checkin's owner. Anyone
+  else gets the same 404 as a comment that does not exist.
+}

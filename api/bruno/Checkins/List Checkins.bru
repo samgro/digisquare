@@ -15,7 +15,9 @@ auth:bearer {
 }
 
 docs {
-  Lists checkins, newest first, with default pagination (limit 20, offset 0).
+  Lists checkins, newest first (limit default 20, max 100). Pass `before`,
+  an ISO 8601 createdAt taken from the last row you have, for the next page.
   Only your own checkins and your friends' are included, and a friend's
-  private checkins are left out.
+  private checkins are left out. Each row carries likeCount, commentCount
+  and likedByMe.
 }

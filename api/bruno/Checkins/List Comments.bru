@@ -1,0 +1,21 @@
+meta {
+  name: List Comments
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{baseUrl}}/checkins/{{checkinId}}/comments
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  The checkin's comments, newest first (limit default 50, max 100, and
+  `before` as an ISO 8601 createdAt cursor). The app shows the page
+  oldest-first so a thread reads top to bottom.
+}

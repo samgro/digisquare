@@ -1,0 +1,20 @@
+meta {
+  name: Like Not Found (404)
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{baseUrl}}/checkins/00000000-0000-4000-8000-000000000000/likes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  A checkin that does not exist, or that belongs to someone who is not
+  your friend, is the same 404: the response never confirms the id.
+}

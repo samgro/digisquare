@@ -5,11 +5,14 @@ import { database } from "../db/index.js";
 import {
   checkins as checkinsTable,
   friendships as friendshipsTable,
+  notifications as notificationsTable,
   users as usersTable,
 } from "../db/schema.js";
 import { toCheckinResult } from "../lib/checkin-result.js";
+import { checkinSocialColumns } from "../lib/checkin-social.js";
 import { isUniqueViolation } from "../lib/database-errors.js";
 import { friendIdsOf, isPairFriendship, isVisibleCheckin } from "../lib/friendships.js";
+import { createdBefore, paginationQuerySchema } from "../lib/pagination.js";
 import { toPublicUserResult, toUserSummary } from "../lib/user-result.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
@@ -22,14 +25,27 @@ const idParamSchema = z.object({
   id: z.string().uuid(),
 });
 
-const feedQuerySchema = z.object({
-  limit: z.coerce.number().int().positive().max(100).default(20),
-  offset: z.coerce.number().int().min(0).default(0),
-});
-
 export const friends = new Hono<AppEnv>();
 
 friends.use(requireAuth);
+
+/** Tells the requester their request was accepted, and retires the request itself. */
+async function notifyRequestAccepted(friendship: { id: string; requesterId: string; addresseeId: string }) {
+  await database
+    .delete(notificationsTable)
+    .where(
+      and(
+        eq(notificationsTable.friendshipId, friendship.id),
+        eq(notificationsTable.kind, "friend_request"),
+      ),
+    );
+  await database.insert(notificationsTable).values({
+    recipientId: friendship.requesterId,
+    actorId: friendship.addresseeId,
+    kind: "friend_accepted",
+    friendshipId: friendship.id,
+  });
+}
 
 friends.get("/", async (context) => {
   try {
@@ -50,7 +66,7 @@ friends.get("/", async (context) => {
 // activity and a checkin you just made shows up alongside theirs. Private
 // checkins stay out, your own included: the feed is what the group shares.
 friends.get("/checkins", async (context) => {
-  const parsed = feedQuerySchema.safeParse(context.req.query());
+  const parsed = paginationQuerySchema.safeParse(context.req.query());
   if (!parsed.success) {
     return context.json(
       { error: "Invalid query parameters", details: parsed.error.flatten() },
@@ -58,19 +74,26 @@ friends.get("/checkins", async (context) => {
     );
   }
 
+  const currentUserId = context.get("userId");
+
   try {
     const rows = await database
-      .select({ checkin: checkinsTable, user: usersTable })
+      .select({ checkin: checkinsTable, user: usersTable, ...checkinSocialColumns(currentUserId) })
       .from(checkinsTable)
       .innerJoin(usersTable, eq(usersTable.id, checkinsTable.userId))
-      .where(and(isVisibleCheckin(context.get("userId")), eq(checkinsTable.visibility, "friends")))
+      .where(
+        and(
+          isVisibleCheckin(currentUserId),
+          eq(checkinsTable.visibility, "friends"),
+          createdBefore(checkinsTable.createdAt, parsed.data.before),
+        ),
+      )
       .orderBy(desc(checkinsTable.createdAt))
-      .limit(parsed.data.limit)
-      .offset(parsed.data.offset);
+      .limit(parsed.data.limit);
 
     return context.json({
       results: rows.map((row) => ({
-        ...toCheckinResult(row.checkin),
+        ...toCheckinResult(row.checkin, row),
         user: toUserSummary(row.user),
       })),
     });
@@ -152,6 +175,7 @@ friends.post("/requests", async (context) => {
       )
       .returning();
     if (accepted) {
+      await notifyRequestAccepted(accepted);
       return context.json({ id: accepted.id, status: "accepted" });
     }
 
@@ -159,6 +183,18 @@ friends.post("/requests", async (context) => {
       .insert(friendshipsTable)
       .values({ requesterId: currentUserId, addresseeId: otherUserId })
       .returning();
+
+    // The request shows up in their bell. The partial unique index makes a
+    // second insert for the same request a no-op.
+    await database
+      .insert(notificationsTable)
+      .values({
+        recipientId: otherUserId,
+        actorId: currentUserId,
+        kind: "friend_request",
+        friendshipId: created.id,
+      })
+      .onConflictDoNothing();
 
     return context.json({ id: created.id, status: "pending" }, 201);
   } catch (error) {
@@ -196,6 +232,7 @@ friends.post("/requests/:id/accept", async (context) => {
       return context.json({ error: "Friend request not found" }, 404);
     }
 
+    await notifyRequestAccepted(accepted);
     return context.json({ id: accepted.id, status: "accepted" });
   } catch (error) {
     console.error(error);
@@ -205,7 +242,8 @@ friends.post("/requests/:id/accept", async (context) => {
 
 // Declines a request you received, or cancels one you sent. Declining keeps
 // the row as "declined" so the requester still sees it as pending; cancelling
-// deletes it, whether or not it was declined.
+// deletes it, whether or not it was declined, and its notification goes with
+// it through the foreign key.
 friends.delete("/requests/:id", async (context) => {
   const parsed = idParamSchema.safeParse({ id: context.req.param("id") });
   if (!parsed.success) {
@@ -227,6 +265,16 @@ friends.delete("/requests/:id", async (context) => {
       )
       .returning({ id: friendshipsTable.id });
     if (declined) {
+      // Nothing left to act on in the bell. The row itself stays, so the
+      // requester is none the wiser.
+      await database
+        .delete(notificationsTable)
+        .where(
+          and(
+            eq(notificationsTable.friendshipId, declined.id),
+            eq(notificationsTable.kind, "friend_request"),
+          ),
+        );
       return context.body(null, 204);
     }
 

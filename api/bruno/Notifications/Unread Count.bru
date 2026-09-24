@@ -1,0 +1,20 @@
+meta {
+  name: Unread Count
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/notifications/unread-count
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Just { unreadCount }, for the badge on the bell. The app asks on every
+  return to the foreground.
+}

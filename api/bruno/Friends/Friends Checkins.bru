@@ -15,7 +15,8 @@ auth:bearer {
 }
 
 docs {
-  The Friends tab feed: your friends' checkins, newest first, not including
-  your own. Each is the usual checkin plus user: { id, name, avatarUrl }.
-  Accepts limit (default 20, max 100) and offset.
+  The Friends tab feed: your friends' checkins and your own, newest first,
+  leaving private ones out. Each is the usual checkin plus
+  user: { id, name, avatarUrl }. Accepts limit (default 20, max 100) and
+  `before`, an ISO 8601 createdAt cursor for the next page.
 }

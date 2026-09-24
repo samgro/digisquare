@@ -58,6 +58,13 @@ function send(method: string, path: string, body?: unknown) {
   });
 }
 
+/** The arguments of every chained call named `method`, in order. */
+function argumentsOf(method: string) {
+  return controls.chainedCalls
+    .filter((call) => call.method === method)
+    .map((call) => call.arguments[0]);
+}
+
 function uniqueViolation() {
   return new DrizzleQueryError(
     "insert into friendships",
@@ -128,6 +135,26 @@ describe("GET /checkins", () => {
     const body = (await response.json()) as { results: Record<string, unknown>[] };
     expect(body.results[0].placeName).toBe("Blue Bottle");
     expect(body.results[0].user).toEqual({ id: OTHER_USER_ID, name: "Alex", avatarUrl: null });
+    // The stub row carries no counts, which the result reads as none.
+    expect(body.results[0]).toMatchObject({ likeCount: 0, commentCount: 0, likedByMe: false });
+  });
+
+  it("pages by a createdAt cursor rather than an offset", async () => {
+    controls.queue([]);
+    const response = await send("GET", "/checkins?limit=10&before=2026-03-01T00:00:00.000Z");
+    expect(response.status).toBe(200);
+
+    const whereCall = controls.chainedCalls.find((call) => call.method === "where");
+    const condition = new PgDialect().sqlToQuery(whereCall?.arguments[0] as SQL);
+    expect(condition.sql).toMatch(/"checkins"\."created_at" < \$\d+/);
+    expect(condition.params).toContain("2026-03-01T00:00:00.000Z");
+    expect(controls.chainedCalls.map((call) => call.method)).not.toContain("offset");
+  });
+
+  it("rejects a before that is not a timestamp", async () => {
+    const response = await send("GET", "/checkins?before=yesterday");
+    expect(response.status).toBe(400);
+    expect(controls.operations).toEqual([]);
   });
 
   it("leaves private checkins out, including the caller's own", async () => {
@@ -181,7 +208,14 @@ describe("POST /requests", () => {
 
     expect(response.status).toBe(201);
     expect(await response.json()).toEqual({ id: REQUEST_ID, status: "pending" });
-    expect(controls.operations).toEqual(["select", "update", "insert"]);
+    // The second insert is the request's notification for the addressee.
+    expect(controls.operations).toEqual(["select", "update", "insert", "insert"]);
+    expect(argumentsOf("values")[1]).toEqual({
+      recipientId: OTHER_USER_ID,
+      actorId: CURRENT_USER_ID,
+      kind: "friend_request",
+      friendshipId: REQUEST_ID,
+    });
   });
 
   // Adding someone who already asked you is an answer to their request, not a
@@ -193,7 +227,14 @@ describe("POST /requests", () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ id: REQUEST_ID, status: "accepted" });
-    expect(controls.operations).toEqual(["select", "update"]);
+    // Their request notification is retired and they hear it was accepted.
+    expect(controls.operations).toEqual(["select", "update", "delete", "insert"]);
+    expect(argumentsOf("values")[0]).toEqual({
+      recipientId: OTHER_USER_ID,
+      actorId: CURRENT_USER_ID,
+      kind: "friend_accepted",
+      friendshipId: REQUEST_ID,
+    });
   });
 
   // Adding someone whose request you declined takes the decline back.
@@ -204,7 +245,7 @@ describe("POST /requests", () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ id: REQUEST_ID, status: "accepted" });
-    expect(controls.operations).toEqual(["select", "update"]);
+    expect(controls.operations).toEqual(["select", "update", "delete", "insert"]);
   });
 
   it("answers 409 when the pair already has a request or friendship", async () => {
@@ -226,6 +267,11 @@ describe("POST /requests/:id/accept", () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ id: REQUEST_ID, status: "accepted" });
+    expect(controls.operations).toEqual(["update", "delete", "insert"]);
+    expect(argumentsOf("values")[0]).toMatchObject({
+      recipientId: OTHER_USER_ID,
+      kind: "friend_accepted",
+    });
   });
 
   // Covers a request that doesn't exist, one you sent (only the addressee can
@@ -253,7 +299,8 @@ describe("DELETE /requests/:id", () => {
     const response = await send("DELETE", `/requests/${REQUEST_ID}`);
 
     expect(response.status).toBe(204);
-    expect(controls.operations).toEqual(["update"]);
+    // The delete is the request's notification, not the friendship row.
+    expect(controls.operations).toEqual(["update", "delete"]);
   });
 
   it("cancels a request you sent by deleting it", async () => {

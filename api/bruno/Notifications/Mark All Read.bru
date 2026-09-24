@@ -1,0 +1,20 @@
+meta {
+  name: Mark All Read
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/notifications/read
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Marks every unread notification read. Expect 204, then Unread Count is 0.
+  The app calls this when the feed opens.
+}

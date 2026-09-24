@@ -205,3 +205,98 @@ export const friendships = pgTable(
     check("friendships_not_self_check", sql`${table.requesterId} <> ${table.addresseeId}`),
   ],
 );
+
+// One row per person per checkin; the unique index is what makes a double
+// tap on the heart a no-op rather than a race (neon-http has no interactive
+// transactions to check-then-insert inside).
+export const checkinLikes = pgTable(
+  "checkin_likes",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    checkinId: uuid("checkin_id")
+      .notNull()
+      .references(() => checkins.id, { onDelete: "cascade" }),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("checkin_likes_checkin_user_unique_idx").on(table.checkinId, table.userId),
+  ],
+);
+
+export const checkinComments = pgTable(
+  "checkin_comments",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    checkinId: uuid("checkin_id")
+      .notNull()
+      .references(() => checkins.id, { onDelete: "cascade" }),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+
+    body: text("body").notNull(),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => [
+    index("checkin_comments_checkin_created_idx").on(table.checkinId, table.createdAt),
+  ],
+);
+
+export const NOTIFICATION_KINDS = ["like", "comment", "friend_request", "friend_accepted"] as const;
+export type NotificationKind = (typeof NOTIFICATION_KINDS)[number];
+
+// What the bell shows: someone liked or commented on one of your checkins,
+// asked to be your friend, or accepted your request. Every row points at its
+// subject (a checkin or a friendship) with a cascading foreign key, so the
+// notification disappears with the thing it was about: a deleted comment, a
+// cancelled request, an unfriending.
+export const notifications = pgTable(
+  "notifications",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    recipientId: uuid("recipient_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    actorId: uuid("actor_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+
+    kind: text("kind", { enum: NOTIFICATION_KINDS }).notNull(),
+
+    checkinId: uuid("checkin_id").references(() => checkins.id, { onDelete: "cascade" }),
+    commentId: uuid("comment_id").references(() => checkinComments.id, { onDelete: "cascade" }),
+    friendshipId: uuid("friendship_id").references(() => friendships.id, { onDelete: "cascade" }),
+
+    readAt: timestamp("read_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("notifications_recipient_created_idx").on(table.recipientId, table.createdAt),
+    index("notifications_recipient_read_idx").on(table.recipientId, table.readAt),
+    // Unliking keeps the notification and re-liking hits this index, so a
+    // heart tapped on and off never badges the owner twice.
+    uniqueIndex("notifications_like_once_idx")
+      .on(table.recipientId, table.actorId, table.checkinId)
+      .where(sql`${table.kind} = 'like'`),
+    uniqueIndex("notifications_friend_request_once_idx")
+      .on(table.friendshipId)
+      .where(sql`${table.kind} = 'friend_request'`),
+    check("notifications_not_self_check", sql`${table.recipientId} <> ${table.actorId}`),
+    check(
+      "notifications_subject_check",
+      sql`(${table.kind} in ('like', 'comment') and ${table.checkinId} is not null) or (${table.kind} in ('friend_request', 'friend_accepted') and ${table.friendshipId} is not null)`,
+    ),
+  ],
+);
