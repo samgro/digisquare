@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "name": "soma-mint-plaza",
-  "description": "Outside Blue Bottle on Mint Plaza in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; SFMOMA, Moscone and a BART station are 250-350 m away.",
-  "recordedAt": "2026-09-23T23:08:36.532Z",
+  "name": "soma-second-street",
+  "description": "Outside Blue Bottle on 2nd Street in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; Yerba Buena Gardens and Salesforce Park are 400 m away and Oracle Park 1.2 km.",
+  "recordedAt": "2026-09-24T00:12:57.153Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 37.78697,
@@ -10,67 +10,41 @@
     "horizontalAccuracy": 12
   },
   "google": {
-    "popularity": {
+    "largeVenues": {
       "request": {
         "maxResultCount": 20,
         "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
         "locationRestriction": {
           "circle": {
             "center": {
               "latitude": 37.78697,
               "longitude": -122.398863
             },
-            "radius": 2500
+            "radius": 2000
           }
         }
       },
       "response": {
         "places": [
           {
-            "id": "ChIJWTGPjmaAhYARxz6l1hOj92w",
-            "types": [
-              "historical_landmark",
-              "ferry_service",
-              "market",
-              "historical_place",
-              "grocery_store",
-              "transportation_service",
-              "food_store",
-              "store",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1 Ferry Building, San Francisco, CA 94105, USA",
-            "location": {
-              "latitude": 37.7954425,
-              "longitude": -122.3936136
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.794089469708496,
-                "longitude": -122.39486943029148
-              },
-              "high": {
-                "latitude": 37.796787430291495,
-                "longitude": -122.39217146970849
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 38470,
-            "displayName": {
-              "text": "Ferry Building",
-              "languageCode": "en"
-            },
-            "primaryType": "historical_landmark"
-          },
-          {
             "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
             "types": [
               "stadium",
               "tourist_attraction",
-              "event_venue",
               "sports_complex",
+              "event_venue",
               "sports_activity_location",
               "point_of_interest",
               "establishment"
@@ -91,7 +65,7 @@
               }
             },
             "rating": 4.7,
-            "userRatingCount": 32786,
+            "userRatingCount": 32788,
             "displayName": {
               "text": "Oracle Park",
               "languageCode": "en"
@@ -99,595 +73,610 @@
             "primaryType": "stadium"
           },
           {
-            "id": "ChIJ1dIqa2OAhYAREimtEtfBLyc",
+            "id": "ChIJW5D3LYmAhYARb92CmHj1bOM",
             "types": [
-              "corporate_office",
-              "business_center",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "415 Mission St, San Francisco, CA 94105, USA",
-            "location": {
-              "latitude": 37.7897442,
-              "longitude": -122.3972337
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.78855716970851,
-                "longitude": -122.39849158029149
-              },
-              "high": {
-                "latitude": 37.79125513029151,
-                "longitude": -122.39579361970851
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 1046,
-            "displayName": {
-              "text": "Salesforce Tower",
-              "languageCode": "en"
-            },
-            "primaryType": "corporate_office"
-          },
-          {
-            "id": "ChIJ1f5_4_KAhYAR-rIwsCEGAvk",
-            "types": [
+              "historical_landmark",
+              "historical_place",
               "tourist_attraction",
+              "plaza",
+              "park",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "855 Stockton St # B, San Francisco, CA 94108, USA",
+            "formattedAddress": "San Francisco, CA 94108, USA",
             "location": {
-              "latitude": 37.793977999999996,
-              "longitude": -122.40808299999999
+              "latitude": 37.7879358,
+              "longitude": -122.40751389999998
             },
             "viewport": {
               "low": {
-                "latitude": 37.792640469708495,
-                "longitude": -122.4093459802915
+                "latitude": 37.7865940697085,
+                "longitude": -122.4089130302915
               },
               "high": {
-                "latitude": 37.795338430291494,
-                "longitude": -122.40664801970853
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 11239,
-            "displayName": {
-              "text": "Chinatown San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "tourist_attraction"
-          },
-          {
-            "id": "ChIJiX4p7X2AhYARbDw5qoA4Vdk",
-            "types": [
-              "convention_center",
-              "event_venue",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "747 Howard St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.7843234,
-              "longitude": -122.40069
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7830034197085,
-                "longitude": -122.40222723029149
-              },
-              "high": {
-                "latitude": 37.7857013802915,
-                "longitude": -122.39952926970851
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 6802,
-            "displayName": {
-              "text": "Moscone Center",
-              "languageCode": "en"
-            },
-            "primaryType": "convention_center"
-          },
-          {
-            "id": "ChIJC2juwih-j4ARvLq4f6Oyeuc",
-            "types": [
-              "warehouse_store",
-              "department_store",
-              "store",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "450 10th St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.7703137,
-              "longitude": -122.41092400000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.76937796970851,
-                "longitude": -122.4118680802915
-              },
-              "high": {
-                "latitude": 37.77207593029151,
-                "longitude": -122.40917011970852
+                "latitude": 37.7892920302915,
+                "longitude": -122.40621506970851
               }
             },
             "rating": 4.4,
-            "userRatingCount": 7746,
+            "userRatingCount": 37486,
             "displayName": {
-              "text": "Costco Wholesale",
-              "languageCode": "en"
-            },
-            "primaryType": "warehouse_store"
-          },
-          {
-            "id": "ChIJFQYlk9Z_j4AR2IMIzaEcYbc",
-            "types": [
-              "train_station",
-              "transit_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "700 4th St, San Francisco, CA 94107, USA",
-            "location": {
-              "latitude": 37.776669999999996,
-              "longitude": -122.39484
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7751976197085,
-                "longitude": -122.39622163029148
-              },
-              "high": {
-                "latitude": 37.7778955802915,
-                "longitude": -122.39352366970849
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 768,
-            "displayName": {
-              "text": "San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "train_station"
-          },
-          {
-            "id": "ChIJ53I1Yn2AhYAR_Vl1vNygfMg",
-            "types": [
-              "tourist_attraction",
-              "art_gallery",
-              "art_museum",
-              "museum",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "151 3rd St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.7857182,
-              "longitude": -122.40105080000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.784301969708494,
-                "longitude": -122.40248313029151
-              },
-              "high": {
-                "latitude": 37.78699993029149,
-                "longitude": -122.39978516970854
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 16721,
-            "displayName": {
-              "text": "San Francisco Museum of Modern Art",
-              "languageCode": "en"
-            },
-            "primaryType": "art_museum"
-          },
-          {
-            "id": "ChIJcT5nNoaAhYARVdbyW3zPwus",
-            "types": [
-              "hotel",
-              "wedding_venue",
-              "event_venue",
-              "lodging",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "780 Mission St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.7853366,
-              "longitude": -122.40440679999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7837845697085,
-                "longitude": -122.40570498029149
-              },
-              "high": {
-                "latitude": 37.7864825302915,
-                "longitude": -122.4030070197085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 10354,
-            "displayName": {
-              "text": "San Francisco Marriott Marquis",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJeSJHoI-AhYARembxZUVcNEk",
-            "types": [
-              "hotel",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "333 O'Farrell St, San Francisco, CA 94102, USA",
-            "location": {
-              "latitude": 37.7857306,
-              "longitude": -122.41011719999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7843209197085,
-                "longitude": -122.41155868029148
-              },
-              "high": {
-                "latitude": 37.7870188802915,
-                "longitude": -122.4088607197085
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 11744,
-            "displayName": {
-              "text": "Hilton San Francisco Union Square",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJUwxMuvmAhYARWPFJI3P6Iq8",
-            "types": [
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94133, USA",
-            "location": {
-              "latitude": 37.8068469,
-              "longitude": -122.40515419999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.8053084197085,
-                "longitude": -122.4064903302915
-              },
-              "high": {
-                "latitude": 37.8080063802915,
-                "longitude": -122.40379236970851
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 10114,
-            "displayName": {
-              "text": "Pier 33",
-              "languageCode": "en"
-            },
-            "primaryType": "tourist_attraction"
-          },
-          {
-            "id": "ChIJ5y1zsoeAhYARJl9k0fuMdRs",
-            "types": [
-              "department_store",
-              "child_care_agency",
-              "electronics_store",
-              "shoe_store",
-              "furniture_store",
-              "home_improvement_store",
-              "supplier",
-              "home_goods_store",
-              "clothing_store",
-              "toy_store",
-              "store",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "789 Mission St, San Francisco, CA 94103, USA",
-            "location": {
-              "latitude": 37.784403999999995,
-              "longitude": -122.40381039999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.783181969708494,
-                "longitude": -122.40524693029148
-              },
-              "high": {
-                "latitude": 37.78587993029149,
-                "longitude": -122.40254896970849
-              }
-            },
-            "rating": 4,
-            "userRatingCount": 1730,
-            "displayName": {
-              "text": "Target",
-              "languageCode": "en"
-            },
-            "primaryType": "department_store"
-          },
-          {
-            "id": "ChIJk2vl5NSGhYARwPGvs_ubIws",
-            "types": [
-              "tourist_attraction",
-              "art_museum",
-              "event_venue",
-              "museum",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Pier 15 Embarcadero at, Green St, San Francisco, CA 94111, USA",
-            "location": {
-              "latitude": 37.8016649,
-              "longitude": -122.397348
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7999566697085,
-                "longitude": -122.3995333802915
-              },
-              "high": {
-                "latitude": 37.80265463029149,
-                "longitude": -122.39683541970851
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 8737,
-            "displayName": {
-              "text": "Exploratorium",
-              "languageCode": "en"
-            },
-            "primaryType": "museum"
-          },
-          {
-            "id": "ChIJAQAAQIyAhYARRN3yIQG4hd4",
-            "types": [
-              "historical_landmark",
-              "tourist_attraction",
-              "landmark",
-              "historical_place",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1 Telegraph Hill Blvd, San Francisco, CA 94133, USA",
-            "location": {
-              "latitude": 37.802394899999996,
-              "longitude": -122.40582219999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.8012256697085,
-                "longitude": -122.40716028029148
-              },
-              "high": {
-                "latitude": 37.8039236302915,
-                "longitude": -122.4044623197085
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 16008,
-            "displayName": {
-              "text": "Coit Tower",
+              "text": "Union Square",
               "languageCode": "en"
             },
             "primaryType": "historical_landmark"
           },
           {
-            "id": "ChIJN2S4EI2AhYAR9J4Qeh1U8Aw",
+            "id": "ChIJC9y2SGOAhYARSaejL5ecgmg",
             "types": [
-              "hotel",
-              "lodging",
+              "park",
+              "city_park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "425 Mission St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.789739499999996,
+              "longitude": -122.39616559999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.787448569708495,
+                "longitude": -122.39866333029147
+              },
+              "high": {
+                "latitude": 37.790146530291494,
+                "longitude": -122.39596536970848
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 5054,
+            "displayName": {
+              "text": "Salesforce Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJE_PHY3yAhYAR5uBdYH1Racs",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "335 McAllister St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.77949290000001,
+              "longitude": -122.4176986
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7781159197085,
+                "longitude": -122.4190031302915
+              },
+              "high": {
+                "latitude": 37.7808138802915,
+                "longitude": -122.41630516970851
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 2200,
+            "displayName": {
+              "text": "Civic Center Plaza",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJCUsDnIeAhYARWCBpPTrHJpQ",
+            "types": [
+              "city_park",
+              "garden",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "750 Howard St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.784988399999996,
+              "longitude": -122.4023514
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.782392599999994,
+                "longitude": -122.40346479999998
+              },
+              "high": {
+                "latitude": 37.7855721,
+                "longitude": -122.4007424
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 4544,
+            "displayName": {
+              "text": "Yerba Buena Gardens",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJoYiOqfGAhYAR8J-KiogVyCQ",
+            "types": [
+              "city_park",
+              "playground",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Filbert St & Stockton Street, San Francisco, CA 94133, USA",
+            "location": {
+              "latitude": 37.8007752,
+              "longitude": -122.41024639999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7995049697085,
+                "longitude": -122.4114491802915
+              },
+              "high": {
+                "latitude": 37.8022029302915,
+                "longitude": -122.4087512197085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 5445,
+            "displayName": {
+              "text": "Washington Square",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJdx6kBe6AhYARsPFmpUAvvcY",
+            "types": [
+              "city_park",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Vallejo & Taylor, Vallejo St, San Francisco, CA 94133, USA",
+            "location": {
+              "latitude": 37.7982745,
+              "longitude": -122.4134592
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.79683721970849,
+                "longitude": -122.41449223029149
+              },
+              "high": {
+                "latitude": 37.79953518029149,
+                "longitude": -122.41179426970851
+              }
+            },
+            "rating": 4.8,
+            "userRatingCount": 1688,
+            "displayName": {
+              "text": "Ina Coolbrith Park",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJ0X_WV5qAhYARN-ZYTWDj2KY",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "200 McAllister St, San Francisco, CA 94102, USA",
+            "location": {
+              "latitude": 37.781122499999995,
+              "longitude": -122.4157619
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.779553819708504,
+                "longitude": -122.41617053029151
+              },
+              "high": {
+                "latitude": 37.7822517802915,
+                "longitude": -122.41347256970852
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 84,
+            "displayName": {
+              "text": "UC Law San Francisco",
+              "languageCode": "en"
+            },
+            "primaryType": "educational_institution"
+          },
+          {
+            "id": "ChIJ-RJFNouAhYARHU0SXkyCGn8",
+            "types": [
+              "city_park",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "745 Kearny St, San Francisco, CA 94108, USA",
+            "location": {
+              "latitude": 37.7948896,
+              "longitude": -122.4052341
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7935158197085,
+                "longitude": -122.4066937802915
+              },
+              "high": {
+                "latitude": 37.7962137802915,
+                "longitude": -122.40399581970853
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 506,
+            "displayName": {
+              "text": "Portsmouth Square Park",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJ-VUxItp_j4ARBgyteXdSZ-g",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1 China Basin Park, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.7764193,
+              "longitude": -122.38795479999997
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7745676197085,
+                "longitude": -122.3903431302915
+              },
+              "high": {
+                "latitude": 37.7772655802915,
+                "longitude": -122.38764516970852
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 237,
+            "displayName": {
+              "text": "China Basin Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJd_edWMaAhYARGcVcwBNgCd4",
+            "types": [
+              "university",
+              "dentist",
+              "educational_institution",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "155 5th St, San Francisco, CA 94103, USA",
+            "location": {
+              "latitude": 37.782254099999996,
+              "longitude": -122.40531739999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.780833519708494,
+                "longitude": -122.40695133029146
+              },
+              "high": {
+                "latitude": 37.783531480291494,
+                "longitude": -122.40425336970848
+              }
+            },
+            "rating": 4,
+            "userRatingCount": 349,
+            "displayName": {
+              "text": "University of the Pacific, Arthur A. Dugoni School of Dentistry",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJWS0hyGaAhYARrci3Bdxh0fI",
+            "types": [
+              "park",
+              "plaza",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Market St &, Steuart St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7951195,
+              "longitude": -122.39520069999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7938338697085,
+                "longitude": -122.39619663029148
+              },
+              "high": {
+                "latitude": 37.7965318302915,
+                "longitude": -122.39349866970849
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 681,
+            "displayName": {
+              "text": "Embarcadero Plaza",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJFQPEvO-AhYARsCOkX_YCzoM",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "808 Kearny St, San Francisco, CA 94108, USA",
+            "location": {
+              "latitude": 37.7956036,
+              "longitude": -122.4047237
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7941934697085,
+                "longitude": -122.40622138029148
+              },
+              "high": {
+                "latitude": 37.7968914302915,
+                "longitude": -122.40352341970849
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 50,
+            "displayName": {
+              "text": "City College of San Francisco - Chinatown Center",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJW_cCS9B_j4ARigbJMyKq_x8",
+            "types": [
+              "city_park",
+              "playground",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Long Bridge Street & China Basin St, 690 Long Bridge St, San Francisco, CA 94158, USA",
+            "location": {
+              "latitude": 37.772168199999996,
+              "longitude": -122.39259570000002
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7706859197085,
+                "longitude": -122.3940443802915
+              },
+              "high": {
+                "latitude": 37.7733838802915,
+                "longitude": -122.39134641970851
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 656,
+            "displayName": {
+              "text": "Mission Bay Kids Park",
+              "languageCode": "en"
+            },
+            "primaryType": "city_park"
+          },
+          {
+            "id": "ChIJI7ES6tl_j4ARXdMklSPsJl4",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+            "location": {
+              "latitude": 37.7783727,
+              "longitude": -122.3877444
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7771647697085,
+                "longitude": -122.3890886802915
+              },
+              "high": {
+                "latitude": 37.7798627302915,
+                "longitude": -122.3863907197085
+              }
+            },
+            "rating": 4.7,
+            "userRatingCount": 173,
+            "displayName": {
+              "text": "Giants Promenade",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJO7R-32KAhYARA4Fpef70tjk",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "536 Mission St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7893349,
+              "longitude": -122.39882419999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7878819197085,
+                "longitude": -122.40022093029148
+              },
+              "high": {
+                "latitude": 37.790579880291496,
+                "longitude": -122.39752296970849
+              }
+            },
+            "rating": 4.1,
+            "userRatingCount": 88,
+            "displayName": {
+              "text": "Golden Gate University",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJkZyW-2-AhYARzCwWSe3qHMQ",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "The Embarcadero & Folsom St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7916129,
+              "longitude": -122.38995059999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7899214697085,
+                "longitude": -122.3913586802915
+              },
+              "high": {
+                "latitude": 37.7926194302915,
+                "longitude": -122.38866071970853
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 3013,
+            "displayName": {
+              "text": "Rincon Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJZ0Mj1s9_j4ARt4-u90l2X84",
+            "types": [
+              "park",
+              "athletic_field",
+              "sports_activity_location",
+              "sports_club",
+              "association_or_organization",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "701 Mission Bay Blvd North, San Francisco, CA 94158, USA",
+            "location": {
+              "latitude": 37.770569099999996,
+              "longitude": -122.39380120000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.7693669197085,
+                "longitude": -122.39468403029149
+              },
+              "high": {
+                "latitude": 37.7720648802915,
+                "longitude": -122.39198606970851
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 160,
+            "displayName": {
+              "text": "SFF Soccer - Mission Bay Field",
+              "languageCode": "en"
+            },
+            "primaryType": "athletic_field"
+          },
+          {
+            "id": "ChIJt0fDI2WAhYAR4WGEx4Nstqs",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "101 Howard St, San Francisco, CA 94105, USA",
+            "location": {
+              "latitude": 37.7908872,
+              "longitude": -122.39253049999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.789588969708504,
+                "longitude": -122.39408833029147
+              },
+              "high": {
+                "latitude": 37.7922869302915,
+                "longitude": -122.39139036970849
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 25,
+            "displayName": {
+              "text": "University of San Francisco - Downtown Campus",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJy2xD5l2BhYAR5t-1BYCtbyI",
+            "types": [
+              "beer_garden",
+              "bar",
+              "park",
               "restaurant",
               "food",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "950 Mason St, San Francisco, CA 94108, USA",
+            "formattedAddress": "250 Main St, San Francisco, CA 94105, USA",
             "location": {
-              "latitude": 37.7923897,
-              "longitude": -122.41044429999998
+              "latitude": 37.789698400000006,
+              "longitude": -122.3931459
             },
             "viewport": {
               "low": {
-                "latitude": 37.790941119708506,
-                "longitude": -122.41139958029149
+                "latitude": 37.788493369708505,
+                "longitude": -122.39422648029151
               },
               "high": {
-                "latitude": 37.793639080291506,
-                "longitude": -122.40870161970851
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 7629,
-            "displayName": {
-              "text": "Fairmont San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJY-bqepmAhYARSk9Xg_9tcLI",
-            "types": [
-              "city_hall",
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102, USA",
-            "location": {
-              "latitude": 37.779275,
-              "longitude": -122.4192417
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7779407697085,
-                "longitude": -122.4205752302915
-              },
-              "high": {
-                "latitude": 37.7806387302915,
-                "longitude": -122.41787726970851
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 1845,
-            "displayName": {
-              "text": "San Francisco City Hall",
-              "languageCode": "en"
-            },
-            "primaryType": "city_hall"
-          },
-          {
-            "id": "ChIJX2AfTWGAhYARK51ADFAMZoQ",
-            "types": [
-              "hotel",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "5 Embarcadero Ctr, San Francisco, CA 94111, USA",
-            "location": {
-              "latitude": 37.794216899999995,
-              "longitude": -122.3956663
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7928466697085,
-                "longitude": -122.3973856302915
-              },
-              "high": {
-                "latitude": 37.7955446302915,
-                "longitude": -122.39468766970852
+                "latitude": 37.791191330291504,
+                "longitude": -122.39152851970852
               }
             },
             "rating": 4.4,
-            "userRatingCount": 7371,
+            "userRatingCount": 99,
             "displayName": {
-              "text": "Hyatt Regency San Francisco",
+              "text": "The Crossing at East Cut",
               "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJi1J5_0ojh1QRSEAyfPSzO94",
-            "types": [
-              "hotel",
-              "wedding_venue",
-              "event_venue",
-              "lodging",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "335 Powell St, San Francisco, CA 94102, USA",
-            "location": {
-              "latitude": 37.7876827,
-              "longitude": -122.4087648
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.786418269708506,
-                "longitude": -122.41007288029151
-              },
-              "high": {
-                "latitude": 37.789116230291505,
-                "longitude": -122.40737491970852
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 6255,
-            "displayName": {
-              "text": "The Westin St. Francis San Francisco on Union Square",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJ150MH4iAhYARy399PwjhCb4",
-            "types": [
-              "hotel",
-              "wedding_venue",
-              "event_venue",
-              "lodging",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2 New Montgomery St, San Francisco, CA 94105, USA",
-            "location": {
-              "latitude": 37.7881241,
-              "longitude": -122.4019021
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7868673697085,
-                "longitude": -122.4030707302915
-              },
-              "high": {
-                "latitude": 37.7895653302915,
-                "longitude": -122.40037276970853
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 5583,
-            "displayName": {
-              "text": "Palace Hotel, a Luxury Collection Hotel, San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJo7HdhWKAhYARp5lDOzOnnK0",
-            "types": [
-              "subway_station",
-              "transit_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "598 Market St, San Francisco, CA 94104, USA",
-            "location": {
-              "latitude": 37.7894171,
-              "longitude": -122.401109
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.788077769708494,
-                "longitude": -122.4029710802915
-              },
-              "high": {
-                "latitude": 37.79077573029149,
-                "longitude": -122.4002731197085
-              }
-            },
-            "rating": 3.9,
-            "userRatingCount": 248,
-            "displayName": {
-              "text": "Montgomery",
-              "languageCode": "en"
-            },
-            "primaryType": "subway_station"
+            }
           }
         ]
       }
@@ -1848,41 +1837,6 @@
       "userRatingCount": 1
     },
     {
-      "id": "ChIJWTGPjmaAhYARxz6l1hOj92w",
-      "name": "Ferry Building",
-      "address": "1 Ferry Building, San Francisco, CA 94105, USA",
-      "location": {
-        "latitude": 37.7954425,
-        "longitude": -122.3936136
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.794089469708496,
-          "longitude": -122.39486943029148
-        },
-        "high": {
-          "latitude": 37.796787430291495,
-          "longitude": -122.39217146970849
-        }
-      },
-      "types": [
-        "historical_landmark",
-        "ferry_service",
-        "market",
-        "historical_place",
-        "grocery_store",
-        "transportation_service",
-        "food_store",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "historical_landmark",
-      "rating": 4.6,
-      "userRatingCount": 38470
-    },
-    {
       "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
       "name": "Oracle Park",
       "address": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
@@ -1903,559 +1857,571 @@
       "types": [
         "stadium",
         "tourist_attraction",
-        "event_venue",
         "sports_complex",
+        "event_venue",
         "sports_activity_location",
         "point_of_interest",
         "establishment"
       ],
       "primaryType": "stadium",
       "rating": 4.7,
-      "userRatingCount": 32786
+      "userRatingCount": 32788
     },
     {
-      "id": "ChIJ1dIqa2OAhYAREimtEtfBLyc",
-      "name": "Salesforce Tower",
-      "address": "415 Mission St, San Francisco, CA 94105, USA",
+      "id": "ChIJW5D3LYmAhYARb92CmHj1bOM",
+      "name": "Union Square",
+      "address": "San Francisco, CA 94108, USA",
       "location": {
-        "latitude": 37.7897442,
-        "longitude": -122.3972337
+        "latitude": 37.7879358,
+        "longitude": -122.40751389999998
       },
       "viewport": {
         "low": {
-          "latitude": 37.78855716970851,
-          "longitude": -122.39849158029149
+          "latitude": 37.7865940697085,
+          "longitude": -122.4089130302915
         },
         "high": {
-          "latitude": 37.79125513029151,
-          "longitude": -122.39579361970851
-        }
-      },
-      "types": [
-        "corporate_office",
-        "business_center",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "corporate_office",
-      "rating": 4.6,
-      "userRatingCount": 1046
-    },
-    {
-      "id": "ChIJ1f5_4_KAhYAR-rIwsCEGAvk",
-      "name": "Chinatown San Francisco",
-      "address": "855 Stockton St # B, San Francisco, CA 94108, USA",
-      "location": {
-        "latitude": 37.793977999999996,
-        "longitude": -122.40808299999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.792640469708495,
-          "longitude": -122.4093459802915
-        },
-        "high": {
-          "latitude": 37.795338430291494,
-          "longitude": -122.40664801970853
-        }
-      },
-      "types": [
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "tourist_attraction",
-      "rating": 4.3,
-      "userRatingCount": 11239
-    },
-    {
-      "id": "ChIJiX4p7X2AhYARbDw5qoA4Vdk",
-      "name": "Moscone Center",
-      "address": "747 Howard St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.7843234,
-        "longitude": -122.40069
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7830034197085,
-          "longitude": -122.40222723029149
-        },
-        "high": {
-          "latitude": 37.7857013802915,
-          "longitude": -122.39952926970851
-        }
-      },
-      "types": [
-        "convention_center",
-        "event_venue",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "convention_center",
-      "rating": 4.5,
-      "userRatingCount": 6802
-    },
-    {
-      "id": "ChIJC2juwih-j4ARvLq4f6Oyeuc",
-      "name": "Costco Wholesale",
-      "address": "450 10th St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.7703137,
-        "longitude": -122.41092400000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.76937796970851,
-          "longitude": -122.4118680802915
-        },
-        "high": {
-          "latitude": 37.77207593029151,
-          "longitude": -122.40917011970852
-        }
-      },
-      "types": [
-        "warehouse_store",
-        "department_store",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "warehouse_store",
-      "rating": 4.4,
-      "userRatingCount": 7746
-    },
-    {
-      "id": "ChIJFQYlk9Z_j4AR2IMIzaEcYbc",
-      "name": "San Francisco",
-      "address": "700 4th St, San Francisco, CA 94107, USA",
-      "location": {
-        "latitude": 37.776669999999996,
-        "longitude": -122.39484
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7751976197085,
-          "longitude": -122.39622163029148
-        },
-        "high": {
-          "latitude": 37.7778955802915,
-          "longitude": -122.39352366970849
-        }
-      },
-      "types": [
-        "train_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "train_station",
-      "rating": 4.2,
-      "userRatingCount": 768
-    },
-    {
-      "id": "ChIJ53I1Yn2AhYAR_Vl1vNygfMg",
-      "name": "San Francisco Museum of Modern Art",
-      "address": "151 3rd St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.7857182,
-        "longitude": -122.40105080000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.784301969708494,
-          "longitude": -122.40248313029151
-        },
-        "high": {
-          "latitude": 37.78699993029149,
-          "longitude": -122.39978516970854
-        }
-      },
-      "types": [
-        "tourist_attraction",
-        "art_gallery",
-        "art_museum",
-        "museum",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "art_museum",
-      "rating": 4.6,
-      "userRatingCount": 16721
-    },
-    {
-      "id": "ChIJcT5nNoaAhYARVdbyW3zPwus",
-      "name": "San Francisco Marriott Marquis",
-      "address": "780 Mission St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.7853366,
-        "longitude": -122.40440679999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7837845697085,
-          "longitude": -122.40570498029149
-        },
-        "high": {
-          "latitude": 37.7864825302915,
-          "longitude": -122.4030070197085
-        }
-      },
-      "types": [
-        "hotel",
-        "wedding_venue",
-        "event_venue",
-        "lodging",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.3,
-      "userRatingCount": 10354
-    },
-    {
-      "id": "ChIJeSJHoI-AhYARembxZUVcNEk",
-      "name": "Hilton San Francisco Union Square",
-      "address": "333 O'Farrell St, San Francisco, CA 94102, USA",
-      "location": {
-        "latitude": 37.7857306,
-        "longitude": -122.41011719999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7843209197085,
-          "longitude": -122.41155868029148
-        },
-        "high": {
-          "latitude": 37.7870188802915,
-          "longitude": -122.4088607197085
-        }
-      },
-      "types": [
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.2,
-      "userRatingCount": 11744
-    },
-    {
-      "id": "ChIJUwxMuvmAhYARWPFJI3P6Iq8",
-      "name": "Pier 33",
-      "address": "San Francisco, CA 94133, USA",
-      "location": {
-        "latitude": 37.8068469,
-        "longitude": -122.40515419999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.8053084197085,
-          "longitude": -122.4064903302915
-        },
-        "high": {
-          "latitude": 37.8080063802915,
-          "longitude": -122.40379236970851
-        }
-      },
-      "types": [
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "tourist_attraction",
-      "rating": 4.6,
-      "userRatingCount": 10114
-    },
-    {
-      "id": "ChIJ5y1zsoeAhYARJl9k0fuMdRs",
-      "name": "Target",
-      "address": "789 Mission St, San Francisco, CA 94103, USA",
-      "location": {
-        "latitude": 37.784403999999995,
-        "longitude": -122.40381039999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.783181969708494,
-          "longitude": -122.40524693029148
-        },
-        "high": {
-          "latitude": 37.78587993029149,
-          "longitude": -122.40254896970849
-        }
-      },
-      "types": [
-        "department_store",
-        "child_care_agency",
-        "electronics_store",
-        "shoe_store",
-        "furniture_store",
-        "home_improvement_store",
-        "supplier",
-        "home_goods_store",
-        "clothing_store",
-        "toy_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "department_store",
-      "rating": 4,
-      "userRatingCount": 1730
-    },
-    {
-      "id": "ChIJk2vl5NSGhYARwPGvs_ubIws",
-      "name": "Exploratorium",
-      "address": "Pier 15 Embarcadero at, Green St, San Francisco, CA 94111, USA",
-      "location": {
-        "latitude": 37.8016649,
-        "longitude": -122.397348
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7999566697085,
-          "longitude": -122.3995333802915
-        },
-        "high": {
-          "latitude": 37.80265463029149,
-          "longitude": -122.39683541970851
-        }
-      },
-      "types": [
-        "tourist_attraction",
-        "art_museum",
-        "event_venue",
-        "museum",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "museum",
-      "rating": 4.7,
-      "userRatingCount": 8737
-    },
-    {
-      "id": "ChIJAQAAQIyAhYARRN3yIQG4hd4",
-      "name": "Coit Tower",
-      "address": "1 Telegraph Hill Blvd, San Francisco, CA 94133, USA",
-      "location": {
-        "latitude": 37.802394899999996,
-        "longitude": -122.40582219999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.8012256697085,
-          "longitude": -122.40716028029148
-        },
-        "high": {
-          "latitude": 37.8039236302915,
-          "longitude": -122.4044623197085
+          "latitude": 37.7892920302915,
+          "longitude": -122.40621506970851
         }
       },
       "types": [
         "historical_landmark",
-        "tourist_attraction",
-        "landmark",
         "historical_place",
+        "tourist_attraction",
+        "plaza",
+        "park",
         "point_of_interest",
         "establishment"
       ],
       "primaryType": "historical_landmark",
-      "rating": 4.6,
-      "userRatingCount": 16008
+      "rating": 4.4,
+      "userRatingCount": 37486
     },
     {
-      "id": "ChIJN2S4EI2AhYAR9J4Qeh1U8Aw",
-      "name": "Fairmont San Francisco",
-      "address": "950 Mason St, San Francisco, CA 94108, USA",
+      "id": "ChIJC9y2SGOAhYARSaejL5ecgmg",
+      "name": "Salesforce Park",
+      "address": "425 Mission St, San Francisco, CA 94105, USA",
       "location": {
-        "latitude": 37.7923897,
-        "longitude": -122.41044429999998
+        "latitude": 37.789739499999996,
+        "longitude": -122.39616559999999
       },
       "viewport": {
         "low": {
-          "latitude": 37.790941119708506,
-          "longitude": -122.41139958029149
+          "latitude": 37.787448569708495,
+          "longitude": -122.39866333029147
         },
         "high": {
-          "latitude": 37.793639080291506,
-          "longitude": -122.40870161970851
+          "latitude": 37.790146530291494,
+          "longitude": -122.39596536970848
         }
       },
       "types": [
-        "hotel",
-        "lodging",
+        "park",
+        "city_park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.8,
+      "userRatingCount": 5054
+    },
+    {
+      "id": "ChIJE_PHY3yAhYAR5uBdYH1Racs",
+      "name": "Civic Center Plaza",
+      "address": "335 McAllister St, San Francisco, CA 94102, USA",
+      "location": {
+        "latitude": 37.77949290000001,
+        "longitude": -122.4176986
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7781159197085,
+          "longitude": -122.4190031302915
+        },
+        "high": {
+          "latitude": 37.7808138802915,
+          "longitude": -122.41630516970851
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.4,
+      "userRatingCount": 2200
+    },
+    {
+      "id": "ChIJCUsDnIeAhYARWCBpPTrHJpQ",
+      "name": "Yerba Buena Gardens",
+      "address": "750 Howard St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.784988399999996,
+        "longitude": -122.4023514
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.782392599999994,
+          "longitude": -122.40346479999998
+        },
+        "high": {
+          "latitude": 37.7855721,
+          "longitude": -122.4007424
+        }
+      },
+      "types": [
+        "city_park",
+        "garden",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.6,
+      "userRatingCount": 4544
+    },
+    {
+      "id": "ChIJoYiOqfGAhYAR8J-KiogVyCQ",
+      "name": "Washington Square",
+      "address": "Filbert St & Stockton Street, San Francisco, CA 94133, USA",
+      "location": {
+        "latitude": 37.8007752,
+        "longitude": -122.41024639999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7995049697085,
+          "longitude": -122.4114491802915
+        },
+        "high": {
+          "latitude": 37.8022029302915,
+          "longitude": -122.4087512197085
+        }
+      },
+      "types": [
+        "city_park",
+        "playground",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.5,
+      "userRatingCount": 5445
+    },
+    {
+      "id": "ChIJdx6kBe6AhYARsPFmpUAvvcY",
+      "name": "Ina Coolbrith Park",
+      "address": "Vallejo & Taylor, Vallejo St, San Francisco, CA 94133, USA",
+      "location": {
+        "latitude": 37.7982745,
+        "longitude": -122.4134592
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.79683721970849,
+          "longitude": -122.41449223029149
+        },
+        "high": {
+          "latitude": 37.79953518029149,
+          "longitude": -122.41179426970851
+        }
+      },
+      "types": [
+        "city_park",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.8,
+      "userRatingCount": 1688
+    },
+    {
+      "id": "ChIJ0X_WV5qAhYARN-ZYTWDj2KY",
+      "name": "UC Law San Francisco",
+      "address": "200 McAllister St, San Francisco, CA 94102, USA",
+      "location": {
+        "latitude": 37.781122499999995,
+        "longitude": -122.4157619
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.779553819708504,
+          "longitude": -122.41617053029151
+        },
+        "high": {
+          "latitude": 37.7822517802915,
+          "longitude": -122.41347256970852
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "educational_institution",
+      "rating": 4.3,
+      "userRatingCount": 84
+    },
+    {
+      "id": "ChIJ-RJFNouAhYARHU0SXkyCGn8",
+      "name": "Portsmouth Square Park",
+      "address": "745 Kearny St, San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.7948896,
+        "longitude": -122.4052341
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7935158197085,
+          "longitude": -122.4066937802915
+        },
+        "high": {
+          "latitude": 37.7962137802915,
+          "longitude": -122.40399581970853
+        }
+      },
+      "types": [
+        "city_park",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.1,
+      "userRatingCount": 506
+    },
+    {
+      "id": "ChIJ-VUxItp_j4ARBgyteXdSZ-g",
+      "name": "China Basin Park",
+      "address": "1 China Basin Park, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.7764193,
+        "longitude": -122.38795479999997
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7745676197085,
+          "longitude": -122.3903431302915
+        },
+        "high": {
+          "latitude": 37.7772655802915,
+          "longitude": -122.38764516970852
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 237
+    },
+    {
+      "id": "ChIJd_edWMaAhYARGcVcwBNgCd4",
+      "name": "University of the Pacific, Arthur A. Dugoni School of Dentistry",
+      "address": "155 5th St, San Francisco, CA 94103, USA",
+      "location": {
+        "latitude": 37.782254099999996,
+        "longitude": -122.40531739999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.780833519708494,
+          "longitude": -122.40695133029146
+        },
+        "high": {
+          "latitude": 37.783531480291494,
+          "longitude": -122.40425336970848
+        }
+      },
+      "types": [
+        "university",
+        "dentist",
+        "educational_institution",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4,
+      "userRatingCount": 349
+    },
+    {
+      "id": "ChIJWS0hyGaAhYARrci3Bdxh0fI",
+      "name": "Embarcadero Plaza",
+      "address": "Market St &, Steuart St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7951195,
+        "longitude": -122.39520069999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7938338697085,
+          "longitude": -122.39619663029148
+        },
+        "high": {
+          "latitude": 37.7965318302915,
+          "longitude": -122.39349866970849
+        }
+      },
+      "types": [
+        "park",
+        "plaza",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.4,
+      "userRatingCount": 681
+    },
+    {
+      "id": "ChIJFQPEvO-AhYARsCOkX_YCzoM",
+      "name": "City College of San Francisco - Chinatown Center",
+      "address": "808 Kearny St, San Francisco, CA 94108, USA",
+      "location": {
+        "latitude": 37.7956036,
+        "longitude": -122.4047237
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7941934697085,
+          "longitude": -122.40622138029148
+        },
+        "high": {
+          "latitude": 37.7968914302915,
+          "longitude": -122.40352341970849
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.5,
+      "userRatingCount": 50
+    },
+    {
+      "id": "ChIJW_cCS9B_j4ARigbJMyKq_x8",
+      "name": "Mission Bay Kids Park",
+      "address": "Long Bridge Street & China Basin St, 690 Long Bridge St, San Francisco, CA 94158, USA",
+      "location": {
+        "latitude": 37.772168199999996,
+        "longitude": -122.39259570000002
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7706859197085,
+          "longitude": -122.3940443802915
+        },
+        "high": {
+          "latitude": 37.7733838802915,
+          "longitude": -122.39134641970851
+        }
+      },
+      "types": [
+        "city_park",
+        "playground",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "city_park",
+      "rating": 4.7,
+      "userRatingCount": 656
+    },
+    {
+      "id": "ChIJI7ES6tl_j4ARXdMklSPsJl4",
+      "name": "Giants Promenade",
+      "address": "24 Willie Mays Plaza, San Francisco, CA 94107, USA",
+      "location": {
+        "latitude": 37.7783727,
+        "longitude": -122.3877444
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7771647697085,
+          "longitude": -122.3890886802915
+        },
+        "high": {
+          "latitude": 37.7798627302915,
+          "longitude": -122.3863907197085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 173
+    },
+    {
+      "id": "ChIJO7R-32KAhYARA4Fpef70tjk",
+      "name": "Golden Gate University",
+      "address": "536 Mission St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7893349,
+        "longitude": -122.39882419999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7878819197085,
+          "longitude": -122.40022093029148
+        },
+        "high": {
+          "latitude": 37.790579880291496,
+          "longitude": -122.39752296970849
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.1,
+      "userRatingCount": 88
+    },
+    {
+      "id": "ChIJkZyW-2-AhYARzCwWSe3qHMQ",
+      "name": "Rincon Park",
+      "address": "The Embarcadero & Folsom St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7916129,
+        "longitude": -122.38995059999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7899214697085,
+          "longitude": -122.3913586802915
+        },
+        "high": {
+          "latitude": 37.7926194302915,
+          "longitude": -122.38866071970853
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.6,
+      "userRatingCount": 3013
+    },
+    {
+      "id": "ChIJZ0Mj1s9_j4ARt4-u90l2X84",
+      "name": "SFF Soccer - Mission Bay Field",
+      "address": "701 Mission Bay Blvd North, San Francisco, CA 94158, USA",
+      "location": {
+        "latitude": 37.770569099999996,
+        "longitude": -122.39380120000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.7693669197085,
+          "longitude": -122.39468403029149
+        },
+        "high": {
+          "latitude": 37.7720648802915,
+          "longitude": -122.39198606970851
+        }
+      },
+      "types": [
+        "park",
+        "athletic_field",
+        "sports_activity_location",
+        "sports_club",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "athletic_field",
+      "rating": 4.6,
+      "userRatingCount": 160
+    },
+    {
+      "id": "ChIJt0fDI2WAhYAR4WGEx4Nstqs",
+      "name": "University of San Francisco - Downtown Campus",
+      "address": "101 Howard St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.7908872,
+        "longitude": -122.39253049999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.789588969708504,
+          "longitude": -122.39408833029147
+        },
+        "high": {
+          "latitude": 37.7922869302915,
+          "longitude": -122.39139036970849
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 4.6,
+      "userRatingCount": 25
+    },
+    {
+      "id": "ChIJy2xD5l2BhYAR5t-1BYCtbyI",
+      "name": "The Crossing at East Cut",
+      "address": "250 Main St, San Francisco, CA 94105, USA",
+      "location": {
+        "latitude": 37.789698400000006,
+        "longitude": -122.3931459
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.788493369708505,
+          "longitude": -122.39422648029151
+        },
+        "high": {
+          "latitude": 37.791191330291504,
+          "longitude": -122.39152851970852
+        }
+      },
+      "types": [
+        "beer_garden",
+        "bar",
+        "park",
         "restaurant",
         "food",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "hotel",
-      "rating": 4.5,
-      "userRatingCount": 7629
-    },
-    {
-      "id": "ChIJY-bqepmAhYARSk9Xg_9tcLI",
-      "name": "San Francisco City Hall",
-      "address": "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102, USA",
-      "location": {
-        "latitude": 37.779275,
-        "longitude": -122.4192417
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7779407697085,
-          "longitude": -122.4205752302915
-        },
-        "high": {
-          "latitude": 37.7806387302915,
-          "longitude": -122.41787726970851
-        }
-      },
-      "types": [
-        "city_hall",
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "city_hall",
-      "rating": 4.6,
-      "userRatingCount": 1845
-    },
-    {
-      "id": "ChIJX2AfTWGAhYARK51ADFAMZoQ",
-      "name": "Hyatt Regency San Francisco",
-      "address": "5 Embarcadero Ctr, San Francisco, CA 94111, USA",
-      "location": {
-        "latitude": 37.794216899999995,
-        "longitude": -122.3956663
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7928466697085,
-          "longitude": -122.3973856302915
-        },
-        "high": {
-          "latitude": 37.7955446302915,
-          "longitude": -122.39468766970852
-        }
-      },
-      "types": [
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "hotel",
+      "primaryType": null,
       "rating": 4.4,
-      "userRatingCount": 7371
-    },
-    {
-      "id": "ChIJi1J5_0ojh1QRSEAyfPSzO94",
-      "name": "The Westin St. Francis San Francisco on Union Square",
-      "address": "335 Powell St, San Francisco, CA 94102, USA",
-      "location": {
-        "latitude": 37.7876827,
-        "longitude": -122.4087648
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.786418269708506,
-          "longitude": -122.41007288029151
-        },
-        "high": {
-          "latitude": 37.789116230291505,
-          "longitude": -122.40737491970852
-        }
-      },
-      "types": [
-        "hotel",
-        "wedding_venue",
-        "event_venue",
-        "lodging",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.3,
-      "userRatingCount": 6255
-    },
-    {
-      "id": "ChIJ150MH4iAhYARy399PwjhCb4",
-      "name": "Palace Hotel, a Luxury Collection Hotel, San Francisco",
-      "address": "2 New Montgomery St, San Francisco, CA 94105, USA",
-      "location": {
-        "latitude": 37.7881241,
-        "longitude": -122.4019021
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.7868673697085,
-          "longitude": -122.4030707302915
-        },
-        "high": {
-          "latitude": 37.7895653302915,
-          "longitude": -122.40037276970853
-        }
-      },
-      "types": [
-        "hotel",
-        "wedding_venue",
-        "event_venue",
-        "lodging",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.5,
-      "userRatingCount": 5583
-    },
-    {
-      "id": "ChIJo7HdhWKAhYARp5lDOzOnnK0",
-      "name": "Montgomery",
-      "address": "598 Market St, San Francisco, CA 94104, USA",
-      "location": {
-        "latitude": 37.7894171,
-        "longitude": -122.401109
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.788077769708494,
-          "longitude": -122.4029710802915
-        },
-        "high": {
-          "latitude": 37.79077573029149,
-          "longitude": -122.4002731197085
-        }
-      },
-      "types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "subway_station",
-      "rating": 3.9,
-      "userRatingCount": 248
+      "userRatingCount": 99
     }
   ],
   "placeKeys": {
     "blueBottle": "ChIJKyGeO8uBhYARGBl0pZptD8c",
     "gym": "ChIJOb3KIX2AhYAR510cMnRk7e8",
-    "museum": "ChIJ53I1Yn2AhYAR_Vl1vNygfMg",
-    "bart": "ChIJo7HdhWKAhYARp5lDOzOnnK0"
+    "ballpark": "ChIJ_T25cNd_j4ARehGmHe0pT84"
   },
   "histories": {
     "none": [],
@@ -3477,7 +3443,7 @@
         "rankedAbove": [
           [
             "blueBottle",
-            "museum"
+            "ballpark"
           ]
         ]
       }

@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  LARGE_VENUE_TYPES,
   autocompletePlaceIdentifiers,
   fetchPlaceDetails,
   mergeNearbyResults,
@@ -73,7 +74,7 @@ describe("searchNearbyCandidates", () => {
   const nearest = { places: [{ id: "near-1" }, { id: "shared" }, { id: "near-2" }] };
   const popular = { places: [{ id: "popular-1" }, { id: "shared" }, { id: "popular-2" }] };
 
-  it("runs a distance search at the given radius and a popularity search at least 2500 m wide", async () => {
+  it("runs a distance search at the given radius and a large-venue search at least 2000 m wide", async () => {
     stub = stubFetch([
       { match: "places:searchNearby", matchBody: isRankedBy("DISTANCE"), json: nearest },
       { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: popular },
@@ -83,14 +84,23 @@ describe("searchNearbyCandidates", () => {
 
     expect(stub.calls).toHaveLength(2);
     const bodies = stub.calls.map(
-      (call) => call.body as { rankPreference: string; locationRestriction: { circle: { radius: number } } },
+      (call) =>
+        call.body as {
+          rankPreference: string;
+          includedTypes?: string[];
+          locationRestriction: { circle: { radius: number } };
+        },
     );
     expect(bodies.map((body) => body.rankPreference).sort()).toEqual(["DISTANCE", "POPULARITY"]);
-    expect(bodies.find((body) => body.rankPreference === "DISTANCE")?.locationRestriction.circle.radius).toBe(1500);
-    expect(bodies.find((body) => body.rankPreference === "POPULARITY")?.locationRestriction.circle.radius).toBe(2500);
+    const distance = bodies.find((body) => body.rankPreference === "DISTANCE");
+    const largeVenues = bodies.find((body) => body.rankPreference === "POPULARITY");
+    expect(distance?.locationRestriction.circle.radius).toBe(1500);
+    expect(distance?.includedTypes).toBeUndefined();
+    expect(largeVenues?.locationRestriction.circle.radius).toBe(2000);
+    expect(largeVenues?.includedTypes).toEqual([...LARGE_VENUE_TYPES]);
   });
 
-  it("keeps a caller radius wider than 2500 m for the popularity search too", async () => {
+  it("keeps a caller radius wider than 2000 m for the large-venue search too", async () => {
     stub = stubFetch([{ match: "places:searchNearby", json: {} }]);
 
     await searchNearbyCandidates({ ...LOCATION, radius: 4000 });
@@ -101,7 +111,7 @@ describe("searchNearbyCandidates", () => {
     expect(radii).toEqual([4000, 4000]);
   });
 
-  it("lists nearest places first and drops duplicates from the popularity search", async () => {
+  it("lists nearest places first and drops duplicates from the large-venue search", async () => {
     stub = stubFetch([
       { match: "places:searchNearby", matchBody: isRankedBy("DISTANCE"), json: nearest },
       { match: "places:searchNearby", matchBody: isRankedBy("POPULARITY"), json: popular },

@@ -55,6 +55,8 @@ interface SearchNearbyParams {
   longitude: number;
   radius: number;
   rankPreference?: NearbyRankPreference;
+  /** Restricts results to places carrying any of these Google types. */
+  includedTypes?: readonly string[];
 }
 
 interface SearchNearbyCandidatesParams {
@@ -72,15 +74,49 @@ interface SearchNearbyCandidatesParams {
 const MAXIMUM_ACCURACY_FOR_DISTANCE_SEARCH = 1000;
 
 /**
- * The popularity search exists to find large venues whose pin is far from
- * where the user stands. Golden Gate Park's pin is 1.5 km from the de Young
- * and an airport's is often a kilometer from its terminals, so it searches at
- * least this far regardless of the caller's radius.
+ * Venues big enough that the user can be inside one while far from its pin.
+ * Mirrors the large types in the iOS `PlaceFootprint` table. Restricting the
+ * search to them matters: an untyped popularity search from inside JFK or
+ * SeaTac returns rental counters and hotels, never the airport itself.
  */
-export const MINIMUM_POPULARITY_SEARCH_RADIUS = 2500;
+export const LARGE_VENUE_TYPES = [
+  "airport",
+  "stadium",
+  "university",
+  "amusement_park",
+  "zoo",
+  "ski_resort",
+  "golf_course",
+  "national_park",
+  "state_park",
+  "park",
+] as const;
 
-export function popularitySearchRadius(radius: number): number {
-  return Math.max(radius, MINIMUM_POPULARITY_SEARCH_RADIUS);
+/**
+ * Nearby Search matches on a venue's pin, so the circle has to reach from
+ * wherever the user stands inside the venue to that pin. Measured over 599
+ * terminal places at 14 US airports, 2 km covers 99.7% of them and every
+ * gate at 13 of the airports (O'Hare's Terminal 5 is 2.3 km out); Golden
+ * Gate Park's pin is 1.3 km from the de Young.
+ */
+export const MINIMUM_LARGE_VENUE_SEARCH_RADIUS = 2000;
+
+export function largeVenueSearchParams({
+  latitude,
+  longitude,
+  radius,
+}: {
+  latitude: number;
+  longitude: number;
+  radius: number;
+}): SearchNearbyParams {
+  return {
+    latitude,
+    longitude,
+    radius: Math.max(radius, MINIMUM_LARGE_VENUE_SEARCH_RADIUS),
+    rankPreference: "POPULARITY",
+    includedTypes: LARGE_VENUE_TYPES,
+  };
 }
 
 interface AutocompleteParams {
@@ -149,10 +185,12 @@ export function nearbySearchRequestBody({
   longitude,
   radius,
   rankPreference = "POPULARITY",
+  includedTypes,
 }: SearchNearbyParams) {
   return {
     maxResultCount: 20,
     rankPreference,
+    ...(includedTypes ? { includedTypes: [...includedTypes] } : {}),
     locationRestriction: {
       circle: {
         center: { latitude, longitude },
@@ -177,7 +215,7 @@ export function shouldSearchByDistance(accuracy: number | undefined): boolean {
 
 /**
  * Combines the two nearby searches into one candidate list: nearest places
- * first, then popular ones that were not already nearest, deduplicated by ID.
+ * first, then large venues that were not already nearest, deduplicated by ID.
  * Pure so the fixture recorder can produce the exact same list from recorded
  * responses that the route produces from live ones.
  */
@@ -199,9 +237,9 @@ export function mergeNearbyResults(resultLists: GooglePlace[][]): GooglePlace[] 
 /**
  * Candidate venues for a checkin, drawn from two Nearby Search calls run in
  * parallel: the 20 nearest places (which is what finds an obscure venue the
- * user is standing in) and the 20 most popular ones in the same circle (which
- * is what finds an airport, stadium or park whose pin is far from where the
- * user stands). Distance results come first; the client ranks them properly
+ * user is standing in) and the 20 most popular large venues within at least
+ * 2 km (which is what finds an airport, stadium or park whose pin is far from
+ * where the user stands). Distance results come first; the client ranks them properly
  * with the user's accuracy and history, so the order here is only a fallback.
  *
  * One call failing is tolerated the same way a stale autocomplete place ID is:
@@ -217,14 +255,7 @@ export async function searchNearbyCandidates({
   if (shouldSearchByDistance(accuracy)) {
     searches.push(searchNearby({ latitude, longitude, radius, rankPreference: "DISTANCE" }));
   }
-  searches.push(
-    searchNearby({
-      latitude,
-      longitude,
-      radius: popularitySearchRadius(radius),
-      rankPreference: "POPULARITY",
-    }),
-  );
+  searches.push(searchNearby(largeVenueSearchParams({ latitude, longitude, radius })));
 
   const outcomes = await Promise.allSettled(searches);
 

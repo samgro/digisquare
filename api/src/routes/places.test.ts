@@ -166,7 +166,7 @@ describe("GET /places without q", () => {
     expect(stub.calls.every((call) => !call.url.includes("autocomplete"))).toBe(true);
   });
 
-  it("searches nearest-first and most-popular and passes accuracy through", async () => {
+  it("searches nearest-first and for large venues", async () => {
     stub = stubFetch([
       { match: "places:searchNearby", json: loadGoogleFixture("search-nearby.json") },
     ]);
@@ -179,7 +179,7 @@ describe("GET /places without q", () => {
     expect(rankPreferences).toEqual(["DISTANCE", "POPULARITY"]);
   });
 
-  it("only searches by popularity when the fix is too coarse to rank by distance", async () => {
+  it("only searches for large venues when the fix is too coarse to rank by distance", async () => {
     stub = stubFetch([
       { match: "places:searchNearby", json: loadGoogleFixture("search-nearby.json") },
     ]);
@@ -251,7 +251,7 @@ describe("GET /places ranking scenarios", () => {
         {
           match: "places:searchNearby",
           matchBody: isRankedBy("POPULARITY"),
-          json: fixture.google.popularity.response,
+          json: fixture.google.largeVenues.response,
         },
       ];
       if (fixture.google.distance) {
@@ -272,7 +272,7 @@ describe("GET /places ranking scenarios", () => {
       expect(body.results).toEqual(fixture.places);
 
       const requestBodies = stub.calls.map((call) => call.body);
-      expect(requestBodies).toContainEqual(fixture.google.popularity.request);
+      expect(requestBodies).toContainEqual(fixture.google.largeVenues.request);
       if (fixture.google.distance) {
         expect(requestBodies).toContainEqual(fixture.google.distance.request);
       }

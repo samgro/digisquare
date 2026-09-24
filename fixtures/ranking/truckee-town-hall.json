@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "truckee-town-hall",
   "description": "Standing outside the council chambers at Truckee Town Hall. Google lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
-  "recordedAt": "2026-09-23T23:08:33.777Z",
+  "recordedAt": "2026-09-24T00:12:53.885Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 39.316962,
@@ -10,55 +10,34 @@
     "horizontalAccuracy": 30
   },
   "google": {
-    "popularity": {
+    "largeVenues": {
       "request": {
         "maxResultCount": 20,
         "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
         "locationRestriction": {
           "circle": {
             "center": {
               "latitude": 39.316962,
               "longitude": -120.146008
             },
-            "radius": 2500
+            "radius": 2000
           }
         }
       },
       "response": {
         "places": [
-          {
-            "id": "ChIJA1EBJzhhmYARkzmG8Y7MJPA",
-            "types": [
-              "grocery_store",
-              "food_store",
-              "store",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10001 Soaring Way, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3195798,
-              "longitude": -120.1552003
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3183923197085,
-                "longitude": -120.1565962302915
-              },
-              "high": {
-                "latitude": 39.32109028029149,
-                "longitude": -120.15389826970852
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 368,
-            "displayName": {
-              "text": "Raley’s O-N-E Market",
-              "languageCode": "en"
-            },
-            "primaryType": "grocery_store"
-          },
           {
             "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
             "types": [
@@ -91,266 +70,6 @@
             "primaryType": "airport"
           },
           {
-            "id": "ChIJb2IosCxgmYARVROuggWwk44",
-            "types": [
-              "hotel",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "11951 CA-267, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.31774240000001,
-              "longitude": -120.1523906
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3162962697085,
-                "longitude": -120.15373403029149
-              },
-              "high": {
-                "latitude": 39.3189942302915,
-                "longitude": -120.15103606970851
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 803,
-            "displayName": {
-              "text": "Martis Valley Lodge , Tapestry Collection by Hilton",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJpda5AYffm4ARhX3Bq2N_ho0",
-            "types": [
-              "hotel",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "11331 Brockway Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.321522,
-              "longitude": -120.161735
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3198861197085,
-                "longitude": -120.16302578029149
-              },
-              "high": {
-                "latitude": 39.3225840802915,
-                "longitude": -120.16032781970851
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 922,
-            "displayName": {
-              "text": "Best Western Plus Truckee-Tahoe Hotel",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJc37rNI7fm4AR8ZDMTpil_Bg",
-            "types": [
-              "hotel",
-              "coworking_space",
-              "gym",
-              "sports_activity_location",
-              "lodging",
-              "health",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10918 Brockway Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.323987599999995,
-              "longitude": -120.1700545
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3227033697085,
-                "longitude": -120.17112718029148
-              },
-              "high": {
-                "latitude": 39.3254013302915,
-                "longitude": -120.1684292197085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 621,
-            "displayName": {
-              "text": "Gravity Haus Truckee-Tahoe",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJPS-uXobfm4AR_0v7RfcQbGU",
-            "types": [
-              "sushi_restaurant",
-              "bar",
-              "japanese_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "11253 Brockway Rd Ste 105, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3217189,
-              "longitude": -120.1629122
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.32028261970851,
-                "longitude": -120.16411178029149
-              },
-              "high": {
-                "latitude": 39.32298058029151,
-                "longitude": -120.1614138197085
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 1017,
-            "displayName": {
-              "text": "Drunken Monkey Sushi",
-              "languageCode": "en"
-            },
-            "primaryType": "sushi_restaurant"
-          },
-          {
-            "id": "ChIJwV8K_7NhmYARLGJIcuWH7Jg",
-            "types": [
-              "restaurant",
-              "vegan_restaurant",
-              "vegetarian_restaurant",
-              "japanese_restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10001 Soaring Way Ste 160, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3198177,
-              "longitude": -120.15418859999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3184213197085,
-                "longitude": -120.1555214802915
-              },
-              "high": {
-                "latitude": 39.3211192802915,
-                "longitude": -120.1528235197085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 272,
-            "displayName": {
-              "text": "RAKKAN Ramen - Truckee",
-              "languageCode": "en"
-            },
-            "primaryType": "restaurant"
-          },
-          {
-            "id": "ChIJjdFAEvphmYARxmkNO4FxSTc",
-            "types": [
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10001 Soaring Way Unit a suite 110, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3200248,
-              "longitude": -120.1545103
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3186280197085,
-                "longitude": -120.15597558029148
-              },
-              "high": {
-                "latitude": 39.3213259802915,
-                "longitude": -120.1532776197085
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 203,
-            "displayName": {
-              "text": "Truckee Brewing Company",
-              "languageCode": "en"
-            },
-            "primaryType": "restaurant"
-          },
-          {
-            "id": "ChIJS_GO74bfm4ARZ92Ws6DxAnA",
-            "types": [
-              "dentist",
-              "health",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10021 Martis Valley Rd Ste b, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.320956599999995,
-              "longitude": -120.1626659
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31958976970849,
-                "longitude": -120.16412483029148
-              },
-              "high": {
-                "latitude": 39.32228773029149,
-                "longitude": -120.1614268697085
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 20,
-            "displayName": {
-              "text": "West Orthodontics - Jerad West, DDS",
-              "languageCode": "en"
-            },
-            "primaryType": "dentist"
-          },
-          {
-            "id": "ChIJn8x9smTfm4ARyHcuXHkyLWA",
-            "types": [
-              "sports_club",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "9000 Heartwood Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3051824,
-              "longitude": -120.16422169999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.303864519708505,
-                "longitude": -120.16553993029149
-              },
-              "high": {
-                "latitude": 39.306562480291504,
-                "longitude": -120.1628419697085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 103,
-            "displayName": {
-              "text": "Schaffer's Mill",
-              "languageCode": "en"
-            },
-            "primaryType": "sports_club"
-          },
-          {
             "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
             "types": [
               "park",
@@ -380,68 +99,6 @@
               "languageCode": "en"
             },
             "primaryType": "park"
-          },
-          {
-            "id": "ChIJ42ZPWIbfm4AR08GHnWjbwuQ",
-            "types": [
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "11253 Brockway Rd #101, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3219261,
-              "longitude": -120.16265920000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3205666197085,
-                "longitude": -120.16392473029151
-              },
-              "high": {
-                "latitude": 39.3232645802915,
-                "longitude": -120.16122676970852
-              }
-            },
-            "rating": 4,
-            "userRatingCount": 339,
-            "displayName": {
-              "text": "Thai Delicacy",
-              "languageCode": "en"
-            },
-            "primaryType": "restaurant"
-          },
-          {
-            "id": "ChIJAQDcTdNhmYARPxJpbomkak8",
-            "types": [
-              "gas_station",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "11991 CA-267, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316964299999995,
-              "longitude": -120.1523223
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3156496697085,
-                "longitude": -120.15376153029149
-              },
-              "high": {
-                "latitude": 39.31834763029149,
-                "longitude": -120.1510635697085
-              }
-            },
-            "rating": 3.2,
-            "userRatingCount": 9,
-            "displayName": {
-              "text": "Chevron",
-              "languageCode": "en"
-            },
-            "primaryType": "gas_station"
           },
           {
             "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
@@ -476,200 +133,35 @@
             "primaryType": "park"
           },
           {
-            "id": "ChIJtQw5YMlhmYARwZ02ZDwEeSg",
+            "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
             "types": [
-              "sports_club",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "12700 Lodge Trail Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.2947275,
-              "longitude": -120.15034430000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.2934151697085,
-                "longitude": -120.15185563029151
-              },
-              "high": {
-                "latitude": 39.2961131302915,
-                "longitude": -120.14915766970852
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 46,
-            "displayName": {
-              "text": "Lahontan Golf Club",
-              "languageCode": "en"
-            },
-            "primaryType": "sports_club"
-          },
-          {
-            "id": "ChIJcSAJVZBhmYARzgK_2BUwZdU",
-            "types": [
-              "hardware_store",
-              "building_materials_store",
-              "home_improvement_store",
-              "home_goods_store",
-              "store",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10001 Soaring Way Ste 105, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3194482,
-              "longitude": -120.15496200000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3182358197085,
-                "longitude": -120.15624708029151
-              },
-              "high": {
-                "latitude": 39.3209337802915,
-                "longitude": -120.15354911970852
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 98,
-            "displayName": {
-              "text": "Mountain Hardware and Sports",
-              "languageCode": "en"
-            },
-            "primaryType": "hardware_store"
-          },
-          {
-            "id": "ChIJOzxbjSplmYARNTIOCWoatG4",
-            "types": [
-              "secondary_school",
-              "preschool",
-              "primary_school",
-              "child_care_agency",
-              "school",
-              "educational_institution",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "9765 Schaffer Mill Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3111114,
-              "longitude": -120.15542599999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.30982566970851,
-                "longitude": -120.15677213029149
-              },
-              "high": {
-                "latitude": 39.31252363029151,
-                "longitude": -120.15407416970851
-              }
-            },
-            "displayName": {
-              "text": "Tahoe Expedition Academy",
-              "languageCode": "en"
-            },
-            "primaryType": "school"
-          },
-          {
-            "id": "ChIJUUSZNp_fm4ARFEwei72V7tY",
-            "types": [
-              "coffee_shop",
-              "cafe",
-              "food_store",
-              "store",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "11177 Brockway Rd Ste F101, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3224589,
-              "longitude": -120.16325289999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3210402197085,
-                "longitude": -120.16458773029149
-              },
-              "high": {
-                "latitude": 39.3237381802915,
-                "longitude": -120.16188976970851
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 171,
-            "displayName": {
-              "text": "Café Lupine",
-              "languageCode": "en"
-            },
-            "primaryType": "coffee_shop"
-          },
-          {
-            "id": "ChIJJ_USK81hmYAR2TCb91hi6SQ",
-            "types": [
-              "cafe",
-              "food",
+              "airport",
+              "transportation_service",
               "point_of_interest",
               "establishment"
             ],
             "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
             "location": {
-              "latitude": 39.319302400000005,
-              "longitude": -120.14503189999998
+              "latitude": 39.319265699999995,
+              "longitude": -120.14508239999999
             },
             "viewport": {
               "low": {
-                "latitude": 39.3178268197085,
-                "longitude": -120.1464591302915
+                "latitude": 39.31780711970849,
+                "longitude": -120.1464736302915
               },
               "high": {
-                "latitude": 39.3205247802915,
-                "longitude": -120.14376116970851
+                "latitude": 39.32050508029149,
+                "longitude": -120.1437756697085
               }
             },
-            "rating": 4.7,
-            "userRatingCount": 296,
+            "rating": 5,
+            "userRatingCount": 6,
             "displayName": {
-              "text": "Red Truck",
+              "text": "Elevated Aviation",
               "languageCode": "en"
             },
-            "primaryType": "cafe"
-          },
-          {
-            "id": "ChIJCWcYBKxhmYARWIyz-gWJIFo",
-            "types": [
-              "campground",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Alpine Meadow Camp, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3209662,
-              "longitude": -120.12234029999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.319457469708496,
-                "longitude": -120.12361408029147
-              },
-              "high": {
-                "latitude": 39.322155430291495,
-                "longitude": -120.12091611970848
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 47,
-            "displayName": {
-              "text": "Alpine Meadow Campground",
-              "languageCode": "en"
-            },
-            "primaryType": "campground"
+            "primaryType": "airport"
           }
         ]
       }
@@ -1888,36 +1380,6 @@
       "userRatingCount": 19
     },
     {
-      "id": "ChIJA1EBJzhhmYARkzmG8Y7MJPA",
-      "name": "Raley’s O-N-E Market",
-      "address": "10001 Soaring Way, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3195798,
-        "longitude": -120.1552003
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3183923197085,
-          "longitude": -120.1565962302915
-        },
-        "high": {
-          "latitude": 39.32109028029149,
-          "longitude": -120.15389826970852
-        }
-      },
-      "types": [
-        "grocery_store",
-        "food_store",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "grocery_store",
-      "rating": 4.2,
-      "userRatingCount": 368
-    },
-    {
       "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
       "name": "Truckee Tahoe Airport",
       "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
@@ -1946,242 +1408,6 @@
       "userRatingCount": 93
     },
     {
-      "id": "ChIJb2IosCxgmYARVROuggWwk44",
-      "name": "Martis Valley Lodge , Tapestry Collection by Hilton",
-      "address": "11951 CA-267, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.31774240000001,
-        "longitude": -120.1523906
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3162962697085,
-          "longitude": -120.15373403029149
-        },
-        "high": {
-          "latitude": 39.3189942302915,
-          "longitude": -120.15103606970851
-        }
-      },
-      "types": [
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.2,
-      "userRatingCount": 803
-    },
-    {
-      "id": "ChIJpda5AYffm4ARhX3Bq2N_ho0",
-      "name": "Best Western Plus Truckee-Tahoe Hotel",
-      "address": "11331 Brockway Rd, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.321522,
-        "longitude": -120.161735
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3198861197085,
-          "longitude": -120.16302578029149
-        },
-        "high": {
-          "latitude": 39.3225840802915,
-          "longitude": -120.16032781970851
-        }
-      },
-      "types": [
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.3,
-      "userRatingCount": 922
-    },
-    {
-      "id": "ChIJc37rNI7fm4AR8ZDMTpil_Bg",
-      "name": "Gravity Haus Truckee-Tahoe",
-      "address": "10918 Brockway Rd, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.323987599999995,
-        "longitude": -120.1700545
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3227033697085,
-          "longitude": -120.17112718029148
-        },
-        "high": {
-          "latitude": 39.3254013302915,
-          "longitude": -120.1684292197085
-        }
-      },
-      "types": [
-        "hotel",
-        "coworking_space",
-        "gym",
-        "sports_activity_location",
-        "lodging",
-        "health",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.7,
-      "userRatingCount": 621
-    },
-    {
-      "id": "ChIJPS-uXobfm4AR_0v7RfcQbGU",
-      "name": "Drunken Monkey Sushi",
-      "address": "11253 Brockway Rd Ste 105, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3217189,
-        "longitude": -120.1629122
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.32028261970851,
-          "longitude": -120.16411178029149
-        },
-        "high": {
-          "latitude": 39.32298058029151,
-          "longitude": -120.1614138197085
-        }
-      },
-      "types": [
-        "sushi_restaurant",
-        "bar",
-        "japanese_restaurant",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "sushi_restaurant",
-      "rating": 4.2,
-      "userRatingCount": 1017
-    },
-    {
-      "id": "ChIJwV8K_7NhmYARLGJIcuWH7Jg",
-      "name": "RAKKAN Ramen - Truckee",
-      "address": "10001 Soaring Way Ste 160, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3198177,
-        "longitude": -120.15418859999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3184213197085,
-          "longitude": -120.1555214802915
-        },
-        "high": {
-          "latitude": 39.3211192802915,
-          "longitude": -120.1528235197085
-        }
-      },
-      "types": [
-        "restaurant",
-        "vegan_restaurant",
-        "vegetarian_restaurant",
-        "japanese_restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "restaurant",
-      "rating": 4.3,
-      "userRatingCount": 272
-    },
-    {
-      "id": "ChIJjdFAEvphmYARxmkNO4FxSTc",
-      "name": "Truckee Brewing Company",
-      "address": "10001 Soaring Way Unit a suite 110, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3200248,
-        "longitude": -120.1545103
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3186280197085,
-          "longitude": -120.15597558029148
-        },
-        "high": {
-          "latitude": 39.3213259802915,
-          "longitude": -120.1532776197085
-        }
-      },
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "restaurant",
-      "rating": 4.2,
-      "userRatingCount": 203
-    },
-    {
-      "id": "ChIJS_GO74bfm4ARZ92Ws6DxAnA",
-      "name": "West Orthodontics - Jerad West, DDS",
-      "address": "10021 Martis Valley Rd Ste b, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.320956599999995,
-        "longitude": -120.1626659
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.31958976970849,
-          "longitude": -120.16412483029148
-        },
-        "high": {
-          "latitude": 39.32228773029149,
-          "longitude": -120.1614268697085
-        }
-      },
-      "types": [
-        "dentist",
-        "health",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "dentist",
-      "rating": 4.4,
-      "userRatingCount": 20
-    },
-    {
-      "id": "ChIJn8x9smTfm4ARyHcuXHkyLWA",
-      "name": "Schaffer's Mill",
-      "address": "9000 Heartwood Dr, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3051824,
-        "longitude": -120.16422169999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.303864519708505,
-          "longitude": -120.16553993029149
-        },
-        "high": {
-          "latitude": 39.306562480291504,
-          "longitude": -120.1628419697085
-        }
-      },
-      "types": [
-        "sports_club",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "sports_club",
-      "rating": 4.7,
-      "userRatingCount": 103
-    },
-    {
       "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
       "name": "Riverview Sports Park",
       "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
@@ -2208,62 +1434,6 @@
       "primaryType": "park",
       "rating": 4.7,
       "userRatingCount": 167
-    },
-    {
-      "id": "ChIJ42ZPWIbfm4AR08GHnWjbwuQ",
-      "name": "Thai Delicacy",
-      "address": "11253 Brockway Rd #101, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3219261,
-        "longitude": -120.16265920000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3205666197085,
-          "longitude": -120.16392473029151
-        },
-        "high": {
-          "latitude": 39.3232645802915,
-          "longitude": -120.16122676970852
-        }
-      },
-      "types": [
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "restaurant",
-      "rating": 4,
-      "userRatingCount": 339
-    },
-    {
-      "id": "ChIJAQDcTdNhmYARPxJpbomkak8",
-      "name": "Chevron",
-      "address": "11991 CA-267, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.316964299999995,
-        "longitude": -120.1523223
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3156496697085,
-          "longitude": -120.15376153029149
-        },
-        "high": {
-          "latitude": 39.31834763029149,
-          "longitude": -120.1510635697085
-        }
-      },
-      "types": [
-        "gas_station",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "gas_station",
-      "rating": 3.2,
-      "userRatingCount": 9
     },
     {
       "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
@@ -2295,191 +1465,38 @@
       "userRatingCount": 115
     },
     {
-      "id": "ChIJtQw5YMlhmYARwZ02ZDwEeSg",
-      "name": "Lahontan Golf Club",
-      "address": "12700 Lodge Trail Dr, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.2947275,
-        "longitude": -120.15034430000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.2934151697085,
-          "longitude": -120.15185563029151
-        },
-        "high": {
-          "latitude": 39.2961131302915,
-          "longitude": -120.14915766970852
-        }
-      },
-      "types": [
-        "sports_club",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "sports_club",
-      "rating": 4.9,
-      "userRatingCount": 46
-    },
-    {
-      "id": "ChIJcSAJVZBhmYARzgK_2BUwZdU",
-      "name": "Mountain Hardware and Sports",
-      "address": "10001 Soaring Way Ste 105, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3194482,
-        "longitude": -120.15496200000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3182358197085,
-          "longitude": -120.15624708029151
-        },
-        "high": {
-          "latitude": 39.3209337802915,
-          "longitude": -120.15354911970852
-        }
-      },
-      "types": [
-        "hardware_store",
-        "building_materials_store",
-        "home_improvement_store",
-        "home_goods_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hardware_store",
-      "rating": 4.7,
-      "userRatingCount": 98
-    },
-    {
-      "id": "ChIJOzxbjSplmYARNTIOCWoatG4",
-      "name": "Tahoe Expedition Academy",
-      "address": "9765 Schaffer Mill Rd, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3111114,
-        "longitude": -120.15542599999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.30982566970851,
-          "longitude": -120.15677213029149
-        },
-        "high": {
-          "latitude": 39.31252363029151,
-          "longitude": -120.15407416970851
-        }
-      },
-      "types": [
-        "secondary_school",
-        "preschool",
-        "primary_school",
-        "child_care_agency",
-        "school",
-        "educational_institution",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "school",
-      "rating": null,
-      "userRatingCount": null
-    },
-    {
-      "id": "ChIJUUSZNp_fm4ARFEwei72V7tY",
-      "name": "Café Lupine",
-      "address": "11177 Brockway Rd Ste F101, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3224589,
-        "longitude": -120.16325289999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.3210402197085,
-          "longitude": -120.16458773029149
-        },
-        "high": {
-          "latitude": 39.3237381802915,
-          "longitude": -120.16188976970851
-        }
-      },
-      "types": [
-        "coffee_shop",
-        "cafe",
-        "food_store",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "coffee_shop",
-      "rating": 4.8,
-      "userRatingCount": 171
-    },
-    {
-      "id": "ChIJJ_USK81hmYAR2TCb91hi6SQ",
-      "name": "Red Truck",
+      "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
+      "name": "Elevated Aviation",
       "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
       "location": {
-        "latitude": 39.319302400000005,
-        "longitude": -120.14503189999998
+        "latitude": 39.319265699999995,
+        "longitude": -120.14508239999999
       },
       "viewport": {
         "low": {
-          "latitude": 39.3178268197085,
-          "longitude": -120.1464591302915
+          "latitude": 39.31780711970849,
+          "longitude": -120.1464736302915
         },
         "high": {
-          "latitude": 39.3205247802915,
-          "longitude": -120.14376116970851
+          "latitude": 39.32050508029149,
+          "longitude": -120.1437756697085
         }
       },
       "types": [
-        "cafe",
-        "food",
+        "airport",
+        "transportation_service",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "cafe",
-      "rating": 4.7,
-      "userRatingCount": 296
-    },
-    {
-      "id": "ChIJCWcYBKxhmYARWIyz-gWJIFo",
-      "name": "Alpine Meadow Campground",
-      "address": "Alpine Meadow Camp, Truckee, CA 96161, USA",
-      "location": {
-        "latitude": 39.3209662,
-        "longitude": -120.12234029999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 39.319457469708496,
-          "longitude": -120.12361408029147
-        },
-        "high": {
-          "latitude": 39.322155430291495,
-          "longitude": -120.12091611970848
-        }
-      },
-      "types": [
-        "campground",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "campground",
-      "rating": 4.4,
-      "userRatingCount": 47
+      "primaryType": "airport",
+      "rating": 5,
+      "userRatingCount": 6
     }
   ],
   "placeKeys": {
     "townHall": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
     "police": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
     "sportsPark": "ChIJn9PrISdgmYARWfGaRaZBLE0",
-    "brewery": "ChIJjdFAEvphmYARxmkNO4FxSTc",
     "airport": "ChIJ8-hbhsthmYARcPdss0-xprU"
   },
   "histories": {
@@ -2623,10 +1640,6 @@
           [
             "townHall",
             "sportsPark"
-          ],
-          [
-            "townHall",
-            "brewery"
           ]
         ]
       }
@@ -2653,7 +1666,7 @@
         "rankedAbove": [
           [
             "townHall",
-            "brewery"
+            "sportsPark"
           ]
         ]
       }

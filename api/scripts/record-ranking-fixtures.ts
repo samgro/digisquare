@@ -17,8 +17,8 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  largeVenueSearchParams,
   nearbySearchRequestBody,
-  popularitySearchRadius,
   postPlacesSearch,
   shouldSearchByDistance,
   type GooglePlace,
@@ -60,15 +60,11 @@ async function recordScenario(definition: RankingScenarioDefinition): Promise<vo
   const fix = offsetCoordinate(anchorLocation, definition.offsetMeters);
   const radius = definition.radius ?? DEFAULT_RADIUS;
 
-  const popularityRequest = nearbySearchRequestBody({
-    ...fix,
-    radius: popularitySearchRadius(radius),
-    rankPreference: "POPULARITY",
-  });
+  const largeVenueRequest = nearbySearchRequestBody(largeVenueSearchParams({ ...fix, radius }));
   const google: RecordedGoogleData = {
-    popularity: {
-      request: popularityRequest,
-      response: await postPlacesSearch("searchNearby", popularityRequest),
+    largeVenues: {
+      request: largeVenueRequest,
+      response: await postPlacesSearch("searchNearby", largeVenueRequest),
     },
   };
   if (shouldSearchByDistance(definition.horizontalAccuracy)) {

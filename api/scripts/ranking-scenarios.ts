@@ -81,7 +81,6 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       townHall: "truckee town hall & town clerk",
       police: "truckee police department",
       sportsPark: "riverview sports park",
-      brewery: "truckee brewing company",
       airport: "truckee tahoe airport",
     },
     referenceNow: "2026-09-22T10:15:00-07:00",
@@ -103,7 +102,6 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
             ["townHall", "police"],
             ["townHall", "airport"],
             ["townHall", "sportsPark"],
-            ["townHall", "brewery"],
           ],
         },
       },
@@ -115,12 +113,12 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       },
       {
         // At 300 m nothing is certain; the only requirement is no auto-jump
-        // and that an obscure venue still beats a popular one 1.3 km away.
+        // and that an obscure venue still beats a popular park 1.6 km away.
         name: "coarse fix, no history",
         now: "2026-09-22T10:15:00-07:00",
         horizontalAccuracy: 300,
         history: "none",
-        expect: { suggested: null, rankedAbove: [["townHall", "brewery"]] },
+        expect: { suggested: null, rankedAbove: [["townHall", "sportsPark"]] },
       },
       {
         name: "coarse fix, council regular",
@@ -176,6 +174,31 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         now: "2026-09-23T10:20:00-07:00",
         history: "coworkingRegular",
         expect: { top: "lift", suggested: "lift" },
+      },
+    ],
+  },
+  {
+    name: "jfk-terminal-8",
+    description:
+      "At a bar in JFK Terminal 8, 1.4 km from the airport's pin. An untyped popularity search from here returns rental counters and hotels but never the airport; the large-venue search finds it.",
+    timeZone: "America/New_York",
+    anchorQuery: "Dos Toros Tequila Bar, JFK Terminal 8, Jamaica, NY",
+    offsetMeters: { north: 5, east: -8 },
+    horizontalAccuracy: 40,
+    placeKeys: {
+      airport: { name: "john f. kennedy international airport", primaryType: "international_airport" },
+      bar: "dos toros",
+    },
+    referenceNow: "2026-09-22T17:30:00-04:00",
+    histories: {
+      none: [],
+    },
+    cases: [
+      {
+        name: "terminal fix, no history",
+        now: "2026-09-22T17:30:00-04:00",
+        history: "none",
+        expect: { top: "airport", suggested: "airport", rankedAbove: [["airport", "bar"]] },
       },
     ],
   },
@@ -242,7 +265,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       stadium: "levi's stadium",
       museum: "49ers museum",
       greatAmerica: "great america",
-      conventionCenter: "santa clara convention center",
+      university: "mission college",
     },
     referenceNow: "2026-09-20T13:05:00-07:00",
     histories: {
@@ -260,7 +283,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
           rankedAbove: [
             ["stadium", "museum"],
             ["stadium", "greatAmerica"],
-            ["stadium", "conventionCenter"],
+            ["stadium", "university"],
           ],
         },
       },
@@ -283,8 +306,8 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     placeKeys: {
       deYoung: "de young museum",
       park: { name: "golden gate park", primaryType: "park" },
-      academy: "academy of sciences",
-      teaGarden: "japanese tea garden",
+      museumStore: "de young museum store",
+      kezarStadium: "kezar stadium",
     },
     referenceNow: "2026-09-19T11:00:00-07:00",
     histories: {
@@ -301,8 +324,8 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
           top: "deYoung",
           suggested: null,
           rankedAbove: [
-            ["deYoung", "academy"],
-            ["park", "teaGarden"],
+            ["deYoung", "museumStore"],
+            ["park", "kezarStadium"],
           ],
         },
       },
@@ -321,18 +344,17 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     ],
   },
   {
-    name: "soma-mint-plaza",
+    name: "soma-second-street",
     description:
-      "Outside Blue Bottle on Mint Plaza in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; SFMOMA, Moscone and a BART station are 250-350 m away.",
+      "Outside Blue Bottle on 2nd Street in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; Yerba Buena Gardens and Salesforce Park are 400 m away and Oracle Park 1.2 km.",
     timeZone: PACIFIC,
-    anchorQuery: "Blue Bottle Coffee, 66 Mint St, San Francisco",
+    anchorQuery: "Blue Bottle Coffee, 168 2nd St, San Francisco",
     offsetMeters: { north: -4, east: 3 },
     horizontalAccuracy: 12,
     placeKeys: {
       blueBottle: "blue bottle",
       gym: "social fit club",
-      museum: "san francisco museum of modern art",
-      bart: "montgomery",
+      ballpark: "oracle park",
     },
     referenceNow: "2026-09-22T08:30:00-07:00",
     histories: {
@@ -348,7 +370,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "tight fix, no history",
         now: "2026-09-22T08:30:00-07:00",
         history: "none",
-        expect: { top: "blueBottle", suggested: null, rankedAbove: [["blueBottle", "museum"]] },
+        expect: { top: "blueBottle", suggested: null, rankedAbove: [["blueBottle", "ballpark"]] },
       },
       {
         name: "tight fix, coffee regular",
@@ -380,7 +402,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
   {
     name: "downtown-redwood-city",
     description:
-      "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 330 m from the Sequoia Station Safeway.",
+      "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 650 m from Mezes Park.",
     timeZone: PACIFIC,
     anchorQuery: "Peet's Coffee, Sequoia Station, Redwood City, CA",
     offsetMeters: { north: 10, east: -7 },
@@ -388,13 +410,13 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     placeKeys: {
       peets: "peet's",
       kemuri: "kemuri japanese",
-      safeway: "safeway",
+      park: "mezes park",
       caltrain: "redwood city",
     },
     referenceNow: "2026-09-19T09:00:00-07:00",
     histories: {
       none: [],
-      groceryRegular: [{ place: "safeway", visits: 10, hourOfDay: 18, spanDays: 60, days: "any" }],
+      parkRegular: [{ place: "park", visits: 10, hourOfDay: 18, spanDays: 60, days: "any" }],
       dinnerRegular: [{ place: "kemuri", visits: 8, hourOfDay: 19, spanDays: 90, days: "any" }],
     },
     cases: [
@@ -405,18 +427,18 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         expect: {
           suggested: null,
           rankedAbove: [
-            ["peets", "safeway"],
+            ["peets", "park"],
             ["peets", "caltrain"],
           ],
         },
       },
       {
-        // History never outweighs geometry: the Safeway is 330 m away and
-        // the fix is good to 20 m, so the user is not there tonight.
-        name: "grocery regular in the evening",
+        // History never outweighs geometry: the park is 650 m away and the
+        // fix is good to 20 m, so the user is not there tonight.
+        name: "park regular in the evening",
         now: "2026-09-19T18:15:00-07:00",
-        history: "groceryRegular",
-        expect: { suggested: null, rankedAbove: [["peets", "safeway"]] },
+        history: "parkRegular",
+        expect: { suggested: null, rankedAbove: [["peets", "park"]] },
       },
       {
         name: "dinner regular in the evening",

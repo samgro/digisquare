@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "sfo-terminal-2",
   "description": "In line at Peet's inside SFO Terminal 2, about 900 m from the airport's pin but well inside its viewport.",
-  "recordedAt": "2026-09-23T23:08:34.399Z",
+  "recordedAt": "2026-09-24T00:12:55.447Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 37.618002,
@@ -10,17 +10,29 @@
     "horizontalAccuracy": 65
   },
   "google": {
-    "popularity": {
+    "largeVenues": {
       "request": {
         "maxResultCount": 20,
         "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
         "locationRestriction": {
           "circle": {
             "center": {
               "latitude": 37.618002,
               "longitude": -122.3814
             },
-            "radius": 2500
+            "radius": 2000
           }
         }
       },
@@ -51,7 +63,7 @@
               }
             },
             "rating": 4.3,
-            "userRatingCount": 38558,
+            "userRatingCount": 38562,
             "displayName": {
               "text": "San Francisco International Airport",
               "languageCode": "en"
@@ -59,626 +71,195 @@
             "primaryType": "international_airport"
           },
           {
-            "id": "ChIJ_QoRCpp3j4ARGtyzRBNo0UI",
+            "id": "ChIJh4JT0sd3j4ARRUs8pfcWYVY",
             "types": [
-              "bus_stop",
-              "transit_stop",
-              "transit_station",
-              "transportation_service",
+              "park",
+              "tourist_attraction",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "California 94128, USA",
+            "formattedAddress": "2-198;1-99 Old Bayshore Hwy, Millbrae, CA 94030, USA",
             "location": {
-              "latitude": 37.614870599999996,
-              "longitude": -122.38985230000002
+              "latitude": 37.6049946,
+              "longitude": -122.3764138
             },
             "viewport": {
               "low": {
-                "latitude": 37.6135623197085,
-                "longitude": -122.39134438029151
+                "latitude": 37.60245681970849,
+                "longitude": -122.37700729999999
               },
               "high": {
-                "latitude": 37.6162602802915,
-                "longitude": -122.38864641970852
-              }
-            },
-            "rating": 4.1,
-            "userRatingCount": 357,
-            "displayName": {
-              "text": "SFO International Terminal",
-              "languageCode": "en"
-            },
-            "primaryType": "bus_stop"
-          },
-          {
-            "id": "ChIJweteNSt4j4ARHLgt5pD3EGg",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-            "location": {
-              "latitude": 37.6287868,
-              "longitude": -122.40034999999997
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.627879369708495,
-                "longitude": -122.40206558029148
-              },
-              "high": {
-                "latitude": 37.630577330291494,
-                "longitude": -122.3993676197085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 3464,
-            "displayName": {
-              "text": "SFO Rental Car Center",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJO-1NZI3024AR5tMbGnQ_7fM",
-            "types": [
-              "hamburger_restaurant",
-              "diner",
-              "fast_food_restaurant",
-              "american_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "11 Rollins Rd, Millbrae, CA 94030, USA",
-            "location": {
-              "latitude": 37.6008236,
-              "longitude": -122.38245549999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.5993713197085,
-                "longitude": -122.3839260302915
-              },
-              "high": {
-                "latitude": 37.6020692802915,
-                "longitude": -122.38122806970851
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 10486,
-            "displayName": {
-              "text": "In-N-Out Burger",
-              "languageCode": "en"
-            },
-            "primaryType": "hamburger_restaurant"
-          },
-          {
-            "id": "ChIJby2RXSt4j4ARE7x2abFvdDw",
-            "types": [
-              "car_rental",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-            "location": {
-              "latitude": 37.6283417,
-              "longitude": -122.4004112
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.6276546197085,
-                "longitude": -122.40209228029147
-              },
-              "high": {
-                "latitude": 37.6303525802915,
-                "longitude": -122.39939431970848
-              }
-            },
-            "rating": 3.4,
-            "userRatingCount": 3750,
-            "displayName": {
-              "text": "Hertz Car Rental - San Francisco - San Francisco International Airport (SFO)",
-              "languageCode": "en"
-            },
-            "primaryType": "car_rental"
-          },
-          {
-            "id": "ChIJ_f-KM8N3j4ARVukNxTr-88Q",
-            "types": [
-              "parking_garage",
-              "parking_lot",
-              "parking",
-              "transportation_service",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "129 Garden Ln, Millbrae, CA 94030, USA",
-            "location": {
-              "latitude": 37.6015699,
-              "longitude": -122.38540739999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.6003216697085,
-                "longitude": -122.38671888029148
-              },
-              "high": {
-                "latitude": 37.6030196302915,
-                "longitude": -122.38402091970849
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 112,
-            "displayName": {
-              "text": "Millbrae BART Parking Garage",
-              "languageCode": "en"
-            },
-            "primaryType": "parking_garage"
-          },
-          {
-            "id": "ChIJV2Q04pN3j4ARu9rOcaf5UjU",
-            "types": [
-              "bus_station",
-              "transit_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "California 94128, USA",
-            "location": {
-              "latitude": 37.616783399999996,
-              "longitude": -122.3841771
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.6154285197085,
-                "longitude": -122.38552028029149
-              },
-              "high": {
-                "latitude": 37.6181264802915,
-                "longitude": -122.3828223197085
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 178,
-            "displayName": {
-              "text": "SFO Airport Terminal 2-Lower Level",
-              "languageCode": "en"
-            },
-            "primaryType": "bus_station"
-          },
-          {
-            "id": "ChIJ4XytPoeAhYARocdC3xD-HDI",
-            "types": [
-              "car_rental",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-            "location": {
-              "latitude": 37.628173,
-              "longitude": -122.40037899999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.6268847197085,
-                "longitude": -122.40159778029148
-              },
-              "high": {
-                "latitude": 37.62958268029149,
-                "longitude": -122.3988998197085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 11096,
-            "displayName": {
-              "text": "Avis Car Rental",
-              "languageCode": "en"
-            },
-            "primaryType": "car_rental"
-          },
-          {
-            "id": "ChIJhznIwSh2j4ARiDadKzOxjuA",
-            "types": [
-              "hotel",
-              "wedding_venue",
-              "event_venue",
-              "lodging",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1800 Old Bayshore Hwy, Burlingame, CA 94010, USA",
-            "location": {
-              "latitude": 37.602243,
-              "longitude": -122.37043500000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.601008119708496,
-                "longitude": -122.3719832802915
-              },
-              "high": {
-                "latitude": 37.603706080291495,
-                "longitude": -122.36928531970851
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 4106,
-            "displayName": {
-              "text": "San Francisco Airport Marriott Waterfront",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJsXRBVUt4j4ARVcqO4yjah7I",
-            "types": [
-              "seafood_restaurant",
-              "market",
-              "wholesaler",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "824 Cowan Rd, Burlingame, CA 94010, USA",
-            "location": {
-              "latitude": 37.6026874,
-              "longitude": -122.37473179999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.6012242197085,
-                "longitude": -122.3761009802915
-              },
-              "high": {
-                "latitude": 37.6039221802915,
-                "longitude": -122.37340301970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 3500,
-            "displayName": {
-              "text": "New England Lobster Market & Eatery",
-              "languageCode": "en"
-            },
-            "primaryType": "seafood_restaurant"
-          },
-          {
-            "id": "ChIJhW_4f8h3j4ARhKdBcdTN__8",
-            "types": [
-              "hotel",
-              "wedding_venue",
-              "event_venue",
-              "lodging",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1 Old Bayshore Hwy, Millbrae, CA 94030, USA",
-            "location": {
-              "latitude": 37.603461599999996,
-              "longitude": -122.37615199999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.6022729697085,
-                "longitude": -122.37769518029151
-              },
-              "high": {
-                "latitude": 37.6049709302915,
-                "longitude": -122.37499721970853
-              }
-            },
-            "rating": 4.1,
-            "userRatingCount": 3433,
-            "displayName": {
-              "text": "The Westin San Francisco Airport",
-              "languageCode": "en"
-            },
-            "primaryType": "hotel"
-          },
-          {
-            "id": "ChIJW4Eh5rB3j4ARXNKfR-5KGbY",
-            "types": [
-              "transit_station",
-              "train_station",
-              "subway_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "100 California Dr, Millbrae, CA 94030, USA",
-            "location": {
-              "latitude": 37.6002486,
-              "longitude": -122.3867928
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.59877641970851,
-                "longitude": -122.3882286802915
-              },
-              "high": {
-                "latitude": 37.601474380291506,
-                "longitude": -122.38553071970851
-              }
-            },
-            "rating": 3.9,
-            "userRatingCount": 269,
-            "displayName": {
-              "text": "Millbrae",
-              "languageCode": "en"
-            },
-            "primaryType": "transit_station"
-          },
-          {
-            "id": "ChIJz6I9mu13j4ARzwOM_usAL-M",
-            "types": [
-              "resort_hotel",
-              "hotel",
-              "lodging",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "55 S McDonnell Rd, San Francisco, CA 94128, USA",
-            "location": {
-              "latitude": 37.612801,
-              "longitude": -122.39389930000002
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.61152626970849,
-                "longitude": -122.39520788029148
-              },
-              "high": {
-                "latitude": 37.61422423029149,
-                "longitude": -122.3925099197085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 1544,
-            "displayName": {
-              "text": "Grand Hyatt at SFO",
-              "languageCode": "en"
-            },
-            "primaryType": "resort_hotel"
-          },
-          {
-            "id": "ChIJk_27ubB3j4ARawSR0uOPpPA",
-            "types": [
-              "parking_lot",
-              "parking",
-              "transportation_service",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "Parking lot, 200 N Rollins Rd, Millbrae, CA 94030, USA",
-            "location": {
-              "latitude": 37.6018316,
-              "longitude": -122.3849383
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.60042921970851,
-                "longitude": -122.38638003029148
-              },
-              "high": {
-                "latitude": 37.6031271802915,
-                "longitude": -122.3836820697085
-              }
-            },
-            "rating": 3.9,
-            "userRatingCount": 82,
-            "displayName": {
-              "text": "BART Millbrae Station",
-              "languageCode": "en"
-            },
-            "primaryType": "parking_lot"
-          },
-          {
-            "id": "ChIJe70CCqR3j4AR_ro_4O92x7Y",
-            "types": [
-              "grocery_store",
-              "liquor_store",
-              "health_food_store",
-              "market",
-              "supermarket",
-              "food_store",
-              "store",
-              "health",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "765 Broadway, Millbrae, CA 94030, USA",
-            "location": {
-              "latitude": 37.6036526,
-              "longitude": -122.3960311
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.602308019708495,
-                "longitude": -122.39737718029147
-              },
-              "high": {
-                "latitude": 37.605005980291494,
-                "longitude": -122.3946792197085
+                "latitude": 37.60515478029149,
+                "longitude": -122.37090630000002
               }
             },
             "rating": 4.6,
-            "userRatingCount": 1612,
+            "userRatingCount": 1212,
             "displayName": {
-              "text": "Trader Joe's",
+              "text": "Bayfront Park",
               "languageCode": "en"
             },
-            "primaryType": "grocery_store"
+            "primaryType": "park"
           },
           {
-            "id": "ChIJ9S8bxMp5j4AR-jg22a1E1Dk",
+            "id": "ChIJgQByj7x3j4ARwhrbm19lu_o",
             "types": [
-              "car_rental",
+              "park",
               "point_of_interest",
-              "service",
               "establishment"
             ],
-            "formattedAddress": "Car Rental Center, 780 N McDonnell Rd, San Francisco, CA 94128, USA",
+            "formattedAddress": "301 Santa Paula Ave, Millbrae, CA 94030, USA",
             "location": {
-              "latitude": 37.628358600000006,
-              "longitude": -122.4004988
+              "latitude": 37.6044254,
+              "longitude": -122.38685779999999
             },
             "viewport": {
               "low": {
-                "latitude": 37.62708146970851,
-                "longitude": -122.40222998029151
+                "latitude": 37.6030484697085,
+                "longitude": -122.38822033029147
               },
               "high": {
-                "latitude": 37.62977943029151,
-                "longitude": -122.39953201970853
+                "latitude": 37.6057464302915,
+                "longitude": -122.38552236970848
               }
             },
-            "rating": 4.2,
-            "userRatingCount": 5321,
+            "rating": 4,
+            "userRatingCount": 45,
             "displayName": {
-              "text": "SIXT Car Rental - San Francisco International Airport (SFO)",
+              "text": "Bayside Manor Park",
               "languageCode": "en"
             },
-            "primaryType": "car_rental"
+            "primaryType": "park"
           },
           {
-            "id": "ChIJ_y97TIJ3j4ARLXvgcqMrtm4",
+            "id": "ChIJvUqR4wKij4ARwHvDpEr1dnA",
             "types": [
-              "car_rental",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-            "location": {
-              "latitude": 37.6283309,
-              "longitude": -122.4003502
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.62720701970851,
-                "longitude": -122.4021022802915
-              },
-              "high": {
-                "latitude": 37.6299049802915,
-                "longitude": -122.39940431970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 6898,
-            "displayName": {
-              "text": "Enterprise Rent-A-Car",
-              "languageCode": "en"
-            },
-            "primaryType": "car_rental"
-          },
-          {
-            "id": "ChIJVVVVVYx3j4ARyN7qnq2JceQ",
-            "types": [
-              "subway_station",
-              "transit_station",
+              "airport",
               "transportation_service",
+              "local_government_office",
+              "government_office",
+              "association_or_organization",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "San Francisco, CA 94128, USA",
+            "formattedAddress": "166 N Rollins Rd, Millbrae, CA 94030, USA",
             "location": {
-              "latitude": 37.616060499999996,
-              "longitude": -122.392304
+              "latitude": 37.6005599,
+              "longitude": -122.38571569999998
             },
             "viewport": {
               "low": {
-                "latitude": 37.6146691697085,
-                "longitude": -122.3935246302915
+                "latitude": 37.5992262197085,
+                "longitude": -122.38693158029149
               },
               "high": {
-                "latitude": 37.6173671302915,
-                "longitude": -122.39082666970852
+                "latitude": 37.6019241802915,
+                "longitude": -122.3842336197085
               }
             },
-            "rating": 3.7,
-            "userRatingCount": 360,
+            "rating": 2.6,
+            "userRatingCount": 28,
             "displayName": {
-              "text": "San Francisco International Airport",
+              "text": "San Mateo County Transit District",
               "languageCode": "en"
             },
-            "primaryType": "subway_station"
+            "primaryType": "association_or_organization"
           },
           {
-            "id": "ChIJcZyDXSt4j4ARMGPTd6NO-pA",
+            "id": "ChIJVVXlI5l3j4ARSXYkG07KArk",
             "types": [
-              "car_rental",
+              "park",
               "point_of_interest",
-              "service",
               "establishment"
             ],
-            "formattedAddress": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
+            "formattedAddress": "Millbrae, CA 94030, USA",
             "location": {
-              "latitude": 37.628226999999995,
-              "longitude": -122.40108
+              "latitude": 37.610687299999995,
+              "longitude": -122.3946484
             },
             "viewport": {
               "low": {
-                "latitude": 37.627294469708495,
-                "longitude": -122.40161073029148
+                "latitude": 37.609289519708504,
+                "longitude": -122.3960480302915
               },
               "high": {
-                "latitude": 37.629992430291495,
-                "longitude": -122.3989127697085
+                "latitude": 37.611987480291496,
+                "longitude": -122.3933500697085
               }
             },
-            "rating": 2.9,
-            "userRatingCount": 3447,
+            "rating": 5,
+            "userRatingCount": 1,
             "displayName": {
-              "text": "Budget Car Rental",
+              "text": "Marina Vista Park",
               "languageCode": "en"
             },
-            "primaryType": "car_rental"
+            "primaryType": "park"
           },
           {
-            "id": "ChIJv_7nDch3j4ARTXKe0iczTrQ",
+            "id": "ChIJE-08ZSJ3j4ARCGyBveyMTuI",
             "types": [
-              "hotel",
-              "lodging",
+              "general_store",
+              "gift_shop",
+              "airport",
+              "transportation_service",
+              "food_store",
+              "store",
+              "food",
               "point_of_interest",
-              "service",
               "establishment"
             ],
-            "formattedAddress": "401 E Millbrae Ave, Millbrae, CA 94030, USA",
+            "formattedAddress": "Terminal 1, Near, Gate B6, San Francisco, CA 94128, USA",
             "location": {
-              "latitude": 37.60294,
-              "longitude": -122.37784939999997
+              "latitude": 37.6133156,
+              "longitude": -122.3843144
             },
             "viewport": {
               "low": {
-                "latitude": 37.6017585697085,
-                "longitude": -122.37888813029147
+                "latitude": 37.612846819708494,
+                "longitude": -122.3861865802915
               },
               "high": {
-                "latitude": 37.6044565302915,
-                "longitude": -122.3761901697085
+                "latitude": 37.61554478029149,
+                "longitude": -122.3834886197085
               }
             },
-            "rating": 4.2,
-            "userRatingCount": 2778,
+            "rating": 4.6,
+            "userRatingCount": 9,
             "displayName": {
-              "text": "Aloft by Marriott San Francisco Airport",
+              "text": "PACK-N-GO",
               "languageCode": "en"
             },
-            "primaryType": "hotel"
+            "primaryType": "general_store"
+          },
+          {
+            "id": "ChIJ1fvgWAB3j4ARq8VtV34SAzI",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1 Adrian Ct, Burlingame, CA 94010, USA",
+            "location": {
+              "latitude": 37.6003709,
+              "longitude": -122.37852369999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.5990832697085,
+                "longitude": -122.37994858029148
+              },
+              "high": {
+                "latitude": 37.6017812302915,
+                "longitude": -122.37725061970849
+              }
+            },
+            "rating": 2,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Adrian Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
           }
         ]
       }
@@ -1219,7 +800,7 @@
               }
             },
             "rating": 3.9,
-            "userRatingCount": 2223,
+            "userRatingCount": 2224,
             "displayName": {
               "text": "Lark Creek Grill",
               "languageCode": "en"
@@ -1793,7 +1374,7 @@
       ],
       "primaryType": "american_restaurant",
       "rating": 3.9,
-      "userRatingCount": 2223
+      "userRatingCount": 2224
     },
     {
       "id": "ChIJVVXhm5N3j4AR-RcETyyL3QI",
@@ -1915,572 +1496,180 @@
       ],
       "primaryType": "international_airport",
       "rating": 4.3,
-      "userRatingCount": 38558
+      "userRatingCount": 38562
     },
     {
-      "id": "ChIJ_QoRCpp3j4ARGtyzRBNo0UI",
-      "name": "SFO International Terminal",
-      "address": "California 94128, USA",
+      "id": "ChIJh4JT0sd3j4ARRUs8pfcWYVY",
+      "name": "Bayfront Park",
+      "address": "2-198;1-99 Old Bayshore Hwy, Millbrae, CA 94030, USA",
       "location": {
-        "latitude": 37.614870599999996,
-        "longitude": -122.38985230000002
+        "latitude": 37.6049946,
+        "longitude": -122.3764138
       },
       "viewport": {
         "low": {
-          "latitude": 37.6135623197085,
-          "longitude": -122.39134438029151
+          "latitude": 37.60245681970849,
+          "longitude": -122.37700729999999
         },
         "high": {
-          "latitude": 37.6162602802915,
-          "longitude": -122.38864641970852
+          "latitude": 37.60515478029149,
+          "longitude": -122.37090630000002
         }
       },
       "types": [
-        "bus_stop",
-        "transit_stop",
-        "transit_station",
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.6,
+      "userRatingCount": 1212
+    },
+    {
+      "id": "ChIJgQByj7x3j4ARwhrbm19lu_o",
+      "name": "Bayside Manor Park",
+      "address": "301 Santa Paula Ave, Millbrae, CA 94030, USA",
+      "location": {
+        "latitude": 37.6044254,
+        "longitude": -122.38685779999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.6030484697085,
+          "longitude": -122.38822033029147
+        },
+        "high": {
+          "latitude": 37.6057464302915,
+          "longitude": -122.38552236970848
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4,
+      "userRatingCount": 45
+    },
+    {
+      "id": "ChIJvUqR4wKij4ARwHvDpEr1dnA",
+      "name": "San Mateo County Transit District",
+      "address": "166 N Rollins Rd, Millbrae, CA 94030, USA",
+      "location": {
+        "latitude": 37.6005599,
+        "longitude": -122.38571569999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.5992262197085,
+          "longitude": -122.38693158029149
+        },
+        "high": {
+          "latitude": 37.6019241802915,
+          "longitude": -122.3842336197085
+        }
+      },
+      "types": [
+        "airport",
         "transportation_service",
+        "local_government_office",
+        "government_office",
+        "association_or_organization",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "bus_stop",
-      "rating": 4.1,
-      "userRatingCount": 357
+      "primaryType": "association_or_organization",
+      "rating": 2.6,
+      "userRatingCount": 28
     },
     {
-      "id": "ChIJweteNSt4j4ARHLgt5pD3EGg",
-      "name": "SFO Rental Car Center",
-      "address": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
+      "id": "ChIJVVXlI5l3j4ARSXYkG07KArk",
+      "name": "Marina Vista Park",
+      "address": "Millbrae, CA 94030, USA",
       "location": {
-        "latitude": 37.6287868,
-        "longitude": -122.40034999999997
+        "latitude": 37.610687299999995,
+        "longitude": -122.3946484
       },
       "viewport": {
         "low": {
-          "latitude": 37.627879369708495,
-          "longitude": -122.40206558029148
+          "latitude": 37.609289519708504,
+          "longitude": -122.3960480302915
         },
         "high": {
-          "latitude": 37.630577330291494,
-          "longitude": -122.3993676197085
+          "latitude": 37.611987480291496,
+          "longitude": -122.3933500697085
         }
       },
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "service",
-      "rating": 4.3,
-      "userRatingCount": 3464
-    },
-    {
-      "id": "ChIJO-1NZI3024AR5tMbGnQ_7fM",
-      "name": "In-N-Out Burger",
-      "address": "11 Rollins Rd, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.6008236,
-        "longitude": -122.38245549999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.5993713197085,
-          "longitude": -122.3839260302915
-        },
-        "high": {
-          "latitude": 37.6020692802915,
-          "longitude": -122.38122806970851
-        }
-      },
-      "types": [
-        "hamburger_restaurant",
-        "diner",
-        "fast_food_restaurant",
-        "american_restaurant",
-        "restaurant",
-        "food",
+        "park",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "hamburger_restaurant",
-      "rating": 4.5,
-      "userRatingCount": 10486
+      "primaryType": "park",
+      "rating": 5,
+      "userRatingCount": 1
     },
     {
-      "id": "ChIJby2RXSt4j4ARE7x2abFvdDw",
-      "name": "Hertz Car Rental - San Francisco - San Francisco International Airport (SFO)",
-      "address": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
+      "id": "ChIJE-08ZSJ3j4ARCGyBveyMTuI",
+      "name": "PACK-N-GO",
+      "address": "Terminal 1, Near, Gate B6, San Francisco, CA 94128, USA",
       "location": {
-        "latitude": 37.6283417,
-        "longitude": -122.4004112
+        "latitude": 37.6133156,
+        "longitude": -122.3843144
       },
       "viewport": {
         "low": {
-          "latitude": 37.6276546197085,
-          "longitude": -122.40209228029147
+          "latitude": 37.612846819708494,
+          "longitude": -122.3861865802915
         },
         "high": {
-          "latitude": 37.6303525802915,
-          "longitude": -122.39939431970848
+          "latitude": 37.61554478029149,
+          "longitude": -122.3834886197085
         }
       },
       "types": [
-        "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "car_rental",
-      "rating": 3.4,
-      "userRatingCount": 3750
-    },
-    {
-      "id": "ChIJ_f-KM8N3j4ARVukNxTr-88Q",
-      "name": "Millbrae BART Parking Garage",
-      "address": "129 Garden Ln, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.6015699,
-        "longitude": -122.38540739999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6003216697085,
-          "longitude": -122.38671888029148
-        },
-        "high": {
-          "latitude": 37.6030196302915,
-          "longitude": -122.38402091970849
-        }
-      },
-      "types": [
-        "parking_garage",
-        "parking_lot",
-        "parking",
+        "general_store",
+        "gift_shop",
+        "airport",
         "transportation_service",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "parking_garage",
-      "rating": 4.3,
-      "userRatingCount": 112
-    },
-    {
-      "id": "ChIJV2Q04pN3j4ARu9rOcaf5UjU",
-      "name": "SFO Airport Terminal 2-Lower Level",
-      "address": "California 94128, USA",
-      "location": {
-        "latitude": 37.616783399999996,
-        "longitude": -122.3841771
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6154285197085,
-          "longitude": -122.38552028029149
-        },
-        "high": {
-          "latitude": 37.6181264802915,
-          "longitude": -122.3828223197085
-        }
-      },
-      "types": [
-        "bus_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "bus_station",
-      "rating": 4.4,
-      "userRatingCount": 178
-    },
-    {
-      "id": "ChIJ4XytPoeAhYARocdC3xD-HDI",
-      "name": "Avis Car Rental",
-      "address": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-      "location": {
-        "latitude": 37.628173,
-        "longitude": -122.40037899999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6268847197085,
-          "longitude": -122.40159778029148
-        },
-        "high": {
-          "latitude": 37.62958268029149,
-          "longitude": -122.3988998197085
-        }
-      },
-      "types": [
-        "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "car_rental",
-      "rating": 4.3,
-      "userRatingCount": 11096
-    },
-    {
-      "id": "ChIJhznIwSh2j4ARiDadKzOxjuA",
-      "name": "San Francisco Airport Marriott Waterfront",
-      "address": "1800 Old Bayshore Hwy, Burlingame, CA 94010, USA",
-      "location": {
-        "latitude": 37.602243,
-        "longitude": -122.37043500000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.601008119708496,
-          "longitude": -122.3719832802915
-        },
-        "high": {
-          "latitude": 37.603706080291495,
-          "longitude": -122.36928531970851
-        }
-      },
-      "types": [
-        "hotel",
-        "wedding_venue",
-        "event_venue",
-        "lodging",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.2,
-      "userRatingCount": 4106
-    },
-    {
-      "id": "ChIJsXRBVUt4j4ARVcqO4yjah7I",
-      "name": "New England Lobster Market & Eatery",
-      "address": "824 Cowan Rd, Burlingame, CA 94010, USA",
-      "location": {
-        "latitude": 37.6026874,
-        "longitude": -122.37473179999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6012242197085,
-          "longitude": -122.3761009802915
-        },
-        "high": {
-          "latitude": 37.6039221802915,
-          "longitude": -122.37340301970852
-        }
-      },
-      "types": [
-        "seafood_restaurant",
-        "market",
-        "wholesaler",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "seafood_restaurant",
-      "rating": 4.5,
-      "userRatingCount": 3500
-    },
-    {
-      "id": "ChIJhW_4f8h3j4ARhKdBcdTN__8",
-      "name": "The Westin San Francisco Airport",
-      "address": "1 Old Bayshore Hwy, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.603461599999996,
-        "longitude": -122.37615199999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6022729697085,
-          "longitude": -122.37769518029151
-        },
-        "high": {
-          "latitude": 37.6049709302915,
-          "longitude": -122.37499721970853
-        }
-      },
-      "types": [
-        "hotel",
-        "wedding_venue",
-        "event_venue",
-        "lodging",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.1,
-      "userRatingCount": 3433
-    },
-    {
-      "id": "ChIJW4Eh5rB3j4ARXNKfR-5KGbY",
-      "name": "Millbrae",
-      "address": "100 California Dr, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.6002486,
-        "longitude": -122.3867928
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.59877641970851,
-          "longitude": -122.3882286802915
-        },
-        "high": {
-          "latitude": 37.601474380291506,
-          "longitude": -122.38553071970851
-        }
-      },
-      "types": [
-        "transit_station",
-        "train_station",
-        "subway_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "transit_station",
-      "rating": 3.9,
-      "userRatingCount": 269
-    },
-    {
-      "id": "ChIJz6I9mu13j4ARzwOM_usAL-M",
-      "name": "Grand Hyatt at SFO",
-      "address": "55 S McDonnell Rd, San Francisco, CA 94128, USA",
-      "location": {
-        "latitude": 37.612801,
-        "longitude": -122.39389930000002
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.61152626970849,
-          "longitude": -122.39520788029148
-        },
-        "high": {
-          "latitude": 37.61422423029149,
-          "longitude": -122.3925099197085
-        }
-      },
-      "types": [
-        "resort_hotel",
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "resort_hotel",
-      "rating": 4.7,
-      "userRatingCount": 1544
-    },
-    {
-      "id": "ChIJk_27ubB3j4ARawSR0uOPpPA",
-      "name": "BART Millbrae Station",
-      "address": "Parking lot, 200 N Rollins Rd, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.6018316,
-        "longitude": -122.3849383
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.60042921970851,
-          "longitude": -122.38638003029148
-        },
-        "high": {
-          "latitude": 37.6031271802915,
-          "longitude": -122.3836820697085
-        }
-      },
-      "types": [
-        "parking_lot",
-        "parking",
-        "transportation_service",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "parking_lot",
-      "rating": 3.9,
-      "userRatingCount": 82
-    },
-    {
-      "id": "ChIJe70CCqR3j4AR_ro_4O92x7Y",
-      "name": "Trader Joe's",
-      "address": "765 Broadway, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.6036526,
-        "longitude": -122.3960311
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.602308019708495,
-          "longitude": -122.39737718029147
-        },
-        "high": {
-          "latitude": 37.605005980291494,
-          "longitude": -122.3946792197085
-        }
-      },
-      "types": [
-        "grocery_store",
-        "liquor_store",
-        "health_food_store",
-        "market",
-        "supermarket",
         "food_store",
         "store",
-        "health",
         "food",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "grocery_store",
+      "primaryType": "general_store",
       "rating": 4.6,
-      "userRatingCount": 1612
+      "userRatingCount": 9
     },
     {
-      "id": "ChIJ9S8bxMp5j4AR-jg22a1E1Dk",
-      "name": "SIXT Car Rental - San Francisco International Airport (SFO)",
-      "address": "Car Rental Center, 780 N McDonnell Rd, San Francisco, CA 94128, USA",
+      "id": "ChIJ1fvgWAB3j4ARq8VtV34SAzI",
+      "name": "Adrian Park",
+      "address": "1 Adrian Ct, Burlingame, CA 94010, USA",
       "location": {
-        "latitude": 37.628358600000006,
-        "longitude": -122.4004988
+        "latitude": 37.6003709,
+        "longitude": -122.37852369999999
       },
       "viewport": {
         "low": {
-          "latitude": 37.62708146970851,
-          "longitude": -122.40222998029151
+          "latitude": 37.5990832697085,
+          "longitude": -122.37994858029148
         },
         "high": {
-          "latitude": 37.62977943029151,
-          "longitude": -122.39953201970853
+          "latitude": 37.6017812302915,
+          "longitude": -122.37725061970849
         }
       },
       "types": [
-        "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "car_rental",
-      "rating": 4.2,
-      "userRatingCount": 5321
-    },
-    {
-      "id": "ChIJ_y97TIJ3j4ARLXvgcqMrtm4",
-      "name": "Enterprise Rent-A-Car",
-      "address": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-      "location": {
-        "latitude": 37.6283309,
-        "longitude": -122.4003502
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.62720701970851,
-          "longitude": -122.4021022802915
-        },
-        "high": {
-          "latitude": 37.6299049802915,
-          "longitude": -122.39940431970852
-        }
-      },
-      "types": [
-        "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "car_rental",
-      "rating": 4.5,
-      "userRatingCount": 6898
-    },
-    {
-      "id": "ChIJVVVVVYx3j4ARyN7qnq2JceQ",
-      "name": "San Francisco International Airport",
-      "address": "San Francisco, CA 94128, USA",
-      "location": {
-        "latitude": 37.616060499999996,
-        "longitude": -122.392304
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6146691697085,
-          "longitude": -122.3935246302915
-        },
-        "high": {
-          "latitude": 37.6173671302915,
-          "longitude": -122.39082666970852
-        }
-      },
-      "types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
+        "park",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "subway_station",
-      "rating": 3.7,
-      "userRatingCount": 360
-    },
-    {
-      "id": "ChIJcZyDXSt4j4ARMGPTd6NO-pA",
-      "name": "Budget Car Rental",
-      "address": "780 N McDonnell Rd, San Francisco, CA 94128, USA",
-      "location": {
-        "latitude": 37.628226999999995,
-        "longitude": -122.40108
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.627294469708495,
-          "longitude": -122.40161073029148
-        },
-        "high": {
-          "latitude": 37.629992430291495,
-          "longitude": -122.3989127697085
-        }
-      },
-      "types": [
-        "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "car_rental",
-      "rating": 2.9,
-      "userRatingCount": 3447
-    },
-    {
-      "id": "ChIJv_7nDch3j4ARTXKe0iczTrQ",
-      "name": "Aloft by Marriott San Francisco Airport",
-      "address": "401 E Millbrae Ave, Millbrae, CA 94030, USA",
-      "location": {
-        "latitude": 37.60294,
-        "longitude": -122.37784939999997
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.6017585697085,
-          "longitude": -122.37888813029147
-        },
-        "high": {
-          "latitude": 37.6044565302915,
-          "longitude": -122.3761901697085
-        }
-      },
-      "types": [
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "hotel",
-      "rating": 4.2,
-      "userRatingCount": 2778
+      "primaryType": "park",
+      "rating": 2,
+      "userRatingCount": 1
     }
   ],
   "placeKeys": {

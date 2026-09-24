@@ -19,7 +19,7 @@ export interface RecordedSearch {
 export interface RecordedGoogleData {
   /** Absent when the recorder skipped the distance search. */
   distance?: RecordedSearch;
-  popularity: RecordedSearch;
+  largeVenues: RecordedSearch;
 }
 
 export interface FixtureHistoryEntry {
@@ -229,7 +229,7 @@ export function buildRankingFixture(
   if (google.distance) {
     resultLists.push(google.distance.response.places ?? []);
   }
-  resultLists.push(google.popularity.response.places ?? []);
+  resultLists.push(google.largeVenues.response.places ?? []);
   const places = mergeNearbyResults(resultLists).map(toResult);
 
   const placeKeys = resolvePlaceKeys(definition, places);

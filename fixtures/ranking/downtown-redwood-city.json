@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "name": "downtown-redwood-city",
-  "description": "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 330 m from the Sequoia Station Safeway.",
-  "recordedAt": "2026-09-23T23:08:37.196Z",
+  "description": "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 650 m from Mezes Park.",
+  "recordedAt": "2026-09-24T00:12:57.755Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 37.486525,
@@ -10,721 +10,668 @@
     "horizontalAccuracy": 20
   },
   "google": {
-    "popularity": {
+    "largeVenues": {
       "request": {
         "maxResultCount": 20,
         "rankPreference": "POPULARITY",
+        "includedTypes": [
+          "airport",
+          "stadium",
+          "university",
+          "amusement_park",
+          "zoo",
+          "ski_resort",
+          "golf_course",
+          "national_park",
+          "state_park",
+          "park"
+        ],
         "locationRestriction": {
           "circle": {
             "center": {
               "latitude": 37.486525,
               "longitude": -122.233389
             },
-            "radius": 2500
+            "radius": 2000
           }
         }
       },
       "response": {
         "places": [
           {
-            "id": "ChIJo6wg-wijj4ARau3zQUzPzE8",
+            "id": "ChIJ0bH5Qcajj4ARLzePCIyEbDE",
             "types": [
-              "warehouse_store",
-              "department_store",
-              "store",
+              "park",
+              "tourist_attraction",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
+            "formattedAddress": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
             "location": {
-              "latitude": 37.4784321,
-              "longitude": -122.2162829
+              "latitude": 37.4716062,
+              "longitude": -122.2387476
             },
             "viewport": {
               "low": {
-                "latitude": 37.4773177197085,
-                "longitude": -122.21787353029148
+                "latitude": 37.469874519708505,
+                "longitude": -122.24075278029152
               },
               "high": {
-                "latitude": 37.4800156802915,
-                "longitude": -122.21517556970849
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 4960,
-            "displayName": {
-              "text": "Costco Wholesale",
-              "languageCode": "en"
-            },
-            "primaryType": "warehouse_store"
-          },
-          {
-            "id": "ChIJw3cEKQqjj4ARywep3n0-Svo",
-            "types": [
-              "department_store",
-              "child_care_agency",
-              "electronics_store",
-              "shoe_store",
-              "furniture_store",
-              "home_improvement_store",
-              "supplier",
-              "home_goods_store",
-              "clothing_store",
-              "toy_store",
-              "store",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2485 El Camino Real, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4754186,
-              "longitude": -122.21724919999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4739240697085,
-                "longitude": -122.2189670302915
-              },
-              "high": {
-                "latitude": 37.4766220302915,
-                "longitude": -122.2162690697085
-              }
-            },
-            "rating": 4,
-            "userRatingCount": 844,
-            "displayName": {
-              "text": "Target",
-              "languageCode": "en"
-            },
-            "primaryType": "department_store"
-          },
-          {
-            "id": "ChIJeXNiHs-jj4ARmQN_Xuuww0I",
-            "types": [
-              "mediterranean_restaurant",
-              "barbecue_restaurant",
-              "middle_eastern_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2021 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4864235,
-              "longitude": -122.22685489999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4851678197085,
-                "longitude": -122.22846928029148
-              },
-              "high": {
-                "latitude": 37.4878657802915,
-                "longitude": -122.22577131970849
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 1817,
-            "displayName": {
-              "text": "MAZRA",
-              "languageCode": "en"
-            },
-            "primaryType": "mediterranean_restaurant"
-          },
-          {
-            "id": "ChIJ72rH3FSij4AReB-jZ2NK3Xc",
-            "types": [
-              "medical_center",
-              "hospital",
-              "health",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1100 Veterans Blvd, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4888897,
-              "longitude": -122.2241739
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4875287697085,
-                "longitude": -122.22550193029149
-              },
-              "high": {
-                "latitude": 37.490226730291496,
-                "longitude": -122.2228039697085
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 1338,
-            "displayName": {
-              "text": "Redwood City Medical Center",
-              "languageCode": "en"
-            },
-            "primaryType": "medical_center"
-          },
-          {
-            "id": "ChIJdxVs-wijj4ARvm7Rt2HDTVw",
-            "types": [
-              "gas_station",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.478706599999995,
-              "longitude": -122.2176677
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4774370197085,
-                "longitude": -122.21922018029147
-              },
-              "high": {
-                "latitude": 37.480134980291496,
-                "longitude": -122.21652221970848
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 827,
-            "displayName": {
-              "text": "Costco Gas Station",
-              "languageCode": "en"
-            },
-            "primaryType": "gas_station"
-          },
-          {
-            "id": "ChIJSzHQdLKjj4AR182EZGl5Hgk",
-            "types": [
-              "grocery_store",
-              "liquor_store",
-              "health_food_store",
-              "market",
-              "supermarket",
-              "food_store",
-              "store",
-              "health",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1250 Jefferson Ave, Redwood City, CA 94062, USA",
-            "location": {
-              "latitude": 37.4822223,
-              "longitude": -122.2316198
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.48110506970849,
-                "longitude": -122.2327849302915
-              },
-              "high": {
-                "latitude": 37.48380303029149,
-                "longitude": -122.23008696970852
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 1645,
-            "displayName": {
-              "text": "Whole Foods Market",
-              "languageCode": "en"
-            },
-            "primaryType": "grocery_store"
-          },
-          {
-            "id": "ChIJyc7rXBaij4ARyinNzBzVYuY",
-            "types": [
-              "home_improvement_store",
-              "hardware_store",
-              "garden_center",
-              "building_materials_store",
-              "furniture_store",
-              "home_goods_store",
-              "store",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1125 Old County Rd, San Carlos, CA 94070, USA",
-            "location": {
-              "latitude": 37.5011398,
-              "longitude": -122.24984929999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4996698697085,
-                "longitude": -122.25141798029149
-              },
-              "high": {
-                "latitude": 37.5023678302915,
-                "longitude": -122.2487200197085
-              }
-            },
-            "rating": 4.1,
-            "userRatingCount": 1720,
-            "displayName": {
-              "text": "The Home Depot",
-              "languageCode": "en"
-            },
-            "primaryType": "home_improvement_store"
-          },
-          {
-            "id": "ChIJd6l_wRKjj4AReSHqIm_I6F4",
-            "types": [
-              "pakistani_restaurant",
-              "halal_restaurant",
-              "catering_service",
-              "indian_restaurant",
-              "food_delivery",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2039 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4864509,
-              "longitude": -122.2270514
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4851773697085,
-                "longitude": -122.22854578029148
-              },
-              "high": {
-                "latitude": 37.487875330291494,
-                "longitude": -122.2258478197085
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 1812,
-            "displayName": {
-              "text": "Zareen's",
-              "languageCode": "en"
-            },
-            "primaryType": "pakistani_restaurant"
-          },
-          {
-            "id": "ChIJXWh3PhSij4ARougdfWNOfek",
-            "types": [
-              "bicycle_store",
-              "sporting_goods_store",
-              "shoe_store",
-              "clothing_store",
-              "store",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1119 Industrial Rd Ste A, San Carlos, CA 94070, USA",
-            "location": {
-              "latitude": 37.504513599999996,
-              "longitude": -122.2465382
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.503182469708506,
-                "longitude": -122.24797683029148
-              },
-              "high": {
-                "latitude": 37.5058804302915,
-                "longitude": -122.24527886970849
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 712,
-            "displayName": {
-              "text": "REI",
-              "languageCode": "en"
-            },
-            "primaryType": "store"
-          },
-          {
-            "id": "ChIJ0erYxVOij4ARL7SN0fmfWkE",
-            "types": [
-              "hamburger_restaurant",
-              "diner",
-              "fast_food_restaurant",
-              "american_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "949 Veterans Blvd, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.490584999999996,
-              "longitude": -122.22785999999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4892807197085,
-                "longitude": -122.22900533029149
-              },
-              "high": {
-                "latitude": 37.4919786802915,
-                "longitude": -122.2263073697085
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 4675,
-            "displayName": {
-              "text": "In-N-Out Burger",
-              "languageCode": "en"
-            },
-            "primaryType": "hamburger_restaurant"
-          },
-          {
-            "id": "ChIJO6ZFgz6ij4ARKO_zrQUstAc",
-            "types": [
-              "grocery_store",
-              "liquor_store",
-              "health_food_store",
-              "market",
-              "supermarket",
-              "food_store",
-              "store",
-              "health",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1482 El Camino Real, San Carlos, CA 94070, USA",
-            "location": {
-              "latitude": 37.4963882,
-              "longitude": -122.2485572
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.49513656970849,
-                "longitude": -122.24981208029148
-              },
-              "high": {
-                "latitude": 37.49783453029149,
-                "longitude": -122.24711411970848
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 1675,
-            "displayName": {
-              "text": "Trader Joe's",
-              "languageCode": "en"
-            },
-            "primaryType": "grocery_store"
-          },
-          {
-            "id": "ChIJczknVE2ij4AR6rvEXfV3TKo",
-            "types": [
-              "train_station",
-              "transit_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1 James Ave, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4858291,
-              "longitude": -122.23172590000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.484568969708505,
-                "longitude": -122.23308518029148
-              },
-              "high": {
-                "latitude": 37.4872669302915,
-                "longitude": -122.2303872197085
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 100,
-            "displayName": {
-              "text": "Redwood City",
-              "languageCode": "en"
-            },
-            "primaryType": "train_station"
-          },
-          {
-            "id": "ChIJW0q6La2jj4ARfAm-rgZ5HoY",
-            "types": [
-              "movie_theater",
-              "snack_bar",
-              "meal_takeaway",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "825 Middlefield Rd, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.486259499999996,
-              "longitude": -122.2286872
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4847148697085,
-                "longitude": -122.2300976802915
-              },
-              "high": {
-                "latitude": 37.4874128302915,
-                "longitude": -122.22739971970852
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 2960,
-            "displayName": {
-              "text": "Cinemark Century Redwood Downtown 20 and XD",
-              "languageCode": "en"
-            },
-            "primaryType": "movie_theater"
-          },
-          {
-            "id": "ChIJI26VRs2jj4ARm-PG77gIDzA",
-            "types": [
-              "sporting_goods_store",
-              "store",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "202 Walnut St, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.493074199999995,
-              "longitude": -122.22621219999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4918766697085,
-                "longitude": -122.22743438029148
-              },
-              "high": {
-                "latitude": 37.494574630291496,
-                "longitude": -122.22473641970849
+                "latitude": 37.4725724802915,
+                "longitude": -122.23805481970852
               }
             },
             "rating": 4.7,
-            "userRatingCount": 1226,
+            "userRatingCount": 1156,
             "displayName": {
-              "text": "Sports Basement Redwood City",
+              "text": "Red Morton Park",
               "languageCode": "en"
             },
-            "primaryType": "sporting_goods_store"
+            "primaryType": "park"
           },
           {
-            "id": "ChIJOYaeo1Gij4ARnt4-4t4CFhk",
+            "id": "ChIJU0rNlzSij4ARnEY6IVWCPJU",
             "types": [
-              "local_government_office",
-              "government_office",
-              "association_or_organization",
+              "park",
+              "tourist_attraction",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "300 Brewster Ave, Redwood City, CA 94063, USA",
+            "formattedAddress": "Hopkins Avenue &, King St, Redwood City, CA 94062, USA",
             "location": {
-              "latitude": 37.4926052,
-              "longitude": -122.229061
+              "latitude": 37.4820037,
+              "longitude": -122.24747900000001
             },
             "viewport": {
               "low": {
-                "latitude": 37.4913308697085,
-                "longitude": -122.2305093302915
+                "latitude": 37.48058776970851,
+                "longitude": -122.24852043029149
               },
               "high": {
-                "latitude": 37.4940288302915,
-                "longitude": -122.22781136970852
+                "latitude": 37.4832857302915,
+                "longitude": -122.24582246970851
               }
             },
-            "rating": 2.6,
-            "userRatingCount": 761,
+            "rating": 4.7,
+            "userRatingCount": 670,
             "displayName": {
-              "text": "Redwood City DMV",
+              "text": "Stafford Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJ2d_9grmjj4AR4P1rvsk_M68",
+            "types": [
+              "community_center",
+              "event_venue",
+              "park",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.4720385,
+              "longitude": -122.23547710000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4706927197085,
+                "longitude": -122.23653563029151
+              },
+              "high": {
+                "latitude": 37.4733906802915,
+                "longitude": -122.23383766970852
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 864,
+            "displayName": {
+              "text": "Red Morton Community Center",
+              "languageCode": "en"
+            },
+            "primaryType": "community_center"
+          },
+          {
+            "id": "ChIJnxKyZgajj4ARtQ4oePDAi1Y",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "2100 Spring St, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.483597499999995,
+              "longitude": -122.21574319999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4817632197085,
+                "longitude": -122.21592633029147
+              },
+              "high": {
+                "latitude": 37.4844611802915,
+                "longitude": -122.21322836970849
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 435,
+            "displayName": {
+              "text": "Hoover Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJww_Xllmij4ARPBmFF-KrKSs",
+            "types": [
+              "wildlife_refuge",
+              "tourist_attraction",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "3 Uccelli Dr, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.498947699999995,
+              "longitude": -122.2245801
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.49763056970849,
+                "longitude": -122.2255673302915
+              },
+              "high": {
+                "latitude": 37.50032853029149,
+                "longitude": -122.22286936970852
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 382,
+            "displayName": {
+              "text": "Bair Island Wildlife Refuge & Trail",
+              "languageCode": "en"
+            },
+            "primaryType": "wildlife_refuge"
+          },
+          {
+            "id": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+            "types": [
+              "park",
+              "tourist_attraction",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4919812,
+              "longitude": -122.2361299
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4907384197085,
+                "longitude": -122.23729468029148
+              },
+              "high": {
+                "latitude": 37.49343638029149,
+                "longitude": -122.23459671970849
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 424,
+            "displayName": {
+              "text": "Mezes Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJz9S6drOjj4ARZywZu92Y0s8",
+            "types": [
+              "university",
+              "educational_institution",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "400 Duane St, Redwood City, CA 94062, USA",
+            "location": {
+              "latitude": 37.4811019,
+              "longitude": -122.23569130000001
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.479826619708504,
+                "longitude": -122.2369495302915
+              },
+              "high": {
+                "latitude": 37.4825245802915,
+                "longitude": -122.2342515697085
+              }
+            },
+            "rating": 3.7,
+            "userRatingCount": 42,
+            "displayName": {
+              "text": "McKinley Institute of Technology",
+              "languageCode": "en"
+            },
+            "primaryType": "university"
+          },
+          {
+            "id": "ChIJsyzes6Sjj4ARsAAR4thpkPk",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1148 Hudson St, Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.4722402,
+              "longitude": -122.2310303
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4710126697085,
+                "longitude": -122.23210978029151
+              },
+              "high": {
+                "latitude": 37.4737106302915,
+                "longitude": -122.22941181970852
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 64,
+            "displayName": {
+              "text": "Hawes Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJzbkRAg2jj4ARyxMYmGGRkR8",
+            "types": [
+              "indoor_golf_course",
+              "golf_course",
+              "athletic_field",
+              "sports_activity_location",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1802 El Camino Real, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4780517,
+              "longitude": -122.2247841
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4767037697085,
+                "longitude": -122.22617943029148
+              },
+              "high": {
+                "latitude": 37.4794017302915,
+                "longitude": -122.22348146970849
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 33,
+            "displayName": {
+              "text": "Swing Central Golf Club",
+              "languageCode": "en"
+            },
+            "primaryType": "indoor_golf_course"
+          },
+          {
+            "id": "ChIJJYnhuqmjj4ARJHzxOSdMhFg",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4819931,
+              "longitude": -122.22204560000002
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4806126197085,
+                "longitude": -122.22332313029149
+              },
+              "high": {
+                "latitude": 37.4833105802915,
+                "longitude": -122.2206251697085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 97,
+            "displayName": {
+              "text": "Jardin de Ninos Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJdRvGiKCjj4ARDQ5r6gAri9U",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.472305399999996,
+              "longitude": -122.22083320000002
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4709173697085,
+                "longitude": -122.22210378029149
+              },
+              "high": {
+                "latitude": 37.4736153302915,
+                "longitude": -122.2194058197085
+              }
+            },
+            "rating": 4.5,
+            "userRatingCount": 90,
+            "displayName": {
+              "text": "Fleishman Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJyau3wjeij4ARX8y4RCYIa0c",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Redwood City, CA 94062, USA",
+            "location": {
+              "latitude": 37.490286000000005,
+              "longitude": -122.24323179999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4890989697085,
+                "longitude": -122.2446490802915
+              },
+              "high": {
+                "latitude": 37.4917969302915,
+                "longitude": -122.2419511197085
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 70,
+            "displayName": {
+              "text": "Wellesley Crescent Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJY3MTyKOjj4ARPovmTLcGg8k",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1443 Hudson St, Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.4707509,
+              "longitude": -122.22701010000002
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.469246219708495,
+                "longitude": -122.2285410802915
+              },
+              "high": {
+                "latitude": 37.471944180291494,
+                "longitude": -122.22584311970853
+              }
+            },
+            "rating": 4.4,
+            "userRatingCount": 64,
+            "displayName": {
+              "text": "Palm Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJueDRC8Wjj4ARnWbTFsCbLp4",
+            "types": [
+              "indoor_golf_course",
+              "golf_course",
+              "sporting_goods_store",
+              "athletic_field",
+              "sports_school",
+              "sports_club",
+              "sports_activity_location",
+              "association_or_organization",
+              "sports_coaching",
+              "store",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "1021 Howard Ave Ste A, San Carlos, CA 94070, USA",
+            "location": {
+              "latitude": 37.4998542,
+              "longitude": -122.2479295
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4985801197085,
+                "longitude": -122.24936148029148
+              },
+              "high": {
+                "latitude": 37.5012780802915,
+                "longitude": -122.2466635197085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 41,
+            "displayName": {
+              "text": "MY SWING STUDIO",
+              "languageCode": "en"
+            },
+            "primaryType": "sports_school"
+          },
+          {
+            "id": "ChIJYfO3GnSjj4ARE2gJIvU0YYI",
+            "types": [
+              "indoor_golf_course",
+              "golf_course",
+              "sporting_goods_store",
+              "athletic_field",
+              "sports_school",
+              "sports_activity_location",
+              "sports_coaching",
+              "store",
+              "health",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "630 El Camino Real, Redwood City, CA 94063, USA",
+            "location": {
+              "latitude": 37.4881759,
+              "longitude": -122.2375349
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4868700697085,
+                "longitude": -122.23881708029148
+              },
+              "high": {
+                "latitude": 37.4895680302915,
+                "longitude": -122.23611911970849
+              }
+            },
+            "rating": 4.9,
+            "userRatingCount": 53,
+            "displayName": {
+              "text": "Golf Performance Studio - Chris Dawkins",
+              "languageCode": "en"
+            },
+            "primaryType": "sports_school"
+          },
+          {
+            "id": "ChIJ7d4aErmjj4ARIg_X_xep1IA",
+            "types": [
+              "public_bathroom",
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Red Morton Park, Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.4709047,
+              "longitude": -122.23855759999998
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4693768197085,
+                "longitude": -122.2400830802915
+              },
+              "high": {
+                "latitude": 37.47207478029149,
+                "longitude": -122.23738511970852
+              }
+            },
+            "rating": 3.4,
+            "userRatingCount": 7,
+            "displayName": {
+              "text": "Bathroom | Red Morton",
+              "languageCode": "en"
+            },
+            "primaryType": "public_bathroom"
+          },
+          {
+            "id": "ChIJHamEZQCjj4ARwV4di3Df3vo",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "911 Valota Rd, Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.4705057,
+              "longitude": -122.23976139999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4690263197085,
+                "longitude": -122.2409632802915
+              },
+              "high": {
+                "latitude": 37.4717242802915,
+                "longitude": -122.2382653197085
+              }
+            },
+            "rating": 5,
+            "userRatingCount": 1,
+            "displayName": {
+              "text": "Red Morton Park Picnic Area #3",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJt4vpqzKij4ARms9ehRn-Iek",
+            "types": [
+              "park",
+              "point_of_interest",
+              "establishment"
+            ],
+            "formattedAddress": "Redwood City, CA 94062, USA",
+            "location": {
+              "latitude": 37.479065299999995,
+              "longitude": -122.25377909999999
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4777854697085,
+                "longitude": -122.25521588029147
+              },
+              "high": {
+                "latitude": 37.4804834302915,
+                "longitude": -122.25251791970848
+              }
+            },
+            "rating": 4.6,
+            "userRatingCount": 13,
+            "displayName": {
+              "text": "Dove Beeger Park",
+              "languageCode": "en"
+            },
+            "primaryType": "park"
+          },
+          {
+            "id": "ChIJhUrpermjj4ARgAxtU6ACH0s",
+            "types": [
+              "local_government_office",
+              "government_office",
+              "park",
+              "point_of_interest",
+              "service",
+              "establishment"
+            ],
+            "formattedAddress": "1400 Roosevelt Ave, Redwood City, CA 94061, USA",
+            "location": {
+              "latitude": 37.470833299999995,
+              "longitude": -122.2369444
+            },
+            "viewport": {
+              "low": {
+                "latitude": 37.4693645697085,
+                "longitude": -122.23839343029148
+              },
+              "high": {
+                "latitude": 37.472062530291495,
+                "longitude": -122.23569546970849
+              }
+            },
+            "rating": 4.3,
+            "userRatingCount": 18,
+            "displayName": {
+              "text": "Redwood City Parks, Recreation & Community Services",
               "languageCode": "en"
             },
             "primaryType": "local_government_office"
           },
           {
-            "id": "ChIJ0UxfnxWij4AR8jiWTR06izk",
+            "id": "ChIJOUktGgCjj4ARjwkUlrT8w54",
             "types": [
-              "electronics_store",
-              "home_goods_store",
-              "store",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1127 Industrial Rd, San Carlos, CA 94070, USA",
-            "location": {
-              "latitude": 37.5023947,
-              "longitude": -122.2441346
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.501154419708506,
-                "longitude": -122.24564178029148
-              },
-              "high": {
-                "latitude": 37.503852380291505,
-                "longitude": -122.2429438197085
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 3359,
-            "displayName": {
-              "text": "Best Buy",
-              "languageCode": "en"
-            },
-            "primaryType": "electronics_store"
-          },
-          {
-            "id": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
-            "types": [
-              "grocery_store",
-              "butcher_shop",
-              "florist",
-              "market",
-              "deli",
-              "bakery",
-              "food_delivery",
-              "supermarket",
-              "manufacturer",
-              "food_store",
-              "store",
-              "food",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4846345,
-              "longitude": -122.23045
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4830709197085,
-                "longitude": -122.23177513029147
-              },
-              "high": {
-                "latitude": 37.4857688802915,
-                "longitude": -122.22907716970849
-              }
-            },
-            "rating": 4,
-            "userRatingCount": 1894,
-            "displayName": {
-              "text": "Safeway",
-              "languageCode": "en"
-            },
-            "primaryType": "grocery_store"
-          },
-          {
-            "id": "ChIJ6y3krEyij4ARd2-2II63C_w",
-            "types": [
-              "secondary_school",
-              "school",
-              "educational_institution",
+              "park",
               "point_of_interest",
               "establishment"
             ],
-            "formattedAddress": "1201 Brewster Ave, Redwood City, CA 94062, USA",
+            "formattedAddress": "911 Valota Rd, Redwood City, CA 94061, USA",
             "location": {
-              "latitude": 37.4848468,
-              "longitude": -122.2370459
+              "latitude": 37.4703641,
+              "longitude": -122.23958409999999
             },
             "viewport": {
               "low": {
-                "latitude": 37.4830107,
-                "longitude": -122.2396391
+                "latitude": 37.4689185197085,
+                "longitude": -122.24090518029149
               },
               "high": {
-                "latitude": 37.486068599999996,
-                "longitude": -122.2348619
+                "latitude": 37.4716164802915,
+                "longitude": -122.23820721970851
               }
             },
+            "rating": 5,
+            "userRatingCount": 1,
             "displayName": {
-              "text": "Sequoia High School",
+              "text": "Red Morton Park Picnic Area #1",
               "languageCode": "en"
             },
-            "primaryType": "secondary_school"
-          },
-          {
-            "id": "ChIJ1RgDeAOjj4ARd5TgSZVGPsc",
-            "types": [
-              "gym",
-              "yoga_studio",
-              "fitness_center",
-              "sauna",
-              "swimming_pool",
-              "spa",
-              "public_bath",
-              "sports_complex",
-              "sports_school",
-              "sports_activity_location",
-              "health",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1050 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4874599,
-              "longitude": -122.2109995
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4861711197085,
-                "longitude": -122.21251108029149
-              },
-              "high": {
-                "latitude": 37.4888690802915,
-                "longitude": -122.2098131197085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 1854,
-            "displayName": {
-              "text": "24 Hour Fitness",
-              "languageCode": "en"
-            },
-            "primaryType": "gym"
-          },
-          {
-            "id": "ChIJ5a6JnRWij4ARrz_upHXFl1k",
-            "types": [
-              "department_store",
-              "womens_clothing_store",
-              "jewelry_store",
-              "clothing_store",
-              "store",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1251 Industrial Rd, San Carlos, CA 94070, USA",
-            "location": {
-              "latitude": 37.5016925,
-              "longitude": -122.2451077
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.500526969708496,
-                "longitude": -122.24653473029147
-              },
-              "high": {
-                "latitude": 37.503224930291495,
-                "longitude": -122.2438367697085
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 1163,
-            "displayName": {
-              "text": "T.J. Maxx & HomeGoods",
-              "languageCode": "en"
-            },
-            "primaryType": "department_store"
+            "primaryType": "park"
           }
         ]
       }
@@ -1262,7 +1209,7 @@
               }
             },
             "rating": 4.9,
-            "userRatingCount": 88,
+            "userRatingCount": 89,
             "displayName": {
               "text": "ObstaCourse Fitness",
               "languageCode": "en"
@@ -1876,7 +1823,7 @@
       ],
       "primaryType": "gym",
       "rating": 4.9,
-      "userRatingCount": 88
+      "userRatingCount": 89
     },
     {
       "id": "ChIJHdigVRSjj4ARqNYTH8JLqUo",
@@ -1989,935 +1936,758 @@
       "userRatingCount": 225
     },
     {
-      "id": "ChIJo6wg-wijj4ARau3zQUzPzE8",
-      "name": "Costco Wholesale",
-      "address": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
+      "id": "ChIJ0bH5Qcajj4ARLzePCIyEbDE",
+      "name": "Red Morton Park",
+      "address": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
       "location": {
-        "latitude": 37.4784321,
-        "longitude": -122.2162829
+        "latitude": 37.4716062,
+        "longitude": -122.2387476
       },
       "viewport": {
         "low": {
-          "latitude": 37.4773177197085,
-          "longitude": -122.21787353029148
+          "latitude": 37.469874519708505,
+          "longitude": -122.24075278029152
         },
         "high": {
-          "latitude": 37.4800156802915,
-          "longitude": -122.21517556970849
+          "latitude": 37.4725724802915,
+          "longitude": -122.23805481970852
         }
       },
       "types": [
-        "warehouse_store",
-        "department_store",
-        "store",
+        "park",
+        "tourist_attraction",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "warehouse_store",
-      "rating": 4.5,
-      "userRatingCount": 4960
-    },
-    {
-      "id": "ChIJw3cEKQqjj4ARywep3n0-Svo",
-      "name": "Target",
-      "address": "2485 El Camino Real, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4754186,
-        "longitude": -122.21724919999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4739240697085,
-          "longitude": -122.2189670302915
-        },
-        "high": {
-          "latitude": 37.4766220302915,
-          "longitude": -122.2162690697085
-        }
-      },
-      "types": [
-        "department_store",
-        "child_care_agency",
-        "electronics_store",
-        "shoe_store",
-        "furniture_store",
-        "home_improvement_store",
-        "supplier",
-        "home_goods_store",
-        "clothing_store",
-        "toy_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "department_store",
-      "rating": 4,
-      "userRatingCount": 844
-    },
-    {
-      "id": "ChIJeXNiHs-jj4ARmQN_Xuuww0I",
-      "name": "MAZRA",
-      "address": "2021 Broadway, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4864235,
-        "longitude": -122.22685489999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4851678197085,
-          "longitude": -122.22846928029148
-        },
-        "high": {
-          "latitude": 37.4878657802915,
-          "longitude": -122.22577131970849
-        }
-      },
-      "types": [
-        "mediterranean_restaurant",
-        "barbecue_restaurant",
-        "middle_eastern_restaurant",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "mediterranean_restaurant",
-      "rating": 4.6,
-      "userRatingCount": 1817
-    },
-    {
-      "id": "ChIJ72rH3FSij4AReB-jZ2NK3Xc",
-      "name": "Redwood City Medical Center",
-      "address": "1100 Veterans Blvd, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4888897,
-        "longitude": -122.2241739
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4875287697085,
-          "longitude": -122.22550193029149
-        },
-        "high": {
-          "latitude": 37.490226730291496,
-          "longitude": -122.2228039697085
-        }
-      },
-      "types": [
-        "medical_center",
-        "hospital",
-        "health",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "medical_center",
-      "rating": 4.6,
-      "userRatingCount": 1338
-    },
-    {
-      "id": "ChIJdxVs-wijj4ARvm7Rt2HDTVw",
-      "name": "Costco Gas Station",
-      "address": "2300 Middlefield Rd, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.478706599999995,
-        "longitude": -122.2176677
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4774370197085,
-          "longitude": -122.21922018029147
-        },
-        "high": {
-          "latitude": 37.480134980291496,
-          "longitude": -122.21652221970848
-        }
-      },
-      "types": [
-        "gas_station",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "gas_station",
-      "rating": 4.6,
-      "userRatingCount": 827
-    },
-    {
-      "id": "ChIJSzHQdLKjj4AR182EZGl5Hgk",
-      "name": "Whole Foods Market",
-      "address": "1250 Jefferson Ave, Redwood City, CA 94062, USA",
-      "location": {
-        "latitude": 37.4822223,
-        "longitude": -122.2316198
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.48110506970849,
-          "longitude": -122.2327849302915
-        },
-        "high": {
-          "latitude": 37.48380303029149,
-          "longitude": -122.23008696970852
-        }
-      },
-      "types": [
-        "grocery_store",
-        "liquor_store",
-        "health_food_store",
-        "market",
-        "supermarket",
-        "food_store",
-        "store",
-        "health",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "grocery_store",
-      "rating": 4.2,
-      "userRatingCount": 1645
-    },
-    {
-      "id": "ChIJyc7rXBaij4ARyinNzBzVYuY",
-      "name": "The Home Depot",
-      "address": "1125 Old County Rd, San Carlos, CA 94070, USA",
-      "location": {
-        "latitude": 37.5011398,
-        "longitude": -122.24984929999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4996698697085,
-          "longitude": -122.25141798029149
-        },
-        "high": {
-          "latitude": 37.5023678302915,
-          "longitude": -122.2487200197085
-        }
-      },
-      "types": [
-        "home_improvement_store",
-        "hardware_store",
-        "garden_center",
-        "building_materials_store",
-        "furniture_store",
-        "home_goods_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "home_improvement_store",
-      "rating": 4.1,
-      "userRatingCount": 1720
-    },
-    {
-      "id": "ChIJd6l_wRKjj4AReSHqIm_I6F4",
-      "name": "Zareen's",
-      "address": "2039 Broadway, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4864509,
-        "longitude": -122.2270514
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4851773697085,
-          "longitude": -122.22854578029148
-        },
-        "high": {
-          "latitude": 37.487875330291494,
-          "longitude": -122.2258478197085
-        }
-      },
-      "types": [
-        "pakistani_restaurant",
-        "halal_restaurant",
-        "catering_service",
-        "indian_restaurant",
-        "food_delivery",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "pakistani_restaurant",
-      "rating": 4.6,
-      "userRatingCount": 1812
-    },
-    {
-      "id": "ChIJXWh3PhSij4ARougdfWNOfek",
-      "name": "REI",
-      "address": "1119 Industrial Rd Ste A, San Carlos, CA 94070, USA",
-      "location": {
-        "latitude": 37.504513599999996,
-        "longitude": -122.2465382
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.503182469708506,
-          "longitude": -122.24797683029148
-        },
-        "high": {
-          "latitude": 37.5058804302915,
-          "longitude": -122.24527886970849
-        }
-      },
-      "types": [
-        "bicycle_store",
-        "sporting_goods_store",
-        "shoe_store",
-        "clothing_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "store",
-      "rating": 4.5,
-      "userRatingCount": 712
-    },
-    {
-      "id": "ChIJ0erYxVOij4ARL7SN0fmfWkE",
-      "name": "In-N-Out Burger",
-      "address": "949 Veterans Blvd, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.490584999999996,
-        "longitude": -122.22785999999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4892807197085,
-          "longitude": -122.22900533029149
-        },
-        "high": {
-          "latitude": 37.4919786802915,
-          "longitude": -122.2263073697085
-        }
-      },
-      "types": [
-        "hamburger_restaurant",
-        "diner",
-        "fast_food_restaurant",
-        "american_restaurant",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "hamburger_restaurant",
-      "rating": 4.5,
-      "userRatingCount": 4675
-    },
-    {
-      "id": "ChIJO6ZFgz6ij4ARKO_zrQUstAc",
-      "name": "Trader Joe's",
-      "address": "1482 El Camino Real, San Carlos, CA 94070, USA",
-      "location": {
-        "latitude": 37.4963882,
-        "longitude": -122.2485572
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.49513656970849,
-          "longitude": -122.24981208029148
-        },
-        "high": {
-          "latitude": 37.49783453029149,
-          "longitude": -122.24711411970848
-        }
-      },
-      "types": [
-        "grocery_store",
-        "liquor_store",
-        "health_food_store",
-        "market",
-        "supermarket",
-        "food_store",
-        "store",
-        "health",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "grocery_store",
-      "rating": 4.5,
-      "userRatingCount": 1675
-    },
-    {
-      "id": "ChIJczknVE2ij4AR6rvEXfV3TKo",
-      "name": "Redwood City",
-      "address": "1 James Ave, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4858291,
-        "longitude": -122.23172590000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.484568969708505,
-          "longitude": -122.23308518029148
-        },
-        "high": {
-          "latitude": 37.4872669302915,
-          "longitude": -122.2303872197085
-        }
-      },
-      "types": [
-        "train_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "train_station",
-      "rating": 4.2,
-      "userRatingCount": 100
-    },
-    {
-      "id": "ChIJW0q6La2jj4ARfAm-rgZ5HoY",
-      "name": "Cinemark Century Redwood Downtown 20 and XD",
-      "address": "825 Middlefield Rd, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.486259499999996,
-        "longitude": -122.2286872
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4847148697085,
-          "longitude": -122.2300976802915
-        },
-        "high": {
-          "latitude": 37.4874128302915,
-          "longitude": -122.22739971970852
-        }
-      },
-      "types": [
-        "movie_theater",
-        "snack_bar",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "movie_theater",
-      "rating": 4.4,
-      "userRatingCount": 2960
-    },
-    {
-      "id": "ChIJI26VRs2jj4ARm-PG77gIDzA",
-      "name": "Sports Basement Redwood City",
-      "address": "202 Walnut St, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.493074199999995,
-        "longitude": -122.22621219999998
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4918766697085,
-          "longitude": -122.22743438029148
-        },
-        "high": {
-          "latitude": 37.494574630291496,
-          "longitude": -122.22473641970849
-        }
-      },
-      "types": [
-        "sporting_goods_store",
-        "store",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "sporting_goods_store",
+      "primaryType": "park",
       "rating": 4.7,
-      "userRatingCount": 1226
+      "userRatingCount": 1156
     },
     {
-      "id": "ChIJOYaeo1Gij4ARnt4-4t4CFhk",
-      "name": "Redwood City DMV",
-      "address": "300 Brewster Ave, Redwood City, CA 94063, USA",
+      "id": "ChIJU0rNlzSij4ARnEY6IVWCPJU",
+      "name": "Stafford Park",
+      "address": "Hopkins Avenue &, King St, Redwood City, CA 94062, USA",
       "location": {
-        "latitude": 37.4926052,
-        "longitude": -122.229061
+        "latitude": 37.4820037,
+        "longitude": -122.24747900000001
       },
       "viewport": {
         "low": {
-          "latitude": 37.4913308697085,
-          "longitude": -122.2305093302915
+          "latitude": 37.48058776970851,
+          "longitude": -122.24852043029149
         },
         "high": {
-          "latitude": 37.4940288302915,
-          "longitude": -122.22781136970852
+          "latitude": 37.4832857302915,
+          "longitude": -122.24582246970851
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.7,
+      "userRatingCount": 670
+    },
+    {
+      "id": "ChIJ2d_9grmjj4AR4P1rvsk_M68",
+      "name": "Red Morton Community Center",
+      "address": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.4720385,
+        "longitude": -122.23547710000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4706927197085,
+          "longitude": -122.23653563029151
+        },
+        "high": {
+          "latitude": 37.4733906802915,
+          "longitude": -122.23383766970852
+        }
+      },
+      "types": [
+        "community_center",
+        "event_venue",
+        "park",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "primaryType": "community_center",
+      "rating": 4.5,
+      "userRatingCount": 864
+    },
+    {
+      "id": "ChIJnxKyZgajj4ARtQ4oePDAi1Y",
+      "name": "Hoover Park",
+      "address": "2100 Spring St, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.483597499999995,
+        "longitude": -122.21574319999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4817632197085,
+          "longitude": -122.21592633029147
+        },
+        "high": {
+          "latitude": 37.4844611802915,
+          "longitude": -122.21322836970849
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.3,
+      "userRatingCount": 435
+    },
+    {
+      "id": "ChIJww_Xllmij4ARPBmFF-KrKSs",
+      "name": "Bair Island Wildlife Refuge & Trail",
+      "address": "3 Uccelli Dr, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.498947699999995,
+        "longitude": -122.2245801
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.49763056970849,
+          "longitude": -122.2255673302915
+        },
+        "high": {
+          "latitude": 37.50032853029149,
+          "longitude": -122.22286936970852
+        }
+      },
+      "types": [
+        "wildlife_refuge",
+        "tourist_attraction",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "wildlife_refuge",
+      "rating": 4.5,
+      "userRatingCount": 382
+    },
+    {
+      "id": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+      "name": "Mezes Park",
+      "address": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4919812,
+        "longitude": -122.2361299
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4907384197085,
+          "longitude": -122.23729468029148
+        },
+        "high": {
+          "latitude": 37.49343638029149,
+          "longitude": -122.23459671970849
+        }
+      },
+      "types": [
+        "park",
+        "tourist_attraction",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.4,
+      "userRatingCount": 424
+    },
+    {
+      "id": "ChIJz9S6drOjj4ARZywZu92Y0s8",
+      "name": "McKinley Institute of Technology",
+      "address": "400 Duane St, Redwood City, CA 94062, USA",
+      "location": {
+        "latitude": 37.4811019,
+        "longitude": -122.23569130000001
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.479826619708504,
+          "longitude": -122.2369495302915
+        },
+        "high": {
+          "latitude": 37.4825245802915,
+          "longitude": -122.2342515697085
+        }
+      },
+      "types": [
+        "university",
+        "educational_institution",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "university",
+      "rating": 3.7,
+      "userRatingCount": 42
+    },
+    {
+      "id": "ChIJsyzes6Sjj4ARsAAR4thpkPk",
+      "name": "Hawes Park",
+      "address": "1148 Hudson St, Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.4722402,
+        "longitude": -122.2310303
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4710126697085,
+          "longitude": -122.23210978029151
+        },
+        "high": {
+          "latitude": 37.4737106302915,
+          "longitude": -122.22941181970852
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.5,
+      "userRatingCount": 64
+    },
+    {
+      "id": "ChIJzbkRAg2jj4ARyxMYmGGRkR8",
+      "name": "Swing Central Golf Club",
+      "address": "1802 El Camino Real, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4780517,
+        "longitude": -122.2247841
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4767037697085,
+          "longitude": -122.22617943029148
+        },
+        "high": {
+          "latitude": 37.4794017302915,
+          "longitude": -122.22348146970849
+        }
+      },
+      "types": [
+        "indoor_golf_course",
+        "golf_course",
+        "athletic_field",
+        "sports_activity_location",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "indoor_golf_course",
+      "rating": 4.9,
+      "userRatingCount": 33
+    },
+    {
+      "id": "ChIJJYnhuqmjj4ARJHzxOSdMhFg",
+      "name": "Jardin de Ninos Park",
+      "address": "Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4819931,
+        "longitude": -122.22204560000002
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4806126197085,
+          "longitude": -122.22332313029149
+        },
+        "high": {
+          "latitude": 37.4833105802915,
+          "longitude": -122.2206251697085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.5,
+      "userRatingCount": 97
+    },
+    {
+      "id": "ChIJdRvGiKCjj4ARDQ5r6gAri9U",
+      "name": "Fleishman Park",
+      "address": "Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.472305399999996,
+        "longitude": -122.22083320000002
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4709173697085,
+          "longitude": -122.22210378029149
+        },
+        "high": {
+          "latitude": 37.4736153302915,
+          "longitude": -122.2194058197085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.5,
+      "userRatingCount": 90
+    },
+    {
+      "id": "ChIJyau3wjeij4ARX8y4RCYIa0c",
+      "name": "Wellesley Crescent Park",
+      "address": "Redwood City, CA 94062, USA",
+      "location": {
+        "latitude": 37.490286000000005,
+        "longitude": -122.24323179999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4890989697085,
+          "longitude": -122.2446490802915
+        },
+        "high": {
+          "latitude": 37.4917969302915,
+          "longitude": -122.2419511197085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.6,
+      "userRatingCount": 70
+    },
+    {
+      "id": "ChIJY3MTyKOjj4ARPovmTLcGg8k",
+      "name": "Palm Park",
+      "address": "1443 Hudson St, Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.4707509,
+        "longitude": -122.22701010000002
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.469246219708495,
+          "longitude": -122.2285410802915
+        },
+        "high": {
+          "latitude": 37.471944180291494,
+          "longitude": -122.22584311970853
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.4,
+      "userRatingCount": 64
+    },
+    {
+      "id": "ChIJueDRC8Wjj4ARnWbTFsCbLp4",
+      "name": "MY SWING STUDIO",
+      "address": "1021 Howard Ave Ste A, San Carlos, CA 94070, USA",
+      "location": {
+        "latitude": 37.4998542,
+        "longitude": -122.2479295
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4985801197085,
+          "longitude": -122.24936148029148
+        },
+        "high": {
+          "latitude": 37.5012780802915,
+          "longitude": -122.2466635197085
+        }
+      },
+      "types": [
+        "indoor_golf_course",
+        "golf_course",
+        "sporting_goods_store",
+        "athletic_field",
+        "sports_school",
+        "sports_club",
+        "sports_activity_location",
+        "association_or_organization",
+        "sports_coaching",
+        "store",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sports_school",
+      "rating": 5,
+      "userRatingCount": 41
+    },
+    {
+      "id": "ChIJYfO3GnSjj4ARE2gJIvU0YYI",
+      "name": "Golf Performance Studio - Chris Dawkins",
+      "address": "630 El Camino Real, Redwood City, CA 94063, USA",
+      "location": {
+        "latitude": 37.4881759,
+        "longitude": -122.2375349
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4868700697085,
+          "longitude": -122.23881708029148
+        },
+        "high": {
+          "latitude": 37.4895680302915,
+          "longitude": -122.23611911970849
+        }
+      },
+      "types": [
+        "indoor_golf_course",
+        "golf_course",
+        "sporting_goods_store",
+        "athletic_field",
+        "sports_school",
+        "sports_activity_location",
+        "sports_coaching",
+        "store",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "sports_school",
+      "rating": 4.9,
+      "userRatingCount": 53
+    },
+    {
+      "id": "ChIJ7d4aErmjj4ARIg_X_xep1IA",
+      "name": "Bathroom | Red Morton",
+      "address": "Red Morton Park, Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.4709047,
+        "longitude": -122.23855759999998
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4693768197085,
+          "longitude": -122.2400830802915
+        },
+        "high": {
+          "latitude": 37.47207478029149,
+          "longitude": -122.23738511970852
+        }
+      },
+      "types": [
+        "public_bathroom",
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "public_bathroom",
+      "rating": 3.4,
+      "userRatingCount": 7
+    },
+    {
+      "id": "ChIJHamEZQCjj4ARwV4di3Df3vo",
+      "name": "Red Morton Park Picnic Area #3",
+      "address": "911 Valota Rd, Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.4705057,
+        "longitude": -122.23976139999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4690263197085,
+          "longitude": -122.2409632802915
+        },
+        "high": {
+          "latitude": 37.4717242802915,
+          "longitude": -122.2382653197085
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 5,
+      "userRatingCount": 1
+    },
+    {
+      "id": "ChIJt4vpqzKij4ARms9ehRn-Iek",
+      "name": "Dove Beeger Park",
+      "address": "Redwood City, CA 94062, USA",
+      "location": {
+        "latitude": 37.479065299999995,
+        "longitude": -122.25377909999999
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4777854697085,
+          "longitude": -122.25521588029147
+        },
+        "high": {
+          "latitude": 37.4804834302915,
+          "longitude": -122.25251791970848
+        }
+      },
+      "types": [
+        "park",
+        "point_of_interest",
+        "establishment"
+      ],
+      "primaryType": "park",
+      "rating": 4.6,
+      "userRatingCount": 13
+    },
+    {
+      "id": "ChIJhUrpermjj4ARgAxtU6ACH0s",
+      "name": "Redwood City Parks, Recreation & Community Services",
+      "address": "1400 Roosevelt Ave, Redwood City, CA 94061, USA",
+      "location": {
+        "latitude": 37.470833299999995,
+        "longitude": -122.2369444
+      },
+      "viewport": {
+        "low": {
+          "latitude": 37.4693645697085,
+          "longitude": -122.23839343029148
+        },
+        "high": {
+          "latitude": 37.472062530291495,
+          "longitude": -122.23569546970849
         }
       },
       "types": [
         "local_government_office",
         "government_office",
-        "association_or_organization",
+        "park",
         "point_of_interest",
+        "service",
         "establishment"
       ],
       "primaryType": "local_government_office",
-      "rating": 2.6,
-      "userRatingCount": 761
-    },
-    {
-      "id": "ChIJ0UxfnxWij4AR8jiWTR06izk",
-      "name": "Best Buy",
-      "address": "1127 Industrial Rd, San Carlos, CA 94070, USA",
-      "location": {
-        "latitude": 37.5023947,
-        "longitude": -122.2441346
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.501154419708506,
-          "longitude": -122.24564178029148
-        },
-        "high": {
-          "latitude": 37.503852380291505,
-          "longitude": -122.2429438197085
-        }
-      },
-      "types": [
-        "electronics_store",
-        "home_goods_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "electronics_store",
-      "rating": 4.2,
-      "userRatingCount": 3359
-    },
-    {
-      "id": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
-      "name": "Safeway",
-      "address": "1071 El Camino Real, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4846345,
-        "longitude": -122.23045
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4830709197085,
-          "longitude": -122.23177513029147
-        },
-        "high": {
-          "latitude": 37.4857688802915,
-          "longitude": -122.22907716970849
-        }
-      },
-      "types": [
-        "grocery_store",
-        "butcher_shop",
-        "florist",
-        "market",
-        "deli",
-        "bakery",
-        "food_delivery",
-        "supermarket",
-        "manufacturer",
-        "food_store",
-        "store",
-        "food",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "grocery_store",
-      "rating": 4,
-      "userRatingCount": 1894
-    },
-    {
-      "id": "ChIJ6y3krEyij4ARd2-2II63C_w",
-      "name": "Sequoia High School",
-      "address": "1201 Brewster Ave, Redwood City, CA 94062, USA",
-      "location": {
-        "latitude": 37.4848468,
-        "longitude": -122.2370459
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4830107,
-          "longitude": -122.2396391
-        },
-        "high": {
-          "latitude": 37.486068599999996,
-          "longitude": -122.2348619
-        }
-      },
-      "types": [
-        "secondary_school",
-        "school",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
-      ],
-      "primaryType": "secondary_school",
-      "rating": null,
-      "userRatingCount": null
-    },
-    {
-      "id": "ChIJ1RgDeAOjj4ARd5TgSZVGPsc",
-      "name": "24 Hour Fitness",
-      "address": "1050 Broadway, Redwood City, CA 94063, USA",
-      "location": {
-        "latitude": 37.4874599,
-        "longitude": -122.2109995
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4861711197085,
-          "longitude": -122.21251108029149
-        },
-        "high": {
-          "latitude": 37.4888690802915,
-          "longitude": -122.2098131197085
-        }
-      },
-      "types": [
-        "gym",
-        "yoga_studio",
-        "fitness_center",
-        "sauna",
-        "swimming_pool",
-        "spa",
-        "public_bath",
-        "sports_complex",
-        "sports_school",
-        "sports_activity_location",
-        "health",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "primaryType": "gym",
       "rating": 4.3,
-      "userRatingCount": 1854
+      "userRatingCount": 18
     },
     {
-      "id": "ChIJ5a6JnRWij4ARrz_upHXFl1k",
-      "name": "T.J. Maxx & HomeGoods",
-      "address": "1251 Industrial Rd, San Carlos, CA 94070, USA",
+      "id": "ChIJOUktGgCjj4ARjwkUlrT8w54",
+      "name": "Red Morton Park Picnic Area #1",
+      "address": "911 Valota Rd, Redwood City, CA 94061, USA",
       "location": {
-        "latitude": 37.5016925,
-        "longitude": -122.2451077
+        "latitude": 37.4703641,
+        "longitude": -122.23958409999999
       },
       "viewport": {
         "low": {
-          "latitude": 37.500526969708496,
-          "longitude": -122.24653473029147
+          "latitude": 37.4689185197085,
+          "longitude": -122.24090518029149
         },
         "high": {
-          "latitude": 37.503224930291495,
-          "longitude": -122.2438367697085
+          "latitude": 37.4716164802915,
+          "longitude": -122.23820721970851
         }
       },
       "types": [
-        "department_store",
-        "womens_clothing_store",
-        "jewelry_store",
-        "clothing_store",
-        "store",
+        "park",
         "point_of_interest",
         "establishment"
       ],
-      "primaryType": "department_store",
-      "rating": 4.2,
-      "userRatingCount": 1163
+      "primaryType": "park",
+      "rating": 5,
+      "userRatingCount": 1
     }
   ],
   "placeKeys": {
     "peets": "ChIJy5gdFk2ij4ARWyg1ub68B7w",
     "kemuri": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
-    "safeway": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
-    "caltrain": "ChIJczknVE2ij4AR6rvEXfV3TKo"
+    "park": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+    "caltrain": "ChIJhUrpermjj4ARgAxtU6ACH0s"
   },
   "histories": {
     "none": [],
-    "groceryRegular": [
+    "parkRegular": [
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-07-22T01:13:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-07-28T01:06:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-03T01:49:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-09T01:42:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-15T01:35:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-21T01:28:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-27T01:21:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-09-02T01:14:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-09-08T01:07:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       },
       {
-        "googlePlaceId": "ChIJpwPigbKjj4ARC4XRyMdMzJ8",
+        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-09-14T01:00:00.000Z",
-        "placeName": "Safeway",
-        "placeAddress": "1071 El Camino Real, Redwood City, CA 94063, USA",
-        "placePrimaryType": "grocery_store",
+        "placeName": "Mezes Park",
+        "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+        "placePrimaryType": "park",
         "placeTypes": [
-          "grocery_store",
-          "butcher_shop",
-          "florist",
-          "market",
-          "deli",
-          "bakery",
-          "food_delivery",
-          "supermarket",
-          "manufacturer",
-          "food_store",
-          "store",
-          "food",
+          "park",
+          "tourist_attraction",
           "point_of_interest",
-          "service",
           "establishment"
         ],
         "location": {
-          "latitude": 37.4846345,
-          "longitude": -122.23045
+          "latitude": 37.4919812,
+          "longitude": -122.2361299
         }
       }
     ],
@@ -3128,7 +2898,7 @@
         "rankedAbove": [
           [
             "peets",
-            "safeway"
+            "park"
           ],
           [
             "peets",
@@ -3138,17 +2908,17 @@
       }
     },
     {
-      "name": "grocery regular in the evening",
+      "name": "park regular in the evening",
       "now": "2026-09-19T18:15:00-07:00",
       "horizontalAccuracy": 20,
       "fixAgeSeconds": 5,
-      "history": "groceryRegular",
+      "history": "parkRegular",
       "expect": {
         "suggested": null,
         "rankedAbove": [
           [
             "peets",
-            "safeway"
+            "park"
           ]
         ]
       }
