@@ -21,7 +21,13 @@ final class APIClient {
     var authSessionStore: AuthSessionStore?
 
     private let urlSession: URLSession = .shared
-    private let encoder = JSONEncoder()
+    private let encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        // The API validates dates such as a checkin's backdated `createdAt`
+        // as ISO 8601 timestamps; the default would send seconds since 2001.
+        encoder.dateEncodingStrategy = .iso8601
+        return encoder
+    }()
     private let decoder: JSONDecoder = APIClient.makeDecoder()
 
     private static func makeDecoder() -> JSONDecoder {

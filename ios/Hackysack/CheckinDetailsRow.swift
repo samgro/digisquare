@@ -17,6 +17,9 @@ struct CheckinDetailsRow: View {
     var onPersonTap: (() -> Void)? = nil
     /// Off on the timeline, where day headers already say the date.
     var showsDate = true
+    /// One on a suggestion, where the buttons beside the row would otherwise
+    /// wrap most names; the full name is in the edit sheet.
+    var placeNameLineLimit = 2
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -40,7 +43,7 @@ struct CheckinDetailsRow: View {
 
             Text(checkin.placeName)
                 .font(.headline)
-                .lineLimit(2)
+                .lineLimit(placeNameLineLimit)
 
             if let detailLine {
                 Text(detailLine)
@@ -48,9 +51,16 @@ struct CheckinDetailsRow: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text(showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            HStack(spacing: 4) {
+                Text(dateLine)
+                if checkin.visibility.isPrivate {
+                    Image(systemName: "lock.fill")
+                        .font(.caption)
+                        .accessibilityLabel("Private")
+                }
+            }
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
 
             if let message = checkin.message {
                 Text(message)
@@ -66,6 +76,10 @@ struct CheckinDetailsRow: View {
         let category = checkin.placePrimaryType.map { PlaceTypeSymbol.displayName(for: $0) }
         let parts = [category, checkin.locality].compactMap { $0 }
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
+    }
+
+    private var dateLine: String {
+        showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime
     }
 }
 
@@ -84,6 +98,7 @@ struct CheckinDetailsRow: View {
     List {
         CheckinDetailsRow(checkin: .preview(), showsDate: false)
         CheckinDetailsRow(checkin: .preview(message: nil, primaryType: "park"), showsDate: false)
+        CheckinDetailsRow(checkin: .preview(message: "Just me", visibility: .onlyMe), showsDate: false)
     }
     .listStyle(.plain)
 }

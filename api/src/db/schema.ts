@@ -113,6 +113,12 @@ export const authRateLimits = pgTable("auth_rate_limits", {
   attemptCount: integer("attempt_count").notNull().default(0),
 });
 
+export const CHECKIN_VISIBILITIES = ["public", "private"] as const;
+export type CheckinVisibility = (typeof CHECKIN_VISIBILITIES)[number];
+
+export const CHECKIN_SOURCES = ["manual", "visit"] as const;
+export type CheckinSource = (typeof CHECKIN_SOURCES)[number];
+
 export const checkins = pgTable(
   "checkins",
   {
@@ -131,6 +137,11 @@ export const checkins = pgTable(
     longitude: doublePrecision("longitude"),
 
     message: text("message"),
+
+    /** Who can see the checkin. Private checkins never appear in the friends feed. */
+    visibility: text("visibility", { enum: CHECKIN_VISIBILITIES }).notNull().default("public"),
+    /** Whether the user checked in by hand or accepted a suggestion from a detected visit. */
+    source: text("source", { enum: CHECKIN_SOURCES }).notNull().default("manual"),
 
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })

@@ -56,7 +56,7 @@ struct FriendsView: View {
     /// The timeline is newest first, so this changes when a checkin finishes
     /// saving rather than when it is first submitted with a placeholder.
     private var newestSavedCheckinId: String? {
-        checkinStore.timelineEntries.first { $0.syncStatus == .saved }?.checkin.id
+        checkinStore.savedEntries.first { $0.syncStatus == .saved }?.checkin.id
     }
 
     @ViewBuilder
@@ -114,5 +114,5 @@ struct FriendsView: View {
         .environment(LocationManager())
         .environment(FriendsStore())
         .environment(AuthManager())
-        .environmentObject(CheckinStore())
+        .environmentObject(CheckinStore.inMemory())
 }

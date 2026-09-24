@@ -21,6 +21,20 @@
                ReferencedContainer = "container:Hackysack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2C730371305DDF4600A790AC"
+               BuildableName = "HackysackTests.xctest"
+               BlueprintName = "HackysackTests"
+               ReferencedContainer = "container:Hackysack.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

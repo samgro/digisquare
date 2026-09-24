@@ -5,15 +5,17 @@
 
 import SwiftUI
 
-/// Second step of the checkin flow: write a message for the selected place and submit.
+/// Second step of the checkin flow: write a message for the selected place,
+/// choose who can see it, and submit.
 struct CheckInComposeView: View {
     let place: Place
     /// Present when the picker skipped the list because it was confident about
     /// `place`. Shows a Change Location button that returns to the ranked list.
     var onChangeLocation: (() -> Void)? = nil
-    let onSubmit: (String?) -> Void
+    let onSubmit: (_ message: String?, _ visibility: CheckinVisibility) -> Void
 
     @State private var message = ""
+    @State private var visibility: CheckinVisibility = .everyone
     @FocusState private var isMessageFocused: Bool
 
     var body: some View {
@@ -56,17 +58,26 @@ struct CheckInComposeView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
         .safeAreaInset(edge: .bottom) {
-            Button {
-                onSubmit(message)
-            } label: {
-                Text("Check In")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 6)
+            VStack(spacing: 10) {
+                // Options for the checkin. More controls will join the toggle here.
+                HStack {
+                    CheckinPrivacyToggle(visibility: $visibility)
+                    Spacer()
+                }
+                .controlSize(.small)
+
+                Button {
+                    onSubmit(message, visibility)
+                } label: {
+                    Text("Check In")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 6)
+                }
+                .buttonStyle(.glassProminent)
+                .controlSize(.extraLarge)
+                .tint(.blue)
             }
-            .buttonStyle(.glassProminent)
-            .controlSize(.extraLarge)
-            .tint(.blue)
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
@@ -89,16 +100,16 @@ struct CheckInComposeView: View {
 
 #Preview {
     NavigationStack {
-        CheckInComposeView(place: .preview) { message in
-            print("Submitted: \(message ?? "<no message>")")
+        CheckInComposeView(place: .preview) { message, visibility in
+            print("Submitted: \(message ?? "<no message>") (\(visibility.rawValue))")
         }
     }
 }
 
 #Preview("Suggested") {
     NavigationStack {
-        CheckInComposeView(place: .preview, onChangeLocation: { print("Change location") }) { message in
-            print("Submitted: \(message ?? "<no message>")")
+        CheckInComposeView(place: .preview, onChangeLocation: { print("Change location") }) { message, visibility in
+            print("Submitted: \(message ?? "<no message>") (\(visibility.rawValue))")
         }
     }
 }

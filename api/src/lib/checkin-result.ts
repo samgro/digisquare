@@ -16,6 +16,8 @@ export function toCheckinResult(checkin: CheckinRow) {
         ? { latitude: checkin.latitude, longitude: checkin.longitude }
         : null,
     message: checkin.message,
+    visibility: checkin.visibility,
+    source: checkin.source,
     createdAt: checkin.createdAt,
     updatedAt: checkin.updatedAt,
   };

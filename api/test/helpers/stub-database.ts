@@ -14,6 +14,12 @@ export interface StubbedDatabase {
   queueFailure: (error: unknown) => void;
   /** Every top-level operation, in order: "select", "insert", "update", … */
   operations: string[];
+  /**
+   * Every chained call and its arguments, in order, e.g. `values` with the
+   * inserted row or `where` with the condition. Lets a test check what was
+   * written without modelling the query.
+   */
+  chainedCalls: { method: string; arguments: unknown[] }[];
   reset: () => void;
 }
 
@@ -36,6 +42,7 @@ export function createDatabaseStub(): {
 } {
   const results: (QueryResult | QueuedFailure)[] = [];
   const operations: string[] = [];
+  const chainedCalls: { method: string; arguments: unknown[] }[] = [];
 
   const makeChain = (): unknown => {
     const chain: Record<string | symbol, unknown> = {};
@@ -52,7 +59,10 @@ export function createDatabaseStub(): {
             return settled.then(onFulfilled, onRejected);
           };
         }
-        return () => proxy;
+        return (...callArguments: unknown[]) => {
+          chainedCalls.push({ method: String(property), arguments: callArguments });
+          return proxy;
+        };
       },
     });
     return proxy;
@@ -82,9 +92,11 @@ export function createDatabaseStub(): {
       queue: (...next: QueryResult[]) => results.push(...next),
       queueFailure: (error: unknown) => results.push(new QueuedFailure(error)),
       operations,
+      chainedCalls,
       reset: () => {
         results.length = 0;
         operations.length = 0;
+        chainedCalls.length = 0;
       },
     },
   };

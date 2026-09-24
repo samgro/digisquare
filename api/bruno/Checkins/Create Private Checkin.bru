@@ -1,0 +1,34 @@
+meta {
+  name: Create Private Checkin
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "googlePlaceId": "ChIJIQBpAG2ahYAR_6128GcTUEo",
+    "placeName": "Golden Gate Park",
+    "placeAddress": "San Francisco, CA, USA",
+    "placePrimaryType": "park",
+    "latitude": 37.7694,
+    "longitude": -122.4862,
+    "message": "Just for me.",
+    "visibility": "private"
+  }
+}
+
+docs {
+  Creates a checkin only its owner can see. Expect a 201 with
+  `"visibility": "private"`. It shows up in your own List Checkins, but never
+  in Friends Checkins (yours included) or in a friend's List Checkins.
+}

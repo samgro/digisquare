@@ -36,6 +36,13 @@
       "when": 1790268449455,
       "tag": "0004_remove_passwords_add_test_users",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1790276252716,
+      "tag": "0005_add_checkin_visibility_and_source",
+      "breakpoints": true
     }
   ]
 }

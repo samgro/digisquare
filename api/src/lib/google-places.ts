@@ -289,13 +289,13 @@ export async function searchNearbyCandidates({
  * script to find real branches of a chain; the /places route goes through
  * searchAutocomplete instead, because searchText cannot match prefixes.
  */
-export function searchText({
+export async function searchText({
   query,
   latitude,
   longitude,
   radius,
 }: SearchTextParams): Promise<GooglePlace[]> {
-  return postPlaces("searchText", {
+  const data = await postPlacesSearch("searchText", {
     textQuery: query,
     maxResultCount: 5,
     locationBias: {
@@ -305,6 +305,7 @@ export function searchText({
       },
     },
   });
+  return data.places ?? [];
 }
 
 export function fetchPlaceDetails(placeIdentifier: string): Promise<GooglePlace> {

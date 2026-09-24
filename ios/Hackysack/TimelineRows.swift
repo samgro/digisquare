@@ -47,13 +47,24 @@ enum PlaceTypeSymbol {
 
 struct PlaceIconView: View {
     let primaryType: String?
+    /// Grays the icon out and swaps the filled disc for a dashed ring, marking
+    /// a checkin that has only been suggested, not made.
+    var isMuted: Bool = false
 
     var body: some View {
         Image(systemName: PlaceTypeSymbol.systemImageName(for: primaryType))
             .font(.system(size: 16, weight: .semibold))
-            .foregroundStyle(Color.orange)
+            .foregroundStyle(isMuted ? Color.secondary : Color.orange)
             .frame(width: 36, height: 36)
-            .background(Circle().fill(Color.orange.opacity(0.15)))
+            .background {
+                if isMuted {
+                    Circle()
+                        .strokeBorder(style: StrokeStyle(lineWidth: 1.5, dash: [4, 3]))
+                        .foregroundStyle(.secondary)
+                } else {
+                    Circle().fill(Color.orange.opacity(0.15))
+                }
+            }
     }
 }
 
@@ -140,6 +151,11 @@ struct TimelineEntryRow: View {
     let showTopLine: Bool
     let showBottomLine: Bool
     let onRetry: () -> Void
+    // Only used by suggested entries.
+    var onConfirm: () -> Void = {}
+    var onReject: () -> Void = {}
+
+    private var isSuggested: Bool { entry.syncStatus == .suggested }
 
     var body: some View {
         HStack(alignment: .top, spacing: TimelineMetrics.columnSpacing) {
@@ -148,11 +164,25 @@ struct TimelineEntryRow: View {
                 showBottomLine: showBottomLine,
                 topLineHeight: TimelineMetrics.iconTopInset
             ) {
-                PlaceIconView(primaryType: entry.checkin.placePrimaryType)
+                PlaceIconView(primaryType: entry.checkin.placePrimaryType, isMuted: isSuggested)
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                CheckinDetailsRow(checkin: entry.checkin, showsDate: false)
+                // Top-aligned so the buttons line up with the top of the
+                // place icon, which sits at the same inset as this content.
+                HStack(alignment: .top, spacing: 8) {
+                    CheckinDetailsRow(
+                        checkin: entry.checkin,
+                        showsDate: false,
+                        placeNameLineLimit: isSuggested ? 1 : 2
+                    )
+                    // Suggested rows read as tentative until the user confirms them.
+                    .opacity(isSuggested ? 0.55 : 1)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    if isSuggested {
+                        suggestionActions
+                    }
+                }
                 statusLine
             }
             .padding(.vertical, TimelineMetrics.iconTopInset)
@@ -164,6 +194,8 @@ struct TimelineEntryRow: View {
     @ViewBuilder
     private var statusLine: some View {
         switch entry.syncStatus {
+        case .suggested, .saved:
+            EmptyView()
         case .saving:
             HStack(spacing: 6) {
                 ProgressView()
@@ -172,8 +204,6 @@ struct TimelineEntryRow: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-        case .saved:
-            EmptyView()
         case .failed:
             Button(action: onRetry) {
                 Label("Checkin failed – Retry", systemImage: "arrow.clockwise")
@@ -183,11 +213,53 @@ struct TimelineEntryRow: View {
             .tint(.red)
         }
     }
+
+    private var suggestionActions: some View {
+        HStack(spacing: 8) {
+            SuggestionIconButton(
+                systemImage: "checkmark",
+                accessibilityLabel: "Confirm Checkin",
+                foreground: .white,
+                background: .blue,
+                action: onConfirm
+            )
+            SuggestionIconButton(
+                systemImage: "xmark",
+                accessibilityLabel: "Not Here",
+                foreground: .secondary,
+                background: Color(.systemGray5),
+                action: onReject
+            )
+            .accessibilityHint("Shows other places nearby, or removes the suggestion")
+        }
+    }
+}
+
+/// A round, icon-only button at Apple's minimum 44×44 pt tap target.
+private struct SuggestionIconButton: View {
+    let systemImage: String
+    let accessibilityLabel: String
+    let foreground: Color
+    let background: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(foreground)
+                .frame(width: 44, height: 44)
+                .background(background, in: Circle())
+                .contentShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(accessibilityLabel)
+    }
 }
 
 /// A day divider or a checkin, interleaved in display order so the timeline
 /// can be rendered as one flat, continuously-connected list.
-private enum TimelineRow: Identifiable {
+enum TimelineRow: Identifiable, Equatable {
     case dayHeader(Date)
     case entry(TimelineEntry)
 
@@ -202,8 +274,9 @@ private enum TimelineRow: Identifiable {
 }
 
 /// Groups entries by calendar day, most recent first, inserting a day header
-/// ahead of each group's first entry.
-private func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
+/// ahead of each group's first entry. Suggested checkins are dated by their
+/// visit's arrival, so they fall into the day the user was actually there.
+func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
     let sortedEntries = entries.sorted { $0.checkin.createdAt > $1.checkin.createdAt }
     var rows: [TimelineRow] = []
     var lastDay: Date?
@@ -225,6 +298,9 @@ private func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .cu
 struct CheckinTimelineRows: View {
     let entries: [TimelineEntry]
     var onRetry: (TimelineEntry) -> Void = { _ in }
+    // Only used by suggested entries, which only the Timeline tab has.
+    var onConfirm: (TimelineEntry) -> Void = { _ in }
+    var onReject: (TimelineEntry) -> Void = { _ in }
 
     var body: some View {
         let rows = timelineRows(for: entries)
@@ -237,7 +313,9 @@ struct CheckinTimelineRows: View {
                     entry: entry,
                     showTopLine: index != 0,
                     showBottomLine: index != rows.count - 1,
-                    onRetry: { onRetry(entry) }
+                    onRetry: { onRetry(entry) },
+                    onConfirm: { onConfirm(entry) },
+                    onReject: { onReject(entry) }
                 )
             }
         }
@@ -252,13 +330,25 @@ struct CheckinTimelineRows: View {
     VStack(spacing: 0) {
         TimelineDayHeaderRow(day: Date(), showTopLine: false)
         TimelineEntryRow(
+            entry: TimelineEntry(suggestion: .preview(isOngoing: true), userId: Checkin.preview().userId)!,
+            showTopLine: true,
+            showBottomLine: true,
+            onRetry: {}
+        )
+        TimelineEntryRow(
+            entry: TimelineEntry(suggestion: .preview(visibility: .onlyMe), userId: Checkin.preview().userId)!,
+            showTopLine: true,
+            showBottomLine: true,
+            onRetry: {}
+        )
+        TimelineEntryRow(
             entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(), syncStatus: .saving),
             showTopLine: true,
             showBottomLine: true,
             onRetry: {}
         )
         TimelineEntryRow(
-            entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(), syncStatus: .saved),
+            entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(visibility: .onlyMe), syncStatus: .saved),
             showTopLine: true,
             showBottomLine: true,
             onRetry: {}
