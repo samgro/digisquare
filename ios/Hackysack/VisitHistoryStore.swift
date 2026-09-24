@@ -42,15 +42,20 @@ final class VisitHistoryStore {
     var checkins: [VisitedPlaceEvent] { snapshot.checkins }
     var rejections: [RemovedSuggestion] { snapshot.rejections }
 
-    init(fileStore: JSONFileStore<Snapshot>? = JSONFileStore(fileName: "visit-history.json")) {
+    /// A store backed by a file in Application Support.
+    convenience init() {
+        self.init(fileStore: JSONFileStore(fileName: "visit-history.json"))
+    }
+
+    init(fileStore: JSONFileStore<Snapshot>?) {
         self.fileStore = fileStore
         snapshot = fileStore?.load() ?? Snapshot()
     }
 
     /// A store that never touches disk, for previews and tests.
-    static func inMemory(snapshot: Snapshot = Snapshot()) -> VisitHistoryStore {
+    static func inMemory(snapshot: Snapshot? = nil) -> VisitHistoryStore {
         let store = VisitHistoryStore(fileStore: nil)
-        store.snapshot = snapshot
+        store.snapshot = snapshot ?? Snapshot()
         return store
     }
 
@@ -126,3 +131,13 @@ final class VisitHistoryStore {
         fileStore?.save(snapshot)
     }
 }
+
+#if DEBUG
+extension VisitHistoryStore {
+    /// For DebugVisitMenu: forget every visit, checkin and removal.
+    func removeAll() {
+        snapshot = Snapshot()
+        persist()
+    }
+}
+#endif

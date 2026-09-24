@@ -6,7 +6,7 @@
 import SwiftUI
 
 /// A capsule that flips a checkin between public and private. Used in the
-/// compose screen's options row and on suggested checkins in the timeline.
+/// compose screen's options row and in the sheet for editing a suggested checkin.
 struct CheckinPrivacyToggle: View {
     @Binding var visibility: CheckinVisibility
 

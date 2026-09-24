@@ -7,7 +7,7 @@ import SwiftUI
 
 struct TimelineView: View {
     @EnvironmentObject private var checkinStore: CheckinStore
-    @State private var rejectingSuggestion: PendingCheckin?
+    @State private var editingSuggestion: PendingCheckin?
 
     var body: some View {
         NavigationStack {
@@ -16,14 +16,23 @@ struct TimelineView: View {
                 CheckInFAB()
             }
             .navigationTitle("Timeline")
+            #if DEBUG
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    DebugVisitMenu()
+                }
+            }
+            #endif
             .task {
                 await checkinStore.loadTimeline()
             }
-            .sheet(item: $rejectingSuggestion) { suggestion in
-                RejectSuggestionSheet(
+            .sheet(item: $editingSuggestion) { suggestion in
+                EditSuggestionSheet(
                     suggestion: suggestion,
                     onRemove: { checkinStore.remove(suggestionId: suggestion.id) },
-                    onConfirm: { place in checkinStore.confirm(suggestionId: suggestion.id, place: place) }
+                    onConfirm: { place, visibility in
+                        checkinStore.confirm(suggestionId: suggestion.id, place: place, visibility: visibility)
+                    }
                 )
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
@@ -40,9 +49,8 @@ struct TimelineView: View {
                     CheckinTimelineRows(
                         entries: timelineEntries,
                         onRetry: { checkinStore.retry(entryId: $0.id) },
-                        onAccept: { checkinStore.accept(suggestionId: $0.id) },
-                        onReject: { rejectingSuggestion = $0.suggestion },
-                        onVisibilityChange: { checkinStore.setVisibility($1, forSuggestion: $0.id) }
+                        onConfirm: { checkinStore.accept(suggestionId: $0.id) },
+                        onReject: { editingSuggestion = $0.suggestion }
                     )
                 }
             }

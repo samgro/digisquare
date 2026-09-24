@@ -1,26 +1,41 @@
 //
-//  RejectSuggestionSheet.swift
+//  EditSuggestionSheet.swift
 //  Hackysack
 //
 
 import CoreLocation
 import SwiftUI
 
-/// Shown when the user rejects a suggested checkin. Half-height by default and
-/// expandable, it lists the other places found around the visit so the user
-/// can either confirm one of them or remove the suggestion altogether.
-struct RejectSuggestionSheet: View {
+/// Shown when the user taps ✕ on a suggested checkin. Half-height by default
+/// and expandable, it lists every place found around the visit with the
+/// current guess selected, and has the same visibility toggle as the compose
+/// screen. Confirm saves the checkin with those choices, Remove drops the
+/// suggestion, and dismissing leaves it as it was.
+struct EditSuggestionSheet: View {
     let suggestion: PendingCheckin
     let onRemove: () -> Void
-    let onConfirm: (Place) -> Void
+    let onConfirm: (_ place: Place, _ visibility: CheckinVisibility) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedPlaceId: String?
+    @State private var selectedPlaceId: String
+    @State private var visibility: CheckinVisibility
+
+    init(
+        suggestion: PendingCheckin,
+        onRemove: @escaping () -> Void,
+        onConfirm: @escaping (_ place: Place, _ visibility: CheckinVisibility) -> Void
+    ) {
+        self.suggestion = suggestion
+        self.onRemove = onRemove
+        self.onConfirm = onConfirm
+        _selectedPlaceId = State(initialValue: suggestion.selectedPlaceId)
+        _visibility = State(initialValue: suggestion.visibility)
+    }
 
     var body: some View {
         NavigationStack {
-            content
-                .navigationTitle(title)
+            placeList
+                .navigationTitle("Edit Checkin")
                 .navigationBarTitleDisplayMode(.inline)
                 .safeAreaInset(edge: .bottom) {
                     actionBar
@@ -28,13 +43,8 @@ struct RejectSuggestionSheet: View {
         }
     }
 
-    private var title: String {
-        guard let name = suggestion.selectedPlace?.name, !name.isEmpty else { return "Not here?" }
-        return "Not \(name)?"
-    }
-
     private var selectedPlace: Place? {
-        suggestion.alternativePlaces.first { $0.id == selectedPlaceId }
+        suggestion.candidatePlaces.first { $0.id == selectedPlaceId }
     }
 
     /// Distances in the list are measured from where the visit was detected.
@@ -42,88 +52,77 @@ struct RejectSuggestionSheet: View {
         CLLocation(latitude: suggestion.visit.coordinate.latitude, longitude: suggestion.visit.coordinate.longitude)
     }
 
-    @ViewBuilder
-    private var content: some View {
-        if suggestion.alternativePlaces.isEmpty {
-            ContentUnavailableView {
-                Label("No Other Places Nearby", systemImage: "mappin.slash")
-            } description: {
-                Text("Remove the suggestion if you weren't checking in here.")
-            }
-        } else {
-            List {
-                Section {
-                    ForEach(suggestion.alternativePlaces) { place in
-                        Button {
-                            selectedPlaceId = place.id
-                        } label: {
-                            HStack(spacing: 12) {
-                                PlaceRow(place: place, userLocation: visitLocation)
-                                if selectedPlaceId == place.id {
-                                    Image(systemName: "checkmark")
-                                        .font(.body.weight(.semibold))
-                                        .foregroundStyle(.blue)
-                                }
+    private var placeList: some View {
+        List {
+            Section {
+                ForEach(suggestion.candidatePlaces) { place in
+                    Button {
+                        selectedPlaceId = place.id
+                    } label: {
+                        HStack(spacing: 12) {
+                            PlaceRow(place: place, userLocation: visitLocation)
+                            if selectedPlaceId == place.id {
+                                Image(systemName: "checkmark")
+                                    .font(.body.weight(.semibold))
+                                    .foregroundStyle(.blue)
                             }
                         }
-                        .buttonStyle(.plain)
                     }
-                } header: {
-                    Text("Were you somewhere else?")
+                    .buttonStyle(.plain)
+                    .accessibilityAddTraits(selectedPlaceId == place.id ? .isSelected : [])
                 }
+            } header: {
+                Text("Where were you?")
             }
-            .listStyle(.plain)
         }
+        .listStyle(.plain)
     }
 
     private var actionBar: some View {
-        HStack(spacing: 12) {
-            Button(role: .destructive) {
-                onRemove()
-                dismiss()
-            } label: {
-                Text("Remove")
-                    .frame(maxWidth: .infinity)
+        VStack(spacing: 10) {
+            // Mirrors the compose screen's options row.
+            HStack {
+                CheckinPrivacyToggle(visibility: $visibility)
+                Spacer()
             }
-            .buttonStyle(.bordered)
+            .controlSize(.small)
 
-            Button {
-                guard let selectedPlace else { return }
-                onConfirm(selectedPlace)
-                dismiss()
-            } label: {
-                Text("Confirm")
-                    .frame(maxWidth: .infinity)
+            HStack(spacing: 12) {
+                Button(role: .destructive) {
+                    onRemove()
+                    dismiss()
+                } label: {
+                    Text("Remove")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+
+                Button {
+                    guard let selectedPlace else { return }
+                    onConfirm(selectedPlace, visibility)
+                    dismiss()
+                } label: {
+                    Text("Confirm")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.glassProminent)
+                .tint(.blue)
+                .disabled(selectedPlace == nil)
             }
-            .buttonStyle(.glassProminent)
-            .tint(.blue)
-            .disabled(selectedPlace == nil)
+            .font(.headline)
+            .controlSize(.large)
         }
-        .controlSize(.large)
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(.bar)
     }
 }
 
-#Preview("Alternatives") {
+#Preview {
     Color.clear
         .sheet(isPresented: .constant(true)) {
-            RejectSuggestionSheet(suggestion: .preview(), onRemove: {}, onConfirm: { _ in })
+            EditSuggestionSheet(suggestion: .preview(visibility: .onlyMe), onRemove: {}, onConfirm: { _, _ in })
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
-        }
-}
-
-#Preview("No Alternatives") {
-    Color.clear
-        .sheet(isPresented: .constant(true)) {
-            RejectSuggestionSheet(
-                suggestion: PendingCheckin(visit: PendingCheckin.preview().visit, candidatePlaces: [.preview]),
-                onRemove: {},
-                onConfirm: { _ in }
-            )
-            .presentationDetents([.medium, .large])
-            .presentationDragIndicator(.visible)
         }
 }

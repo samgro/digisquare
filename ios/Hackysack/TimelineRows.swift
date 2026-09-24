@@ -152,9 +152,8 @@ struct TimelineEntryRow: View {
     let showBottomLine: Bool
     let onRetry: () -> Void
     // Only used by suggested entries.
-    var onAccept: () -> Void = {}
+    var onConfirm: () -> Void = {}
     var onReject: () -> Void = {}
-    var onVisibilityChange: (CheckinVisibility) -> Void = { _ in }
 
     private var isSuggested: Bool { entry.syncStatus == .suggested }
 
@@ -169,9 +168,21 @@ struct TimelineEntryRow: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                CheckinDetailsRow(checkin: entry.checkin, showsDate: false, suggestedVisit: entry.suggestion?.visit)
-                    // Suggested rows read as tentative until the user accepts them.
+                // Top-aligned so the buttons line up with the top of the
+                // place icon, which sits at the same inset as this content.
+                HStack(alignment: .top, spacing: 8) {
+                    CheckinDetailsRow(
+                        checkin: entry.checkin,
+                        showsDate: false,
+                        placeNameLineLimit: isSuggested ? 1 : 2
+                    )
+                    // Suggested rows read as tentative until the user confirms them.
                     .opacity(isSuggested ? 0.55 : 1)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    if isSuggested {
+                        suggestionActions
+                    }
+                }
                 statusLine
             }
             .padding(.vertical, TimelineMetrics.iconTopInset)
@@ -183,10 +194,8 @@ struct TimelineEntryRow: View {
     @ViewBuilder
     private var statusLine: some View {
         switch entry.syncStatus {
-        case .suggested:
-            if let suggestion = entry.suggestion {
-                suggestionActions(for: suggestion)
-            }
+        case .suggested, .saved:
+            EmptyView()
         case .saving:
             HStack(spacing: 6) {
                 ProgressView()
@@ -195,8 +204,6 @@ struct TimelineEntryRow: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-        case .saved:
-            EmptyView()
         case .failed:
             Button(action: onRetry) {
                 Label("Checkin failed – Retry", systemImage: "arrow.clockwise")
@@ -207,24 +214,46 @@ struct TimelineEntryRow: View {
         }
     }
 
-    private func suggestionActions(for suggestion: PendingCheckin) -> some View {
+    private var suggestionActions: some View {
         HStack(spacing: 8) {
-            CheckinPrivacyToggle(
-                visibility: Binding(
-                    get: { suggestion.visibility },
-                    set: onVisibilityChange
-                )
+            SuggestionIconButton(
+                systemImage: "checkmark",
+                accessibilityLabel: "Confirm Checkin",
+                foreground: .white,
+                background: .blue,
+                action: onConfirm
             )
-            Spacer(minLength: 0)
-            Button("Reject", action: onReject)
-                .buttonStyle(.bordered)
-                .tint(.gray)
-            Button("Accept", action: onAccept)
-                .buttonStyle(.borderedProminent)
-                .tint(.blue)
+            SuggestionIconButton(
+                systemImage: "xmark",
+                accessibilityLabel: "Not Here",
+                foreground: .secondary,
+                background: Color(.systemGray5),
+                action: onReject
+            )
+            .accessibilityHint("Shows other places nearby, or removes the suggestion")
         }
-        .controlSize(.small)
-        .padding(.top, 6)
+    }
+}
+
+/// A round, icon-only button at Apple's minimum 44×44 pt tap target.
+private struct SuggestionIconButton: View {
+    let systemImage: String
+    let accessibilityLabel: String
+    let foreground: Color
+    let background: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(foreground)
+                .frame(width: 44, height: 44)
+                .background(background, in: Circle())
+                .contentShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(accessibilityLabel)
     }
 }
 
@@ -270,9 +299,8 @@ struct CheckinTimelineRows: View {
     let entries: [TimelineEntry]
     var onRetry: (TimelineEntry) -> Void = { _ in }
     // Only used by suggested entries, which only the Timeline tab has.
-    var onAccept: (TimelineEntry) -> Void = { _ in }
+    var onConfirm: (TimelineEntry) -> Void = { _ in }
     var onReject: (TimelineEntry) -> Void = { _ in }
-    var onVisibilityChange: (TimelineEntry, CheckinVisibility) -> Void = { _, _ in }
 
     var body: some View {
         let rows = timelineRows(for: entries)
@@ -286,9 +314,8 @@ struct CheckinTimelineRows: View {
                     showTopLine: index != 0,
                     showBottomLine: index != rows.count - 1,
                     onRetry: { onRetry(entry) },
-                    onAccept: { onAccept(entry) },
-                    onReject: { onReject(entry) },
-                    onVisibilityChange: { onVisibilityChange(entry, $0) }
+                    onConfirm: { onConfirm(entry) },
+                    onReject: { onReject(entry) }
                 )
             }
         }

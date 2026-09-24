@@ -11,7 +11,7 @@ import Foundation
 struct PendingCheckin: Codable, Identifiable, Equatable {
     let id: UUID
     var visit: VisitRecord
-    /// Nearby places, most popular first. The first one is the initial guess.
+    /// Nearby places, most likely first. The first one is the initial guess.
     var candidatePlaces: [Place]
     var selectedPlaceId: String
     var visibility: CheckinVisibility

@@ -17,9 +17,9 @@ struct CheckinDetailsRow: View {
     var onPersonTap: (() -> Void)? = nil
     /// Off on the timeline, where day headers already say the date.
     var showsDate = true
-    /// For a suggested checkin, the detected visit. The date row then shows
-    /// when the user was there instead of a single checkin time.
-    var suggestedVisit: VisitRecord? = nil
+    /// One on a suggestion, where the buttons beside the row would otherwise
+    /// wrap most names; the full name is in the edit sheet.
+    var placeNameLineLimit = 2
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -43,7 +43,7 @@ struct CheckinDetailsRow: View {
 
             Text(checkin.placeName)
                 .font(.headline)
-                .lineLimit(2)
+                .lineLimit(placeNameLineLimit)
 
             if let detailLine {
                 Text(detailLine)
@@ -79,10 +79,7 @@ struct CheckinDetailsRow: View {
     }
 
     private var dateLine: String {
-        if let suggestedVisit {
-            return "Suggested · \(showsDate ? suggestedVisit.formattedDateAndSpan : suggestedVisit.formattedSpan)"
-        }
-        return showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime
+        showsDate ? checkin.formattedCheckinDateAndTime : checkin.formattedCheckinTime
     }
 }
 
@@ -102,12 +99,6 @@ struct CheckinDetailsRow: View {
         CheckinDetailsRow(checkin: .preview(), showsDate: false)
         CheckinDetailsRow(checkin: .preview(message: nil, primaryType: "park"), showsDate: false)
         CheckinDetailsRow(checkin: .preview(message: "Just me", visibility: .onlyMe), showsDate: false)
-        CheckinDetailsRow(checkin: .preview(message: nil), showsDate: false, suggestedVisit: PendingCheckin.preview().visit)
-        CheckinDetailsRow(
-            checkin: .preview(message: nil),
-            showsDate: false,
-            suggestedVisit: PendingCheckin.preview(isOngoing: true).visit
-        )
     }
     .listStyle(.plain)
 }

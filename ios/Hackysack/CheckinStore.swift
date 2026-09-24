@@ -7,7 +7,7 @@ import Combine
 import Foundation
 
 enum CheckinSyncStatus: Equatable {
-    /// A suggestion from a detected visit, waiting for the user to accept or reject it.
+    /// A suggestion from a detected visit, waiting for the user to confirm, edit or remove it.
     case suggested
     case saving
     case saved
@@ -254,12 +254,6 @@ final class CheckinStore: ObservableObject {
         persistSuggestions()
     }
 
-    func setVisibility(_ visibility: CheckinVisibility, forSuggestion id: UUID) {
-        guard let index = suggestions.firstIndex(where: { $0.id == id }) else { return }
-        suggestions[index].visibility = visibility
-        persistSuggestions()
-    }
-
     /// Turns the suggestion into a real checkin at its selected place.
     func accept(suggestionId: UUID) {
         guard let suggestion = suggestion(id: suggestionId), let place = suggestion.selectedPlace else { return }
@@ -276,13 +270,15 @@ final class CheckinStore: ObservableObject {
         )
     }
 
-    /// Accepts the suggestion, but at a different place than the one guessed.
-    func confirm(suggestionId: UUID, place: Place) {
+    /// Accepts the suggestion with the place and visibility chosen in the
+    /// edit sheet, which may differ from the initial guess.
+    func confirm(suggestionId: UUID, place: Place, visibility: CheckinVisibility) {
         guard let index = suggestions.firstIndex(where: { $0.id == suggestionId }) else { return }
         if !suggestions[index].candidatePlaces.contains(where: { $0.id == place.id }) {
             suggestions[index].candidatePlaces.insert(place, at: 0)
         }
         suggestions[index].selectedPlaceId = place.id
+        suggestions[index].visibility = visibility
         accept(suggestionId: suggestionId)
     }
 
@@ -355,3 +351,13 @@ extension TimelineEntry {
         )
     }
 }
+
+#if DEBUG
+extension CheckinStore {
+    /// For DebugVisitMenu: start the suggestion flow over.
+    func removeAllSuggestions() {
+        suggestions.removeAll()
+        persistSuggestions()
+    }
+}
+#endif

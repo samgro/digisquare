@@ -23,7 +23,8 @@ struct VisitProcessorTests {
             id: "cafe-1",
             name: "Four Barrel Coffee",
             address: "375 Valencia St, San Francisco, CA 94103, USA",
-            location: PlaceLocation(latitude: 37.7670, longitude: -122.4220),
+            // Where ScenarioSpots.coffeeShop is, so visits there rank it first.
+            location: PlaceLocation(latitude: 37.7599, longitude: -122.4216),
             types: ["cafe"],
             primaryType: "coffee_shop",
             rating: 4.4,
@@ -87,7 +88,23 @@ struct VisitProcessorTests {
         return false
     }
 
-    @Test func arrivingSomewhereNewSuggestsTheMostPopularPlaceWithTheRestAsAlternatives() async {
+    @Test func theGuessIsThePlaceTheVisitIsAtNotTheFirstOneListed() async {
+        let harness = makeHarness()
+        let bakery = VisitProcessorTests.nearbyPlaces[1]
+        let visit = VisitRecord(
+            coordinate: GeoCoordinate(latitude: bakery.location!.latitude, longitude: bakery.location!.longitude),
+            horizontalAccuracy: 40,
+            arrivalDate: harness.builder.date(day: harness.today, hour: 10)
+        )
+
+        let outcome = await harness.processor.process(visit, now: visit.arrivalDate.addingTimeInterval(300))
+
+        #expect(isSuggested(outcome))
+        #expect(harness.store.suggestions.first?.selectedPlace?.id == "bakery-1")
+        #expect(harness.store.suggestions.first?.alternativePlaces.map(\.id) == ["cafe-1"])
+    }
+
+    @Test func arrivingSomewhereNewSuggestsThePlaceThereWithTheRestAsAlternatives() async {
         let harness = makeHarness()
         let visit = arrival(harness, at: ScenarioSpots.coffeeShop, hour: 10)
 
@@ -232,9 +249,8 @@ struct VisitProcessorTests {
         let visit = arrival(harness, at: ScenarioSpots.coffeeShop, hour: 10)
         await harness.processor.process(visit, now: visit.arrivalDate.addingTimeInterval(300))
         let suggestion = harness.store.suggestions[0]
-        harness.store.setVisibility(.onlyMe, forSuggestion: suggestion.id)
 
-        harness.store.confirm(suggestionId: suggestion.id, place: suggestion.alternativePlaces[0])
+        harness.store.confirm(suggestionId: suggestion.id, place: suggestion.alternativePlaces[0], visibility: .onlyMe)
 
         #expect(harness.store.suggestions.isEmpty)
         let saved = harness.store.savedEntries.first

@@ -62,6 +62,7 @@ final class VisitProcessor {
     private let visitHistory: VisitHistoryStore
     private let checkinStore: CheckinStore
     private let detector: FrequentPlaceDetector
+    private let ranker = PlaceRanker()
     private let lookupPlaces: PlacesLookup
     private let calendar: Calendar
     private let logger = Logger(subsystem: "samgro.Hackysack", category: "VisitProcessor")
@@ -69,7 +70,7 @@ final class VisitProcessor {
     init(
         visitHistory: VisitHistoryStore,
         checkinStore: CheckinStore,
-        detector: FrequentPlaceDetector = FrequentPlaceDetector(),
+        detector: FrequentPlaceDetector? = nil,
         calendar: Calendar = .current,
         lookupPlaces: @escaping PlacesLookup = { coordinate, radius in
             try await PlacesAPI().searchPlaces(
@@ -81,7 +82,7 @@ final class VisitProcessor {
     ) {
         self.visitHistory = visitHistory
         self.checkinStore = checkinStore
-        self.detector = detector
+        self.detector = detector ?? FrequentPlaceDetector()
         self.calendar = calendar
         self.lookupPlaces = lookupPlaces
     }
@@ -131,7 +132,7 @@ final class VisitProcessor {
         }
         let suggestion = PendingCheckin(
             visit: visit,
-            candidatePlaces: Array(places.prefix(Self.maximumCandidatePlaces)),
+            candidatePlaces: Array(ranked(places, for: visit).prefix(Self.maximumCandidatePlaces)),
             createdAt: now
         )
         checkinStore.add(suggestion: suggestion)
@@ -186,6 +187,27 @@ final class VisitProcessor {
                 && checkin.coordinate.distance(to: visit.coordinate) <= radius
         }
         return checkedInDuringStay ? .alreadyCheckedIn : nil
+    }
+
+    /// Orders the candidates the same way the manual checkin picker does, so
+    /// the initial guess weighs distance, venue size and the user's history.
+    /// Ranked as of the arrival, since that is when the user was there.
+    private func ranked(_ places: [Place], for visit: VisitRecord) -> [Place] {
+        let fix = LocationFix(
+            latitude: visit.coordinate.latitude,
+            longitude: visit.coordinate.longitude,
+            horizontalAccuracy: visit.horizontalAccuracy,
+            timestamp: visit.arrivalDate
+        )
+        return ranker.rank(
+            candidates: places,
+            fix: fix,
+            history: checkinStore.checkinHistory,
+            now: visit.arrivalDate,
+            calendar: calendar
+        )
+        .ranked
+        .map(\.place)
     }
 
     private func nearbyPlaces(for visit: VisitRecord) async -> [Place]? {
