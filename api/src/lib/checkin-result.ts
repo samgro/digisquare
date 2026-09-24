@@ -1,8 +1,8 @@
-import type { checkins } from "../db/schema.js";
+import type { VisibleCheckin } from "./checkin-queries.js";
 
-type CheckinRow = typeof checkins.$inferSelect;
-
-export function toCheckinResult(checkin: CheckinRow) {
+// Takes only a VisibleCheckin, so every checkin sent to a client has come
+// through the visibility rule in checkin-queries.ts.
+export function toCheckinResult(checkin: VisibleCheckin) {
   return {
     id: checkin.id,
     userId: checkin.userId,

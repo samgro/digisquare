@@ -9,7 +9,8 @@
  * production behaviour being softened.
  *
  * These are only shapes, not credentials. Nothing here reaches a real service:
- * tests stub fetch and never touch the database.
+ * tests stub fetch, and the few that need a database use an in-process one
+ * from test-database.ts instead of this URL.
  *
  * GOOGLE_PLACES_API_KEY has to be here too, because config validates it even
  * though google-places.ts does not read it from config. That costs nothing:
