@@ -2,14 +2,11 @@ import { Hono } from "hono";
 import { and, asc, desc, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
-import {
-  checkins as checkinsTable,
-  friendships as friendshipsTable,
-  users as usersTable,
-} from "../db/schema.js";
+import { friendships as friendshipsTable, users as usersTable } from "../db/schema.js";
+import { listVisibleCheckinsWithUsers } from "../lib/checkin-queries.js";
 import { toCheckinResult } from "../lib/checkin-result.js";
 import { isUniqueViolation } from "../lib/database-errors.js";
-import { friendIdsOf, isPairFriendship, isVisibleCheckin } from "../lib/friendships.js";
+import { friendIdsOf, isPairFriendship } from "../lib/friendships.js";
 import { toPublicUserResult, toUserSummary } from "../lib/user-result.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
@@ -58,14 +55,7 @@ friends.get("/checkins", async (context) => {
   }
 
   try {
-    const rows = await database
-      .select({ checkin: checkinsTable, user: usersTable })
-      .from(checkinsTable)
-      .innerJoin(usersTable, eq(usersTable.id, checkinsTable.userId))
-      .where(isVisibleCheckin(context.get("userId")))
-      .orderBy(desc(checkinsTable.createdAt))
-      .limit(parsed.data.limit)
-      .offset(parsed.data.offset);
+    const rows = await listVisibleCheckinsWithUsers(context.get("userId"), parsed.data);
 
     return context.json({
       results: rows.map((row) => ({

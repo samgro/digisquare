@@ -2,11 +2,8 @@ import { Hono } from "hono";
 import { and, asc, count, eq, ilike, isNotNull, ne, or } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
-import {
-  checkins as checkinsTable,
-  friendships as friendshipsTable,
-  users as usersTable,
-} from "../db/schema.js";
+import { friendships as friendshipsTable, users as usersTable } from "../db/schema.js";
+import { countCheckinsBy } from "../lib/checkin-queries.js";
 import { loadFriendshipStates } from "../lib/friendships.js";
 import { AVATAR_MAX_BYTES, createAvatarUploadUrl, isOwnedAvatarKey } from "../lib/r2.js";
 import { toPrivateUserResult, toPublicUserResult } from "../lib/user-result.js";
@@ -205,11 +202,8 @@ users.get("/:id", async (context) => {
     }
 
     // The count is visible to anyone, friend or not; the checkins themselves
-    // are only listed for friends (see isVisibleCheckin).
-    const [checkinTotal] = await database
-      .select({ value: count() })
-      .from(checkinsTable)
-      .where(eq(checkinsTable.userId, user.id));
+    // are only listed for friends (see checkin-queries.ts).
+    const checkinCount = await countCheckinsBy(user.id);
     // Like the checkin count, public; who the friends are is not returned.
     const [friendTotal] = await database
       .select({ value: count() })
@@ -226,7 +220,7 @@ users.get("/:id", async (context) => {
     // Public shape: no email, and nothing about how they sign in.
     return context.json({
       ...toPublicUserResult(user),
-      checkinCount: checkinTotal?.value ?? 0,
+      checkinCount,
       friendCount: friendTotal?.value ?? 0,
       friendshipStatus: friendshipState.status,
       friendRequestId: friendshipState.friendRequestId,

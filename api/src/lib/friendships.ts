@@ -1,6 +1,6 @@
 import { and, eq, inArray, or, sql, type SQL } from "drizzle-orm";
 import { database } from "../db/index.js";
-import { checkins as checkinsTable, friendships as friendshipsTable } from "../db/schema.js";
+import { friendships as friendshipsTable } from "../db/schema.js";
 
 type FriendshipRow = typeof friendshipsTable.$inferSelect;
 
@@ -34,20 +34,6 @@ export function friendIdsOf(userId: string): SQL {
     select ${friendshipsTable.requesterId} from ${friendshipsTable}
     where ${friendshipsTable.addresseeId} = ${userId} and ${friendshipsTable.status} = 'accepted'
   )`;
-}
-
-/** Checkins by one of the user's friends. */
-export function isFriendsCheckin(userId: string): SQL {
-  return sql`${checkinsTable.userId} in ${friendIdsOf(userId)}`;
-}
-
-/**
- * Checkins the user is allowed to see: their own and their friends'. Anyone
- * else's are filtered out rather than refused, so a request for a stranger's
- * checkins looks the same as one for a user with none.
- */
-export function isVisibleCheckin(userId: string): SQL {
-  return or(eq(checkinsTable.userId, userId), isFriendsCheckin(userId)) as SQL;
 }
 
 /** The row for the pair, in whichever direction it was created. */

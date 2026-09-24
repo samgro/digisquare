@@ -1,10 +1,12 @@
 import { Hono } from "hono";
-import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
-import { database } from "../db/index.js";
-import { checkins as checkinsTable } from "../db/schema.js";
+import {
+  createOwnCheckin,
+  findVisibleCheckin,
+  listVisibleCheckins,
+  updateOwnCheckin,
+} from "../lib/checkin-queries.js";
 import { toCheckinResult } from "../lib/checkin-result.js";
-import { isVisibleCheckin } from "../lib/friendships.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
 
@@ -60,20 +62,16 @@ checkins.post("/", async (context) => {
   }
 
   try {
-    const [created] = await database
-      .insert(checkinsTable)
-      .values({
-        userId: context.get("userId"),
-        googlePlaceId: parsed.data.googlePlaceId,
-        placeName: parsed.data.placeName,
-        placeAddress: parsed.data.placeAddress ?? null,
-        placePrimaryType: parsed.data.placePrimaryType ?? null,
-        placeTypes: parsed.data.placeTypes ?? null,
-        latitude: parsed.data.latitude ?? null,
-        longitude: parsed.data.longitude ?? null,
-        message: parsed.data.message ?? null,
-      })
-      .returning();
+    const created = await createOwnCheckin(context.get("userId"), {
+      googlePlaceId: parsed.data.googlePlaceId,
+      placeName: parsed.data.placeName,
+      placeAddress: parsed.data.placeAddress ?? null,
+      placePrimaryType: parsed.data.placePrimaryType ?? null,
+      placeTypes: parsed.data.placeTypes ?? null,
+      latitude: parsed.data.latitude ?? null,
+      longitude: parsed.data.longitude ?? null,
+      message: parsed.data.message ?? null,
+    });
 
     return context.json(toCheckinResult(created), 201);
   } catch (error) {
@@ -92,23 +90,16 @@ checkins.get("/", async (context) => {
   }
 
   const { userId, googlePlaceId, limit, offset } = parsed.data;
-  const conditions = [
+
+  try {
     // Only your own checkins and your friends'. A stranger's userId is
     // filtered to an empty list rather than refused, so the response does not
     // confirm the user exists.
-    isVisibleCheckin(context.get("userId")),
-    userId ? eq(checkinsTable.userId, userId) : undefined,
-    googlePlaceId ? eq(checkinsTable.googlePlaceId, googlePlaceId) : undefined,
-  ].filter((condition) => condition !== undefined);
-
-  try {
-    const rows = await database
-      .select()
-      .from(checkinsTable)
-      .where(and(...conditions))
-      .orderBy(desc(checkinsTable.createdAt))
-      .limit(limit)
-      .offset(offset);
+    const rows = await listVisibleCheckins(
+      context.get("userId"),
+      { userId, googlePlaceId },
+      { limit, offset },
+    );
 
     return context.json({ results: rows.map(toCheckinResult) });
   } catch (error) {
@@ -124,10 +115,7 @@ checkins.get("/:id", async (context) => {
   }
 
   try {
-    const [checkin] = await database
-      .select()
-      .from(checkinsTable)
-      .where(and(eq(checkinsTable.id, parsed.data.id), isVisibleCheckin(context.get("userId"))));
+    const checkin = await findVisibleCheckin(context.get("userId"), parsed.data.id);
 
     // A stranger's checkin is the same 404 as one that does not exist.
     if (!checkin) {
@@ -163,19 +151,12 @@ checkins.patch("/:id", async (context) => {
   }
 
   try {
-    // Scoping the update by owner means a checkin that exists but belongs to
-    // someone else falls through to the same 404 as one that does not exist.
-    // A 403 would confirm the id is real.
-    const [updated] = await database
-      .update(checkinsTable)
-      .set(bodyParsed.data)
-      .where(
-        and(
-          eq(checkinsTable.id, paramsParsed.data.id),
-          eq(checkinsTable.userId, context.get("userId")),
-        ),
-      )
-      .returning();
+    // Someone else's checkin falls through to the same 404 as a missing one.
+    const updated = await updateOwnCheckin(
+      context.get("userId"),
+      paramsParsed.data.id,
+      bodyParsed.data,
+    );
 
     if (!updated) {
       return context.json({ error: "Checkin not found" }, 404);
