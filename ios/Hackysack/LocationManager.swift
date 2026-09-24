@@ -36,7 +36,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         // When a visit relaunches the app in the background, the pending event
         // is only delivered to a manager that is monitoring visits at launch.
         if locationManager.authorizationStatus == .authorizedAlways {
-            locationManager.startMonitoringVisits()
+            startMonitoringVisits()
         }
     }
 
@@ -64,12 +64,21 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
     }
 
+    /// Visit monitoring is the primary signal, but it has been observed to
+    /// silently stop delivering `didVisit` on some devices (a known iOS 26
+    /// regression) with no authorization change or error to react to.
+    /// Significant-change monitoring is a much more reliable wake source, so
+    /// it's started alongside visits purely as a heartbeat: every time it
+    /// fires we re-arm visit monitoring in `didUpdateLocations`, which is the
+    /// only recovery path available short of the user reinstalling the app.
     func startMonitoringVisits() {
         locationManager.startMonitoringVisits()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
 
     func stopMonitoringVisits() {
         locationManager.stopMonitoringVisits()
+        locationManager.stopMonitoringSignificantLocationChanges()
     }
 
     func startUpdatingLocation() {
@@ -90,13 +99,13 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
         switch manager.authorizationStatus {
         case .authorizedAlways:
-            manager.startMonitoringVisits()
+            startMonitoringVisits()
         case .authorizedWhenInUse:
             // Visits won't be delivered reliably in the background yet, so
             // immediately ask to upgrade to Always.
             manager.requestAlwaysAuthorization()
         case .denied, .restricted:
-            manager.stopMonitoringVisits()
+            stopMonitoringVisits()
         case .notDetermined:
             break
         @unknown default:
@@ -117,6 +126,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
             )
         }
         location = locations.last
+
+        // A significant-location-change wake is a good opportunity to
+        // defensively re-arm visit monitoring, in case it silently stopped
+        // delivering `didVisit` without any authorization change.
+        if manager.authorizationStatus == .authorizedAlways {
+            DevLog.location("Re-arming visit monitoring from significant-location-change wake")
+            startMonitoringVisits()
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

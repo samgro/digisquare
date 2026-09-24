@@ -41,4 +41,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         checkinStore.visitHistory.prune()
         return true
     }
+
+    /// A defensive re-arm point: if visit monitoring silently stopped while
+    /// the process stayed alive in the background (no authorization change,
+    /// no relaunch), coming to the foreground is the next chance to notice
+    /// and restart it.
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        guard !Self.isRunningTests else { return }
+        locationManager.requestPermissionsIfNeeded()
+    }
 }
