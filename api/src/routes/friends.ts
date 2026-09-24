@@ -47,7 +47,8 @@ friends.get("/", async (context) => {
 });
 
 // Your friends' checkins and your own, so the feed reads as the whole group's
-// activity and a checkin you just made shows up alongside theirs.
+// activity and a checkin you just made shows up alongside theirs. Private
+// checkins stay out, your own included: the feed is what the group shares.
 friends.get("/checkins", async (context) => {
   const parsed = feedQuerySchema.safeParse(context.req.query());
   if (!parsed.success) {
@@ -62,7 +63,7 @@ friends.get("/checkins", async (context) => {
       .select({ checkin: checkinsTable, user: usersTable })
       .from(checkinsTable)
       .innerJoin(usersTable, eq(usersTable.id, checkinsTable.userId))
-      .where(isVisibleCheckin(context.get("userId")))
+      .where(and(isVisibleCheckin(context.get("userId")), eq(checkinsTable.visibility, "public")))
       .orderBy(desc(checkinsTable.createdAt))
       .limit(parsed.data.limit)
       .offset(parsed.data.offset);

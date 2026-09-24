@@ -1,6 +1,9 @@
 /**
  * Seeds the test users in src/lib/test-users.ts, each with a checkin at a real
  * branch of every seeded chain in their home city, and makes them all friends.
+ * Some checkins are private and some came from accepted visit suggestions, so
+ * the lock icon and the friends feed's privacy rule can be checked by signing
+ * in as one user and then as a friend.
  *
  * Safe to run repeatedly: the users are upserted by fixed id, and their
  * checkins and friendships with each other are replaced each run.
@@ -96,6 +99,8 @@ async function seed() {
           checkinNumber % 2 === 0
             ? SEEDED_CHECKIN_MESSAGES[(checkinNumber / 2) % SEEDED_CHECKIN_MESSAGES.length]
             : null,
+        visibility: checkinNumber % 3 === 1 ? "private" : "public",
+        source: checkinNumber % 4 === 2 ? "visit" : "manual",
         createdAt: seededCheckinTime(userIndex, chainIndex),
       });
       console.log(`  ${testUser.name}: ${place.displayName?.text} — ${place.formattedAddress}`);

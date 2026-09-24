@@ -1,3 +1,5 @@
+import type { SQL } from "drizzle-orm";
+import { PgDialect } from "drizzle-orm/pg-core";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DrizzleQueryError } from "drizzle-orm/errors";
 import { createDatabaseStub } from "../../test/helpers/stub-database.js";
@@ -126,6 +128,18 @@ describe("GET /checkins", () => {
     const body = (await response.json()) as { results: Record<string, unknown>[] };
     expect(body.results[0].placeName).toBe("Blue Bottle");
     expect(body.results[0].user).toEqual({ id: OTHER_USER_ID, name: "Alex", avatarUrl: null });
+  });
+
+  it("leaves private checkins out, including the caller's own", async () => {
+    controls.queue([]);
+    const response = await send("GET", "/checkins");
+    expect(response.status).toBe(200);
+
+    const whereCall = controls.chainedCalls.find((call) => call.method === "where");
+    const condition = new PgDialect().sqlToQuery(whereCall?.arguments[0] as SQL);
+    // The public check applies to the whole condition, not only to friends'.
+    expect(condition.sql).toMatch(/\) and "checkins"\."visibility" = \$\d+\)$/);
+    expect(condition.params).toContain("public");
   });
 
   it("rejects an out-of-range limit", async () => {

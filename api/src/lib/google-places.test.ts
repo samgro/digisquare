@@ -7,6 +7,7 @@ import {
   searchAutocomplete,
   searchNearby,
   searchNearbyCandidates,
+  searchText,
 } from "./google-places.js";
 import { stubFetch, type StubbedFetch } from "../../test/helpers/stub-fetch.js";
 import { loadGoogleFixture } from "../../test/helpers/fixtures.js";
@@ -21,6 +22,27 @@ beforeEach(() => {
 
 afterEach(() => {
   stub?.restore();
+});
+
+describe("searchText", () => {
+  it("posts the query biased toward the point and returns the places", async () => {
+    stub = stubFetch([
+      { match: "places:searchText", json: loadGoogleFixture("search-nearby.json") },
+    ]);
+
+    const results = await searchText({ query: "Blue Bottle", ...LOCATION });
+
+    expect(stub.calls).toHaveLength(1);
+    expect(stub.calls[0].url).toBe("https://places.googleapis.com/v1/places:searchText");
+    expect(stub.calls[0].body).toEqual({
+      textQuery: "Blue Bottle",
+      maxResultCount: 5,
+      locationBias: {
+        circle: { center: { latitude: 37.7749, longitude: -122.4194 }, radius: 1500 },
+      },
+    });
+    expect(results).toHaveLength(2);
+  });
 });
 
 describe("searchNearby", () => {
