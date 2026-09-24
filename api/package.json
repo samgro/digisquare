@@ -11,6 +11,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "fixtures:record": "tsx scripts/record-ranking-fixtures.ts",
+    "overture:import": "tsx scripts/import-overture-places.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed-test-users": "tsx scripts/seed-test-users.ts"

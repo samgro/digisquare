@@ -30,9 +30,13 @@ enum CheckinSource: String, Codable, Equatable {
 struct Checkin: Decodable, Identifiable, Hashable {
     let id: String
     let userId: String
-    let googlePlaceId: String
+    let placeId: String
+    /// A snapshot of the place as it was at checkin time, so the row reads
+    /// the same even after the venue is renamed or re-imported.
     let placeName: String
     let placeAddress: String?
+    /// Absent on rows saved before the API stored it separately.
+    let placeLocality: String?
     let placePrimaryType: String?
     let placeTypes: [String]?
     let location: PlaceLocation?
@@ -48,25 +52,28 @@ struct Checkin: Decodable, Identifiable, Hashable {
     let updatedAt: Date
 }
 
-/// The request body for `POST /checkins`. Coordinates are flat here but nested
-/// under `location` in the response, so this is deliberately not derived from `Checkin`.
+/// The request body for `POST /checkins`: just the place's id and a message.
+/// The server snapshots the place's name, address and category from its own
+/// `places` row, so nothing the client says about the place is trusted.
 ///
 /// There is no userId: the server attributes the checkin to whoever the access
 /// token identifies, and ignores one sent in the body.
+///
+/// The `place` itself is kept (but never sent) so the timeline can show a
+/// placeholder row while the save is in flight.
 struct CheckinDraft: Encodable, Equatable {
-    let googlePlaceId: String
-    let placeName: String
-    let placeAddress: String?
-    let placePrimaryType: String?
-    let placeTypes: [String]?
-    let latitude: Double?
-    let longitude: Double?
+    let place: Place
+    let placeId: String
     let message: String?
     let visibility: CheckinVisibility
     let source: CheckinSource
     /// Only sent for checkins accepted from a visit, so the server backdates
     /// them to the visit's arrival instead of the moment the user tapped Accept.
     let createdAt: Date?
+
+    private enum CodingKeys: String, CodingKey {
+        case placeId, message, visibility, source, createdAt
+    }
 
     init(
         place: Place,
@@ -75,13 +82,8 @@ struct CheckinDraft: Encodable, Equatable {
         source: CheckinSource = .manual,
         createdAt: Date? = nil
     ) {
-        googlePlaceId = place.id
-        placeName = place.name
-        placeAddress = Self.trimmedOrNil(place.address)
-        placePrimaryType = Self.trimmedOrNil(place.primaryType)
-        placeTypes = place.types.isEmpty ? nil : place.types
-        latitude = place.location?.latitude
-        longitude = place.location?.longitude
+        self.place = place
+        placeId = place.id
         self.message = Self.trimmedOrNil(message)
         self.visibility = visibility
         self.source = source

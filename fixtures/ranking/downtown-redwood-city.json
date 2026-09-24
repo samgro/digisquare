@@ -1,1392 +1,54 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "name": "downtown-redwood-city",
   "description": "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 650 m from Mezes Park.",
-  "recordedAt": "2026-09-24T00:12:57.755Z",
+  "recordedAt": null,
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 37.486525,
     "longitude": -122.233389,
     "horizontalAccuracy": 20
   },
-  "google": {
-    "largeVenues": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "POPULARITY",
-        "includedTypes": [
-          "airport",
-          "stadium",
-          "university",
-          "amusement_park",
-          "zoo",
-          "ski_resort",
-          "golf_course",
-          "national_park",
-          "state_park",
-          "park"
-        ],
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 37.486525,
-              "longitude": -122.233389
-            },
-            "radius": 2000
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJ0bH5Qcajj4ARLzePCIyEbDE",
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4716062,
-              "longitude": -122.2387476
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.469874519708505,
-                "longitude": -122.24075278029152
-              },
-              "high": {
-                "latitude": 37.4725724802915,
-                "longitude": -122.23805481970852
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 1156,
-            "displayName": {
-              "text": "Red Morton Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJU0rNlzSij4ARnEY6IVWCPJU",
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Hopkins Avenue &, King St, Redwood City, CA 94062, USA",
-            "location": {
-              "latitude": 37.4820037,
-              "longitude": -122.24747900000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.48058776970851,
-                "longitude": -122.24852043029149
-              },
-              "high": {
-                "latitude": 37.4832857302915,
-                "longitude": -122.24582246970851
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 670,
-            "displayName": {
-              "text": "Stafford Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJ2d_9grmjj4AR4P1rvsk_M68",
-            "types": [
-              "community_center",
-              "event_venue",
-              "park",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4720385,
-              "longitude": -122.23547710000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4706927197085,
-                "longitude": -122.23653563029151
-              },
-              "high": {
-                "latitude": 37.4733906802915,
-                "longitude": -122.23383766970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 864,
-            "displayName": {
-              "text": "Red Morton Community Center",
-              "languageCode": "en"
-            },
-            "primaryType": "community_center"
-          },
-          {
-            "id": "ChIJnxKyZgajj4ARtQ4oePDAi1Y",
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2100 Spring St, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.483597499999995,
-              "longitude": -122.21574319999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4817632197085,
-                "longitude": -122.21592633029147
-              },
-              "high": {
-                "latitude": 37.4844611802915,
-                "longitude": -122.21322836970849
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 435,
-            "displayName": {
-              "text": "Hoover Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJww_Xllmij4ARPBmFF-KrKSs",
-            "types": [
-              "wildlife_refuge",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "3 Uccelli Dr, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.498947699999995,
-              "longitude": -122.2245801
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.49763056970849,
-                "longitude": -122.2255673302915
-              },
-              "high": {
-                "latitude": 37.50032853029149,
-                "longitude": -122.22286936970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 382,
-            "displayName": {
-              "text": "Bair Island Wildlife Refuge & Trail",
-              "languageCode": "en"
-            },
-            "primaryType": "wildlife_refuge"
-          },
-          {
-            "id": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4919812,
-              "longitude": -122.2361299
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4907384197085,
-                "longitude": -122.23729468029148
-              },
-              "high": {
-                "latitude": 37.49343638029149,
-                "longitude": -122.23459671970849
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 424,
-            "displayName": {
-              "text": "Mezes Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJz9S6drOjj4ARZywZu92Y0s8",
-            "types": [
-              "university",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "400 Duane St, Redwood City, CA 94062, USA",
-            "location": {
-              "latitude": 37.4811019,
-              "longitude": -122.23569130000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.479826619708504,
-                "longitude": -122.2369495302915
-              },
-              "high": {
-                "latitude": 37.4825245802915,
-                "longitude": -122.2342515697085
-              }
-            },
-            "rating": 3.7,
-            "userRatingCount": 42,
-            "displayName": {
-              "text": "McKinley Institute of Technology",
-              "languageCode": "en"
-            },
-            "primaryType": "university"
-          },
-          {
-            "id": "ChIJsyzes6Sjj4ARsAAR4thpkPk",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1148 Hudson St, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4722402,
-              "longitude": -122.2310303
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4710126697085,
-                "longitude": -122.23210978029151
-              },
-              "high": {
-                "latitude": 37.4737106302915,
-                "longitude": -122.22941181970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 64,
-            "displayName": {
-              "text": "Hawes Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJzbkRAg2jj4ARyxMYmGGRkR8",
-            "types": [
-              "indoor_golf_course",
-              "golf_course",
-              "athletic_field",
-              "sports_activity_location",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1802 El Camino Real, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4780517,
-              "longitude": -122.2247841
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4767037697085,
-                "longitude": -122.22617943029148
-              },
-              "high": {
-                "latitude": 37.4794017302915,
-                "longitude": -122.22348146970849
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 33,
-            "displayName": {
-              "text": "Swing Central Golf Club",
-              "languageCode": "en"
-            },
-            "primaryType": "indoor_golf_course"
-          },
-          {
-            "id": "ChIJJYnhuqmjj4ARJHzxOSdMhFg",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4819931,
-              "longitude": -122.22204560000002
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4806126197085,
-                "longitude": -122.22332313029149
-              },
-              "high": {
-                "latitude": 37.4833105802915,
-                "longitude": -122.2206251697085
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 97,
-            "displayName": {
-              "text": "Jardin de Ninos Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJdRvGiKCjj4ARDQ5r6gAri9U",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.472305399999996,
-              "longitude": -122.22083320000002
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4709173697085,
-                "longitude": -122.22210378029149
-              },
-              "high": {
-                "latitude": 37.4736153302915,
-                "longitude": -122.2194058197085
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 90,
-            "displayName": {
-              "text": "Fleishman Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJyau3wjeij4ARX8y4RCYIa0c",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Redwood City, CA 94062, USA",
-            "location": {
-              "latitude": 37.490286000000005,
-              "longitude": -122.24323179999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4890989697085,
-                "longitude": -122.2446490802915
-              },
-              "high": {
-                "latitude": 37.4917969302915,
-                "longitude": -122.2419511197085
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 70,
-            "displayName": {
-              "text": "Wellesley Crescent Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJY3MTyKOjj4ARPovmTLcGg8k",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1443 Hudson St, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4707509,
-              "longitude": -122.22701010000002
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.469246219708495,
-                "longitude": -122.2285410802915
-              },
-              "high": {
-                "latitude": 37.471944180291494,
-                "longitude": -122.22584311970853
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 64,
-            "displayName": {
-              "text": "Palm Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJueDRC8Wjj4ARnWbTFsCbLp4",
-            "types": [
-              "indoor_golf_course",
-              "golf_course",
-              "sporting_goods_store",
-              "athletic_field",
-              "sports_school",
-              "sports_club",
-              "sports_activity_location",
-              "association_or_organization",
-              "sports_coaching",
-              "store",
-              "health",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1021 Howard Ave Ste A, San Carlos, CA 94070, USA",
-            "location": {
-              "latitude": 37.4998542,
-              "longitude": -122.2479295
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4985801197085,
-                "longitude": -122.24936148029148
-              },
-              "high": {
-                "latitude": 37.5012780802915,
-                "longitude": -122.2466635197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 41,
-            "displayName": {
-              "text": "MY SWING STUDIO",
-              "languageCode": "en"
-            },
-            "primaryType": "sports_school"
-          },
-          {
-            "id": "ChIJYfO3GnSjj4ARE2gJIvU0YYI",
-            "types": [
-              "indoor_golf_course",
-              "golf_course",
-              "sporting_goods_store",
-              "athletic_field",
-              "sports_school",
-              "sports_activity_location",
-              "sports_coaching",
-              "store",
-              "health",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "630 El Camino Real, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4881759,
-              "longitude": -122.2375349
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4868700697085,
-                "longitude": -122.23881708029148
-              },
-              "high": {
-                "latitude": 37.4895680302915,
-                "longitude": -122.23611911970849
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 53,
-            "displayName": {
-              "text": "Golf Performance Studio - Chris Dawkins",
-              "languageCode": "en"
-            },
-            "primaryType": "sports_school"
-          },
-          {
-            "id": "ChIJ7d4aErmjj4ARIg_X_xep1IA",
-            "types": [
-              "public_bathroom",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Red Morton Park, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4709047,
-              "longitude": -122.23855759999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4693768197085,
-                "longitude": -122.2400830802915
-              },
-              "high": {
-                "latitude": 37.47207478029149,
-                "longitude": -122.23738511970852
-              }
-            },
-            "rating": 3.4,
-            "userRatingCount": 7,
-            "displayName": {
-              "text": "Bathroom | Red Morton",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJHamEZQCjj4ARwV4di3Df3vo",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "911 Valota Rd, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4705057,
-              "longitude": -122.23976139999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4690263197085,
-                "longitude": -122.2409632802915
-              },
-              "high": {
-                "latitude": 37.4717242802915,
-                "longitude": -122.2382653197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Red Morton Park Picnic Area #3",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJt4vpqzKij4ARms9ehRn-Iek",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Redwood City, CA 94062, USA",
-            "location": {
-              "latitude": 37.479065299999995,
-              "longitude": -122.25377909999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4777854697085,
-                "longitude": -122.25521588029147
-              },
-              "high": {
-                "latitude": 37.4804834302915,
-                "longitude": -122.25251791970848
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 13,
-            "displayName": {
-              "text": "Dove Beeger Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJhUrpermjj4ARgAxtU6ACH0s",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "park",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "1400 Roosevelt Ave, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.470833299999995,
-              "longitude": -122.2369444
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4693645697085,
-                "longitude": -122.23839343029148
-              },
-              "high": {
-                "latitude": 37.472062530291495,
-                "longitude": -122.23569546970849
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 18,
-            "displayName": {
-              "text": "Redwood City Parks, Recreation & Community Services",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJOUktGgCjj4ARjwkUlrT8w54",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "911 Valota Rd, Redwood City, CA 94061, USA",
-            "location": {
-              "latitude": 37.4703641,
-              "longitude": -122.23958409999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4689185197085,
-                "longitude": -122.24090518029149
-              },
-              "high": {
-                "latitude": 37.4716164802915,
-                "longitude": -122.23820721970851
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Red Morton Park Picnic Area #1",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          }
-        ]
-      }
-    },
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 37.486525,
-              "longitude": -122.233389
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJy5gdFk2ij4ARWyg1ub68B7w",
-            "types": [
-              "coffee_shop",
-              "cafe",
-              "food_store",
-              "store",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2600 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.486435,
-              "longitude": -122.23330999999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.485016369708504,
-                "longitude": -122.23463568029148
-              },
-              "high": {
-                "latitude": 37.4877143302915,
-                "longitude": -122.23193771970848
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 508,
-            "displayName": {
-              "text": "Peet's Coffee",
-              "languageCode": "en"
-            },
-            "primaryType": "coffee_shop"
-          },
-          {
-            "id": "ChIJYY_yF02ij4ARVovIxH-GmjU",
-            "types": [
-              "hair_salon",
-              "nail_salon",
-              "hair_care",
-              "beauty_salon",
-              "body_art_service",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2606 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.486445599999996,
-              "longitude": -122.2334587
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4850174697085,
-                "longitude": -122.2348548302915
-              },
-              "high": {
-                "latitude": 37.4877154302915,
-                "longitude": -122.2321568697085
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 136,
-            "displayName": {
-              "text": "Natalie's Salon",
-              "languageCode": "en"
-            },
-            "primaryType": "hair_salon"
-          },
-          {
-            "id": "ChIJM16jGU2ij4ARBWfI6Y1foik",
-            "types": [
-              "vietnamese_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2610 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4865049,
-              "longitude": -122.23363359999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.485141719708494,
-                "longitude": -122.23492263029146
-              },
-              "high": {
-                "latitude": 37.48783968029149,
-                "longitude": -122.23222466970847
-              }
-            },
-            "rating": 4,
-            "userRatingCount": 391,
-            "displayName": {
-              "text": "Phở Đông Restaurant",
-              "languageCode": "en"
-            },
-            "primaryType": "vietnamese_restaurant"
-          },
-          {
-            "id": "ChIJJ5LAG02ij4ARjhdpJwrd7FY",
-            "types": [
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2616 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.486441,
-              "longitude": -122.23368300000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4850098197085,
-                "longitude": -122.23505923029148
-              },
-              "high": {
-                "latitude": 37.4877077802915,
-                "longitude": -122.23236126970849
-              }
-            },
-            "displayName": {
-              "text": "Chainey Hauling",
-              "languageCode": "en"
-            },
-            "primaryType": "transportation_service"
-          },
-          {
-            "id": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
-            "types": [
-              "japanese_restaurant",
-              "ramen_restaurant",
-              "bar_and_grill",
-              "tonkatsu_restaurant",
-              "seafood_restaurant",
-              "bar",
-              "japanese_curry_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2616 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4864227,
-              "longitude": -122.2337074
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.48499736970851,
-                "longitude": -122.2350492302915
-              },
-              "high": {
-                "latitude": 37.48769533029151,
-                "longitude": -122.2323512697085
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 679,
-            "displayName": {
-              "text": "Kemuri Japanese Barú",
-              "languageCode": "en"
-            },
-            "primaryType": "japanese_restaurant"
-          },
-          {
-            "id": "ChIJNcz4IACjj4AR5FEUZIfxrKQ",
-            "types": [
-              "irish_pub",
-              "pub",
-              "bar",
-              "european_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2620 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4865127,
-              "longitude": -122.23381380000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4850443197085,
-                "longitude": -122.2351460802915
-              },
-              "high": {
-                "latitude": 37.4877422802915,
-                "longitude": -122.23244811970851
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 44,
-            "displayName": {
-              "text": "The Wild Rover",
-              "languageCode": "en"
-            },
-            "primaryType": "irish_pub"
-          },
-          {
-            "id": "ChIJH2t7pOGjj4ARGoPG0gjvMYs",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2601 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4861688,
-              "longitude": -122.23327350000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848869697085,
-                "longitude": -122.23462903029152
-              },
-              "high": {
-                "latitude": 37.4875849302915,
-                "longitude": -122.23193106970852
-              }
-            },
-            "displayName": {
-              "text": "Beacon Route Mover's",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJuXZmPE2ij4ARxIQ1zfuiRPE",
-            "types": [
-              "yoga_studio",
-              "fitness_center",
-              "gym",
-              "sports_complex",
-              "sports_school",
-              "sports_activity_location",
-              "health",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2603 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.486134,
-              "longitude": -122.23330800000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848693197085,
-                "longitude": -122.2346477802915
-              },
-              "high": {
-                "latitude": 37.4875672802915,
-                "longitude": -122.2319498197085
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 44,
-            "displayName": {
-              "text": "Peacebank Yoga",
-              "languageCode": "en"
-            },
-            "primaryType": "yoga_studio"
-          },
-          {
-            "id": "ChIJucp5spOjj4AROrx91EqMF44",
-            "types": [
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "7965 SW 136th St, Miami, FL 33156, USA",
-            "location": {
-              "latitude": 37.486086199999995,
-              "longitude": -122.23326770000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.48484396970849,
-                "longitude": -122.2346297802915
-              },
-              "high": {
-                "latitude": 37.48754193029149,
-                "longitude": -122.2319318197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 16,
-            "displayName": {
-              "text": "LYRI YOGA",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJjbZIg3-jj4ARV-xbzS0BhYA",
-            "types": [
-              "ice_cream_shop",
-              "cafe",
-              "dessert_shop",
-              "confectionery",
-              "food_store",
-              "store",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2621 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4861515,
-              "longitude": -122.2336991
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.484866519708504,
-                "longitude": -122.23503318029148
-              },
-              "high": {
-                "latitude": 37.4875644802915,
-                "longitude": -122.23233521970849
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 115,
-            "displayName": {
-              "text": "SF Gelateria",
-              "languageCode": "en"
-            },
-            "primaryType": "ice_cream_shop"
-          },
-          {
-            "id": "ChIJLxAUqT6ij4AR6StFnt1BqV8",
-            "types": [
-              "clothing_store",
-              "store",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2626 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4864106,
-              "longitude": -122.2339405
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.484988519708494,
-                "longitude": -122.2353024802915
-              },
-              "high": {
-                "latitude": 37.487686480291494,
-                "longitude": -122.2326045197085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 75,
-            "displayName": {
-              "text": "Peninsula Uniforms & Equipment, Inc.",
-              "languageCode": "en"
-            },
-            "primaryType": "clothing_store"
-          },
-          {
-            "id": "ChIJl1qBtV2jj4ARRNnksn6VW1U",
-            "types": [
-              "coworking_space",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2625 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4861412,
-              "longitude": -122.2337153
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848600197085,
-                "longitude": -122.23506853029149
-              },
-              "high": {
-                "latitude": 37.4875579802915,
-                "longitude": -122.2323705697085
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 55,
-            "displayName": {
-              "text": "Sound Union",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJnzqbI02ij4AReQzA15DnBcc",
-            "types": [
-              "massage",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2625 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4861412,
-              "longitude": -122.2337153
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.48485996970851,
-                "longitude": -122.23507008029151
-              },
-              "high": {
-                "latitude": 37.48755793029151,
-                "longitude": -122.23237211970851
-              }
-            },
-            "displayName": {
-              "text": "Chair Massage at Avast",
-              "languageCode": "en"
-            },
-            "primaryType": "massage"
-          },
-          {
-            "id": "ChIJ_V6kIk2ij4ARmonRgzkKIkI",
-            "types": [
-              "german_restaurant",
-              "beer_garden",
-              "liquor_store",
-              "brewpub",
-              "pub",
-              "bar",
-              "grocery_store",
-              "food_store",
-              "european_restaurant",
-              "store",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2615 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.486053999999996,
-              "longitude": -122.233447
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848209197085,
-                "longitude": -122.2348499802915
-              },
-              "high": {
-                "latitude": 37.487518880291496,
-                "longitude": -122.23215201970851
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 1972,
-            "displayName": {
-              "text": "Gourmet Haus Staudt",
-              "languageCode": "en"
-            },
-            "primaryType": "german_restaurant"
-          },
-          {
-            "id": "ChIJIVZY_rijj4ARA7FDtWlumk0",
-            "types": [
-              "finance",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10 California St, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.485962,
-              "longitude": -122.23324029999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.484588969708504,
-                "longitude": -122.2345207802915
-              },
-              "high": {
-                "latitude": 37.4872869302915,
-                "longitude": -122.23182281970851
-              }
-            },
-            "displayName": {
-              "text": "Sozo Ventures",
-              "languageCode": "en"
-            },
-            "primaryType": "finance"
-          },
-          {
-            "id": "ChIJXbd1HU2ij4ARtxlSp-ZARxY",
-            "types": [
-              "gym",
-              "fitness_center",
-              "consultant",
-              "sports_activity_location",
-              "health",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2636 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4864835,
-              "longitude": -122.23411739999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4850208697085,
-                "longitude": -122.23546693029147
-              },
-              "high": {
-                "latitude": 37.4877188302915,
-                "longitude": -122.23276896970849
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 89,
-            "displayName": {
-              "text": "ObstaCourse Fitness",
-              "languageCode": "en"
-            },
-            "primaryType": "gym"
-          },
-          {
-            "id": "ChIJHdigVRSjj4ARqNYTH8JLqUo",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "2629 Broadway Ste 23, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4860398,
-              "longitude": -122.23382280000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848062197085,
-                "longitude": -122.2351628802915
-              },
-              "high": {
-                "latitude": 37.4875041802915,
-                "longitude": -122.2324649197085
-              }
-            },
-            "displayName": {
-              "text": "My Elite Events",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJaRwJQQCjj4AR-eHgyEwyzy0",
-            "types": [
-              "corporate_office",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2629 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4860398,
-              "longitude": -122.23382280000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848064697085,
-                "longitude": -122.23517658029148
-              },
-              "high": {
-                "latitude": 37.4875044302915,
-                "longitude": -122.23247861970849
-              }
-            },
-            "displayName": {
-              "text": "Bellota Labs",
-              "languageCode": "en"
-            },
-            "primaryType": "corporate_office"
-          },
-          {
-            "id": "ChIJVVXlQE2ij4ARMWdImbmmd5s",
-            "types": [
-              "plaza",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4862903,
-              "longitude": -122.23263920000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4849691697085,
-                "longitude": -122.23410563029147
-              },
-              "high": {
-                "latitude": 37.4876671302915,
-                "longitude": -122.23140766970847
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Arguello Plaza",
-              "languageCode": "en"
-            },
-            "primaryType": "plaza"
-          },
-          {
-            "id": "ChIJi_lwH02ij4ARSEaUQwB1TBo",
-            "types": [
-              "korean_restaurant",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2639 Broadway, Redwood City, CA 94063, USA",
-            "location": {
-              "latitude": 37.4861028,
-              "longitude": -122.2339889
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.4848333697085,
-                "longitude": -122.23534668029149
-              },
-              "high": {
-                "latitude": 37.487531330291496,
-                "longitude": -122.23264871970851
-              }
-            },
-            "rating": 4.2,
-            "userRatingCount": 225,
-            "displayName": {
-              "text": "Seoul Kitchen",
-              "languageCode": "en"
-            },
-            "primaryType": "korean_restaurant"
-          }
-        ]
-      }
-    }
-  },
   "places": [
     {
       "id": "ChIJy5gdFk2ij4ARWyg1ub68B7w",
+      "source": "overture",
       "name": "Peet's Coffee",
-      "address": "2600 Broadway, Redwood City, CA 94063, USA",
+      "address": "2600 Broadway, Redwood City, CA 94063, US",
+      "street": "2600 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.486435,
         "longitude": -122.23330999999999
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.485016369708504,
-          "longitude": -122.23463568029148
-        },
-        "high": {
-          "latitude": 37.4877143302915,
-          "longitude": -122.23193771970848
-        }
       },
       "types": [
         "coffee_shop",
         "cafe",
         "food_store",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "shopping",
+        "food"
       ],
       "primaryType": "coffee_shop",
-      "rating": 4.3,
-      "userRatingCount": 508
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJYY_yF02ij4ARVovIxH-GmjU",
+      "source": "overture",
       "name": "Natalie's Salon",
-      "address": "2606 Broadway, Redwood City, CA 94063, USA",
+      "address": "2606 Broadway, Redwood City, CA 94063, US",
+      "street": "2606 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.486445599999996,
         "longitude": -122.2334587
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4850174697085,
-          "longitude": -122.2348548302915
-        },
-        "high": {
-          "latitude": 37.4877154302915,
-          "longitude": -122.2321568697085
-        }
       },
       "types": [
         "hair_salon",
@@ -1394,87 +56,72 @@
         "hair_care",
         "beauty_salon",
         "body_art_service",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "hair_salon",
-      "rating": 4.5,
-      "userRatingCount": 136
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJM16jGU2ij4ARBWfI6Y1foik",
+      "source": "overture",
       "name": "Phở Đông Restaurant",
-      "address": "2610 Broadway, Redwood City, CA 94063, USA",
+      "address": "2610 Broadway, Redwood City, CA 94063, US",
+      "street": "2610 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4865049,
         "longitude": -122.23363359999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.485141719708494,
-          "longitude": -122.23492263029146
-        },
-        "high": {
-          "latitude": 37.48783968029149,
-          "longitude": -122.23222466970847
-        }
-      },
       "types": [
         "vietnamese_restaurant",
         "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "food"
       ],
       "primaryType": "vietnamese_restaurant",
-      "rating": 4,
-      "userRatingCount": 391
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJJ5LAG02ij4ARjhdpJwrd7FY",
+      "source": "overture",
       "name": "Chainey Hauling",
-      "address": "2616 Broadway, Redwood City, CA 94063, USA",
+      "address": "2616 Broadway, Redwood City, CA 94063, US",
+      "street": "2616 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.486441,
         "longitude": -122.23368300000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4850098197085,
-          "longitude": -122.23505923029148
-        },
-        "high": {
-          "latitude": 37.4877077802915,
-          "longitude": -122.23236126970849
-        }
-      },
       "types": [
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "transportation_service"
       ],
       "primaryType": "transportation_service",
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+      "source": "overture",
       "name": "Kemuri Japanese Barú",
-      "address": "2616 Broadway, Redwood City, CA 94063, USA",
+      "address": "2616 Broadway, Redwood City, CA 94063, US",
+      "street": "2616 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4864227,
         "longitude": -122.2337074
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.48499736970851,
-          "longitude": -122.2350492302915
-        },
-        "high": {
-          "latitude": 37.48769533029151,
-          "longitude": -122.2323512697085
-        }
       },
       "types": [
         "japanese_restaurant",
@@ -1485,31 +132,26 @@
         "bar",
         "japanese_curry_restaurant",
         "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "food"
       ],
       "primaryType": "japanese_restaurant",
-      "rating": 4.4,
-      "userRatingCount": 679
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJNcz4IACjj4AR5FEUZIfxrKQ",
+      "source": "overture",
       "name": "The Wild Rover",
-      "address": "2620 Broadway, Redwood City, CA 94063, USA",
+      "address": "2620 Broadway, Redwood City, CA 94063, US",
+      "street": "2620 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4865127,
         "longitude": -122.23381380000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4850443197085,
-          "longitude": -122.2351460802915
-        },
-        "high": {
-          "latitude": 37.4877422802915,
-          "longitude": -122.23244811970851
-        }
       },
       "types": [
         "irish_pub",
@@ -1517,117 +159,95 @@
         "bar",
         "european_restaurant",
         "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "food"
       ],
       "primaryType": "irish_pub",
-      "rating": 4.8,
-      "userRatingCount": 44
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJH2t7pOGjj4ARGoPG0gjvMYs",
+      "source": "overture",
       "name": "Beacon Route Mover's",
-      "address": "2601 Broadway, Redwood City, CA 94063, USA",
+      "address": "2601 Broadway, Redwood City, CA 94063, US",
+      "street": "2601 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4861688,
         "longitude": -122.23327350000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848869697085,
-          "longitude": -122.23462903029152
-        },
-        "high": {
-          "latitude": 37.4875849302915,
-          "longitude": -122.23193106970852
-        }
-      },
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "service",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "professional_services",
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJuXZmPE2ij4ARxIQ1zfuiRPE",
+      "source": "overture",
       "name": "Peacebank Yoga",
-      "address": "2603 Broadway, Redwood City, CA 94063, USA",
+      "address": "2603 Broadway, Redwood City, CA 94063, US",
+      "street": "2603 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.486134,
         "longitude": -122.23330800000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848693197085,
-          "longitude": -122.2346477802915
-        },
-        "high": {
-          "latitude": 37.4875672802915,
-          "longitude": -122.2319498197085
-        }
-      },
       "types": [
         "yoga_studio",
-        "fitness_center",
         "gym",
-        "sports_complex",
+        "sports_and_recreation_venue",
         "sports_school",
         "sports_activity_location",
-        "health",
-        "point_of_interest",
-        "establishment"
+        "health"
       ],
       "primaryType": "yoga_studio",
-      "rating": 4.8,
-      "userRatingCount": 44
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJucp5spOjj4AROrx91EqMF44",
+      "source": "overture",
       "name": "LYRI YOGA",
-      "address": "7965 SW 136th St, Miami, FL 33156, USA",
+      "address": "7965 SW 136th St, Miami, FL 33156, US",
+      "street": "7965 SW 136th St",
+      "locality": "Miami",
+      "region": "US-FL",
+      "postcode": "33156",
+      "country": "US",
       "location": {
         "latitude": 37.486086199999995,
         "longitude": -122.23326770000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.48484396970849,
-          "longitude": -122.2346297802915
-        },
-        "high": {
-          "latitude": 37.48754193029149,
-          "longitude": -122.2319318197085
-        }
-      },
-      "types": [
-        "point_of_interest",
-        "establishment"
-      ],
+      "types": [],
       "primaryType": null,
-      "rating": 5,
-      "userRatingCount": 16
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjbZIg3-jj4ARV-xbzS0BhYA",
+      "source": "overture",
       "name": "SF Gelateria",
-      "address": "2621 Broadway, Redwood City, CA 94063, USA",
+      "address": "2621 Broadway, Redwood City, CA 94063, US",
+      "street": "2621 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4861515,
         "longitude": -122.2336991
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.484866519708504,
-          "longitude": -122.23503318029148
-        },
-        "high": {
-          "latitude": 37.4875644802915,
-          "longitude": -122.23233521970849
-        }
       },
       "types": [
         "ice_cream_shop",
@@ -1635,116 +255,96 @@
         "dessert_shop",
         "confectionery",
         "food_store",
-        "store",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "shopping",
+        "food"
       ],
       "primaryType": "ice_cream_shop",
-      "rating": 4.5,
-      "userRatingCount": 115
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJLxAUqT6ij4AR6StFnt1BqV8",
+      "source": "overture",
       "name": "Peninsula Uniforms & Equipment, Inc.",
-      "address": "2626 Broadway, Redwood City, CA 94063, USA",
+      "address": "2626 Broadway, Redwood City, CA 94063, US",
+      "street": "2626 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4864106,
         "longitude": -122.2339405
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.484988519708494,
-          "longitude": -122.2353024802915
-        },
-        "high": {
-          "latitude": 37.487686480291494,
-          "longitude": -122.2326045197085
-        }
-      },
       "types": [
         "clothing_store",
-        "store",
-        "point_of_interest",
-        "establishment"
+        "shopping"
       ],
       "primaryType": "clothing_store",
-      "rating": 4.7,
-      "userRatingCount": 75
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJl1qBtV2jj4ARRNnksn6VW1U",
+      "source": "overture",
       "name": "Sound Union",
-      "address": "2625 Broadway, Redwood City, CA 94063, USA",
+      "address": "2625 Broadway, Redwood City, CA 94063, US",
+      "street": "2625 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4861412,
         "longitude": -122.2337153
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848600197085,
-          "longitude": -122.23506853029149
-        },
-        "high": {
-          "latitude": 37.4875579802915,
-          "longitude": -122.2323705697085
-        }
       },
       "types": [
         "coworking_space",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association"
       ],
       "primaryType": null,
-      "rating": 4.9,
-      "userRatingCount": 55
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJnzqbI02ij4AReQzA15DnBcc",
+      "source": "overture",
       "name": "Chair Massage at Avast",
-      "address": "2625 Broadway, Redwood City, CA 94063, USA",
+      "address": "2625 Broadway, Redwood City, CA 94063, US",
+      "street": "2625 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4861412,
         "longitude": -122.2337153
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.48485996970851,
-          "longitude": -122.23507008029151
-        },
-        "high": {
-          "latitude": 37.48755793029151,
-          "longitude": -122.23237211970851
-        }
-      },
       "types": [
         "massage",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "massage",
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ_V6kIk2ij4ARmonRgzkKIkI",
+      "source": "overture",
       "name": "Gourmet Haus Staudt",
-      "address": "2615 Broadway, Redwood City, CA 94063, USA",
+      "address": "2615 Broadway, Redwood City, CA 94063, US",
+      "street": "2615 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.486053999999996,
         "longitude": -122.233447
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848209197085,
-          "longitude": -122.2348499802915
-        },
-        "high": {
-          "latitude": 37.487518880291496,
-          "longitude": -122.23215201970851
-        }
       },
       "types": [
         "german_restaurant",
@@ -1756,759 +356,626 @@
         "grocery_store",
         "food_store",
         "european_restaurant",
-        "store",
+        "shopping",
         "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "food"
       ],
       "primaryType": "german_restaurant",
-      "rating": 4.7,
-      "userRatingCount": 1972
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJIVZY_rijj4ARA7FDtWlumk0",
+      "source": "overture",
       "name": "Sozo Ventures",
-      "address": "10 California St, Redwood City, CA 94063, USA",
+      "address": "10 California St, Redwood City, CA 94063, US",
+      "street": "10 California St",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.485962,
         "longitude": -122.23324029999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.484588969708504,
-          "longitude": -122.2345207802915
-        },
-        "high": {
-          "latitude": 37.4872869302915,
-          "longitude": -122.23182281970851
-        }
-      },
       "types": [
-        "finance",
-        "point_of_interest",
-        "establishment"
+        "financial_service"
       ],
-      "primaryType": "finance",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "financial_service",
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJXbd1HU2ij4ARtxlSp-ZARxY",
+      "source": "overture",
       "name": "ObstaCourse Fitness",
-      "address": "2636 Broadway, Redwood City, CA 94063, USA",
+      "address": "2636 Broadway, Redwood City, CA 94063, US",
+      "street": "2636 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4864835,
         "longitude": -122.23411739999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4850208697085,
-          "longitude": -122.23546693029147
-        },
-        "high": {
-          "latitude": 37.4877188302915,
-          "longitude": -122.23276896970849
-        }
-      },
       "types": [
         "gym",
-        "fitness_center",
-        "consultant",
+        "professional_services",
         "sports_activity_location",
-        "health",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "health"
       ],
       "primaryType": "gym",
-      "rating": 4.9,
-      "userRatingCount": 89
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJHdigVRSjj4ARqNYTH8JLqUo",
+      "source": "overture",
       "name": "My Elite Events",
-      "address": "2629 Broadway Ste 23, Redwood City, CA 94063, USA",
+      "address": "2629 Broadway Ste 23, Redwood City, CA 94063, US",
+      "street": "2629 Broadway Ste 23",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4860398,
         "longitude": -122.23382280000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848062197085,
-          "longitude": -122.2351628802915
-        },
-        "high": {
-          "latitude": 37.4875041802915,
-          "longitude": -122.2324649197085
-        }
-      },
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "service",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "professional_services",
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJaRwJQQCjj4AR-eHgyEwyzy0",
+      "source": "overture",
       "name": "Bellota Labs",
-      "address": "2629 Broadway, Redwood City, CA 94063, USA",
+      "address": "2629 Broadway, Redwood City, CA 94063, US",
+      "street": "2629 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4860398,
         "longitude": -122.23382280000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848064697085,
-          "longitude": -122.23517658029148
-        },
-        "high": {
-          "latitude": 37.4875044302915,
-          "longitude": -122.23247861970849
-        }
-      },
       "types": [
-        "corporate_office",
-        "point_of_interest",
-        "establishment"
+        "corporate_office"
       ],
       "primaryType": "corporate_office",
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJVVXlQE2ij4ARMWdImbmmd5s",
+      "source": "overture",
       "name": "Arguello Plaza",
-      "address": "Redwood City, CA 94063, USA",
+      "address": "Redwood City, CA 94063, US",
+      "street": null,
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4862903,
         "longitude": -122.23263920000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4849691697085,
-          "longitude": -122.23410563029147
-        },
-        "high": {
-          "latitude": 37.4876671302915,
-          "longitude": -122.23140766970847
-        }
-      },
       "types": [
-        "plaza",
-        "point_of_interest",
-        "establishment"
+        "plaza"
       ],
       "primaryType": "plaza",
-      "rating": 5,
-      "userRatingCount": 1
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJi_lwH02ij4ARSEaUQwB1TBo",
+      "source": "overture",
       "name": "Seoul Kitchen",
-      "address": "2639 Broadway, Redwood City, CA 94063, USA",
+      "address": "2639 Broadway, Redwood City, CA 94063, US",
+      "street": "2639 Broadway",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4861028,
         "longitude": -122.2339889
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4848333697085,
-          "longitude": -122.23534668029149
-        },
-        "high": {
-          "latitude": 37.487531330291496,
-          "longitude": -122.23264871970851
-        }
-      },
       "types": [
         "korean_restaurant",
         "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "food"
       ],
       "primaryType": "korean_restaurant",
-      "rating": 4.2,
-      "userRatingCount": 225
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ0bH5Qcajj4ARLzePCIyEbDE",
+      "source": "overture",
       "name": "Red Morton Park",
-      "address": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
+      "address": "1120 Roosevelt Ave, Redwood City, CA 94061, US",
+      "street": "1120 Roosevelt Ave",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4716062,
         "longitude": -122.2387476
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.469874519708505,
-          "longitude": -122.24075278029152
-        },
-        "high": {
-          "latitude": 37.4725724802915,
-          "longitude": -122.23805481970852
-        }
-      },
       "types": [
         "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.7,
-      "userRatingCount": 1156
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJU0rNlzSij4ARnEY6IVWCPJU",
+      "source": "overture",
       "name": "Stafford Park",
       "address": "Hopkins Avenue &, King St, Redwood City, CA 94062, USA",
+      "street": "Hopkins Avenue &, King St, Redwood City, CA 94062, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.4820037,
         "longitude": -122.24747900000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.48058776970851,
-          "longitude": -122.24852043029149
-        },
-        "high": {
-          "latitude": 37.4832857302915,
-          "longitude": -122.24582246970851
-        }
-      },
       "types": [
         "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.7,
-      "userRatingCount": 670
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ2d_9grmjj4AR4P1rvsk_M68",
+      "source": "overture",
       "name": "Red Morton Community Center",
-      "address": "1120 Roosevelt Ave, Redwood City, CA 94061, USA",
+      "address": "1120 Roosevelt Ave, Redwood City, CA 94061, US",
+      "street": "1120 Roosevelt Ave",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4720385,
         "longitude": -122.23547710000001
-      },
-      "viewport": {
-        "low": {
-          "latitude": 37.4706927197085,
-          "longitude": -122.23653563029151
-        },
-        "high": {
-          "latitude": 37.4733906802915,
-          "longitude": -122.23383766970852
-        }
       },
       "types": [
         "community_center",
         "event_venue",
         "park",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "community_center",
-      "rating": 4.5,
-      "userRatingCount": 864
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJnxKyZgajj4ARtQ4oePDAi1Y",
+      "source": "overture",
       "name": "Hoover Park",
-      "address": "2100 Spring St, Redwood City, CA 94063, USA",
+      "address": "2100 Spring St, Redwood City, CA 94063, US",
+      "street": "2100 Spring St",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.483597499999995,
         "longitude": -122.21574319999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4817632197085,
-          "longitude": -122.21592633029147
-        },
-        "high": {
-          "latitude": 37.4844611802915,
-          "longitude": -122.21322836970849
-        }
-      },
       "types": [
         "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.3,
-      "userRatingCount": 435
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJww_Xllmij4ARPBmFF-KrKSs",
+      "source": "overture",
       "name": "Bair Island Wildlife Refuge & Trail",
-      "address": "3 Uccelli Dr, Redwood City, CA 94063, USA",
+      "address": "3 Uccelli Dr, Redwood City, CA 94063, US",
+      "street": "3 Uccelli Dr",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.498947699999995,
         "longitude": -122.2245801
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.49763056970849,
-          "longitude": -122.2255673302915
-        },
-        "high": {
-          "latitude": 37.50032853029149,
-          "longitude": -122.22286936970852
-        }
-      },
       "types": [
         "wildlife_refuge",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "wildlife_refuge",
-      "rating": 4.5,
-      "userRatingCount": 382
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+      "source": "overture",
       "name": "Mezes Park",
       "address": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+      "street": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.4919812,
         "longitude": -122.2361299
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4907384197085,
-          "longitude": -122.23729468029148
-        },
-        "high": {
-          "latitude": 37.49343638029149,
-          "longitude": -122.23459671970849
-        }
-      },
       "types": [
         "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.4,
-      "userRatingCount": 424
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJz9S6drOjj4ARZywZu92Y0s8",
+      "source": "overture",
       "name": "McKinley Institute of Technology",
-      "address": "400 Duane St, Redwood City, CA 94062, USA",
+      "address": "400 Duane St, Redwood City, CA 94062, US",
+      "street": "400 Duane St",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94062",
+      "country": "US",
       "location": {
         "latitude": 37.4811019,
         "longitude": -122.23569130000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.479826619708504,
-          "longitude": -122.2369495302915
-        },
-        "high": {
-          "latitude": 37.4825245802915,
-          "longitude": -122.2342515697085
-        }
-      },
       "types": [
-        "university",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "college_university",
+        "educational_institution"
       ],
-      "primaryType": "university",
-      "rating": 3.7,
-      "userRatingCount": 42
+      "primaryType": "college_university",
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJsyzes6Sjj4ARsAAR4thpkPk",
+      "source": "overture",
       "name": "Hawes Park",
-      "address": "1148 Hudson St, Redwood City, CA 94061, USA",
+      "address": "1148 Hudson St, Redwood City, CA 94061, US",
+      "street": "1148 Hudson St",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4722402,
         "longitude": -122.2310303
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4710126697085,
-          "longitude": -122.23210978029151
-        },
-        "high": {
-          "latitude": 37.4737106302915,
-          "longitude": -122.22941181970852
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.5,
-      "userRatingCount": 64
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJzbkRAg2jj4ARyxMYmGGRkR8",
+      "source": "overture",
       "name": "Swing Central Golf Club",
-      "address": "1802 El Camino Real, Redwood City, CA 94063, USA",
+      "address": "1802 El Camino Real, Redwood City, CA 94063, US",
+      "street": "1802 El Camino Real",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4780517,
         "longitude": -122.2247841
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4767037697085,
-          "longitude": -122.22617943029148
-        },
-        "high": {
-          "latitude": 37.4794017302915,
-          "longitude": -122.22348146970849
-        }
-      },
       "types": [
         "indoor_golf_course",
         "golf_course",
         "athletic_field",
-        "sports_activity_location",
-        "point_of_interest",
-        "establishment"
+        "sports_activity_location"
       ],
       "primaryType": "indoor_golf_course",
-      "rating": 4.9,
-      "userRatingCount": 33
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJJYnhuqmjj4ARJHzxOSdMhFg",
+      "source": "overture",
       "name": "Jardin de Ninos Park",
-      "address": "Redwood City, CA 94063, USA",
+      "address": "Redwood City, CA 94063, US",
+      "street": null,
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4819931,
         "longitude": -122.22204560000002
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4806126197085,
-          "longitude": -122.22332313029149
-        },
-        "high": {
-          "latitude": 37.4833105802915,
-          "longitude": -122.2206251697085
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.5,
-      "userRatingCount": 97
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJdRvGiKCjj4ARDQ5r6gAri9U",
+      "source": "overture",
       "name": "Fleishman Park",
-      "address": "Redwood City, CA 94061, USA",
+      "address": "Redwood City, CA 94061, US",
+      "street": null,
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.472305399999996,
         "longitude": -122.22083320000002
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4709173697085,
-          "longitude": -122.22210378029149
-        },
-        "high": {
-          "latitude": 37.4736153302915,
-          "longitude": -122.2194058197085
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.5,
-      "userRatingCount": 90
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJyau3wjeij4ARX8y4RCYIa0c",
+      "source": "overture",
       "name": "Wellesley Crescent Park",
-      "address": "Redwood City, CA 94062, USA",
+      "address": "Redwood City, CA 94062, US",
+      "street": null,
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94062",
+      "country": "US",
       "location": {
         "latitude": 37.490286000000005,
         "longitude": -122.24323179999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4890989697085,
-          "longitude": -122.2446490802915
-        },
-        "high": {
-          "latitude": 37.4917969302915,
-          "longitude": -122.2419511197085
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.6,
-      "userRatingCount": 70
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJY3MTyKOjj4ARPovmTLcGg8k",
+      "source": "overture",
       "name": "Palm Park",
-      "address": "1443 Hudson St, Redwood City, CA 94061, USA",
+      "address": "1443 Hudson St, Redwood City, CA 94061, US",
+      "street": "1443 Hudson St",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4707509,
         "longitude": -122.22701010000002
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.469246219708495,
-          "longitude": -122.2285410802915
-        },
-        "high": {
-          "latitude": 37.471944180291494,
-          "longitude": -122.22584311970853
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.4,
-      "userRatingCount": 64
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJueDRC8Wjj4ARnWbTFsCbLp4",
+      "source": "overture",
       "name": "MY SWING STUDIO",
-      "address": "1021 Howard Ave Ste A, San Carlos, CA 94070, USA",
+      "address": "1021 Howard Ave Ste A, San Carlos, CA 94070, US",
+      "street": "1021 Howard Ave Ste A",
+      "locality": "San Carlos",
+      "region": "US-CA",
+      "postcode": "94070",
+      "country": "US",
       "location": {
         "latitude": 37.4998542,
         "longitude": -122.2479295
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4985801197085,
-          "longitude": -122.24936148029148
-        },
-        "high": {
-          "latitude": 37.5012780802915,
-          "longitude": -122.2466635197085
-        }
-      },
       "types": [
+        "sports_school",
         "indoor_golf_course",
         "golf_course",
         "sporting_goods_store",
         "athletic_field",
-        "sports_school",
         "sports_club",
         "sports_activity_location",
-        "association_or_organization",
+        "public_and_government_association",
         "sports_coaching",
-        "store",
-        "health",
-        "point_of_interest",
-        "establishment"
+        "shopping",
+        "health"
       ],
       "primaryType": "sports_school",
-      "rating": 5,
-      "userRatingCount": 41
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJYfO3GnSjj4ARE2gJIvU0YYI",
+      "source": "overture",
       "name": "Golf Performance Studio - Chris Dawkins",
-      "address": "630 El Camino Real, Redwood City, CA 94063, USA",
+      "address": "630 El Camino Real, Redwood City, CA 94063, US",
+      "street": "630 El Camino Real",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94063",
+      "country": "US",
       "location": {
         "latitude": 37.4881759,
         "longitude": -122.2375349
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4868700697085,
-          "longitude": -122.23881708029148
-        },
-        "high": {
-          "latitude": 37.4895680302915,
-          "longitude": -122.23611911970849
-        }
-      },
       "types": [
+        "sports_school",
         "indoor_golf_course",
         "golf_course",
         "sporting_goods_store",
         "athletic_field",
-        "sports_school",
         "sports_activity_location",
         "sports_coaching",
-        "store",
-        "health",
-        "point_of_interest",
-        "establishment"
+        "shopping",
+        "health"
       ],
       "primaryType": "sports_school",
-      "rating": 4.9,
-      "userRatingCount": 53
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ7d4aErmjj4ARIg_X_xep1IA",
+      "source": "overture",
       "name": "Bathroom | Red Morton",
-      "address": "Red Morton Park, Redwood City, CA 94061, USA",
+      "address": "Red Morton Park, Redwood City, CA 94061, US",
+      "street": "Red Morton Park",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4709047,
         "longitude": -122.23855759999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4693768197085,
-          "longitude": -122.2400830802915
-        },
-        "high": {
-          "latitude": 37.47207478029149,
-          "longitude": -122.23738511970852
-        }
-      },
       "types": [
-        "public_bathroom",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms",
+        "park"
       ],
-      "primaryType": "public_bathroom",
-      "rating": 3.4,
-      "userRatingCount": 7
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJHamEZQCjj4ARwV4di3Df3vo",
+      "source": "overture",
       "name": "Red Morton Park Picnic Area #3",
-      "address": "911 Valota Rd, Redwood City, CA 94061, USA",
+      "address": "911 Valota Rd, Redwood City, CA 94061, US",
+      "street": "911 Valota Rd",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4705057,
         "longitude": -122.23976139999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4690263197085,
-          "longitude": -122.2409632802915
-        },
-        "high": {
-          "latitude": 37.4717242802915,
-          "longitude": -122.2382653197085
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 5,
-      "userRatingCount": 1
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJt4vpqzKij4ARms9ehRn-Iek",
+      "source": "overture",
       "name": "Dove Beeger Park",
-      "address": "Redwood City, CA 94062, USA",
+      "address": "Redwood City, CA 94062, US",
+      "street": null,
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94062",
+      "country": "US",
       "location": {
         "latitude": 37.479065299999995,
         "longitude": -122.25377909999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4777854697085,
-          "longitude": -122.25521588029147
-        },
-        "high": {
-          "latitude": 37.4804834302915,
-          "longitude": -122.25251791970848
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.6,
-      "userRatingCount": 13
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJhUrpermjj4ARgAxtU6ACH0s",
+      "source": "overture",
       "name": "Redwood City Parks, Recreation & Community Services",
-      "address": "1400 Roosevelt Ave, Redwood City, CA 94061, USA",
+      "address": "1400 Roosevelt Ave, Redwood City, CA 94061, US",
+      "street": "1400 Roosevelt Ave",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.470833299999995,
         "longitude": -122.2369444
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4693645697085,
-          "longitude": -122.23839343029148
-        },
-        "high": {
-          "latitude": 37.472062530291495,
-          "longitude": -122.23569546970849
-        }
-      },
       "types": [
-        "local_government_office",
-        "government_office",
+        "local_and_state_government_offices",
+        "government_services",
         "park",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": 4.3,
-      "userRatingCount": 18
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJOUktGgCjj4ARjwkUlrT8w54",
+      "source": "overture",
       "name": "Red Morton Park Picnic Area #1",
-      "address": "911 Valota Rd, Redwood City, CA 94061, USA",
+      "address": "911 Valota Rd, Redwood City, CA 94061, US",
+      "street": "911 Valota Rd",
+      "locality": "Redwood City",
+      "region": "US-CA",
+      "postcode": "94061",
+      "country": "US",
       "location": {
         "latitude": 37.4703641,
         "longitude": -122.23958409999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.4689185197085,
-          "longitude": -122.24090518029149
-        },
-        "high": {
-          "latitude": 37.4716164802915,
-          "longitude": -122.23820721970851
-        }
-      },
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 5,
-      "userRatingCount": 1
+      "checkinCount": 0,
+      "website": null,
+      "phone": null
     }
   ],
   "placeKeys": {
@@ -2521,16 +988,14 @@
     "none": [],
     "parkRegular": [
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-07-22T01:13:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2538,16 +1003,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-07-28T01:06:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2555,16 +1018,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-03T01:49:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2572,16 +1033,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-09T01:42:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2589,16 +1048,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-15T01:35:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2606,16 +1063,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-21T01:28:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2623,16 +1078,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-08-27T01:21:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2640,16 +1093,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-09-02T01:14:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2657,16 +1108,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-09-08T01:07:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2674,16 +1123,14 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
+        "placeId": "ChIJJemsJU-ij4ARuBuzeLsjZqY",
         "createdAt": "2026-09-14T01:00:00.000Z",
         "placeName": "Mezes Park",
         "placeAddress": "Warren St & Standish Street, 1027 Allerton St, Redwood City, CA 94063, USA",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.4919812,
@@ -2693,10 +1140,10 @@
     ],
     "dinnerRegular": [
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-06-22T02:49:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2707,9 +1154,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2717,10 +1162,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-07-03T02:42:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2731,9 +1176,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2741,10 +1184,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-07-14T02:35:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2755,9 +1198,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2765,10 +1206,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-07-26T02:28:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2779,9 +1220,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2789,10 +1228,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-08-06T02:21:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2803,9 +1242,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2813,10 +1250,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-08-17T02:14:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2827,9 +1264,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2837,10 +1272,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-08-28T02:07:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2851,9 +1286,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,
@@ -2861,10 +1294,10 @@
         }
       },
       {
-        "googlePlaceId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
+        "placeId": "ChIJJ5LAG02ij4AR5q6-JvUK3AE",
         "createdAt": "2026-09-09T02:00:00.000Z",
         "placeName": "Kemuri Japanese Barú",
-        "placeAddress": "2616 Broadway, Redwood City, CA 94063, USA",
+        "placeAddress": "2616 Broadway, Redwood City, CA 94063, US",
         "placePrimaryType": "japanese_restaurant",
         "placeTypes": [
           "japanese_restaurant",
@@ -2875,9 +1308,7 @@
           "bar",
           "japanese_curry_restaurant",
           "restaurant",
-          "food",
-          "point_of_interest",
-          "establishment"
+          "food"
         ],
         "location": {
           "latitude": 37.4864227,

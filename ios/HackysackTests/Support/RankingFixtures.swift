@@ -6,9 +6,9 @@
 import Foundation
 @testable import Hackysack
 
-/// One file in `fixtures/ranking/`: recorded Google data for a real spot the
-/// user might be standing in, the exact `/places` output for it, sample
-/// checkin histories, and the outcomes each combination should produce.
+/// One file in `fixtures/ranking/`: the recorded `/places` output for a real
+/// spot the user might be standing in, sample checkin histories, and the
+/// outcomes each combination should produce.
 ///
 /// The files are shared with the API's tests and written by
 /// `npm run fixtures:record` in `api/`; see `api/scripts/ranking-scenarios.ts`.

@@ -13,9 +13,10 @@ struct SocialDecodingTests {
     {
       "id": "0f1c5a8e-4c6c-4a3b-9c48-2f4d1a0a3d11",
       "userId": "550e8400-e29b-41d4-a716-446655440000",
-      "googlePlaceId": "ChIJpreview",
+      "placeId": "a2c1f0e4-6b7d-4e3a-9c1f-1d2e3f4a5b6c",
       "placeName": "Blue Bottle Coffee",
       "placeAddress": "315 Linden St, San Francisco",
+      "placeLocality": "San Francisco",
       "placePrimaryType": "cafe",
       "placeTypes": ["cafe", "coffee_shop"],
       "location": { "latitude": 37.7764, "longitude": -122.4231 },

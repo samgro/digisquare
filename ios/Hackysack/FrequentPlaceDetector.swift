@@ -82,7 +82,7 @@ struct FrequentPlaceDetector {
         /// Home, work, or another habitual long-stay place. Don't suggest it.
         case habitualPlace(Role)
         /// Habitual or not, the user keeps checking in here on purpose. Suggest it.
-        case regularCheckinSpot(googlePlaceId: String)
+        case regularCheckinSpot(placeId: String)
         /// The user removed a suggestion here recently. Don't suggest it.
         case rejectedRecently
         /// The user removed suggestions here repeatedly. Don't suggest it.
@@ -158,14 +158,14 @@ struct FrequentPlaceDetector {
         let checkinsHere = checkins.filter {
             $0.date >= checkinWindowStart && $0.coordinate.distance(to: centroid) <= clusterRadius
         }
-        let checkinsByPlace = Dictionary(grouping: checkinsHere, by: \.googlePlaceId)
+        let checkinsByPlace = Dictionary(grouping: checkinsHere, by: \.placeId)
         let regularPlace = checkinsByPlace
             .filter { $0.value.count >= configuration.minimumCheckinsForRegularSpot }
             .max { left, right in
                 left.value.count == right.value.count ? left.key < right.key : left.value.count < right.value.count
             }
         if let regularPlace {
-            return Assessment(shouldSuggest: true, reason: .regularCheckinSpot(googlePlaceId: regularPlace.key))
+            return Assessment(shouldSuggest: true, reason: .regularCheckinSpot(placeId: regularPlace.key))
         }
 
         if currentCluster.isHabitual, let role = currentCluster.role {

@@ -127,6 +127,83 @@ export type CheckinVisibility = (typeof CHECKIN_VISIBILITIES)[number];
 export const CHECKIN_SOURCES = ["manual", "visit"] as const;
 export type CheckinSource = (typeof CHECKIN_SOURCES)[number];
 
+/**
+ * Every venue a checkin can point at. Rows come from three places: the
+ * Overture Maps places dataset (imported with `npm run overture:import`, keyed
+ * by GERS id), venues users create from the app, and the venues the old
+ * Google-backed checkins referenced, backfilled by migration 0008 so history
+ * kept its identity when the Google Places integration was removed.
+ *
+ * `types` are Overture category codes (`coffee_shop`, `airport`, ...), the
+ * primary one first. The old Google types on `google` rows were mapped to
+ * the closest Overture category where one exists.
+ */
+export const places = pgTable(
+  "places",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    source: text("source", { enum: ["overture", "user", "google"] }).notNull(),
+    // Overture's GERS id. Stable across releases, so re-importing upserts.
+    overtureId: text("overture_id"),
+    // Only on rows backfilled from pre-Overture checkins.
+    googlePlaceId: text("google_place_id"),
+
+    name: text("name").notNull(),
+    primaryType: text("primary_type"),
+    types: text("types").array().notNull().default(sql`'{}'::text[]`),
+
+    // Overture's address parts: `freeform` is the street line (house number
+    // and street), `region` an ISO 3166-2 code such as US-CA and `country`
+    // an ISO 3166-1 alpha-2 code. User-created venues follow the same shape.
+    addressStreet: text("address_street"),
+    addressLocality: text("address_locality"),
+    addressRegion: text("address_region"),
+    addressPostcode: text("address_postcode"),
+    addressCountry: text("address_country"),
+
+    // Nullable only for legacy rows: the app never saved a coordinate for
+    // some Google places. Overture and user venues always have a pin.
+    latitude: doublePrecision("latitude"),
+    longitude: doublePrecision("longitude"),
+
+    // Overture's 0..1 existence confidence. Null for other sources.
+    confidence: doublePrecision("confidence"),
+    website: text("website"),
+    phone: text("phone"),
+
+    // Who added a `user` venue. Kept when the account is deleted so other
+    // people's checkins there keep a valid place.
+    createdByUserId: uuid("created_by_user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => [
+    uniqueIndex("places_overture_id_unique_idx").on(table.overtureId),
+    uniqueIndex("places_google_place_id_unique_idx").on(table.googlePlaceId),
+    // Nearby search prefilters on a latitude band, then a longitude range.
+    index("places_latitude_longitude_idx").on(table.latitude, table.longitude),
+    // Trigram index so `name ILIKE '%cos%'` finds Costco without a scan.
+    // Needs pg_trgm, which migration 0008 enables.
+    index("places_name_trgm_idx").using("gin", sql`lower(${table.name}) gin_trgm_ops`),
+    index("places_created_by_user_id_idx").on(table.createdByUserId),
+    check(
+      "places_source_check",
+      sql`${table.source} in ('overture', 'user', 'google')`,
+    ),
+    check(
+      "places_source_identifier_check",
+      sql`(${table.source} = 'overture') = (${table.overtureId} is not null) and (${table.source} = 'google') = (${table.googlePlaceId} is not null)`,
+    ),
+  ],
+);
+
 export const checkins = pgTable(
   "checkins",
   {
@@ -136,9 +213,14 @@ export const checkins = pgTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
 
-    googlePlaceId: text("google_place_id").notNull(),
+    placeId: uuid("place_id")
+      .notNull()
+      .references(() => places.id),
+    // A snapshot of the place at checkin time, so a timeline never changes
+    // under the user when the venue is renamed or re-imported.
     placeName: text("place_name").notNull(),
     placeAddress: text("place_address"),
+    placeLocality: text("place_locality"),
     placePrimaryType: text("place_primary_type"),
     placeTypes: text("place_types").array(),
     latitude: doublePrecision("latitude"),
@@ -159,7 +241,7 @@ export const checkins = pgTable(
   },
   (table) => [
     index("checkins_user_id_idx").on(table.userId),
-    index("checkins_google_place_id_idx").on(table.googlePlaceId),
+    index("checkins_place_id_idx").on(table.placeId),
   ],
 );
 

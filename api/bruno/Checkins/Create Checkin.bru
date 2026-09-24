@@ -16,13 +16,7 @@ auth:bearer {
 
 body:json {
   {
-    "googlePlaceId": "ChIJIQBpAG2ahYAR_6128GcTUEo",
-    "placeName": "Golden Gate Park",
-    "placeAddress": "San Francisco, CA, USA",
-    "placePrimaryType": "park",
-    "placeTypes": ["park", "point_of_interest", "establishment"],
-    "latitude": 37.7694,
-    "longitude": -122.4862,
+    "placeId": "{{placeId}}",
     "message": "Beautiful day for a walk."
   }
 }
@@ -32,12 +26,15 @@ vars:post-response {
 }
 
 docs {
-  Creates a checkin with a full venue snapshot and a message. Expect 201 with
-  the created row.
+  Creates a checkin with a message. Expect 201 with the created row, whose
+  `placeName`, `placeAddress`, `placeLocality`, `placePrimaryType`,
+  `placeTypes` and `location` were snapshotted from the `places` row, not
+  taken from the request.
 
-  The checkin is attributed to whoever the bearer token identifies — there is
-  no userId in the body. Confirm `userId` in the response matches the id from
-  Sign In As Test User.
+  `placeId` comes from Create Venue in the Places folder (run it first) or
+  from any `GET /places` result. The checkin is attributed to whoever the
+  bearer token identifies — there is no userId in the body. Confirm `userId`
+  in the response matches the id from Sign In As Test User.
 
   The post-response var captures the new id for Get Checkin and Update
   Checkin, so neither needs a hand-pasted uuid.

@@ -13,20 +13,11 @@ extension Place {
         return CLLocation(latitude: location.latitude, longitude: location.longitude)
     }
 
-    /// Just the street portion of the Google formatted address.
-    ///
-    /// "450 10th St, San Francisco, CA 94103, USA" becomes "450 10th St".
-    /// An address with no comma is returned whole. Returns `nil` when there is no
-    /// address, or when there is nothing but whitespace before the first comma —
-    /// in that case we would otherwise mislabel the city as a street.
+    /// Just the street line: "450 10th St". Returns `nil` when the place has
+    /// none, rather than showing the city where a street belongs.
     var streetLine: String? {
-        guard let address else { return nil }
-        let firstComponent = address.split(
-            separator: ",",
-            maxSplits: 1,
-            omittingEmptySubsequences: false
-        ).first ?? ""
-        let trimmed = firstComponent.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let street else { return nil }
+        let trimmed = street.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed
     }
 

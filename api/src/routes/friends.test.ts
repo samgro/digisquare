@@ -114,9 +114,10 @@ describe("GET /checkins", () => {
         checkin: {
           id: "880e8400-e29b-41d4-a716-446655440000",
           userId: OTHER_USER_ID,
-          googlePlaceId: "place",
+          placeId: "990e8400-e29b-41d4-a716-446655440000",
           placeName: "Blue Bottle",
           placeAddress: null,
+          placeLocality: null,
           placePrimaryType: "cafe",
           placeTypes: null,
           latitude: null,

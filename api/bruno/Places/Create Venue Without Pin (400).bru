@@ -1,0 +1,28 @@
+meta {
+  name: Create Venue Without Pin (400)
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/places
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "name": "Nowhere in Particular",
+    "primaryType": "Coffee Shop"
+  }
+}
+
+docs {
+  No coordinate, and a category that is a label rather than a code. Expect
+  a 400 with zod validation details for `latitude`, `longitude` and
+  `primaryType`. A venue with no pin could never be found by a nearby search.
+}

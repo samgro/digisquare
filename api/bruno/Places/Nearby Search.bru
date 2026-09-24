@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194
+  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194&accuracy=25
   body: none
   auth: none
 }
@@ -13,9 +13,15 @@ get {
 params:query {
   lat: 37.7749
   lng: -122.4194
+  accuracy: 25
 }
 
 docs {
-  Nearby places around San Francisco, ranked by popularity.
-  No `q` param, so the API calls Google's searchNearby endpoint.
+  Nearby places around San Francisco from the `places` table: the twenty
+  nearest, followed by large venues (parks, airports, stadiums...) within at
+  least 2 km that were not already listed. Empty until Overture data for the
+  area has been imported (see SETUP.md) or someone has created a venue there.
+
+  `accuracy` is the phone's horizontal accuracy in meters; above 1000 the
+  nearest-first search is skipped and only large venues are returned.
 }

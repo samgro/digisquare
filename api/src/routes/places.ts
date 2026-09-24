@@ -1,15 +1,16 @@
 import { Hono } from "hono";
 import { z } from "zod";
-import {
-  searchAutocomplete,
-  searchNearbyCandidates,
-  type GooglePlace,
-} from "../lib/google-places.js";
+import { database } from "../db/index.js";
+import { places as placesTable } from "../db/schema.js";
+import { toPlaceResult } from "../lib/place-result.js";
+import { findPlaceById, searchByName, searchNearbyCandidates } from "../lib/places-search.js";
+import { requireAuth } from "../middleware/require-auth.js";
+import type { AppEnv } from "../types.js";
 
 const querySchema = z.object({
   lat: z.coerce.number().min(-90).max(90),
   lng: z.coerce.number().min(-180).max(180),
-  q: z.string().trim().min(1).optional(),
+  q: z.string().trim().min(1).max(200).optional(),
   radius: z.coerce.number().int().positive().max(50000).default(1500),
   // The phone's horizontal accuracy in meters. Optional because older
   // clients don't send it and Core Location reports a negative value when
@@ -17,47 +18,48 @@ const querySchema = z.object({
   accuracy: z.coerce.number().nonnegative().max(100000).optional(),
 });
 
-export interface PlaceResult {
-  id: string;
-  name: string;
-  address: string | null;
-  location: { latitude: number; longitude: number } | null;
-  viewport: {
-    low: { latitude: number; longitude: number };
-    high: { latitude: number; longitude: number };
-  } | null;
-  types: string[];
-  primaryType: string | null;
-  rating: number | null;
-  userRatingCount: number | null;
-}
+const idParamSchema = z.object({
+  id: z.string().uuid(),
+});
 
-export function toResult(place: GooglePlace): PlaceResult {
-  return {
-    id: place.id,
-    name: place.displayName?.text ?? "",
-    address: place.formattedAddress ?? null,
-    location: place.location
-      ? { latitude: place.location.latitude, longitude: place.location.longitude }
-      : null,
-    viewport: place.viewport
-      ? {
-          low: { latitude: place.viewport.low.latitude, longitude: place.viewport.low.longitude },
-          high: {
-            latitude: place.viewport.high.latitude,
-            longitude: place.viewport.high.longitude,
-          },
-        }
-      : null,
-    types: place.types ?? [],
-    primaryType: place.primaryType ?? null,
-    rating: place.rating ?? null,
-    userRatingCount: place.userRatingCount ?? null,
-  };
-}
+/** Overture's category code shape: lower-case words joined by underscores. */
+const categoryCodeSchema = z
+  .string()
+  .trim()
+  .regex(/^[a-z0-9]+(_[a-z0-9]+)*$/, "Must be a category code such as coffee_shop");
 
-export const places = new Hono();
+const optionalText = (maximumLength: number) =>
+  z.string().trim().min(1).max(maximumLength).nullable().optional();
 
+/**
+ * A venue the user is adding by hand. The pin is mandatory: a place with no
+ * coordinate could never be found by a nearby search, only by name.
+ */
+const createPlaceSchema = z.object({
+  name: z.string().trim().min(1).max(200),
+  primaryType: categoryCodeSchema.nullable().optional(),
+  types: z.array(categoryCodeSchema).max(10).optional(),
+  street: optionalText(200),
+  locality: optionalText(100),
+  region: optionalText(100),
+  postcode: optionalText(20),
+  // ISO 3166-1 alpha-2, as Overture stores it.
+  country: z
+    .string()
+    .trim()
+    .regex(/^[A-Za-z]{2}$/, "Must be a two-letter country code")
+    .transform((code) => code.toUpperCase())
+    .nullable()
+    .optional(),
+  latitude: z.number().min(-90).max(90),
+  longitude: z.number().min(-180).max(180),
+  website: z.string().trim().url().max(500).nullable().optional(),
+  phone: optionalText(40),
+});
+
+export const places = new Hono<AppEnv>();
+
+// Open: the checkin flow must keep working while a token refresh is in flight.
 places.get("/", async (context) => {
   const parsed = querySchema.safeParse(context.req.query());
   if (!parsed.success) {
@@ -70,13 +72,78 @@ places.get("/", async (context) => {
   const { lat: latitude, lng: longitude, q: query, radius, accuracy } = parsed.data;
 
   try {
-    const googlePlaces = query
-      ? await searchAutocomplete({ query, latitude, longitude, radius })
+    const candidates = query
+      ? await searchByName({ query, latitude, longitude, radius })
       : await searchNearbyCandidates({ latitude, longitude, radius, accuracy });
 
-    return context.json({ results: googlePlaces.map(toResult) });
+    return context.json({ results: candidates.map(toPlaceResult) });
   } catch (error) {
     console.error(error);
-    return context.json({ error: "Failed to fetch places from Google" }, 502);
+    return context.json({ error: "Failed to search places" }, 500);
+  }
+});
+
+places.get("/:id", async (context) => {
+  const parsed = idParamSchema.safeParse({ id: context.req.param("id") });
+  if (!parsed.success) {
+    return context.json({ error: "Invalid place id" }, 400);
+  }
+
+  try {
+    const place = await findPlaceById(parsed.data.id);
+    if (!place) {
+      return context.json({ error: "Place not found" }, 404);
+    }
+    return context.json(toPlaceResult(place));
+  } catch (error) {
+    console.error(error);
+    return context.json({ error: "Failed to fetch place" }, 500);
+  }
+});
+
+places.post("/", requireAuth, async (context) => {
+  let body: unknown;
+  try {
+    body = await context.req.json();
+  } catch {
+    return context.json({ error: "Invalid JSON body" }, 400);
+  }
+
+  const parsed = createPlaceSchema.safeParse(body);
+  if (!parsed.success) {
+    return context.json({ error: "Invalid place", details: parsed.error.flatten() }, 400);
+  }
+
+  const draft = parsed.data;
+  // The primary category leads the list; alternates follow without repeats.
+  const types = [draft.primaryType ?? null, ...(draft.types ?? [])].filter(
+    (type, index, all): type is string => type !== null && all.indexOf(type) === index,
+  );
+
+  try {
+    const [created] = await database
+      .insert(placesTable)
+      .values({
+        source: "user",
+        name: draft.name,
+        primaryType: draft.primaryType ?? null,
+        types,
+        addressStreet: draft.street ?? null,
+        addressLocality: draft.locality ?? null,
+        addressRegion: draft.region ?? null,
+        addressPostcode: draft.postcode ?? null,
+        addressCountry: draft.country ?? null,
+        latitude: draft.latitude,
+        longitude: draft.longitude,
+        website: draft.website ?? null,
+        phone: draft.phone ?? null,
+        createdByUserId: context.get("userId"),
+      })
+      .returning();
+
+    return context.json(toPlaceResult({ ...created, checkinCount: 0 }), 201);
+  } catch (error) {
+    console.error(error);
+    return context.json({ error: "Failed to create place" }, 500);
   }
 });

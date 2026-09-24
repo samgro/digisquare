@@ -69,78 +69,71 @@ private let previewPlaces: [Place] = [
     Place(
         id: "1",
         name: "Blue Bottle Coffee",
-        address: "450 10th St, San Francisco, CA 94103, USA",
+        address: "450 10th St, San Francisco, CA 94103, US",
+        street: "450 10th St",
+        locality: "San Francisco",
         location: PlaceLocation(latitude: 37.7749, longitude: -122.4196),
-        types: ["cafe"],
+        types: ["coffee_shop", "cafe"],
         primaryType: "coffee_shop",
-        rating: 4.5,
-        userRatingCount: 1203
+        checkinCount: 120
     ),
     // Long name — exercises the two-line title.
     Place(
         id: "2",
         name: "Philz Coffee – Mint Plaza at Fifth and Mission Street",
-        address: "16 Mint Plaza, San Francisco, CA 94103, USA",
+        address: "16 Mint Plaza, San Francisco, CA 94103, US",
+        street: "16 Mint Plaza",
+        locality: "San Francisco",
         location: PlaceLocation(latitude: 37.7719, longitude: -122.4145),
-        types: ["cafe"],
+        types: ["coffee_shop"],
         primaryType: "coffee_shop",
-        rating: 4.4,
-        userRatingCount: 890
+        checkinCount: 89
     ),
     // No coordinate — address only, no leading separator.
     Place(
         id: "3",
+        source: .google,
         name: "Tartine Manufactory",
-        address: "595 Alabama St, San Francisco, CA 94110, USA",
+        address: "595 Alabama St, San Francisco, CA 94110, US",
+        street: "595 Alabama St",
+        locality: "San Francisco",
         location: nil,
         types: ["bakery"],
-        primaryType: "bakery",
-        rating: nil,
-        userRatingCount: nil
+        primaryType: "bakery"
     ),
     // No address — distance only.
     Place(
         id: "4",
         name: "Golden Gate Park",
-        address: nil,
         location: PlaceLocation(latitude: 37.7694, longitude: -122.4862),
         types: ["park"],
-        primaryType: "park",
-        rating: nil,
-        userRatingCount: nil
+        primaryType: "park"
     ),
-    // Address with no comma.
+    // A street line with no city.
     Place(
         id: "5",
+        source: .user,
         name: "Pier 39",
         address: "Pier 39",
+        street: "Pier 39",
         location: PlaceLocation(latitude: 37.8087, longitude: -122.4098),
-        types: ["tourist_attraction"],
-        primaryType: "tourist_attraction",
-        rating: nil,
-        userRatingCount: nil
+        types: ["attractions_and_activities"],
+        primaryType: "attractions_and_activities"
     ),
     // Neither distance nor address — subtitle is omitted entirely.
     Place(
         id: "6",
         name: "Mystery Spot",
-        address: nil,
-        location: nil,
-        types: [],
-        primaryType: nil,
-        rating: nil,
-        userRatingCount: nil
+        location: nil
     ),
     // Empty name from the server — exercises the title fallback.
     Place(
         id: "7",
         name: "",
-        address: "1 Ferry Building, San Francisco, CA 94111, USA",
-        location: PlaceLocation(latitude: 37.7955, longitude: -122.3937),
-        types: [],
-        primaryType: nil,
-        rating: nil,
-        userRatingCount: nil
+        address: "1 Ferry Building, San Francisco, CA 94111, US",
+        street: "1 Ferry Building",
+        locality: "San Francisco",
+        location: PlaceLocation(latitude: 37.7955, longitude: -122.3937)
     ),
 ]
 

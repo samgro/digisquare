@@ -22,23 +22,19 @@ struct VisitProcessorTests {
         Place(
             id: "cafe-1",
             name: "Four Barrel Coffee",
-            address: "375 Valencia St, San Francisco, CA 94103, USA",
+            address: "375 Valencia St, San Francisco, CA 94103, US",
             // Where ScenarioSpots.coffeeShop is, so visits there rank it first.
             location: PlaceLocation(latitude: 37.7599, longitude: -122.4216),
-            types: ["cafe"],
-            primaryType: "coffee_shop",
-            rating: 4.4,
-            userRatingCount: 2100
+            types: ["coffee_shop", "cafe"],
+            primaryType: "coffee_shop"
         ),
         Place(
             id: "bakery-1",
             name: "Tartine Bakery",
-            address: "600 Guerrero St, San Francisco, CA 94110, USA",
+            address: "600 Guerrero St, San Francisco, CA 94110, US",
             location: PlaceLocation(latitude: 37.7614, longitude: -122.4241),
             types: ["bakery"],
-            primaryType: "bakery",
-            rating: 4.5,
-            userRatingCount: 8000
+            primaryType: "bakery"
         ),
     ]
 
@@ -196,7 +192,7 @@ struct VisitProcessorTests {
         // Accepting posts to the API asynchronously; the history records the
         // checkin on success, which the test stands in for here.
         harness.history.recordCheckin(
-            VisitedPlaceEvent(coordinate: ScenarioSpots.coffeeShop.coordinate, googlePlaceId: "cafe-1", date: visit.arrivalDate)
+            VisitedPlaceEvent(coordinate: ScenarioSpots.coffeeShop.coordinate, placeId: "cafe-1", date: visit.arrivalDate)
         )
         let leaving = departure(harness, at: ScenarioSpots.coffeeShop, arrivalHour: 10, departureHour: 12)
         await harness.processor.process(leaving, now: leaving.departureDate!)
@@ -255,7 +251,7 @@ struct VisitProcessorTests {
         #expect(harness.store.suggestions.isEmpty)
         let saved = harness.store.savedEntries.first
         #expect(saved?.syncStatus == .saving)
-        #expect(saved?.draft?.googlePlaceId == "bakery-1")
+        #expect(saved?.draft?.placeId == "bakery-1")
         #expect(saved?.draft?.visibility == .onlyMe)
         #expect(saved?.draft?.source == .visit)
         #expect(saved?.draft?.createdAt == visit.arrivalDate)

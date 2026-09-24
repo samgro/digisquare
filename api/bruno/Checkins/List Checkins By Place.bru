@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/checkins?googlePlaceId=ChIJIQBpAG2ahYAR_6128GcTUEo
+  url: {{baseUrl}}/checkins?placeId={{placeId}}
   body: none
   auth: bearer
 }
@@ -15,9 +15,10 @@ auth:bearer {
 }
 
 params:query {
-  googlePlaceId: ChIJIQBpAG2ahYAR_6128GcTUEo
+  placeId: {{placeId}}
 }
 
 docs {
-  Lists checkins filtered to a single googlePlaceId.
+  Lists checkins filtered to a single place, still limited to your own and
+  your friends'.
 }

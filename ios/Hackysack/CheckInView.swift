@@ -6,8 +6,18 @@
 import CoreLocation
 import SwiftUI
 
+/// Where the checkin flow can go from the place list.
+enum CheckInRoute: Hashable {
+    /// Write a message for this place and submit.
+    case compose(Place)
+    /// Add a venue the data does not have, then compose for it.
+    case createPlace
+}
+
 /// First step of the checkin flow: pick a nearby place. Selecting one pushes
 /// `CheckInComposeView`; submitting there saves the checkin and closes this cover.
+/// A place that is not listed can be added from the list's last row or from
+/// the empty states, which pushes `CreatePlaceView` instead.
 ///
 /// Places come back from the API in search order and are re-ranked here with
 /// `PlaceRanker` using the fix's accuracy, each venue's size and the user's
@@ -19,7 +29,7 @@ struct CheckInView: View {
     @Environment(LocationManager.self) private var locationManager
     @EnvironmentObject private var checkinStore: CheckinStore
 
-    @State private var navigationPath: [Place] = []
+    @State private var navigationPath: [CheckInRoute] = []
     @State private var rankedPlaces: [RankedPlace] = []
     @State private var searchText = ""
     @State private var isLoading = false
@@ -53,8 +63,17 @@ struct CheckInView: View {
             content
                 .navigationTitle("Check In")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationDestination(for: Place.self) { place in
-                    composeView(for: place)
+                .navigationDestination(for: CheckInRoute.self) { route in
+                    switch route {
+                    case .compose(let place):
+                        composeView(for: place)
+                    case .createPlace:
+                        CreatePlaceView(initialName: searchText) { place in
+                            // The new venue replaces the form on the stack, so
+                            // Back from compose returns to the list, not the form.
+                            navigationPath = [.compose(place)]
+                        }
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
@@ -140,17 +159,24 @@ struct CheckInView: View {
     }
 
     private var placesList: some View {
-        List(rankedPlaces) { rankedPlace in
-            NavigationLink(value: rankedPlace.place) {
-                PlaceRow(
-                    place: rankedPlace.place,
-                    userLocation: locationManager.location,
-                    visitCount: rankedPlace.visitCount
-                )
+        List {
+            ForEach(rankedPlaces) { rankedPlace in
+                NavigationLink(value: CheckInRoute.compose(rankedPlace.place)) {
+                    PlaceRow(
+                        place: rankedPlace.place,
+                        userLocation: locationManager.location,
+                        visitCount: rankedPlace.visitCount
+                    )
+                }
+                // Without this the borderless style tints the row's text with the
+                // accent color, which is why the name currently renders blue.
+                .buttonStyle(.plain)
             }
-            // Without this the borderless style tints the row's text with the
-            // accent color, which is why the name currently renders blue.
-            .buttonStyle(.plain)
+            NavigationLink(value: CheckInRoute.createPlace) {
+                Label("Can't find it? Add a place", systemImage: "plus.circle")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(Color.accentColor)
+            }
         }
         .listStyle(.plain)
         .scrollDismissesKeyboard(.interactively)
@@ -159,10 +185,27 @@ struct CheckInView: View {
     @ViewBuilder
     private var emptyState: some View {
         if searchText.isEmpty {
-            NoPlacesNearbyView()
+            NoPlacesNearbyView {
+                navigationPath.append(.createPlace)
+            }
         } else {
-            ContentUnavailableView.search(text: searchText)
+            ContentUnavailableView {
+                Label("No Results for \"\(searchText)\"", systemImage: "magnifyingglass")
+            } description: {
+                Text("Check the spelling, or add it as a new place.")
+            } actions: {
+                addPlaceButton
+            }
         }
+    }
+
+    private var addPlaceButton: some View {
+        Button {
+            navigationPath.append(.createPlace)
+        } label: {
+            Label("Add a Place", systemImage: "plus")
+        }
+        .buttonStyle(.borderedProminent)
     }
 
     /// True while we are still waiting on the very first set of results, either
@@ -267,7 +310,7 @@ struct CheckInView: View {
         var transaction = Transaction()
         transaction.disablesAnimations = true
         withTransaction(transaction) {
-            navigationPath = [suggestion]
+            navigationPath = [.compose(suggestion)]
         }
     }
 }
@@ -286,11 +329,18 @@ private extension LocationFix {
 /// Extracted so the empty state can be previewed and iterated on without booting
 /// the whole screen against a running API.
 private struct NoPlacesNearbyView: View {
+    var onAddPlace: () -> Void = {}
+
     var body: some View {
         ContentUnavailableView {
             Label("No Places Nearby", systemImage: Glyphs.noPlacesNearby)
         } description: {
-            Text("Search for a place by name to check in.")
+            Text("Search for a place by name, or add one.")
+        } actions: {
+            Button(action: onAddPlace) {
+                Label("Add a Place", systemImage: "plus")
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }

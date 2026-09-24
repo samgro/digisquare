@@ -34,10 +34,15 @@ enum RelativeDay {
 }
 
 extension Checkin {
-    /// The city/locality portion of the Google formatted address, e.g.
-    /// "450 10th St, San Francisco, CA 94103, USA" → "San Francisco". Returns
-    /// `nil` when there's no address or no second comma-separated component.
+    /// The city, as the API stored it with the checkin. Rows saved before the
+    /// API kept it separately fall back to the second comma-separated part of
+    /// the address line: "450 10th St, San Francisco, CA 94103, US" →
+    /// "San Francisco". Returns `nil` when neither is available.
     var locality: String? {
+        if let placeLocality {
+            let trimmed = placeLocality.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !trimmed.isEmpty { return trimmed }
+        }
         guard let placeAddress else { return nil }
         let components = placeAddress.split(separator: ",", omittingEmptySubsequences: false)
         guard components.count > 1 else { return nil }

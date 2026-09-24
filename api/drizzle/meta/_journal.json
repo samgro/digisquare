@@ -57,6 +57,13 @@
       "when": 1790373444946,
       "tag": "0007_add_likes_comments_notifications",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1790379642724,
+      "tag": "0008_add_places",
+      "breakpoints": true
     }
   ]
 }

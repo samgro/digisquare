@@ -5,6 +5,10 @@
  * the lock icon and the friends feed's privacy rule can be checked by signing
  * in as one user and then as a friend.
  *
+ * The branches come from the `places` table, so import Overture for each
+ * test user's home city first (see SETUP.md). A chain with no branch there is
+ * skipped with a warning.
+ *
  * Safe to run repeatedly: the users are upserted by fixed id, and their
  * checkins and friendships with each other are replaced each run.
  *
@@ -18,7 +22,8 @@ import {
   friendships as friendshipsTable,
   users as usersTable,
 } from "../src/db/schema.js";
-import { searchText, type GooglePlace } from "../src/lib/google-places.js";
+import { formatAddress } from "../src/lib/place-result.js";
+import { searchByName, type PlaceCandidate } from "../src/lib/places-search.js";
 import {
   SEEDED_CHAINS,
   SEEDED_CHECKIN_MESSAGES,
@@ -37,8 +42,8 @@ if (!config.ENABLE_TEST_USERS) {
 }
 
 /** The nearest search result that is actually a branch of the chain. */
-async function findBranch(chain: string, testUser: SeededTestUser): Promise<GooglePlace | null> {
-  const results = await searchText({
+async function findBranch(chain: string, testUser: SeededTestUser): Promise<PlaceCandidate | null> {
+  const results = await searchByName({
     query: chain,
     latitude: testUser.homeCity.latitude,
     longitude: testUser.homeCity.longitude,
@@ -46,7 +51,7 @@ async function findBranch(chain: string, testUser: SeededTestUser): Promise<Goog
   });
   return (
     results.find((place) =>
-      place.displayName?.text.toLowerCase().includes(chain.toLowerCase()),
+      place.name.toLowerCase().includes(chain.toLowerCase()),
     ) ?? null
   );
 }
@@ -91,13 +96,14 @@ async function seed() {
       const checkinNumber = userIndex * SEEDED_CHAINS.length + chainIndex;
       checkinValues.push({
         userId: testUser.id,
-        googlePlaceId: place.id,
-        placeName: place.displayName?.text ?? chain,
-        placeAddress: place.formattedAddress ?? null,
-        placePrimaryType: place.primaryType ?? null,
-        placeTypes: place.types ?? null,
-        latitude: place.location?.latitude ?? null,
-        longitude: place.location?.longitude ?? null,
+        placeId: place.id,
+        placeName: place.name,
+        placeAddress: formatAddress(place),
+        placeLocality: place.addressLocality,
+        placePrimaryType: place.primaryType,
+        placeTypes: place.types,
+        latitude: place.latitude,
+        longitude: place.longitude,
         message:
           checkinNumber % 2 === 0
             ? SEEDED_CHECKIN_MESSAGES[(checkinNumber / 2) % SEEDED_CHECKIN_MESSAGES.length]
@@ -106,7 +112,7 @@ async function seed() {
         source: checkinNumber % 4 === 2 ? "visit" : "manual",
         createdAt: seededCheckinTime(userIndex, chainIndex),
       });
-      console.log(`  ${testUser.name}: ${place.displayName?.text} — ${place.formattedAddress}`);
+      console.log(`  ${testUser.name}: ${place.name} — ${formatAddress(place)}`);
     }
   }
 

@@ -16,13 +16,11 @@ auth:bearer {
 
 body:json {
   {
-    "googlePlaceId": "ChIJrRMgU7NZwokR8OFysXqOtaI",
-    "placeName": "Central Park"
+    "placeId": "{{placeId}}"
   }
 }
 
 docs {
-  Creates a checkin with only the required fields. Expect a 201 with
-  `placeAddress`, `placePrimaryType`, `placeTypes`, `location`, and
-  `message` all null.
+  Creates a checkin with only the required field. Expect a 201 with
+  `message` null and the place snapshot filled in from the database.
 }

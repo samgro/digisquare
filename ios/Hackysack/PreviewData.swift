@@ -7,14 +7,18 @@ import Foundation
 
 extension Place {
     static let preview = Place(
-        id: "ChIJpreview",
+        id: "a2c1f0e4-6b7d-4e3a-9c1f-1d2e3f4a5b6c",
         name: "Blue Bottle Coffee",
-        address: "315 Linden St, San Francisco",
+        address: "315 Linden St, San Francisco, CA 94102, US",
+        street: "315 Linden St",
+        locality: "San Francisco",
+        region: "US-CA",
+        postcode: "94102",
+        country: "US",
         location: PlaceLocation(latitude: 37.7764, longitude: -122.4231),
-        types: ["cafe", "coffee_shop"],
-        primaryType: "cafe",
-        rating: 4.5,
-        userRatingCount: 1200
+        types: ["coffee_shop", "cafe"],
+        primaryType: "coffee_shop",
+        checkinCount: 12
     )
 }
 
@@ -35,9 +39,10 @@ extension Checkin {
         return Checkin(
             id: id,
             userId: userId,
-            googlePlaceId: Place.preview.id,
+            placeId: Place.preview.id,
             placeName: Place.preview.name,
             placeAddress: Place.preview.address,
+            placeLocality: Place.preview.locality,
             placePrimaryType: primaryType,
             placeTypes: Place.preview.types,
             location: Place.preview.location,

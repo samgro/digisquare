@@ -8,7 +8,7 @@ import Foundation
 /// One past checkin, reduced to what ranking needs. Decodable so the unit
 /// tests can load sample histories from the shared fixtures.
 nonisolated struct CheckinHistoryEntry: Decodable, Hashable, Sendable {
-    let googlePlaceId: String
+    let placeId: String
     let createdAt: Date
     let placeName: String
     let placeAddress: String?
@@ -17,7 +17,7 @@ nonisolated struct CheckinHistoryEntry: Decodable, Hashable, Sendable {
     let location: PlaceLocation?
 
     init(
-        googlePlaceId: String,
+        placeId: String,
         createdAt: Date,
         placeName: String,
         placeAddress: String? = nil,
@@ -25,7 +25,7 @@ nonisolated struct CheckinHistoryEntry: Decodable, Hashable, Sendable {
         placeTypes: [String] = [],
         location: PlaceLocation? = nil
     ) {
-        self.googlePlaceId = googlePlaceId
+        self.placeId = placeId
         self.createdAt = createdAt
         self.placeName = placeName
         self.placeAddress = placeAddress
@@ -37,7 +37,7 @@ nonisolated struct CheckinHistoryEntry: Decodable, Hashable, Sendable {
     @MainActor
     init(checkin: Checkin) {
         self.init(
-            googlePlaceId: checkin.googlePlaceId,
+            placeId: checkin.placeId,
             createdAt: checkin.createdAt,
             placeName: checkin.placeName,
             placeAddress: checkin.placeAddress,

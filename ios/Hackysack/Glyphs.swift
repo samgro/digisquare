@@ -46,6 +46,7 @@ nonisolated enum Glyphs {
     static let placeBar = "wineglass.fill"
     static let placePark = "tree.fill"
     static let placeGym = "dumbbell.fill"
+    static let placeStadium = "sportscourt.fill"
     static let placeStore = "bag.fill"
     static let placeTheater = "theatermasks.fill"
     static let placeMuseum = "building.columns.fill"

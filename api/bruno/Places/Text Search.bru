@@ -17,8 +17,8 @@ params:query {
 }
 
 docs {
-  Text search for "coffee" biased around San Francisco. The `q` param routes
-  this to Google's places:autocomplete endpoint, followed by a Place Details
-  call for each of the top predictions, so partial/prefix input matches too
-  (see "Partial Prefix Search").
+  Name search for "coffee" around San Francisco, at least 50 km out whatever
+  `radius` says. Case-insensitive substring match on the name; places whose
+  name starts a word with the query come first, then the most checked-in,
+  then the nearest.
 }

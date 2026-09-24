@@ -1,6 +1,6 @@
 # Setup Guide
 
-Manual, step-by-step setup for hosting this API on Railway with a Neon Postgres database and the Google Places API.
+Manual, step-by-step setup for hosting this API on Railway with a Neon Postgres database and place data from Overture Maps.
 
 ## 1. Neon (Postgres database)
 
@@ -34,22 +34,45 @@ Railway build, so a deploy that needs a new table needs `db:migrate` first.
 > attributed to any real account. Neon branches are copy-on-write and instant:
 > open the project's **Branches** tab and click **New Branch** from `main`.
 
-## 2. Google Places API
+## 2. Overture Maps (place data)
 
-1. Go to https://console.cloud.google.com and create a new project (or select an existing one).
-2. In the left sidebar, go to **APIs & Services > Library**.
-3. Search for **"Places API (New)"** and click **Enable**.
-4. Google Places requires billing to be enabled on the project:
-   - Go to **Billing** in the sidebar and link a billing account (Google provides a recurring free monthly credit for Places API usage).
-5. Create an API key:
-   - Go to **APIs & Services > Credentials**.
-   - Click **Create Credentials > API key**.
-   - Copy the generated key.
-6. Restrict the key (recommended):
-   - Click into the new key's settings.
-   - Under **API restrictions**, select **Restrict key** and choose **Places API (New)**.
-   - Under **Application restrictions**, restrict by IP address (Railway's outbound IP, if static) or leave unrestricted for initial testing, then tighten later.
-7. Save this as `GOOGLE_PLACES_API_KEY`.
+Places come from the [Overture Maps Foundation](https://overturemaps.org)
+places dataset, an open, monthly-updated set of about 50 million points of
+interest, loaded into the `places` table of your own database. There is no
+API key and nothing is billed per request; you import the areas your users
+are in and refresh them when a new release lands. Users can also add venues
+from the app, which land in the same table with `source = 'user'`.
+
+1. Install the official download CLI (needs Python 3.9+):
+   ```bash
+   pip install overturemaps
+   ```
+2. Download the places for an area as newline-delimited GeoJSON. The bounding
+   box is `west,south,east,north`; this one covers San Francisco:
+   ```bash
+   overturemaps download --bbox=-122.55,37.70,-122.35,37.85 \
+     -f geojsonseq --type=place -o sf-places.geojsonseq
+   ```
+   A city is tens of thousands of places and downloads in a minute or two.
+   Larger areas work the same way, just slower; import each metro your users
+   are in rather than a whole country.
+3. Apply the migrations (step 1) and import the file:
+   ```bash
+   npm run overture:import -- sf-places.geojsonseq
+   ```
+   Rows are upserted on Overture's stable GERS id, so re-running with a newer
+   release updates places in place, never duplicates them, and checkins keep
+   pointing at the same rows. Permanently closed places are skipped. Repeat
+   for every area, then again whenever you want a fresher release.
+4. Check it worked:
+   ```bash
+   curl "https://<your-api>/places?lat=37.7749&lng=-122.4194&q=coffee"
+   ```
+
+Migration `0008_add_places` also carries over any checkins made while the
+app used Google Places: each distinct Google place becomes a `places` row
+with `source = 'google'`, so old timelines and history-based ranking keep
+working. The Google API key is no longer needed anywhere.
 
 ## 3. Cloudflare R2 (avatar storage)
 
@@ -91,7 +114,6 @@ query-string credentials.
    - Alternatively, install the Railway CLI (`npm i -g @railway/cli`), run `railway login`, then `railway init` and `railway up` from this project's root.
 3. Once the project is created, open the service and go to the **Variables** tab. Add:
    - `DATABASE_URL` — the Neon pooled connection string from step 1.
-   - `GOOGLE_PLACES_API_KEY` — the key from step 2.
    - `AUTH_JWT_SECRET` — generate one with `openssl rand -base64 48`. Changing
      it later signs every user out, since it invalidates all existing access
      tokens.
@@ -118,9 +140,9 @@ query-string credentials.
    ```bash
    cp .env.example .env
    ```
-2. Fill in `.env`. `DATABASE_URL`, `GOOGLE_PLACES_API_KEY`, `AUTH_JWT_SECRET`
-   and the five `R2_*` values are all required — the server exits at startup
-   and names anything missing.
+2. Fill in `.env`. `DATABASE_URL`, `AUTH_JWT_SECRET` and the five `R2_*`
+   values are all required — the server exits at startup and names anything
+   missing.
 3. Install dependencies and run the dev server:
    ```bash
    npm install
@@ -135,34 +157,49 @@ query-string credentials.
    run without a `.env`. Note the endpoints that need a database are covered
    against a stub — verifying the SQL still means pointing `DATABASE_URL` at a
    real Postgres and running the Bruno collection.
-5. Exercise the endpoints:
+5. Import some places (step 2) for wherever you will be testing from, then
+   exercise the endpoints:
    ```bash
-   # Nearby places, ranked by popularity
-   curl "http://localhost:3000/places?lat=37.7749&lng=-122.4194"
+   # Nearby places: the 20 nearest, then large venues within 2 km
+   curl "http://localhost:3000/places?lat=37.7749&lng=-122.4194&accuracy=25"
 
-   # Text search near a location, ranked by relevance
+   # Name search near a location
    curl "http://localhost:3000/places?lat=37.7749&lng=-122.4194&q=coffee"
 
    # Optional radius override (meters, default 1500, max 50000)
    curl "http://localhost:3000/places?lat=37.7749&lng=-122.4194&radius=500"
+
+   # One place, with how many checkins it has
+   curl "http://localhost:3000/places/<placeId>"
    ```
 
-   `/places` is open, but `/checkins` and `/users` need a bearer token. The
-   only real sign in is Apple, which needs a device, so locally sign in as a
-   test user instead. Set `ENABLE_TEST_USERS=true` in `.env`, seed the test
-   users (Alice, Bob, Catherine and David, each with checkins at real chain
-   locations in their home city, and all friends with each other), then use
-   the token it returns:
+   Searching `/places` is open, but creating a venue there, and everything
+   under `/checkins` and `/users`, needs a bearer token. The only real sign in
+   is Apple, which needs a device, so locally sign in as a test user instead.
+   Set `ENABLE_TEST_USERS=true` in `.env`, seed the test users (Alice, Bob,
+   Catherine and David, each with checkins at real chain locations in their
+   home city, and all friends with each other), then use the token it returns:
    ```bash
    npm run db:seed-test-users
 
    curl -X POST http://localhost:3000/auth/test-users/7e570000-0000-4000-8000-000000000001/session
 
    curl http://localhost:3000/users/me -H "Authorization: Bearer <accessToken>"
+
+   # Add a venue by hand, then check in there
+   curl -X POST http://localhost:3000/places \
+     -H "Authorization: Bearer <accessToken>" -H "Content-Type: application/json" \
+     -d '{"name":"My Garage","primaryType":"bar","latitude":37.7751,"longitude":-122.4189}'
+
+   curl -X POST http://localhost:3000/checkins \
+     -H "Authorization: Bearer <accessToken>" -H "Content-Type: application/json" \
+     -d '{"placeId":"<id from the response above>","message":"Band practice"}'
    ```
-   The seed calls Google Places, and can be rerun at any time. It replaces the
-   test users' checkins and friendships with each other each run. Leave
-   `ENABLE_TEST_USERS` off anywhere real people have accounts: the
-   `/auth/test-users` routes sign in with no credential.
-   The Bruno collection in `bruno/` captures the token automatically and covers
-   the error cases too.
+   The seed checks the test users in at branches already in the `places`
+   table, so import Overture for their home cities first (step 2). It can be
+   rerun at any time, and replaces the test users' checkins and friendships
+   with each other each run. Leave `ENABLE_TEST_USERS` off anywhere real
+   people have accounts: the `/auth/test-users` routes sign in with no
+   credential.
+   The Bruno collection in `bruno/` captures the token and the venue id
+   automatically and covers the error cases too.

@@ -18,9 +18,8 @@ params:query {
 
 docs {
   Regression case for a bug where `q=cos` returned "Cos Bar San Francisco"
-  but not "Costco" -- Google's old searchText endpoint only matches whole
-  tokens, so a partial prefix like "cos" never matched inside "Costco".
-
-  Expect "Costco Wholesale" to appear in `results`, ahead of "Cos Bar San
-  Francisco".
+  but not "Costco" -- the old Google searchText endpoint only matched whole
+  tokens. The database search matches substrings through the trigram index,
+  so expect both, with the word-start matches ("Cos Bar", "Costco") ahead of
+  interior ones ("Tacos").
 }

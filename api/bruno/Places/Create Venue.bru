@@ -1,0 +1,46 @@
+meta {
+  name: Create Venue
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/places
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "name": "Bruno's Garage Bar",
+    "primaryType": "bar",
+    "types": ["cocktail_bar"],
+    "street": "12 Elm St",
+    "locality": "San Francisco",
+    "region": "US-CA",
+    "postcode": "94103",
+    "country": "US",
+    "latitude": 37.7751,
+    "longitude": -122.4189,
+    "website": "https://example.com",
+    "phone": "+1 415-555-0100"
+  }
+}
+
+vars:post-response {
+  placeId: res.body.id
+}
+
+docs {
+  Adds a venue by hand. Only `name`, `latitude` and `longitude` are required;
+  `primaryType` and `types` are Overture category codes (coffee_shop, bar,
+  park...), `region` an ISO 3166-2 code and `country` a two-letter ISO code.
+  Expect 201 with `source: "user"` and `checkinCount: 0`.
+
+  The post-response var captures the new id for Get Place and the Checkins
+  folder, so none of those needs a hand-pasted uuid. Run this before them.
+}
