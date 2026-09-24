@@ -63,13 +63,13 @@ beforeEach(() => {
 });
 
 describe("POST /checkins visibility and source", () => {
-  it("defaults to a public, manual checkin", async () => {
+  it("defaults to a friends-visible, manual checkin", async () => {
     controls.queue([SAVED_ROW]);
     const response = await send("POST", "/", VALID_BODY);
     expect(response.status).toBe(201);
 
     const [inserted] = argumentsOf("values");
-    expect(inserted).toMatchObject({ visibility: "public", source: "manual" });
+    expect(inserted).toMatchObject({ visibility: "friends", source: "manual" });
     expect(inserted).not.toHaveProperty("createdAt");
   });
 
@@ -113,8 +113,8 @@ describe("POST /checkins visibility and source", () => {
     });
   });
 
-  it("400s on an unknown visibility", async () => {
-    const response = await send("POST", "/", { ...VALID_BODY, visibility: "friends" });
+  it("400s on an unknown visibility such as \"public\"", async () => {
+    const response = await send("POST", "/", { ...VALID_BODY, visibility: "public" });
     expect(response.status).toBe(400);
 
     const body = (await response.json()) as { details: { fieldErrors: Record<string, unknown> } };
@@ -150,14 +150,14 @@ describe("POST /checkins visibility and source", () => {
 });
 
 describe("isVisibleCheckin", () => {
-  it("shows all of your own checkins but only your friends' public ones", () => {
+  it("shows all of your own checkins but only your friends' non-private ones", () => {
     const query = dialect.sqlToQuery(isVisibleCheckin(CURRENT_USER_ID));
 
     // Your own: `user_id = $1` with no visibility check alongside it.
     expect(query.sql).toMatch(/^\("checkins"\."user_id" = \$1 or \(/);
-    // A friend's: the friend subquery and the public check, joined by `and`.
+    // A friend's: the friend subquery and the visibility check, joined by `and`.
     expect(query.sql).toMatch(/"checkins"\."user_id" in \(.*\) and "checkins"\."visibility" = \$\d+\)\)$/s);
-    expect(query.params).toContain("public");
+    expect(query.params).toContain("friends");
   });
 
   it("is the condition GET /checkins filters by", async () => {
@@ -173,10 +173,10 @@ describe("isVisibleCheckin", () => {
 
 describe("PATCH /checkins/:id visibility", () => {
   it("updates visibility", async () => {
-    controls.queue([{ ...SAVED_ROW, visibility: "public" }]);
-    const response = await send("PATCH", `/${SAVED_ROW.id}`, { visibility: "public" });
+    controls.queue([{ ...SAVED_ROW, visibility: "friends" }]);
+    const response = await send("PATCH", `/${SAVED_ROW.id}`, { visibility: "friends" });
     expect(response.status).toBe(200);
-    expect(argumentsOf("set")).toEqual([{ visibility: "public" }]);
+    expect(argumentsOf("set")).toEqual([{ visibility: "friends" }]);
   });
 
   it("still rejects an empty update", async () => {

@@ -129,7 +129,7 @@ final class CheckinStore: ObservableObject {
     }
 
     /// Optimistically inserts the checkin at the top of the timeline and saves it in the background.
-    func submit(place: Place, message: String?, visibility: CheckinVisibility = .everyone) {
+    func submit(place: Place, message: String?, visibility: CheckinVisibility = .friends) {
         submit(draft: CheckinDraft(place: place, message: message, visibility: visibility))
     }
 

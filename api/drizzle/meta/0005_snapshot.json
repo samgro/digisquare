@@ -106,7 +106,7 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'public'"
+          "default": "'friends'"
         },
         "source": {
           "name": "source",

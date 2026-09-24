@@ -214,7 +214,7 @@ users.get("/:id", async (context) => {
       .where(
         and(
           eq(checkinsTable.userId, user.id),
-          isOwnProfile ? undefined : eq(checkinsTable.visibility, "public"),
+          isOwnProfile ? undefined : eq(checkinsTable.visibility, "friends"),
         ),
       );
     // Like the checkin count, public; who the friends are is not returned.

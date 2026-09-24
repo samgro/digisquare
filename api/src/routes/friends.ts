@@ -63,7 +63,7 @@ friends.get("/checkins", async (context) => {
       .select({ checkin: checkinsTable, user: usersTable })
       .from(checkinsTable)
       .innerJoin(usersTable, eq(usersTable.id, checkinsTable.userId))
-      .where(and(isVisibleCheckin(context.get("userId")), eq(checkinsTable.visibility, "public")))
+      .where(and(isVisibleCheckin(context.get("userId")), eq(checkinsTable.visibility, "friends")))
       .orderBy(desc(checkinsTable.createdAt))
       .limit(parsed.data.limit)
       .offset(parsed.data.offset);

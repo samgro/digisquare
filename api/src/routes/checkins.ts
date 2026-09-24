@@ -31,7 +31,7 @@ const createCheckinSchema = z.object({
   latitude: z.number().min(-90).max(90).nullable().optional(),
   longitude: z.number().min(-180).max(180).nullable().optional(),
   message: z.string().trim().min(1).max(2000).nullable().optional(),
-  visibility: z.enum(CHECKIN_VISIBILITIES).default("public"),
+  visibility: z.enum(CHECKIN_VISIBILITIES).default("friends"),
   source: z.enum(CHECKIN_SOURCES).default("manual"),
   // A checkin accepted from a detected visit is backdated to when the visit
   // started, so the timeline shows when the user was there rather than when
@@ -114,7 +114,7 @@ checkins.get("/", async (context) => {
 
   const { userId, googlePlaceId, limit, offset } = parsed.data;
   const conditions = [
-    // Only your own checkins and your friends' public ones. A stranger's
+    // Only your own checkins and your friends' non-private ones. A stranger's
     // userId is filtered to an empty list rather than refused, so the response
     // does not confirm the user exists.
     isVisibleCheckin(context.get("userId")),

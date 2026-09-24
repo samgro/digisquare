@@ -114,7 +114,7 @@ struct VisitProcessorTests {
         #expect(harness.store.suggestions.count == 1)
         #expect(harness.store.suggestions.first?.selectedPlace?.id == "cafe-1")
         #expect(harness.store.suggestions.first?.alternativePlaces.map(\.id) == ["bakery-1"])
-        #expect(harness.store.suggestions.first?.visibility == .everyone)
+        #expect(harness.store.suggestions.first?.visibility == .friends)
         #expect(harness.store.timelineEntries.first?.syncStatus == .suggested)
     }
 
