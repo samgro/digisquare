@@ -14,18 +14,13 @@ struct ContentView: View {
     @Environment(LocationManager.self) private var locationManager
     @EnvironmentObject private var checkinStore: CheckinStore
     @State private var friendsStore = FriendsStore()
+    @State private var notificationsStore = NotificationsStore()
+    @State private var socialStore = CheckinSocialStore()
     @Environment(\.scenePhase) private var scenePhase
 
     /// The signed-in user's id, or nil while signing in. ContentView only
     /// appears behind the auth gate, so in practice this is always set.
-    private var signedInUserId: String? {
-        switch authManager.state {
-        case .signedIn(let profile), .needsProfileSetup(let profile):
-            return profile.id
-        case .launching, .signedOut:
-            return nil
-        }
-    }
+    private var signedInUserId: String? { authManager.currentProfile?.id }
 
     var body: some View {
         TabView {
@@ -35,13 +30,10 @@ struct ContentView: View {
             Tab("Friends", systemImage: Glyphs.friendsTab) {
                 FriendsView()
             }
-            // Zero hides the badge.
-            .badge(friendsStore.pendingRequestCount)
-            Tab("Profile", systemImage: Glyphs.profileTab) {
-                ProfileView()
-            }
         }
         .environment(friendsStore)
+        .environment(notificationsStore)
+        .environment(socialStore)
         .onAppear {
             locationManager.requestPermissionsIfNeeded()
             // The scenePhase observer below only fires on a change. After
@@ -51,16 +43,20 @@ struct ContentView: View {
                 locationManager.startUpdatingLocation()
             }
             checkinStore.currentUserId = signedInUserId
-            Task { await friendsStore.loadRequests() }
+            connectSocialStore()
+            Task { await notificationsStore.refreshUnreadCount() }
         }
         .onChange(of: signedInUserId) { _, newUserId in
             // Keeps the timeline pointed at the right account if the signed-in
             // user changes underneath this view.
             checkinStore.currentUserId = newUserId
-            // A fresh store, so the Friends badge and feed never show
-            // the previous account's requests or friends.
+            // Fresh stores, so the bell and the Friends feed never show the
+            // previous account's notifications or friends.
             friendsStore = FriendsStore()
-            Task { await friendsStore.loadRequests() }
+            notificationsStore = NotificationsStore()
+            socialStore = CheckinSocialStore()
+            connectSocialStore()
+            Task { await notificationsStore.refreshUnreadCount() }
         }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
@@ -72,9 +68,9 @@ struct ContentView: View {
                 if checkinStore.hasLoadedTimeline {
                     Task { await checkinStore.loadTimeline() }
                 }
-                // Keeps the Friends badge current when coming back to the
-                // app; requests arrive while it's in the background.
-                Task { await friendsStore.loadRequests() }
+                // Keeps the bell badge current when coming back to the app;
+                // likes, comments and requests arrive while it's in the background.
+                Task { await notificationsStore.refreshUnreadCount() }
             case .background:
                 locationManager.stopUpdatingLocation()
             case .inactive:
@@ -82,6 +78,18 @@ struct ContentView: View {
             @unknown default:
                 break
             }
+        }
+    }
+
+    /// Every like, comment or edit reaches both feeds' copies of the checkin.
+    /// Re-run whenever the stores are replaced, so the closure never holds a
+    /// store that has been thrown away.
+    private func connectSocialStore() {
+        let checkinStore = checkinStore
+        let friendsStore = friendsStore
+        socialStore.onCheckinChanged = { checkin in
+            checkinStore.apply(checkin)
+            friendsStore.apply(checkin)
         }
     }
 }

@@ -10,8 +10,9 @@ struct FriendsView: View {
     @EnvironmentObject private var checkinStore: CheckinStore
 
     @State private var isAddingFriends = false
-    @State private var isShowingFriendRequests = false
     @State private var selectedUser: UserSummary?
+    @State private var selectedCheckin: CheckinDetailDestination?
+    @State private var commentingCheckin: Checkin?
 
     var body: some View {
         NavigationStack {
@@ -20,38 +21,27 @@ struct FriendsView: View {
                 CheckInFAB()
             }
             .navigationTitle("Friends")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        isAddingFriends = true
-                    } label: {
-                        Label("Add Friends", systemImage: Glyphs.addFriend)
-                    }
-                }
-            }
-            // Above the feed and its empty states alike, where it's the
-            // first thing seen after tapping the badged tab, and gone
-            // entirely when there is nothing to review.
-            .safeAreaInset(edge: .top) {
-                if !friendsStore.incomingRequests.isEmpty {
-                    friendRequestsBanner
-                }
-            }
-            .animation(.default, value: friendsStore.incomingRequests.isEmpty)
-            .fullScreenCover(isPresented: $isShowingFriendRequests) {
-                FriendRequestsView()
-            }
+            .homeNavigationBar(
+                searchTitle: "Search Friends",
+                searchLabel: "Search friends",
+                searchDescription: "Searching your friends is coming soon."
+            )
+            // Reached from the empty state; your profile has the everyday
+            // Add Friends button.
             .navigationDestination(isPresented: $isAddingFriends) {
                 AddFriendsView()
             }
             .navigationDestination(item: $selectedUser) { user in
                 UserProfileView(user: user)
             }
-            .task {
-                await friendsStore.loadFeed()
+            .navigationDestination(item: $selectedCheckin) { destination in
+                CheckinDetailView(destination: destination)
+            }
+            .sheet(item: $commentingCheckin) { checkin in
+                CommentsSheet(checkin: checkin)
             }
             .task {
-                await friendsStore.loadRequests()
+                await friendsStore.loadFeed()
             }
             // Your own checkins are in the feed too, so one saved from the
             // button on this tab shows up without a pull to refresh.
@@ -61,22 +51,7 @@ struct FriendsView: View {
         }
     }
 
-    private var friendRequestsBanner: some View {
-        Button {
-            isShowingFriendRequests = true
-        } label: {
-            FriendRequestsBanner(requests: friendsStore.incomingRequests)
-                .padding(.horizontal, HackysackSpacing.medium)
-                .padding(.vertical, 12)
-                .background(
-                    RoundedRectangle(cornerRadius: HackysackRadius.card, style: .continuous)
-                        .fill(Color(.secondarySystemBackground))
-                )
-        }
-        .buttonStyle(.plain)
-        .padding(.horizontal, HackysackSpacing.medium)
-        .padding(.bottom, HackysackSpacing.small)
-    }
+    private let rowHorizontalInset: CGFloat = 16
 
     /// Separators only between rows, not above the first or below the last.
     private func outerSeparatorEdges(of item: FriendCheckin) -> VerticalEdge.Set {
@@ -97,18 +72,26 @@ struct FriendsView: View {
         if !friendsStore.feed.isEmpty {
             List {
                 ForEach(friendsStore.feed) { item in
-                    FriendCheckinRow(item: item) { user in
-                        selectedUser = user
-                    }
+                    FriendCheckinRow(
+                        item: item,
+                        onSelectUser: { selectedUser = $0 },
+                        onSelect: { selectedCheckin = CheckinDetailDestination(checkin: $0, author: item.user) },
+                        onComment: { commentingCheckin = $0 }
+                    )
                     .listRowSeparator(.hidden, edges: outerSeparatorEdges(of: item))
+                    .listRowInsets(.vertical, 12)
+                    .listRowInsets(.horizontal, rowHorizontalInset)
+                    // From the checkin's text (the row sets that) out to
+                    // the screen's edge, past the row's trailing inset.
+                    .alignmentGuide(.listRowSeparatorTrailing) { dimensions in
+                        dimensions.width + rowHorizontalInset
+                    }
                 }
             }
             .listStyle(.plain)
             .animation(.default, value: friendsStore.feed)
             .refreshable {
-                async let requests: Void = friendsStore.loadRequests()
                 await friendsStore.loadFeed()
-                await requests
             }
         } else if !friendsStore.hasLoadedFeed {
             ProgressView()
@@ -149,5 +132,7 @@ struct FriendsView: View {
         .environment(LocationManager())
         .environment(FriendsStore())
         .environment(AuthManager())
+        .environment(NotificationsStore())
+        .environment(CheckinSocialStore())
         .environmentObject(CheckinStore.inMemory())
 }

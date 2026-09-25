@@ -135,7 +135,7 @@ struct AvatarView: View {
                 initialsCircle
             } else {
                 ZStack {
-                    Color.accentColor.opacity(0.12)
+                    tintedBackground
                     ProgressView()
                 }
             }
@@ -155,9 +155,19 @@ struct AvatarView: View {
         }
     }
 
+    /// A pale accent laid over the system background rather than a
+    /// see-through tint, so glass or a photo behind the avatar doesn't show
+    /// through it.
+    private var tintedBackground: some View {
+        ZStack {
+            Color(.systemBackground)
+            Color.accentColor.opacity(0.15)
+        }
+    }
+
     private var initialsCircle: some View {
         ZStack {
-            Color.accentColor.opacity(0.15)
+            tintedBackground
             Text(initials)
                 .font(.system(size: size * 0.38, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.accentColor)

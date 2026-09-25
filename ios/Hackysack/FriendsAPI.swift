@@ -5,10 +5,6 @@
 
 import Foundation
 
-private struct ResultsResponse<Item: Decodable>: Decodable {
-    let results: [Item]
-}
-
 private struct SendFriendRequestBody: Encodable {
     let userId: String
 }
@@ -48,13 +44,12 @@ struct FriendsAPI {
         return response.results
     }
 
-    func friendCheckins(limit: Int = 50, offset: Int = 0) async throws -> [FriendCheckin] {
+    /// Newest first. `before` is the createdAt of the last row already
+    /// loaded, for the next page.
+    func friendCheckins(limit: Int = 50, before: Date? = nil) async throws -> [FriendCheckin] {
         let response: ResultsResponse<FriendCheckin> = try await client.request(
             path: "friends/checkins",
-            queryItems: [
-                URLQueryItem(name: "limit", value: String(limit)),
-                URLQueryItem(name: "offset", value: String(offset)),
-            ]
+            queryItems: ListPagination.queryItems(limit: limit, before: before)
         )
         return response.results
     }

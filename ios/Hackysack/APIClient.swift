@@ -12,6 +12,31 @@ struct EmptyRequestBody: Encodable {}
 /// Empty response for endpoints that return 204.
 struct EmptyResponse: Decodable {}
 
+/// The `{ results: [...] }` envelope every list endpoint answers with.
+struct ResultsResponse<Item: Decodable>: Decodable {
+    let results: [Item]
+}
+
+/// The `limit` and `before` query items every newest-first list takes. The
+/// cursor is the `createdAt` of the last row already loaded, sent with
+/// fractional seconds: the server keeps milliseconds and the comparison is
+/// exclusive, so a cursor rounded to the second would skip rows.
+enum ListPagination {
+    private static let cursorFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
+
+    static func queryItems(limit: Int, before: Date?) -> [URLQueryItem] {
+        var items = [URLQueryItem(name: "limit", value: String(limit))]
+        if let before {
+            items.append(URLQueryItem(name: "before", value: cursorFormatter.string(from: before)))
+        }
+        return items
+    }
+}
+
 final class APIClient {
     static let shared = APIClient()
 

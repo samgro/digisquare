@@ -108,6 +108,9 @@ describe("POST /checkins visibility and source", () => {
       message: null,
       visibility: "private",
       source: "visit",
+      likeCount: 0,
+      commentCount: 0,
+      likedByMe: false,
       createdAt: "2026-09-20T14:15:00.000Z",
       updatedAt: "2026-09-21T10:00:00.000Z",
     });
@@ -181,6 +184,269 @@ describe("PATCH /checkins/:id visibility", () => {
 
   it("still rejects an empty update", async () => {
     const response = await send("PATCH", `/${SAVED_ROW.id}`, {});
+    expect(response.status).toBe(400);
+    expect(controls.operations).toEqual([]);
+  });
+});
+
+const OTHER_USER_ID = "660e8400-e29b-41d4-a716-446655440000";
+const LIKE_ID = "990e8400-e29b-41d4-a716-446655440000";
+const COMMENT_ID = "aa0e8400-e29b-41d4-a716-446655440000";
+
+function userRow(overrides: Record<string, unknown> = {}) {
+  return {
+    id: OTHER_USER_ID,
+    email: "friend@example.com",
+    emailVerifiedAt: null,
+    appleUserId: null,
+    appleEmail: null,
+    name: "Alex",
+    bio: null,
+    avatarKey: null,
+    isTestUser: false,
+    createdAt: new Date("2026-01-01T00:00:00.000Z"),
+    updatedAt: new Date("2026-01-01T00:00:00.000Z"),
+    ...overrides,
+  };
+}
+
+function commentRow(overrides: Record<string, unknown> = {}) {
+  return {
+    id: COMMENT_ID,
+    checkinId: SAVED_ROW.id,
+    userId: CURRENT_USER_ID,
+    body: "Great spot",
+    createdAt: new Date("2026-09-22T10:00:00.000Z"),
+    updatedAt: new Date("2026-09-22T10:00:00.000Z"),
+    ...overrides,
+  };
+}
+
+/** What findVisibleCheckin answers for a friend's checkin. */
+const FRIENDS_CHECKIN = { id: SAVED_ROW.id, userId: OTHER_USER_ID };
+const OWN_CHECKIN = { id: SAVED_ROW.id, userId: CURRENT_USER_ID };
+
+describe("GET /checkins pagination", () => {
+  it("pages by a createdAt cursor", async () => {
+    controls.queue([]);
+    const response = await send("GET", "/?before=2026-09-01T00:00:00.000Z&limit=5");
+    expect(response.status).toBe(200);
+
+    const listed = dialect.sqlToQuery(argumentsOf("where")[0] as SQL);
+    expect(listed.sql).toMatch(/"checkins"\."created_at" < \$\d+/);
+    expect(listed.params).toContain("2026-09-01T00:00:00.000Z");
+    expect(controls.chainedCalls.map((call) => call.method)).not.toContain("offset");
+  });
+
+  it("rejects a before that is not a timestamp", async () => {
+    const response = await send("GET", "/?before=last-week");
+    expect(response.status).toBe(400);
+    expect(controls.operations).toEqual([]);
+  });
+});
+
+describe("POST /checkins/:id/likes", () => {
+  it("likes a friend's checkin and tells them", async () => {
+    controls.queue(
+      [FRIENDS_CHECKIN],
+      [{ id: LIKE_ID }], // the like was new
+      [], // the notification insert
+      [{ likeCount: 1, commentCount: 0, likedByMe: true }],
+    );
+
+    const response = await send("POST", `/${SAVED_ROW.id}/likes`);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ likeCount: 1, likedByMe: true });
+    expect(controls.operations).toEqual(["select", "insert", "insert", "select"]);
+    expect(argumentsOf("values")[1]).toEqual({
+      recipientId: OTHER_USER_ID,
+      actorId: CURRENT_USER_ID,
+      kind: "like",
+      checkinId: SAVED_ROW.id,
+    });
+  });
+
+  it("is a no-op the second time, without a second notification", async () => {
+    controls.queue(
+      [FRIENDS_CHECKIN],
+      [], // the unique index swallowed the insert
+      [{ likeCount: 1, commentCount: 0, likedByMe: true }],
+    );
+
+    const response = await send("POST", `/${SAVED_ROW.id}/likes`);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ likeCount: 1, likedByMe: true });
+    expect(controls.operations).toEqual(["select", "insert", "select"]);
+  });
+
+  it("does not notify you about liking your own checkin", async () => {
+    controls.queue([OWN_CHECKIN], [{ id: LIKE_ID }], [{ likeCount: 1, commentCount: 0, likedByMe: true }]);
+
+    const response = await send("POST", `/${SAVED_ROW.id}/likes`);
+
+    expect(response.status).toBe(200);
+    expect(controls.operations).toEqual(["select", "insert", "select"]);
+  });
+
+  it("answers 404 for a checkin you cannot see, without writing", async () => {
+    controls.queue([]);
+
+    const response = await send("POST", `/${SAVED_ROW.id}/likes`);
+
+    expect(response.status).toBe(404);
+    expect(controls.operations).toEqual(["select"]);
+  });
+
+  it("rejects a malformed checkin id", async () => {
+    const response = await send("POST", "/nope/likes");
+    expect(response.status).toBe(400);
+    expect(controls.operations).toEqual([]);
+  });
+});
+
+describe("DELETE /checkins/:id/likes", () => {
+  it("removes your like and reports the new count", async () => {
+    controls.queue([FRIENDS_CHECKIN], [], [{ likeCount: 0, commentCount: 0, likedByMe: false }]);
+
+    const response = await send("DELETE", `/${SAVED_ROW.id}/likes`);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ likeCount: 0, likedByMe: false });
+    expect(controls.operations).toEqual(["select", "delete", "select"]);
+  });
+
+  it("answers 404 for a checkin you cannot see", async () => {
+    controls.queue([]);
+    const response = await send("DELETE", `/${SAVED_ROW.id}/likes`);
+    expect(response.status).toBe(404);
+    expect(controls.operations).toEqual(["select"]);
+  });
+});
+
+describe("GET /checkins/:id/comments", () => {
+  it("lists comments with a summary of each author", async () => {
+    controls.queue([FRIENDS_CHECKIN], [{ comment: commentRow({ userId: OTHER_USER_ID }), user: userRow() }]);
+
+    const response = await send("GET", `/${SAVED_ROW.id}/comments`);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      results: [
+        {
+          id: COMMENT_ID,
+          checkinId: SAVED_ROW.id,
+          body: "Great spot",
+          createdAt: "2026-09-22T10:00:00.000Z",
+          user: { id: OTHER_USER_ID, name: "Alex", avatarUrl: null },
+        },
+      ],
+    });
+  });
+
+  it("pages by a createdAt cursor", async () => {
+    controls.queue([FRIENDS_CHECKIN], []);
+    const response = await send("GET", `/${SAVED_ROW.id}/comments?before=2026-09-22T10:00:00.000Z`);
+    expect(response.status).toBe(200);
+
+    // The second where is the comments query; the first found the checkin.
+    const listed = dialect.sqlToQuery(argumentsOf("where")[1] as SQL);
+    expect(listed.sql).toMatch(/"checkin_comments"\."created_at" < \$\d+/);
+  });
+
+  it("answers 404 for a checkin you cannot see", async () => {
+    controls.queue([]);
+    const response = await send("GET", `/${SAVED_ROW.id}/comments`);
+    expect(response.status).toBe(404);
+  });
+});
+
+describe("POST /checkins/:id/comments", () => {
+  it("adds a comment and tells the owner", async () => {
+    controls.queue(
+      [FRIENDS_CHECKIN],
+      [commentRow()],
+      [], // the notification insert
+      [userRow({ id: CURRENT_USER_ID, name: "Sam" })],
+    );
+
+    const response = await send("POST", `/${SAVED_ROW.id}/comments`, { body: "  Great spot  " });
+
+    expect(response.status).toBe(201);
+    expect(await response.json()).toMatchObject({
+      id: COMMENT_ID,
+      body: "Great spot",
+      user: { id: CURRENT_USER_ID, name: "Sam" },
+    });
+    expect(controls.operations).toEqual(["select", "insert", "insert", "select"]);
+    expect(argumentsOf("values")[0]).toEqual({
+      checkinId: SAVED_ROW.id,
+      userId: CURRENT_USER_ID,
+      body: "Great spot",
+    });
+    expect(argumentsOf("values")[1]).toEqual({
+      recipientId: OTHER_USER_ID,
+      actorId: CURRENT_USER_ID,
+      kind: "comment",
+      checkinId: SAVED_ROW.id,
+      commentId: COMMENT_ID,
+    });
+  });
+
+  it("does not notify you about commenting on your own checkin", async () => {
+    controls.queue([OWN_CHECKIN], [commentRow()], [userRow({ id: CURRENT_USER_ID })]);
+
+    const response = await send("POST", `/${SAVED_ROW.id}/comments`, { body: "Mine" });
+
+    expect(response.status).toBe(201);
+    expect(controls.operations).toEqual(["select", "insert", "select"]);
+  });
+
+  it("rejects an empty comment without touching the database", async () => {
+    const response = await send("POST", `/${SAVED_ROW.id}/comments`, { body: "   " });
+    expect(response.status).toBe(400);
+    expect(controls.operations).toEqual([]);
+  });
+
+  it("rejects a comment over 1000 characters", async () => {
+    const response = await send("POST", `/${SAVED_ROW.id}/comments`, { body: "x".repeat(1001) });
+    expect(response.status).toBe(400);
+  });
+
+  it("answers 404 for a checkin you cannot see", async () => {
+    controls.queue([]);
+    const response = await send("POST", `/${SAVED_ROW.id}/comments`, { body: "Hello" });
+    expect(response.status).toBe(404);
+    expect(controls.operations).toEqual(["select"]);
+  });
+});
+
+describe("DELETE /checkins/:id/comments/:commentId", () => {
+  it("deletes a comment that is yours or on your checkin", async () => {
+    controls.queue([{ id: COMMENT_ID }]);
+
+    const response = await send("DELETE", `/${SAVED_ROW.id}/comments/${COMMENT_ID}`);
+
+    expect(response.status).toBe(204);
+    expect(controls.operations).toEqual(["delete"]);
+    // Author or checkin owner, in one condition.
+    const condition = dialect.sqlToQuery(argumentsOf("where")[0] as SQL);
+    expect(condition.sql).toContain('"checkin_comments"."user_id" = $');
+    expect(condition.sql).toContain("exists (");
+    expect(condition.params.filter((param) => param === CURRENT_USER_ID)).toHaveLength(2);
+  });
+
+  // Someone else's comment on someone else's checkin, or no such comment:
+  // the same 404 either way.
+  it("answers 404 when nothing was deleted", async () => {
+    controls.queue([]);
+    const response = await send("DELETE", `/${SAVED_ROW.id}/comments/${COMMENT_ID}`);
+    expect(response.status).toBe(404);
+  });
+
+  it("rejects a malformed comment id", async () => {
+    const response = await send("DELETE", `/${SAVED_ROW.id}/comments/nope`);
     expect(response.status).toBe(400);
     expect(controls.operations).toEqual([]);
   });

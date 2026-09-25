@@ -154,8 +154,12 @@ struct TimelineEntryRow: View {
     // Only used by suggested entries.
     var onConfirm: () -> Void = {}
     var onReject: () -> Void = {}
+    // Only used by saved entries, the ones that exist on the server.
+    var onSelect: () -> Void = {}
+    var onComment: () -> Void = {}
 
     private var isSuggested: Bool { entry.syncStatus == .suggested }
+    private var isSaved: Bool { entry.syncStatus == .saved }
 
     var body: some View {
         HStack(alignment: .top, spacing: TimelineMetrics.columnSpacing) {
@@ -171,24 +175,45 @@ struct TimelineEntryRow: View {
                 // Top-aligned so the buttons line up with the top of the
                 // place icon, which sits at the same inset as this content.
                 HStack(alignment: .top, spacing: 8) {
-                    CheckinDetailsRow(
-                        checkin: entry.checkin,
-                        showsDate: false,
-                        placeNameLineLimit: isSuggested ? 1 : 2
-                    )
-                    // Suggested rows read as tentative until the user confirms them.
-                    .opacity(isSuggested ? 0.55 : 1)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    details
                     if isSuggested {
                         suggestionActions
                     }
                 }
                 statusLine
+                if isSaved {
+                    CheckinActionBar(checkin: entry.checkin, onComment: onComment)
+                }
             }
             .padding(.vertical, TimelineMetrics.iconTopInset)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.horizontal, TimelineMetrics.horizontalPadding)
+    }
+
+    /// A saved checkin opens its detail page; the text of a placeholder or
+    /// suggestion is not a button. The action bar stays outside it either
+    /// way, so no button ever sits inside another.
+    @ViewBuilder
+    private var details: some View {
+        let row = CheckinDetailsRow(
+            checkin: entry.checkin,
+            showsDate: false,
+            placeNameLineLimit: isSuggested ? 1 : 2
+        )
+        // Suggested rows read as tentative until the user confirms them.
+        .opacity(isSuggested ? 0.55 : 1)
+        .frame(maxWidth: .infinity, alignment: .leading)
+
+        if isSaved {
+            Button(action: onSelect) {
+                row.contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("Shows the checkin")
+        } else {
+            row
+        }
     }
 
     @ViewBuilder
@@ -220,7 +245,7 @@ struct TimelineEntryRow: View {
                 systemImage: Glyphs.accept,
                 accessibilityLabel: "Confirm Checkin",
                 foreground: .white,
-                background: .blue,
+                background: Color.accentColor,
                 action: onConfirm
             )
             SuggestionIconButton(
@@ -301,6 +326,9 @@ struct CheckinTimelineRows: View {
     // Only used by suggested entries, which only the Timeline tab has.
     var onConfirm: (TimelineEntry) -> Void = { _ in }
     var onReject: (TimelineEntry) -> Void = { _ in }
+    // Only used by saved entries.
+    var onSelect: (Checkin) -> Void = { _ in }
+    var onComment: (Checkin) -> Void = { _ in }
 
     var body: some View {
         let rows = timelineRows(for: entries)
@@ -315,7 +343,9 @@ struct CheckinTimelineRows: View {
                     showBottomLine: index != rows.count - 1,
                     onRetry: { onRetry(entry) },
                     onConfirm: { onConfirm(entry) },
-                    onReject: { onReject(entry) }
+                    onReject: { onReject(entry) },
+                    onSelect: { onSelect(entry.checkin) },
+                    onComment: { onComment(entry.checkin) }
                 )
             }
         }
@@ -360,10 +390,11 @@ struct CheckinTimelineRows: View {
             onRetry: {}
         )
         TimelineEntryRow(
-            entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(message: nil, primaryType: "park"), syncStatus: .saved),
+            entry: TimelineEntry(id: UUID(), draft: nil, checkin: .preview(message: nil, primaryType: "park", likeCount: 4, commentCount: 1), syncStatus: .saved),
             showTopLine: true,
             showBottomLine: false,
             onRetry: {}
         )
     }
+    .environment(CheckinSocialStore())
 }

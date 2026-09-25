@@ -21,7 +21,7 @@ body:json {
 }
 
 docs {
-  Updates a checkin's message. Replace REPLACE_WITH_CHECKIN_ID with an
-  `id` returned from Create Checkin. Expect the venue snapshot fields to
-  be unchanged and `updatedAt` to advance.
+  Updates a checkin's message and/or visibility ("friends" or "private");
+  the venue cannot change. Uses the id captured by Create Checkin. Expect
+  the venue snapshot fields to be unchanged and `updatedAt` to advance.
 }

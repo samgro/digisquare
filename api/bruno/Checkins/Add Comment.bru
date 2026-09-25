@@ -1,0 +1,34 @@
+meta {
+  name: Add Comment
+  type: http
+  seq: 18
+}
+
+post {
+  url: {{baseUrl}}/checkins/{{checkinId}}/comments
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "body": "Great spot."
+  }
+}
+
+vars:post-response {
+  commentId: res.body.id
+}
+
+docs {
+  Comments on the checkin from Create Checkin. Expect 201 with
+  { id, checkinId, body, createdAt, user: { id, name, avatarUrl } }.
+
+  The owner gets a "comment" notification unless they wrote it. Body is
+  trimmed, 1 to 1000 characters. The post-response var captures the id
+  for Delete Comment.
+}

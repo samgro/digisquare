@@ -1,0 +1,23 @@
+meta {
+  name: Like Checkin
+  type: http
+  seq: 16
+}
+
+post {
+  url: {{baseUrl}}/checkins/{{checkinId}}/likes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Likes the checkin from Create Checkin. Expect 200 { likeCount, likedByMe: true }.
+
+  Liking is idempotent: send it twice and the count stays put. The owner
+  gets one "like" notification the first time (none when you like your
+  own checkin, as here). A checkin you can't see is 404.
+}

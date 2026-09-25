@@ -25,7 +25,7 @@ struct CheckinPrivacyToggle: View {
         }
         .buttonStyle(.bordered)
         .buttonBorderShape(.capsule)
-        .tint(visibility.isPrivate ? .gray : .blue)
+        .tint(visibility.isPrivate ? Color.gray : Color.accentColor)
         .accessibilityLabel("Checkin visibility")
         .accessibilityValue(visibility.isPrivate ? "Private" : "Friends")
         .accessibilityHint(visibility.isPrivate ? "Double tap to share with friends" : "Double tap to keep it to yourself")

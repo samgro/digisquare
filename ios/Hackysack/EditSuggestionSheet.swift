@@ -64,7 +64,7 @@ struct EditSuggestionSheet: View {
                             if selectedPlaceId == place.id {
                                 Image(systemName: Glyphs.checkmark)
                                     .font(.body.weight(.semibold))
-                                    .foregroundStyle(.blue)
+                                    .foregroundStyle(Color.accentColor)
                             }
                         }
                     }
@@ -106,7 +106,6 @@ struct EditSuggestionSheet: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
-                .tint(.blue)
                 .disabled(selectedPlace == nil)
             }
             .font(.headline)

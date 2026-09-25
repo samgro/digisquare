@@ -25,6 +25,7 @@ struct UserProfileView: View {
     @Environment(AuthManager.self) private var authManager
     @Environment(FriendsStore.self) private var friendsStore
     @EnvironmentObject private var checkinStore: CheckinStore
+    @Environment(CheckinSocialStore.self) private var socialStore
 
     @State private var profile: PublicProfile?
     @State private var loadError: String?
@@ -36,6 +37,8 @@ struct UserProfileView: View {
     @State private var isConfirmingRemoval = false
     @State private var isEditing = false
     @State private var isAddingFriends = false
+    @State private var selectedCheckin: CheckinDetailDestination?
+    @State private var commentingCheckin: Checkin?
     /// Where the header's name ends, in the scroll content's coordinates.
     @State private var nameBottom: CGFloat = .infinity
     /// 0 while any of the header's name is on screen, even under the nav
@@ -113,11 +116,26 @@ struct UserProfileView: View {
         .navigationDestination(isPresented: $isAddingFriends) {
             AddFriendsView()
         }
+        .navigationDestination(item: $selectedCheckin) { destination in
+            CheckinDetailView(destination: destination)
+        }
+        .sheet(item: $commentingCheckin) { checkin in
+            CommentsSheet(checkin: checkin)
+        }
         .task(id: reloadKey) {
             await loadProfile()
         }
         .refreshable {
             await loadProfile()
+        }
+        // This page's checkins live in no store, so likes, comments and edits
+        // made here or on a detail page are copied in as they happen. Only
+        // the entries that just changed, so a reload's fresher copies stand.
+        .onChange(of: socialStore.latest) { previous, latest in
+            for (checkinId, changed) in latest where previous[checkinId] != changed {
+                guard let index = checkins.firstIndex(where: { $0.id == checkinId }) else { continue }
+                checkins[index] = changed
+            }
         }
     }
 
@@ -430,7 +448,11 @@ struct UserProfileView: View {
             }
         } else if !checkins.isEmpty {
             LazyVStack(alignment: .leading, spacing: 0) {
-                CheckinTimelineRows(entries: checkins.map { TimelineEntry(savedCheckin: $0) })
+                CheckinTimelineRows(
+                    entries: checkins.map { TimelineEntry(savedCheckin: $0) },
+                    onSelect: { selectedCheckin = CheckinDetailDestination(checkin: $0, author: user) },
+                    onComment: { commentingCheckin = $0 }
+                )
             }
             .padding(.bottom, HackysackSpacing.large)
         } else if !hasLoadedCheckins {
@@ -496,5 +518,6 @@ struct UserProfileView: View {
     .environment(AuthManager())
     .environment(FriendsStore())
     .environment(LocationManager())
+    .environment(CheckinSocialStore())
     .environmentObject(CheckinStore.inMemory())
 }

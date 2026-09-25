@@ -50,6 +50,13 @@
       "when": 1790283977688,
       "tag": "0006_add_users_hometown",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1790373444946,
+      "tag": "0007_add_likes_comments_notifications",
+      "breakpoints": true
     }
   ]
 }

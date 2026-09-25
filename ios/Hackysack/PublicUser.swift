@@ -147,7 +147,8 @@ struct FriendRequest: Decodable, Identifiable, Equatable {
 /// made it. Kept apart from Checkin so the timeline's model doesn't grow a
 /// field it never has.
 struct FriendCheckin: Decodable, Identifiable, Equatable {
-    let checkin: Checkin
+    /// Replaced in place when a like, comment or edit changes the checkin.
+    var checkin: Checkin
     let user: UserSummary
 
     var id: String { checkin.id }

@@ -1,0 +1,20 @@
+meta {
+  name: Unlike Checkin
+  type: http
+  seq: 17
+}
+
+delete {
+  url: {{baseUrl}}/checkins/{{checkinId}}/likes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Removes your like. Expect 200 { likeCount, likedByMe: false } even if you
+  had not liked it.
+}

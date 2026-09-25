@@ -25,7 +25,9 @@ enum CheckinSource: String, Codable, Equatable {
 }
 
 /// A checkin as returned by the API (`GET /checkins`, `POST /checkins`).
-struct Checkin: Decodable, Identifiable, Equatable {
+///
+/// Hashable so it can be the item behind a navigation destination.
+struct Checkin: Decodable, Identifiable, Hashable {
     let id: String
     let userId: String
     let googlePlaceId: String
@@ -37,6 +39,11 @@ struct Checkin: Decodable, Identifiable, Equatable {
     let message: String?
     let visibility: CheckinVisibility
     let source: CheckinSource
+    // The API always sends these; the defaults are for placeholders built
+    // locally, which nobody has had a chance to like yet.
+    var likeCount = 0
+    var commentCount = 0
+    var likedByMe = false
     let createdAt: Date
     let updatedAt: Date
 }
@@ -82,7 +89,7 @@ struct CheckinDraft: Encodable, Equatable {
     }
 
     /// The API rejects empty strings for optional text fields, so they are omitted instead.
-    private static func trimmedOrNil(_ value: String?) -> String? {
+    static func trimmedOrNil(_ value: String?) -> String? {
         guard let trimmed = value?.trimmingCharacters(in: .whitespacesAndNewlines), !trimmed.isEmpty else {
             return nil
         }
@@ -90,8 +97,48 @@ struct CheckinDraft: Encodable, Equatable {
     }
 }
 
-private struct CheckinsResponse: Decodable {
-    let results: [Checkin]
+/// The body for `PATCH /checkins/:id`: the two things that can change after
+/// checking in. The venue is fixed.
+///
+/// `message` is always written, as JSON null when empty: the API reads a
+/// missing key as "leave it" and null as "clear it".
+struct CheckinUpdate: Encodable, Equatable {
+    let message: String?
+    let visibility: CheckinVisibility
+
+    init(message: String?, visibility: CheckinVisibility) {
+        self.message = CheckinDraft.trimmedOrNil(message)
+        self.visibility = visibility
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message, visibility
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(message, forKey: .message)
+        try container.encode(visibility, forKey: .visibility)
+    }
+}
+
+/// What `POST` and `DELETE /checkins/:id/likes` answer with.
+struct CheckinLikeState: Decodable, Equatable {
+    let likeCount: Int
+    let likedByMe: Bool
+}
+
+/// A comment on a checkin, with just enough of its author to draw the row.
+struct CheckinComment: Decodable, Identifiable, Equatable {
+    let id: String
+    let checkinId: String
+    let body: String
+    let createdAt: Date
+    let user: UserSummary
+}
+
+private struct CommentBody: Encodable {
+    let body: String
 }
 
 /// Every /checkins route requires a bearer token, so these go through
@@ -112,19 +159,63 @@ struct CheckinsAPI {
         try await client.request(method: "POST", path: "checkins", body: draft)
     }
 
-    func listCheckins(userId: String? = nil, limit: Int = 50, offset: Int = 0) async throws -> [Checkin] {
-        var queryItems = [
-            URLQueryItem(name: "limit", value: String(limit)),
-            URLQueryItem(name: "offset", value: String(offset)),
-        ]
+    func checkin(id: String) async throws -> Checkin {
+        try await client.request(path: "checkins/\(id)")
+    }
+
+    func updateCheckin(id: String, _ update: CheckinUpdate) async throws -> Checkin {
+        try await client.request(method: "PATCH", path: "checkins/\(id)", body: update)
+    }
+
+    /// Newest first. `before` is the createdAt of the last row already
+    /// loaded, for the next page.
+    func listCheckins(userId: String? = nil, limit: Int = 50, before: Date? = nil) async throws -> [Checkin] {
+        var queryItems = ListPagination.queryItems(limit: limit, before: before)
         if let userId {
             queryItems.append(URLQueryItem(name: "userId", value: userId))
         }
 
-        let response: CheckinsResponse = try await client.request(
+        let response: ResultsResponse<Checkin> = try await client.request(
             path: "checkins",
             queryItems: queryItems
         )
         return response.results
+    }
+
+    // MARK: Likes
+
+    func like(checkinId: String) async throws -> CheckinLikeState {
+        try await client.request(method: "POST", path: "checkins/\(checkinId)/likes")
+    }
+
+    func unlike(checkinId: String) async throws -> CheckinLikeState {
+        try await client.request(method: "DELETE", path: "checkins/\(checkinId)/likes")
+    }
+
+    // MARK: Comments
+
+    /// Newest first, like every list; callers reverse it to read a thread top down.
+    func comments(checkinId: String, limit: Int = 50, before: Date? = nil) async throws -> [CheckinComment] {
+        let response: ResultsResponse<CheckinComment> = try await client.request(
+            path: "checkins/\(checkinId)/comments",
+            queryItems: ListPagination.queryItems(limit: limit, before: before)
+        )
+        return response.results
+    }
+
+    func addComment(checkinId: String, body: String) async throws -> CheckinComment {
+        try await client.request(
+            method: "POST",
+            path: "checkins/\(checkinId)/comments",
+            body: CommentBody(body: body)
+        )
+    }
+
+    func deleteComment(checkinId: String, commentId: String) async throws {
+        try await client.send(
+            method: "DELETE",
+            path: "checkins/\(checkinId)/comments/\(commentId)",
+            body: Optional<EmptyRequestBody>.none
+        )
     }
 }

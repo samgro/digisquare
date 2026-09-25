@@ -76,7 +76,6 @@ struct CheckInComposeView: View {
                 }
                 .buttonStyle(.glassProminent)
                 .controlSize(.extraLarge)
-                .tint(.blue)
             }
             .padding(.horizontal)
             .padding(.vertical, 8)

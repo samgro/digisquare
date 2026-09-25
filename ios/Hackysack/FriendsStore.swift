@@ -6,14 +6,12 @@
 import Foundation
 import Observation
 
-/// Friends, incoming friend requests and the Friends feed, shared by every
-/// screen that shows them. Holding them in one place is what keeps the Profile
-/// tab badge, the requests modal and the feed in step: accepting a request in
-/// one updates the other two.
+/// Friends and the Friends feed, shared by every screen that shows them, so
+/// accepting a request or removing a friend in one place updates the feed
+/// everywhere.
 @Observable
 @MainActor
 final class FriendsStore {
-    private(set) var incomingRequests: [FriendRequest] = []
     private(set) var friends: [PublicUser] = []
     private(set) var feed: [FriendCheckin] = []
     private(set) var hasLoadedFeed = false
@@ -21,19 +19,7 @@ final class FriendsStore {
 
     @ObservationIgnored private let friendsAPI = FriendsAPI()
 
-    var pendingRequestCount: Int { incomingRequests.count }
-
     // MARK: Loading
-
-    /// Drives the Profile tab badge, so a failure keeps whatever was last
-    /// loaded rather than clearing a badge the user may be about to act on.
-    func loadRequests() async {
-        do {
-            incomingRequests = try await friendsAPI.incomingRequests()
-        } catch {
-            DevLog.network("Couldn't load friend requests: \(error)")
-        }
-    }
 
     func loadFeed() async {
         do {
@@ -50,6 +36,17 @@ final class FriendsStore {
         hasLoadedFeed = true
     }
 
+    /// A like, comment or edit changed the checkin; the feed's copy follows.
+    /// One edited to private leaves, as the server's feed leaves it out.
+    func apply(_ checkin: Checkin) {
+        guard let index = feed.firstIndex(where: { $0.id == checkin.id }) else { return }
+        if checkin.visibility.isPrivate {
+            feed.remove(at: index)
+        } else {
+            feed[index].checkin = checkin
+        }
+    }
+
     // MARK: Actions
 
     /// Returns where things stand afterwards. If they had already asked you,
@@ -57,7 +54,6 @@ final class FriendsStore {
     func sendRequest(to userId: String) async throws -> FriendshipState {
         let state = try await friendsAPI.sendRequest(to: userId)
         if state.status == .friends {
-            incomingRequests.removeAll { $0.user.id == userId }
             await loadFeed()
         }
         return state
@@ -65,14 +61,12 @@ final class FriendsStore {
 
     func accept(requestId: String) async throws {
         try await friendsAPI.accept(requestId: requestId)
-        incomingRequests.removeAll { $0.id == requestId }
         await loadFeed()
     }
 
     /// Declines a request you received, or cancels one you sent.
     func deleteRequest(requestId: String) async throws {
         try await friendsAPI.delete(requestId: requestId)
-        incomingRequests.removeAll { $0.id == requestId }
     }
 
     func removeFriend(userId: String) async throws {
