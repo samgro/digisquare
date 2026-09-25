@@ -80,6 +80,7 @@ downtown San Francisco (the four cells a search from SoMa checks), which
 takes a minute or two:
 ```bash
 npm run coverage:seed -- --soma
+npm run coverage:seed -- --sfo     # the airport, for checking how grounds rank
 ```
 
 ### 2c. Everywhere else: fetched on demand

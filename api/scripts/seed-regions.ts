@@ -20,6 +20,12 @@ export const seedRegions: SeedRegion[] = [
     bounds: { west: -122.42, south: 37.76, east: -122.38, north: 37.84 },
   },
   {
+    name: "sfo",
+    description:
+      "San Francisco International Airport with South San Francisco and Millbrae, the four cells a search from a terminal checks. For seeing a large venue's grounds rank from a gate.",
+    bounds: { west: -122.42, south: 37.56, east: -122.38, north: 37.64 },
+  },
+  {
     name: "bay-area",
     description:
       "San Jose-San Francisco-Oakland CSA: Alameda, Contra Costa, Marin, Napa, San Francisco, San Mateo, Santa Clara, Solano, Sonoma, Santa Cruz, San Benito, San Joaquin, Stanislaus and Merced counties.",
