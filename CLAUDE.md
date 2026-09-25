@@ -1,6 +1,12 @@
 Hackysack is a simple open source app for checking into places and sharing with
 your friends. It is hosted on Railway/Neon and uses Google Places API for data.
 
+# Breaking changes
+
+This is currently a greenfield app with 1 user. Don't worry about things like
+breaking old clients. Do plan for migrations that keep that 1 user's checkin
+history from breaking.
+
 # Code conventions
 
 Never use single letter variables or abbrevations in code. For example, use

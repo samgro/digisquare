@@ -25,6 +25,7 @@ struct UserProfileView: View {
     @Environment(AuthManager.self) private var authManager
     @Environment(FriendsStore.self) private var friendsStore
     @EnvironmentObject private var checkinStore: CheckinStore
+    @Environment(CheckinSocialStore.self) private var socialStore
 
     @State private var profile: PublicProfile?
     @State private var loadError: String?
@@ -126,6 +127,15 @@ struct UserProfileView: View {
         }
         .refreshable {
             await loadProfile()
+        }
+        // This page's checkins live in no store, so likes, comments and edits
+        // made here or on a detail page are copied in as they happen. Only
+        // the entries that just changed, so a reload's fresher copies stand.
+        .onChange(of: socialStore.latest) { previous, latest in
+            for (checkinId, changed) in latest where previous[checkinId] != changed {
+                guard let index = checkins.firstIndex(where: { $0.id == checkinId }) else { continue }
+                checkins[index] = changed
+            }
         }
     }
 

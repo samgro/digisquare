@@ -164,9 +164,7 @@ struct NotificationRow: View {
 
             Button(action: onOpen) {
                 VStack(alignment: .leading, spacing: 2) {
-                    (Text(notification.actor.displayName).fontWeight(.semibold)
-                        + Text(" ")
-                        + Text(notification.summaryText))
+                    Text("\(Text(notification.actor.displayName).fontWeight(.semibold)) \(notification.summaryText)")
                         .font(.subheadline)
                         .lineLimit(3)
                     Text(notification.createdAt.formatted(.relative(presentation: .named)))

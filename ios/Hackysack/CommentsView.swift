@@ -136,7 +136,7 @@ struct CommentRow: View {
             AvatarView(url: comment.user.avatarURL, initials: comment.user.initials, size: 32)
 
             VStack(alignment: .leading, spacing: 2) {
-                (Text(comment.user.displayName).fontWeight(.semibold) + Text(" ") + Text(comment.body))
+                Text("\(Text(comment.user.displayName).fontWeight(.semibold)) \(comment.body)")
                     .font(.subheadline)
                 Text(comment.createdAt.formatted(.relative(presentation: .named)))
                     .font(.caption)

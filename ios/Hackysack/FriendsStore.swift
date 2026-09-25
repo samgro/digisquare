@@ -37,9 +37,14 @@ final class FriendsStore {
     }
 
     /// A like, comment or edit changed the checkin; the feed's copy follows.
+    /// One edited to private leaves, as the server's feed leaves it out.
     func apply(_ checkin: Checkin) {
         guard let index = feed.firstIndex(where: { $0.id == checkin.id }) else { return }
-        feed[index].checkin = checkin
+        if checkin.visibility.isPrivate {
+            feed.remove(at: index)
+        } else {
+            feed[index].checkin = checkin
+        }
     }
 
     // MARK: Actions
