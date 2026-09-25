@@ -28,8 +28,15 @@ final class BuildGate {
 
     func record(server: BuildIdentity?) {
         guard let app else { return }
-        self.server = server
-        verdict = server.map { BuildIdentity.verdict(app: app, server: $0) } ?? .serverUnknown
+        // Every response reports in; only a change is published, so the
+        // views watching the gate are not re-rendered per request.
+        if self.server != server {
+            self.server = server
+        }
+        let newVerdict = server.map { BuildIdentity.verdict(app: app, server: $0) } ?? .serverUnknown
+        if verdict != newVerdict {
+            verdict = newVerdict
+        }
     }
 
     /// From a response header; a missing header means the server named no build.

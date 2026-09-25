@@ -35,12 +35,21 @@ struct BuildMismatchBanner: View {
 @MainActor
 enum WrongServerWindow {
     private static var window: UIWindow?
+    /// The window that was key before the block went up, to hand key status
+    /// back to. A window left non-key keeps receiving touches whose gesture
+    /// bookkeeping UIKit can no longer complete, which crashes.
+    private static var previousKeyWindow: UIWindow?
 
+    /// Called from a SwiftUI update; the window work waits for the next turn
+    /// of the run loop so it never happens mid-render or mid-touch.
     static func sync(with gate: BuildGate) {
-        if gate.isBlocking {
-            show()
-        } else {
-            hide()
+        let blocking = gate.isBlocking
+        Task { @MainActor in
+            if blocking {
+                show()
+            } else {
+                hide()
+            }
         }
     }
 
@@ -48,6 +57,7 @@ enum WrongServerWindow {
         guard window == nil else { return }
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
         guard let scene = scenes.first(where: { $0.activationState == .foregroundActive }) ?? scenes.first else { return }
+        previousKeyWindow = scene.keyWindow
         let blocking = UIWindow(windowScene: scene)
         blocking.windowLevel = .alert + 1
         blocking.rootViewController = UIHostingController(rootView: WrongServerView())
@@ -56,8 +66,11 @@ enum WrongServerWindow {
     }
 
     private static func hide() {
-        window?.isHidden = true
+        guard let blocking = window else { return }
+        blocking.isHidden = true
         window = nil
+        previousKeyWindow?.makeKey()
+        previousKeyWindow = nil
     }
 }
 
