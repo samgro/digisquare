@@ -2,6 +2,7 @@
  * Loads whole regions from the Overture release files, straight from S3.
  *
  *   npm run coverage:seed -- bay-area new-york
+ *   npm run coverage:seed -- --soma       # a few seconds, for checking the app
  *
  * Each region is split into 1 degree tiles and every tile is one fetch, run
  * here rather than through the API's worker so it can be watched. A tile
@@ -14,12 +15,12 @@ import { config } from "../src/config.js";
 import { cellsInBounds, groupCellsIntoTiles } from "../src/lib/coverage-cells.js";
 import { seedCellsNow } from "../src/lib/coverage-worker.js";
 import { s3Source } from "../src/lib/overture-remote.js";
-import { findSeedRegion } from "./seed-regions.js";
+import { findSeedRegion, seedRegions } from "./seed-regions.js";
 
 async function main(): Promise<void> {
   const names = process.argv.slice(2);
   if (names.length === 0) {
-    throw new Error("Usage: npm run coverage:seed -- <region> [<region> ...]  (bay-area, new-york)");
+    throw new Error(`Usage: npm run coverage:seed -- <region> [<region> ...]  (${seedRegions.map((region) => region.name).join(", ")})`);
   }
   const source = s3Source(config.OVERTURE_RELEASE);
   for (const name of names) {

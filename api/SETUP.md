@@ -75,6 +75,12 @@ the order of 0.5 M places for the Bay Area and 1.2 M for New York, and tens of
 minutes per region. Regions are bounding boxes in `scripts/seed-regions.ts`;
 add one there to seed another metro.
 
+To check a change in the app without waiting on a whole region, seed just
+SoMa (the simulator's default location), which takes seconds:
+```bash
+npm run coverage:seed -- --soma
+```
+
 ### 2c. Everywhere else: fetched on demand
 
 When a signed-in user searches from an area with no data, the API enqueues a

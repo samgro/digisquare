@@ -14,6 +14,12 @@ export interface SeedRegion {
 
 export const seedRegions: SeedRegion[] = [
   {
+    name: "soma",
+    description:
+      "SoMa and downtown San Francisco, two 0.1 degree cells: the simulator's default location and the backfilled Fox Plaza checkin. Seeds in seconds, for checking a change in the app.",
+    bounds: { west: -122.42, south: 37.76, east: -122.38, north: 37.8 },
+  },
+  {
     name: "bay-area",
     description:
       "San Jose-San Francisco-Oakland CSA: Alameda, Contra Costa, Marin, Napa, San Francisco, San Mateo, Santa Clara, Solano, Sonoma, Santa Cruz, San Benito, San Joaquin, Stanislaus and Merced counties.",
@@ -27,8 +33,10 @@ export const seedRegions: SeedRegion[] = [
   },
 ];
 
+/** Accepts `--soma` as well as `soma`, so a region reads like a flag. */
 export function findSeedRegion(name: string): SeedRegion {
-  const region = seedRegions.find((candidate) => candidate.name === name);
+  const regionName = name.replace(/^-+/, "");
+  const region = seedRegions.find((candidate) => candidate.name === regionName);
   if (!region) {
     throw new Error(`Unknown region "${name}". Known: ${seedRegions.map((candidate) => candidate.name).join(", ")}`);
   }
