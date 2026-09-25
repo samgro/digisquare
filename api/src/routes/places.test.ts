@@ -89,6 +89,16 @@ function rowFromResult(result: PlaceResult) {
     isPrivate: result.isPrivate,
     retiredAt: result.retired ? new Date("2026-09-01T00:00:00.000Z") : null,
     distanceMeters: result.distanceMeters,
+    // The recorded rings are each polygon's outer ring; the row holds the
+    // MultiPolygon the search selected them from.
+    extentGeoJson: result.extent
+      ? JSON.stringify({ type: "MultiPolygon", coordinates: result.extent.rings.map((ring) => [ring]) })
+      : null,
+    extentAreaSquareMeters: result.extent?.areaSquareMeters ?? null,
+    extentSouth: result.extent?.boundingBox.south ?? null,
+    extentWest: result.extent?.boundingBox.west ?? null,
+    extentNorth: result.extent?.boundingBox.north ?? null,
+    extentEast: result.extent?.boundingBox.east ?? null,
   });
 }
 

@@ -41,6 +41,12 @@ nonisolated struct RankingWeights: Sendable {
     /// Price a venue pays for its area relative to the fix's blur, per class.
     var containerSize = 0.35
     var destinationSize = 0.15
+    /// A destination venue whose recorded grounds contain the fix pays no
+    /// size price and earns this instead: standing in an airport, the airport
+    /// is the checkin, whatever storefront the fix happens to touch. Sized to
+    /// clear the suggestion margin over a storefront nobody has checked in at
+    /// (about -0.1 at zero distance), but not one the user is a regular at.
+    var insideDestinationGrounds = 1.2
     /// Per log-checkin at the place, from everyone. Nothing at a place nobody
     /// has checked in at yet, so a new venue is ranked on geometry alone.
     var popularity = 0.2
@@ -153,14 +159,20 @@ nonisolated struct PlaceRanker: Sendable {
 
             // Being anywhere inside a big venue is less specific than being
             // at a storefront; destination venues are canonical checkins so
-            // they pay a smaller share of that.
-            let sizeWeight: Double
-            switch footprint.kind {
-            case .container: sizeWeight = weights.containerSize
-            case .destination: sizeWeight = weights.destinationSize
-            case .point: sizeWeight = 0
+            // they pay a smaller share of that, and none at all when their
+            // recorded grounds say the user is inside.
+            let insideRecordedGrounds = footprint.polygon != nil && effectiveDistance == 0
+            if footprint.kind == .destination && insideRecordedGrounds {
+                score += weights.insideDestinationGrounds
+            } else {
+                let sizeWeight: Double
+                switch footprint.kind {
+                case .container: sizeWeight = weights.containerSize
+                case .destination: sizeWeight = weights.destinationSize
+                case .point: sizeWeight = 0
+                }
+                score -= sizeWeight * log(1 + ratio * ratio)
             }
-            score -= sizeWeight * log(1 + ratio * ratio)
 
             score += weights.popularity * log(1 + Double(place.checkinCount))
             score += typePrior
@@ -258,8 +270,23 @@ nonisolated struct PlaceRanker: Sendable {
     private func probabilityOfBeingInside(_ venue: RankedPlace, among ranked: [RankedPlace]) -> Double {
         let footprint = PlaceFootprint(for: venue.place)
         // A storefront's radius only absorbs the pin error, so its neighbors
-        // are alternatives to it, not parts of it.
-        guard footprint.kind != .point else { return venue.probability }
+        // are alternatives to it, not parts of it. The venues whose recorded
+        // grounds enclose it are not alternatives either: being at Peet's in
+        // the terminal is also being in the airport, so the airport's share
+        // counts for Peet's rather than against it.
+        guard footprint.kind != .point else {
+            guard let location = venue.place.location else { return venue.probability }
+            return ranked.reduce(0) { total, candidate in
+                if candidate.id == venue.id {
+                    return total + candidate.probability
+                }
+                let enclosing = PlaceFootprint(for: candidate.place)
+                guard enclosing.polygon != nil, enclosing.effectiveDistance(from: location, to: candidate.place) == 0 else {
+                    return total
+                }
+                return total + candidate.probability
+            }
+        }
         return ranked.reduce(0) { total, candidate in
             if candidate.id == venue.id {
                 return total + candidate.probability

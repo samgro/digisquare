@@ -321,6 +321,39 @@ struct PlaceRankerModelTests {
         #expect(PlaceFootprint(for: office).kind == .container)
     }
 
+    @Test("Inside an airport's recorded grounds the airport is suggested over the gate's storefronts, even from a tight fix")
+    func insideDestinationGrounds() {
+        // SFO-sized grounds, pin 900 m away; a cafe, a bookstore and a check-in
+        // counter within a few meters, none with any checkins.
+        let grounds = rectangleExtent(south: -1200, west: -2500, north: 1200, east: 800)
+        let airport = place("sfo", north: 0, east: -900, primaryType: "airport", types: ["airport"], checkins: 0, extent: grounds)
+        let cafe = place("cafe", north: 16, east: 0, primaryType: "cafe", types: ["cafe"], checkins: 0)
+        let books = place("books", north: 0, east: 18, primaryType: "bookstore", types: ["bookstore"], checkins: 0)
+        let counter = place("counter", north: -20, east: 5, primaryType: "airport", types: ["airport"], checkins: 0)
+
+        for accuracy in [5.0, 65.0] {
+            let ranking = ranker.rank(candidates: [cafe, books, counter, airport], fix: fix(accuracy: accuracy, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+            #expect(ranking.ranked.first?.place.id == "sfo", "accuracy \(accuracy)")
+            #expect(ranking.suggestion?.id == "sfo", "accuracy \(accuracy)")
+        }
+
+        // Without the grounds the airport is a 1.5 km disc around a pin 900 m
+        // off: still in reach, but not the answer from a tight fix.
+        let pinOnly = place("sfo", north: 0, east: -900, primaryType: "airport", types: ["airport"], checkins: 0)
+        let tight = ranker.rank(candidates: [cafe, books, counter, pinOnly], fix: fix(accuracy: 5, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(tight.ranked.first?.place.id != "sfo")
+
+        // A regular's morning cafe still wins over the airport around it.
+        let regular = ranker.rank(
+            candidates: [cafe, books, counter, airport],
+            fix: fix(accuracy: 5, now: tuesdayMorning),
+            history: visits(at: "cafe", count: 6, hour: 7, before: tuesdayMorning),
+            now: tuesdayMorning,
+            calendar: pacific
+        )
+        #expect(regular.ranked.first?.place.id == "cafe")
+    }
+
     @Test("Recorded grounds keep a venue in the running 1.3 km from its pin")
     func groundsBeatDistanceToPin() {
         // A park whose pin is 1.3 km west of the fix, with grounds that reach

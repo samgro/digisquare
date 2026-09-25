@@ -200,9 +200,9 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
   {
     name: "sfo-terminal-2",
     description:
-      "In line at Peet's inside SFO Terminal 2, about 900 m from the airport's pin but well inside its footprint.",
+      "In line at Peet's inside SFO Terminal 2, about a kilometer from the airport's pin but well inside its recorded grounds.",
     timeZone: PACIFIC,
-    fix: { latitude: 37.618002, longitude: -122.3814 },
+    fix: { latitude: 37.6171541, longitude: -122.3814167 },
     horizontalAccuracy: 65,
     placeKeys: {
       airport: { name: "san francisco international airport", primaryType: "airport" },
@@ -217,16 +217,14 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     cases: [
       {
         // A 65 m fix cannot resolve which Terminal 2 storefront you are in,
-        // but it is well inside the airport's footprint, so the airport is the
-        // confident answer.
+        // but the airport's recorded grounds say you are inside it, and an
+        // airport is the checkin when you are in one: it is suggested outright.
         name: "terminal fix, no history",
         now: "2026-09-22T07:30:00-07:00",
         history: "none",
-        // The airport leads, but without a recorded extent it cannot be
-        // confident enough to skip the list.
         expect: {
           top: "airport",
-          suggested: null,
+          suggested: "airport",
           rankedAbove: [
             ["airport", "larkCreek"],
             ["airport", "peets"],
@@ -234,13 +232,18 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         },
       },
       {
+        // Even a tight fix at the counter of a storefront nobody has checked
+        // in at is, first of all, a fix inside the airport.
         name: "tight fix, no history",
         now: "2026-09-22T07:30:00-07:00",
         horizontalAccuracy: 8,
         history: "none",
-        expect: { suggested: null, rankedAbove: [["peets", "larkCreek"]] },
+        expect: { top: "airport", suggested: "airport", rankedAbove: [["peets", "larkCreek"]] },
       },
       {
+        // A regular's own history outweighs the airport around them, and the
+        // airport, which encloses Peet's, is not an alternative to it, so
+        // Peet's is still confident enough to be suggested.
         name: "tight fix, morning coffee regular",
         now: "2026-09-22T07:30:00-07:00",
         horizontalAccuracy: 8,
