@@ -21,18 +21,23 @@ export interface CheckinSocial {
  * checkin row so a feed costs one query, not one per row.
  */
 export function checkinSocialColumns(currentUserId: string) {
+  // Spelled out rather than `${checkinsTable.id}`: on a select with no joins
+  // Drizzle drops table names from columns, and a bare "id" inside these
+  // subqueries is the like's or comment's own id, so every count came out 0.
+  const outerCheckinId = sql`${checkinsTable}.${sql.identifier(checkinsTable.id.name)}`;
+
   return {
     likeCount: sql<number>`(
       select count(*) from ${checkinLikesTable}
-      where ${checkinLikesTable.checkinId} = ${checkinsTable.id}
+      where ${checkinLikesTable.checkinId} = ${outerCheckinId}
     )`.mapWith(Number),
     commentCount: sql<number>`(
       select count(*) from ${checkinCommentsTable}
-      where ${checkinCommentsTable.checkinId} = ${checkinsTable.id}
+      where ${checkinCommentsTable.checkinId} = ${outerCheckinId}
     )`.mapWith(Number),
     likedByMe: sql<boolean>`exists (
       select 1 from ${checkinLikesTable}
-      where ${checkinLikesTable.checkinId} = ${checkinsTable.id}
+      where ${checkinLikesTable.checkinId} = ${outerCheckinId}
       and ${checkinLikesTable.userId} = ${currentUserId}
     )`.mapWith(Boolean),
   };
