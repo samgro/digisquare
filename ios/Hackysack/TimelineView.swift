@@ -21,7 +21,7 @@ struct TimelineView: View {
             .navigationTitle("Timeline")
             .homeNavigationBar(
                 searchTitle: "Search Checkins",
-                searchPrompt: "Search your checkins",
+                searchLabel: "Search your checkins",
                 searchDescription: "Searching your checkins is coming soon."
             )
             #if DEBUG

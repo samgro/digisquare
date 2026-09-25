@@ -6,14 +6,14 @@
 import SwiftUI
 
 /// The bar on the Timeline and Friends tabs: your avatar on the left, which
-/// opens your profile; a search bar in the middle; and the bell on the
+/// opens your profile, with a search button beside it; and the bell on the
 /// right, badged with what is new. Each destination is pushed onto the tab's
 /// own stack.
 struct HomeNavigationBar: ViewModifier {
     /// The pushed search screen's title, e.g. "Search Checkins".
     let searchTitle: String
-    /// The prompt in the bar, e.g. "Search your checkins".
-    let searchPrompt: String
+    /// What the search button says to VoiceOver, e.g. "Search your checkins".
+    let searchLabel: String
     let searchDescription: String
 
     @Environment(AuthManager.self) private var authManager
@@ -25,29 +25,39 @@ struct HomeNavigationBar: ViewModifier {
 
     func body(content: Content) -> some View {
         content
+            // No title shown in the bar, large or inline. It still names
+            // the screen in the back button's history menu.
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(removing: .title)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         isShowingProfile = true
                     } label: {
-                        // 28pt inside the standard toolbar button, which gives
-                        // it the same round glass as the back button.
+                        // The size of the back button's glass circle, so the
+                        // avatar stands in its place.
                         AvatarView(
                             url: authManager.currentProfile?.avatarURL,
                             initials: authManager.currentProfile?.initials ?? "?",
-                            size: 28
+                            size: 44
                         )
                     }
+                    .buttonStyle(.plain)
                     .accessibilityLabel("Profile")
                 }
+                // The avatar is the button, with no glass around it.
+                .sharedBackgroundVisibility(.hidden)
 
-                ToolbarItem(placement: .principal) {
-                    SearchBarButton(prompt: searchPrompt) {
+                // Its own glass circle rather than one shared with the avatar.
+                ToolbarSpacer(.fixed, placement: .topBarLeading)
+
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
                         isShowingSearch = true
+                    } label: {
+                        Label(searchLabel, systemImage: "magnifyingglass")
                     }
                 }
-                // The capsule draws its own glass; the toolbar's would double it.
-                .sharedBackgroundVisibility(.hidden)
 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -68,43 +78,14 @@ struct HomeNavigationBar: ViewModifier {
             .navigationDestination(isPresented: $isShowingSearch) {
                 SearchPlaceholderView(title: searchTitle, description: searchDescription)
             }
-            .accentNavigationBar()
-    }
-}
-
-/// Looks like a search field, acts like a button: the real field lives on
-/// the screen it pushes, where it can come up with the keyboard.
-private struct SearchBarButton: View {
-    let prompt: String
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 6) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.secondary)
-                Text(prompt)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                Spacer(minLength: 0)
-            }
-            .font(.subheadline)
-            .padding(.horizontal, 12)
-            .frame(height: 36)
-            .frame(maxWidth: .infinity)
-            .contentShape(Capsule())
-        }
-        .buttonStyle(.plain)
-        .glassEffect(.regular.interactive(), in: .capsule)
-        .accessibilityLabel(prompt)
     }
 }
 
 extension View {
-    func homeNavigationBar(searchTitle: String, searchPrompt: String, searchDescription: String) -> some View {
+    func homeNavigationBar(searchTitle: String, searchLabel: String, searchDescription: String) -> some View {
         modifier(HomeNavigationBar(
             searchTitle: searchTitle,
-            searchPrompt: searchPrompt,
+            searchLabel: searchLabel,
             searchDescription: searchDescription
         ))
     }

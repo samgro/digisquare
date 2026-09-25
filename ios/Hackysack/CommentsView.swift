@@ -109,6 +109,7 @@ struct CommentsList: View {
                 CommentRow(comment: comment, canDelete: canDelete(comment)) {
                     Task { await model.delete(comment) }
                 }
+                .listRowSeparator(.hidden)
             }
         }
 

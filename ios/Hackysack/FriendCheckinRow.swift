@@ -14,15 +14,8 @@ struct FriendCheckinRow: View {
     var onSelect: (Checkin) -> Void = { _ in }
     var onComment: (Checkin) -> Void = { _ in }
 
-    /// Read only so the row redraws when the text size changes, which moves
-    /// the name's cap height and so where the avatar should sit.
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-
     var body: some View {
-        // Aligned on the name's baseline, then the avatar is lowered so its
-        // top meets the top of the name's capitals rather than the taller
-        // top of the text line, which sits above them.
-        HStack(alignment: .firstTextBaseline, spacing: 12) {
+        HStack(alignment: .top, spacing: 12) {
             Button {
                 onSelectUser(item.user)
             } label: {
@@ -31,9 +24,6 @@ struct FriendCheckinRow: View {
             // Plain, so inside a List the avatar and name are separate tap
             // targets instead of the whole row firing the first button.
             .buttonStyle(.plain)
-            .alignmentGuide(.firstTextBaseline) { dimensions in
-                dimensions[.top] + UIFont.preferredFont(forTextStyle: .subheadline).capHeight
-            }
             .accessibilityLabel(item.user.displayName)
             .accessibilityHint("Shows their profile")
 
@@ -66,8 +56,9 @@ struct FriendCheckinRow: View {
                 }
                 .padding(.top, 4)
             }
+            // In a List, the separator starts under the text, not the avatar.
+            .alignmentGuide(.listRowSeparatorLeading) { dimensions in dimensions[.leading] }
         }
-        .padding(.vertical, 4)
     }
 }
 

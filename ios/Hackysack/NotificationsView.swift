@@ -39,7 +39,6 @@ struct NotificationsView: View {
                 await notificationsStore.load()
                 await notificationsStore.markAllRead()
             }
-            .accentNavigationBar()
     }
 
     @ViewBuilder
@@ -62,6 +61,7 @@ struct NotificationsView: View {
                         }
                     }
                 )
+                .listRowSeparator(.hidden)
                 .onAppear {
                     if notification.id == notificationsStore.items.last?.id {
                         Task { await notificationsStore.loadMore() }

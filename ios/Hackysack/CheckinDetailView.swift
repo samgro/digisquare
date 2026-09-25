@@ -86,7 +86,6 @@ struct CheckinDetailView: View {
             // store, which `checkin` reads from.
             await refreshCheckin()
         }
-        .accentNavigationBar()
     }
 
     private var authorRow: some View {

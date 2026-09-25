@@ -23,7 +23,7 @@ struct FriendsView: View {
             .navigationTitle("Friends")
             .homeNavigationBar(
                 searchTitle: "Search Friends",
-                searchPrompt: "Search friends",
+                searchLabel: "Search friends",
                 searchDescription: "Searching your friends is coming soon."
             )
             // Reached from the empty state; your profile has the everyday
@@ -51,6 +51,8 @@ struct FriendsView: View {
         }
     }
 
+    private let rowHorizontalInset: CGFloat = 16
+
     /// Separators only between rows, not above the first or below the last.
     private func outerSeparatorEdges(of item: FriendCheckin) -> VerticalEdge.Set {
         var edges: VerticalEdge.Set = []
@@ -77,6 +79,13 @@ struct FriendsView: View {
                         onComment: { commentingCheckin = $0 }
                     )
                     .listRowSeparator(.hidden, edges: outerSeparatorEdges(of: item))
+                    .listRowInsets(.vertical, 12)
+                    .listRowInsets(.horizontal, rowHorizontalInset)
+                    // From the checkin's text (the row sets that) out to
+                    // the screen's edge, past the row's trailing inset.
+                    .alignmentGuide(.listRowSeparatorTrailing) { dimensions in
+                        dimensions.width + rowHorizontalInset
+                    }
                 }
             }
             .listStyle(.plain)

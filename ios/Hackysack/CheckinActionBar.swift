@@ -5,9 +5,9 @@
 
 import SwiftUI
 
-/// The heart and speech bubble under a checkin, with the counts beneath
-/// them. The heart talks to the social store itself, so rows only need to
-/// say what a tap on the bubble opens.
+/// The heart and speech bubble under a checkin, each with its count beside
+/// it. The heart talks to the social store itself, so rows only need to say
+/// what a tap on the bubble opens.
 struct CheckinActionBar: View {
     let checkin: Checkin
     let onComment: () -> Void
@@ -15,57 +15,64 @@ struct CheckinActionBar: View {
     @Environment(CheckinSocialStore.self) private var socialStore
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            HStack(spacing: 2) {
-                Button {
-                    Task {
-                        do {
-                            try await socialStore.toggleLike(checkin)
-                        } catch {
-                            // The heart has already flipped back; nothing to add.
-                            DevLog.network("Couldn't change like: \(error)")
-                        }
+        HStack(spacing: 16) {
+            Button {
+                Task {
+                    do {
+                        try await socialStore.toggleLike(checkin)
+                    } catch {
+                        // The heart has already flipped back; nothing to add.
+                        DevLog.network("Couldn't change like: \(error)")
                     }
-                } label: {
-                    Image(systemName: checkin.likedByMe ? "heart.fill" : "heart")
-                        .foregroundStyle(checkin.likedByMe ? Color.red : Color.primary)
+                }
+            } label: {
+                ActionBarLabel(systemImage: checkin.likedByMe ? "heart.fill" : "heart", count: checkin.likeCount) { heart in
+                    heart
+                        // Secondary like the text above it, red once liked.
+                        .foregroundStyle(checkin.likedByMe ? AnyShapeStyle(Color.red) : AnyShapeStyle(.secondary))
                         .contentTransition(.symbolEffect(.replace))
                         .symbolEffect(.bounce, value: checkin.likedByMe)
-                        .frame(width: 36, height: 36)
-                        .contentShape(Rectangle())
                 }
-                .accessibilityLabel(checkin.likedByMe ? "Unlike" : "Like")
-
-                Button(action: onComment) {
-                    Image(systemName: "bubble.right")
-                        .foregroundStyle(Color.primary)
-                        .frame(width: 36, height: 36)
-                        .contentShape(Rectangle())
-                }
-                .accessibilityLabel("Comment")
-                .accessibilityHint("Shows the comments")
             }
-            .font(.title3)
-            // Plain, so inside a List the two icons are separate tap targets.
-            .buttonStyle(.plain)
-            // Pulls the glyphs back in line with the text above them.
-            .padding(.leading, -6)
+            .accessibilityLabel(checkin.likedByMe ? "Unlike" : "Like")
+            .accessibilityValue("^[\(checkin.likeCount) like](inflect: true)")
 
-            if checkin.likeCount > 0 {
-                Text("^[\(checkin.likeCount) like](inflect: true)")
-                    .font(.subheadline.weight(.semibold))
+            Button(action: onComment) {
+                ActionBarLabel(systemImage: "bubble.right", count: checkin.commentCount) { $0 }
+            }
+            .accessibilityLabel("Comment")
+            .accessibilityValue("^[\(checkin.commentCount) comment](inflect: true)")
+            .accessibilityHint("Shows the comments")
+        }
+        .foregroundStyle(.secondary)
+        // Plain, so inside a List the two buttons are separate tap targets.
+        .buttonStyle(.plain)
+    }
+}
+
+/// A glyph with its count to the right, which is left out at zero. The tap
+/// target reaches above and below the glyph without taking up any room, so
+/// the bar sits right under the text above it.
+private struct ActionBarLabel<Glyph: View>: View {
+    let systemImage: String
+    let count: Int
+    @ViewBuilder let styleGlyph: (Image) -> Glyph
+
+    var body: some View {
+        HStack(spacing: 4) {
+            styleGlyph(Image(systemName: systemImage))
+                .font(.title3)
+            if count > 0 {
+                Text(count, format: .number)
+                    .font(.subheadline)
                     .monospacedDigit()
-            }
-
-            if checkin.commentCount > 0 {
-                Button(action: onComment) {
-                    Text(checkin.commentCount == 1 ? "View 1 comment" : "View all \(checkin.commentCount) comments")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                .buttonStyle(.plain)
+                    .contentTransition(.numericText(value: Double(count)))
             }
         }
+        .padding(.vertical, 7)
+        .contentShape(Rectangle())
+        .padding(.vertical, -7)
+        .animation(.default, value: count)
     }
 }
 

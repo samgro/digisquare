@@ -18,7 +18,6 @@ struct SearchPlaceholderView: View {
         )
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .accentNavigationBar()
     }
 }
 

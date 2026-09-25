@@ -1,3 +1,9 @@
+# Design
+
+Prefer not to use row separators. Hide them in lists
+(`.listRowSeparator(.hidden)`) and let spacing divide the rows. Only keep a
+separator when the design truly needs one.
+
 # Building
 
 Build the app for the simulator with:
