@@ -64,6 +64,17 @@ function structLiteral(value: Record<string, unknown> | null | undefined, typed:
   return value ? `${literal(value)}::${typed}` : `NULL::${typed}`;
 }
 
+/**
+ * Marks the files as GeoParquet, like the real release files, so DuckDB reads
+ * `geometry` back as its native GEOMETRY type rather than a BLOB. Without it
+ * the fetch code would pass here while dropping every real row.
+ */
+const GEOPARQUET_METADATA = JSON.stringify({
+  version: "1.1.0",
+  primary_column: "geometry",
+  columns: { geometry: { encoding: "WKB", geometry_types: [] } },
+});
+
 const NAMES_TYPE = "STRUCT(\"primary\" VARCHAR)";
 const TAXONOMY_TYPE = "STRUCT(\"primary\" VARCHAR, hierarchy VARCHAR[], alternates VARCHAR[])";
 const ADDRESS_TYPE = "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]";
@@ -101,7 +112,9 @@ export async function writeSampleRelease(samples: OvertureSamples = loadOverture
   const connection = await instance.connect();
   const write = async (name: string, selects: string[]) => {
     const filePath = path.join(directory, `${name}.parquet`);
-    await connection.run(`COPY (${selects.join(" UNION ALL ")}) TO '${filePath}' (FORMAT PARQUET)`);
+    await connection.run(
+      `COPY (${selects.join(" UNION ALL ")}) TO '${filePath}' (FORMAT PARQUET, KV_METADATA {geo: '${GEOPARQUET_METADATA}'})`,
+    );
   };
   await write("places-place", samples.places.map(placeSelect));
   await write("base-land_use", samples.land_use.filter((row) => !("geometry_note" in row)).map(baseSelect));

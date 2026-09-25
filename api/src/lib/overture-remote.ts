@@ -13,6 +13,7 @@
 
 import {
   DuckDBBlobValue,
+  DuckDBGeometryValue,
   DuckDBInstance,
   DuckDBListValue,
   DuckDBStructValue,
@@ -94,9 +95,13 @@ function plain(value: unknown): unknown {
   return value;
 }
 
+/**
+ * The release files are GeoParquet, which DuckDB 1.5 reads as its native
+ * GEOMETRY type; its bytes are WKB, like a plain BLOB column's.
+ */
 function geometryOf(row: Row): WkbGeometry | null {
   const raw = row.geometry;
-  if (raw instanceof DuckDBBlobValue) {
+  if (raw instanceof DuckDBGeometryValue || raw instanceof DuckDBBlobValue) {
     return decodeWkb(raw.bytes);
   }
   if (raw instanceof Uint8Array) {
