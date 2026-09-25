@@ -6,6 +6,7 @@ import {
   cellsAround,
   cellsInBounds,
   groupCellsIntoTiles,
+  JOB_TILE_CELLS_PER_SIDE,
   nearestCells,
   unionBounds,
 } from "./coverage-cells.js";
@@ -49,6 +50,15 @@ describe("coverage cells", () => {
     expect(tiles.map((tile) => tile.cells.length).reduce((total, count) => total + count, 0)).toBe(cells.length);
     // -122.6..-121.9 spans the -123..-122 and -122..-121 tiles.
     expect(tiles).toHaveLength(2);
+  });
+
+  it("cuts smaller tiles for worker jobs", () => {
+    const cells = cellsInBounds({ west: -122.55, south: 37.65, east: -122.15, north: 37.95 });
+    const tiles = groupCellsIntoTiles(cells, JOB_TILE_CELLS_PER_SIDE);
+    expect(tiles.every((tile) => tile.cells.length <= 4)).toBe(true);
+    expect(tiles.map((tile) => tile.cells.length).reduce((total, count) => total + count, 0)).toBe(cells.length);
+    // 5 cells wide (-122.6..-122.1) and 4 tall (37.6..38.0) on a 2-cell grid.
+    expect(tiles).toHaveLength(3 * 2);
   });
 
   it("keeps the cells nearest a point", () => {

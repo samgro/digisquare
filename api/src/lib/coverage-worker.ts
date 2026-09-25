@@ -1,13 +1,14 @@
 /**
- * Runs coverage jobs one at a time: fetches an area's places and venue
- * grounds from the Overture release files, writes them, marks the cells
- * ready, and after a user's `fix` job grows the fetch to their whole city.
- * Also rolls ready cells to a newer release when `OVERTURE_RELEASE` changes.
+ * Runs coverage jobs: fetches an area's places and venue grounds from the
+ * Overture release files, writes them, marks the cells ready, and after a
+ * user's `fix` job grows the fetch to their whole city. Also rolls ready
+ * cells to a newer release when `OVERTURE_RELEASE` changes.
  *
  * Runs inside the API process (Railway has no separate worker), claiming
  * jobs with a single atomic update so a second instance never runs the same
- * one. Priority order is what keeps a waiting user ahead of a city or a
- * seed.
+ * one. Two lanes run side by side: one claims only `fix` jobs, the ones a
+ * user is waiting on, so a city, seed or refresh in progress never delays
+ * them; the other takes everything else in priority order.
  */
 
 import { and, asc, eq, inArray, isNull, lt, ne, or, sql } from "drizzle-orm";
@@ -17,11 +18,14 @@ import { coverageCells, coverageJobs } from "../db/schema.js";
 import {
   boundsOfCircle,
   cellCountInBounds,
+  cellForPoint,
   cellKey,
   cellsInBounds,
   groupCellsIntoTiles,
+  JOB_TILE_CELLS_PER_SIDE,
   type Bounds,
   type Cell,
+  type CellTile,
 } from "./coverage-cells.js";
 import {
   COVERAGE_LIMITS,
@@ -30,6 +34,7 @@ import {
   onJobEnqueued,
   planCityCells,
   type CoverageJob,
+  type JobKind,
 } from "./coverage.js";
 import { attachExtents } from "./extent-matching.js";
 import { parseOverturePlace, type OverturePlaceInsert } from "./overture.js";
@@ -55,6 +60,9 @@ const STALE_IMPORT_MINUTES = 30;
 const RETRY_DELAY_MINUTES = 5;
 const REFRESH_SCAN_INTERVAL_MS = 60 * 60 * 1000;
 
+/** The job kinds each worker lane claims. */
+export const WORKER_LANES: readonly (readonly JobKind[])[] = [["fix"], ["city", "seed", "refresh"]];
+
 export interface JobOutcome {
   placeCount: number;
   changedCount: number;
@@ -74,6 +82,7 @@ export async function importBounds(
   source: OvertureSource,
   bounds: Bounds,
   log: (message: string) => void = () => {},
+  onPlacesReady: () => Promise<void> = async () => {},
 ): Promise<JobOutcome> {
   let placeCount = 0;
   let changedCount = 0;
@@ -96,6 +105,9 @@ export async function importBounds(
     UPSERT_BATCH_SIZE,
   );
   log(`${total} rows read, ${placeCount} places kept, ${changedCount} changed`);
+  // The places are searchable now; the grounds only refine ranking, so a
+  // user waiting on this area is let in before they are matched.
+  await onPlacesReady();
 
   log("fetching venue grounds");
   const extents = (await fetchExtentFeatures(source, bounds))
@@ -120,8 +132,9 @@ export async function importBounds(
  * Claims the oldest pending job of the highest priority, skipping jobs that
  * failed within the last few minutes so a persistent failure does not spin.
  */
-export async function claimNextJob(): Promise<CoverageJob | null> {
+export async function claimNextJob(kinds?: readonly JobKind[]): Promise<CoverageJob | null> {
   const retryBefore = new Date(Date.now() - RETRY_DELAY_MINUTES * 60 * 1000);
+  const kindFilter = kinds ? sql`and ${inArray(coverageJobs.kind, [...kinds])}` : sql``;
   const [job] = await database
     .update(coverageJobs)
     .set({ status: "importing", startedAt: new Date(), attempts: sql`${coverageJobs.attempts} + 1` })
@@ -132,6 +145,7 @@ export async function claimNextJob(): Promise<CoverageJob | null> {
           coverageJobs.id,
           sql`(select id from ${coverageJobs}
                where ${coverageJobs.status} = 'pending'
+                 ${kindFilter}
                  and (${coverageJobs.attempts} = 0 or ${coverageJobs.startedAt} is null or ${coverageJobs.startedAt} < ${retryBefore})
                order by ${coverageJobs.priority}, ${coverageJobs.requestedAt}
                limit 1 for update skip locked)`,
@@ -180,7 +194,7 @@ async function failJob(job: CoverageJob, error: unknown): Promise<void> {
  * cells, else trimmed to the cells nearest the fix. With no city found, a
  * 15 km square around the fix stands in.
  */
-export async function enqueueCityAround(source: OvertureSource, fixJob: CoverageJob): Promise<CoverageJob | null> {
+export async function enqueueCityAround(source: OvertureSource, fixJob: CoverageJob): Promise<CoverageJob[]> {
   const center = {
     latitude: (fixJob.south + fixJob.north) / 2,
     longitude: (fixJob.west + fixJob.east) / 2,
@@ -195,22 +209,39 @@ export async function enqueueCityAround(source: OvertureSource, fixJob: Coverage
     cityBounds = boundsOfCircle(center.latitude, center.longitude, COVERAGE_LIMITS.fallbackCityRadiusMeters);
   }
   const cells = await planCityCells(cellsInBounds(cityBounds), center);
-  if (cells.length === 0) {
-    return null;
+  const jobs: CoverageJob[] = [];
+  // One small job per tile, the tiles around the user first, so their
+  // surroundings fill in early and no job holds the lane for long.
+  for (const tile of tilesNearestFirst(cells, center)) {
+    jobs.push(
+      await enqueueJob({ kind: "city", cells: tile.cells, requestedByUserId: fixJob.requestedByUserId, parentJobId: fixJob.id }),
+    );
   }
-  return enqueueJob({ kind: "city", cells, requestedByUserId: fixJob.requestedByUserId, parentJobId: fixJob.id });
+  return jobs;
+}
+
+/** Job-sized tiles of `cells`, nearest `point` first. */
+function tilesNearestFirst(cells: Cell[], point: { latitude: number; longitude: number }): CellTile[] {
+  const origin = cellForPoint(point.latitude, point.longitude);
+  const distance = (tile: CellTile) =>
+    Math.min(...tile.cells.map((cell) => (cell.cellX - origin.cellX) ** 2 + (cell.cellY - origin.cellY) ** 2));
+  return groupCellsIntoTiles(cells, JOB_TILE_CELLS_PER_SIDE).sort((first, second) => distance(first) - distance(second));
 }
 
 /** Runs one claimed job to completion, whatever the outcome. */
 export async function runJob(source: OvertureSource, job: CoverageJob): Promise<void> {
   const label = `${job.kind} job ${job.id}`;
+  const log = (message: string) => console.log(`[coverage] ${label}: ${message}`);
   try {
-    const outcome = await importBounds(source, boundsOf(job), (message) => console.log(`[coverage] ${label}: ${message}`));
+    const outcome = await importBounds(source, boundsOf(job), log, async () => {
+      await markCells(cellsInBounds(boundsOf(job)), "ready", job.overtureRelease, job.id);
+      log("cells ready; matching venue grounds next");
+    });
     await finishJob(job, outcome);
     if (job.kind === "fix") {
-      const city = await enqueueCityAround(source, job);
-      if (city) {
-        console.log(`[coverage] ${label}: enqueued city job ${city.id}`);
+      const cityJobs = await enqueueCityAround(source, job);
+      if (cityJobs.length > 0) {
+        log(`enqueued ${cityJobs.length} city jobs`);
       }
     }
   } catch (error) {
@@ -266,7 +297,7 @@ export async function scheduleRefreshJobs(): Promise<CoverageJob[]> {
     )
     .orderBy(asc(coverageCells.readyAt));
   const jobs: CoverageJob[] = [];
-  for (const tile of groupCellsIntoTiles(stale)) {
+  for (const tile of groupCellsIntoTiles(stale, JOB_TILE_CELLS_PER_SIDE)) {
     jobs.push(await enqueueJob({ kind: "refresh", cells: tile.cells, bounds: tile.bounds }));
   }
   if (jobs.length > 0) {
@@ -286,7 +317,10 @@ export interface CoverageWorkerOptions {
  */
 export class CoverageWorker {
   private running = false;
-  private wake: (() => void) | null = null;
+  /** One waker per lane that is asleep between polls. */
+  private readonly wakers = new Set<() => void>();
+  /** Set when a job was enqueued while no lane was asleep, so none sleeps past it. */
+  private enqueuedWhileAwake = false;
   private unsubscribe: (() => void) | null = null;
   private refreshTimer: NodeJS.Timeout | null = null;
 
@@ -297,11 +331,11 @@ export class CoverageWorker {
       return;
     }
     this.running = true;
-    this.unsubscribe = onJobEnqueued(() => this.wake?.());
+    this.unsubscribe = onJobEnqueued(() => this.wake());
     this.refreshTimer = setInterval(() => {
       scheduleRefreshJobs().catch((error) => console.error("[coverage] refresh scan failed", error));
     }, REFRESH_SCAN_INTERVAL_MS);
-    void this.loop();
+    void this.run();
   }
 
   stop(): void {
@@ -310,11 +344,20 @@ export class CoverageWorker {
     if (this.refreshTimer) {
       clearInterval(this.refreshTimer);
     }
-    this.wake?.();
+    this.wake();
     void closeOvertureSource(this.options.source);
   }
 
-  private async loop(): Promise<void> {
+  private wake(): void {
+    if (this.wakers.size === 0) {
+      this.enqueuedWhileAwake = true;
+    }
+    for (const waker of this.wakers) {
+      waker();
+    }
+  }
+
+  private async run(): Promise<void> {
     try {
       const recovered = await recoverStaleJobs();
       if (recovered > 0) {
@@ -324,10 +367,14 @@ export class CoverageWorker {
     } catch (error) {
       console.error("[coverage] startup housekeeping failed", error);
     }
+    await Promise.all(WORKER_LANES.map((kinds) => this.loop(kinds)));
+  }
+
+  private async loop(kinds: readonly JobKind[]): Promise<void> {
     while (this.running) {
       let job: CoverageJob | null = null;
       try {
-        job = await claimNextJob();
+        job = await claimNextJob(kinds);
       } catch (error) {
         console.error("[coverage] could not claim a job", error);
       }
@@ -335,15 +382,25 @@ export class CoverageWorker {
         await runJob(this.options.source, job);
         continue;
       }
-      await new Promise<void>((resolve) => {
-        const timer = setTimeout(resolve, this.options.pollIntervalMs ?? 15_000);
-        this.wake = () => {
-          clearTimeout(timer);
-          resolve();
-        };
-      });
-      this.wake = null;
+      await this.sleep();
     }
+  }
+
+  /** Until the next poll, a wake-up, or immediately if one arrived mid-claim. */
+  private sleep(): Promise<void> {
+    if (this.enqueuedWhileAwake) {
+      this.enqueuedWhileAwake = false;
+      return Promise.resolve();
+    }
+    return new Promise<void>((resolve) => {
+      const timer = setTimeout(() => waker(), this.options.pollIntervalMs ?? 15_000);
+      const waker = () => {
+        clearTimeout(timer);
+        this.wakers.delete(waker);
+        resolve();
+      };
+      this.wakers.add(waker);
+    });
   }
 }
 

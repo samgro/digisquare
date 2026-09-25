@@ -75,7 +75,11 @@ export async function upsertOverturePlaces(
   if (rows.length === 0) {
     return { changed: 0, seen: 0 };
   }
-  const stamped = rows.map((row) => ({ ...row, lastSeenRelease: release, retiredAt: null }));
+  // Sorted so two jobs whose areas overlap lock shared rows in the same
+  // order and cannot deadlock each other.
+  const stamped = [...rows]
+    .sort((first, second) => (first.overtureId ?? "").localeCompare(second.overtureId ?? ""))
+    .map((row) => ({ ...row, lastSeenRelease: release, retiredAt: null }));
   const written = await database
     .insert(places)
     .values(stamped)

@@ -104,16 +104,30 @@ export function cellCountInBounds(bounds: Bounds): number {
   return cellsInBounds(bounds).length;
 }
 
+/** A seed tile: 1 degree, 10 x 10 cells, for throughput when loading a region. */
+export const SEED_TILE_CELLS_PER_SIDE = 10;
 /**
- * Groups cells into 1 degree tiles (10 x 10 cells), the unit a seed or a
- * refresh fetches in one query. Returns the tiles in row order with the
- * cells each one holds.
+ * A worker job tile: 0.2 degrees, 2 x 2 cells. City and refresh work is cut
+ * this small so no single job holds a lane for long, and so a user's own
+ * surroundings can be fetched first.
  */
-export function groupCellsIntoTiles(cells: Cell[]): { bounds: Bounds; cells: Cell[] }[] {
+export const JOB_TILE_CELLS_PER_SIDE = 2;
+
+export interface CellTile {
+  bounds: Bounds;
+  cells: Cell[];
+}
+
+/**
+ * Groups cells into square tiles of `cellsPerSide` cells, aligned to the
+ * grid, each the unit of one fetch. Returns the tiles in first-seen order
+ * with the cells each one holds.
+ */
+export function groupCellsIntoTiles(cells: Cell[], cellsPerSide = SEED_TILE_CELLS_PER_SIDE): CellTile[] {
   const tiles = new Map<string, Cell[]>();
   for (const cell of cells) {
-    const tileX = Math.floor(cell.cellX / 10);
-    const tileY = Math.floor(cell.cellY / 10);
+    const tileX = Math.floor(cell.cellX / cellsPerSide);
+    const tileY = Math.floor(cell.cellY / cellsPerSide);
     const key = `${tileX}:${tileY}`;
     tiles.set(key, [...(tiles.get(key) ?? []), cell]);
   }
