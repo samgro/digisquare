@@ -60,8 +60,10 @@ describe("fetchExtentFeatures", () => {
     expect(extents.map((extent) => extent!.name)).toEqual(
       expect.arrayContaining(["Golden Gate Park", "San Francisco International Airport"]),
     );
-    // Taxiways and the marine sanctuary come back as rows but are not extents.
-    expect(features.length).toBeGreaterThan(extents.length);
+    // The query keeps only the polygon kinds that can be grounds, so the
+    // taxiway never comes back and every row parses.
+    expect(features.length).toBe(extents.length);
+    expect(features.map((feature) => feature.properties?.names?.primary)).not.toContain("L");
   });
 });
 

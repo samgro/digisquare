@@ -43,7 +43,7 @@ export interface ParsedExtent {
 }
 
 /** `subtype:class` pairs, or bare classes, that count as venue grounds. */
-const FAMILY_BY_CLASS: Record<string, ExtentFamily> = {
+export const EXTENT_FAMILY_BY_CLASS: Record<string, ExtentFamily> = {
   "airport:airport": "airport",
   "airport:international_airport": "airport",
   "airport:airstrip": "airport",
@@ -66,7 +66,7 @@ const FAMILY_BY_CLASS: Record<string, ExtentFamily> = {
 };
 
 /** Subtypes whose every class belongs to one family. */
-const FAMILY_BY_SUBTYPE: Record<string, ExtentFamily> = {
+export const EXTENT_FAMILY_BY_SUBTYPE: Record<string, ExtentFamily> = {
   winter_sports: "ski",
 };
 
@@ -95,13 +95,13 @@ export const CATEGORY_SUFFIXES_BY_FAMILY: Partial<Record<ExtentFamily, readonly 
 };
 
 export function extentFamily(subtype: string | null | undefined, className: string | null | undefined): ExtentFamily | null {
-  if (subtype && FAMILY_BY_SUBTYPE[subtype]) {
-    return FAMILY_BY_SUBTYPE[subtype];
+  if (subtype && EXTENT_FAMILY_BY_SUBTYPE[subtype]) {
+    return EXTENT_FAMILY_BY_SUBTYPE[subtype];
   }
   if (!subtype || !className) {
     return null;
   }
-  return FAMILY_BY_CLASS[`${subtype}:${className}`] ?? null;
+  return EXTENT_FAMILY_BY_CLASS[`${subtype}:${className}`] ?? null;
 }
 
 /** Whether a place category can carry an extent of this family. */

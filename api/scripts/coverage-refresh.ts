@@ -10,7 +10,7 @@
 import "../src/load-environment.js";
 import { config } from "../src/config.js";
 import { claimNextJob, runJob, scheduleRefreshJobs } from "../src/lib/coverage-worker.js";
-import { s3Source } from "../src/lib/overture-remote.js";
+import { closeOvertureSource, s3Source } from "../src/lib/overture-remote.js";
 
 async function main(): Promise<void> {
   const jobs = await scheduleRefreshJobs();
@@ -24,6 +24,7 @@ async function main(): Promise<void> {
     console.log(`running ${job.kind} job ${job.id}`);
     await runJob(source, job);
   }
+  await closeOvertureSource(source);
 }
 
 main().catch((error) => {

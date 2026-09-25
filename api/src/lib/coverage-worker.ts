@@ -41,7 +41,13 @@ import {
   upsertOverturePlaces,
   UPSERT_BATCH_SIZE,
 } from "./overture-import.js";
-import { fetchCityContaining, fetchExtentFeatures, fetchPlaceFeatures, type OvertureSource } from "./overture-remote.js";
+import {
+  closeOvertureSource,
+  fetchCityContaining,
+  fetchExtentFeatures,
+  fetchPlaceFeatures,
+  type OvertureSource,
+} from "./overture-remote.js";
 
 const MAXIMUM_ATTEMPTS = 3;
 const STALE_IMPORT_MINUTES = 30;
@@ -299,6 +305,7 @@ export class CoverageWorker {
       clearInterval(this.refreshTimer);
     }
     this.wake?.();
+    void closeOvertureSource(this.options.source);
   }
 
   private async loop(): Promise<void> {

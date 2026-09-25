@@ -5,6 +5,12 @@
  * touches only the row groups that intersect it, which is how a city-sized
  * fetch takes minutes rather than the hours a full scan would.
  *
+ * One DuckDB instance is kept per source for the life of the process. The
+ * first query against a release lists its files and reads every footer;
+ * with the metadata caches on, later queries skip that, so the second area
+ * fetched in a process costs a fraction of the first. Each fetch is a single
+ * streamed query: paging with OFFSET would rescan the release for every page.
+ *
  * Rows are turned into the same GeoJSON feature shape the file importers
  * read, so one parser (`overture.ts`, `overture-extents.ts`) serves both.
  * Geometry is decoded from WKB here rather than with DuckDB's spatial
@@ -21,7 +27,13 @@ import {
 } from "@duckdb/node-api";
 import type { Bounds } from "./coverage-cells.js";
 import type { OverturePlaceFeature } from "./overture.js";
-import { extentFromWkbGeometry, polygonsContain, type OvertureExtentFeature } from "./overture-extents.js";
+import {
+  EXTENT_FAMILY_BY_CLASS,
+  EXTENT_FAMILY_BY_SUBTYPE,
+  extentFromWkbGeometry,
+  polygonsContain,
+  type OvertureExtentFeature,
+} from "./overture-extents.js";
 import { decodeWkb, type WkbGeometry } from "./wkb.js";
 
 export type OvertureTheme = "places" | "base" | "divisions";
@@ -44,22 +56,69 @@ export function s3Source(release: string): OvertureSource {
   };
 }
 
+// The worker shares the API process on Railway, so DuckDB is kept small.
 const DUCKDB_MEMORY_LIMIT = "512MB";
 const DUCKDB_THREADS = 2;
 
-async function openConnection(source: OvertureSource): Promise<DuckDBConnection> {
+const instances = new Map<OvertureSource, Promise<DuckDBInstance>>();
+
+async function createInstance(source: OvertureSource): Promise<DuckDBInstance> {
   const instance = await DuckDBInstance.create(":memory:");
   const connection = await instance.connect();
-  await connection.run(`SET memory_limit='${DUCKDB_MEMORY_LIMIT}'; SET threads=${DUCKDB_THREADS};`);
-  if (source.remote) {
-    await connection.run("INSTALL httpfs; LOAD httpfs; SET s3_region='us-west-2';");
+  try {
+    await connection.run(`SET GLOBAL memory_limit='${DUCKDB_MEMORY_LIMIT}'; SET GLOBAL threads=${DUCKDB_THREADS};`);
+    if (source.remote) {
+      await connection.run(`
+        INSTALL httpfs; LOAD httpfs;
+        SET GLOBAL s3_region='us-west-2';
+        SET GLOBAL enable_http_metadata_cache=true;
+        SET GLOBAL parquet_metadata_cache=true;
+      `);
+    }
+  } finally {
+    connection.closeSync();
   }
-  return connection;
+  return instance;
+}
+
+/** A connection on the source's instance, created on first use. */
+async function connect(source: OvertureSource): Promise<DuckDBConnection> {
+  let pending = instances.get(source);
+  if (!pending) {
+    pending = createInstance(source);
+    instances.set(source, pending);
+    pending.catch(() => instances.delete(source));
+  }
+  return (await pending).connect();
+}
+
+/** Releases the source's instance and its caches. The next fetch starts a new one. */
+export async function closeOvertureSource(source: OvertureSource): Promise<void> {
+  const pending = instances.get(source);
+  if (!pending) {
+    return;
+  }
+  instances.delete(source);
+  try {
+    (await pending).closeSync();
+  } catch {
+    // Creation failed; there is nothing to close.
+  }
 }
 
 /** `WHERE` clause on the release files' bbox column. */
 function bboxPredicate(bounds: Bounds): string {
   return `bbox.xmin < ${bounds.east} AND bbox.xmax > ${bounds.west} AND bbox.ymin < ${bounds.north} AND bbox.ymax > ${bounds.south}`;
+}
+
+function sqlStringList(values: string[]): string {
+  return values.map((value) => `'${value.replace(/'/g, "''")}'`).join(", ");
+}
+
+/** Only the polygon kinds `parseOvertureExtent` accepts, so the rest are never read. */
+function extentFamilyPredicate(): string {
+  return `((subtype || ':' || class) IN (${sqlStringList(Object.keys(EXTENT_FAMILY_BY_CLASS))})
+           OR subtype IN (${sqlStringList(Object.keys(EXTENT_FAMILY_BY_SUBTYPE))}))`;
 }
 
 type Row = Record<string, unknown>;
@@ -110,22 +169,41 @@ function geometryOf(row: Row): WkbGeometry | null {
   return null;
 }
 
-async function readRows(connection: DuckDBConnection, query: string): Promise<Row[]> {
-  const reader = await connection.runAndReadAll(query);
-  return reader.getRowObjects().map((row) => row as Row);
+/** Runs one query and hands its rows over as DuckDB produces them, a chunk at a time. */
+async function streamRows(
+  connection: DuckDBConnection,
+  query: string,
+  onRows: (rows: Row[]) => Promise<void>,
+): Promise<number> {
+  const result = await connection.stream(query);
+  let total = 0;
+  for await (const chunk of result.yieldRowObjects()) {
+    total += chunk.length;
+    await onRows(chunk as Row[]);
+  }
+  return total;
 }
+
+/**
+ * The columns the parsers use, and no more: whole `names`, `taxonomy` and
+ * `addresses` structs carry translations, hierarchies and secondary
+ * addresses that would be fetched and decoded only to be dropped.
+ */
+const PLACE_COLUMNS = `id, geometry, names.primary AS name,
+  taxonomy.primary AS primary_category, taxonomy.alternates AS alternate_categories,
+  confidence, addresses[1] AS address, websites[1] AS website, phones[1] AS phone, operating_status`;
+const EXTENT_COLUMNS = "id, geometry, names.primary AS name, subtype, class";
 
 /** A place row from the release files as the GeoJSON feature `parseOverturePlace` reads. */
 export function placeRowToFeature(row: Row): OverturePlaceFeature {
   const geometry = geometryOf(row);
   const properties = plain({
-    names: row.names,
-    taxonomy: row.taxonomy,
-    categories: row.categories,
+    names: { primary: row.name },
+    taxonomy: { primary: row.primary_category, alternates: row.alternate_categories },
     confidence: row.confidence,
-    addresses: row.addresses,
-    websites: row.websites,
-    phones: row.phones,
+    addresses: [row.address],
+    websites: [row.website],
+    phones: [row.phone],
     operating_status: row.operating_status,
   }) as OverturePlaceFeature["properties"];
   return { id: String(row.id), type: "Feature", geometry, properties };
@@ -137,42 +215,59 @@ export function extentRowToFeature(row: Row): OvertureExtentFeature {
   return {
     id: String(row.id),
     geometry: geometry ? extentFromWkbGeometry(geometry) : null,
-    properties: plain({ subtype: row.subtype, class: row.class, names: row.names }) as OvertureExtentFeature["properties"],
+    properties: plain({
+      subtype: row.subtype,
+      class: row.class,
+      names: { primary: row.name },
+    }) as OvertureExtentFeature["properties"],
   };
 }
 
-const PLACE_COLUMNS = "id, geometry, names, taxonomy, confidence, addresses, websites, phones, operating_status";
-const EXTENT_COLUMNS = "id, geometry, names, subtype, class";
-
-/** The place features inside `bounds`, streamed to `onBatch` in batches. */
+/**
+ * The place features inside `bounds`, handed to `onBatch` in batches of
+ * `batchSize`. The next batch is read while `onBatch` is still working on
+ * the previous one; there is never more than one `onBatch` in flight, so
+ * batches are written in order.
+ */
 export async function fetchPlaceFeatures(
   source: OvertureSource,
   bounds: Bounds,
   onBatch: (features: OverturePlaceFeature[]) => Promise<void>,
   batchSize = 500,
 ): Promise<number> {
-  const connection = await openConnection(source);
+  const connection = await connect(source);
   try {
-    const glob = source.parquetGlob("places", "place");
-    let offset = 0;
-    let total = 0;
-    // Paged so a dense city never sits in memory at once. DuckDB's parquet
-    // scan is deterministic for a fixed query, so OFFSET pages are stable.
-    for (;;) {
-      const rows = await readRows(
-        connection,
-        `SELECT ${PLACE_COLUMNS} FROM read_parquet('${glob}', hive_partitioning=1)
-         WHERE ${bboxPredicate(bounds)} ORDER BY id LIMIT ${batchSize} OFFSET ${offset}`,
-      );
-      if (rows.length === 0) {
-        break;
+    let pending: OverturePlaceFeature[] = [];
+    let inFlight: Promise<void> | null = null;
+    const dispatch = async (batch: OverturePlaceFeature[]) => {
+      if (inFlight) {
+        await inFlight;
       }
-      await onBatch(rows.map(placeRowToFeature));
-      total += rows.length;
-      offset += rows.length;
-      if (rows.length < batchSize) {
-        break;
-      }
+      inFlight = onBatch(batch);
+      // Awaited on the next dispatch or at the end; this only keeps a
+      // rejection from counting as unhandled in the meantime.
+      inFlight.catch(() => {});
+    };
+    const total = await streamRows(
+      connection,
+      `SELECT ${PLACE_COLUMNS} FROM read_parquet('${source.parquetGlob("places", "place")}', hive_partitioning=1)
+       WHERE ${bboxPredicate(bounds)}`,
+      async (rows) => {
+        for (const row of rows) {
+          pending.push(placeRowToFeature(row));
+          if (pending.length === batchSize) {
+            const batch = pending;
+            pending = [];
+            await dispatch(batch);
+          }
+        }
+      },
+    );
+    if (pending.length > 0) {
+      await dispatch(pending);
+    }
+    if (inFlight) {
+      await inFlight;
     }
     return total;
   } finally {
@@ -182,16 +277,20 @@ export async function fetchPlaceFeatures(
 
 /** Named venue grounds (land_use and infrastructure polygons) inside `bounds`. */
 export async function fetchExtentFeatures(source: OvertureSource, bounds: Bounds): Promise<OvertureExtentFeature[]> {
-  const connection = await openConnection(source);
+  const connection = await connect(source);
   try {
     const features: OvertureExtentFeature[] = [];
     for (const type of ["land_use", "infrastructure"]) {
-      const rows = await readRows(
+      await streamRows(
         connection,
         `SELECT ${EXTENT_COLUMNS} FROM read_parquet('${source.parquetGlob("base", type)}', hive_partitioning=1)
-         WHERE ${bboxPredicate(bounds)} AND names.primary IS NOT NULL`,
+         WHERE ${bboxPredicate(bounds)} AND names.primary IS NOT NULL AND ${extentFamilyPredicate()}`,
+        async (rows) => {
+          for (const row of rows) {
+            features.push(extentRowToFeature(row));
+          }
+        },
       );
-      features.push(...rows.map(extentRowToFeature));
     }
     return features;
   } finally {
@@ -214,14 +313,19 @@ export async function fetchCityContaining(
   source: OvertureSource,
   point: { latitude: number; longitude: number },
 ): Promise<CityArea | null> {
-  const connection = await openConnection(source);
+  const connection = await connect(source);
   try {
-    const rows = await readRows(
+    const rows: Row[] = [];
+    await streamRows(
       connection,
-      `SELECT id, geometry, names, subtype, bbox FROM read_parquet('${source.parquetGlob("divisions", "division_area")}', hive_partitioning=1)
+      `SELECT geometry, names.primary AS name, subtype, bbox
+       FROM read_parquet('${source.parquetGlob("divisions", "division_area")}', hive_partitioning=1)
        WHERE subtype IN ('locality', 'county') AND class = 'land'
          AND bbox.xmin <= ${point.longitude} AND bbox.xmax >= ${point.longitude}
          AND bbox.ymin <= ${point.latitude} AND bbox.ymax >= ${point.latitude}`,
+      async (chunk) => {
+        rows.push(...chunk);
+      },
     );
     const containing = rows
       .map((row) => ({ row, geometry: geometryOf(row) }))
@@ -232,15 +336,20 @@ export async function fetchCityContaining(
       })
       .map(({ row }) => {
         const bbox = plain(row.bbox) as { xmin: number; xmax: number; ymin: number; ymax: number };
-        const names = plain(row.names) as { primary?: string } | null;
         return {
-          name: names?.primary ?? "",
+          name: row.name === null || row.name === undefined ? "" : String(row.name),
           subtype: String(row.subtype),
           bounds: { west: bbox.xmin, south: bbox.ymin, east: bbox.xmax, north: bbox.ymax },
         };
-      });
+      })
+      // Smallest first, so a town inside a larger locality wins.
+      .sort((first, second) => boxArea(first.bounds) - boxArea(second.bounds));
     return containing.find((area) => area.subtype === "locality") ?? containing.find((area) => area.subtype === "county") ?? null;
   } finally {
     connection.closeSync();
   }
+}
+
+function boxArea(bounds: Bounds): number {
+  return (bounds.east - bounds.west) * (bounds.north - bounds.south);
 }

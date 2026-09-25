@@ -14,7 +14,7 @@ import "../src/load-environment.js";
 import { config } from "../src/config.js";
 import { cellsInBounds, groupCellsIntoTiles } from "../src/lib/coverage-cells.js";
 import { seedCellsNow } from "../src/lib/coverage-worker.js";
-import { s3Source } from "../src/lib/overture-remote.js";
+import { closeOvertureSource, s3Source } from "../src/lib/overture-remote.js";
 import { findSeedRegion, seedRegions } from "./seed-regions.js";
 
 async function main(): Promise<void> {
@@ -33,6 +33,7 @@ async function main(): Promise<void> {
       console.log(`${label}: ${fetched ? "fetched" : "already ready"}`);
     }
   }
+  await closeOvertureSource(source);
 }
 
 main().catch((error) => {

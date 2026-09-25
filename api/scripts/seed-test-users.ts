@@ -25,7 +25,7 @@ import {
 } from "../src/db/schema.js";
 import { cellsAround } from "../src/lib/coverage-cells.js";
 import { seedCellsNow } from "../src/lib/coverage-worker.js";
-import { s3Source } from "../src/lib/overture-remote.js";
+import { closeOvertureSource, s3Source } from "../src/lib/overture-remote.js";
 import { formatAddress } from "../src/lib/place-result.js";
 import { searchByName, type PlaceCandidate } from "../src/lib/places-search.js";
 import {
@@ -75,6 +75,7 @@ async function loadHomeCities() {
     const fetched = await seedCellsNow(source, cellsAround(latitude, longitude, SEARCH_RADIUS_METERS));
     console.log(`${name}: ${fetched ? "fetched from Overture" : "already loaded"}`);
   }
+  await closeOvertureSource(source);
 }
 
 async function seed() {
