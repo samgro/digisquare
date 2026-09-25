@@ -59,23 +59,6 @@ function boundsOf(job: CoverageJob): Bounds {
   return { west: job.west, south: job.south, east: job.east, north: job.north };
 }
 
-/** Rough size, for settling containers before their parts. */
-function approximateArea(extent: ParsedExtent): number {
-  let west = Infinity;
-  let south = Infinity;
-  let east = -Infinity;
-  let north = -Infinity;
-  for (const polygon of extent.polygons) {
-    for (const [longitude, latitude] of polygon[0] ?? []) {
-      west = Math.min(west, longitude);
-      east = Math.max(east, longitude);
-      south = Math.min(south, latitude);
-      north = Math.max(north, latitude);
-    }
-  }
-  return (east - west) * (north - south);
-}
-
 /**
  * Fetches and writes everything for `bounds`. Shared by the worker and the
  * seed and refresh scripts, which run jobs inline.
@@ -107,11 +90,16 @@ export async function importBounds(
   );
   log(`${total} rows read, ${placeCount} places kept, ${changedCount} changed`);
 
+  log("fetching venue grounds");
   const extents = (await fetchExtentFeatures(source, bounds))
     .map(parseOvertureExtent)
-    .filter((extent): extent is ParsedExtent => extent !== null)
-    .sort((first, second) => approximateArea(second) - approximateArea(first));
-  const attached = await attachExtents(extents);
+    .filter((extent): extent is ParsedExtent => extent !== null);
+  log(`${extents.length} venue grounds to match`);
+  const attached = await attachExtents(extents, ({ matched, total, attached: attachedSoFar }) => {
+    if (matched < total) {
+      log(`matched ${matched} of ${total} venue grounds, ${attachedSoFar} attached`);
+    }
+  });
   log(`${attached.length} of ${extents.length} venue grounds attached`);
 
   const retiredCount = await retirePlacesMissingFrom(bounds, source.release);
