@@ -51,8 +51,9 @@ export interface CoverageReport {
   status: CoverageStatus;
   /** Present while importing: when the data should be there. */
   estimatedSecondsRemaining?: number;
-  /** Present when a limit stopped a fetch: when asking again may work. */
-  retryAfterSeconds?: number;
+  // Deliberately nothing about how long a limit lasts: `missing` reads the
+  // same whether the caller is anonymous, over their allowance or the queue
+  // is full, so the limits themselves stay private.
 }
 
 export type CoverageJob = typeof coverageJobs.$inferSelect;
@@ -260,14 +261,14 @@ export async function describeCoverage({
 
   const perUser = await consumeRateLimit("coverage-fix", viewerUserId, COVERAGE_LIMITS.fixJobsPerUser);
   if (!perUser.allowed) {
-    return { status: "missing", retryAfterSeconds: perUser.retryAfterSeconds };
+    return { status: "missing" };
   }
   if ((await queuedFixJobCount()) >= COVERAGE_LIMITS.maximumQueuedFixJobs) {
-    return { status: "missing", retryAfterSeconds: DEFAULT_FIX_JOB_SECONDS };
+    return { status: "missing" };
   }
   const budget = await remainingDailyCellBudget();
   if (budget < toFetch.length) {
-    return { status: "missing", retryAfterSeconds: 60 * 60 };
+    return { status: "missing" };
   }
 
   const job = await enqueueJob({ kind: "fix", cells: toFetch, requestedByUserId: viewerUserId });

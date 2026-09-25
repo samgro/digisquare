@@ -110,11 +110,11 @@ describe("describeCoverage", () => {
     expect(woken).toHaveBeenCalledTimes(1);
   });
 
-  it("refuses a caller over their daily allowance with a retry-after", async () => {
+  it("refuses a caller over their daily allowance without saying for how long", async () => {
     controls.queue([], [{ attemptCount: COVERAGE_LIMITS.fixJobsPerUser.maxAttempts + 1 }]);
     const report = await describeCoverage({ ...FIX, viewerUserId: USER_ID });
-    expect(report.status).toBe("missing");
-    expect(report.retryAfterSeconds).toBeGreaterThan(0);
+    // No hint of how long the allowance lasts leaves the response.
+    expect(report).toEqual({ status: "missing" });
     expect(controls.operations).toEqual(["select", "insert"]);
   });
 
@@ -128,7 +128,7 @@ describe("describeCoverage", () => {
   it("refuses when the daily cell budget is spent", async () => {
     controls.queue([], [{ attemptCount: 1 }], [{ count: 0 }], [{ cells: COVERAGE_LIMITS.cellsPerDay }]);
     const report = await describeCoverage({ ...FIX, viewerUserId: USER_ID });
-    expect(report).toEqual({ status: "missing", retryAfterSeconds: 3600 });
+    expect(report).toEqual({ status: "missing" });
   });
 });
 

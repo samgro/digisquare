@@ -404,7 +404,8 @@ private struct AreaLoadingView: View {
 }
 
 /// The server has no data for the area and is not fetching it: the user is
-/// over their daily allowance, the fetch failed, or they are signed out.
+/// over their allowance, the fetch failed, or they are signed out. The copy
+/// never says how long a limit lasts.
 private struct NoAreaDataView: View {
     let coverage: PlaceCoverage
     let onAddPlace: () -> Void
@@ -413,12 +414,10 @@ private struct NoAreaDataView: View {
         ContentUnavailableView {
             Label("No Place Data Here Yet", systemImage: "map")
         } description: {
-            if let wait = coverage.waitDescription {
-                Text("We can't download this area right now. Try again in \(wait), or add the place yourself.")
-            } else if coverage.status == .failed {
+            if coverage.status == .failed {
                 Text("Downloading this area didn't work. We'll try again later; meanwhile you can add the place yourself.")
             } else {
-                Text("Search for a place by name, or add one.")
+                Text("We can't get places for this area right now. Try again later, or add the place yourself.")
             }
         } actions: {
             Button(action: onAddPlace) {
@@ -498,7 +497,7 @@ private struct NoPlacesNearbyView: View {
 #Preview("Area Loading") {
     NavigationStack {
         AreaLoadingView(
-            coverage: PlaceCoverage(status: .importing, estimatedSecondsRemaining: 150, retryAfterSeconds: nil),
+            coverage: PlaceCoverage(status: .importing, estimatedSecondsRemaining: 150),
             onRetry: {},
             onAddPlace: {}
         )
@@ -510,7 +509,7 @@ private struct NoPlacesNearbyView: View {
 #Preview("No Area Data") {
     NavigationStack {
         NoAreaDataView(
-            coverage: PlaceCoverage(status: .missing, estimatedSecondsRemaining: nil, retryAfterSeconds: 3600),
+            coverage: PlaceCoverage(status: .missing, estimatedSecondsRemaining: nil),
             onAddPlace: {}
         )
         .navigationTitle("Check In")

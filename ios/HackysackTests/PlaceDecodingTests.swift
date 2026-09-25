@@ -100,12 +100,14 @@ struct PlaceDecodingTests {
         #expect(importing.coverage.status == .importing)
         #expect(importing.coverage.waitDescription == "3 minutes")
 
+        // A limit never comes with a wait, even from an older server that
+        // still sends one: how long a limit lasts is not shown.
         let limited = try RankingFixtures.makeDecoder().decode(
             PlaceSearchResult.self,
             from: Data("{\"results\": [], \"coverage\": {\"status\": \"missing\", \"retryAfterSeconds\": 40}}".utf8)
         )
         #expect(limited.coverage.status == .missing)
-        #expect(limited.coverage.waitDescription == "a minute")
+        #expect(limited.coverage.waitDescription == nil)
 
         let unknown = try RankingFixtures.makeDecoder().decode(
             PlaceSearchResult.self,

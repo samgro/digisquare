@@ -258,32 +258,30 @@ nonisolated struct PlaceCoverage: Decodable, Hashable, Sendable {
 
     let status: Status
     /// Present while importing: how long until the data should be there.
+    /// A `missing` report carries no timing on purpose: the server never
+    /// says how long its limits last.
     let estimatedSecondsRemaining: Double?
-    /// Present when a limit stopped a fetch: when asking again may work.
-    let retryAfterSeconds: Double?
 
-    static let ready = PlaceCoverage(status: .ready, estimatedSecondsRemaining: nil, retryAfterSeconds: nil)
+    static let ready = PlaceCoverage(status: .ready, estimatedSecondsRemaining: nil)
 
-    init(status: Status, estimatedSecondsRemaining: Double?, retryAfterSeconds: Double?) {
+    init(status: Status, estimatedSecondsRemaining: Double?) {
         self.status = status
         self.estimatedSecondsRemaining = estimatedSecondsRemaining
-        self.retryAfterSeconds = retryAfterSeconds
     }
 
     private enum CodingKeys: String, CodingKey {
-        case status, estimatedSecondsRemaining, retryAfterSeconds
+        case status, estimatedSecondsRemaining
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         status = try container.decodeIfPresent(Status.self, forKey: .status) ?? .ready
         estimatedSecondsRemaining = try container.decodeIfPresent(Double.self, forKey: .estimatedSecondsRemaining)
-        retryAfterSeconds = try container.decodeIfPresent(Double.self, forKey: .retryAfterSeconds)
     }
 
     /// "a minute", "3 minutes": the wait rounded up, never promising under a minute.
     var waitDescription: String? {
-        guard let seconds = estimatedSecondsRemaining ?? retryAfterSeconds else { return nil }
+        guard let seconds = estimatedSecondsRemaining else { return nil }
         let minutes = max(1, Int((seconds / 60).rounded(.up)))
         return minutes == 1 ? "a minute" : "\(minutes) minutes"
     }
