@@ -16,8 +16,8 @@ export const seedRegions: SeedRegion[] = [
   {
     name: "soma",
     description:
-      "SoMa and downtown San Francisco, two 0.1 degree cells: the simulator's default location and the backfilled Fox Plaza checkin. Seeds in seconds, for checking a change in the app.",
-    bounds: { west: -122.42, south: 37.76, east: -122.38, north: 37.8 },
+      "SoMa and downtown San Francisco: the four 0.1 degree cells a nearby search from there checks (its 2 km reach crosses 37.8 north into the Marina row), so the app sees the area as covered. Seeds in a minute or two, for checking a change in the app.",
+    bounds: { west: -122.42, south: 37.76, east: -122.38, north: 37.84 },
   },
   {
     name: "bay-area",

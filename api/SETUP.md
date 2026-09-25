@@ -76,7 +76,8 @@ minutes per region. Regions are bounding boxes in `scripts/seed-regions.ts`;
 add one there to seed another metro.
 
 To check a change in the app without waiting on a whole region, seed just
-SoMa (the simulator's default location), which takes seconds:
+downtown San Francisco (the four cells a search from SoMa checks), which
+takes a minute or two:
 ```bash
 npm run coverage:seed -- --soma
 ```
