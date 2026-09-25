@@ -1,0 +1,1 @@
+CREATE INDEX "places_location_geometry_gist_idx" ON "places" USING gist ("location");

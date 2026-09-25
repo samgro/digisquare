@@ -110,6 +110,10 @@ export async function retirePlacesMissingFrom(bounds: Bounds, release: string): 
         eq(places.source, "overture"),
         isNull(places.retiredAt),
         lt(places.lastSeenRelease, release),
+        // The box overlap uses the geometry index; the half-open ranges
+        // then settle the edges, so a place on a shared boundary belongs
+        // to exactly one area.
+        sql`${places.location} && ST_MakeEnvelope(${bounds.west}, ${bounds.south}, ${bounds.east}, ${bounds.north}, 4326)`,
         sql`${places.longitude} >= ${bounds.west} and ${places.longitude} < ${bounds.east}`,
         sql`${places.latitude} >= ${bounds.south} and ${places.latitude} < ${bounds.north}`,
       ),

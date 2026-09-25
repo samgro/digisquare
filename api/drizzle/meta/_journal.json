@@ -71,6 +71,13 @@
       "when": 1790379726457,
       "tag": "0009_postgis_extents_privacy_coverage",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1790379746087,
+      "tag": "0010_places_location_geometry_index",
+      "breakpoints": true
     }
   ]
 }

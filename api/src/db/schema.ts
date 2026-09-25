@@ -230,6 +230,11 @@ export const places = pgTable(
     // a plain geometry index would sit unused behind the cast.
     index("places_location_gist_idx").using("gist", sql`(${table.location}::geography)`),
     index("places_extent_gist_idx").using("gist", sql`(${table.extent}::geography)`),
+    // And as plain geometry, for the predicates that never cast: matching
+    // venue grounds to the pins inside them (ST_Contains) and finding the
+    // places inside an imported area's box (&&). Without it each of those
+    // is a scan of the whole table.
+    index("places_location_geometry_gist_idx").using("gist", table.location),
     // Trigram index so `name ILIKE '%cos%'` finds Costco without a scan.
     // Needs pg_trgm, which migration 0008 enables.
     index("places_name_trgm_idx").using("gin", sql`lower(${table.name}) gin_trgm_ops`),
