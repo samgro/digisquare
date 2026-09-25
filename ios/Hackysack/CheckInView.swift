@@ -125,7 +125,7 @@ struct CheckInView: View {
     private var content: some View {
         if let errorMessage {
             ContentUnavailableView {
-                Label("Couldn't Load Places", systemImage: "exclamationmark.triangle")
+                Label("Couldn't Load Places", systemImage: Glyphs.loadError)
             } description: {
                 Text(errorMessage)
             }
@@ -288,7 +288,7 @@ private extension LocationFix {
 private struct NoPlacesNearbyView: View {
     var body: some View {
         ContentUnavailableView {
-            Label("No Places Nearby", systemImage: "mappin.slash")
+            Label("No Places Nearby", systemImage: Glyphs.noPlacesNearby)
         } description: {
             Text("Search for a place by name to check in.")
         }
@@ -335,7 +335,7 @@ private struct NoPlacesNearbyView: View {
 #Preview("Error") {
     NavigationStack {
         ContentUnavailableView {
-            Label("Couldn't Load Places", systemImage: "exclamationmark.triangle")
+            Label("Couldn't Load Places", systemImage: Glyphs.loadError)
         } description: {
             Text(APIError.transport(URLError(.notConnectedToInternet)).localizedDescription)
         }

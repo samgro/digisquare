@@ -26,6 +26,7 @@ function userRow(overrides: Record<string, unknown> = {}) {
     bio: null,
     avatarKey: null,
     isTestUser: false,
+    hometown: "Truckee, CA",
     createdAt: new Date("2026-01-01T00:00:00.000Z"),
     updatedAt: new Date("2026-01-01T00:00:00.000Z"),
     ...overrides,
@@ -46,6 +47,27 @@ function friendshipRow(overrides: Record<string, unknown> = {}) {
 
 function get(path: string) {
   return users.request(path, { headers: { Authorization: `Bearer ${accessToken}` } });
+}
+
+function patchMe(body: unknown) {
+  return users.request("/me", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+interface ProfileBody {
+  hometown?: string | null;
+  email?: string | null;
+  details?: { fieldErrors: Record<string, string[] | undefined> };
+}
+
+async function readBody(response: Response): Promise<ProfileBody> {
+  return (await response.json()) as ProfileBody;
 }
 
 beforeEach(() => {
@@ -121,6 +143,53 @@ describe("GET /search", () => {
   });
 });
 
+describe("PATCH /me hometown", () => {
+  it("saves a hometown and returns it on the profile", async () => {
+    controls.queue([userRow({ hometown: "San Francisco, CA" })]);
+
+    const response = await patchMe({ hometown: "  San Francisco, CA  " });
+
+    expect(response.status).toBe(200);
+    expect((await readBody(response)).hometown).toBe("San Francisco, CA");
+    expect(controls.operations).toEqual(["update"]);
+  });
+
+  // Every profile has a hometown, so unlike bio it can be changed but never
+  // cleared.
+  it("refuses to clear the hometown with null", async () => {
+    const response = await patchMe({ hometown: null });
+
+    expect(response.status).toBe(400);
+    expect((await readBody(response)).details?.fieldErrors.hometown).toBeDefined();
+    expect(controls.operations).toEqual([]);
+  });
+
+  it("refuses a blank hometown", async () => {
+    const response = await patchMe({ hometown: "   " });
+
+    expect(response.status).toBe(400);
+    expect((await readBody(response)).details?.fieldErrors.hometown).toBeDefined();
+    expect(controls.operations).toEqual([]);
+  });
+
+  it("refuses a hometown over 100 characters", async () => {
+    const response = await patchMe({ hometown: "a".repeat(101) });
+
+    expect(response.status).toBe(400);
+    expect((await readBody(response)).details?.fieldErrors.hometown).toBeDefined();
+    expect(controls.operations).toEqual([]);
+  });
+
+  it("still accepts an update that leaves the hometown out", async () => {
+    controls.queue([userRow({ bio: "Hello" })]);
+
+    const response = await patchMe({ bio: "Hello" });
+
+    expect(response.status).toBe(200);
+    expect((await readBody(response)).hometown).toBe("Truckee, CA");
+  });
+});
+
 describe("GET /:id", () => {
   it("includes the checkin and friend counts and friendship status", async () => {
     controls.queue([userRow()], [{ value: 12 }], [{ value: 3 }], [friendshipRow({ status: "accepted" })]);
@@ -132,6 +201,7 @@ describe("GET /:id", () => {
       id: OTHER_USER_ID,
       name: "Alex",
       bio: null,
+      hometown: "Truckee, CA",
       avatarUrl: null,
       createdAt: "2026-01-01T00:00:00.000Z",
       checkinCount: 12,
@@ -148,5 +218,16 @@ describe("GET /:id", () => {
 
     expect(response.status).toBe(404);
     expect(controls.operations).toEqual(["select"]);
+  });
+
+  it("includes the hometown on someone else's public profile", async () => {
+    controls.queue([userRow({ hometown: "Paris, France" })], [{ value: 0 }], [{ value: 0 }], []);
+
+    const response = await get(`/${OTHER_USER_ID}`);
+    const body = await readBody(response);
+
+    expect(response.status).toBe(200);
+    expect(body.hometown).toBe("Paris, France");
+    expect(body.email).toBeUndefined();
   });
 });

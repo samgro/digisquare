@@ -54,7 +54,7 @@ struct CheckinDetailsRow: View {
             HStack(spacing: 4) {
                 Text(dateLine)
                 if checkin.visibility.isPrivate {
-                    Image(systemName: "lock.fill")
+                    Image(systemName: Glyphs.privateCheckin)
                         .font(.caption)
                         .accessibilityLabel("Private")
                 }

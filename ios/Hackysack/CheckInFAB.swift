@@ -12,7 +12,7 @@ struct CheckInFAB: View {
         Button {
             showingCheckIn = true
         } label: {
-            Image(systemName: "plus")
+            Image(systemName: Glyphs.add)
                 .font(.title2.weight(.semibold))
                 .frame(width: 36, height: 36)
         }

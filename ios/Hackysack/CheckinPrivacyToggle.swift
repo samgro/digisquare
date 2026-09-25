@@ -18,7 +18,7 @@ struct CheckinPrivacyToggle: View {
         } label: {
             Label(
                 visibility.isPrivate ? "Private" : "Friends",
-                systemImage: visibility.isPrivate ? "lock.fill" : "person.2.fill"
+                systemImage: visibility.isPrivate ? Glyphs.privateCheckin : Glyphs.friendsCheckin
             )
             .font(.subheadline.weight(.medium))
             .contentTransition(.symbolEffect(.replace))

@@ -71,7 +71,7 @@ struct AddFriendsView: View {
 
     private var header: some View {
         HStack(spacing: 8) {
-            Image(systemName: "magnifyingglass")
+            Image(systemName: Glyphs.search)
                 .foregroundStyle(.secondary)
             AutofocusSearchField(
                 text: $searchText,
@@ -100,12 +100,12 @@ struct AddFriendsView: View {
         if trimmedQuery.isEmpty {
             ContentUnavailableView(
                 "Find Friends",
-                systemImage: "person.crop.circle.badge.plus",
+                systemImage: Glyphs.findFriends,
                 description: Text("Search for people by name.")
             )
         } else if let errorMessage {
             ContentUnavailableView {
-                Label("Couldn't Search", systemImage: "exclamationmark.triangle")
+                Label("Couldn't Search", systemImage: Glyphs.loadError)
             } description: {
                 Text(errorMessage)
             } actions: {
@@ -191,7 +191,7 @@ struct AddFriendsView: View {
             .controlSize(.small)
             .disabled(isBusy)
         case .friends:
-            Label("Friends", systemImage: "checkmark")
+            Label("Friends", systemImage: Glyphs.checkmark)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.secondary)
         }

@@ -19,7 +19,7 @@ struct DebugVisitMenu: View {
 
     var body: some View {
         Menu {
-            Button("Visit Here Now", systemImage: "mappin.and.ellipse") {
+            Button("Visit Here Now", systemImage: Glyphs.debugVisitHere) {
                 run { processor, here in
                     let arrivalDate = Date().addingTimeInterval(-25 * 60)
                     return [await simulateVisit(processor, near: here, northMeters: 0, eastMeters: 0, arrivalDate: arrivalDate, stayedHours: nil)]
@@ -27,7 +27,7 @@ struct DebugVisitMenu: View {
             }
             .disabled(locationManager.location == nil)
 
-            Button("Backfill Two Weeks of Visits", systemImage: "clock.arrow.circlepath") {
+            Button("Backfill Two Weeks of Visits", systemImage: Glyphs.debugBackfillVisits) {
                 run { processor, here in
                     var outcomes: [String] = []
                     // Oldest first, as Core Location would deliver them.
@@ -48,12 +48,12 @@ struct DebugVisitMenu: View {
             }
             .disabled(locationManager.location == nil)
 
-            Button("Clear Suggestions and Visit History", systemImage: "trash", role: .destructive) {
+            Button("Clear Suggestions and Visit History", systemImage: Glyphs.delete, role: .destructive) {
                 checkinStore.removeAllSuggestions()
                 checkinStore.visitHistory.removeAll()
             }
         } label: {
-            Label("Debug Visits", systemImage: "ladybug")
+            Label("Debug Visits", systemImage: Glyphs.debugMenu)
         }
         .alert("Simulated Visits", isPresented: .constant(report != nil)) {
             Button("OK") { report = nil }

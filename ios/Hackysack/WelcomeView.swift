@@ -21,7 +21,7 @@ struct WelcomeView: View {
             Spacer()
 
             VStack(spacing: HackysackSpacing.medium) {
-                Image(systemName: "mappin.and.ellipse")
+                Image(systemName: Glyphs.appLogo)
                     .font(.system(size: 56, weight: .medium))
                     .foregroundStyle(Color.accentColor)
                 Text(AppInfo.name)

@@ -35,12 +35,18 @@ export const users = pgTable(
 
     // Nullable because Apple returns fullName only on the very first
     // authorization; a user who reinstalls before we persist it arrives
-    // without one, and NameSetupView collects it.
+    // without one, and the profile setup screen collects it.
     name: text("name"),
     bio: text("bio"),
     // R2 object key. Never returned to clients — user-result.ts maps it to a
     // public avatarUrl instead.
     avatarKey: text("avatar_key"),
+    // Display text such as "San Francisco, CA", formatted on the device by
+    // MapKit. Required, but nullable for the same reason as name: the row is
+    // created at signup, before the profile setup screen collects it. The
+    // PATCH schema refuses to clear it, and the app will not leave setup
+    // until it is set.
+    hometown: text("hometown"),
 
     // Seeded or created through /auth/test-users, which only exists when
     // ENABLE_TEST_USERS is set. Test users have no credential of their own.

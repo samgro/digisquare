@@ -23,6 +23,7 @@ export function toPrivateUserResult(user: UserRow) {
     name: user.name,
     bio: user.bio,
     avatarUrl: avatarUrlFor(user.avatarKey),
+    hometown: user.hometown,
     hasAppleSignIn: user.appleUserId !== null,
     createdAt: user.createdAt,
   };
@@ -47,6 +48,7 @@ export function toPublicUserResult(user: UserRow) {
     name: user.name,
     bio: user.bio,
     avatarUrl: avatarUrlFor(user.avatarKey),
+    hometown: user.hometown,
     createdAt: user.createdAt,
   };
 }

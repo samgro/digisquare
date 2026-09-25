@@ -6,7 +6,7 @@
 import SwiftUI
 
 /// Full-screen list of people who want to be friends, opened from the banner
-/// on Profile.
+/// on Friends.
 struct FriendRequestsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(FriendsStore.self) private var friendsStore
@@ -47,7 +47,7 @@ struct FriendRequestsView: View {
         if friendsStore.incomingRequests.isEmpty {
             ContentUnavailableView(
                 "No Friend Requests",
-                systemImage: "person.2",
+                systemImage: Glyphs.noFriends,
                 description: Text("You're all caught up.")
             )
         } else {
@@ -94,7 +94,7 @@ struct FriendRequestsView: View {
                 Button {
                     respond(to: request) { try await friendsStore.deleteRequest(requestId: request.id) }
                 } label: {
-                    Label("Decline", systemImage: "xmark")
+                    Label("Decline", systemImage: Glyphs.reject)
                 }
                 .buttonStyle(.bordered)
                 .tint(.secondary)
@@ -102,7 +102,7 @@ struct FriendRequestsView: View {
                 Button {
                     respond(to: request) { try await friendsStore.accept(requestId: request.id) }
                 } label: {
-                    Label("Accept", systemImage: "checkmark")
+                    Label("Accept", systemImage: Glyphs.accept)
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -162,7 +162,7 @@ struct FriendRequestsBanner: View {
                 .padding(.vertical, 2)
                 .background(Capsule().fill(Color.red))
 
-            Image(systemName: "chevron.right")
+            Image(systemName: Glyphs.disclosure)
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(.tertiary)
         }

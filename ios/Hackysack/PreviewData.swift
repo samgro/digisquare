@@ -58,6 +58,7 @@ extension PublicUser {
             name: name,
             bio: bio,
             avatarURL: nil,
+            hometown: "Oakland, CA",
             createdAt: Date().addingTimeInterval(-86_400 * 200)
         )
     }

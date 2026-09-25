@@ -1,0 +1,28 @@
+meta {
+  name: Hometown Too Long (400)
+  type: http
+  seq: 11
+}
+
+patch {
+  url: {{baseUrl}}/users/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "hometown": "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch, Isle of Anglesey, Wales, United Kingdom of Great Britain"
+  }
+}
+
+docs {
+  Expect 400 with details.fieldErrors.hometown.
+
+  The limit is 100 characters. The app only ever sends MapKit's short
+  "City, Region" form, which is well under it.
+}

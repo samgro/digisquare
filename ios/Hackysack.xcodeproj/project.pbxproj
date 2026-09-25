@@ -333,6 +333,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Hackysack;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo for your profile picture.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "With Always access, $(INFOPLIST_KEY_CFBundleDisplayName) notices the places you stop at and suggests checkins you can accept or dismiss. Nothing is shared until you accept.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(INFOPLIST_KEY_CFBundleDisplayName) uses your location to find places nearby to check in to.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -369,6 +370,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Hackysack;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo for your profile picture.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "With Always access, $(INFOPLIST_KEY_CFBundleDisplayName) notices the places you stop at and suggests checkins you can accept or dismiss. Nothing is shared until you accept.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(INFOPLIST_KEY_CFBundleDisplayName) uses your location to find places nearby to check in to.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
