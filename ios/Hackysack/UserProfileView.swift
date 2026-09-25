@@ -262,7 +262,7 @@ struct UserProfileView: View {
                 Text(bio)
                     .font(.subheadline)
             } else if isCurrentUser {
-                Button("Add a bio", systemImage: Glyphs.addBio) { isEditing = true }
+                Button("Add a bio", systemImage: Glyphs.add) { isEditing = true }
                     .font(.subheadline.weight(.medium))
                     .controlSize(.small)
             }

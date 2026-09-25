@@ -314,7 +314,7 @@ struct EditProfileView: View {
     private func photoMenu<MenuLabel: View>(@ViewBuilder label: () -> MenuLabel) -> some View {
         Menu {
             if CameraPicker.isAvailable {
-                Button("Take Photo", systemImage: Glyphs.takePhoto) {
+                Button("Take Photo", systemImage: Glyphs.camera) {
                     isShowingCamera = true
                 }
             }
@@ -326,7 +326,7 @@ struct EditProfileView: View {
             }
             if hasPhoto {
                 Divider()
-                Button("Remove Photo", systemImage: Glyphs.removePhoto, role: .destructive) {
+                Button("Remove Photo", systemImage: Glyphs.delete, role: .destructive) {
                     croppedImage = nil
                     pickedItem = nil
                     shouldRemoveAvatar = true

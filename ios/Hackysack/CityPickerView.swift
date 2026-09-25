@@ -56,7 +56,7 @@ struct CityPickerView: View {
                         HStack {
                             Text(hometown)
                             Spacer()
-                            Image(systemName: Glyphs.selected)
+                            Image(systemName: Glyphs.checkmark)
                                 .foregroundStyle(Color.accentColor)
                                 .fontWeight(.semibold)
                         }

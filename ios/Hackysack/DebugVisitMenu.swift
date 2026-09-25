@@ -48,7 +48,7 @@ struct DebugVisitMenu: View {
             }
             .disabled(locationManager.location == nil)
 
-            Button("Clear Suggestions and Visit History", systemImage: Glyphs.debugClearVisits, role: .destructive) {
+            Button("Clear Suggestions and Visit History", systemImage: Glyphs.delete, role: .destructive) {
                 checkinStore.removeAllSuggestions()
                 checkinStore.visitHistory.removeAll()
             }

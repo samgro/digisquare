@@ -191,7 +191,7 @@ struct AddFriendsView: View {
             .controlSize(.small)
             .disabled(isBusy)
         case .friends:
-            Label("Friends", systemImage: Glyphs.alreadyFriends)
+            Label("Friends", systemImage: Glyphs.checkmark)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.secondary)
         }

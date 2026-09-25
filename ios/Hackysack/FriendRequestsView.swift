@@ -94,7 +94,7 @@ struct FriendRequestsView: View {
                 Button {
                     respond(to: request) { try await friendsStore.deleteRequest(requestId: request.id) }
                 } label: {
-                    Label("Decline", systemImage: Glyphs.declineRequest)
+                    Label("Decline", systemImage: Glyphs.reject)
                 }
                 .buttonStyle(.bordered)
                 .tint(.secondary)
@@ -102,7 +102,7 @@ struct FriendRequestsView: View {
                 Button {
                     respond(to: request) { try await friendsStore.accept(requestId: request.id) }
                 } label: {
-                    Label("Accept", systemImage: Glyphs.acceptRequest)
+                    Label("Accept", systemImage: Glyphs.accept)
                 }
                 .buttonStyle(.borderedProminent)
             }

@@ -217,14 +217,14 @@ struct TimelineEntryRow: View {
     private var suggestionActions: some View {
         HStack(spacing: 8) {
             SuggestionIconButton(
-                systemImage: Glyphs.confirmSuggestion,
+                systemImage: Glyphs.accept,
                 accessibilityLabel: "Confirm Checkin",
                 foreground: .white,
                 background: .blue,
                 action: onConfirm
             )
             SuggestionIconButton(
-                systemImage: Glyphs.rejectSuggestion,
+                systemImage: Glyphs.reject,
                 accessibilityLabel: "Not Here",
                 foreground: .secondary,
                 background: Color(.systemGray5),

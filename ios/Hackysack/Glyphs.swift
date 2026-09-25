@@ -28,16 +28,12 @@ nonisolated enum Glyphs {
 
     // MARK: Checkins
 
-    /// The floating + button that starts a checkin.
-    static let checkIn = "plus"
     static let changeLocation = "mappin.and.ellipse"
     /// "Visited 3 times" under a nearby place.
     static let visitedBefore = "checkmark.circle"
     static let privateCheckin = "lock.fill"
     static let friendsCheckin = "person.2.fill"
     static let retryCheckin = "arrow.clockwise"
-    static let confirmSuggestion = "checkmark"
-    static let rejectSuggestion = "xmark"
     static let noCheckins = "mappin.and.ellipse"
     static let noPlacesNearby = "mappin.slash"
     /// Someone's checkins, hidden until you're friends.
@@ -60,44 +56,43 @@ nonisolated enum Glyphs {
     // MARK: Profile
 
     static let hometown = "house.fill"
-    static let addBio = "plus"
     static let settings = "gearshape"
     /// The badge on the avatar in Edit Profile.
     static let editPhoto = "camera.fill"
-    static let takePhoto = "camera"
     static let choosePhoto = "photo.on.rectangle"
     static let chooseFile = "folder"
-    static let removePhoto = "trash"
     static let currentLocation = "location.fill"
 
     // MARK: Friends
 
     static let addFriend = "person.badge.plus"
-    static let acceptRequest = "checkmark"
-    static let declineRequest = "xmark"
     /// On the Friends button on a friend's profile, which offers to remove them.
     static let friendOptions = "chevron.down"
-    /// "Friends" in place of an Add button in search results.
-    static let alreadyFriends = "checkmark"
     static let noFriends = "person.2"
     static let findFriends = "person.crop.circle.badge.plus"
     static let search = "magnifyingglass"
 
     // MARK: General
 
-    /// The chosen row in a pick-one list.
-    static let selected = "checkmark"
     static let disclosure = "chevron.right"
     /// A screen whose content couldn't load.
     static let loadError = "exclamationmark.triangle"
     /// An inline error under a form.
     static let formError = "exclamationmark.circle.fill"
 
+    // MARK: General actions
+
+    static let add = "plus"
+    static let camera = "camera"
+    static let delete = "trash"
+    static let accept = "checkmark"
+    static let reject = "xmark"
+    /// A plain checkmark shown as a status, not tied to an accept/confirm action.
+    static let checkmark = "checkmark"
+
     // MARK: Debug
 
     static let debugMenu = "ladybug"
     static let debugVisitHere = "mappin.and.ellipse"
     static let debugBackfillVisits = "clock.arrow.circlepath"
-    static let debugClearVisits = "trash"
-    static let addTestUser = "plus"
 }
