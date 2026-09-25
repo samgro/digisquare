@@ -24,13 +24,6 @@ struct TimelineView: View {
                 searchLabel: "Search your checkins",
                 searchDescription: "Searching your checkins is coming soon."
             )
-            #if DEBUG
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    DebugVisitMenu()
-                }
-            }
-            #endif
             .navigationDestination(item: $selectedCheckin) { destination in
                 CheckinDetailView(destination: destination)
             }

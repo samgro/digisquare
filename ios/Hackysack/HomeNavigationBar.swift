@@ -6,9 +6,8 @@
 import SwiftUI
 
 /// The bar on the Timeline and Friends tabs: your avatar on the left, which
-/// opens your profile, with a search button beside it; and the bell on the
-/// right, badged with what is new. Each destination is pushed onto the tab's
-/// own stack.
+/// opens your profile; and on the right a search button and the bell, badged
+/// with what is new. Each destination is pushed onto the tab's own stack.
 struct HomeNavigationBar: ViewModifier {
     /// The pushed search screen's title, e.g. "Search Checkins".
     let searchTitle: String
@@ -34,30 +33,27 @@ struct HomeNavigationBar: ViewModifier {
                     Button {
                         isShowingProfile = true
                     } label: {
-                        // The size of the back button's glass circle, so the
-                        // avatar stands in its place.
+                        // 28pt inside the standard toolbar button, which gives
+                        // it the same round glass as the back button.
                         AvatarView(
                             url: authManager.currentProfile?.avatarURL,
                             initials: authManager.currentProfile?.initials ?? "?",
-                            size: 44
+                            size: 28
                         )
                     }
-                    .buttonStyle(.plain)
                     .accessibilityLabel("Profile")
                 }
-                // The avatar is the button, with no glass around it.
-                .sharedBackgroundVisibility(.hidden)
 
-                // Its own glass circle rather than one shared with the avatar.
-                ToolbarSpacer(.fixed, placement: .topBarLeading)
-
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         isShowingSearch = true
                     } label: {
                         Label(searchLabel, systemImage: "magnifyingglass")
                     }
                 }
+
+                // Its own glass circle rather than one shared with the bell.
+                ToolbarSpacer(.fixed, placement: .topBarTrailing)
 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

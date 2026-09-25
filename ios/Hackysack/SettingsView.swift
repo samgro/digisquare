@@ -41,6 +41,12 @@ struct SettingsView: View {
                 }
             }
 
+            #if DEBUG
+            Section("Debug") {
+                DebugVisitMenu()
+            }
+            #endif
+
             Section {
                 Button("Sign Out", role: .destructive) {
                     isConfirmingSignOut = true
@@ -82,5 +88,7 @@ struct SettingsView: View {
     NavigationStack {
         SettingsView()
             .environment(AuthManager())
+            .environment(LocationManager())
+            .environmentObject(CheckinStore.inMemory())
     }
 }
