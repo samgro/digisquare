@@ -233,13 +233,8 @@ export async function seedCellsNow(source: OvertureSource, cells: Cell[], bounds
   if (done) {
     return false;
   }
-  const job = await enqueueJob({ kind: "seed", cells, bounds });
-  const [claimed] = await database
-    .update(coverageJobs)
-    .set({ status: "importing", startedAt: new Date(), attempts: 1 })
-    .where(eq(coverageJobs.id, job.id))
-    .returning();
-  await runJob(source, claimed);
+  const job = await enqueueJob({ kind: "seed", cells, bounds, claimed: true });
+  await runJob(source, job);
   return true;
 }
 

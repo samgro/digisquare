@@ -62,9 +62,18 @@ interface EnqueueOptions {
   bounds?: Bounds;
   requestedByUserId?: string | null;
   parentJobId?: string | null;
+  /**
+   * For a caller that runs the job itself, like the seed script: the job is
+   * inserted already `importing`, so no worker can claim it between the
+   * insert and a separate claiming update and run it a second time.
+   */
+  claimed?: boolean;
 }
 
-/** Creates the job and marks its cells pending. The worker picks it up. */
+/**
+ * Creates the job and marks its cells pending. The worker picks it up,
+ * unless the job was created `claimed`.
+ */
 export async function enqueueJob(options: EnqueueOptions): Promise<CoverageJob> {
   const bounds = options.bounds ?? unionBounds(options.cells);
   const [job] = await database
@@ -79,6 +88,7 @@ export async function enqueueJob(options: EnqueueOptions): Promise<CoverageJob> 
       requestedByUserId: options.requestedByUserId ?? null,
       parentJobId: options.parentJobId ?? null,
       overtureRelease: config.OVERTURE_RELEASE,
+      ...(options.claimed ? { status: "importing", startedAt: new Date(), attempts: 1 } : {}),
     })
     .returning();
   await markCells(options.cells, "pending", null, job.id);

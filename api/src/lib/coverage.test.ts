@@ -5,7 +5,8 @@ const { database, controls } = createDatabaseStub();
 
 vi.mock("../db/index.js", () => ({ database }));
 
-const { COVERAGE_LIMITS, describeCoverage, estimateSecondsRemaining, onJobEnqueued, planCityCells } = await import("./coverage.js");
+const { COVERAGE_LIMITS, describeCoverage, enqueueJob, estimateSecondsRemaining, onJobEnqueued, planCityCells } =
+  await import("./coverage.js");
 
 const USER_ID = "550e8400-e29b-41d4-a716-446655440000";
 const JOB_ID = "990e8400-e29b-41d4-a716-446655440000";
@@ -92,6 +93,28 @@ describe("describeCoverage", () => {
     controls.queue([], [{ attemptCount: 1 }], [{ count: 0 }], [{ cells: COVERAGE_LIMITS.cellsPerDay }]);
     const report = await describeCoverage({ ...FIX, viewerUserId: USER_ID });
     expect(report).toEqual({ status: "missing", retryAfterSeconds: 3600 });
+  });
+});
+
+describe("enqueueJob", () => {
+  const CELL = { cellX: -1225, cellY: 377 };
+
+  function insertedJob() {
+    return controls.chainedCalls.find((call) => call.method === "values")?.arguments[0];
+  }
+
+  it("leaves a job pending for the worker by default", async () => {
+    controls.queue([{ id: JOB_ID }], []);
+    await enqueueJob({ kind: "fix", cells: [CELL] });
+    expect(insertedJob()).not.toHaveProperty("status");
+  });
+
+  it("inserts an already-claimed job as importing, so no worker can claim it too", async () => {
+    controls.queue([{ id: JOB_ID }], []);
+    await enqueueJob({ kind: "seed", cells: [CELL], claimed: true });
+    expect(insertedJob()).toMatchObject({ status: "importing", attempts: 1, startedAt: expect.any(Date) });
+    // One insert: there is no separate claiming update for a worker to race.
+    expect(controls.operations.filter((operation) => operation === "update")).toEqual([]);
   });
 });
 
