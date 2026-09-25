@@ -60,8 +60,8 @@ describe("describeCoverage", () => {
       [{ attemptCount: 1 }], // per-user rate limit
       [{ count: 0 }], // queued fix jobs
       [{ cells: 0 }], // cells fetched today
-      [{ id: JOB_ID, kind: "fix" }], // inserted job
-      [], // markCells upsert
+      [{ id: JOB_ID, kind: "fix" }], // inserted job (first statement of the batch)
+      [], // markCells upsert (second statement of the batch)
       [{ seconds: 120 }], // estimate: recent durations
       [{ id: JOB_ID, status: "pending", startedAt: null }], // queue
     );
@@ -70,7 +70,7 @@ describe("describeCoverage", () => {
     unsubscribe();
 
     expect(report).toEqual({ status: "importing", estimatedSecondsRemaining: 120 });
-    expect(controls.operations).toEqual(["select", "insert", "select", "select", "insert", "insert", "select", "select"]);
+    expect(controls.operations).toEqual(["select", "insert", "select", "select", "insert", "insert", "batch", "select", "select"]);
     expect(woken).toHaveBeenCalledTimes(1);
   });
 
@@ -107,6 +107,17 @@ describe("enqueueJob", () => {
     controls.queue([{ id: JOB_ID }], []);
     await enqueueJob({ kind: "fix", cells: [CELL] });
     expect(insertedJob()).not.toHaveProperty("status");
+  });
+
+  it("writes the job and its pending cells in one batch, under an id made here", async () => {
+    controls.queue([{ id: JOB_ID }], []);
+    const job = await enqueueJob({ kind: "fix", cells: [CELL] });
+    expect(job).toEqual({ id: JOB_ID });
+    expect(controls.operations).toEqual(["insert", "insert", "batch"]);
+    const jobRow = insertedJob() as { id: string };
+    expect(jobRow.id).toMatch(/^[0-9a-f-]{36}$/);
+    const cellRows = controls.chainedCalls.filter((call) => call.method === "values")[1].arguments[0] as { jobId: string }[];
+    expect(cellRows[0].jobId).toBe(jobRow.id);
   });
 
   it("inserts an already-claimed job as importing, so no worker can claim it too", async () => {

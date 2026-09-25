@@ -12,7 +12,13 @@ import { coverageCells, places } from "../db/schema.js";
 import type { Bounds, Cell } from "./coverage-cells.js";
 import type { OverturePlaceInsert } from "./overture.js";
 
-export const UPSERT_BATCH_SIZE = 500;
+/**
+ * Rows per upsert statement. Each row binds 17 parameters and Postgres
+ * allows 65,535 per statement, so this could go to about 3,800; 2,000 keeps
+ * a statement comfortably small while making a quarter as many round trips
+ * as 500 did.
+ */
+export const UPSERT_BATCH_SIZE = 2000;
 
 const COMPARED_COLUMNS = [
   "name",
@@ -57,7 +63,10 @@ export interface UpsertOutcome {
 /**
  * Upserts one batch of places for `release`. Every row present is stamped
  * with the release (and un-retired); only rows whose content differs get a
- * new `updated_at`.
+ * new `updated_at`. A row that is already identical, stamped with this
+ * release and not retired is left alone entirely, so re-importing an area
+ * (a city job over the fix cells inside it, a rerun seed) does not rewrite
+ * every row and its seven indexes for nothing.
  */
 export async function upsertOverturePlaces(
   rows: OverturePlaceInsert[],
@@ -90,9 +99,13 @@ export async function upsertOverturePlaces(
         retiredAt: sql`null`,
         updatedAt: sql`case when ${rowChanged} then now() else ${places.updatedAt} end`,
       },
+      setWhere: sql`${rowChanged}
+        or ${places.lastSeenRelease} is distinct from ${excluded("last_seen_release")}
+        or ${places.retiredAt} is not null`,
     })
     .returning({ changed: sql<boolean>`${places.updatedAt} = now()` });
-  return { changed: written.filter((row) => row.changed).length, seen: written.length };
+  // Rows the setWhere skipped are not returned, so `seen` is the input.
+  return { changed: written.filter((row) => row.changed).length, seen: rows.length };
 }
 
 /**
@@ -128,10 +141,27 @@ export async function markCells(
   release: string | null,
   jobId: string | null,
 ): Promise<void> {
-  if (cells.length === 0) {
-    return;
+  const statement = markCellsStatement(cells, status, release, jobId);
+  if (statement) {
+    await statement;
   }
-  await database
+}
+
+/**
+ * The upsert `markCells` runs, unexecuted, so a caller can put it in a
+ * `database.batch` with the statement that goes with it. Null when there
+ * are no cells to mark.
+ */
+export function markCellsStatement(
+  cells: Cell[],
+  status: "pending" | "ready" | "failed",
+  release: string | null,
+  jobId: string | null,
+) {
+  if (cells.length === 0) {
+    return null;
+  }
+  return database
     .insert(coverageCells)
     .values(
       cells.map((cell) => ({

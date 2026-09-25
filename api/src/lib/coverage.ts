@@ -5,6 +5,7 @@
  */
 
 import { and, asc, desc, eq, gte, inArray, isNotNull, sql } from "drizzle-orm";
+import { randomUUID } from "node:crypto";
 import { config } from "../config.js";
 import { database } from "../db/index.js";
 import { coverageJobs } from "../db/schema.js";
@@ -16,7 +17,7 @@ import {
   type Bounds,
   type Cell,
 } from "./coverage-cells.js";
-import { cellStatuses, markCells } from "./overture-import.js";
+import { cellStatuses, markCellsStatement } from "./overture-import.js";
 import { consumeRateLimit, type RateLimitRule } from "./rate-limit.js";
 
 export type JobKind = "fix" | "city" | "seed" | "refresh";
@@ -76,9 +77,12 @@ interface EnqueueOptions {
  */
 export async function enqueueJob(options: EnqueueOptions): Promise<CoverageJob> {
   const bounds = options.bounds ?? unionBounds(options.cells);
-  const [job] = await database
+  // The id is made here so the job and its cells go in one round trip.
+  const jobId = randomUUID();
+  const insertJob = database
     .insert(coverageJobs)
     .values({
+      id: jobId,
       kind: options.kind,
       priority: JOB_PRIORITY[options.kind],
       west: bounds.west,
@@ -91,7 +95,8 @@ export async function enqueueJob(options: EnqueueOptions): Promise<CoverageJob> 
       ...(options.claimed ? { status: "importing", startedAt: new Date(), attempts: 1 } : {}),
     })
     .returning();
-  await markCells(options.cells, "pending", null, job.id);
+  const markPending = markCellsStatement(options.cells, "pending", null, jobId);
+  const [[job]] = markPending ? await database.batch([insertJob, markPending]) : [await insertJob];
   return job;
 }
 
@@ -129,24 +134,25 @@ async function queuedFixJobCount(): Promise<number> {
  * the running one has already had. Never promises less than a minute.
  */
 export async function estimateSecondsRemaining(jobId: string | null): Promise<number> {
-  const recent = await database
-    .select({
-      seconds: sql<number>`extract(epoch from (${coverageJobs.completedAt} - ${coverageJobs.startedAt}))`,
-    })
-    .from(coverageJobs)
-    .where(and(eq(coverageJobs.kind, "fix"), eq(coverageJobs.status, "ready"), isNotNull(coverageJobs.startedAt)))
-    .orderBy(desc(coverageJobs.completedAt))
-    .limit(RECENT_JOBS_FOR_ESTIMATE);
+  const [recent, queue] = await Promise.all([
+    database
+      .select({
+        seconds: sql<number>`extract(epoch from (${coverageJobs.completedAt} - ${coverageJobs.startedAt}))`,
+      })
+      .from(coverageJobs)
+      .where(and(eq(coverageJobs.kind, "fix"), eq(coverageJobs.status, "ready"), isNotNull(coverageJobs.startedAt)))
+      .orderBy(desc(coverageJobs.completedAt))
+      .limit(RECENT_JOBS_FOR_ESTIMATE),
+    database
+      .select({ id: coverageJobs.id, status: coverageJobs.status, startedAt: coverageJobs.startedAt })
+      .from(coverageJobs)
+      .where(and(eq(coverageJobs.kind, "fix"), inArray(coverageJobs.status, ["pending", "importing"])))
+      .orderBy(asc(coverageJobs.priority), asc(coverageJobs.requestedAt)),
+  ]);
   const averageSeconds =
     recent.length > 0
       ? recent.reduce((total, row) => total + Number(row.seconds), 0) / recent.length
       : DEFAULT_FIX_JOB_SECONDS;
-
-  const queue = await database
-    .select({ id: coverageJobs.id, status: coverageJobs.status, startedAt: coverageJobs.startedAt })
-    .from(coverageJobs)
-    .where(and(eq(coverageJobs.kind, "fix"), inArray(coverageJobs.status, ["pending", "importing"])))
-    .orderBy(asc(coverageJobs.priority), asc(coverageJobs.requestedAt));
   const position = jobId ? queue.findIndex((job) => job.id === jobId) : -1;
   const jobsAhead = position === -1 ? queue.length : position + 1;
   const running = queue.find((job) => job.status === "importing");
@@ -224,12 +230,11 @@ export async function planCityCells(
   candidateCells: Cell[],
   fix: { latitude: number; longitude: number },
 ): Promise<Cell[]> {
-  const statuses = await cellStatuses(candidateCells);
+  const [statuses, budget] = await Promise.all([cellStatuses(candidateCells), remainingDailyCellBudget()]);
   const uncovered = candidateCells.filter((cell) => {
     const status = statuses.get(cellKey(cell))?.status;
     return status !== "ready" && status !== "pending";
   });
-  const budget = await remainingDailyCellBudget();
   const allowed = Math.min(uncovered.length, COVERAGE_LIMITS.maximumCityCells, budget);
   return allowed > 0 ? nearestCells(uncovered, fix.latitude, fix.longitude, allowed) : [];
 }

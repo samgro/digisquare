@@ -37,6 +37,7 @@ import { parseOvertureExtent, type ParsedExtent } from "./overture-extents.js";
 import {
   cellStatuses,
   markCells,
+  markCellsStatement,
   retirePlacesMissingFrom,
   upsertOverturePlaces,
   UPSERT_BATCH_SIZE,
@@ -141,10 +142,9 @@ export async function claimNextJob(): Promise<CoverageJob | null> {
   return job ?? null;
 }
 
+/** Marks the cells ready and the job done in one round trip, atomically. */
 async function finishJob(job: CoverageJob, outcome: JobOutcome): Promise<void> {
-  const cells = cellsInBounds(boundsOf(job));
-  await markCells(cells, "ready", job.overtureRelease, job.id);
-  await database
+  const completeJob = database
     .update(coverageJobs)
     .set({
       status: "ready",
@@ -154,6 +154,12 @@ async function finishJob(job: CoverageJob, outcome: JobOutcome): Promise<void> {
       lastError: null,
     })
     .where(eq(coverageJobs.id, job.id));
+  const markReady = markCellsStatement(cellsInBounds(boundsOf(job)), "ready", job.overtureRelease, job.id);
+  if (markReady) {
+    await database.batch([markReady, completeJob]);
+  } else {
+    await completeJob;
+  }
 }
 
 async function failJob(job: CoverageJob, error: unknown): Promise<void> {
