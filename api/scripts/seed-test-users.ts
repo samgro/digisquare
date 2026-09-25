@@ -67,12 +67,15 @@ async function seed() {
       SEEDED_TEST_USERS.map((testUser) => ({
         id: testUser.id,
         name: testUser.name,
+        // Required to get past profile setup, so a seeded user signs
+        // straight in to the app.
+        hometown: testUser.homeCity.name,
         isTestUser: true,
       })),
     )
     .onConflictDoUpdate({
       target: usersTable.id,
-      set: { name: sql`excluded.name`, isTestUser: true },
+      set: { name: sql`excluded.name`, hometown: sql`excluded.hometown`, isTestUser: true },
     });
   console.log(`Upserted ${SEEDED_TEST_USERS.length} test users`);
 
