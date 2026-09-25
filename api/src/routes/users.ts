@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { and, asc, count, desc, eq, ilike, isNotNull, ne, or, sql } from "drizzle-orm";
+import { and, asc, count, eq, ilike, isNotNull, ne, or } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
 import {
@@ -52,9 +52,6 @@ const SEARCH_RESULT_LIMIT = 20;
 function escapeLikePattern(value: string): string {
   return value.replace(/[\\%_]/g, (character) => `\\${character}`);
 }
-
-/** How many places the profile's "Top Places" list shows. */
-const TOP_PLACE_LIMIT = 3;
 
 export const users = new Hono<AppEnv>();
 
@@ -247,58 +244,5 @@ users.get("/:id", async (context) => {
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to fetch user" }, 500);
-  }
-});
-
-/**
- * The numbers on a profile: total checkins, distinct places, and the most
- * visited places. Counted here rather than on the device, which only ever
- * holds one page of checkins and would undercount anyone past it.
- */
-users.get("/:id/stats", async (context) => {
-  const parsed = idParamSchema.safeParse({ id: context.req.param("id") });
-  if (!parsed.success) {
-    return context.json({ error: "Invalid user id" }, 400);
-  }
-
-  const userFilter = eq(checkinsTable.userId, parsed.data.id);
-  const checkinCount = sql<number>`count(*)::int`;
-  const lastCheckinAt = sql`max(${checkinsTable.createdAt})`;
-
-  try {
-    const [totals] = await database
-      .select({
-        checkinCount,
-        placeCount: sql<number>`count(distinct ${checkinsTable.googlePlaceId})::int`,
-      })
-      .from(checkinsTable)
-      .where(userFilter);
-
-    // Name and type come from the latest checkin at each place, so a venue
-    // that has been renamed shows its current name. Ties on count go to the
-    // place visited most recently.
-    const topPlaces = await database
-      .select({
-        googlePlaceId: checkinsTable.googlePlaceId,
-        placeName: sql<string>`(array_agg(${checkinsTable.placeName} order by ${checkinsTable.createdAt} desc))[1]`,
-        placePrimaryType: sql<
-          string | null
-        >`(array_agg(${checkinsTable.placePrimaryType} order by ${checkinsTable.createdAt} desc))[1]`,
-        checkinCount,
-      })
-      .from(checkinsTable)
-      .where(userFilter)
-      .groupBy(checkinsTable.googlePlaceId)
-      .orderBy(desc(checkinCount), desc(lastCheckinAt))
-      .limit(TOP_PLACE_LIMIT);
-
-    return context.json({
-      checkinCount: totals?.checkinCount ?? 0,
-      placeCount: totals?.placeCount ?? 0,
-      topPlaces,
-    });
-  } catch (error) {
-    console.error(error);
-    return context.json({ error: "Failed to fetch stats" }, 500);
   }
 });
