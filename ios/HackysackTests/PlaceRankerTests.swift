@@ -321,16 +321,44 @@ struct PlaceRankerModelTests {
         #expect(PlaceFootprint(for: office).kind == .container)
     }
 
-    @Test("A coarse fix inside recorded grounds ranks the venue first even 1.3 km from its pin")
+    @Test("Recorded grounds keep a venue in the running 1.3 km from its pin")
     func groundsBeatDistanceToPin() {
+        // A park whose pin is 1.3 km west of the fix, with grounds that reach
+        // 200 m past it; a museum 30 m away, as the de Young sits in Golden
+        // Gate Park.
         let parkGrounds = rectangleExtent(south: -300, west: -1500, north: 300, east: 200)
         let park = place("park", north: 0, east: -1300, primaryType: "park", types: ["park"], checkins: 40, extent: parkGrounds)
         let museum = place("museum", north: 30, east: 0, primaryType: "museum", types: ["museum"], checkins: 20)
-        let coarse = ranker.rank(candidates: [museum, park], fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
-        #expect(coarse.ranked.first?.place.id == "park")
 
-        let tight = ranker.rank(candidates: [museum, park], fix: fix(accuracy: 8, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
-        #expect(tight.ranked.first?.place.id == "museum")
+        // At the museum's door the museum is the more specific answer, but the
+        // park is inside its grounds too (distance zero) and close enough
+        // behind that the picker shows the list instead of jumping to the
+        // museum.
+        let atMuseum = ranker.rank(candidates: [museum, park], fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(atMuseum.ranked.map(\.place.id) == ["museum", "park"])
+        #expect(atMuseum.ranked[1].effectiveDistance == 0)
+        #expect(atMuseum.ranked[0].score - atMuseum.ranked[1].score < RankingWeights.standard.suggestionMinimumMargin)
+        #expect(atMuseum.suggestion == nil)
+
+        // Without the polygon the park is judged from its pin, over a kilometer
+        // off, and is nowhere near.
+        let pinOnly = place("park", north: 0, east: -1300, primaryType: "park", types: ["park"], checkins: 40)
+        let withoutGrounds = ranker.rank(candidates: [museum, pinOnly], fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect((withoutGrounds.ranked[1].effectiveDistance ?? 0) > 1000)
+        #expect(withoutGrounds.ranked[0].score - withoutGrounds.ranked[1].score > 5)
+
+        // Deeper in the grounds, away from the museum, the park wins outright
+        // and is suggested, even from a coarse fix.
+        let inTheGrounds = location(north: 0, east: -600)
+        let deeper = LocationFix(
+            latitude: inTheGrounds.latitude,
+            longitude: inTheGrounds.longitude,
+            horizontalAccuracy: 65,
+            timestamp: tuesdayMorning.addingTimeInterval(-5)
+        )
+        let awayFromMuseum = ranker.rank(candidates: [museum, park], fix: deeper, history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(awayFromMuseum.ranked.first?.place.id == "park")
+        #expect(awayFromMuseum.suggestion?.id == "park")
     }
 
     @Test("Overture's specific museum and stadium categories fold onto the generic entry")
