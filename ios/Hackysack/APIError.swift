@@ -25,6 +25,8 @@ enum APIError: LocalizedError {
     case invalidResponse
     case decoding(any Error)
     case transport(any Error)
+    /// Debug simulator builds only: the dev server is from another checkout.
+    case wrongServer(server: String, app: String)
 
     // Conforming to LocalizedError is what makes error.localizedDescription
     // useful. The previous PlacesAPIError did not, so every failure in
@@ -50,6 +52,8 @@ enum APIError: LocalizedError {
             // than NSError's default and it names the app, so the user knows
             // which connection is at fault.
             return "We couldn't reach \(AppInfo.name). Check your connection and try again."
+        case .wrongServer(let server, let app):
+            return "This build is from \(app), but the dev server is running \(server)."
         }
     }
 

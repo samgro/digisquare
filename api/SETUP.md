@@ -204,6 +204,16 @@ query-string credentials.
    anything else that differs) in `.env.branch` at the repo root. It is
    gitignored and overrides both `.env` and the shell, for the server, the
    scripts and `db:migrate` alike.
+
+   Several checkouts (git worktrees) can take turns on port 3000, and they
+   share the token secret, so the app cannot tell them apart by itself. A
+   Debug simulator build is therefore stamped with the branch and commit it
+   was built from and sends them on every request; a dev server on another
+   branch answers 409 and the app shows a full-screen "Wrong Dev Server"
+   notice naming both builds until you start the matching server (or
+   rebuild the app). A server from before this check, which names no build
+   at all, is refused the same way. Same branch but a newer commit only
+   shows a banner.
 3. Install dependencies and run the dev server:
    ```bash
    npm install

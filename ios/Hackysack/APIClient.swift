@@ -85,28 +85,34 @@ final class APIClient {
         method: String = "GET",
         path: String,
         queryItems: [URLQueryItem] = [],
-        authenticated: Bool = true
+        authenticated: Bool = true,
+        bypassingBuildGate: Bool = false
     ) async throws -> Response {
         try await request(
             method: method,
             path: path,
             queryItems: queryItems,
             body: Optional<EmptyRequestBody>.none,
-            authenticated: authenticated
+            authenticated: authenticated,
+            bypassingBuildGate: bypassingBuildGate
         )
     }
 
+    /// `bypassingBuildGate` is for the gate's own re-check of the server,
+    /// the one request that must go out while everything else is blocked.
     func request<Body: Encodable, Response: Decodable>(
         method: String = "GET",
         path: String,
         queryItems: [URLQueryItem] = [],
         body: Body?,
-        authenticated: Bool = true
+        authenticated: Bool = true,
+        bypassingBuildGate: Bool = false
     ) async throws -> Response {
         let (data, response) = try await perform(
             try buildRequest(method: method, path: path, queryItems: queryItems, body: body),
             authenticated: authenticated,
-            allowRefreshRetry: true
+            allowRefreshRetry: true,
+            bypassingBuildGate: bypassingBuildGate
         )
 
         try throwIfFailure(data: data, response: response)
@@ -166,10 +172,22 @@ final class APIClient {
     private func perform(
         _ originalRequest: URLRequest,
         authenticated: Bool,
-        allowRefreshRetry: Bool
+        allowRefreshRetry: Bool,
+        bypassingBuildGate: Bool = false
     ) async throws -> (Data, HTTPURLResponse) {
         var urlRequest = originalRequest
         var attachedAccessToken: String?
+
+        // A dev server from another checkout gets nothing at all, so no
+        // session or write can land in its database by accident.
+        if !bypassingBuildGate, BuildGate.shared.isBlocking,
+           let server = BuildGate.shared.server, let app = BuildGate.shared.app {
+            DevLog.network("✗ \(originalRequest.url?.path ?? "") skipped: server is \(server.wireValue), this build is \(app.wireValue)")
+            throw APIError.wrongServer(server: server.wireValue, app: app.wireValue)
+        }
+        if let app = BuildIdentity.app {
+            urlRequest.setValue(app.wireValue, forHTTPHeaderField: "X-Hackysack-Client-Build")
+        }
 
         if authenticated {
             guard let store = authSessionStore,
@@ -207,6 +225,16 @@ final class APIClient {
             DevLog.network("  body: \(String(decoding: data.prefix(1000), as: UTF8.self))")
         }
 
+        // Every response names the server's build; a 409 with the mismatch
+        // body is the server refusing this build outright.
+        BuildGate.shared.record(serverWireValue: httpResponse.value(forHTTPHeaderField: "X-Hackysack-Build"))
+        if httpResponse.statusCode == 409,
+           let mismatch = try? decoder.decode(BuildMismatchBody.self, from: data),
+           mismatch.code == BuildMismatchBody.code {
+            BuildGate.shared.record(server: mismatch.server.identity)
+            throw APIError.wrongServer(server: mismatch.server.identity.wireValue, app: mismatch.client.identity.wireValue)
+        }
+
         if httpResponse.statusCode == 401,
            authenticated,
            allowRefreshRetry,
@@ -228,7 +256,8 @@ final class APIClient {
             return try await perform(
                 originalRequest,
                 authenticated: true,
-                allowRefreshRetry: false
+                allowRefreshRetry: false,
+                bypassingBuildGate: bypassingBuildGate
             )
         }
 

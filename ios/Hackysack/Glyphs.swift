@@ -96,4 +96,6 @@ nonisolated enum Glyphs {
     static let debugMenu = "ladybug"
     static let debugVisitHere = "mappin.and.ellipse"
     static let debugBackfillVisits = "clock.arrow.circlepath"
+    static let wrongServer = "externaldrive.badge.xmark"
+    static let buildMismatch = "arrow.triangle.branch"
 }

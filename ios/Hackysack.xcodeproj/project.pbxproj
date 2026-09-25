@@ -80,6 +80,7 @@
 				2C730352305DDF4600A790AC /* Sources */,
 				2C730353305DDF4600A790AC /* Frameworks */,
 				2C730354305DDF4600A790AC /* Resources */,
+				2C730380305DDF4600A790AC /* Stamp Git Identity */,
 			);
 			buildRules = (
 			);
@@ -173,6 +174,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C730380305DDF4600A790AC /* Stamp Git Identity */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Stamp Git Identity";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Stamps the branch and commit this build came from into Info.plist, for\n# the dev server gate (see BuildIdentity.swift). Debug simulator builds\n# only: devices and Release talk to production, which never enforces one.\n[ \"$CONFIGURATION\" = \"Debug\" ] && [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ] || exit 0\nPLIST=\"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\n[ -f \"$PLIST\" ] || exit 0\nBRANCH=$(git -C \"$SRCROOT\" rev-parse --abbrev-ref HEAD 2>/dev/null) || exit 0\nCOMMIT=$(git -C \"$SRCROOT\" rev-parse --short HEAD 2>/dev/null) || exit 0\n/usr/libexec/PlistBuddy -c \"Delete :HackysackGitBranch\" \"$PLIST\" 2>/dev/null\n/usr/libexec/PlistBuddy -c \"Delete :HackysackGitCommit\" \"$PLIST\" 2>/dev/null\n/usr/libexec/PlistBuddy -c \"Add :HackysackGitBranch string $BRANCH\" \"$PLIST\"\n/usr/libexec/PlistBuddy -c \"Add :HackysackGitCommit string $COMMIT\" \"$PLIST\"\necho \"Stamped $BRANCH@$COMMIT\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C730352305DDF4600A790AC /* Sources */ = {
@@ -331,6 +354,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X5G52MAAW2;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Hackysack;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo for your profile picture.";

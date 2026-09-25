@@ -45,3 +45,14 @@ Run the tests before finishing any change to the home/work detector
 The detector tests are driven by generated schedules in
 `HackysackTests/VisitScenarioBuilder.swift`; add a scenario there when a new
 kind of routine (a second job, a night shift, a long trip) needs covering.
+
+# Dev server gate
+
+Debug simulator builds are stamped with the checkout's git branch and commit
+(the "Stamp Git Identity" build phase writes `HackysackGitBranch` and
+`HackysackGitCommit` into the built Info.plist) and send them with every API
+request. A dev server running from another checkout answers 409 and the app
+shows a full-screen "Wrong Dev Server" notice (as does a server that names
+no build, i.e. one from before this check); a server on the same branch but
+a newer commit only shows a banner. So after switching branches, rebuild
+the app, or the server it talks to will refuse it. See `BuildGate.swift`.
