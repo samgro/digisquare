@@ -36,9 +36,20 @@ struct UserProfileView: View {
     @State private var isConfirmingRemoval = false
     @State private var isEditing = false
     @State private var isAddingFriends = false
-    
+    /// Where the header's name ends, in the scroll content's coordinates.
+    @State private var nameBottom: CGFloat = .infinity
+    /// 0 while any of the header's name is on screen, even under the nav
+    /// bar or status bar, rising to 1 as it scrolls off, so the nav bar's
+    /// title fades in with the scroll.
+    @State private var titleRevealProgress: CGFloat = 0
+
     private let friendsAPI = FriendsAPI()
     private let checkinsAPI = CheckinsAPI()
+
+    /// How far past the header's name the user scrolls while the nav bar's
+    /// title fades in.
+    private static let titleRevealDistance: CGFloat = 16
+    private static let scrollContentSpace = "scrollContent"
 
     var body: some View {
         ScrollView {
@@ -68,9 +79,34 @@ struct UserProfileView: View {
                 checkinsSection
             }
             .frame(maxWidth: .infinity)
+            .coordinateSpace(.named(Self.scrollContentSpace))
         }
+        .onScrollGeometryChange(for: CGFloat.self) { geometry in
+            // The top of the screen, not the bottom of the nav bar: the bar is
+            // transparent, so the name is still visible through it and the
+            // status bar until it scrolls off the screen's top edge.
+            let screenTop = geometry.visibleRect.minY
+            let progress = (screenTop - nameBottom) / Self.titleRevealDistance
+            return min(max(progress, 0), 1)
+        } action: { _, progress in
+            titleRevealProgress = progress
+        }
+        // Still set for the back button and its history menu; the bar shows
+        // the principal item below instead.
         .navigationTitle(displayName)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(displayName)
+                    .font(.headline)
+                    .lineLimit(1)
+                    .opacity(titleRevealProgress)
+                    .offset(y: (1 - titleRevealProgress) * 6)
+                    .blur(radius: (1 - titleRevealProgress) * 2)
+                    .accessibilityHidden(titleRevealProgress == 0)
+            }
+            .sharedBackgroundVisibility(.hidden)
+        }
         .sheet(isPresented: $isEditing) {
             EditProfileView(purpose: .editing)
         }
@@ -165,6 +201,11 @@ struct UserProfileView: View {
                     .font(.title2.bold())
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
+                    .onGeometryChange(for: CGFloat.self) { proxy in
+                        proxy.frame(in: .named(Self.scrollContentSpace)).maxY
+                    } action: { maxY in
+                        nameBottom = maxY
+                    }
 
                 stats
             }
