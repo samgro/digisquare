@@ -63,7 +63,7 @@ struct TimelineView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else if let timelineError = checkinStore.timelineError {
             ContentUnavailableView {
-                Label("Couldn't Load Timeline", systemImage: "exclamationmark.triangle")
+                Label("Couldn't Load Timeline", systemImage: Glyphs.loadError)
             } description: {
                 Text(timelineError)
             } actions: {
@@ -74,7 +74,7 @@ struct TimelineView: View {
         } else {
             ContentUnavailableView(
                 "No Checkins Yet",
-                systemImage: "mappin.and.ellipse",
+                systemImage: Glyphs.noCheckins,
                 description: Text("Tap + to check in somewhere.")
             )
         }

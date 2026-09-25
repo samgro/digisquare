@@ -232,12 +232,15 @@ final class AuthManager {
         }
     }
 
+    /// Returns the profile as the server saved it, which can differ from what
+    /// was sent: an api without a field silently drops it.
+    @discardableResult
     func updateProfile(
         name: ProfileFieldUpdate,
         bio: ProfileFieldUpdate,
         avatarKey: ProfileFieldUpdate,
         hometown: ProfileFieldUpdate
-    ) async throws {
+    ) async throws -> UserProfile {
         struct UpdateRequest: Encodable {
             let name: ProfileFieldUpdate
             let bio: ProfileFieldUpdate
@@ -268,6 +271,7 @@ final class AuthManager {
             body: UpdateRequest(name: name, bio: bio, avatarKey: avatarKey, hometown: hometown)
         )
         await sessionStore.updateProfile(profile)
+        return profile
     }
 
     /// Uploads avatar bytes straight to R2 and returns the key to attach.

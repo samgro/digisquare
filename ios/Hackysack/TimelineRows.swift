@@ -5,34 +5,34 @@
 
 import SwiftUI
 
-/// Maps Google Places primary types to SF Symbols and display names.
+/// Maps Google Places primary types to glyphs and display names.
 enum PlaceTypeSymbol {
     static func systemImageName(for primaryType: String?) -> String {
-        guard let primaryType else { return "mappin" }
+        guard let primaryType else { return Glyphs.placeDefault }
         switch primaryType {
         case "cafe", "coffee_shop", "bakery", "tea_house":
-            return "cup.and.saucer.fill"
+            return Glyphs.placeCafe
         case "bar", "pub", "wine_bar", "night_club":
-            return "wineglass.fill"
+            return Glyphs.placeBar
         case "park", "hiking_area", "national_park", "garden", "dog_park":
-            return "tree.fill"
+            return Glyphs.placePark
         case "gym", "fitness_center", "sports_complex":
-            return "dumbbell.fill"
+            return Glyphs.placeGym
         case "store", "shopping_mall", "grocery_store", "supermarket", "clothing_store", "convenience_store":
-            return "bag.fill"
+            return Glyphs.placeStore
         case "movie_theater", "performing_arts_theater":
-            return "theatermasks.fill"
+            return Glyphs.placeTheater
         case "museum", "art_gallery", "library":
-            return "building.columns.fill"
+            return Glyphs.placeMuseum
         case "hotel", "lodging":
-            return "bed.double.fill"
+            return Glyphs.placeHotel
         case "airport", "train_station", "subway_station", "bus_station", "transit_station":
-            return "tram.fill"
+            return Glyphs.placeTransit
         default:
             if primaryType.hasSuffix("restaurant") || primaryType.hasPrefix("meal_") {
-                return "fork.knife"
+                return Glyphs.placeRestaurant
             }
-            return "mappin"
+            return Glyphs.placeDefault
         }
     }
 
@@ -206,7 +206,7 @@ struct TimelineEntryRow: View {
             }
         case .failed:
             Button(action: onRetry) {
-                Label("Checkin failed – Retry", systemImage: "arrow.clockwise")
+                Label("Checkin failed – Retry", systemImage: Glyphs.retryCheckin)
             }
             .buttonStyle(.bordered)
             .controlSize(.small)
@@ -217,14 +217,14 @@ struct TimelineEntryRow: View {
     private var suggestionActions: some View {
         HStack(spacing: 8) {
             SuggestionIconButton(
-                systemImage: "checkmark",
+                systemImage: Glyphs.confirmSuggestion,
                 accessibilityLabel: "Confirm Checkin",
                 foreground: .white,
                 background: .blue,
                 action: onConfirm
             )
             SuggestionIconButton(
-                systemImage: "xmark",
+                systemImage: Glyphs.rejectSuggestion,
                 accessibilityLabel: "Not Here",
                 foreground: .secondary,
                 background: Color(.systemGray5),

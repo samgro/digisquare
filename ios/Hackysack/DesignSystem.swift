@@ -16,6 +16,7 @@ enum HackysackSpacing {
 
 enum HackysackRadius {
     static let control: CGFloat = 12
+    static let compactControl: CGFloat = 8
     static let card: CGFloat = 16
 }
 
@@ -23,15 +24,18 @@ enum HackysackSize {
     /// Matches the intrinsic height of SignInWithAppleButton, so the Apple
     /// button and our own buttons line up on the welcome screen.
     static let controlHeight: CGFloat = 50
-    static let avatarLarge: CGFloat = 96
-    /// The profile header and the photo at the top of Edit Profile.
+    /// The row of buttons under a profile's header.
+    static let compactControlHeight: CGFloat = 34
+    /// The profile header.
+    static let avatarLarge: CGFloat = 72
+    /// The photo at the top of Edit Profile.
     static let avatarHero: CGFloat = 112
     static let avatarSmall: CGFloat = 40
 }
 
 // MARK: - Buttons
 
-/// Shared chrome for both button styles.
+/// Shared chrome for every button style.
 ///
 /// The dimmed-when-disabled state has to be read inside a real View: a
 /// ButtonStyle is not part of the view graph, so an @Environment property on
@@ -42,15 +46,18 @@ private struct HackysackButtonBody: View {
     let configuration: ButtonStyle.Configuration
     let foreground: Color
     let background: Color
+    var font: Font = .headline
+    var height: CGFloat = HackysackSize.controlHeight
+    var cornerRadius: CGFloat = HackysackRadius.control
 
     var body: some View {
         configuration.label
-            .font(.headline)
+            .font(font)
             .foregroundStyle(foreground)
             .frame(maxWidth: .infinity)
-            .frame(height: HackysackSize.controlHeight)
+            .frame(height: height)
             .background(
-                RoundedRectangle(cornerRadius: HackysackRadius.control, style: .continuous)
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                     .fill(background)
             )
             .opacity(isEnabled ? (configuration.isPressed ? 0.8 : 1) : 0.4)
@@ -74,6 +81,24 @@ struct SecondaryButtonStyle: ButtonStyle {
             configuration: configuration,
             foreground: Color.accentColor,
             background: Color.accentColor.opacity(0.12)
+        )
+    }
+}
+
+/// The short buttons in a row under a profile's header, after Instagram's:
+/// gray, or filled with the accent color for the one that asks something of
+/// the other person, like Add Friend.
+struct ProfileButtonStyle: ButtonStyle {
+    var isProminent = false
+
+    func makeBody(configuration: Configuration) -> some View {
+        HackysackButtonBody(
+            configuration: configuration,
+            foreground: isProminent ? .white : .primary,
+            background: isProminent ? Color.accentColor : Color(.systemGray5),
+            font: .subheadline.weight(.semibold),
+            height: HackysackSize.compactControlHeight,
+            cornerRadius: HackysackRadius.compactControl
         )
     }
 }
@@ -201,7 +226,7 @@ struct FormErrorBanner: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: HackysackSpacing.small) {
-            Image(systemName: "exclamationmark.circle.fill")
+            Image(systemName: Glyphs.formError)
             Text(message)
             Spacer(minLength: 0)
         }
@@ -223,6 +248,11 @@ struct FormErrorBanner: View {
         FormErrorBanner(message: "Couldn't save your profile")
         Button("Continue") {}.buttonStyle(PrimaryButtonStyle())
         Button("Log In as Test User") {}.buttonStyle(SecondaryButtonStyle())
+        HStack {
+            Button("Edit Profile") {}
+            Button("Add Friends") {}
+        }
+        .buttonStyle(ProfileButtonStyle())
     }
     .padding()
 }

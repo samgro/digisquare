@@ -62,7 +62,7 @@ struct EditSuggestionSheet: View {
                         HStack(spacing: 12) {
                             PlaceRow(place: place, userLocation: visitLocation)
                             if selectedPlaceId == place.id {
-                                Image(systemName: "checkmark")
+                                Image(systemName: Glyphs.selected)
                                     .font(.body.weight(.semibold))
                                     .foregroundStyle(.blue)
                             }

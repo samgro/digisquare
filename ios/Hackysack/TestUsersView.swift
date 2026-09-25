@@ -39,7 +39,7 @@ struct TestUsersView: View {
                         createTestUser()
                     } label: {
                         HStack {
-                            Label("Add Test User", systemImage: "plus")
+                            Label("Add Test User", systemImage: Glyphs.addTestUser)
                             Spacer(minLength: 0)
                             if isCreating {
                                 ProgressView()

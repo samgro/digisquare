@@ -8,9 +8,13 @@ import SwiftUI
 /// Someone's profile, pushed onto whichever navigation stack it was opened
 /// from, as other social apps do, so back and further taps behave as expected.
 ///
+/// The one profile layout in the app. Your own profile is this same view, as
+/// the Profile tab and anywhere else that opens you, with Edit Profile and an
+/// "Add a bio" prompt where someone else's would have friend actions.
+///
 /// Opened with the summary the caller already has, so the avatar and name
-/// render immediately while the bio, stats and friendship load. Their
-/// checkins are only shown to friends; everyone sees the count.
+/// render immediately while the bio, stats and friendship load. Checkins are
+/// only shown to friends; everyone sees the counts.
 ///
 /// Push it with `.navigationDestination(item:)` bound to stored `@State`, not
 /// a computed binding, which would hand it a fresh value on every body
@@ -20,6 +24,7 @@ struct UserProfileView: View {
 
     @Environment(AuthManager.self) private var authManager
     @Environment(FriendsStore.self) private var friendsStore
+    @EnvironmentObject private var checkinStore: CheckinStore
 
     @State private var profile: PublicProfile?
     @State private var loadError: String?
@@ -29,17 +34,36 @@ struct UserProfileView: View {
     @State private var actionError: String?
     @State private var isPerformingAction = false
     @State private var isConfirmingRemoval = false
-
+    @State private var isEditing = false
+    @State private var isAddingFriends = false
+    
     private let friendsAPI = FriendsAPI()
     private let checkinsAPI = CheckinsAPI()
 
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                header
-                    .padding(.horizontal, HackysackSpacing.large)
-                    .padding(.top, HackysackSpacing.medium)
-                    .padding(.bottom, HackysackSpacing.large)
+                VStack(alignment: .leading, spacing: HackysackSpacing.medium) {
+                    header
+                    bioSection
+
+                    if isCurrentUser {
+                        HStack(spacing: HackysackSpacing.small) {
+                            Button("Edit Profile") { isEditing = true }
+                            Button("Add Friends") { isAddingFriends = true }
+                        }
+                        .buttonStyle(ProfileButtonStyle())
+                    } else if let profile {
+                        actionRow(for: profile)
+                    }
+
+                    if let actionError {
+                        FormErrorBanner(message: actionError)
+                    }
+                }
+                .padding(.horizontal, HackysackSpacing.medium)
+                .padding(.top, HackysackSpacing.small)
+                .padding(.bottom, HackysackSpacing.large)
 
                 checkinsSection
             }
@@ -47,120 +71,164 @@ struct UserProfileView: View {
         }
         .navigationTitle(displayName)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            if isFriend {
-                ToolbarItem(placement: .topBarTrailing) {
-                    moreMenu
-                }
-            }
+        .sheet(isPresented: $isEditing) {
+            EditProfileView(purpose: .editing)
         }
-        .task {
+        .navigationDestination(isPresented: $isAddingFriends) {
+            AddFriendsView()
+        }
+        .task(id: reloadKey) {
+            await loadProfile()
+        }
+        .refreshable {
             await loadProfile()
         }
     }
 
-    // MARK: Header
+    // MARK: Who this is
 
-    private var displayName: String { profile?.user.displayName ?? user.displayName }
-
-    private var isCurrentUser: Bool {
+    /// The signed-in user's own profile, when this is them. Their header is
+    /// drawn from it rather than the fetched public copy, so a save in Edit
+    /// Profile shows the moment the sheet closes.
+    private var currentUserProfile: UserProfile? {
         switch authManager.state {
         case .signedIn(let signedInProfile), .needsProfileSetup(let signedInProfile):
-            return signedInProfile.id == user.id
+            return signedInProfile.id == user.id ? signedInProfile : nil
         case .launching, .signedOut:
-            return false
+            return nil
         }
     }
+
+    private var isCurrentUser: Bool { currentUserProfile != nil }
 
     private var canSeeCheckins: Bool {
         isCurrentUser || profile?.friendship.status == .friends
     }
 
-    private var header: some View {
-        VStack(spacing: HackysackSpacing.medium) {
-            AvatarView(
-                url: profile?.user.avatarURL ?? user.avatarURL,
-                initials: profile?.user.initials ?? user.initials,
-                size: HackysackSize.avatarLarge
-            )
+    /// Reloads after the user edits their own profile or finishes saving a
+    /// checkin, so their counts and checkins don't go stale until a
+    /// pull-to-refresh. Someone else's profile loads once.
+    private struct ReloadKey: Equatable {
+        let currentUserProfile: UserProfile?
+        let savedCheckinCount: Int
+    }
 
-            VStack(spacing: 4) {
+    private var reloadKey: ReloadKey {
+        guard let currentUserProfile else {
+            return ReloadKey(currentUserProfile: nil, savedCheckinCount: 0)
+        }
+        let savedCheckinCount = checkinStore.timelineEntries.filter { $0.syncStatus == .saved }.count
+        return ReloadKey(currentUserProfile: currentUserProfile, savedCheckinCount: savedCheckinCount)
+    }
+
+    private var displayName: String {
+        if let currentUserProfile {
+            return PersonName.displayName(for: currentUserProfile.name)
+        }
+        return profile?.user.displayName ?? user.displayName
+    }
+
+    private var avatarURL: URL? {
+        if let currentUserProfile {
+            return currentUserProfile.avatarURL
+        }
+        return profile?.user.avatarURL ?? user.avatarURL
+    }
+
+    private var initials: String {
+        currentUserProfile?.initials ?? profile?.user.initials ?? user.initials
+    }
+
+    private var bio: String? {
+        currentUserProfile?.bio ?? profile?.user.bio
+    }
+
+    private var hometown: String? {
+        currentUserProfile?.hometown ?? profile?.user.hometown
+    }
+
+    private var joinedAt: Date? {
+        currentUserProfile?.createdAt ?? profile?.user.createdAt
+    }
+
+    // MARK: Header
+
+    /// Instagram's layout: the avatar on the left and, beside it, the name,
+    /// where Instagram has a username and pronouns, above the counts.
+    /// The bio and subtitle go underneath, full width.
+    private var header: some View {
+        HStack(spacing: HackysackSpacing.large) {
+            AvatarView(url: avatarURL, initials: initials, size: HackysackSize.avatarLarge)
+
+            VStack(alignment: .leading, spacing: HackysackSpacing.small) {
                 Text(displayName)
                     .font(.title2.bold())
-                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
 
-                Text("Joined \(AppInfo.name) \(joinedDate)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .redacted(reason: profile == nil ? .placeholder : [])
-
-                if isFriend {
-                    Label("Friends", systemImage: "checkmark.circle.fill")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .transition(.opacity)
-                }
-
-                if let bio = profile?.user.bio, !bio.isEmpty {
-                    Text(bio)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
+                stats
             }
-
-            statsRow
-
-            if let profile, !isCurrentUser {
-                actionRow(for: profile)
-            }
-
-            if let actionError {
-                FormErrorBanner(message: actionError)
-            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 
-    private var joinedDate: String {
-        (profile?.user.createdAt ?? .now).formatted(.dateTime.month(.wide).year())
+    /// "Truckee, CA · Joined Sep 2026" on one line where it fits, stacked
+    /// where it doesn't.
+    private var subtitle: some View {
+        let joined = "Joined \((joinedAt ?? .now).formatted(.dateTime.month(.abbreviated).year()))"
+
+        return ViewThatFits(in: .horizontal) {
+            Text([hometown, joined].compactMap { $0 }.joined(separator: " · "))
+            VStack(alignment: .leading, spacing: 0) {
+                if let hometown {
+                    Text(hometown)
+                }
+                Text(joined)
+            }
+        }
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
+        .lineLimit(1)
+        // Placeholder bars while loading, rather than a join date that would
+        // read as a real answer.
+        .redacted(reason: joinedAt == nil ? .placeholder : [])
     }
 
-    private var statsRow: some View {
-        HStack(spacing: 0) {
-            statColumn(
-                value: profile.map { $0.checkinCount.formatted() } ?? "0",
-                label: profile?.checkinCount == 1 ? "Checkin" : "Checkins"
-            )
-
-            Divider()
-                .frame(height: 32)
-
-            statColumn(
-                value: profile.map { $0.friendCount.formatted() } ?? "0",
-                label: profile?.friendCount == 1 ? "Friend" : "Friends"
-            )
+    private var stats: some View {
+        HStack(spacing: HackysackSpacing.large) {
+            statColumn(value: profile?.checkinCount, singular: "checkin", plural: "checkins")
+            statColumn(value: profile?.friendCount, singular: "friend", plural: "friends")
         }
-        .padding(.vertical, 12)
-        .background(
-            RoundedRectangle(cornerRadius: HackysackRadius.card, style: .continuous)
-                .fill(Color(.secondarySystemBackground))
-        )
-        // Placeholder bars while loading, rather than a "0 Checkins" that
-        // would read as a real answer.
-        .redacted(reason: profile == nil ? .placeholder : [])
         .accessibilityElement(children: .combine)
     }
 
-    private func statColumn(value: String, label: String) -> some View {
-        VStack(spacing: 2) {
-            Text(value)
+    private func statColumn(value: Int?, singular: String, plural: String) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(value.map { $0.formatted() } ?? "–")
                 .font(.headline)
                 .monospacedDigit()
-            Text(label)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .contentTransition(.numericText())
+            Text(value == 1 ? singular : plural)
+                .font(.subheadline)
         }
-        .frame(maxWidth: .infinity)
+    }
+
+    /// The bio, or a prompt to add one on your own profile, above the
+    /// hometown and join date.
+    private var bioSection: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            if let bio, !bio.isEmpty {
+                Text(bio)
+                    .font(.subheadline)
+            } else if isCurrentUser {
+                Button("Add a bio", systemImage: Glyphs.addBio) { isEditing = true }
+                    .font(.subheadline.weight(.medium))
+                    .controlSize(.small)
+            }
+
+            subtitle
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     // MARK: Actions
@@ -169,22 +237,18 @@ struct UserProfileView: View {
     private func actionRow(for profile: PublicProfile) -> some View {
         switch profile.friendship.status {
         case .notFriends:
-            Button {
+            Button("Add Friend") {
                 perform { try await sendRequest() }
-            } label: {
-                Label("Add Friend", systemImage: "person.badge.plus")
             }
-            .buttonStyle(PrimaryButtonStyle())
+            .buttonStyle(ProfileButtonStyle(isProminent: true))
             .disabled(isPerformingAction)
 
         case .outgoingRequest:
-            VStack(spacing: HackysackSpacing.small) {
-                Button {
+            VStack(alignment: .leading, spacing: HackysackSpacing.small) {
+                Button("Cancel Request") {
                     perform { try await deleteRequest(profile.friendship.friendRequestId) }
-                } label: {
-                    Label("Cancel Request", systemImage: "xmark")
                 }
-                .buttonStyle(SecondaryButtonStyle())
+                .buttonStyle(ProfileButtonStyle())
                 .disabled(isPerformingAction)
 
                 Text("Friend request sent")
@@ -193,51 +257,47 @@ struct UserProfileView: View {
             }
 
         case .incomingRequest:
-            VStack(spacing: HackysackSpacing.small) {
+            VStack(alignment: .leading, spacing: HackysackSpacing.small) {
                 Text("\(displayName) wants to be friends")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
 
                 HStack(spacing: HackysackSpacing.small) {
-                    Button {
-                        perform { try await deleteRequest(profile.friendship.friendRequestId) }
-                    } label: {
-                        Label("Decline", systemImage: "xmark")
-                    }
-                    .buttonStyle(SecondaryButtonStyle())
-
-                    Button {
+                    Button("Accept") {
                         perform { try await acceptRequest(profile.friendship.friendRequestId) }
-                    } label: {
-                        Label("Accept", systemImage: "checkmark")
                     }
-                    .buttonStyle(PrimaryButtonStyle())
+                    .buttonStyle(ProfileButtonStyle(isProminent: true))
+
+                    Button("Decline") {
+                        perform { try await deleteRequest(profile.friendship.friendRequestId) }
+                    }
+                    .buttonStyle(ProfileButtonStyle())
                 }
                 .disabled(isPerformingAction)
             }
 
         case .friends:
-            // Shown under the join date instead; removing is in the menu.
-            EmptyView()
+            friendsButton
         }
     }
 
-    private var isFriend: Bool {
-        !isCurrentUser && profile?.friendship.status == .friends
-    }
-
-    private var moreMenu: some View {
-        Menu {
-            Button("Remove Friend", systemImage: "person.badge.minus", role: .destructive) {
-                isConfirmingRemoval = true
-            }
+    /// Instagram's "Following" button: says you're friends, and tapping it
+    /// offers to remove them.
+    private var friendsButton: some View {
+        Button {
+            isConfirmingRemoval = true
         } label: {
-            Label("More", systemImage: "ellipsis")
+            HStack(spacing: 4) {
+                Text("Friends")
+                Image(systemName: Glyphs.friendOptions)
+                    .imageScale(.small)
+            }
         }
+        .buttonStyle(ProfileButtonStyle())
         .disabled(isPerformingAction)
-        // Attached to the menu rather than the whole view: on iOS 26 the dialog
-        // presents as a popover anchored to the view it hangs off, so this is
-        // what makes its arrow point at the menu button.
+        // Attached to the button rather than the whole view: on iOS 26 the
+        // dialog presents as a popover anchored to the view it hangs off, so
+        // this is what makes its arrow point at the button.
         .confirmationDialog(
             "Remove \(displayName) as a friend?",
             isPresented: $isConfirmingRemoval,
@@ -309,7 +369,7 @@ struct UserProfileView: View {
         if profile == nil {
             if let loadError {
                 ContentUnavailableView {
-                    Label("Couldn't Load Profile", systemImage: "exclamationmark.triangle")
+                    Label("Couldn't Load Profile", systemImage: Glyphs.loadError)
                 } description: {
                     Text(loadError)
                 } actions: {
@@ -323,7 +383,7 @@ struct UserProfileView: View {
             }
         } else if !canSeeCheckins {
             ContentUnavailableView {
-                Label("Checkins Are for Friends", systemImage: "lock.fill")
+                Label("Checkins Are for Friends", systemImage: Glyphs.friendsOnly)
             } description: {
                 Text("Add \(displayName) as a friend to see their checkins.")
             }
@@ -337,7 +397,7 @@ struct UserProfileView: View {
                 .padding(.top, HackysackSpacing.large)
         } else if let checkinsError {
             ContentUnavailableView {
-                Label("Couldn't Load Checkins", systemImage: "exclamationmark.triangle")
+                Label("Couldn't Load Checkins", systemImage: Glyphs.loadError)
             } description: {
                 Text(checkinsError)
             } actions: {
@@ -348,8 +408,10 @@ struct UserProfileView: View {
         } else {
             ContentUnavailableView(
                 "No Checkins Yet",
-                systemImage: "mappin.and.ellipse",
-                description: Text("\(displayName) hasn't checked in anywhere yet.")
+                systemImage: Glyphs.noCheckins,
+                description: Text(isCurrentUser
+                    ? "Tap + to check in somewhere."
+                    : "\(displayName) hasn't checked in anywhere yet.")
             )
         }
     }
@@ -361,7 +423,10 @@ struct UserProfileView: View {
             profile = try await friendsAPI.profile(userId: user.id)
             loadError = nil
         } catch {
-            loadError = error.localizedDescription
+            // A refresh that fails keeps what is already on screen.
+            if profile == nil {
+                loadError = error.localizedDescription
+            }
             return
         }
         if canSeeCheckins {
@@ -388,5 +453,7 @@ struct UserProfileView: View {
         UserProfileView(user: PublicUser.preview().summary)
     }
     .environment(AuthManager())
-        .environment(FriendsStore())
+    .environment(FriendsStore())
+    .environment(LocationManager())
+    .environmentObject(CheckinStore.inMemory())
 }

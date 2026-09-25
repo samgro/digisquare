@@ -192,7 +192,7 @@ struct EditProfileView: View {
                 photoMenu {
                     avatarPreview
                         .overlay(alignment: .bottomTrailing) {
-                            Image(systemName: "camera.fill")
+                            Image(systemName: Glyphs.editPhoto)
                                 .font(.footnote)
                                 .foregroundStyle(.white)
                                 .padding(HackysackSpacing.small)
@@ -257,7 +257,7 @@ struct EditProfileView: View {
             } label: {
                 fieldRow("Hometown", errorMessage: fieldErrors["hometown"]) {
                     if !hometown.isEmpty {
-                        Label(hometown, systemImage: "mappin.and.ellipse")
+                        Label(hometown, systemImage: Glyphs.hometown)
                             .labelStyle(HometownLabelStyle())
                     } else if isLocatingHometown {
                         HStack(spacing: HackysackSpacing.small) {
@@ -288,7 +288,11 @@ struct EditProfileView: View {
         @ViewBuilder content: () -> Content
     ) -> some View {
         VStack(alignment: .leading, spacing: HackysackSpacing.small / 2) {
-            HStack(alignment: .firstTextBaseline, spacing: HackysackSpacing.small) {
+            // Top rather than .firstTextBaseline: a vertical-axis TextField
+            // (Bio) misreports its baseline, which pushed the field a line
+            // below its label. Label and value share a font, so top alignment
+            // still lines their text up.
+            HStack(alignment: .top, spacing: HackysackSpacing.small) {
                 Text(label)
                     .frame(width: labelWidth, alignment: .leading)
                 content()
@@ -310,19 +314,19 @@ struct EditProfileView: View {
     private func photoMenu<MenuLabel: View>(@ViewBuilder label: () -> MenuLabel) -> some View {
         Menu {
             if CameraPicker.isAvailable {
-                Button("Take Photo", systemImage: "camera") {
+                Button("Take Photo", systemImage: Glyphs.takePhoto) {
                     isShowingCamera = true
                 }
             }
-            Button("Choose Photo", systemImage: "photo.on.rectangle") {
+            Button("Choose Photo", systemImage: Glyphs.choosePhoto) {
                 isShowingPhotoLibrary = true
             }
-            Button("Choose File", systemImage: "folder") {
+            Button("Choose File", systemImage: Glyphs.chooseFile) {
                 isShowingFileImporter = true
             }
             if hasPhoto {
                 Divider()
-                Button("Remove Photo", systemImage: "trash", role: .destructive) {
+                Button("Remove Photo", systemImage: Glyphs.removePhoto, role: .destructive) {
                     croppedImage = nil
                     pickedItem = nil
                     shouldRemoveAvatar = true
@@ -539,7 +543,7 @@ struct EditProfileView: View {
                     avatarUpdate = .unchanged
                 }
 
-                try await authManager.updateProfile(
+                let savedProfile = try await authManager.updateProfile(
                     name: .editing(trimmedName),
                     bio: .editing(trimmedBio),
                     avatarKey: avatarUpdate,
@@ -547,10 +551,17 @@ struct EditProfileView: View {
                     // refuses to clear a hometown.
                     hometown: .value(trimmedHometown)
                 )
-                // In setup there is nothing to dismiss: the saved profile is
-                // complete, so RootView swaps this screen for the app.
-                if purpose == .editing {
+                switch purpose {
+                case .editing:
                     dismiss()
+                case .setup:
+                    // Normally nothing to do: the saved profile is complete,
+                    // so RootView swaps this screen for the app. If the
+                    // server accepted the save but dropped a field, say so
+                    // rather than leaving Continue looking broken.
+                    if savedProfile.isMissingRequiredFields {
+                        errorMessage = "Your profile saved without a hometown. Try again in a moment."
+                    }
                 }
             } catch let error as APIError {
                 var collected: [String: String] = [:]

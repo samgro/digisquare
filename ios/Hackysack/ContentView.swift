@@ -29,17 +29,17 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            Tab("Timeline", systemImage: "clock") {
+            Tab("Timeline", systemImage: Glyphs.timelineTab) {
                 TimelineView()
             }
-            Tab("Friends", systemImage: "person.2") {
+            Tab("Friends", systemImage: Glyphs.friendsTab) {
                 FriendsView()
-            }
-            Tab("Profile", systemImage: "person.crop.circle") {
-                ProfileView()
             }
             // Zero hides the badge.
             .badge(friendsStore.pendingRequestCount)
+            Tab("Profile", systemImage: Glyphs.profileTab) {
+                ProfileView()
+            }
         }
         .environment(friendsStore)
         .onAppear {
@@ -57,7 +57,7 @@ struct ContentView: View {
             // Keeps the timeline pointed at the right account if the signed-in
             // user changes underneath this view.
             checkinStore.currentUserId = newUserId
-            // A fresh store, so the Profile badge and Friends feed never show
+            // A fresh store, so the Friends badge and feed never show
             // the previous account's requests or friends.
             friendsStore = FriendsStore()
             Task { await friendsStore.loadRequests() }
@@ -72,7 +72,7 @@ struct ContentView: View {
                 if checkinStore.hasLoadedTimeline {
                     Task { await checkinStore.loadTimeline() }
                 }
-                // Keeps the Profile badge current when coming back to the
+                // Keeps the Friends badge current when coming back to the
                 // app; requests arrive while it's in the background.
                 Task { await friendsStore.loadRequests() }
             case .background:

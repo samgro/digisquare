@@ -49,12 +49,14 @@ struct PublicUser: Decodable, Identifiable, Hashable {
     let name: String?
     let bio: String?
     let avatarURL: URL?
+    /// Null only for an account that hasn't finished profile setup.
+    let hometown: String?
     let createdAt: Date
 
     enum CodingKeys: String, CodingKey {
         case id, name, bio
         case avatarURL = "avatarUrl"
-        case createdAt
+        case hometown, createdAt
     }
 
     var displayName: String { PersonName.displayName(for: name) }

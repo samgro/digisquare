@@ -30,7 +30,7 @@ struct PlaceRow: View {
             }
 
             if let visitLine {
-                Label(visitLine, systemImage: "checkmark.circle")
+                Label(visitLine, systemImage: Glyphs.visitedBefore)
                     .font(.caption)
                     .foregroundStyle(Color.accentColor)
                     .lineLimit(1)

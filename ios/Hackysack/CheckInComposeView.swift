@@ -29,7 +29,7 @@ struct CheckInComposeView: View {
 
             if let onChangeLocation {
                 Button(action: onChangeLocation) {
-                    Label("Change Location", systemImage: "mappin.and.ellipse")
+                    Label("Change Location", systemImage: Glyphs.changeLocation)
                         .font(.subheadline.weight(.medium))
                 }
                 .padding(.horizontal)

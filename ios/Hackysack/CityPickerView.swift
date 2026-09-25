@@ -56,7 +56,7 @@ struct CityPickerView: View {
                         HStack {
                             Text(hometown)
                             Spacer()
-                            Image(systemName: "checkmark")
+                            Image(systemName: Glyphs.selected)
                                 .foregroundStyle(Color.accentColor)
                                 .fontWeight(.semibold)
                         }
@@ -95,7 +95,7 @@ struct CityPickerView: View {
             }
         } label: {
             HStack(spacing: HackysackSpacing.medium) {
-                Image(systemName: "location.fill")
+                Image(systemName: Glyphs.currentLocation)
                     .foregroundStyle(Color.accentColor)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Current Location")
