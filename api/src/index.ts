@@ -14,9 +14,14 @@ serve({ fetch: app.fetch, port: config.PORT }, (info) => {
 const coverageWorker = new CoverageWorker({ source: s3Source(config.OVERTURE_RELEASE) });
 coverageWorker.start();
 
+// A deploy sends SIGTERM while a job may be running; the worker hands it
+// back to the queue before the process exits, within a bound in case the
+// database is what went away.
+const SHUTDOWN_TIMEOUT_MS = 5000;
 for (const signal of ["SIGINT", "SIGTERM"] as const) {
-  process.on(signal, () => {
-    coverageWorker.stop();
-    process.exit(0);
+  process.once(signal, () => {
+    const exit = () => process.exit(0);
+    setTimeout(exit, SHUTDOWN_TIMEOUT_MS).unref();
+    coverageWorker.stop().then(exit, exit);
   });
 }

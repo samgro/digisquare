@@ -19,7 +19,8 @@ vi.mock("./overture-remote.js", () => remote);
 const matching = vi.hoisted(() => ({ attachExtents: vi.fn(async () => []) }));
 vi.mock("./extent-matching.js", () => matching);
 
-const { claimNextJob, CoverageWorker, enqueueCityAround, importBounds, WORKER_LANES } = await import("./coverage-worker.js");
+const { claimNextJob, CoverageWorker, enqueueCityAround, importBounds, recoverStaleJobs, WORKER_LANES } =
+  await import("./coverage-worker.js");
 
 const dialect = new PgDialect();
 const source: OvertureSource = { release: "2026-09-23.0", remote: false, parquetGlob: () => "" };
@@ -89,6 +90,40 @@ describe("CoverageWorker", () => {
       ),
     );
     expect([...lanes].sort()).toEqual(WORKER_LANES.map((kinds) => JSON.stringify(kinds)).sort());
+  });
+});
+
+describe("CoverageWorker.stop", () => {
+  it("hands a job still running back to the queue, claimable at once", async () => {
+    // The fetch never finishes, as if the deploy arrived mid-job.
+    remote.fetchPlaceFeatures.mockImplementation(() => new Promise(() => {}));
+    const runningJob = { id: "fix-9", kind: "fix", west: -122.5, south: 37.7, east: -122.4, north: 37.8, overtureRelease: "2026-09-23.0" };
+    // housekeeping, then the fix lane claims the job and the bulk lane finds nothing
+    controls.queue([], [], [runningJob], []);
+    const worker = new CoverageWorker({ source, pollIntervalMs: 60_000 });
+
+    worker.start();
+    await vi.waitFor(() => expect(remote.fetchPlaceFeatures).toHaveBeenCalled());
+    controls.queue([{ id: "fix-9" }]); // the requeue
+    await worker.stop();
+
+    const requeue = controls.chainedCalls.filter((call) => call.method === "set").at(-1)!.arguments[0] as Record<string, unknown>;
+    expect(requeue).toMatchObject({ status: "pending", startedAt: null, heartbeatAt: null });
+    const requeueWhere = controls.chainedCalls.filter((call) => call.method === "where").at(-1)!;
+    const query = dialect.sqlToQuery(requeueWhere.arguments[0] as SQL);
+    expect(query.params).toContain("fix-9");
+    expect(query.sql).toContain('"coverage_jobs"."status" = ');
+  });
+});
+
+describe("recoverStaleJobs", () => {
+  it("re-queues jobs whose heartbeat stopped, without counting it as an attempt", async () => {
+    controls.queue([{ id: "stale-1" }]);
+    expect(await recoverStaleJobs()).toBe(1);
+    const set = controls.chainedCalls.find((call) => call.method === "set")!.arguments[0] as Record<string, unknown>;
+    expect(set).toMatchObject({ status: "pending", startedAt: null, heartbeatAt: null });
+    expect(dialect.sqlToQuery(set.attempts as SQL).sql).toContain("greatest");
+    expect(sqlOf("where")).toContain('coalesce("coverage_jobs"."heartbeat_at", "coverage_jobs"."started_at"');
   });
 });
 

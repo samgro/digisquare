@@ -283,6 +283,10 @@ export const coverageJobs = pgTable(
     extentCount: integer("extent_count"),
     requestedAt: timestamp("requested_at", { withTimezone: true }).notNull().defaultNow(),
     startedAt: timestamp("started_at", { withTimezone: true }),
+    // Bumped every minute while a worker is on the job. A job whose
+    // heartbeat stops is one whose worker died, and it goes back to the
+    // queue; a long job that keeps beating is left alone.
+    heartbeatAt: timestamp("heartbeat_at", { withTimezone: true }),
     completedAt: timestamp("completed_at", { withTimezone: true }),
   },
   (table) => [

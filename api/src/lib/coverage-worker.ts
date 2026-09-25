@@ -56,9 +56,12 @@ import {
 } from "./overture-remote.js";
 
 const MAXIMUM_ATTEMPTS = 3;
-const STALE_IMPORT_MINUTES = 30;
 const RETRY_DELAY_MINUTES = 5;
 const REFRESH_SCAN_INTERVAL_MS = 60 * 60 * 1000;
+/** How often a running job proves it is alive, and how long a silence counts as dead. */
+const HEARTBEAT_INTERVAL_MS = 60 * 1000;
+const STALE_HEARTBEAT_MINUTES = 5;
+const STALE_SCAN_INTERVAL_MS = 5 * 60 * 1000;
 
 /** The job kinds each worker lane claims. */
 export const WORKER_LANES: readonly (readonly JobKind[])[] = [["fix"], ["city", "seed", "refresh"]];
@@ -137,7 +140,7 @@ export async function claimNextJob(kinds?: readonly JobKind[]): Promise<Coverage
   const kindFilter = kinds ? sql`and ${inArray(coverageJobs.kind, [...kinds])}` : sql``;
   const [job] = await database
     .update(coverageJobs)
-    .set({ status: "importing", startedAt: new Date(), attempts: sql`${coverageJobs.attempts} + 1` })
+    .set({ status: "importing", startedAt: new Date(), heartbeatAt: new Date(), attempts: sql`${coverageJobs.attempts} + 1` })
     .where(
       and(
         eq(coverageJobs.status, "pending"),
@@ -232,6 +235,13 @@ function tilesNearestFirst(cells: Cell[], point: { latitude: number; longitude: 
 export async function runJob(source: OvertureSource, job: CoverageJob): Promise<void> {
   const label = `${job.kind} job ${job.id}`;
   const log = (message: string) => console.log(`[coverage] ${label}: ${message}`);
+  const heartbeat = setInterval(() => {
+    database
+      .update(coverageJobs)
+      .set({ heartbeatAt: new Date() })
+      .where(and(eq(coverageJobs.id, job.id), eq(coverageJobs.status, "importing")))
+      .catch((error: unknown) => console.error(`[coverage] ${label}: heartbeat failed`, error));
+  }, HEARTBEAT_INTERVAL_MS);
   try {
     const outcome = await importBounds(source, boundsOf(job), log, async () => {
       await markCells(cellsInBounds(boundsOf(job)), "ready", job.overtureRelease, job.id);
@@ -247,6 +257,8 @@ export async function runJob(source: OvertureSource, job: CoverageJob): Promise<
   } catch (error) {
     console.error(`[coverage] ${label} failed`, error);
     await failJob(job, error);
+  } finally {
+    clearInterval(heartbeat);
   }
 }
 
@@ -269,15 +281,41 @@ export async function seedCellsNow(source: OvertureSource, cells: Cell[], bounds
   return true;
 }
 
-/** Jobs left `importing` by a crashed instance go back to the queue. */
+/**
+ * Jobs whose worker stopped beating (it crashed, or was killed before it
+ * could hand them back) go back to the queue, claimable at once. The
+ * interruption is not held against the job's attempts.
+ */
 export async function recoverStaleJobs(): Promise<number> {
-  const cutoff = new Date(Date.now() - STALE_IMPORT_MINUTES * 60 * 1000);
+  const cutoff = new Date(Date.now() - STALE_HEARTBEAT_MINUTES * 60 * 1000);
   const recovered = await database
     .update(coverageJobs)
-    .set({ status: "pending" })
-    .where(and(eq(coverageJobs.status, "importing"), or(isNull(coverageJobs.startedAt), lt(coverageJobs.startedAt, cutoff))))
+    .set({ status: "pending", startedAt: null, heartbeatAt: null, attempts: sql`greatest(${coverageJobs.attempts} - 1, 0)` })
+    .where(
+      and(
+        eq(coverageJobs.status, "importing"),
+        lt(sql`coalesce(${coverageJobs.heartbeatAt}, ${coverageJobs.startedAt}, ${coverageJobs.requestedAt})`, cutoff),
+      ),
+    )
     .returning({ id: coverageJobs.id });
   return recovered.length;
+}
+
+/**
+ * Hands jobs this process is still running back to the queue, for a
+ * shutdown: another instance (or this one after the deploy) claims them
+ * at once instead of after their heartbeat goes stale.
+ */
+export async function requeueJobs(jobIds: string[]): Promise<number> {
+  if (jobIds.length === 0) {
+    return 0;
+  }
+  const requeued = await database
+    .update(coverageJobs)
+    .set({ status: "pending", startedAt: null, heartbeatAt: null, attempts: sql`greatest(${coverageJobs.attempts} - 1, 0)` })
+    .where(and(inArray(coverageJobs.id, jobIds), eq(coverageJobs.status, "importing")))
+    .returning({ id: coverageJobs.id });
+  return requeued.length;
 }
 
 /**
@@ -322,7 +360,9 @@ export class CoverageWorker {
   /** Set when a job was enqueued while no lane was asleep, so none sleeps past it. */
   private enqueuedWhileAwake = false;
   private unsubscribe: (() => void) | null = null;
-  private refreshTimer: NodeJS.Timeout | null = null;
+  private readonly timers: NodeJS.Timeout[] = [];
+  /** Jobs claimed by this process and not yet finished or failed. */
+  private readonly activeJobIds = new Set<string>();
 
   constructor(private readonly options: CoverageWorkerOptions) {}
 
@@ -332,20 +372,44 @@ export class CoverageWorker {
     }
     this.running = true;
     this.unsubscribe = onJobEnqueued(() => this.wake());
-    this.refreshTimer = setInterval(() => {
-      scheduleRefreshJobs().catch((error) => console.error("[coverage] refresh scan failed", error));
-    }, REFRESH_SCAN_INTERVAL_MS);
+    this.timers.push(
+      setInterval(() => {
+        scheduleRefreshJobs().catch((error) => console.error("[coverage] refresh scan failed", error));
+      }, REFRESH_SCAN_INTERVAL_MS),
+      setInterval(() => {
+        recoverStaleJobs()
+          .then((recovered) => {
+            if (recovered > 0) {
+              console.log(`[coverage] re-queued ${recovered} jobs with no heartbeat`);
+              this.wake();
+            }
+          })
+          .catch((error) => console.error("[coverage] stale job scan failed", error));
+      }, STALE_SCAN_INTERVAL_MS),
+    );
     void this.run();
   }
 
-  stop(): void {
+  /**
+   * Stops claiming, hands any job still running back to the queue, and
+   * releases DuckDB. Awaited on SIGTERM so a deploy never strands a job.
+   */
+  async stop(): Promise<void> {
     this.running = false;
     this.unsubscribe?.();
-    if (this.refreshTimer) {
-      clearInterval(this.refreshTimer);
+    for (const timer of this.timers) {
+      clearInterval(timer);
     }
     this.wake();
-    void closeOvertureSource(this.options.source);
+    try {
+      const requeued = await requeueJobs([...this.activeJobIds]);
+      if (requeued > 0) {
+        console.log(`[coverage] handed ${requeued} running jobs back to the queue`);
+      }
+    } catch (error) {
+      console.error("[coverage] could not hand running jobs back", error);
+    }
+    await closeOvertureSource(this.options.source);
   }
 
   private wake(): void {
@@ -379,7 +443,12 @@ export class CoverageWorker {
         console.error("[coverage] could not claim a job", error);
       }
       if (job) {
-        await runJob(this.options.source, job);
+        this.activeJobIds.add(job.id);
+        try {
+          await runJob(this.options.source, job);
+        } finally {
+          this.activeJobIds.delete(job.id);
+        }
         continue;
       }
       await this.sleep();
