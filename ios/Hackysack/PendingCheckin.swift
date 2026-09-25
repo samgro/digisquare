@@ -44,6 +44,43 @@ struct PendingCheckin: Codable, Identifiable, Equatable {
     var alternativePlaces: [Place] {
         candidatePlaces.filter { $0.id != selectedPlaceId }
     }
+
+    /// Slack beyond the visit's own accuracy within which the checkin just
+    /// before or after the stay counts as having been made at the same spot.
+    static let adjacentCheckinMarginMeters: Double = 150
+    /// How long before arrival or after departure the checkin just before or
+    /// after the stay can be and still count. An older one at the same spot is
+    /// a separate trip there, not a duplicate of this one.
+    static let adjacentCheckinWindow: TimeInterval = 12 * 60 * 60
+
+    /// Whether a real checkin already stands for this stay, which would make
+    /// the suggestion a duplicate. That is the case when the user checked in
+    /// anywhere while they were there, or when the checkin just before the
+    /// stay or just after it is at the same spot and within 12 hours (they
+    /// checked in on the way in, or on their way out). An ongoing stay runs
+    /// up to `now`.
+    func isCovered(by checkins: [Checkin], now: Date) -> Bool {
+        let stayStart = visit.arrivalDate
+        let stayEnd = visit.departureDate ?? now
+        if checkins.contains(where: { $0.createdAt >= stayStart && $0.createdAt <= stayEnd }) {
+            return true
+        }
+
+        let windowStart = stayStart.addingTimeInterval(-Self.adjacentCheckinWindow)
+        let windowEnd = stayEnd.addingTimeInterval(Self.adjacentCheckinWindow)
+        let previousCheckin = checkins
+            .filter { $0.createdAt >= windowStart && $0.createdAt < stayStart }
+            .max { $0.createdAt < $1.createdAt }
+        let nextCheckin = checkins
+            .filter { $0.createdAt > stayEnd && $0.createdAt <= windowEnd }
+            .min { $0.createdAt < $1.createdAt }
+        let sameSpotDistance = visit.horizontalAccuracy + Self.adjacentCheckinMarginMeters
+        return [previousCheckin, nextCheckin].contains { checkin in
+            guard let location = checkin?.location else { return false }
+            let coordinate = GeoCoordinate(latitude: location.latitude, longitude: location.longitude)
+            return visit.coordinate.distance(to: coordinate) <= sameSpotDistance
+        }
+    }
 }
 
 extension PendingCheckin {

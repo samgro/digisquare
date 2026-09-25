@@ -49,8 +49,14 @@ final class CheckinStore: ObservableObject {
 
     /// Everything the timeline shows. Suggestions are placed by their visit's
     /// arrival time, so the timeline's day grouping interleaves them naturally.
+    /// A suggestion is hidden while a real checkin covers its stay; it is kept
+    /// rather than withdrawn, so it comes back if that checkin goes away.
     var timelineEntries: [TimelineEntry] {
-        suggestions.compactMap { TimelineEntry(suggestion: $0, userId: currentUserId ?? "") } + savedEntries
+        let checkins = savedEntries.map(\.checkin)
+        let now = Date()
+        return suggestions
+            .filter { !$0.isCovered(by: checkins, now: now) }
+            .compactMap { TimelineEntry(suggestion: $0, userId: currentUserId ?? "") } + savedEntries
     }
 
     typealias CheckinSaver = @MainActor (CheckinDraft) async throws -> Checkin
