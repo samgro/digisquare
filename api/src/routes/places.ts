@@ -18,6 +18,9 @@ const querySchema = z.object({
   // clients don't send it and Core Location reports a negative value when
   // it has no estimate, which the client maps to "absent".
   accuracy: z.coerce.number().nonnegative().max(100000).optional(),
+  // `passive=1`: report coverage but never start a fetch. For lookups nobody
+  // is waiting on, like the app's background visit detection.
+  passive: z.enum(["1", "true"]).optional(),
 });
 
 const idParamSchema = z.object({
@@ -83,7 +86,7 @@ places.get("/", optionalAuth, async (context) => {
       query
         ? searchByName({ query, latitude, longitude, radius, viewerUserId })
         : searchNearbyCandidates({ latitude, longitude, radius, accuracy, viewerUserId }),
-      describeCoverage({ latitude, longitude, viewerUserId }),
+      describeCoverage({ latitude, longitude, viewerUserId, passive: parsed.data.passive !== undefined }),
     ]);
 
     return context.json({ results: candidates.map(toPlaceResult), coverage } satisfies {

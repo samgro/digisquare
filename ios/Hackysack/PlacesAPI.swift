@@ -322,7 +322,8 @@ struct PlacesAPI {
         longitude: Double,
         query: String? = nil,
         radius: Double? = nil,
-        horizontalAccuracy: Double? = nil
+        horizontalAccuracy: Double? = nil,
+        passive: Bool = false
     ) async throws -> PlaceSearchResult {
         // The abbreviated names here are the API's query parameters, which is
         // the one place CLAUDE.md permits them. The Swift labels above are
@@ -343,6 +344,13 @@ struct PlacesAPI {
             queryItems.append(
                 URLQueryItem(name: "accuracy", value: String(Int(horizontalAccuracy.rounded())))
             )
+        }
+
+        // A passive lookup reports coverage but never starts a fetch: for
+        // lookups nobody is waiting on, which should not spend the user's
+        // daily area fetches.
+        if passive {
+            queryItems.append(URLQueryItem(name: "passive", value: "1"))
         }
 
         // Sent with the token: the server includes the user's private venues

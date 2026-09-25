@@ -37,6 +37,7 @@ describe("describeCoverage", () => {
   it("reports an import already under way with an estimate", async () => {
     controls.queue(
       [cellRow("pending", JOB_ID)],
+      [{ id: JOB_ID, kind: "fix", status: "importing", startedAt: new Date(Date.now() - 30_000) }], // the owning job
       // estimate: recent fix durations, then the queue
       [{ seconds: 100 }, { seconds: 140 }],
       [{ id: JOB_ID, status: "importing", startedAt: new Date(Date.now() - 30_000) }],
@@ -45,6 +46,41 @@ describe("describeCoverage", () => {
     expect(report.status).toBe("importing");
     // one job ahead (itself) x 120 s average, minus the 30 s already run
     expect(report.estimatedSecondsRemaining).toBe(90);
+  });
+
+  it("estimates from a city job's own start when it is the one importing the cells", async () => {
+    controls.queue(
+      [cellRow("pending", JOB_ID)],
+      [{ id: JOB_ID, kind: "city", status: "importing", startedAt: new Date(Date.now() - 40_000) }],
+      [{ seconds: 200 }], // recent fix durations
+      [], // fix queue, irrelevant here
+    );
+    const report = await describeCoverage({ ...FIX, viewerUserId: USER_ID });
+    expect(report).toEqual({ status: "importing", estimatedSecondsRemaining: 160 });
+  });
+
+  it("fetches cells still queued under a city job with a fix job for a user who is there now", async () => {
+    controls.queue(
+      [cellRow("pending", JOB_ID)],
+      [{ id: JOB_ID, kind: "city", status: "pending", startedAt: null }], // queued, not running
+      [{ attemptCount: 1 }], // per-user rate limit
+      [{ count: 0 }], // queued fix jobs
+      [{ cells: 0 }], // cells fetched today
+      [{ id: "fix-2", kind: "fix" }], // inserted fix job
+      [], // its cells, now pending under the fix
+      [{ seconds: 120 }],
+      [{ id: "fix-2", status: "pending", startedAt: null }],
+    );
+    const report = await describeCoverage({ ...FIX, viewerUserId: USER_ID });
+    expect(report).toEqual({ status: "importing", estimatedSecondsRemaining: 120 });
+    expect(controls.operations).toContain("batch");
+  });
+
+  it("reports but never fetches for a passive lookup", async () => {
+    controls.queue([]); // nothing known about the cell
+    const report = await describeCoverage({ ...FIX, viewerUserId: USER_ID, passive: true });
+    expect(report).toEqual({ status: "missing" });
+    expect(controls.operations).toEqual(["select"]);
   });
 
   it("is failed when the fetch gave up", async () => {

@@ -189,6 +189,26 @@ export function markCellsStatement(
     });
 }
 
+/**
+ * Points cells at a job without touching their status, for a refresh: the
+ * cells stay ready on the old release while the new one is fetched, so the
+ * area never shows as loading to the people using it.
+ */
+export function linkCellsToJobStatement(cells: Cell[], jobId: string) {
+  if (cells.length === 0) {
+    return null;
+  }
+  return database
+    .update(coverageCells)
+    .set({ jobId, updatedAt: sql`now()` })
+    .where(
+      sql`(${coverageCells.cellX}, ${coverageCells.cellY}) in (${sql.join(
+        cells.map((cell) => sql`(${cell.cellX}, ${cell.cellY})`),
+        sql`, `,
+      )})`,
+    );
+}
+
 /** The status of each cell, absent for cells nobody has touched. */
 export async function cellStatuses(cells: Cell[]): Promise<Map<string, typeof coverageCells.$inferSelect>> {
   if (cells.length === 0) {

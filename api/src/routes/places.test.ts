@@ -183,7 +183,16 @@ describe("GET /places?q=", () => {
     const body = (await response.json()) as { coverage: unknown };
 
     expect(body.coverage).toEqual({ status: "importing", estimatedSecondsRemaining: 90 });
-    expect(describeCoverage).toHaveBeenCalledWith({ latitude: 37.7749, longitude: -122.4194, viewerUserId: null });
+    expect(describeCoverage).toHaveBeenCalledWith({ latitude: 37.7749, longitude: -122.4194, viewerUserId: null, passive: false });
+  });
+
+  it("marks a passive lookup so coverage is reported but never fetched", async () => {
+    controls.queue([]);
+    const response = await places.request(`/?lat=${SAN_FRANCISCO.lat}&lng=${SAN_FRANCISCO.lng}&passive=1`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    expect(response.status).toBe(200);
+    expect(describeCoverage).toHaveBeenCalledWith(expect.objectContaining({ viewerUserId: CURRENT_USER_ID, passive: true }));
   });
 
   it("passes the signed-in viewer to the search and to coverage", async () => {

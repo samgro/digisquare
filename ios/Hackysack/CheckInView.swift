@@ -49,8 +49,12 @@ struct CheckInView: View {
     @State private var suggestedPlaceId: String?
     @State private var debounceTask: Task<Void, Never>?
     @State private var loadTask: Task<Void, Never>?
-    /// One automatic retry once the server's estimate for an area elapses.
+    /// Searches again each time the server's estimate for an area elapses,
+    /// for as long as the area is still being fetched.
     @State private var coverageRetryTask: Task<Void, Never>?
+    /// How many of those retries have come back still importing, so the
+    /// copy stops promising "about a minute" once that has passed.
+    @State private var coverageRetryCount = 0
 
     private let placesAPI = PlacesAPI()
     private let ranker = PlaceRanker()
@@ -166,7 +170,7 @@ struct CheckInView: View {
     private var placesList: some View {
         List {
             if coverage.status == .importing {
-                CoverageBanner(coverage: coverage)
+                CoverageBanner(coverage: coverage, isTakingLonger: coverageRetryCount > 0)
             }
             ForEach(rankedPlaces) { rankedPlace in
                 NavigationLink(value: CheckInRoute.compose(rankedPlace.place)) {
@@ -194,7 +198,12 @@ struct CheckInView: View {
     private var emptyState: some View {
         switch coverage.status {
         case .importing:
-            AreaLoadingView(coverage: coverage, onRetry: search, onAddPlace: { navigationPath.append(.createPlace) })
+            AreaLoadingView(
+                coverage: coverage,
+                isTakingLonger: coverageRetryCount > 0,
+                onRetry: search,
+                onAddPlace: { navigationPath.append(.createPlace) }
+            )
         case .missing, .failed:
             NoAreaDataView(coverage: coverage, onAddPlace: { navigationPath.append(.createPlace) })
         case .ready:
@@ -278,6 +287,9 @@ struct CheckInView: View {
                 )
                 guard !Task.isCancelled else { return }
                 coverage = searchResult.coverage
+                if coverage.status != .importing {
+                    coverageRetryCount = 0
+                }
                 scheduleCoverageRetry()
                 present(results: searchResult.results, query: query, fix: fix)
             } catch {
@@ -288,9 +300,10 @@ struct CheckInView: View {
         }
     }
 
-    /// While the server is fetching the area, search again once when its
-    /// estimate elapses, so a user who waits on this screen sees the places
-    /// appear without tapping anything.
+    /// While the server is fetching the area, search again when its estimate
+    /// elapses (and again after that, while it is still fetching), so a user
+    /// who waits on this screen sees the places appear without tapping
+    /// anything.
     private func scheduleCoverageRetry() {
         coverageRetryTask?.cancel()
         guard coverage.status == .importing else { return }
@@ -298,6 +311,7 @@ struct CheckInView: View {
         coverageRetryTask = Task {
             try? await Task.sleep(for: .seconds(delay))
             guard !Task.isCancelled else { return }
+            coverageRetryCount += 1
             search()
         }
     }
@@ -361,6 +375,8 @@ private extension LocationFix {
 /// from before. The wait comes from the server's own estimate.
 private struct AreaLoadingView: View {
     let coverage: PlaceCoverage
+    /// The estimate has already passed once; stop quoting it.
+    var isTakingLonger = false
     let onRetry: () -> Void
     let onAddPlace: () -> Void
 
@@ -369,8 +385,11 @@ private struct AreaLoadingView: View {
             Label("Getting Places for This Area", systemImage: "arrow.down.circle.dotted")
         } description: {
             Text(
-                "This is the first search around here, so we're downloading places for it. "
-                + "Try again in about \(coverage.waitDescription ?? "a few minutes")."
+                isTakingLonger
+                    ? "Still downloading places for this area. A dense city can take a few minutes; "
+                        + "we'll keep checking."
+                    : "This is the first search around here, so we're downloading places for it. "
+                        + "Try again in about \(coverage.waitDescription ?? "a few minutes")."
             )
         } actions: {
             Button(action: onRetry) {
@@ -413,10 +432,13 @@ private struct NoAreaDataView: View {
 /// A thin row above the list while more places for the area are on the way.
 private struct CoverageBanner: View {
     let coverage: PlaceCoverage
+    var isTakingLonger = false
 
     var body: some View {
         Label(
-            "More places for this area are on the way (about \(coverage.waitDescription ?? "a few minutes")).",
+            isTakingLonger
+                ? "More places for this area are still on the way."
+                : "More places for this area are on the way (about \(coverage.waitDescription ?? "a few minutes")).",
             systemImage: "arrow.down.circle.dotted"
         )
         .font(.footnote)

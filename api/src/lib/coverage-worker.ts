@@ -187,7 +187,12 @@ async function failJob(job: CoverageJob, error: unknown): Promise<void> {
     .set({ status: exhausted ? "failed" : "pending", lastError: message.slice(0, 2000) })
     .where(eq(coverageJobs.id, job.id));
   if (exhausted) {
-    await markCells(cellsInBounds(boundsOf(job)), "failed", null, job.id);
+    // Only the cells this job was fetching from nothing: a refresh's cells
+    // are still ready on the old release and stay that way.
+    await database
+      .update(coverageCells)
+      .set({ status: "failed", updatedAt: sql`now()` })
+      .where(and(eq(coverageCells.jobId, job.id), eq(coverageCells.status, "pending")));
   }
 }
 
@@ -331,12 +336,18 @@ export async function scheduleRefreshJobs(): Promise<CoverageJob[]> {
       and(
         eq(coverageCells.status, "ready"),
         or(isNull(coverageCells.overtureRelease), ne(coverageCells.overtureRelease, config.OVERTURE_RELEASE)),
+        // Not the ones a refresh is already queued or running for: they
+        // stay ready on the old release until it lands.
+        sql`not exists (select 1 from ${coverageJobs}
+                        where ${coverageJobs.id} = ${coverageCells.jobId}
+                          and ${coverageJobs.kind} = 'refresh'
+                          and ${coverageJobs.status} in ('pending', 'importing'))`,
       ),
     )
     .orderBy(asc(coverageCells.readyAt));
   const jobs: CoverageJob[] = [];
   for (const tile of groupCellsIntoTiles(stale, JOB_TILE_CELLS_PER_SIDE)) {
-    jobs.push(await enqueueJob({ kind: "refresh", cells: tile.cells, bounds: tile.bounds }));
+    jobs.push(await enqueueJob({ kind: "refresh", cells: tile.cells, bounds: tile.bounds, keepCellStatus: true }));
   }
   if (jobs.length > 0) {
     notifyEnqueued();

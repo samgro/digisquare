@@ -17,7 +17,7 @@ import {
   type Bounds,
   type Cell,
 } from "./coverage-cells.js";
-import { cellStatuses, markCellsStatement } from "./overture-import.js";
+import { cellStatuses, linkCellsToJobStatement, markCellsStatement } from "./overture-import.js";
 import { consumeRateLimit, type RateLimitRule } from "./rate-limit.js";
 
 export type JobKind = "fix" | "city" | "seed" | "refresh";
@@ -69,6 +69,12 @@ interface EnqueueOptions {
    * insert and a separate claiming update and run it a second time.
    */
   claimed?: boolean;
+  /**
+   * For a refresh: the cells keep their status (ready, on the old release)
+   * and only get pointed at the job, so a covered area never looks like it
+   * is loading while a newer release is fetched.
+   */
+  keepCellStatus?: boolean;
 }
 
 /**
@@ -95,8 +101,10 @@ export async function enqueueJob(options: EnqueueOptions): Promise<CoverageJob> 
       ...(options.claimed ? { status: "importing", startedAt: new Date(), attempts: 1 } : {}),
     })
     .returning();
-  const markPending = markCellsStatement(options.cells, "pending", null, jobId);
-  const [[job]] = markPending ? await database.batch([insertJob, markPending]) : [await insertJob];
+  const cellsStatement = options.keepCellStatus
+    ? linkCellsToJobStatement(options.cells, jobId)
+    : markCellsStatement(options.cells, "pending", null, jobId);
+  const [[job]] = cellsStatement ? await database.batch([insertJob, cellsStatement]) : [await insertJob];
   return job;
 }
 
@@ -132,8 +140,13 @@ async function queuedFixJobCount(): Promise<number> {
  * Seconds until a fix job enqueued now would be done: the average of the
  * last few fix jobs, times the fix jobs ahead in the queue, less the time
  * the running one has already had. Never promises less than a minute.
+ *
+ * `runningSince` is for cells a job of another kind is already importing
+ * (a city tile around someone's fix, a seed): that job is alone on its
+ * lane as far as the user is concerned, so the estimate is one job's
+ * average less the time it has had.
  */
-export async function estimateSecondsRemaining(jobId: string | null): Promise<number> {
+export async function estimateSecondsRemaining(jobId: string | null, runningSince?: Date | null): Promise<number> {
   const [recent, queue] = await Promise.all([
     database
       .select({
@@ -153,6 +166,10 @@ export async function estimateSecondsRemaining(jobId: string | null): Promise<nu
     recent.length > 0
       ? recent.reduce((total, row) => total + Number(row.seconds), 0) / recent.length
       : DEFAULT_FIX_JOB_SECONDS;
+  if (runningSince) {
+    const elapsed = (Date.now() - runningSince.getTime()) / 1000;
+    return Math.max(MINIMUM_ESTIMATE_SECONDS, Math.round(averageSeconds - elapsed));
+  }
   const position = jobId ? queue.findIndex((job) => job.id === jobId) : -1;
   const jobsAhead = position === -1 ? queue.length : position + 1;
   const running = queue.find((job) => job.status === "importing");
@@ -160,21 +177,48 @@ export async function estimateSecondsRemaining(jobId: string | null): Promise<nu
   return Math.max(MINIMUM_ESTIMATE_SECONDS, Math.round(Math.max(jobsAhead, 1) * averageSeconds - alreadySpent));
 }
 
+interface OwningJob {
+  id: string;
+  kind: JobKind;
+  status: string;
+  startedAt: Date | null;
+}
+
+/** The jobs behind some pending cells, by id. */
+async function jobsById(jobIds: (string | null)[]): Promise<Map<string, OwningJob>> {
+  const distinct = [...new Set(jobIds.filter((jobId): jobId is string => jobId !== null))];
+  if (distinct.length === 0) {
+    return new Map();
+  }
+  const rows = await database
+    .select({ id: coverageJobs.id, kind: coverageJobs.kind, status: coverageJobs.status, startedAt: coverageJobs.startedAt })
+    .from(coverageJobs)
+    .where(inArray(coverageJobs.id, distinct));
+  return new Map(rows.map((row) => [row.id, row]));
+}
+
 interface DescribeCoverageParams {
   latitude: number;
   longitude: number;
   viewerUserId: string | null;
+  /**
+   * Report only, never fetch: for lookups nobody is waiting on, such as the
+   * app's background visit detection, which should not spend the user's
+   * daily fetches or the worker's time.
+   */
+  passive?: boolean;
 }
 
 /**
  * Reports whether the cells a nearby search touches are loaded and, for a
  * signed-in viewer, enqueues a `fix` job for the ones that are not, within
- * the limits. Anonymous callers never trigger a download.
+ * the limits. Anonymous and passive callers never trigger a download.
  */
 export async function describeCoverage({
   latitude,
   longitude,
   viewerUserId,
+  passive = false,
 }: DescribeCoverageParams): Promise<CoverageReport> {
   const cells = cellsAround(latitude, longitude, COVERAGE_RADIUS_METERS);
   const statuses = await cellStatuses(cells);
@@ -183,26 +227,35 @@ export async function describeCoverage({
     return { status: "ready" };
   }
 
+  // A pending cell is on its way if a fix job holds it (the fix lane runs
+  // those first) or if any job is importing it right now. One queued under a
+  // city, seed or refresh job could wait behind every other bulk job, so for
+  // a user who is here now it is fetched by a fix job instead; the bulk job
+  // re-imports it later at no cost.
   const pending = missing.filter((cell) => statuses.get(cellKey(cell))?.status === "pending");
-  if (pending.length === missing.length) {
-    // Already on its way. A cell only a city or seed job is fetching still
-    // reports its job; the estimate is for the fix queue, which runs first.
-    const jobId = statuses.get(cellKey(pending[0]))?.jobId ?? null;
-    return { status: "importing", estimatedSecondsRemaining: await estimateSecondsRemaining(jobId) };
+  const owningJobs = await jobsById(pending.map((cell) => statuses.get(cellKey(cell))?.jobId ?? null));
+  const onItsWay = pending.filter((cell) => {
+    const job = owningJobs.get(statuses.get(cellKey(cell))?.jobId ?? "");
+    return job !== undefined && (job.kind === "fix" || job.status === "importing");
+  });
+  if (onItsWay.length === missing.length) {
+    const job = owningJobs.get(statuses.get(cellKey(onItsWay[0]))?.jobId ?? "")!;
+    const runningSince = job.kind !== "fix" && job.status === "importing" ? job.startedAt : null;
+    return { status: "importing", estimatedSecondsRemaining: await estimateSecondsRemaining(job.id, runningSince) };
   }
 
   const failed = missing.filter((cell) => statuses.get(cellKey(cell))?.status === "failed");
-  if (failed.length > 0 && failed.length + pending.length === missing.length) {
+  if (failed.length > 0 && failed.length + onItsWay.length === missing.length) {
     return { status: "failed" };
   }
 
-  if (viewerUserId === null) {
+  if (viewerUserId === null || passive) {
     return { status: "missing" };
   }
 
   const toFetch = missing.filter((cell) => {
     const status = statuses.get(cellKey(cell))?.status;
-    return status !== "pending" && status !== "failed";
+    return status !== "failed" && !onItsWay.includes(cell);
   });
 
   const perUser = await consumeRateLimit("coverage-fix", viewerUserId, COVERAGE_LIMITS.fixJobsPerUser);
