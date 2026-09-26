@@ -93,6 +93,48 @@ describe("CoverageWorker", () => {
   });
 });
 
+describe("CoverageWorker retries", () => {
+  /** How many times a lane has tried to claim a job. */
+  function claimCount(): number {
+    return controls.chainedCalls
+      .filter((call) => call.method === "where")
+      .filter((call) => dialect.sqlToQuery(call.arguments[0] as SQL).sql.includes("for update skip locked")).length;
+  }
+
+  it("wakes when a failed job may be retried, not at the hourly poll", async () => {
+    vi.useFakeTimers();
+    try {
+      remote.fetchPlaceFeatures.mockRejectedValue(new Error("S3 timed out"));
+      const failingJob = {
+        id: "fix-7",
+        kind: "fix",
+        attempts: 1,
+        west: -122.5,
+        south: 37.7,
+        east: -122.4,
+        north: 37.8,
+        overtureRelease: "2026-09-23.0",
+      };
+      // housekeeping, then the fix lane claims the job and the bulk lane finds nothing
+      controls.queue([], [], [failingJob], []);
+      const worker = new CoverageWorker({ source });
+
+      worker.start();
+      // Both first claims, then the fix lane's claim after the failure.
+      await vi.waitFor(() => expect(claimCount()).toBe(3));
+
+      await vi.advanceTimersByTimeAsync(4 * 60 * 1000);
+      expect(claimCount()).toBe(3);
+
+      await vi.advanceTimersByTimeAsync(2 * 60 * 1000);
+      await vi.waitFor(() => expect(claimCount()).toBe(5));
+      await worker.stop();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
 describe("CoverageWorker.stop", () => {
   it("hands a job still running back to the queue, claimable at once", async () => {
     // The fetch never finishes, as if the deploy arrived mid-job.

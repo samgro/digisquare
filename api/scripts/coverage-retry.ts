@@ -1,5 +1,6 @@
 /**
- * Puts failed coverage jobs (and their cells) back in the queue.
+ * Puts failed coverage jobs (and their cells) back in the queue. The API's
+ * worker picks them up at its next hourly poll, or at once when it restarts.
  *
  *   npm run coverage:retry
  */
