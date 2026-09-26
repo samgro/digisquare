@@ -2,7 +2,14 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { loadOvertureSamples, writeSampleRelease } from "../../test/helpers/overture-parquet.js";
 import { parseOverturePlace } from "./overture.js";
 import { parseOvertureExtent } from "./overture-extents.js";
-import { fetchCityContaining, fetchExtentFeatures, fetchPlaceFeatures, type OvertureSource } from "./overture-remote.js";
+import { CATEGORY_BOOST } from "./place-quality.js";
+import {
+  fetchBridgeMatches,
+  fetchCityContaining,
+  fetchExtentFeatures,
+  fetchPlaceFeatures,
+  type OvertureSource,
+} from "./overture-remote.js";
 
 const SOMA = { west: -122.41, south: 37.78, east: -122.39, north: 37.79 };
 
@@ -39,6 +46,12 @@ describe("fetchPlaceFeatures", () => {
       addressCountry: "US",
       confidence: 0.954,
       website: "https://bluebottlecoffee.com/us/eng/cafes/2nd-street",
+      basicCategory: "coffee_shop",
+      taxonomyHierarchy: ["food_and_drink", "non_alcoholic_beverage_venue", "coffee_shop"],
+      sourceDataset: "meta",
+      sourceUpdatedAt: new Date("2026-09-14T00:00:00.000Z"),
+      operatingStatus: null,
+      prior: CATEGORY_BOOST,
     });
     expect(blueBottle?.latitude).toBeCloseTo(37.787, 2);
     expect(rows.some((row) => row.skipped === "permanently_closed")).toBe(true);
@@ -77,5 +90,34 @@ describe("fetchCityContaining", () => {
 
   it("is null outside every division", async () => {
     expect(await fetchCityContaining(source, { latitude: 0, longitude: 0 })).toBeNull();
+  });
+});
+
+describe("fetchBridgeMatches", () => {
+  it("counts distinct providers per place and maps Foursquare records to places", async () => {
+    const [blueBottle, illy] = loadOvertureSamples().places.map((row) => row.id) as [string, string];
+    const matches = await fetchBridgeMatches(
+      source,
+      [blueBottle, illy, "not-in-this-release"],
+      ["4b8c1a2bf964a52056af32e3", "4a5b1d2ef964a520b5b91fe3", "unknown-record"],
+    );
+    expect(matches.providerCounts).toEqual(
+      new Map([
+        [blueBottle, 3],
+        [illy, 1],
+      ]),
+    );
+    expect(matches.overtureIdsByFoursquareRecord).toEqual(
+      new Map([
+        ["4b8c1a2bf964a52056af32e3", "00000000-1111-2222-3333-444444444444"],
+        ["4a5b1d2ef964a520b5b91fe3", blueBottle],
+      ]),
+    );
+  });
+
+  it("copes with nothing to ask about", async () => {
+    const matches = await fetchBridgeMatches(source, [], []);
+    expect(matches.providerCounts.size).toBe(0);
+    expect(matches.overtureIdsByFoursquareRecord.size).toBe(0);
   });
 });

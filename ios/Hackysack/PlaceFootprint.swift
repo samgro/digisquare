@@ -115,29 +115,19 @@ nonisolated struct PlaceFootprint: Sendable {
         ("_airports", table["airport"]!),
     ]
 
-    /// Log-prior adjustments for place types that a nearest-first search
-    /// surfaces at 5 m but almost nobody means to check in at. Penalties only,
-    /// so the places stay in the list for the rare time they are wanted.
+    /// Log-prior adjustments for the fixtures of a street that a
+    /// nearest-first search surfaces at 5 m but almost nobody means to check
+    /// in at. Penalties only, so the places stay in the list for the rare
+    /// time they are wanted. Whether a listing is a real venue at all, and
+    /// how often anyone checks in at its kind of place (offices, agents,
+    /// registered businesses), is the server's `Place.prior`.
     private static let typePriors: [String: Double] = [
         "parking": -1.5,
         "bike_parking": -1.5,
         "motorcycle_parking": -1.5,
         "public_restrooms": -1.5,
         "ev_charging_station": -1.0,
-        // Offices listed inside a building someone would actually check in at:
-        // a town hall's departments, the startups registered at a coworking
-        // address. Recorded fixtures have a dozen of these within 25 m.
-        "government_services": -1.0,
-        "local_and_state_government_offices": -1.0,
-        "corporate_office": -1.0,
-        "public_and_government_association": -1.0,
-        "non_governmental_association": -1.0,
-        "professional_services": -1.0,
-        "financial_service": -1.0,
-        "atms": -1.0,
         "bus_station": -0.5,
-        "self_storage_facility": -0.5,
-        "storage_facility": -0.5,
     ]
 
     private static func tableEntry(for category: String) -> TableEntry? {
@@ -168,9 +158,11 @@ nonisolated struct PlaceFootprint: Sendable {
         lookup(for: place) { typePriors[$0] } ?? 0
     }
 
-    init(for place: Place) {
+    /// `pointRadius` is the storefront radius to use; the ranker passes its
+    /// tunable, the default is for callers that only need the venue class.
+    init(for place: Place, pointRadius: Double = Self.pointRadius) {
         let tabled = Self.lookup(for: place, Self.tableEntry)
-            ?? TableEntry(radius: Self.pointRadius, kind: .point)
+            ?? TableEntry(radius: pointRadius, kind: .point)
 
         if let extent = place.extent, !extent.rings.isEmpty {
             let box = extent.boundingBox

@@ -75,6 +75,15 @@ the order of 0.5 M places for the Bay Area and 1.2 M for New York, and tens of
 minutes per region. Regions are bounding boxes in `scripts/seed-regions.ts`;
 add one there to seed another metro.
 
+Then read the release's bridge files once, so each place knows how many
+providers vouch for it (the ranking's corroboration signal) and imported
+Swarm venues are matched to their Overture places:
+```bash
+npm run overture:bridge
+```
+This scans the whole release (about 5 GB) whatever the database holds, so
+it takes minutes; run it after any seed or refresh, not per area.
+
 To check a change in the app without waiting on a whole region, seed just
 downtown San Francisco (the four cells a search from SoMa checks), which
 takes a minute or two:

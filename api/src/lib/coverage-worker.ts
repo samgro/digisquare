@@ -347,16 +347,20 @@ export async function requeueJobs(jobIds: string[]): Promise<number> {
 /**
  * Ready cells recorded under an older release than the configured one,
  * grouped into 1 degree tiles, one refresh job each. Cells already in a
- * pending job are left to it.
+ * pending job are left to it. With `everyReadyCell`, cells already on the
+ * configured release are refreshed too: for when the import itself changed
+ * (a column added to `places`) and every row has to be rewritten.
  */
-export async function scheduleRefreshJobs(): Promise<CoverageJob[]> {
+export async function scheduleRefreshJobs({ everyReadyCell = false } = {}): Promise<CoverageJob[]> {
   const stale = await database
     .select({ cellX: coverageCells.cellX, cellY: coverageCells.cellY })
     .from(coverageCells)
     .where(
       and(
         eq(coverageCells.status, "ready"),
-        or(isNull(coverageCells.overtureRelease), ne(coverageCells.overtureRelease, config.OVERTURE_RELEASE)),
+        everyReadyCell
+          ? sql`true`
+          : or(isNull(coverageCells.overtureRelease), ne(coverageCells.overtureRelease, config.OVERTURE_RELEASE)),
         // Not the ones a refresh is already queued or running for: they
         // stay ready on the old release until it lands.
         sql`not exists (select 1 from ${coverageJobs}

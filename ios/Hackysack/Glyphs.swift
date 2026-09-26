@@ -98,4 +98,6 @@ nonisolated enum Glyphs {
     static let debugBackfillVisits = "clock.arrow.circlepath"
     static let wrongServer = "externaldrive.badge.xmark"
     static let buildMismatch = "arrow.triangle.branch"
+    /// The launch toast naming a non-default API server.
+    static let apiServer = "server.rack"
 }

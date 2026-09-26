@@ -30,8 +30,16 @@ nonisolated struct RankingWeights: Sendable {
     /// indoors and between tall buildings.
     var spatial = 2.5
     var spatialDegreesOfFreedom = 3.0
-    /// Typical error of a pin's placement, folded into the fix's sigma.
-    var pinPlacementError = 12.0
+    /// Half a storefront: how far from a shop's pin the user can stand and
+    /// still be inside it. The pin's own error is `pinPlacementError`, so
+    /// this is the shop, not the pin.
+    var pointRadius = PlaceFootprint.pointRadius
+    /// Typical error of a pin's placement, folded into the fix's sigma. Pins
+    /// are tens of meters off in a dense block (Overture's and Google's for
+    /// La Taqueria in the Mission differ by 40 m), and the user is somewhere
+    /// inside the shop, not at the pin. At 12 m a venue 40 m away scored
+    /// 25 times worse than one at 10 m, which no prior could overcome.
+    var pinPlacementError = 30.0
     /// Reported accuracies below this are treated as this.
     var minimumAccuracy = 5.0
     /// How much a blurry fix's inability to resolve a storefront-sized venue
@@ -50,6 +58,10 @@ nonisolated struct RankingWeights: Sendable {
     /// Per log-checkin at the place, from everyone. Nothing at a place nobody
     /// has checked in at yet, so a new venue is ranked on geometry alone.
     var popularity = 0.2
+    /// Per nat of the server's prior (`Place.prior`): how trustworthy the
+    /// record is and how often anyone checks in at its kind of place. Already
+    /// in the score's units, so it applies as is.
+    var prior = 1.0
     var history = 1.0
     var historyHalfLifeDays = 90.0
     var timeOfDay = 1.0
@@ -85,7 +97,15 @@ nonisolated struct RankedPlace: Identifiable, Sendable {
     let probability: Double
     let visitCount: Int
     let effectiveDistance: Double?
+    /// The type and server priors applied, so a suggestion can be withheld
+    /// from a place they count against.
     let typePrior: Double
+
+    /// The score with any prior penalty waived: what the place is worth as
+    /// an alternative to the leader. A penalty says few people check in at
+    /// an office, not that nobody does, so an office next to the fix still
+    /// keeps the picker from jumping past it.
+    var rivalScore: Double { score - min(typePrior, 0) }
 
     var id: String { place.id }
 }
@@ -121,7 +141,6 @@ nonisolated struct PlaceRanker: Sendable {
     ) -> PlaceRanking {
         let accuracy = max(fix.horizontalAccuracy, weights.minimumAccuracy)
         let sigmaSquared = accuracy * accuracy + weights.pinPlacementError * weights.pinPlacementError
-        let sigma = sigmaSquared.squareRoot()
         let fixCoordinate = fix.coordinate
         let statistics = HistoryStatistics(entries: history, now: now, calendar: calendar, halfLifeDays: weights.historyHalfLifeDays)
         let nowHour = calendar.component(.hour, from: now)
@@ -136,12 +155,18 @@ nonisolated struct PlaceRanker: Sendable {
         var scored: [(index: Int, entry: RankedPlace)] = []
         scored.reserveCapacity(allCandidates.count)
         for (index, place) in allCandidates.enumerated() {
-            let footprint = PlaceFootprint(for: place)
+            let footprint = PlaceFootprint(for: place, pointRadius: weights.pointRadius)
             let effectiveDistance = footprint.effectiveDistance(from: fixCoordinate, to: place)
             let placeStatistics = statistics.byPlace[place.id]
             // The user's own checkins are direct evidence that this is a
-            // place they check in at, whatever its type says about everyone else.
-            let typePrior = placeStatistics == nil ? PlaceFootprint.typePrior(for: place) : 0
+            // place they check in at, whatever its type or the server's prior
+            // say about everyone else: penalties are waived, a boost is kept.
+            let typePrior: Double
+            if placeStatistics == nil {
+                typePrior = PlaceFootprint.typePrior(for: place) + weights.prior * place.prior
+            } else {
+                typePrior = max(0, weights.prior * place.prior)
+            }
             var score = 0.0
 
             if let effectiveDistance {
@@ -153,7 +178,9 @@ nonisolated struct PlaceRanker: Sendable {
 
             // Chance a fix this blurry lands inside a venue this size at all
             // (Rayleigh mass within the footprint radius), softened and floored.
-            let ratio = footprint.radius / sigma
+            // Judged on the fix's own blur: the pin's placement error says
+            // where the venue is drawn, not whether the user is inside it.
+            let ratio = footprint.radius / accuracy
             let mass = 1 - exp(-(ratio * ratio) / 2)
             score += max(weights.resolutionFloor, weights.resolution * log(mass))
 
@@ -252,7 +279,8 @@ nonisolated struct PlaceRanker: Sendable {
 
     private func suggestion(from ranked: [RankedPlace], fix: LocationFix, now: Date) -> Place? {
         guard let top = ranked.first else { return nil }
-        let margin = ranked.count > 1 ? top.score - ranked[1].score : Double.infinity
+        let strongestRival = ranked.dropFirst().map(\.rivalScore).max()
+        let margin = strongestRival.map { top.score - $0 } ?? Double.infinity
         guard margin >= weights.suggestionMinimumMargin else { return nil }
         guard fix.horizontalAccuracy >= 0, fix.horizontalAccuracy <= weights.suggestionMaximumAccuracy else { return nil }
         guard now.timeIntervalSince(fix.timestamp) <= weights.suggestionMaximumFixAgeSeconds else { return nil }
@@ -260,7 +288,9 @@ nonisolated struct PlaceRanker: Sendable {
               effectiveDistance <= max(fix.horizontalAccuracy, weights.suggestionMinimumDistanceAllowance) else {
             return nil
         }
-        guard top.typePrior == 0 else { return nil }
+        // A place the priors count against is never skipped straight to,
+        // however far ahead it is: the user can still pick it from the list.
+        guard top.typePrior >= 0 else { return nil }
         guard probabilityOfBeingInside(top, among: ranked) >= weights.suggestionMinimumProbability else {
             return nil
         }
@@ -268,7 +298,7 @@ nonisolated struct PlaceRanker: Sendable {
     }
 
     private func probabilityOfBeingInside(_ venue: RankedPlace, among ranked: [RankedPlace]) -> Double {
-        let footprint = PlaceFootprint(for: venue.place)
+        let footprint = PlaceFootprint(for: venue.place, pointRadius: weights.pointRadius)
         // A storefront's radius only absorbs the pin error, so its neighbors
         // are alternatives to it, not parts of it. The venues whose recorded
         // grounds enclose it are not alternatives either: being at Peet's in
@@ -280,7 +310,7 @@ nonisolated struct PlaceRanker: Sendable {
                 if candidate.id == venue.id {
                     return total + candidate.probability
                 }
-                let enclosing = PlaceFootprint(for: candidate.place)
+                let enclosing = PlaceFootprint(for: candidate.place, pointRadius: weights.pointRadius)
                 guard enclosing.polygon != nil, enclosing.effectiveDistance(from: location, to: candidate.place) == 0 else {
                     return total
                 }

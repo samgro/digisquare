@@ -23,7 +23,7 @@ const { claimNextJob, CoverageWorker, enqueueCityAround, importBounds, recoverSt
   await import("./coverage-worker.js");
 
 const dialect = new PgDialect();
-const source: OvertureSource = { release: "2026-09-23.0", remote: false, parquetGlob: () => "" };
+const source: OvertureSource = { release: "2026-09-23.0", remote: false, parquetGlob: () => "", bridgeGlob: () => "" };
 const SOMA = { west: -122.5, south: 37.7, east: -122.4, north: 37.8 };
 
 /** The SQL of the n-th chained call named `method`. */

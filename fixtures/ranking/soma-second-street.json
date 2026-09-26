@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "name": "soma-second-street",
   "description": "Outside Blue Bottle on 2nd Street in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; Yerba Buena Gardens and Salesforce Park are 400 m away and Oracle Park 1.2 km.",
-  "recordedAt": null,
+  "recordedAt": "2026-09-26T15:04:51.534Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 37.78697,
@@ -11,2001 +11,4438 @@
   },
   "places": [
     {
-      "id": "ChIJKyGeO8uBhYARGBl0pZptD8c",
-      "source": "overture",
-      "name": "Blue Bottle Coffee",
-      "address": "168 2nd St, San Francisco, CA 94105, US",
-      "street": "168 2nd St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7870063,
-        "longitude": -122.3988975
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "coffee_shop",
-        "cafe",
-        "food_store",
-        "shopping",
-        "food"
-      ],
-      "primaryType": "coffee_shop",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJV9R36eeBhYARF2uurzMq6QQ",
-      "source": "overture",
-      "name": "Consulate General of Estonia in San Francisco",
-      "address": "101 Natoma St, San Francisco, CA 94105, US",
-      "street": "101 Natoma St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7869508,
-        "longitude": -122.39895839999998
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "embassy",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "embassy",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ4WaysimBhYAR-yjaLweDnzk",
-      "source": "overture",
-      "name": "Nexus Venture Partners",
-      "address": "101 Natoma St 2nd Floor, San Francisco, CA 94105, US",
-      "street": "101 Natoma St 2nd Floor",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7869508,
-        "longitude": -122.39895839999998
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "financial_service"
-      ],
-      "primaryType": "financial_service",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJKxneI32AhYAR833jC2vvfCA",
-      "source": "overture",
-      "name": "Princeville Global",
-      "address": "101 Natoma St, San Francisco, CA 94105, US",
-      "street": "101 Natoma St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7869508,
-        "longitude": -122.39895839999998
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "financial_service"
-      ],
-      "primaryType": "financial_service",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ21TrI32AhYARHdx-RBOn1hk",
+      "id": "6f7afdbb-5554-423b-a0df-59870b08180c",
       "source": "overture",
       "name": "Ira & Leonore Gershwin Trusts",
       "address": "101 Natoma St, San Francisco, CA 94105, US",
       "street": "101 Natoma St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.7869508,
-        "longitude": -122.39895839999998
+        "latitude": 37.78698174244487,
+        "longitude": -122.39892212467917
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 5.3686549,
       "types": [
-        "public_and_government_association"
+        "bank"
       ],
-      "primaryType": "public_and_government_association",
+      "primaryType": "bank",
+      "basicCategory": "bank_or_credit_union",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 0,
       "isPrivate": false,
       "retired": false,
-      "website": null,
+      "website": "http://gershwin.com",
+      "phone": "(415) 538-1900"
+    },
+    {
+      "id": "2dcd0734-f7b0-4f1d-a901-4ab23df2bc74",
+      "source": "overture",
+      "name": "Consulate General Of Estonia San Francisco",
+      "address": "101 Natoma St, San Francisco, CA 94105, US",
+      "street": "101 Natoma St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105",
+      "country": "US",
+      "location": {
+        "latitude": 37.78698174244487,
+        "longitude": -122.39892212467917
+      },
+      "extent": null,
+      "distanceMeters": 5.3686549,
+      "types": [
+        "government_office"
+      ],
+      "primaryType": "government_office",
+      "basicCategory": "government_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://sanfrancisco.mfa.ee",
+      "phone": "(415) 229-9120"
+    },
+    {
+      "id": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
+      "source": "overture",
+      "name": "Blue Bottle Coffee",
+      "address": "168 2nd Street, San Francisco, CA 94105, US",
+      "street": "168 2nd Street",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105",
+      "country": "US",
+      "location": {
+        "latitude": 37.787046,
+        "longitude": -122.398814
+      },
+      "extent": null,
+      "distanceMeters": 9.47555118,
+      "types": [
+        "coffee_shop",
+        "cafe",
+        "coffee_roastery"
+      ],
+      "primaryType": "coffee_shop",
+      "basicCategory": "coffee_shop",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://bluebottlecoffee.com/us/eng/cafes/2nd-street",
       "phone": null
     },
     {
-      "id": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+      "id": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
       "source": "overture",
       "name": "Social Fit Club",
       "address": "176 2nd St, San Francisco, CA 94105, US",
       "street": "176 2nd St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.786858699999996,
-        "longitude": -122.39876919999999
+        "latitude": 37.78696094,
+        "longitude": -122.39869521
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 14.81410872,
       "types": [
-        "health"
+        "gym"
       ],
-      "primaryType": "health",
+      "primaryType": "gym",
+      "basicCategory": "gym",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
       "website": null,
-      "phone": null
+      "phone": "+14155988959"
     },
     {
-      "id": "ChIJz7Zh7-2BhYARwniWSsZz2t0",
+      "id": "a08695a7-8d1c-4170-bdce-103e9b48ca19",
       "source": "overture",
-      "name": "Clearpol",
-      "address": "156 2nd St Ste 506, San Francisco, CA 94105, US",
-      "street": "156 2nd St Ste 506",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7870314,
-        "longitude": -122.39909779999999
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "corporate_office",
-        "professional_services"
-      ],
-      "primaryType": "corporate_office",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJqV_2Fzm3j4ARDUIzZOdjZUQ",
-      "source": "overture",
-      "name": "PlanetScale",
-      "address": "108 Natoma St, San Francisco, CA 94105, US",
-      "street": "108 Natoma St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871285,
-        "longitude": -122.39898659999999
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "professional_services"
-      ],
-      "primaryType": "professional_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJm7imNNZ_j4ARBoCdxAdlv-w",
-      "source": "overture",
-      "name": "Zunos Headquarters",
+      "name": "WeWork",
       "address": "156 2nd St, San Francisco, CA 94105, US",
       "street": "156 2nd St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.39906649999998
+        "latitude": 37.787157,
+        "longitude": -122.398887
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 20.86297429,
       "types": [
-        "professional_services"
+        "coworking_space"
       ],
-      "primaryType": "professional_services",
+      "primaryType": "coworking_space",
+      "basicCategory": "professional_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://www.wework.com/buildings/156-2nd-st--sf-bay-area--CA",
+      "phone": "(415) 868-3416"
     },
     {
-      "id": "ChIJoZFPJH2AhYARePCF3Sx3m1s",
+      "id": "329baba5-8f93-4cbd-8701-eb8fff3e6fc9",
       "source": "overture",
-      "name": "The BioPharma Agency",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
+      "name": "Juicebox - PeopleGPT",
+      "address": "156 2nd St, San Francisco, CA 94105-3711, US",
       "street": "156 2nd St",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
+      "region": "CA",
+      "postcode": "94105-3711",
       "country": "US",
       "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
+        "latitude": 37.7871694,
+        "longitude": -122.3989345
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 23.01059056,
       "types": [
-        "corporate_office"
+        "information_technology_company"
       ],
-      "primaryType": "corporate_office",
+      "primaryType": "information_technology_company",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -3.3453136759636894,
       "isPrivate": false,
       "retired": false,
-      "website": null,
+      "website": "https://juicebox.ai/",
       "phone": null
     },
     {
-      "id": "ChIJgQefPMqBhYARx9DobysV78I",
-      "source": "overture",
-      "name": "Kintsugi AI",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
-      "street": "156 2nd St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "professional_services"
-      ],
-      "primaryType": "professional_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJdZgmUWhvU0sRaF6G-IglMX4",
-      "source": "overture",
-      "name": "Rize",
-      "address": "156 2nd St Unit 505, San Francisco, CA 94105, US",
-      "street": "156 2nd St Unit 505",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "professional_services"
-      ],
-      "primaryType": "professional_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJoZFPJH2AhYARJjK1VANOcEY",
+      "id": "dd48e555-ca8b-4e9a-925d-20f36c637aca",
       "source": "overture",
       "name": "Vendisys",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
+      "address": "156 2nd St, San Francisco, CA 94105-3711, US",
       "street": "156 2nd St",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
+      "region": "CA",
+      "postcode": "94105-3711",
       "country": "US",
       "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
+        "latitude": 37.7871066,
+        "longitude": -122.39906531
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 23.39762103,
       "types": [
-        "professional_services"
+        "software_development"
       ],
-      "primaryType": "professional_services",
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.vendisys.com/",
+      "phone": "+12183327469"
     },
     {
-      "id": "ChIJoZFPJH2AhYARQam0rw6BbMc",
+      "id": "1dd2c91b-6076-43d7-826d-0d2043e7bd2c",
       "source": "overture",
-      "name": "Dr. Roger Ayres",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
+      "name": "Trust wallet support page",
+      "address": "156 2nd St, San Francisco, CA 94105-3711, US",
       "street": "156 2nd St",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
+      "region": "CA",
+      "postcode": "94105-3711",
       "country": "US",
       "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
+        "latitude": 37.78714,
+        "longitude": -122.39903
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 23.92535019,
       "types": [
-        "doctor",
-        "medical_clinic",
-        "health"
+        "financial_advising"
       ],
-      "primaryType": "doctor",
+      "primaryType": "financial_advising",
+      "basicCategory": "financial_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -2.280948934094882,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://Trustwallet.com/",
+      "phone": "+19372421716"
     },
     {
-      "id": "ChIJ18wocEtjx4kRCZUJwModXJk",
+      "id": "e5bff9a3-dc55-41b8-9007-12b27fb833cf",
       "source": "overture",
-      "name": "Awesomic",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
+      "name": "Pinnacle Management Services",
+      "address": "156 2nd St, San Francisco, CA 94105-3711, US",
       "street": "156 2nd St",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
+      "region": "CA",
+      "postcode": "94105-3711",
       "country": "US",
       "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
+        "latitude": 37.78714,
+        "longitude": -122.39903
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 23.92535019,
       "types": [
-        "professional_services"
+        "b2b_advertising_and_marketing_service"
       ],
-      "primaryType": "professional_services",
+      "primaryType": "b2b_advertising_and_marketing_service",
+      "basicCategory": "b2b_office_and_professional_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -2.818018378304205,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://onlineservicehomes.com/",
+      "phone": "+16077599664"
     },
     {
-      "id": "ChIJYxGcmauBhYARg-k8m0coQZ0",
+      "id": "94cc9a32-6a64-49a6-821f-2aee3b19d80a",
       "source": "overture",
-      "name": "Spendesk USA",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
-      "street": "156 2nd St",
+      "name": "Element Five",
+      "address": "600 California St Fl 11, San Francisco, CA 94108, US",
+      "street": "600 California St Fl 11",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "professional_services"
-      ],
-      "primaryType": "professional_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJoZFPJH2AhYARXnBc-xMjLQ4",
-      "source": "overture",
-      "name": "Shomir Banerjee",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
-      "street": "156 2nd St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "doctor",
-        "health"
-      ],
-      "primaryType": "doctor",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ06x5mNmBhYARz-maNNKKjwk",
-      "source": "overture",
-      "name": "Advanced Communities",
-      "address": "We Work SOMA 2, 156 2nd St, San Francisco, CA 94105, USA",
-      "street": "We Work SOMA 2, 156 2nd St, San Francisco, CA 94105, USA",
-      "locality": null,
-      "region": null,
-      "postcode": null,
-      "country": null,
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "professional_services"
-      ],
-      "primaryType": "professional_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJoZFPJH2AhYARjKzoyb7NJqI",
-      "source": "overture",
-      "name": "G1 Software",
-      "address": "156 2nd St, San Francisco, CA 94105, US",
-      "street": "156 2nd St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "professional_services"
-      ],
-      "primaryType": "professional_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJoZFPJH2AhYARZJLVR00fB_g",
-      "source": "overture",
-      "name": "CAI California North Chapter",
-      "address": "156 2nd St Ste 627, San Francisco, CA 94105, US",
-      "street": "156 2nd St Ste 627",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7871077,
-        "longitude": -122.3990666
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "public_and_government_association"
-      ],
-      "primaryType": "public_and_government_association",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ_T25cNd_j4ARehGmHe0pT84",
-      "source": "overture",
-      "name": "Oracle Park",
-      "address": "24 Willie Mays Plaza, San Francisco, CA 94107, US",
-      "street": "24 Willie Mays Plaza",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94107",
-      "country": "US",
-      "location": {
-        "latitude": 37.7783654,
-        "longitude": -122.38991619999999
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "stadium_arena",
-        "attractions_and_activities",
-        "sports_and_recreation_venue",
-        "event_venue",
-        "sports_activity_location"
-      ],
-      "primaryType": "stadium_arena",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJW5D3LYmAhYARb92CmHj1bOM",
-      "source": "overture",
-      "name": "Union Square",
-      "address": "San Francisco, CA 94108, US",
-      "street": null,
-      "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94108",
       "country": "US",
       "location": {
-        "latitude": 37.7879358,
-        "longitude": -122.40751389999998
+        "latitude": 37.78714,
+        "longitude": -122.39903
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 23.92535019,
       "types": [
-        "historical_landmark",
-        "historical_place",
-        "attractions_and_activities",
-        "plaza",
-        "park"
+        "graphic_designer"
       ],
-      "primaryType": "historical_landmark",
+      "primaryType": "graphic_designer",
+      "basicCategory": "design_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.elementfive.com/",
+      "phone": "4156995335"
+    },
+    {
+      "id": "2dab8f92-cb43-47be-9f84-c2e2b419258f",
+      "source": "overture",
+      "name": "GrandView Residential",
+      "address": "156 2nd St, San Francisco, CA 94105-3711, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3711",
+      "country": "US",
+      "location": {
+        "latitude": 37.78714,
+        "longitude": -122.39903
+      },
+      "extent": null,
+      "distanceMeters": 23.92535019,
+      "types": [
+        "real_estate_service"
+      ],
+      "primaryType": "real_estate_service",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.8137075748492286,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://onlineservicehomes.com/",
+      "phone": "+18722394501"
+    },
+    {
+      "id": "dff09662-df5a-48ee-94b2-acbe9499a9e1",
+      "source": "overture",
+      "name": "ThoughtLab",
+      "address": "156 2nd St, San Francisco, CA 94105, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105",
+      "country": "US",
+      "location": {
+        "latitude": 37.7870979309082,
+        "longitude": -122.39910125732422
+      },
+      "extent": null,
+      "distanceMeters": 25.33930414,
+      "types": [
+        "advertising_agency"
+      ],
+      "primaryType": "advertising_agency",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.thoughtlab.com/",
+      "phone": "4159065821"
+    },
+    {
+      "id": "3921330b-1338-40d7-a673-3e3810475805",
+      "source": "overture",
+      "name": "Octeth",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://octeth.com",
+      "phone": null
+    },
+    {
+      "id": "2970568e-68d0-4629-ae8d-cbcb31bd23c0",
+      "source": "overture",
+      "name": "Smart Capital Center",
+      "address": "156 2nd St Ste 415, San Francisco, CA 94105-3724, US",
+      "street": "156 2nd St Ste 415",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3724",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "mortgage_lender"
+      ],
+      "primaryType": "mortgage_lender",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+18667250555"
+    },
+    {
+      "id": "a52d3d08-cba0-47b1-9724-958ff377d7af",
+      "source": "overture",
+      "name": "Cytologica",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "b2b_scientific_lab"
+      ],
+      "primaryType": "b2b_scientific_lab",
+      "basicCategory": "b2b_science_and_technology_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.cytologica.com",
+      "phone": null
+    },
+    {
+      "id": "6433068b-6f4e-45a4-8cfd-7cc0a2fb912f",
+      "source": "overture",
+      "name": "Four Rivers Group",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "corporate_or_business_office"
+      ],
+      "primaryType": "corporate_or_business_office",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "fourprime.com",
+      "phone": "12704435636"
+    },
+    {
+      "id": "00097a4e-7c76-4936-9a54-01392cd8fde5",
+      "source": "overture",
+      "name": "Drive Human Capital & The Drive Foundation",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "employment_agency"
+      ],
+      "primaryType": "employment_agency",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.drivehumancapital.com",
+      "phone": "14155087009"
+    },
+    {
+      "id": "ae1fa148-87c0-40cb-b028-eab61743d2ed",
+      "source": "overture",
+      "name": "G1 Software",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "information_technology_company"
+      ],
+      "primaryType": "information_technology_company",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://g1sw.com",
+      "phone": null
+    },
+    {
+      "id": "a843743e-a62d-444a-96c3-df3619888918",
+      "source": "overture",
+      "name": "Shoptouch, Inc.",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "shoptouch.com",
+      "phone": null
+    },
+    {
+      "id": "3fa6216a-5160-4b79-a04b-39909cbeab94",
+      "source": "overture",
+      "name": "Socket Capital, Llc",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "financial_service"
+      ],
+      "primaryType": "financial_service",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.socketcapital.com",
+      "phone": "14154804515"
+    },
+    {
+      "id": "31a2ca20-43e2-4109-b689-64987947d424",
+      "source": "overture",
+      "name": "Iterate Designs",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.iteratedesigns.com",
+      "phone": null
+    },
+    {
+      "id": "64d7d87e-57a8-4baa-a06e-171e70e25271",
+      "source": "overture",
+      "name": "Lightwerks Communication Systems",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "it_service_and_computer_repair"
+      ],
+      "primaryType": "it_service_and_computer_repair",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://lightwerks.com",
+      "phone": "+16282524400"
+    },
+    {
+      "id": "7b988622-7d05-4ede-bec6-8f4b4aa104a2",
+      "source": "overture",
+      "name": "Cryptotrading Technologies Llc",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "corporate_or_business_office"
+      ],
+      "primaryType": "corporate_or_business_office",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.tradingtechnologies.com",
+      "phone": "12016338733"
+    },
+    {
+      "id": "3e2ea957-893d-466b-92b1-768685a588c4",
+      "source": "overture",
+      "name": "Pixc",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "information_technology_company"
+      ],
+      "primaryType": "information_technology_company",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://pixc.com",
+      "phone": null
+    },
+    {
+      "id": "0bc5ed46-9f25-4d37-b662-9e1564d03593",
+      "source": "overture",
+      "name": "Strategic Legal Advisory",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "contractor"
+      ],
+      "primaryType": "contractor",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "strategiclegaladvisory.com",
+      "phone": null
+    },
+    {
+      "id": "c4dae9d3-347d-4c38-82d9-743cd42162fd",
+      "source": "overture",
+      "name": "Sctracker.com",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://sctracker.com",
+      "phone": null
+    },
+    {
+      "id": "91c8b35f-c5fa-452d-9711-dd56018c2a91",
+      "source": "overture",
+      "name": "Ringtrail",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "ringtrail.com",
+      "phone": null
+    },
+    {
+      "id": "3153431d-ddc0-410e-9b81-1f9d79987506",
+      "source": "overture",
+      "name": "Lassu, Inc.",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://aimast.org",
+      "phone": null
+    },
+    {
+      "id": "7f27f3a8-8af6-433e-a8b1-0f09a3e33494",
+      "source": "overture",
+      "name": "Coderella",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "public_relations"
+      ],
+      "primaryType": "public_relations",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "coderella.com",
+      "phone": "14156894029"
+    },
+    {
+      "id": "7ff841b4-fd20-49a4-9c3b-7531e25710ec",
+      "source": "overture",
+      "name": "Jig-saw Us",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "jig-saw.com",
+      "phone": null
+    },
+    {
+      "id": "7ec7224d-0269-438d-b9b6-9fb2d339e48e",
+      "source": "overture",
+      "name": "Crestline Technologies Llc",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.crestline.io",
+      "phone": null
+    },
+    {
+      "id": "334cacc0-5ad1-4095-81fe-e0614557ec09",
+      "source": "overture",
+      "name": "Procurepod Llc",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
       "isPrivate": false,
       "retired": false,
       "website": null,
       "phone": null
     },
     {
-      "id": "ChIJC9y2SGOAhYARSaejL5ecgmg",
+      "id": "dde8cdd3-f9d0-4705-9b6a-4bd6ed6b9c67",
+      "source": "overture",
+      "name": "Bookstaygo",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "bookstaygo.com",
+      "phone": null
+    },
+    {
+      "id": "f8d43e60-9b2f-4c11-a1c9-6eefd6a9b290",
+      "source": "overture",
+      "name": "Design By Candlelight",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "interior_design"
+      ],
+      "primaryType": "interior_design",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "designbycandlelight.com",
+      "phone": null
+    },
+    {
+      "id": "d93a6282-1dfb-4fde-986b-f87c2190f286",
+      "source": "overture",
+      "name": "Blis (acquired By Thirdsummit)",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.blis.io",
+      "phone": null
+    },
+    {
+      "id": "fa3e8aa7-946c-4f69-b9d6-353432422129",
+      "source": "overture",
+      "name": "Necessary Projects",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "business_consulting"
+      ],
+      "primaryType": "business_consulting",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.necessaryprojects.com",
+      "phone": null
+    },
+    {
+      "id": "c636129b-2ac6-465e-9fd4-b3d8888e980b",
+      "source": "overture",
+      "name": "Well Connected Now",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "health_coaching"
+      ],
+      "primaryType": "health_coaching",
+      "basicCategory": "wellness_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://wellconnectednow.com",
+      "phone": "14158605415"
+    },
+    {
+      "id": "b3683880-b3e6-4935-8f31-c900dd57c61e",
+      "source": "overture",
+      "name": "Creative Chaos",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.creativechaos.co",
+      "phone": null
+    },
+    {
+      "id": "a9c6e090-0849-4ba4-b178-c3bea77ec7eb",
+      "source": "overture",
+      "name": "Remoteam.io",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "remoteam.io",
+      "phone": null
+    },
+    {
+      "id": "36707a3b-447a-41ce-9186-d87e8a678e01",
+      "source": "overture",
+      "name": "Sundial Consulting",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "business_consulting"
+      ],
+      "primaryType": "business_consulting",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3,
+      "isPrivate": false,
+      "retired": false,
+      "website": "sundialconsulting.co.uk",
+      "phone": "18332348787"
+    },
+    {
+      "id": "7313f392-120c-47c6-adad-0341068c0191",
+      "source": "overture",
+      "name": "Mlm Consulting Corporation",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "mallorylynnmcvey.com",
+      "phone": null
+    },
+    {
+      "id": "e92dd855-dae9-4976-9967-16324eaeb12c",
+      "source": "overture",
+      "name": "Career Insiders",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "business_consulting"
+      ],
+      "primaryType": "business_consulting",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.careerinsiders.com",
+      "phone": null
+    },
+    {
+      "id": "6346798e-93c4-4be2-90f5-f093a43598df",
+      "source": "overture",
+      "name": "Nanonets (yc W17)",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "nanonets.ai",
+      "phone": null
+    },
+    {
+      "id": "e6807844-4abc-4d55-8b4c-8d64f02a4e77",
+      "source": "overture",
+      "name": "Soul Machines",
+      "address": "156 2nd St Ste 214, San Francisco, CA 94105-3725, US",
+      "street": "156 2nd St Ste 214",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3725",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.soulmachines.com",
+      "phone": null
+    },
+    {
+      "id": "c37b7c9b-de62-4f0b-ab18-8dd84f2f74fa",
+      "source": "overture",
+      "name": "Crane Street Capital",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "investment_management_company"
+      ],
+      "primaryType": "investment_management_company",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://cranestreet.com",
+      "phone": "16503289100"
+    },
+    {
+      "id": "8ed53a73-6969-4f00-8c5f-f9496e9fb636",
+      "source": "overture",
+      "name": "Honored",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "gethonored.com",
+      "phone": null
+    },
+    {
+      "id": "8c8f14dd-ed97-4829-a35a-2341b110a4e0",
+      "source": "overture",
+      "name": "Nestapart Corporate Housing San Francisco",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "corporate_or_business_office"
+      ],
+      "primaryType": "corporate_or_business_office",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.nestapart.com",
+      "phone": "14153608900"
+    },
+    {
+      "id": "59488363-0eb5-44f1-a126-a8aa84f3187f",
+      "source": "overture",
+      "name": "Connectedbim | Computational Design ● Automation ● Technology",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "engineering_service"
+      ],
+      "primaryType": "engineering_service",
+      "basicCategory": "building_or_construction_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "0f166a93-1c8e-438e-a65a-ed8609f9e2ee",
+      "source": "overture",
+      "name": "Dependable Movers - San Francisco",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "mover"
+      ],
+      "primaryType": "mover",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://dependablemoverssf.com",
+      "phone": "+16289995741"
+    },
+    {
+      "id": "e40f6a5f-ade2-4f68-acb7-8908d2f4fefb",
+      "source": "overture",
+      "name": "Omnium",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "business_consulting"
+      ],
+      "primaryType": "business_consulting",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.omniumcpg.com",
+      "phone": "14153859860"
+    },
+    {
+      "id": "8e1482ef-71a2-4932-a826-79c37250584b",
+      "source": "overture",
+      "name": "A Design + Consulting",
+      "address": "156 2nd St  Ste 208, San Francisco, CA 94105-3725, US",
+      "street": "156 2nd St  Ste 208",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3725",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "architect"
+      ],
+      "primaryType": "architect",
+      "basicCategory": "design_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.adesignconsult.com",
+      "phone": "14152357899"
+    },
+    {
+      "id": "5f7f83d9-7e3a-4caa-a0ca-73906fe69417",
+      "source": "overture",
+      "name": "Innovasci",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "b2b_scientific_lab"
+      ],
+      "primaryType": "b2b_scientific_lab",
+      "basicCategory": "b2b_science_and_technology_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "4408cd13-840c-45f0-b23f-fdda785d847e",
+      "source": "overture",
+      "name": "Ark7 Inc",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.ark7.com",
+      "phone": null
+    },
+    {
+      "id": "1adb3c77-0cc7-4507-82ef-7d29fc1b23b2",
+      "source": "overture",
+      "name": "Clout Ventures",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "financial_service"
+      ],
+      "primaryType": "financial_service",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "cloutventures.com",
+      "phone": null
+    },
+    {
+      "id": "50637eae-51dd-41b8-b175-3f9a44473953",
+      "source": "overture",
+      "name": "Hunt.com",
+      "address": "156 2nd St  # 3725, San Francisco, CA 94105-3724, US",
+      "street": "156 2nd St  # 3725",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3724",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "apartment_agent"
+      ],
+      "primaryType": "apartment_agent",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.hunt.com",
+      "phone": "14153906079"
+    },
+    {
+      "id": "0e9319bb-7eef-47f8-a7bd-0cd1a07bf395",
+      "source": "overture",
+      "name": "Appmaster",
+      "address": "156 2nd St, San Francisco, CA 94105-3724, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3724",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "information_technology_company"
+      ],
+      "primaryType": "information_technology_company",
+      "basicCategory": "corporate_or_business_office",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://appmaster.io",
+      "phone": null
+    },
+    {
+      "id": "ecf2799e-3f40-48a5-a9fe-21614b20bceb",
+      "source": "overture",
+      "name": "Scouted Ai",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://scouted.ai",
+      "phone": null
+    },
+    {
+      "id": "c59195eb-e60b-4d4c-925a-4160fc1383b8",
+      "source": "overture",
+      "name": "Beemabroker",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "insurance_agency"
+      ],
+      "primaryType": "insurance_agency",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.beemabroker.com",
+      "phone": null
+    },
+    {
+      "id": "8752c45f-10f4-4355-96ea-1abb16899302",
+      "source": "overture",
+      "name": "Dinematic",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "37d3f414-2bbe-4eee-bfd6-35c79a37d328",
+      "source": "overture",
+      "name": "Fitify.io",
+      "address": "156 2nd St, San Francisco, CA 94105-3715, US",
+      "street": "156 2nd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3715",
+      "country": "US",
+      "location": {
+        "latitude": 37.787099,
+        "longitude": -122.399101
+      },
+      "extent": null,
+      "distanceMeters": 25.38726716,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "fitify.io",
+      "phone": null
+    },
+    {
+      "id": "383f7689-7b8f-4e9a-a737-287d9a74ccef",
+      "source": "overture",
+      "name": "School of Music Production and Sound Design for Visual Media",
+      "address": "180 New Montgomery St, San Francisco, CA 94105-3807, US",
+      "street": "180 New Montgomery St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-3807",
+      "country": "US",
+      "location": {
+        "latitude": 37.786262,
+        "longitude": -122.399517
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7859879,
+          "west": -122.3998896,
+          "north": 37.7865452,
+          "east": -122.3991508
+        },
+        "rings": [
+          [
+            [
+              -122.3995445,
+              37.7865452
+            ],
+            [
+              -122.3998896,
+              37.7862684
+            ],
+            [
+              -122.3994634,
+              37.7859879
+            ],
+            [
+              -122.3991508,
+              37.7862386
+            ],
+            [
+              -122.3995445,
+              37.7865452
+            ]
+          ]
+        ],
+        "areaSquareMeters": 2019.279750302434
+      },
+      "distanceMeters": 75.69914742,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.academyart.edu/academics/music-production",
+      "phone": "+14156186415"
+    },
+    {
+      "id": "05953d65-e0e5-4710-a2d8-30f4304dd6bb",
+      "source": "overture",
+      "name": "Academy of Art University School of Photography",
+      "address": "625 Sutter St, San Francisco, CA 94102-1017, US",
+      "street": "625 Sutter St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94102-1017",
+      "country": "US",
+      "location": {
+        "latitude": 37.788728,
+        "longitude": -122.410711
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7737371,
+          "west": -122.4241777,
+          "north": 37.807778,
+          "east": -122.391745
+        },
+        "rings": [
+          [
+            [
+              -122.3998399,
+              37.7739936
+            ],
+            [
+              -122.3994442,
+              37.7737371
+            ],
+            [
+              -122.3987746,
+              37.7742701
+            ],
+            [
+              -122.3991302,
+              37.7745415
+            ],
+            [
+              -122.3998399,
+              37.7739936
+            ]
+          ],
+          [
+            [
+              -122.39921,
+              37.7760759
+            ],
+            [
+              -122.3986001,
+              37.7755916
+            ],
+            [
+              -122.3981801,
+              37.7759325
+            ],
+            [
+              -122.3987779,
+              37.776417
+            ],
+            [
+              -122.39921,
+              37.7760759
+            ]
+          ],
+          [
+            [
+              -122.3923654,
+              37.7833019
+            ],
+            [
+              -122.3920791,
+              37.783074
+            ],
+            [
+              -122.391745,
+              37.7833373
+            ],
+            [
+              -122.3920383,
+              37.7835644
+            ],
+            [
+              -122.3923654,
+              37.7833019
+            ]
+          ],
+          [
+            [
+              -122.3998896,
+              37.7862684
+            ],
+            [
+              -122.3994634,
+              37.7859879
+            ],
+            [
+              -122.3991508,
+              37.7862386
+            ],
+            [
+              -122.3995445,
+              37.7865452
+            ],
+            [
+              -122.3998896,
+              37.7862684
+            ]
+          ],
+          [
+            [
+              -122.4005752,
+              37.7881958
+            ],
+            [
+              -122.4009285,
+              37.7879218
+            ],
+            [
+              -122.4005435,
+              37.7876003
+            ],
+            [
+              -122.4001911,
+              37.7878864
+            ],
+            [
+              -122.4005752,
+              37.7881958
+            ]
+          ],
+          [
+            [
+              -122.4086063,
+              37.7897027
+            ],
+            [
+              -122.4081331,
+              37.7897623
+            ],
+            [
+              -122.4081385,
+              37.7899026
+            ],
+            [
+              -122.408634,
+              37.7898401
+            ],
+            [
+              -122.4086063,
+              37.7897027
+            ]
+          ],
+          [
+            [
+              -122.4046916,
+              37.7913836
+            ],
+            [
+              -122.4045717,
+              37.7907829
+            ],
+            [
+              -122.4044121,
+              37.7908117
+            ],
+            [
+              -122.4045279,
+              37.7914066
+            ],
+            [
+              -122.4046916,
+              37.7913836
+            ]
+          ],
+          [
+            [
+              -122.4104472,
+              37.8071752
+            ],
+            [
+              -122.4101012,
+              37.8072184
+            ],
+            [
+              -122.4101838,
+              37.807778
+            ],
+            [
+              -122.4105866,
+              37.8077362
+            ],
+            [
+              -122.4104472,
+              37.8071752
+            ]
+          ],
+          [
+            [
+              -122.4186258,
+              37.7778665
+            ],
+            [
+              -122.4191995,
+              37.7778169
+            ],
+            [
+              -122.4191293,
+              37.7774744
+            ],
+            [
+              -122.4185644,
+              37.7775463
+            ],
+            [
+              -122.4186258,
+              37.7778665
+            ]
+          ],
+          [
+            [
+              -122.419608,
+              37.7821943
+            ],
+            [
+              -122.4191422,
+              37.7822496
+            ],
+            [
+              -122.4192099,
+              37.7826074
+            ],
+            [
+              -122.4196956,
+              37.7825489
+            ],
+            [
+              -122.419608,
+              37.7821943
+            ]
+          ],
+          [
+            [
+              -122.4116395,
+              37.7893083
+            ],
+            [
+              -122.4117234,
+              37.7893205
+            ],
+            [
+              -122.4117529,
+              37.7894708
+            ],
+            [
+              -122.4119404,
+              37.7894477
+            ],
+            [
+              -122.4119064,
+              37.789275
+            ],
+            [
+              -122.4116395,
+              37.7893083
+            ]
+          ],
+          [
+            [
+              -122.423953,
+              37.7928485
+            ],
+            [
+              -122.4238812,
+              37.7925525
+            ],
+            [
+              -122.423003,
+              37.7926089
+            ],
+            [
+              -122.4230977,
+              37.7929574
+            ],
+            [
+              -122.423953,
+              37.7928485
+            ]
+          ],
+          [
+            [
+              -122.4098722,
+              37.7876608
+            ],
+            [
+              -122.4095034,
+              37.7876842
+            ],
+            [
+              -122.4095704,
+              37.7880244
+            ],
+            [
+              -122.4099517,
+              37.7879893
+            ],
+            [
+              -122.4098722,
+              37.7876608
+            ]
+          ],
+          [
+            [
+              -122.4108121,
+              37.7888567
+            ],
+            [
+              -122.4107636,
+              37.7886235
+            ],
+            [
+              -122.4105362,
+              37.788653
+            ],
+            [
+              -122.410583,
+              37.7888857
+            ],
+            [
+              -122.4108121,
+              37.7888567
+            ]
+          ],
+          [
+            [
+              -122.4115127,
+              37.788945
+            ],
+            [
+              -122.4115562,
+              37.7891754
+            ],
+            [
+              -122.4117146,
+              37.7891563
+            ],
+            [
+              -122.4116699,
+              37.788926
+            ],
+            [
+              -122.4115127,
+              37.788945
+            ]
+          ],
+          [
+            [
+              -122.4108652,
+              37.7890098
+            ],
+            [
+              -122.41055,
+              37.7890501
+            ],
+            [
+              -122.4105774,
+              37.7891822
+            ],
+            [
+              -122.410898,
+              37.7891698
+            ],
+            [
+              -122.4108652,
+              37.7890098
+            ]
+          ],
+          [
+            [
+              -122.4236227,
+              37.7956101
+            ],
+            [
+              -122.4241777,
+              37.795544
+            ],
+            [
+              -122.4241067,
+              37.7952715
+            ],
+            [
+              -122.4235477,
+              37.7953403
+            ],
+            [
+              -122.4236227,
+              37.7956101
+            ]
+          ],
+          [
+            [
+              -122.4149638,
+              37.803463
+            ],
+            [
+              -122.4152349,
+              37.8034239
+            ],
+            [
+              -122.4151587,
+              37.8030311
+            ],
+            [
+              -122.4148892,
+              37.8030714
+            ],
+            [
+              -122.4149638,
+              37.803463
+            ]
+          ],
+          [
+            [
+              -122.4192025,
+              37.8076995
+            ],
+            [
+              -122.4198474,
+              37.8075834
+            ],
+            [
+              -122.4198043,
+              37.807393
+            ],
+            [
+              -122.4197071,
+              37.8074038
+            ],
+            [
+              -122.4197062,
+              37.8073234
+            ],
+            [
+              -122.419458,
+              37.8072971
+            ],
+            [
+              -122.4193261,
+              37.8073799
+            ],
+            [
+              -122.4193092,
+              37.8073053
+            ],
+            [
+              -122.4191283,
+              37.8073261
+            ],
+            [
+              -122.4192025,
+              37.8076995
+            ]
+          ]
+        ],
+        "areaSquareMeters": 31318.4630394607
+      },
+      "distanceMeters": 75.69914742,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+14156183699"
+    },
+    {
+      "id": "1fd7c305-17d3-4d65-aa9b-1975b25d90a2",
       "source": "overture",
       "name": "Salesforce Park",
       "address": "425 Mission St, San Francisco, CA 94105, US",
       "street": "425 Mission St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.789739499999996,
-        "longitude": -122.39616559999999
+        "latitude": 37.78974485,
+        "longitude": -122.39616367
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7876096,
+          "west": -122.3987744,
+          "north": 37.7906238,
+          "east": -122.3949679
+        },
+        "rings": [
+          [
+            [
+              -122.3983747,
+              37.7876223
+            ],
+            [
+              -122.3949679,
+              37.790345
+            ],
+            [
+              -122.3953138,
+              37.7906221
+            ],
+            [
+              -122.3979652,
+              37.7885864
+            ],
+            [
+              -122.3987711,
+              37.7878753
+            ],
+            [
+              -122.3983747,
+              37.7876223
+            ]
+          ]
+        ],
+        "areaSquareMeters": 18114.090112510487
+      },
+      "distanceMeters": 80.02466209,
       "types": [
-        "park",
-        "city_park",
-        "attractions_and_activities"
+        "park"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://salesforcetransitcenter.com/salesforce-park",
+      "phone": "+14155975000"
     },
     {
-      "id": "ChIJE_PHY3yAhYAR5uBdYH1Racs",
+      "id": "87e4f43a-bed9-464b-b346-d5e71d06317e",
       "source": "overture",
-      "name": "Civic Center Plaza",
-      "address": "335 McAllister St, San Francisco, CA 94102, US",
-      "street": "335 McAllister St",
+      "name": "Academy of Art University - 79NM",
+      "address": "79 New Montgomery St, San Francisco, CA 94105, US",
+      "street": "79 New Montgomery St",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94102",
+      "region": "CA",
+      "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.77949290000001,
-        "longitude": -122.4176986
+        "latitude": 37.78788425149493,
+        "longitude": -122.40053236484528
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7876003,
+          "west": -122.4009285,
+          "north": 37.7881958,
+          "east": -122.4001911
+        },
+        "rings": [
+          [
+            [
+              -122.4005752,
+              37.7881958
+            ],
+            [
+              -122.4009285,
+              37.7879218
+            ],
+            [
+              -122.4005435,
+              37.7876003
+            ],
+            [
+              -122.4001911,
+              37.7878864
+            ],
+            [
+              -122.4005752,
+              37.7881958
+            ]
+          ]
+        ],
+        "areaSquareMeters": 2141.106285274029
+      },
+      "distanceMeters": 155.02066063,
       "types": [
-        "park",
-        "attractions_and_activities"
+        "college_university"
       ],
-      "primaryType": "park",
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.academyart.edu",
+      "phone": "(800) 544-2787"
     },
     {
-      "id": "ChIJCUsDnIeAhYARWCBpPTrHJpQ",
+      "id": "6e654b80-a966-4c48-a061-2ca649a4a7cf",
+      "source": "overture",
+      "name": "Golden Gate University School of Law",
+      "address": "536 Mission St, San Francisco, CA 94105, US",
+      "street": "536 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105",
+      "country": "US",
+      "location": {
+        "latitude": 37.78929068,
+        "longitude": -122.39901227
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7887783,
+          "west": -122.3994711,
+          "north": 37.7896071,
+          "east": -122.3984224
+        },
+        "rings": [
+          [
+            [
+              -122.3989588,
+              37.7887783
+            ],
+            [
+              -122.3984224,
+              37.7892298
+            ],
+            [
+              -122.3989159,
+              37.7896071
+            ],
+            [
+              -122.3994711,
+              37.7891662
+            ],
+            [
+              -122.3989588,
+              37.7887783
+            ]
+          ]
+        ],
+        "areaSquareMeters": 4235.382770955563
+      },
+      "distanceMeters": 200.8849929,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.ggu.edu/",
+      "phone": "+14154426600"
+    },
+    {
+      "id": "c83794e9-344c-4ba3-8dc9-b2e71032ebc9",
       "source": "overture",
       "name": "Yerba Buena Gardens",
-      "address": "750 Howard St, San Francisco, CA 94103, US",
-      "street": "750 Howard St",
+      "address": "745 Mission St, San Francisco, CA 94103, US",
+      "street": "745 Mission St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94103",
       "country": "US",
       "location": {
-        "latitude": 37.784988399999996,
-        "longitude": -122.4023514
+        "latitude": 37.784809,
+        "longitude": -122.402549
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7838119,
+          "west": -122.4033628,
+          "north": 37.7854877,
+          "east": -122.4014457
+        },
+        "rings": [
+          [
+            [
+              -122.4014457,
+              37.7846061
+            ],
+            [
+              -122.4025792,
+              37.7854877
+            ],
+            [
+              -122.4027177,
+              37.7853785
+            ],
+            [
+              -122.4028142,
+              37.7854586
+            ],
+            [
+              -122.4033628,
+              37.7850464
+            ],
+            [
+              -122.4032139,
+              37.7849309
+            ],
+            [
+              -122.4032186,
+              37.7847083
+            ],
+            [
+              -122.4031254,
+              37.784561
+            ],
+            [
+              -122.4027365,
+              37.7843114
+            ],
+            [
+              -122.4022405,
+              37.7838119
+            ],
+            [
+              -122.4020698,
+              37.7839472
+            ],
+            [
+              -122.402263,
+              37.7840988
+            ],
+            [
+              -122.4022105,
+              37.7841403
+            ],
+            [
+              -122.4021159,
+              37.7840618
+            ],
+            [
+              -122.4014457,
+              37.7846061
+            ]
+          ]
+        ],
+        "areaSquareMeters": 15641.7734789229
+      },
+      "distanceMeters": 343.18323295,
       "types": [
-        "city_park",
-        "garden",
-        "attractions_and_activities",
         "park"
-      ],
-      "primaryType": "city_park",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJoYiOqfGAhYAR8J-KiogVyCQ",
-      "source": "overture",
-      "name": "Washington Square",
-      "address": "Filbert St & Stockton Street, San Francisco, CA 94133, US",
-      "street": "Filbert St & Stockton Street",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94133",
-      "country": "US",
-      "location": {
-        "latitude": 37.8007752,
-        "longitude": -122.41024639999999
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "city_park",
-        "playground",
-        "attractions_and_activities",
-        "park"
-      ],
-      "primaryType": "city_park",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJdx6kBe6AhYARsPFmpUAvvcY",
-      "source": "overture",
-      "name": "Ina Coolbrith Park",
-      "address": "Vallejo & Taylor, Vallejo St, San Francisco, CA 94133, USA",
-      "street": "Vallejo & Taylor, Vallejo St, San Francisco, CA 94133, USA",
-      "locality": null,
-      "region": null,
-      "postcode": null,
-      "country": null,
-      "location": {
-        "latitude": 37.7982745,
-        "longitude": -122.4134592
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "city_park",
-        "attractions_and_activities",
-        "park"
-      ],
-      "primaryType": "city_park",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ0X_WV5qAhYARN-ZYTWDj2KY",
-      "source": "overture",
-      "name": "UC Law San Francisco",
-      "address": "200 McAllister St, San Francisco, CA 94102, US",
-      "street": "200 McAllister St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94102",
-      "country": "US",
-      "location": {
-        "latitude": 37.781122499999995,
-        "longitude": -122.4157619
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "educational_institution",
-        "college_university"
-      ],
-      "primaryType": "educational_institution",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ-RJFNouAhYARHU0SXkyCGn8",
-      "source": "overture",
-      "name": "Portsmouth Square Park",
-      "address": "745 Kearny St, San Francisco, CA 94108, US",
-      "street": "745 Kearny St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94108",
-      "country": "US",
-      "location": {
-        "latitude": 37.7948896,
-        "longitude": -122.4052341
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "city_park",
-        "park"
-      ],
-      "primaryType": "city_park",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJ-VUxItp_j4ARBgyteXdSZ-g",
-      "source": "overture",
-      "name": "China Basin Park",
-      "address": "1 China Basin Park, San Francisco, CA 94107, US",
-      "street": "1 China Basin Park",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94107",
-      "country": "US",
-      "location": {
-        "latitude": 37.7764193,
-        "longitude": -122.38795479999997
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "park",
-        "attractions_and_activities"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.yerbabuenagardens.com",
+      "phone": "(415) 820-3550"
     },
     {
-      "id": "ChIJd_edWMaAhYARGcVcwBNgCd4",
+      "id": "fd0f2b7e-b7a0-40ce-a790-081e188f7cff",
       "source": "overture",
       "name": "University of the Pacific, Arthur A. Dugoni School of Dentistry",
       "address": "155 5th St, San Francisco, CA 94103, US",
       "street": "155 5th St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94103",
       "country": "US",
       "location": {
-        "latitude": 37.782254099999996,
-        "longitude": -122.40531739999999
+        "latitude": 37.78225322,
+        "longitude": -122.40531712
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 772.85999625,
       "types": [
-        "college_university",
-        "dentist",
-        "educational_institution",
-        "health"
+        "college_university"
       ],
       "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 2,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://dental.pacific.edu/",
+      "phone": "+14159296501"
     },
     {
-      "id": "ChIJWS0hyGaAhYARrci3Bdxh0fI",
+      "id": "1b0b174c-29f0-48fe-87f2-f229a4b683db",
       "source": "overture",
-      "name": "Embarcadero Plaza",
-      "address": "Market St &, Steuart St, San Francisco, CA 94105, USA",
-      "street": "Market St &, Steuart St, San Francisco, CA 94105, USA",
-      "locality": null,
-      "region": null,
-      "postcode": null,
-      "country": null,
+      "name": "Transamerica Redwood Park",
+      "address": "600 Montgomery St, San Francisco, CA 94111, US",
+      "street": "600 Montgomery St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94111",
+      "country": "US",
       "location": {
-        "latitude": 37.7951195,
-        "longitude": -122.39520069999998
+        "latitude": 37.7951615,
+        "longitude": -122.40228158
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7948827,
+          "west": -122.4025403,
+          "north": 37.7956029,
+          "east": -122.4019435
+        },
+        "rings": [
+          [
+            [
+              -122.4020301,
+              37.7956029
+            ],
+            [
+              -122.4025403,
+              37.7955035
+            ],
+            [
+              -122.4025002,
+              37.7953026
+            ],
+            [
+              -122.4023665,
+              37.7953202
+            ],
+            [
+              -122.4023251,
+              37.7951147
+            ],
+            [
+              -122.4024591,
+              37.7950985
+            ],
+            [
+              -122.4024526,
+              37.7949022
+            ],
+            [
+              -122.4019435,
+              37.794931
+            ],
+            [
+              -122.4020301,
+              37.7956029
+            ]
+          ]
+        ],
+        "areaSquareMeters": 2914.9272294607945
+      },
+      "distanceMeters": 924.33299392,
       "types": [
-        "park",
-        "plaza"
+        "park"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 2,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://www.eventseeker.com/venue/758136-transamerica-redwood-park-san-francisco",
+      "phone": "+14158295400"
     },
     {
-      "id": "ChIJFQPEvO-AhYARsCOkX_YCzoM",
+      "id": "f387a7a8-466b-40b7-8591-bfdc57772251",
       "source": "overture",
-      "name": "City College of San Francisco - Chinatown Center",
+      "name": "City College of San Francisco",
       "address": "808 Kearny St, San Francisco, CA 94108, US",
       "street": "808 Kearny St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94108",
       "country": "US",
       "location": {
-        "latitude": 37.7956036,
-        "longitude": -122.4047237
+        "latitude": 37.79543609,
+        "longitude": -122.40480296
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7954173,
+          "west": -122.4049171,
+          "north": 37.7957386,
+          "east": -122.4044437
+        },
+        "rings": [
+          [
+            [
+              -122.4044437,
+              37.7954759
+            ],
+            [
+              -122.4044984,
+              37.7957386
+            ],
+            [
+              -122.4049171,
+              37.7956972
+            ],
+            [
+              -122.4048719,
+              37.7954173
+            ],
+            [
+              -122.4044437,
+              37.7954759
+            ]
+          ]
+        ],
+        "areaSquareMeters": 1157.7558640539646
+      },
+      "distanceMeters": 1064.39317096,
       "types": [
-        "college_university",
-        "educational_institution"
+        "college_university"
       ],
       "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 2,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://www.ccsf.edu/en/our-campuses/chinatown-north-beach.html",
+      "phone": "+14153958600"
     },
     {
-      "id": "ChIJW_cCS9B_j4ARigbJMyKq_x8",
+      "id": "3c864866-c118-41bb-a0ba-b91fbba9bf16",
       "source": "overture",
-      "name": "Mission Bay Kids Park",
-      "address": "Long Bridge Street & China Basin St, 690 Long Bridge St, San Francisco, CA 94158, USA",
-      "street": "Long Bridge Street & China Basin St, 690 Long Bridge St, San Francisco, CA 94158, USA",
-      "locality": null,
-      "region": null,
-      "postcode": null,
-      "country": null,
-      "location": {
-        "latitude": 37.772168199999996,
-        "longitude": -122.39259570000002
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "city_park",
-        "playground",
-        "attractions_and_activities",
-        "park"
-      ],
-      "primaryType": "city_park",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJI7ES6tl_j4ARXdMklSPsJl4",
-      "source": "overture",
-      "name": "Giants Promenade",
-      "address": "24 Willie Mays Plaza, San Francisco, CA 94107, US",
-      "street": "24 Willie Mays Plaza",
+      "name": "Oracle Park",
+      "address": "24 Willie Mays Plz, San Francisco, CA 94107-2197, US",
+      "street": "24 Willie Mays Plz",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94107",
+      "region": "CA",
+      "postcode": "94107-2197",
       "country": "US",
       "location": {
-        "latitude": 37.7783727,
-        "longitude": -122.3877444
+        "latitude": 37.77841515,
+        "longitude": -122.38921726
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7775413,
+          "west": -122.3909736,
+          "north": 37.7797507,
+          "east": -122.3881865
+        },
+        "rings": [
+          [
+            [
+              -122.3905475,
+              37.7780576
+            ],
+            [
+              -122.3897328,
+              37.7775413
+            ],
+            [
+              -122.3881865,
+              37.7781811
+            ],
+            [
+              -122.3882409,
+              37.7787392
+            ],
+            [
+              -122.3890078,
+              37.7793402
+            ],
+            [
+              -122.3888765,
+              37.7794409
+            ],
+            [
+              -122.3892878,
+              37.7797507
+            ],
+            [
+              -122.3909736,
+              37.7783946
+            ],
+            [
+              -122.3908593,
+              37.7783126
+            ],
+            [
+              -122.3907676,
+              37.7783925
+            ],
+            [
+              -122.3906232,
+              37.778266
+            ],
+            [
+              -122.3905475,
+              37.7780576
+            ]
+          ]
+        ],
+        "areaSquareMeters": 32928.984717275016
+      },
+      "distanceMeters": 1163.13340129,
+      "types": [
+        "baseball_stadium"
+      ],
+      "primaryType": "baseball_stadium",
+      "basicCategory": "stadium_arena",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.sfgiants.com/",
+      "phone": "+14159722000"
+    },
+    {
+      "id": "de4b2cc5-7a73-4f9d-ba70-9c1718fc477b",
+      "source": "overture",
+      "name": "Pioneer Park",
+      "address": "1 Telegraph Hill Blvd, San Francisco, CA 94133, US",
+      "street": "1 Telegraph Hill Blvd",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94133",
+      "country": "US",
+      "location": {
+        "latitude": 37.8031267,
+        "longitude": -122.40587634
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.8017248,
+          "west": -122.4066975,
+          "north": 37.8037696,
+          "east": -122.4046583
+        },
+        "rings": [
+          [
+            [
+              -122.4052351,
+              37.8019678
+            ],
+            [
+              -122.4054811,
+              37.8031501
+            ],
+            [
+              -122.4046583,
+              37.8032458
+            ],
+            [
+              -122.4047509,
+              37.8037696
+            ],
+            [
+              -122.4062436,
+              37.8035931
+            ],
+            [
+              -122.4062062,
+              37.8034293
+            ],
+            [
+              -122.4066773,
+              37.8031023
+            ],
+            [
+              -122.4066975,
+              37.802968
+            ],
+            [
+              -122.4066588,
+              37.8026197
+            ],
+            [
+              -122.4065461,
+              37.8026303
+            ],
+            [
+              -122.4064804,
+              37.802508
+            ],
+            [
+              -122.4063556,
+              37.8018798
+            ],
+            [
+              -122.4061452,
+              37.8017248
+            ],
+            [
+              -122.4054792,
+              37.8018112
+            ],
+            [
+              -122.4052351,
+              37.8019678
+            ]
+          ]
+        ],
+        "areaSquareMeters": 23627.227696905844
+      },
+      "distanceMeters": 1747.29996902,
       "types": [
         "park"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 2,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://sfrecpark.org/destination/telegraph-hill-pioneer-park",
+      "phone": "+14152740291"
     },
     {
-      "id": "ChIJO7R-32KAhYARA4Fpef70tjk",
+      "id": "7ffe7676-76c0-4cd0-b438-bb1fd52061d3",
       "source": "overture",
-      "name": "Golden Gate University",
-      "address": "536 Mission St, San Francisco, CA 94105, US",
-      "street": "536 Mission St",
+      "name": "City College of San Francisco",
+      "address": "750 Eddy St, San Francisco, CA 94109, US",
+      "street": "750 Eddy St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
+      "postcode": "94109",
+      "country": "US",
+      "location": {
+        "latitude": 37.78339004,
+        "longitude": -122.41996045
+      },
+      "extent": null,
+      "distanceMeters": 1900.43684952,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.ccsf.edu/Campuses/Civic_Center",
+      "phone": "+14155611875"
+    },
+    {
+      "id": "5caffdc2-4ad0-43e1-bd38-b78e047f56d3",
+      "source": "overture",
+      "name": "Guy Place Mini Park",
+      "address": "4 Guy Pl, San Francisco, CA 94105, US",
+      "street": "4 Guy Pl",
+      "locality": "San Francisco",
+      "region": "CA",
       "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.7893349,
-        "longitude": -122.39882419999999
+        "latitude": 37.786692125749,
+        "longitude": -122.39439357117
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 394.90076239,
       "types": [
-        "college_university",
-        "educational_institution"
+        "park"
       ],
-      "primaryType": "college_university",
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://sfrecpark.org/facilities/facility/details/guyplace-339",
+      "phone": "+14158312700"
     },
     {
-      "id": "ChIJkZyW-2-AhYARzCwWSe3qHMQ",
+      "id": "7710b60a-91c7-4600-b0ed-f8b3c151010f",
+      "source": "overture",
+      "name": "Babson San Francisco",
+      "address": "135 Main St, San Francisco, CA 94105-1812, US",
+      "street": "135 Main St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94105-1812",
+      "country": "US",
+      "location": {
+        "latitude": 37.79145514,
+        "longitude": -122.39414142
+      },
+      "extent": null,
+      "distanceMeters": 648.68170288,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.babson.edu",
+      "phone": "+14159570415"
+    },
+    {
+      "id": "f01c0e13-153f-48c7-b857-76bcf97fe94e",
       "source": "overture",
       "name": "Rincon Park",
       "address": "The Embarcadero & Folsom St, San Francisco, CA 94105, US",
       "street": "The Embarcadero & Folsom St",
       "locality": "San Francisco",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "94105",
       "country": "US",
       "location": {
-        "latitude": 37.7916129,
-        "longitude": -122.38995059999999
+        "latitude": 37.791612580358,
+        "longitude": -122.38995248341
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7898884,
+          "west": -122.3907705,
+          "north": 37.7925504,
+          "east": -122.3884478
+        },
+        "rings": [
+          [
+            [
+              -122.3885032,
+              37.7898884
+            ],
+            [
+              -122.3884478,
+              37.7899179
+            ],
+            [
+              -122.389037,
+              37.7910361
+            ],
+            [
+              -122.3889803,
+              37.7910789
+            ],
+            [
+              -122.388835,
+              37.7909874
+            ],
+            [
+              -122.3906977,
+              37.7925504
+            ],
+            [
+              -122.3907705,
+              37.7924942
+            ],
+            [
+              -122.3900602,
+              37.7912423
+            ],
+            [
+              -122.3885032,
+              37.7898884
+            ]
+          ]
+        ],
+        "areaSquareMeters": 13160.669640738517
+      },
+      "distanceMeters": 908.88620688,
       "types": [
-        "park",
-        "attractions_and_activities"
+        "park"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.sfparksalliance.org/our-parks/parks/rincon-park",
+      "phone": "+14158312700"
     },
     {
-      "id": "ChIJZ0Mj1s9_j4ARt4-u90l2X84",
+      "id": "d886b88e-9e6a-4f12-b873-3bc74b640d40",
       "source": "overture",
-      "name": "SFF Soccer - Mission Bay Field",
-      "address": "701 Mission Bay Blvd North, San Francisco, CA 94158, US",
-      "street": "701 Mission Bay Blvd North",
+      "name": "Minerva University",
+      "address": "14 Mint Plz, San Francisco, CA 94103-1883, US",
+      "street": "14 Mint Plz",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94158",
+      "region": "CA",
+      "postcode": "94103-1883",
       "country": "US",
       "location": {
-        "latitude": 37.770569099999996,
-        "longitude": -122.39380120000001
+        "latitude": 37.78274656,
+        "longitude": -122.40797699
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 929.67336823,
       "types": [
-        "athletic_field",
-        "park",
-        "sports_activity_location",
-        "sports_club",
-        "public_and_government_association"
-      ],
-      "primaryType": "athletic_field",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJt0fDI2WAhYAR4WGEx4Nstqs",
-      "source": "overture",
-      "name": "University of San Francisco - Downtown Campus",
-      "address": "101 Howard St, San Francisco, CA 94105, US",
-      "street": "101 Howard St",
-      "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
-      "country": "US",
-      "location": {
-        "latitude": 37.7908872,
-        "longitude": -122.39253049999999
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "college_university",
-        "educational_institution"
+        "college_university"
       ],
       "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
+      "website": "https://www.minerva.edu/",
+      "phone": "+14156497658"
+    },
+    {
+      "id": "5d4407b1-68e7-476d-a96b-1b21df409623",
+      "source": "overture",
+      "name": "Sue Bierman Park",
+      "address": "Washington St &, Drumm St,, San Francisco, CA 94111-2000, US",
+      "street": "Washington St &, Drumm St,",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94111-2000",
+      "country": "US",
+      "location": {
+        "latitude": 37.79614883,
+        "longitude": -122.39599061
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7954234,
+          "west": -122.3980796,
+          "north": 37.7964544,
+          "east": -122.3951205
+        },
+        "rings": [
+          [
+            [
+              -122.3971053,
+              37.7962663
+            ],
+            [
+              -122.3980652,
+              37.7961334
+            ],
+            [
+              -122.3979527,
+              37.7954397
+            ],
+            [
+              -122.396946,
+              37.7955326
+            ],
+            [
+              -122.3971053,
+              37.7962663
+            ]
+          ],
+          [
+            [
+              -122.3955513,
+              37.796405
+            ],
+            [
+              -122.3957138,
+              37.7964544
+            ],
+            [
+              -122.3963625,
+              37.7963805
+            ],
+            [
+              -122.3967602,
+              37.7962588
+            ],
+            [
+              -122.3966386,
+              37.7955627
+            ],
+            [
+              -122.3958815,
+              37.7956535
+            ],
+            [
+              -122.3958638,
+              37.7955441
+            ],
+            [
+              -122.3952757,
+              37.7957096
+            ],
+            [
+              -122.3952896,
+              37.7958491
+            ],
+            [
+              -122.3951205,
+              37.7959008
+            ],
+            [
+              -122.3955513,
+              37.796405
+            ]
+          ]
+        ],
+        "areaSquareMeters": 18089.00606644596
+      },
+      "distanceMeters": 941.95299103,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://sfrecpark.org/destination/sue-bierman-park",
+      "phone": "+14158312750"
+    },
+    {
+      "id": "6d65e4dd-e897-42ad-a12f-67f6935ca23a",
+      "source": "overture",
+      "name": "Willie Woo Woo Wong Playground",
+      "address": "830 Sacramento St, San Francisco, CA 94108, US",
+      "street": "830 Sacramento St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94108",
+      "country": "US",
+      "location": {
+        "latitude": 37.793583390266,
+        "longitude": -122.4071647189
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7933097,
+          "west": -122.4074426,
+          "north": 37.7938587,
+          "east": -122.4067656
+        },
+        "rings": [
+          [
+            [
+              -122.4072692,
+              37.7933097
+            ],
+            [
+              -122.4068752,
+              37.7933585
+            ],
+            [
+              -122.4069116,
+              37.7935417
+            ],
+            [
+              -122.4067656,
+              37.7935598
+            ],
+            [
+              -122.4067894,
+              37.7936792
+            ],
+            [
+              -122.4071228,
+              37.7936397
+            ],
+            [
+              -122.4071543,
+              37.7938067
+            ],
+            [
+              -122.4074426,
+              37.7938382
+            ],
+            [
+              -122.4072692,
+              37.7933097
+            ]
+          ]
+        ],
+        "areaSquareMeters": 2002.6224246080965
+      },
+      "distanceMeters": 1000.42267309,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://sfrecpark.org",
+      "phone": "+14158315500"
+    },
+    {
+      "id": "c1f2beb9-1b93-423a-8a01-1f101b1d5b4e",
+      "source": "overture",
+      "name": "Victoria Manalo Draves Park",
+      "address": "16 Sherman St, San Francisco, CA 94103, US",
+      "street": "16 Sherman St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94103",
+      "country": "US",
+      "location": {
+        "latitude": 37.77706066015,
+        "longitude": -122.40599097566
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7762933,
+          "west": -122.4068676,
+          "north": 37.7777344,
+          "east": -122.4050733
+        },
+        "rings": [
+          [
+            [
+              -122.4064176,
+              37.7777344
+            ],
+            [
+              -122.4068676,
+              37.7773768
+            ],
+            [
+              -122.4058623,
+              37.7765328
+            ],
+            [
+              -122.4055455,
+              37.7762933
+            ],
+            [
+              -122.4050733,
+              37.7766635
+            ],
+            [
+              -122.4064176,
+              37.7777344
+            ]
+          ]
+        ],
+        "areaSquareMeters": 9732.996935197152
+      },
+      "distanceMeters": 1222.16008463,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.yelp.com/biz/victoria-manalo-draves-park-san-francisco",
+      "phone": "+14158312700"
+    },
+    {
+      "id": "28aea7fe-b649-4632-a2e2-706e6325673f",
+      "source": "overture",
+      "name": "Section 125 Lower Box Premium",
+      "address": "24 Willie Mays Plz, San Francisco, CA 94107-2197, US",
+      "street": "24 Willie Mays Plz",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94107-2197",
+      "country": "US",
+      "location": {
+        "latitude": 37.778579016558155,
+        "longitude": -122.38983649989595
+      },
+      "extent": null,
+      "distanceMeters": 1224.60312453,
+      "types": [
+        "stadium_arena"
+      ],
+      "primaryType": "stadium_arena",
+      "basicCategory": "stadium_arena",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://giants.mlb.com/sf/ballpark",
+      "phone": "+14159722000"
+    },
+    {
+      "id": "20ae1b6b-8493-44a8-af8d-d06790fe1a48",
+      "source": "overture",
+      "name": "The Penthouse - Bleachers Section 138, Row 26",
+      "address": "24 Willie Mays Plz, San Francisco, CA 94107-2197, US",
+      "street": "24 Willie Mays Plz",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94107-2197",
+      "country": "US",
+      "location": {
+        "latitude": 37.77889193636696,
+        "longitude": -122.38931377360787
+      },
+      "extent": null,
+      "distanceMeters": 1229.43575643,
+      "types": [
+        "stadium_arena"
+      ],
+      "primaryType": "stadium_arena",
+      "basicCategory": "stadium_arena",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://giants.mlb.com/sf/ballpark",
+      "phone": "+14159722000"
+    },
+    {
+      "id": "db565b36-9fcd-4887-b12a-786f36519c13",
+      "source": "overture",
+      "name": "Collis P. Huntington Park",
+      "address": "San Francisco, CA, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": null,
+      "country": "US",
+      "location": {
+        "latitude": 37.792149333483394,
+        "longitude": -122.41232139949875
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.791767,
+          "west": -122.4125374,
+          "north": 37.7925803,
+          "east": -122.4118159
+        },
+        "rings": [
+          [
+            [
+              -122.4125374,
+              37.792508
+            ],
+            [
+              -122.4123888,
+              37.791767
+            ],
+            [
+              -122.4118159,
+              37.7918389
+            ],
+            [
+              -122.4119648,
+              37.7925803
+            ],
+            [
+              -122.4125374,
+              37.792508
+            ]
+          ]
+        ],
+        "areaSquareMeters": 4251.58500436414
+      },
+      "distanceMeters": 1262.4450766,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://sfrecpark.org/destination/collis-p-huntington-park/",
       "phone": null
     },
     {
-      "id": "ChIJy2xD5l2BhYAR5t-1BYCtbyI",
+      "id": "3c2eff00-eae2-410f-bca6-dc149770c7ab",
       "source": "overture",
-      "name": "The Crossing at East Cut",
-      "address": "250 Main St, San Francisco, CA 94105, US",
-      "street": "250 Main St",
+      "name": "Woh Hei Yuen Park",
+      "address": "John St & Powell St, San Francisco, CA 94133-4326, US",
+      "street": "John St & Powell St",
       "locality": "San Francisco",
-      "region": "US-CA",
-      "postcode": "94105",
+      "region": "CA",
+      "postcode": "94133-4326",
       "country": "US",
       "location": {
-        "latitude": 37.789698400000006,
-        "longitude": -122.3931459
+        "latitude": 37.79588660512,
+        "longitude": -122.41034371535
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 37.7957641,
+          "west": -122.4106571,
+          "north": 37.7960138,
+          "east": -122.4100634
+        },
+        "rings": [
+          [
+            [
+              -122.4106571,
+              37.7959447
+            ],
+            [
+              -122.4106241,
+              37.7957913
+            ],
+            [
+              -122.4100634,
+              37.7957901
+            ],
+            [
+              -122.4101085,
+              37.7960138
+            ],
+            [
+              -122.4106571,
+              37.7959447
+            ]
+          ]
+        ],
+        "areaSquareMeters": 1073.9264201521873
+      },
+      "distanceMeters": 1389.8317077,
       "types": [
-        "beer_garden",
-        "bar",
-        "park",
-        "restaurant",
-        "food"
+        "park"
       ],
-      "primaryType": null,
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.sfnpc.org/wohheiyuenhistory",
+      "phone": "+14158312700"
+    },
+    {
+      "id": "de30e7e7-5869-4fc8-9ba5-ae800e9c7708",
+      "source": "overture",
+      "name": "Turk-Hyde Park",
+      "address": "201 Hyde St, San Francisco, CA 94102, US",
+      "street": "201 Hyde St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94102",
+      "country": "US",
+      "location": {
+        "latitude": 37.78274736961,
+        "longitude": -122.41597903701
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7826424,
+          "west": -122.4161236,
+          "north": 37.7828545,
+          "east": -122.4158507
+        },
+        "rings": [
+          [
+            [
+              -122.4160872,
+              37.7826424
+            ],
+            [
+              -122.4158507,
+              37.782672
+            ],
+            [
+              -122.4158836,
+              37.7828545
+            ],
+            [
+              -122.4161236,
+              37.7828241
+            ],
+            [
+              -122.4160872,
+              37.7826424
+            ]
+          ]
+        ],
+        "areaSquareMeters": 434.40208531473763
+      },
+      "distanceMeters": 1567.35693948,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
       "website": null,
-      "phone": null
+      "phone": "+14158312700"
     }
   ],
   "placeKeys": {
-    "blueBottle": "ChIJKyGeO8uBhYARGBl0pZptD8c",
-    "gym": "ChIJOb3KIX2AhYAR510cMnRk7e8",
-    "ballpark": "ChIJ_T25cNd_j4ARehGmHe0pT84"
+    "blueBottle": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
+    "gym": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
+    "ballpark": "3c864866-c118-41bb-a0ba-b91fbba9bf16"
   },
   "histories": {
     "none": [],
     "coffeeRegular": [
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-06-24T15:03:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-06-26T15:46:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-06-30T15:39:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-03T15:32:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-06T15:25:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-09T15:18:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-10T15:11:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-15T15:04:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-17T15:47:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-21T15:40:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-24T15:33:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-27T15:26:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-30T15:19:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-31T15:12:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-05T15:05:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-07T15:48:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-11T15:41:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-14T15:34:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-17T15:27:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-20T15:20:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-21T15:13:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-26T15:06:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-28T15:49:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-01T15:42:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-04T15:35:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-07T15:28:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-10T15:21:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-11T15:14:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-16T15:07:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-18T15:00:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       }
     ],
     "neighborhoodRegular": [
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-06-24T15:27:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-06-25T03:13:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-01T15:20:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-07-04T03:06:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-09T15:13:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-07-13T03:49:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-16T15:06:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-07-22T03:42:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-24T15:49:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-07-31T03:35:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-07-31T15:42:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-07T15:35:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-08-09T03:28:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-14T15:28:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-08-18T03:21:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-21T15:21:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-08-27T03:14:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-08-28T15:14:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-09-05T03:07:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-07T15:07:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       },
       {
-        "placeId": "ChIJOb3KIX2AhYAR510cMnRk7e8",
+        "placeId": "a1d616ff-5d8c-4b55-98f3-d80cbd0255da",
         "createdAt": "2026-09-14T03:00:00.000Z",
         "placeName": "Social Fit Club",
         "placeAddress": "176 2nd St, San Francisco, CA 94105, US",
-        "placePrimaryType": "health",
+        "placePrimaryType": "gym",
         "placeTypes": [
-          "health"
+          "gym"
         ],
         "location": {
-          "latitude": 37.786858699999996,
-          "longitude": -122.39876919999999
+          "latitude": 37.78696094,
+          "longitude": -122.39869521
         }
       },
       {
-        "placeId": "ChIJKyGeO8uBhYARGBl0pZptD8c",
+        "placeId": "b60c9e4b-e0e7-41cb-aafd-f5c01355ce77",
         "createdAt": "2026-09-14T15:00:00.000Z",
         "placeName": "Blue Bottle Coffee",
-        "placeAddress": "168 2nd St, San Francisco, CA 94105, US",
+        "placeAddress": "168 2nd Street, San Francisco, CA 94105, US",
         "placePrimaryType": "coffee_shop",
         "placeTypes": [
           "coffee_shop",
           "cafe",
-          "food_store",
-          "shopping",
-          "food"
+          "coffee_roastery"
         ],
         "location": {
-          "latitude": 37.7870063,
-          "longitude": -122.3988975
+          "latitude": 37.787046,
+          "longitude": -122.398814
         }
       }
     ]

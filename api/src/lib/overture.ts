@@ -5,12 +5,25 @@
  * Two generations of the category property are accepted: `taxonomy`
  * (`primary`, `hierarchy`, `alternates`; current schema) and the older
  * `categories` (`primary`, `alternate`). Everything else has been stable:
- * `names.primary`, `addresses[]`, `confidence`, `websites[]`, `phones[]`.
+ * `names.primary`, `addresses[]`, `confidence`, `websites[]`, `phones[]`,
+ * `sources[]`.
+ *
+ * Besides the venue itself, the row keeps the signals `place-quality.ts`
+ * scores it on, and the score: which provider the record came from and
+ * when, its category path, and whether a provider confirmed it is open.
  */
 
 import type { places } from "../db/schema.js";
+import { importPrior } from "./place-quality.js";
 
 export type OverturePlaceInsert = typeof places.$inferInsert & { source: "overture" };
+
+interface OvertureSourceEntry {
+  /** A JSON pointer to the property this entry vouches for; empty for the whole record. */
+  property?: string | null;
+  dataset?: string | null;
+  update_time?: string | null;
+}
 
 interface OvertureAddress {
   freeform?: string | null;
@@ -35,11 +48,13 @@ export interface OverturePlaceFeature {
       primary?: string | null;
       alternate?: (string | null)[] | null;
     } | null;
+    basic_category?: string | null;
     confidence?: number | null;
     addresses?: (OvertureAddress | null)[] | null;
     websites?: (string | null)[] | null;
     phones?: (string | null)[] | null;
     operating_status?: string | null;
+    sources?: (OvertureSourceEntry | null)[] | null;
   } | null;
 }
 
@@ -116,6 +131,24 @@ function pointCoordinates(feature: OverturePlaceFeature): { latitude: number; lo
   return { latitude, longitude };
 }
 
+/**
+ * The provider whose record this place is: the `sources` entry for the whole
+ * feature (no `property`). The others are Overture's own bookkeeping, one
+ * per derived property such as `/properties/confidence`.
+ */
+function providerSource(feature: OverturePlaceFeature): OvertureSourceEntry | null {
+  return (feature.properties?.sources ?? []).find((entry) => entry !== null && nonEmpty(entry.property) === null) ?? null;
+}
+
+function instant(value: unknown): Date | null {
+  const text = nonEmpty(value);
+  if (text === null) {
+    return null;
+  }
+  const parsed = new Date(text);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 export function parseOverturePlace(feature: OverturePlaceFeature): ParsedOverturePlace {
   const overtureId = nonEmpty(feature.id);
   if (overtureId === null) {
@@ -141,6 +174,14 @@ export function parseOverturePlace(feature: OverturePlaceFeature): ParsedOvertur
     typeof properties.confidence === "number" && Number.isFinite(properties.confidence)
       ? Math.min(Math.max(properties.confidence, 0), 1)
       : null;
+  const provider = providerSource(feature);
+  const signals = {
+    sourceDataset: nonEmpty(provider?.dataset),
+    sourceUpdatedAt: instant(provider?.update_time),
+    confidence,
+    operatingStatus: nonEmpty(properties.operating_status),
+    taxonomyHierarchy: categoryCodes(properties.taxonomy?.hierarchy),
+  };
 
   return {
     row: {
@@ -148,6 +189,7 @@ export function parseOverturePlace(feature: OverturePlaceFeature): ParsedOvertur
       overtureId,
       name,
       ...overtureCategories(feature),
+      basicCategory: categoryCodes([properties.basic_category ?? null])[0] ?? null,
       addressStreet: nonEmpty(address.freeform),
       addressLocality: nonEmpty(address.locality),
       addressRegion: nonEmpty(address.region),
@@ -155,9 +197,10 @@ export function parseOverturePlace(feature: OverturePlaceFeature): ParsedOvertur
       addressCountry: nonEmpty(address.country)?.toUpperCase() ?? null,
       latitude: coordinates.latitude,
       longitude: coordinates.longitude,
-      confidence,
       website: nonEmpty((properties.websites ?? [])[0]),
       phone: nonEmpty((properties.phones ?? [])[0]),
+      ...signals,
+      prior: importPrior(signals),
     },
   };
 }

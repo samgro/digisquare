@@ -1,0 +1,2948 @@
+{
+  "schemaVersion": 4,
+  "name": "mission-la-taqueria",
+  "description": "In line at La Taqueria on Mission Street, standing at the coordinate Google lists for it, which is 41 m from Overture's pin. More than seventy places sit within 77 m of that pin: a bakery, a Lebanese restaurant and a pie shop that closed in 2019 are nearer, and so are a mortgage lender, a food tour company, a nonprofit and a business-registry entry for a person.",
+  "recordedAt": "2026-09-26T15:00:59.445Z",
+  "timeZone": "America/Los_Angeles",
+  "fix": {
+    "latitude": 37.750525,
+    "longitude": -122.418135,
+    "horizontalAccuracy": 5
+  },
+  "places": [
+    {
+      "id": "b290dd6d-84d3-4c45-bd30-8717264ddcd6",
+      "source": "overture",
+      "name": "Josey Baker Bread",
+      "address": "2901 Mission, San Francisco, CA 94110, US",
+      "street": "2901 Mission",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.750464250539515,
+        "longitude": -122.4180563488793
+      },
+      "extent": null,
+      "distanceMeters": 9.67000587,
+      "types": [
+        "bakery"
+      ],
+      "primaryType": "bakery",
+      "basicCategory": "casual_eatery",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://joseybakerbread.wordpress.com",
+      "phone": "(413) 218-1672"
+    },
+    {
+      "id": "434e2c85-220d-4b03-befc-ec9907b6f27d",
+      "source": "overture",
+      "name": "Reem's California Mission",
+      "address": "2901 Mission St, San Francisco, CA 94110, US",
+      "street": "2901 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75060985,
+        "longitude": -122.41807474
+      },
+      "extent": null,
+      "distanceMeters": 10.81181155,
+      "types": [
+        "middle_eastern_restaurant"
+      ],
+      "primaryType": "middle_eastern_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.reemscalifornia.com/",
+      "phone": "+14157803294"
+    },
+    {
+      "id": "fa8c5206-a200-4434-9600-6f4345a9f732",
+      "source": "overture",
+      "name": "Mission Pie",
+      "address": "2901 Mission St, San Francisco, CA 94110-3917, US",
+      "street": "2901 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3917",
+      "country": "US",
+      "location": {
+        "latitude": 37.750538,
+        "longitude": -122.417935
+      },
+      "extent": null,
+      "distanceMeters": 17.68479351,
+      "types": [
+        "pie_shop"
+      ],
+      "primaryType": "pie_shop",
+      "basicCategory": "casual_eatery",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "ae319d53-caf7-4200-886d-862c7fd2db61",
+      "source": "overture",
+      "name": "San francisco",
+      "address": "Mission St, San Francisco, CA 94110, US",
+      "street": "Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75065592,
+        "longitude": -122.4183195
+      },
+      "extent": null,
+      "distanceMeters": 21.80671558,
+      "types": [
+        "hotel"
+      ],
+      "primaryType": "hotel",
+      "basicCategory": "hotel",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.46277966192507614,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+14158015000"
+    },
+    {
+      "id": "32aedc36-2492-4162-9fa9-fb49a308ee2b",
+      "source": "overture",
+      "name": "Instituto Familiar de la Raza",
+      "address": "2919 Mission St, San Francisco, CA 94110, US",
+      "street": "2919 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75025734,
+        "longitude": -122.4181137
+      },
+      "extent": null,
+      "distanceMeters": 29.76730066,
+      "types": [
+        "social_or_community_service"
+      ],
+      "primaryType": "social_or_community_service",
+      "basicCategory": "social_or_community_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.ifrsf.org",
+      "phone": "+14152290500"
+    },
+    {
+      "id": "961bc56a-eccb-40a5-9498-7fe51ef8575d",
+      "source": "overture",
+      "name": "Chase Mortgage",
+      "address": "2900 Mission St, San Francisco, CA 94110, US",
+      "street": "2900 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75033,
+        "longitude": -122.418377
+      },
+      "extent": null,
+      "distanceMeters": 30.38568177,
+      "types": [
+        "mortgage_lender"
+      ],
+      "primaryType": "mortgage_lender",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.chase.com/mortgage/loan-officer",
+      "phone": "4158219714"
+    },
+    {
+      "id": "a45da18d-1c9e-4741-abc5-9882b8c472dd",
+      "source": "overture",
+      "name": "Bissap Baobab",
+      "address": "2893 Mission St, San Francisco, CA 94110-3907, US",
+      "street": "2893 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3907",
+      "country": "US",
+      "location": {
+        "latitude": 37.75079,
+        "longitude": -122.41804
+      },
+      "extent": null,
+      "distanceMeters": 30.58117888,
+      "types": [
+        "middle_eastern_restaurant"
+      ],
+      "primaryType": "middle_eastern_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.bissapbaobab.com/",
+      "phone": "+14158269287"
+    },
+    {
+      "id": "b4f4c077-6e9d-43a7-9900-0fd160770dc3",
+      "source": "overture",
+      "name": "Secret Food Tours",
+      "address": "2900 Mission St, San Francisco, CA 94110-3918, US",
+      "street": "2900 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3918",
+      "country": "US",
+      "location": {
+        "latitude": 37.750497,
+        "longitude": -122.418488
+      },
+      "extent": null,
+      "distanceMeters": 31.26444718,
+      "types": [
+        "travel_service"
+      ],
+      "primaryType": "travel_service",
+      "basicCategory": "travel_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.secretfoodtours.com",
+      "phone": "+16282460095"
+    },
+    {
+      "id": "578f4a0a-edee-4641-b4e6-bd30b3d661aa",
+      "source": "overture",
+      "name": "Chase Bank",
+      "address": "2900 Mission St, San Francisco, CA 94110, US",
+      "street": "2900 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75054345,
+        "longitude": -122.41849158
+      },
+      "extent": null,
+      "distanceMeters": 31.49174723,
+      "types": [
+        "bank_or_credit_union"
+      ],
+      "primaryType": "bank_or_credit_union",
+      "basicCategory": "bank_or_credit_union",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.chase.com/locator/banking/us/ca/san-francisco/2900-mission-st",
+      "phone": "+14158243313"
+    },
+    {
+      "id": "f6f2018d-dede-44f5-bce5-7149cc91d69f",
+      "source": "overture",
+      "name": "Promesa",
+      "address": "2919 Mission St, San Francisco, CA 94110-3917, US",
+      "street": "2919 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3917",
+      "country": "US",
+      "location": {
+        "latitude": 37.7503014,
+        "longitude": -122.4179077
+      },
+      "extent": null,
+      "distanceMeters": 31.89347462,
+      "types": [
+        "social_or_community_service"
+      ],
+      "primaryType": "social_or_community_service",
+      "basicCategory": "social_or_community_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.9074946614199262,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://ifrsf.org/programs/si-a-la-vida/",
+      "phone": "+14152404104"
+    },
+    {
+      "id": "4c6ed2d9-1bcd-4841-934a-3033dda8337c",
+      "source": "overture",
+      "name": "Red Cafe",
+      "address": "2894 Mission St, San Francisco, CA 94110, US",
+      "street": "2894 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75073183,
+        "longitude": -122.41841514
+      },
+      "extent": null,
+      "distanceMeters": 33.71228486,
+      "types": [
+        "breakfast_and_brunch_restaurant"
+      ],
+      "primaryType": "breakfast_and_brunch_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://redcafesf.net",
+      "phone": "+14152821515"
+    },
+    {
+      "id": "4f827a28-9e31-4fae-9700-a742be39774e",
+      "source": "overture",
+      "name": "Elsy's Restaurant",
+      "address": "2893 Mission St, San Francisco, CA 94110, US",
+      "street": "2893 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75081759,
+        "longitude": -122.41825647
+      },
+      "extent": null,
+      "distanceMeters": 34.19398321,
+      "types": [
+        "salvadoran_restaurant"
+      ],
+      "primaryType": "salvadoran_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.yelp.com/biz/elsys-restaurant-san-francisco",
+      "phone": "+14156420104"
+    },
+    {
+      "id": "39c1422c-63eb-4992-87ee-64b649e86865",
+      "source": "overture",
+      "name": "Golden Gate Market",
+      "address": "2899 Mission St, San Francisco, CA 94110, US",
+      "street": "2899 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.750854603032565,
+        "longitude": -122.41807939784633
+      },
+      "extent": null,
+      "distanceMeters": 36.90994059,
+      "types": [
+        "grocery_store"
+      ],
+      "primaryType": "grocery_store",
+      "basicCategory": "food_and_beverage_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.ggu.edu",
+      "phone": "(415) 824-5600"
+    },
+    {
+      "id": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+      "source": "overture",
+      "name": "La Taqueria",
+      "address": "2889 Mission St, San Francisco, CA 94110, US",
+      "street": "2889 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75088556,
+        "longitude": -122.41819985
+      },
+      "extent": null,
+      "distanceMeters": 40.42522362,
+      "types": [
+        "mexican_restaurant"
+      ],
+      "primaryType": "mexican_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://lataqueriasf.com",
+      "phone": "+14152857117"
+    },
+    {
+      "id": "779c03cc-c85b-4a73-bc26-339230a2f3e7",
+      "source": "overture",
+      "name": "Miguel Inc",
+      "address": "2889 Mission St, San Francisco, CA 94110-3907, US",
+      "street": "2889 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3907",
+      "country": "US",
+      "location": {
+        "latitude": 37.750884,
+        "longitude": -122.418055
+      },
+      "extent": null,
+      "distanceMeters": 40.4649743,
+      "types": [
+        "restaurant"
+      ],
+      "primaryType": "restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "ead174d7-a6d3-40ce-9049-602f61ba6a58",
+      "source": "overture",
+      "name": "Lian Nails",
+      "address": "2890 Mission St, San Francisco, CA 94110, US",
+      "street": "2890 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75081169,
+        "longitude": -122.41843084
+      },
+      "extent": null,
+      "distanceMeters": 41.13733724,
+      "types": [
+        "nail_salon"
+      ],
+      "primaryType": "nail_salon",
+      "basicCategory": "personal_or_beauty_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+14156485826"
+    },
+    {
+      "id": "7f2af43f-bef9-44b1-8695-5f021228d1df",
+      "source": "overture",
+      "name": "G & C Auto Body",
+      "address": "2925 Mission St, San Francisco, CA 94110, US",
+      "street": "2925 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75015599,
+        "longitude": -122.418015
+      },
+      "extent": null,
+      "distanceMeters": 42.30039275,
+      "types": [
+        "brake_service_and_repair"
+      ],
+      "primaryType": "brake_service_and_repair",
+      "basicCategory": "automotive_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://gandcautobody.com/locations/san-francisco/",
+      "phone": "4154166763"
+    },
+    {
+      "id": "38b45e76-33f0-45f7-afe6-a7cc4d448362",
+      "source": "overture",
+      "name": "Metro by T-Mobile",
+      "address": "2888 Mission St, San Francisco, CA 94110, US",
+      "street": "2888 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75080955,
+        "longitude": -122.41846463
+      },
+      "extent": null,
+      "distanceMeters": 42.91116063,
+      "types": [
+        "mobile_phone_store"
+      ],
+      "primaryType": "mobile_phone_store",
+      "basicCategory": "electronics_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.metrobyt-mobile.com/stores/bd/metro-by-t-mobile-2888-mission-st-san-francisco-ca-10337513/?utm_source=facebook&utm_medium=lastmile&utm_campaign=35353",
+      "phone": "+14154105281"
+    },
+    {
+      "id": "d952a7a0-fb97-45c0-a6db-95157377acbf",
+      "source": "overture",
+      "name": "State Farm 25th Street",
+      "address": "3425 25th St, San Francisco, CA 94110-3879, US",
+      "street": "3425 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3879",
+      "country": "US",
+      "location": {
+        "latitude": 37.750486,
+        "longitude": -122.418631
+      },
+      "extent": null,
+      "distanceMeters": 43.92588589,
+      "types": [
+        "real_estate_service"
+      ],
+      "primaryType": "real_estate_service",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.9091337327177116,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.statefarm.com/agent/US/CA/San-Francisco/David-Chacon-P9FF6515YAK",
+      "phone": "+14156479900"
+    },
+    {
+      "id": "7f558004-c5e5-42f1-9f9d-00b716cba883",
+      "source": "overture",
+      "name": "The Lilac Mural Project",
+      "address": "2884 Mission St, San Francisco, CA 94110, US",
+      "street": "2884 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75084999785775,
+        "longitude": -122.41847096022248
+      },
+      "extent": null,
+      "distanceMeters": 46.66710873,
+      "types": [],
+      "primaryType": null,
+      "basicCategory": null,
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://missionart415.wordpress.com/",
+      "phone": "+14155057222"
+    },
+    {
+      "id": "e63b720b-9a4e-4064-92e8-466cbba68fe9",
+      "source": "overture",
+      "name": "Mission Art Gallery",
+      "address": "2884 Mission St, San Francisco, CA 94110-3908, US",
+      "street": "2884 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3908",
+      "country": "US",
+      "location": {
+        "latitude": 37.75079,
+        "longitude": -122.4185484
+      },
+      "extent": null,
+      "distanceMeters": 46.82353471,
+      "types": [
+        "pop_up_store"
+      ],
+      "primaryType": "pop_up_store",
+      "basicCategory": "specialty_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+14155331748"
+    },
+    {
+      "id": "be167a30-8c45-44d9-af0c-76e15b2ebe18",
+      "source": "overture",
+      "name": "Daniel's Jewelry",
+      "address": "2886mission st, San Francisco, CA 94110, US",
+      "street": "2886mission st",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75089433,
+        "longitude": -122.41841651
+      },
+      "extent": null,
+      "distanceMeters": 47.9154233,
+      "types": [
+        "jewelry_store"
+      ],
+      "primaryType": "jewelry_store",
+      "basicCategory": "fashion_and_apparel_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://daniels-jewelry-store.negocio.site",
+      "phone": "+14155250591"
+    },
+    {
+      "id": "08efe7d6-a208-4682-ac0a-6b77bb478b99",
+      "source": "overture",
+      "name": "Dianda's Italian American Pastry",
+      "address": "2883 Mission St, San Francisco, CA 94110, US",
+      "street": "2883 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75095091,
+        "longitude": -122.4182403
+      },
+      "extent": null,
+      "distanceMeters": 48.17475947,
+      "types": [
+        "bakery"
+      ],
+      "primaryType": "bakery",
+      "basicCategory": "casual_eatery",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.diandasbakery.com",
+      "phone": "+14156475469"
+    },
+    {
+      "id": "0388a85a-4f95-4b61-8b28-536903e8d5a8",
+      "source": "overture",
+      "name": "Julio's",
+      "address": "2884 Mission St, San Francisco, CA 94110, US",
+      "street": "2884 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75078393967835,
+        "longitude": -122.41857684110745
+      },
+      "extent": null,
+      "distanceMeters": 48.39674545,
+      "types": [
+        "music_and_dvd_store"
+      ],
+      "primaryType": "music_and_dvd_store",
+      "basicCategory": "books_music_and_video_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.julios.com",
+      "phone": "(415) 648-1054"
+    },
+    {
+      "id": "4f769d03-8e08-4f3c-aabf-a969744a1938",
+      "source": "overture",
+      "name": "Thumbs Up Marbles",
+      "address": "3422 25th St, San Francisco, CA 94110, US",
+      "street": "3422 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.750784,
+        "longitude": -122.418577
+      },
+      "extent": null,
+      "distanceMeters": 48.411988,
+      "types": [
+        "gift_shop"
+      ],
+      "primaryType": "gift_shop",
+      "basicCategory": "flowers_and_gifts_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.thumbsupmarbles.com",
+      "phone": "(415) 920-9988"
+    },
+    {
+      "id": "b67894f6-37ef-47c9-acec-d07622667c84",
+      "source": "overture",
+      "name": "New Jack City SF",
+      "address": "3418 25th St, San Francisco, CA 94110-3804, US",
+      "street": "3418 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3804",
+      "country": "US",
+      "location": {
+        "latitude": 37.750784,
+        "longitude": -122.418577
+      },
+      "extent": null,
+      "distanceMeters": 48.411988,
+      "types": [
+        "clothing_store"
+      ],
+      "primaryType": "clothing_store",
+      "basicCategory": "fashion_and_apparel_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.newjackcitysf.com/",
+      "phone": "+14156243751"
+    },
+    {
+      "id": "88024be4-9a89-418e-aec8-a4a40ceb4598",
+      "source": "overture",
+      "name": "David Chacon - State Farm Insurance Agent",
+      "address": "3425 25th St, San Francisco, CA 94110, US",
+      "street": "3425 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75055097,
+        "longitude": -122.41871677
+      },
+      "extent": null,
+      "distanceMeters": 51.35186133,
+      "types": [
+        "insurance_agency"
+      ],
+      "primaryType": "insurance_agency",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.statefarm.com/",
+      "phone": "+14156479900"
+    },
+    {
+      "id": "776321cb-e4cf-44dc-82b1-513522ead9a9",
+      "source": "overture",
+      "name": "Savanna Jazz Club",
+      "address": "2937 Mission St, San Francisco, CA 94110, US",
+      "street": "2937 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75004653327131,
+        "longitude": -122.41816464755718
+      },
+      "extent": null,
+      "distanceMeters": 53.17009965,
+      "types": [
+        "jazz_and_blues_venue"
+      ],
+      "primaryType": "jazz_and_blues_venue",
+      "basicCategory": "music_venue",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://savannajazz.com",
+      "phone": "(415) 285-3369"
+    },
+    {
+      "id": "7a8cd454-a4b2-4162-a0b4-69a86623f89e",
+      "source": "overture",
+      "name": "Evil Eye",
+      "address": "2937 Mission St, San Francisco, CA 94110, US",
+      "street": "2937 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75003571,
+        "longitude": -122.4181862
+      },
+      "extent": null,
+      "distanceMeters": 54.49428829,
+      "types": [
+        "cocktail_bar"
+      ],
+      "primaryType": "cocktail_bar",
+      "basicCategory": "bar",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.evileyesf.com/",
+      "phone": "+14158143779"
+    },
+    {
+      "id": "9103ba4b-d2dc-4b5a-baac-81c49f3ba7c3",
+      "source": "overture",
+      "name": "Lemon Twist",
+      "address": "3418 25th St, San Francisco, CA 94110-3804, US",
+      "street": "3418 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3804",
+      "country": "US",
+      "location": {
+        "latitude": 37.750788,
+        "longitude": -122.418659
+      },
+      "extent": null,
+      "distanceMeters": 54.63204761,
+      "types": [
+        "womens_clothing_store"
+      ],
+      "primaryType": "womens_clothing_store",
+      "basicCategory": "fashion_and_apparel_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.lemontwist.net",
+      "phone": "14152972423"
+    },
+    {
+      "id": "33260846-19c7-4c38-84d8-bcac62bb50fc",
+      "source": "overture",
+      "name": "Coco Frio",
+      "address": "2937 Mission St, San Francisco, CA 94110, US",
+      "street": "2937 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75004681464229,
+        "longitude": -122.41796004199024
+      },
+      "extent": null,
+      "distanceMeters": 55.26898583,
+      "types": [
+        "caribbean_restaurant"
+      ],
+      "primaryType": "caribbean_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.cocofriosf.com",
+      "phone": "(415) 341-0134"
+    },
+    {
+      "id": "f24e3601-7e89-4359-8dc9-abca2baa24c6",
+      "source": "overture",
+      "name": "Savanna Jazz",
+      "address": "2937 Mission St, San Francisco, CA 94110-3917, US",
+      "street": "2937 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3917",
+      "country": "US",
+      "location": {
+        "latitude": 37.750037,
+        "longitude": -122.417887
+      },
+      "extent": null,
+      "distanceMeters": 58.40741227,
+      "types": [
+        "b2b_scientific_lab"
+      ],
+      "primaryType": "b2b_scientific_lab",
+      "basicCategory": "b2b_science_and_technology_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.savannajazz.com",
+      "phone": null
+    },
+    {
+      "id": "67933493-c39f-4405-bae1-f619b274c644",
+      "source": "overture",
+      "name": "You Rule Therapy",
+      "address": "2873 Mission St, San Francisco, CA 94110-3907, US",
+      "street": "2873 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3907",
+      "country": "US",
+      "location": {
+        "latitude": 37.75104202,
+        "longitude": -122.41827247
+      },
+      "extent": null,
+      "distanceMeters": 58.64988496,
+      "types": [
+        "psychotherapy"
+      ],
+      "primaryType": "psychotherapy",
+      "basicCategory": "behavioral_or_mental_health_clinic",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.youruletherapy.com/",
+      "phone": "+14159875578"
+    },
+    {
+      "id": "2192d473-e4b5-4485-b3b6-34aa19882a87",
+      "source": "overture",
+      "name": "Safety Training Seminars",
+      "address": "2873 Mission St Ste 4, San Francisco, CA 94110, US",
+      "street": "2873 Mission St Ste 4",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.751065,
+        "longitude": -122.418187
+      },
+      "extent": null,
+      "distanceMeters": 60.11049613,
+      "types": [
+        "medical_sciences_school"
+      ],
+      "primaryType": "medical_sciences_school",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://safetytrainingseminars.com/san-francisco-cpr-bls-classes",
+      "phone": "4157611988"
+    },
+    {
+      "id": "b35592a7-e471-4066-a2fa-48df384fa110",
+      "source": "overture",
+      "name": "Joe Zarate-Sanderlin",
+      "address": "2873 Mission St, San Francisco, CA 94110-3907, US",
+      "street": "2873 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3907",
+      "country": "US",
+      "location": {
+        "latitude": 37.75106376,
+        "longitude": -122.41820671
+      },
+      "extent": null,
+      "distanceMeters": 60.1309452,
+      "types": [
+        "marriage_or_relationship_counseling"
+      ],
+      "primaryType": "marriage_or_relationship_counseling",
+      "basicCategory": "behavioral_or_mental_health_clinic",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.jzsmft.com/",
+      "phone": "+14155628384"
+    },
+    {
+      "id": "71222241-d601-4736-88c9-37567ff0d397",
+      "source": "overture",
+      "name": "Anna McDonald",
+      "address": "2873 Mission St #9, San Francisco, CA 94110, US",
+      "street": "2873 Mission St #9",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75105688,
+        "longitude": -122.41827837
+      },
+      "extent": null,
+      "distanceMeters": 60.37129062,
+      "types": [
+        "counseling"
+      ],
+      "primaryType": "counseling",
+      "basicCategory": "behavioral_or_mental_health_clinic",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://annamcdonaldtherapy.com/",
+      "phone": "+14158413053"
+    },
+    {
+      "id": "292a6424-b224-4f2e-9ef9-e9cd0b99d1ac",
+      "source": "overture",
+      "name": "Roto-Rooter Plumbing & Water Cleanup",
+      "address": "2873 Mission St, San Francisco, CA 94110, US",
+      "street": "2873 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75106854,
+        "longitude": -122.4182043
+      },
+      "extent": null,
+      "distanceMeters": 60.6368132,
+      "types": [
+        "plumbing"
+      ],
+      "primaryType": "plumbing",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.0287934123700246,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.rotorooter.com/sanfrancisco/?utm_source=Google&utm_medium=organic&utm_campaign=gmb&utm_content=website",
+      "phone": "+14159643302"
+    },
+    {
+      "id": "76649f1e-9820-4c84-b121-514500f1ccab",
+      "source": "overture",
+      "name": "MCCLA Life Drawing",
+      "address": "2868 Mission St, San Francisco, CA 94110-3908, US",
+      "street": "2868 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3908",
+      "country": "US",
+      "location": {
+        "latitude": 37.750996,
+        "longitude": -122.418498
+      },
+      "extent": null,
+      "distanceMeters": 61.28872615,
+      "types": [
+        "art_school"
+      ],
+      "primaryType": "art_school",
+      "basicCategory": "specialty_school",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.7975960085515685,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://fridaynightdrawingsfca.blogspot.com/",
+      "phone": "+14153774447"
+    },
+    {
+      "id": "43792a2c-63c3-4d92-9557-d64c21e3de51",
+      "source": "overture",
+      "name": "Mission Cultural Center for Latino Arts",
+      "address": "2868 Mission St, San Francisco, CA 94110, US",
+      "street": "2868 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75102388844224,
+        "longitude": -122.41851926121328
+      },
+      "extent": null,
+      "distanceMeters": 64.90700827,
+      "types": [
+        "cultural_center"
+      ],
+      "primaryType": "cultural_center",
+      "basicCategory": "cultural_center",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.missionculturalcenter.org/",
+      "phone": "+14157966422"
+    },
+    {
+      "id": "4d557ec5-5dea-4c5f-9000-ccdd13a55fa2",
+      "source": "overture",
+      "name": "Rinconcito Nicaragüense",
+      "address": "2943 Mission St, San Francisco, CA 94110, US",
+      "street": "2943 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.749946575536185,
+        "longitude": -122.41797742606923
+      },
+      "extent": null,
+      "distanceMeters": 65.6850889,
+      "types": [
+        "nicaraguan_restaurant"
+      ],
+      "primaryType": "nicaraguan_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://rinconcitonicaraguense.info/reviews",
+      "phone": "+14156434620"
+    },
+    {
+      "id": "aa4a9ffd-effa-486c-9f64-efe235fe63ca",
+      "source": "overture",
+      "name": "Mission Access Point | Catholic Charities",
+      "address": "2871 Mission St, San Francisco, CA 94110-3907, US",
+      "street": "2871 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3907",
+      "country": "US",
+      "location": {
+        "latitude": 37.751111,
+        "longitude": -122.41799
+      },
+      "extent": null,
+      "distanceMeters": 66.28460702,
+      "types": [
+        "charity_organization"
+      ],
+      "primaryType": "charity_organization",
+      "basicCategory": "civic_organization",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.catholiccharitiessf.org",
+      "phone": "14159721281"
+    },
+    {
+      "id": "45b44c60-39c6-4eb1-82d0-3ea593b0dcbc",
+      "source": "overture",
+      "name": "Frisco Tattooing",
+      "address": "3424 25th St, San Francisco, CA 94110-3804, US",
+      "street": "3424 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3804",
+      "country": "US",
+      "location": {
+        "latitude": 37.75070784,
+        "longitude": -122.41886904
+      },
+      "extent": null,
+      "distanceMeters": 67.79870989,
+      "types": [
+        "tattoo_and_piercing"
+      ],
+      "primaryType": "tattoo_and_piercing",
+      "basicCategory": "personal_or_beauty_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.friscotattoo.com/",
+      "phone": "+14156421777"
+    },
+    {
+      "id": "2cba235f-674a-4ac8-943c-1a0d4c4dc324",
+      "source": "overture",
+      "name": "Abel Glass Co.",
+      "address": "2949 Mission St, San Francisco, CA 94110, US",
+      "street": "2949 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.7498893,
+        "longitude": -122.4182191
+      },
+      "extent": null,
+      "distanceMeters": 70.9456708,
+      "types": [],
+      "primaryType": null,
+      "basicCategory": null,
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.abelglasscompany.com/",
+      "phone": "4154019725"
+    },
+    {
+      "id": "6f512cce-e491-41ef-92ba-716711f1f8a2",
+      "source": "overture",
+      "name": "Werk Salon",
+      "address": "2867 Mission St, San Francisco, CA 94110, US",
+      "street": "2867 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75116905,
+        "longitude": -122.41826473
+      },
+      "extent": null,
+      "distanceMeters": 72.39274799,
+      "types": [
+        "beauty_salon"
+      ],
+      "primaryType": "beauty_salon",
+      "basicCategory": "personal_or_beauty_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.secure-booker.com/werk/MakeAppointment/Search.aspx",
+      "phone": "+14156559779"
+    },
+    {
+      "id": "02eb74c6-8dea-4c35-91a3-ab6ef2ff54d9",
+      "source": "overture",
+      "name": "Music Mission San Francisco",
+      "address": "2868 Mission St, San Francisco, CA 94110-3908, US",
+      "street": "2868 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3908",
+      "country": "US",
+      "location": {
+        "latitude": 37.751013,
+        "longitude": -122.418706
+      },
+      "extent": null,
+      "distanceMeters": 73.93239824,
+      "types": [
+        "after_school_program"
+      ],
+      "primaryType": "after_school_program",
+      "basicCategory": "educational_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://musicmissionsf.org",
+      "phone": "16179811100"
+    },
+    {
+      "id": "8ad596a9-9127-49ff-9563-a9ea45a30e08",
+      "source": "overture",
+      "name": "Mishka SF",
+      "address": "3422 25th St, San Francisco, CA 94110, US",
+      "street": "3422 25th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75075860254134,
+        "longitude": -122.41895552794794
+      },
+      "extent": null,
+      "distanceMeters": 76.8201325,
+      "types": [
+        "fashion_boutique"
+      ],
+      "primaryType": "fashion_boutique",
+      "basicCategory": "fashion_and_apparel_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.mishkasf.com",
+      "phone": "(415) 590-3079"
+    },
+    {
+      "id": "46e03488-b1d1-43ed-914f-cef8dbc47708",
+      "source": "overture",
+      "name": "Promesa Christian Bookstore",
+      "address": "2862 Mission St, San Francisco, CA 94110-3908, US",
+      "street": "2862 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3908",
+      "country": "US",
+      "location": {
+        "latitude": 37.751144,
+        "longitude": -122.418609
+      },
+      "extent": null,
+      "distanceMeters": 80.40655682,
+      "types": [
+        "religious_and_spiritual_goods_store"
+      ],
+      "primaryType": "religious_and_spiritual_goods_store",
+      "basicCategory": "specialty_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+14156413131"
+    },
+    {
+      "id": "f8cf188a-7692-4e60-a396-cba6fc92a035",
+      "source": "overture",
+      "name": "Libreria Cristiana Palabra de Dios",
+      "address": "2862 Mission St, San Francisco, CA 94110, US",
+      "street": "2862 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.751143811089,
+        "longitude": -122.41862168185
+      },
+      "extent": null,
+      "distanceMeters": 80.97503928,
+      "types": [
+        "bookstore"
+      ],
+      "primaryType": "bookstore",
+      "basicCategory": "books_music_and_video_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.distpalabradedios.com/",
+      "phone": "+14158219710"
+    },
+    {
+      "id": "b5117dfc-a964-413f-8f5e-e402857ebd12",
+      "source": "overture",
+      "name": "Hollywood Beauty Salon",
+      "address": "2863 Mission St, San Francisco, CA 94110, US",
+      "street": "2863 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.7512477,
+        "longitude": -122.41826337
+      },
+      "extent": null,
+      "distanceMeters": 81.00760292,
+      "types": [
+        "beauty_salon"
+      ],
+      "primaryType": "beauty_salon",
+      "basicCategory": "personal_or_beauty_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.6402207753427347,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+14157565272"
+    },
+    {
+      "id": "a370fe38-dc0e-45eb-ad74-0cfccfd87730",
+      "source": "overture",
+      "name": "The Fizzary",
+      "address": "2949 Mission St, San Francisco, CA 94110, US",
+      "street": "2949 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.749793591352706,
+        "longitude": -122.41821442342173
+      },
+      "extent": null,
+      "distanceMeters": 81.4815289,
+      "types": [
+        "food_and_beverage_store"
+      ],
+      "primaryType": "food_and_beverage_store",
+      "basicCategory": "food_and_beverage_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.fizzary.com",
+      "phone": "(831) 460-4600"
+    },
+    {
+      "id": "bc42fd4e-020a-4201-a06a-17bcedbb265d",
+      "source": "overture",
+      "name": "The Civic Kitchen",
+      "address": "2961 Mission St, San Francisco, CA 94110, US",
+      "street": "2961 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.74974797,
+        "longitude": -122.41808503
+      },
+      "extent": null,
+      "distanceMeters": 86.35628491,
+      "types": [
+        "cooking_school"
+      ],
+      "primaryType": "cooking_school",
+      "basicCategory": "specialty_school",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.civickitchensf.com/",
+      "phone": "+14154292411"
+    },
+    {
+      "id": "d720627b-5d36-4fc6-b520-33c0f4f5f67a",
+      "source": "overture",
+      "name": "Il Pollaio",
+      "address": "2859 Mission St, San Francisco, CA 94110, US",
+      "street": "2859 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75131001269404,
+        "longitude": -122.41810628852224
+      },
+      "extent": null,
+      "distanceMeters": 87.16668027,
+      "types": [
+        "italian_restaurant"
+      ],
+      "primaryType": "italian_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://ilpollaiosf.com",
+      "phone": "(415) 814-3664"
+    },
+    {
+      "id": "4a084327-f680-4f42-bf95-7ac327e91e42",
+      "source": "overture",
+      "name": "Tahini",
+      "address": "2859 Mission St, San Francisco, CA 94110, US",
+      "street": "2859 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75131001269404,
+        "longitude": -122.41810628852224
+      },
+      "extent": null,
+      "distanceMeters": 87.16668027,
+      "types": [
+        "middle_eastern_restaurant"
+      ],
+      "primaryType": "middle_eastern_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.tahini.us",
+      "phone": "(415) 800-8681"
+    },
+    {
+      "id": "c867f779-38c4-4209-91b9-622c0b546883",
+      "source": "overture",
+      "name": "Roosters Peruvian Rotisserie",
+      "address": "2859 Mission St, San Francisco, CA 94110, US",
+      "street": "2859 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75131235570651,
+        "longitude": -122.41818667057696
+      },
+      "extent": null,
+      "distanceMeters": 87.50856151,
+      "types": [
+        "peruvian_restaurant"
+      ],
+      "primaryType": "peruvian_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://roostersperu.com/",
+      "phone": "+14158759091"
+    },
+    {
+      "id": "6242fa7b-e427-484c-8b65-613bfaffd9c5",
+      "source": "overture",
+      "name": "Hollywood Beauty Threading",
+      "address": "2859 Mission St  # A, San Francisco, CA 94110-3907, US",
+      "street": "2859 Mission St  # A",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3907",
+      "country": "US",
+      "location": {
+        "latitude": 37.7513168,
+        "longitude": -122.4181986
+      },
+      "extent": null,
+      "distanceMeters": 88.06183726,
+      "types": [
+        "beauty_salon"
+      ],
+      "primaryType": "beauty_salon",
+      "basicCategory": "personal_or_beauty_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://hollywood-beauty-threading.business.site",
+      "phone": "14154005177"
+    },
+    {
+      "id": "da5bd649-7a33-4798-8e72-6045d37a99ab",
+      "source": "overture",
+      "name": "Guzman Consulting - Immigration Services",
+      "address": "2857 Mission St, San Francisco, CA 94110, US",
+      "street": "2857 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75131226,
+        "longitude": -122.41801044
+      },
+      "extent": null,
+      "distanceMeters": 88.06621012,
+      "types": [
+        "professional_service"
+      ],
+      "primaryType": "professional_service",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.88384713342513,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.guzmansf.com/",
+      "phone": "+14159401238"
+    },
+    {
+      "id": "249739ee-c933-4f43-b43b-6c9625e1c4fc",
+      "source": "overture",
+      "name": "Virtud Hair Salon",
+      "address": "2860 Mission St, San Francisco, CA 94110, US",
+      "street": "2860 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.7512038,
+        "longitude": -122.41865942
+      },
+      "extent": null,
+      "distanceMeters": 88.38700165,
+      "types": [
+        "beauty_salon"
+      ],
+      "primaryType": "beauty_salon",
+      "basicCategory": "personal_or_beauty_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.normashairsalon.com/",
+      "phone": "+14152853899"
+    },
+    {
+      "id": "4d4eafb7-ec32-4cba-9504-8b70843b5718",
+      "source": "overture",
+      "name": "La Traviata",
+      "address": "2854 Mission St, San Francisco, CA 94110, US",
+      "street": "2854 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75128938,
+        "longitude": -122.41851588
+      },
+      "extent": null,
+      "distanceMeters": 91.23877592,
+      "types": [
+        "italian_restaurant"
+      ],
+      "primaryType": "italian_restaurant",
+      "basicCategory": "restaurant",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://latraviatasf.com/",
+      "phone": "+14152820500"
+    },
+    {
+      "id": "ed752b45-65d0-4e04-b2f6-abfbba3e5b60",
+      "source": "overture",
+      "name": "Santo Hermano Pedro Boutique",
+      "address": "2651 Mission St  # 2854, San Francisco, CA 94110-3101, US",
+      "street": "2651 Mission St  # 2854",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3101",
+      "country": "US",
+      "location": {
+        "latitude": 37.7512911,
+        "longitude": -122.4185451
+      },
+      "extent": null,
+      "distanceMeters": 92.39291203,
+      "types": [
+        "shipping_or_delivery_service"
+      ],
+      "primaryType": "shipping_or_delivery_service",
+      "basicCategory": "shipping_or_delivery_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "14159332342"
+    },
+    {
+      "id": "d3c21fd5-b199-43cc-a3c2-65ffdbe03e62",
+      "source": "overture",
+      "name": "ANTOJITOS PATRY #2",
+      "address": "2853 Mission St, San Francisco, CA 94110, US",
+      "street": "2853 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.751376,
+        "longitude": -122.418154
+      },
+      "extent": null,
+      "distanceMeters": 94.46883634,
+      "types": [
+        "money_transfer_service"
+      ],
+      "primaryType": "money_transfer_service",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://location.westernunion.com/us/ca/san-francisco/67c10a21ad5b0da5abc50c985e742a5a",
+      "phone": null
+    },
+    {
+      "id": "0bb71e88-64a6-4c83-afe7-3f03fe070922",
+      "source": "overture",
+      "name": "CPMC Mission Bernal Campus & Orthopedic Institute",
+      "address": "3555 Cesar Chavez, San Francisco, CA 94110, US",
+      "street": "3555 Cesar Chavez",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.747541,
+        "longitude": -122.4211318
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.746514,
+          "west": -122.4218959,
+          "north": 37.7479831,
+          "east": -122.4202877
+        },
+        "rings": [
+          [
+            [
+              -122.4202877,
+              37.7467067
+            ],
+            [
+              -122.4203943,
+              37.7479619
+            ],
+            [
+              -122.4218959,
+              37.7479456
+            ],
+            [
+              -122.4218219,
+              37.7472736
+            ],
+            [
+              -122.4212931,
+              37.7473057
+            ],
+            [
+              -122.4215676,
+              37.746514
+            ],
+            [
+              -122.4204508,
+              37.7465857
+            ],
+            [
+              -122.4202877,
+              37.7467067
+            ]
+          ]
+        ],
+        "areaSquareMeters": 17900.51487793587
+      },
+      "distanceMeters": 347.24168298,
+      "types": [
+        "hospital"
+      ],
+      "primaryType": "hospital",
+      "basicCategory": "hospital",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.sutterhealth.org/find-location/facility/cpmc-mission-bernal-campus-orthopedic-institute-1043246991",
+      "phone": "4156006000"
+    },
+    {
+      "id": "bb117e9b-65b4-4bfe-a5fd-3121308e0312",
+      "source": "overture",
+      "name": "City College Of San Francisco - Mission Center",
+      "address": "1125 Valencia St, San Francisco, CA 94110-3026, US",
+      "street": "1125 Valencia St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3026",
+      "country": "US",
+      "location": {
+        "latitude": 37.7548105,
+        "longitude": -122.4203667
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7544891,
+          "west": -122.4208365,
+          "north": 37.7551301,
+          "east": -122.4199001
+        },
+        "rings": [
+          [
+            [
+              -122.4199568,
+              37.7551301
+            ],
+            [
+              -122.4208365,
+              37.7550665
+            ],
+            [
+              -122.4207784,
+              37.7545651
+            ],
+            [
+              -122.4203352,
+              37.7545901
+            ],
+            [
+              -122.4203249,
+              37.7544891
+            ],
+            [
+              -122.4199001,
+              37.7545151
+            ],
+            [
+              -122.4199568,
+              37.7551301
+            ]
+          ]
+        ],
+        "areaSquareMeters": 4794.278494132683
+      },
+      "distanceMeters": 469.39217896,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://ccsf.edu",
+      "phone": "14159206000"
+    },
+    {
+      "id": "97c7dabc-fbbe-4056-a15d-71e6cb27a658",
+      "source": "overture",
+      "name": "Garfield Square",
+      "address": "3100 26th St, San Francisco, CA 94110, US",
+      "street": "3100 26th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.750092447091,
+        "longitude": -122.41204273899
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7494821,
+          "west": -122.4127497,
+          "north": 37.7509524,
+          "east": -122.4117585
+        },
+        "rings": [
+          [
+            [
+              -122.4127497,
+              37.7509019
+            ],
+            [
+              -122.4126162,
+              37.7494821
+            ],
+            [
+              -122.4117585,
+              37.7495325
+            ],
+            [
+              -122.4118918,
+              37.7509524
+            ],
+            [
+              -122.4127497,
+              37.7509019
+            ]
+          ]
+        ],
+        "areaSquareMeters": 11979.145575195551
+      },
+      "distanceMeters": 476.39843379,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://sfrecpark.org/destination/garfield-square",
+      "phone": "+14158312700"
+    },
+    {
+      "id": "df115b01-122f-4381-ae06-ede8f6444be4",
+      "source": "overture",
+      "name": "Yosemite National Park",
+      "address": "San Francisco, CA, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": null,
+      "country": "US",
+      "location": {
+        "latitude": 37.748111963333,
+        "longitude": -122.41621150778
+      },
+      "extent": null,
+      "distanceMeters": 316.9667259,
+      "types": [
+        "national_park"
+      ],
+      "primaryType": "national_park",
+      "basicCategory": "national_park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.nps.gov/yose/index.htm",
+      "phone": null
+    },
+    {
+      "id": "5299e4ab-ac64-4e18-bb62-b623146a72be",
+      "source": "overture",
+      "name": "Juri Commons Park",
+      "address": "1343 Guerrero St, San Francisco, CA 94110, US",
+      "street": "1343 Guerrero St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.74946798,
+        "longitude": -122.42223859
+      },
+      "extent": null,
+      "distanceMeters": 380.20228906,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.meetup.com/Juri-Commoners",
+      "phone": "+14158312700"
+    },
+    {
+      "id": "f360770e-ac40-44c9-aab0-27df9904feea",
+      "source": "overture",
+      "name": "Coso and Precita Mini Park",
+      "address": "99-1 Coso Ave, San Francisco, CA 94110, US",
+      "street": "99-1 Coso Ave",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.746541,
+        "longitude": -122.418444
+      },
+      "extent": null,
+      "distanceMeters": 443.02880353,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "bc140fbe-b3c5-44e4-b14c-6e86694c78b7",
+      "source": "overture",
+      "name": "University Of San Francisco",
+      "address": "2601 Mission St, San Francisco, CA 94110-3111, US",
+      "street": "2601 Mission St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3111",
+      "country": "US",
+      "location": {
+        "latitude": 37.75507,
+        "longitude": -122.41803
+      },
+      "extent": null,
+      "distanceMeters": 504.54260868,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://usfca.edu",
+      "phone": "+14155654600"
+    },
+    {
+      "id": "dceb0c67-9cf5-46c1-84d8-b5badb38cd95",
+      "source": "overture",
+      "name": "City College of San Francisco Mission Center",
+      "address": "1125 Valencia St, San Francisco, CA 94110, US",
+      "street": "1125 Valencia St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.75477078,
+        "longitude": -122.42062318
+      },
+      "extent": null,
+      "distanceMeters": 519.7644021,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.ccsf.edu/NEW/en/our-campuses/mission.html",
+      "phone": "+14159206000"
+    },
+    {
+      "id": "eeee4ee9-5b40-40bc-82fb-e8954891bd51",
+      "source": "overture",
+      "name": "22nd & Mission Giants Street Fire",
+      "address": "San Francisco, CA 94110, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.755327,
+        "longitude": -122.418988
+      },
+      "extent": null,
+      "distanceMeters": 538.25765456,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://missionlocal.org/2015/01/fire-at-mission-and-22nd-street/",
+      "phone": null
+    },
+    {
+      "id": "3bd6609b-30b5-4c58-bbb5-e4f23405dbe1",
+      "source": "overture",
+      "name": "Parque Ninos Unidos",
+      "address": "3090 23rd St, San Francisco, CA 94110-3331, US",
+      "street": "3090 23rd St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3331",
+      "country": "US",
+      "location": {
+        "latitude": 37.75440239028569,
+        "longitude": -122.41359177551989
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7542025,
+          "west": -122.4141089,
+          "north": 37.7547708,
+          "east": -122.4132812
+        },
+        "rings": [
+          [
+            [
+              -122.4133271,
+              37.7547708
+            ],
+            [
+              -122.4141036,
+              37.7542576
+            ],
+            [
+              -122.4141022,
+              37.7542152
+            ],
+            [
+              -122.4132881,
+              37.7542602
+            ],
+            [
+              -122.4133271,
+              37.7547708
+            ]
+          ]
+        ],
+        "areaSquareMeters": 2206.481011476586
+      },
+      "distanceMeters": 542.02613912,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.sfrecpark.org/destination/parque-ninos-unidos",
+      "phone": "+14152522590"
+    },
+    {
+      "id": "bced4b22-1328-4452-bf91-5d9e2ce29b21",
+      "source": "overture",
+      "name": "Guerrero Park",
+      "address": "618 San Jose Ave, San Francisco, CA 94110, US",
+      "street": "618 San Jose Ave",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.745642492269,
+        "longitude": -122.42207049778
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7453364,
+          "west": -122.422155,
+          "north": 37.7458902,
+          "east": -122.421944
+        },
+        "rings": [
+          [
+            [
+              -122.4221098,
+              37.7453731
+            ],
+            [
+              -122.4219446,
+              37.7458355
+            ],
+            [
+              -122.422015,
+              37.7458902
+            ],
+            [
+              -122.4220663,
+              37.7458297
+            ],
+            [
+              -122.4221454,
+              37.7458703
+            ],
+            [
+              -122.4221098,
+              37.7453731
+            ]
+          ]
+        ],
+        "areaSquareMeters": 560.4222051836259
+      },
+      "distanceMeters": 616.24622882,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://pavementtoparks.sfplanning.org",
+      "phone": "+14157012311"
+    },
+    {
+      "id": "081c79d1-1955-4baf-b17e-839883c0785b",
+      "source": "overture",
+      "name": "Precita Park",
+      "address": "348 Precita Ave, San Francisco, CA 94110-4725, US",
+      "street": "348 Precita Ave",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-4725",
+      "country": "US",
+      "location": {
+        "latitude": 37.746654,
+        "longitude": -122.412744
+      },
+      "extent": null,
+      "distanceMeters": 640.57329734,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://sfrecpark.org/destination/precita-park",
+      "phone": "+14152852311"
+    },
+    {
+      "id": "251b9923-f98c-4f8d-b1aa-733fdf099398",
+      "source": "overture",
+      "name": "Bernal Heights Park",
+      "address": "Bernal Heights Blvd, San Francisco, CA 94110, US",
+      "street": "Bernal Heights Blvd",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.74302858,
+        "longitude": -122.41364827
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7418427,
+          "west": -122.4175929,
+          "north": 37.7450055,
+          "east": -122.4094218
+        },
+        "rings": [
+          [
+            [
+              -122.4157647,
+              37.7422024
+            ],
+            [
+              -122.4150609,
+              37.7422363
+            ],
+            [
+              -122.4144092,
+              37.7425266
+            ],
+            [
+              -122.4139794,
+              37.7425078
+            ],
+            [
+              -122.4140138,
+              37.7422567
+            ],
+            [
+              -122.4134473,
+              37.7422295
+            ],
+            [
+              -122.4134387,
+              37.7419377
+            ],
+            [
+              -122.4128889,
+              37.7419175
+            ],
+            [
+              -122.4128705,
+              37.7421172
+            ],
+            [
+              -122.4114032,
+              37.7421648
+            ],
+            [
+              -122.4113946,
+              37.742253
+            ],
+            [
+              -122.4103483,
+              37.7422025
+            ],
+            [
+              -122.4103397,
+              37.7424062
+            ],
+            [
+              -122.4100802,
+              37.7423915
+            ],
+            [
+              -122.410057,
+              37.7429286
+            ],
+            [
+              -122.4094819,
+              37.7429218
+            ],
+            [
+              -122.4094218,
+              37.7432001
+            ],
+            [
+              -122.4097995,
+              37.7432612
+            ],
+            [
+              -122.4103831,
+              37.7436956
+            ],
+            [
+              -122.4111556,
+              37.7436956
+            ],
+            [
+              -122.4118938,
+              37.7439263
+            ],
+            [
+              -122.4133443,
+              37.7438856
+            ],
+            [
+              -122.4133997,
+              37.7441976
+            ],
+            [
+              -122.4144429,
+              37.7441299
+            ],
+            [
+              -122.4148893,
+              37.7442928
+            ],
+            [
+              -122.4149252,
+              37.7446015
+            ],
+            [
+              -122.4152008,
+              37.744695
+            ],
+            [
+              -122.4151124,
+              37.7449308
+            ],
+            [
+              -122.4155931,
+              37.7450055
+            ],
+            [
+              -122.4156703,
+              37.7447136
+            ],
+            [
+              -122.4164628,
+              37.7436183
+            ],
+            [
+              -122.416726,
+              37.7437024
+            ],
+            [
+              -122.4175929,
+              37.742406
+            ],
+            [
+              -122.4173951,
+              37.7423527
+            ],
+            [
+              -122.4174041,
+              37.7422228
+            ],
+            [
+              -122.4171466,
+              37.7419716
+            ],
+            [
+              -122.4168634,
+              37.7418427
+            ],
+            [
+              -122.4167947,
+              37.7419445
+            ],
+            [
+              -122.4163484,
+              37.7419241
+            ],
+            [
+              -122.4163312,
+              37.7420734
+            ],
+            [
+              -122.4157647,
+              37.7422024
+            ]
+          ]
+        ],
+        "areaSquareMeters": 130861.17246695701
+      },
+      "distanceMeters": 652.29472489,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://en.wikipedia.org/wiki/Bernal_Heights_Summit",
+      "phone": "+14158312783"
+    },
+    {
+      "id": "74d32b90-d00a-4e75-91ef-2e599030d367",
+      "source": "overture",
+      "name": "The Secret Garden",
+      "address": "23rd St @ Harrison St, San Francisco, CA 94199, US",
+      "street": "23rd St @ Harrison St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94199",
+      "country": "US",
+      "location": {
+        "latitude": 37.754104,
+        "longitude": -122.411893
+      },
+      "extent": null,
+      "distanceMeters": 678.525814,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://freefarmstand.org",
+      "phone": null
+    },
+    {
+      "id": "b6a246cd-c3ee-4c86-b728-e0a0c0d33bbc",
+      "source": "overture",
+      "name": "Bernal Cut SF",
+      "address": "San Francisco, CA, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": null,
+      "country": "US",
+      "location": {
+        "latitude": 37.747320203068,
+        "longitude": -122.42471181198
+      },
+      "extent": null,
+      "distanceMeters": 680.06455633,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://bernalcut.org/",
+      "phone": null
+    },
+    {
+      "id": "04cad626-51de-43a8-ae5c-a5e429ed89e0",
+      "source": "overture",
+      "name": "Coleridge Mini Park",
+      "address": "88 1/2 Coleridge St, San Francisco, CA 94110, US",
+      "street": "88 1/2 Coleridge St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.74437501,
+        "longitude": -122.41951053
+      },
+      "extent": {
+        "boundingBox": {
+          "south": 37.7442665,
+          "west": -122.4195954,
+          "north": 37.7444431,
+          "east": -122.4194183
+        },
+        "rings": [
+          [
+            [
+              -122.4194887,
+              37.7442665
+            ],
+            [
+              -122.4194197,
+              37.7444081
+            ],
+            [
+              -122.4195451,
+              37.7444431
+            ],
+            [
+              -122.4195954,
+              37.7443689
+            ],
+            [
+              -122.4194887,
+              37.7442665
+            ]
+          ]
+        ],
+        "areaSquareMeters": 180.189306469867
+      },
+      "distanceMeters": 686.38482719,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "28ef1224-63af-4405-9133-3e69f41a24fa",
+      "source": "overture",
+      "name": "Stoner Doom University",
+      "address": "2624 Harrison St, San Francisco, CA 94110-3318, US",
+      "street": "2624 Harrison St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-3318",
+      "country": "US",
+      "location": {
+        "latitude": 37.7554051,
+        "longitude": -122.4123538
+      },
+      "extent": null,
+      "distanceMeters": 743.60699152,
+      "types": [
+        "college_university"
+      ],
+      "primaryType": "college_university",
+      "basicCategory": "college_university",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 0.8037781519572145,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.btasf.org/",
+      "phone": null
+    },
+    {
+      "id": "8cf8f713-7894-4563-adb0-b7ee4dab565b",
+      "source": "overture",
+      "name": "Aereo Puerto De San Francisco",
+      "address": "San Francisco, CA, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": null,
+      "country": "US",
+      "location": {
+        "latitude": 37.7538737,
+        "longitude": -122.410396933
+      },
+      "extent": null,
+      "distanceMeters": 776.64584598,
+      "types": [
+        "airport"
+      ],
+      "primaryType": "airport",
+      "basicCategory": "airport",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.disfrutasanfrancisco.com/aeropuerto-san-francisco",
+      "phone": null
+    },
+    {
+      "id": "f2d9017b-d6ef-4293-a106-959729f0d53f",
+      "source": "overture",
+      "name": "The grove AIDS MEMORIAL Golden Gate Park",
+      "address": "San Francisco, CA, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": null,
+      "country": "US",
+      "location": {
+        "latitude": 37.75517229756335,
+        "longitude": -122.4252926466799
+      },
+      "extent": null,
+      "distanceMeters": 814.82668599,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.aidsmemorial.org/",
+      "phone": "+14157650497"
+    },
+    {
+      "id": "3154bb81-4db5-4c67-9692-5eef115c19a6",
+      "source": "overture",
+      "name": "Deepistan National Parklet",
+      "address": "945 Valencia St, San Francisco, CA 94110, US",
+      "street": "945 Valencia St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110",
+      "country": "US",
+      "location": {
+        "latitude": 37.757692198697,
+        "longitude": -122.42077904405
+      },
+      "extent": null,
+      "distanceMeters": 828.92273912,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.deeplet.org/",
+      "phone": null
+    },
+    {
+      "id": "deb4b010-48c0-4e8e-a637-fc61fd77c36a",
+      "source": "overture",
+      "name": "Rohit's New Airport",
+      "address": "123 29th St, San Francisco, CA 94110-4902, US",
+      "street": "123 29th St",
+      "locality": "San Francisco",
+      "region": "CA",
+      "postcode": "94110-4902",
+      "country": "US",
+      "location": {
+        "latitude": 37.74372,
+        "longitude": -122.42306
+      },
+      "extent": null,
+      "distanceMeters": 871.13745656,
+      "types": [
+        "airport"
+      ],
+      "primaryType": "airport",
+      "basicCategory": "airport",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://flysfo.com/",
+      "phone": "+14155785461"
+    }
+  ],
+  "placeKeys": {
+    "laTaqueria": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+    "joseyBaker": "b290dd6d-84d3-4c45-bd30-8717264ddcd6",
+    "reems": "434e2c85-220d-4b03-befc-ec9907b6f27d",
+    "chaseMortgage": "961bc56a-eccb-40a5-9498-7fe51ef8575d",
+    "foodTours": "b4f4c077-6e9d-43a7-9900-0fd160770dc3",
+    "instituto": "32aedc36-2492-4162-9fa9-fb49a308ee2b"
+  },
+  "histories": {
+    "none": [],
+    "burritoRegular": [
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-05-28T20:13:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-06-09T20:06:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-06-21T20:49:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-07-03T20:42:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-07-15T20:35:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-07-27T20:28:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-08-08T20:21:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-08-20T20:14:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-09-01T20:07:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      },
+      {
+        "placeId": "1adcf426-3c81-4310-9249-c443c82ff5eb",
+        "createdAt": "2026-09-13T20:00:00.000Z",
+        "placeName": "La Taqueria",
+        "placeAddress": "2889 Mission St, San Francisco, CA 94110, US",
+        "placePrimaryType": "mexican_restaurant",
+        "placeTypes": [
+          "mexican_restaurant"
+        ],
+        "location": {
+          "latitude": 37.75088556,
+          "longitude": -122.41819985
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "simulator fix, no history",
+      "now": "2026-09-25T21:12:00-07:00",
+      "horizontalAccuracy": 5,
+      "fixAgeSeconds": 5,
+      "history": "none",
+      "expect": {
+        "suggested": null,
+        "rankedAbove": [
+          [
+            "laTaqueria",
+            "chaseMortgage"
+          ],
+          [
+            "laTaqueria",
+            "foodTours"
+          ],
+          [
+            "laTaqueria",
+            "instituto"
+          ],
+          [
+            "joseyBaker",
+            "chaseMortgage"
+          ],
+          [
+            "reems",
+            "chaseMortgage"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "simulator fix, burrito regular",
+      "now": "2026-09-25T13:05:00-07:00",
+      "horizontalAccuracy": 5,
+      "fixAgeSeconds": 5,
+      "history": "burritoRegular",
+      "expect": {
+        "top": "laTaqueria"
+      }
+    }
+  ]
+}

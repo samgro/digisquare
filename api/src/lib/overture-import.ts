@@ -13,17 +13,24 @@ import type { Bounds, Cell } from "./coverage-cells.js";
 import type { OverturePlaceInsert } from "./overture.js";
 
 /**
- * Rows per upsert statement. Each row binds 17 parameters and Postgres
- * allows 65,535 per statement, so this could go to about 3,800; 2,000 keeps
+ * Rows per upsert statement. Each row binds 23 parameters and Postgres
+ * allows 65,535 per statement, so this could go to about 2,800; 2,000 keeps
  * a statement comfortably small while making a quarter as many round trips
  * as 500 did.
  */
 export const UPSERT_BATCH_SIZE = 2000;
 
+/**
+ * Everything an import writes. `provider_count` is not among them: it comes
+ * from a separate pass over the bridge files (`overture-bridge.ts`) and a
+ * re-import must not blank it.
+ */
 const COMPARED_COLUMNS = [
   "name",
   "primary_type",
   "types",
+  "basic_category",
+  "taxonomy_hierarchy",
   "address_street",
   "address_locality",
   "address_region",
@@ -34,6 +41,10 @@ const COMPARED_COLUMNS = [
   "confidence",
   "website",
   "phone",
+  "source_dataset",
+  "source_updated_at",
+  "operating_status",
+  "prior",
 ] as const;
 
 function excluded(column: string) {
@@ -89,6 +100,8 @@ export async function upsertOverturePlaces(
         name: excluded("name"),
         primaryType: excluded("primary_type"),
         types: excluded("types"),
+        basicCategory: excluded("basic_category"),
+        taxonomyHierarchy: excluded("taxonomy_hierarchy"),
         addressStreet: excluded("address_street"),
         addressLocality: excluded("address_locality"),
         addressRegion: excluded("address_region"),
@@ -99,6 +112,10 @@ export async function upsertOverturePlaces(
         confidence: excluded("confidence"),
         website: excluded("website"),
         phone: excluded("phone"),
+        sourceDataset: excluded("source_dataset"),
+        sourceUpdatedAt: excluded("source_updated_at"),
+        operatingStatus: excluded("operating_status"),
+        prior: excluded("prior"),
         lastSeenRelease: excluded("last_seen_release"),
         retiredAt: sql`null`,
         updatedAt: sql`case when ${rowChanged} then now() else ${places.updatedAt} end`,

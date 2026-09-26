@@ -43,6 +43,13 @@ export interface OvertureSource {
   release: string;
   /** A glob DuckDB's read_parquet accepts for one theme and type. */
   parquetGlob(theme: OvertureTheme, type: string): string;
+  /**
+   * The same for the release's bridge files: one row per source record that
+   * went into a feature, keyed by the feature's GERS id, so a venue three
+   * providers agree on has three rows. Published per provider, with no
+   * bbox, so they can only be scanned whole.
+   */
+  bridgeGlob(theme: OvertureTheme, type: string): string;
   /** Whether `httpfs` has to be loaded (S3), or the files are local. */
   remote: boolean;
 }
@@ -53,6 +60,8 @@ export function s3Source(release: string): OvertureSource {
     remote: true,
     parquetGlob: (theme, type) =>
       `s3://overturemaps-us-west-2/release/${release}/theme=${theme}/type=${type}/*`,
+    bridgeGlob: (theme, type) =>
+      `s3://overturemaps-us-west-2/bridgefiles/${release}/*/theme=${theme}/type=${type}/*`,
   };
 }
 
@@ -185,13 +194,15 @@ async function streamRows(
 }
 
 /**
- * The columns the parsers use, and no more: whole `names`, `taxonomy` and
- * `addresses` structs carry translations, hierarchies and secondary
- * addresses that would be fetched and decoded only to be dropped.
+ * The columns the parsers use, and no more: whole `names` and `addresses`
+ * structs carry translations and secondary addresses that would be fetched
+ * and decoded only to be dropped. `sources` is small (the provider entry
+ * plus Overture's own) and read whole.
  */
 const PLACE_COLUMNS = `id, geometry, names.primary AS name,
-  taxonomy.primary AS primary_category, taxonomy.alternates AS alternate_categories,
-  confidence, addresses[1] AS address, websites[1] AS website, phones[1] AS phone, operating_status`;
+  taxonomy.primary AS primary_category, taxonomy.hierarchy AS category_hierarchy,
+  taxonomy.alternates AS alternate_categories, basic_category,
+  confidence, addresses[1] AS address, websites[1] AS website, phones[1] AS phone, operating_status, sources`;
 const EXTENT_COLUMNS = "id, geometry, names.primary AS name, subtype, class";
 
 /** A place row from the release files as the GeoJSON feature `parseOverturePlace` reads. */
@@ -199,12 +210,18 @@ export function placeRowToFeature(row: Row): OverturePlaceFeature {
   const geometry = geometryOf(row);
   const properties = plain({
     names: { primary: row.name },
-    taxonomy: { primary: row.primary_category, alternates: row.alternate_categories },
+    taxonomy: {
+      primary: row.primary_category,
+      hierarchy: row.category_hierarchy,
+      alternates: row.alternate_categories,
+    },
+    basic_category: row.basic_category,
     confidence: row.confidence,
     addresses: [row.address],
     websites: [row.website],
     phones: [row.phone],
     operating_status: row.operating_status,
+    sources: row.sources,
   }) as OverturePlaceFeature["properties"];
   return { id: String(row.id), type: "Feature", geometry, properties };
 }
@@ -352,4 +369,78 @@ export async function fetchCityContaining(
 
 function boxArea(bounds: Bounds): number {
   return (bounds.east - bounds.west) * (bounds.north - bounds.south);
+}
+
+/** What the bridge files say about the venues asked about. */
+export interface BridgeMatches {
+  /** Distinct providers per GERS id, for every id asked about that the files list. */
+  providerCounts: Map<string, number>;
+  /** The GERS id each Foursquare record went into, for the record ids asked about. */
+  overtureIdsByFoursquareRecord: Map<string, string>;
+}
+
+const ID_INSERT_BATCH_SIZE = 5000;
+
+/** A temporary table of the ids to look for, filled in batches of literals. */
+async function fillIdTable(connection: DuckDBConnection, table: string, column: string, values: string[]): Promise<void> {
+  await connection.run(`CREATE TEMP TABLE ${table} (${column} VARCHAR)`);
+  for (let start = 0; start < values.length; start += ID_INSERT_BATCH_SIZE) {
+    const literals = values
+      .slice(start, start + ID_INSERT_BATCH_SIZE)
+      .map((value) => `('${value.replace(/'/g, "''")}')`)
+      .join(", ");
+    await connection.run(`INSERT INTO ${table} VALUES ${literals}`);
+  }
+}
+
+/**
+ * Reads the places bridge files for the given GERS ids and Foursquare
+ * record ids. One scan of the whole release however short the lists: the
+ * files carry no bbox, so nothing narrows it. Minutes, not seconds.
+ */
+export async function fetchBridgeMatches(
+  source: OvertureSource,
+  placeIds: string[],
+  foursquareRecordIds: string[],
+): Promise<BridgeMatches> {
+  const connection = await connect(source);
+  try {
+    await fillIdTable(connection, "wanted_places", "id", placeIds);
+    await fillIdTable(connection, "wanted_records", "record_id", foursquareRecordIds);
+    await connection.run(
+      `CREATE TEMP TABLE bridge_hits AS
+       SELECT id, dataset, provider, record_id
+       FROM read_parquet('${source.bridgeGlob("places", "place")}')
+       WHERE id IN (SELECT id FROM wanted_places)
+          OR (provider = 'foursquare' AND record_id IN (SELECT record_id FROM wanted_records))`,
+    );
+    const providerCounts = new Map<string, number>();
+    await streamRows(
+      connection,
+      `SELECT id, count(DISTINCT dataset) AS providers FROM bridge_hits
+       WHERE id IN (SELECT id FROM wanted_places) GROUP BY id`,
+      async (rows) => {
+        for (const row of rows) {
+          providerCounts.set(String(row.id), Number(row.providers));
+        }
+      },
+    );
+    const overtureIdsByFoursquareRecord = new Map<string, string>();
+    await streamRows(
+      connection,
+      `SELECT record_id, min(id) AS id FROM bridge_hits
+       WHERE provider = 'foursquare' AND record_id IN (SELECT record_id FROM wanted_records) GROUP BY record_id`,
+      async (rows) => {
+        for (const row of rows) {
+          overtureIdsByFoursquareRecord.set(String(row.record_id), String(row.id));
+        }
+      },
+    );
+    return { providerCounts, overtureIdsByFoursquareRecord };
+  } finally {
+    for (const table of ["bridge_hits", "wanted_records", "wanted_places"]) {
+      await connection.run(`DROP TABLE IF EXISTS ${table}`).catch(() => {});
+    }
+    connection.closeSync();
+  }
 }

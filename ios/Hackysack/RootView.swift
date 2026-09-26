@@ -30,6 +30,9 @@ struct RootView: View {
                 BuildMismatchBanner(app: app, server: server)
             }
         }
+        // Simulator builds only: a moment's notice when the app is not on
+        // the local dev server, so a build left on production says so.
+        .apiServerToast()
     }
 
     @ViewBuilder

@@ -27,6 +27,21 @@ against the code list in `src/lib/overture-categories.ts` (generated with
 `categoryName`. Venue grounds (`extent`) come from Overture's base theme
 polygons, matched in `src/lib/extent-matching.ts`.
 
+Every Overture row carries a `prior`: the log-odds that anyone would check
+in there, computed at import by `src/lib/place-quality.ts` from which
+provider the record came from (`sourceDataset`), its confidence and
+operating status, and its taxonomy path (`taxonomyHierarchy`, which also
+gives the category tiers: food and drink up, offices and practitioners
+down). `providerCount`, how many providers matched the venue in the
+release's bridge files, is written separately by `npm run overture:bridge`
+after a seed or refresh (a whole-release scan, minutes), which also records
+each imported Foursquare venue's Overture id on `foursquare_venues`; the
+search adds its bonus when a row is read. Nearby searches drop rows below
+`HIDDEN_PRIOR_THRESHOLD`; name searches do not. `GET /places` returns the
+prior and the app's ranker adds it to its score, so a change to the
+weights in `place-quality.ts` needs `npm run coverage:refresh -- --all` to
+reach existing rows.
+
 The searches in `src/lib/places-search.ts` cast to geography and the GiST
 indexes are on that cast; a plain geometry index would go unused. Anything
 that touches SQL there, a migration, or the worker needs a real PostGIS to
@@ -49,15 +64,32 @@ HACKYSACK_API_URL=http://localhost:3000 npm run fixtures:record -- sfo-terminal-
 ```
 
 A file whose `recordedAt` is null is stand-in data and should be re-recorded.
-The current files were converted from the old Google recordings, with the
-Google types mapped to Overture categories, and are all in that state.
+
+# Ranking evaluation
+
+`npm run ranking:evaluate` measures the ranker against the imported Swarm
+checkins whose venues `overture:bridge` matched to Overture places: it
+stands a noisy fix near each venue's pin, fetches candidates the way `GET
+/places` does, ranks them with the app's own `PlaceRanker` (compiled from
+the iOS sources with swiftc into `build/`) and reports top-1, top-3 and MRR
+by accuracy. Flags such as `--pin-error 12 --prior-weight 0` override
+weights, so a tuning change is compared before and after on the same fixes.
+Run it against a database holding the checkins' areas (the Neon branch or
+production; `.env.branch` picks). Use it before changing `RankingWeights`,
+`PlaceFootprint` or `place-quality.ts`. Its truths come through Foursquare's
+bridge records, so they are nearly all corroborated venues: discount what
+it says about the corroboration bonus.
 
 # Running locally
 
-`npm run dev` takes the first free port from 3001 up (several checkouts run
-at once), so read the port from its "Server running at" line rather than
-assuming one. Port 3000 is reserved for the user's manual testing (Bruno's
-Local environment points there): never start a server with `PORT=3000`, and
-never assume 3000 is this checkout's server. The simulator app finds its own
+Port 3000 is the user's own server: their `.env` sets `PORT=3000` and Bruno's
+Local environment points there. A Claude Code session has
+`HACKYSACK_AUTOMATIC_PORT=1` in its environment (from `.claude/settings.json`),
+which makes `npm run dev` ignore `PORT` and take the first free port from 3001
+up (several checkouts run at once), so read the port from its "Server running
+at" line rather than assuming one. Never start a server with `PORT=3000`, never
+send requests to 3000, and never assume 3000 is this checkout's server. The simulator app finds its own
 server by probing ports 3000-3009 for the one on its branch, so it needs no
-configuration.
+configuration. Never `pkill` or `killall`: the user's server and other
+checkouts' servers share this machine, so kill the pid you started. A
+PreToolUse hook (`.claude/hooks/guard-bash.sh`) refuses both mistakes.

@@ -67,6 +67,53 @@ const PACIFIC = "America/Los_Angeles";
 
 export const rankingScenarios: RankingScenarioDefinition[] = [
   {
+    name: "mission-la-taqueria",
+    description:
+      "In line at La Taqueria on Mission Street, standing at the coordinate Google lists for it, which is 41 m from Overture's pin. More than seventy places sit within 77 m of that pin: a bakery, a Lebanese restaurant and a pie shop that closed in 2019 are nearer, and so are a mortgage lender, a food tour company, a nonprofit and a business-registry entry for a person.",
+    timeZone: PACIFIC,
+    fix: { latitude: 37.750525, longitude: -122.418135 },
+    horizontalAccuracy: 5,
+    placeKeys: {
+      laTaqueria: "la taqueria",
+      joseyBaker: "josey baker bread",
+      reems: "reem's",
+      chaseMortgage: "chase mortgage",
+      foodTours: "secret food tours",
+      instituto: "instituto familiar de la raza",
+    },
+    referenceNow: "2026-09-25T21:12:00-07:00",
+    histories: {
+      none: [],
+      burritoRegular: [{ place: "laTaqueria", visits: 10, hourOfDay: 13, spanDays: 120, days: "any" }],
+    },
+    cases: [
+      {
+        // Three real restaurants share the block; the list must be shown.
+        // What matters is that the venue 41 m off leads every office and
+        // service listing that happens to sit nearer the fix.
+        name: "simulator fix, no history",
+        now: "2026-09-25T21:12:00-07:00",
+        history: "none",
+        expect: {
+          suggested: null,
+          rankedAbove: [
+            ["laTaqueria", "chaseMortgage"],
+            ["laTaqueria", "foodTours"],
+            ["laTaqueria", "instituto"],
+            ["joseyBaker", "chaseMortgage"],
+            ["reems", "chaseMortgage"],
+          ],
+        },
+      },
+      {
+        name: "simulator fix, burrito regular",
+        now: "2026-09-25T13:05:00-07:00",
+        history: "burritoRegular",
+        expect: { top: "laTaqueria" },
+      },
+    ],
+  },
+  {
     name: "truckee-town-hall",
     description:
       "Standing outside the council chambers at Truckee Town Hall. The data lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
@@ -74,9 +121,9 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     fix: { latitude: 39.316962, longitude: -120.146008 },
     horizontalAccuracy: 30,
     placeKeys: {
-      townHall: "truckee town hall & town clerk",
-      police: "truckee police department",
-      sportsPark: "riverview sports park",
+      townHall: "truckee town hall and town clerk",
+      police: "truckee police",
+      sportsPark: "truckee river regional park",
       airport: "truckee tahoe airport",
     },
     referenceNow: "2026-09-22T10:15:00-07:00",
@@ -143,7 +190,8 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       lift: "lift workspace",
       enterprise: "enterprise rent-a-car",
       nationalCarRental: "national car rental",
-      synergy: "synergy healing arts",
+      physicalTherapist: "red fox physical therapy",
+      airport: "truckee tahoe airport",
     },
     referenceNow: "2026-09-23T14:00:00-07:00",
     histories: {
@@ -152,20 +200,23 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     },
     cases: [
       {
-        // A tight fix in a building full of unrelated businesses: several
-        // plausible answers, so the list must be shown.
+        // Overture's grounds for the Truckee Tahoe Airport take in the
+        // business park, so to a first-time visitor the building is, first
+        // of all, inside the airport, the way a terminal counter is at SFO.
+        // Lift and the rental counters share a pin and, with no checkins
+        // yet, a score; only history separates them (the next case).
         name: "tight fix, no history",
         now: "2026-09-23T14:00:00-07:00",
         history: "none",
-        // Lift and the rental counters share a pin and, with no checkins
-        // yet, a score; only history can separate them.
-        expect: { suggested: null },
+        expect: { top: "airport", suggested: "airport" },
       },
       {
+        // Eight visits put Lift first, but the airport whose grounds hold
+        // the building stays close enough behind that the list is shown.
         name: "tight fix, coworking regular",
         now: "2026-09-23T10:20:00-07:00",
         history: "coworkingRegular",
-        expect: { top: "lift", suggested: "lift" },
+        expect: { top: "lift" },
       },
     ],
   },
@@ -233,12 +284,14 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       },
       {
         // Even a tight fix at the counter of a storefront nobody has checked
-        // in at is, first of all, a fix inside the airport.
+        // in at is, first of all, a fix inside the airport, with the counters
+        // close behind. Which counter is not settled: pins are trusted to
+        // about 30 m, so those within 40 m tie on geometry.
         name: "tight fix, no history",
         now: "2026-09-22T07:30:00-07:00",
         horizontalAccuracy: 8,
         history: "none",
-        expect: { top: "airport", suggested: "airport", rankedAbove: [["peets", "larkCreek"]] },
+        expect: { top: "airport", suggested: null },
       },
       {
         // A regular's own history outweighs the airport around them, and the
@@ -263,7 +316,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
       stadium: "levi's stadium",
       museum: "49ers museum",
       greatAmerica: "great america",
-      university: "mission college",
+      conventionCenter: "santa clara convention center",
     },
     referenceNow: "2026-09-20T13:05:00-07:00",
     histories: {
@@ -283,7 +336,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
           rankedAbove: [
             ["stadium", "museum"],
             ["stadium", "greatAmerica"],
-            ["stadium", "university"],
+            ["stadium", "conventionCenter"],
           ],
         },
       },
@@ -305,8 +358,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     placeKeys: {
       deYoung: "de young museum",
       park: { name: "golden gate park", primaryType: "park" },
-      museumStore: "de young museum store",
-      kezarStadium: "kezar stadium",
+      museumCafe: "de young caf",
     },
     referenceNow: "2026-09-19T11:00:00-07:00",
     histories: {
@@ -325,18 +377,16 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         expect: {
           top: "deYoung",
           suggested: null,
-          rankedAbove: [["deYoung", "museumStore"]],
+          rankedAbove: [["deYoung", "museumCafe"]],
         },
       },
       {
-        // The runner's history is at the park, but its pin is 1.3 km away
-        // and the ranker has no extent to place the user inside it: history
-        // never outweighs geometry, so the museum entrance still leads and
-        // nothing is suggested. Re-record once places carry an extent.
+        // The park's recorded grounds hold the fix, and twenty morning runs
+        // there outweigh the museum at the entrance: the park is the checkin.
         name: "morning park runner",
         now: "2026-09-19T07:10:00-07:00",
         history: "parkRunner",
-        expect: { top: "deYoung", suggested: null },
+        expect: { top: "park", suggested: "park" },
       },
       {
         name: "museum member",

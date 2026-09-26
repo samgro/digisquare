@@ -6,19 +6,22 @@ import { findOpenPort } from "./lib/open-port.js";
 import { s3Source } from "./lib/overture-remote.js";
 import { resumeRunningImports } from "./lib/swarm-import.js";
 
-// Locally, several checkouts run their own API at once: each takes the
-// first free port from 3001 up, and the simulator app finds its own server
-// by branch. 3000 is kept for manual testing (Bruno points there) and is
-// only used when asked for with PORT=3000. Where PORT is set it is used as
-// is, so a clash on Railway fails loudly instead of drifting.
+// Locally, several checkouts run their own API at once. The user's own
+// server is the one on PORT (3000 in their .env; Bruno points there), used
+// as is so a clash fails loudly instead of drifting, on Railway too. Every
+// other checkout takes the first free port from 3001, and the simulator app
+// finds its server by branch. A Claude Code session has
+// HACKYSACK_AUTOMATIC_PORT set (see .claude/settings.json), which ignores
+// PORT altogether, so a server it starts can never land on the user's.
 const FIRST_AUTOMATIC_PORT = 3001;
-const port = process.env.PORT ? config.PORT : await findOpenPort(FIRST_AUTOMATIC_PORT);
+const automaticPort = process.env.HACKYSACK_AUTOMATIC_PORT === "1" || !process.env.PORT;
+const port = automaticPort ? await findOpenPort(FIRST_AUTOMATIC_PORT) : config.PORT;
 
 serve({ fetch: app.fetch, port }, (info) => {
-  const note = process.env.PORT
+  const note = !automaticPort
     ? ""
     : info.port === FIRST_AUTOMATIC_PORT
-      ? " (3000 is kept for manual testing; PORT=3000 to use it)"
+      ? " (3000 is the user's own server)"
       : ` (${FIRST_AUTOMATIC_PORT} was busy)`;
   console.log(`Server running at http://localhost:${info.port}${note}`);
 });

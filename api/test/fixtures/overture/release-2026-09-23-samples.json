@@ -89,7 +89,33 @@
     "xmax": -122.39881134033203,
     "ymin": 37.787044525146484,
     "ymax": 37.787052154541016
-   }
+   },
+   "sources": [
+    {
+     "property": "",
+     "dataset": "meta",
+     "license": null,
+     "record_id": "268437223252604",
+     "update_time": "2026-09-14T00:00:00.000Z",
+     "confidence": null,
+     "between": null,
+     "provider": "meta",
+     "resource": null,
+     "version": null
+    },
+    {
+     "property": "/properties/confidence",
+     "dataset": "Overture",
+     "license": null,
+     "record_id": null,
+     "update_time": "2026-09-17T22:52:12Z",
+     "confidence": null,
+     "between": null,
+     "provider": "overture",
+     "resource": null,
+     "version": null
+    }
+   ]
   },
   {
    "id": "2016caa0-d77c-4b54-98b3-cff487a5fd0f",
@@ -137,7 +163,33 @@
     "xmax": -122.40091705322266,
     "ymin": 37.78742218017578,
     "ymax": 37.78742599487305
-   }
+   },
+   "sources": [
+    {
+     "property": "",
+     "dataset": "BrightQuery",
+     "license": null,
+     "record_id": "bq-16d2a5d9",
+     "update_time": "2026-09-17T20:01:51.007Z",
+     "confidence": null,
+     "between": null,
+     "provider": "brightquery",
+     "resource": null,
+     "version": null
+    },
+    {
+     "property": "/properties/confidence",
+     "dataset": "Overture",
+     "license": null,
+     "record_id": null,
+     "update_time": "2026-09-17T22:52:12Z",
+     "confidence": null,
+     "between": null,
+     "provider": "overture",
+     "resource": null,
+     "version": null
+    }
+   ]
   }
  ],
  "land_use": [
@@ -1345,6 +1397,43 @@
     "ymin": 37.70822525024414,
     "ymax": 37.863739013671875
    }
+  }
+ ],
+ "bridge": [
+  {
+   "id": "8e266ace-78d5-493b-90a2-c4b5da8786d4",
+   "dataset": "meta",
+   "provider": "meta",
+   "record_id": "268437223252604",
+   "update_time": "2026-09-14T00:00:00.000Z"
+  },
+  {
+   "id": "8e266ace-78d5-493b-90a2-c4b5da8786d4",
+   "dataset": "Foursquare",
+   "provider": "foursquare",
+   "record_id": "4a5b1d2ef964a520b5b91fe3",
+   "update_time": "2025-11-02T00:00:00.000Z"
+  },
+  {
+   "id": "8e266ace-78d5-493b-90a2-c4b5da8786d4",
+   "dataset": "Microsoft",
+   "provider": "microsoft",
+   "record_id": "ms-7c1e0f",
+   "update_time": "2025-03-19T00:00:00.000Z"
+  },
+  {
+   "id": "2016caa0-d77c-4b54-98b3-cff487a5fd0f",
+   "dataset": "BrightQuery",
+   "provider": "brightquery",
+   "record_id": "bq-16d2a5d9",
+   "update_time": "2026-09-17T20:01:51.007Z"
+  },
+  {
+   "id": "00000000-1111-2222-3333-444444444444",
+   "dataset": "Foursquare",
+   "provider": "foursquare",
+   "record_id": "4b8c1a2bf964a52056af32e3",
+   "update_time": "2024-05-05T00:00:00.000Z"
   }
  ]
 }
