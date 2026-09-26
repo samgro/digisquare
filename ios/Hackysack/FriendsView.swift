@@ -86,6 +86,15 @@ struct FriendsView: View {
                     .alignmentGuide(.listRowSeparatorTrailing) { dimensions in
                         dimensions.width + rowHorizontalInset
                     }
+                    .onAppear {
+                        if item.id == friendsStore.feed.last?.id {
+                            Task { await friendsStore.loadMoreFeed() }
+                        }
+                    }
+                }
+                if friendsStore.isLoadingMoreFeed {
+                    LoadingMoreRow()
+                        .listRowSeparator(.hidden)
                 }
             }
             .listStyle(.plain)

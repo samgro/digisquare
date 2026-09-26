@@ -16,6 +16,8 @@
     "coverage:seed": "tsx scripts/coverage-seed.ts",
     "coverage:refresh": "tsx scripts/coverage-refresh.ts",
     "coverage:retry": "tsx scripts/coverage-retry.ts",
+    "overture:categories": "tsx scripts/generate-overture-categories.ts",
+    "db:branch": "tsx scripts/db-branch.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed-test-users": "tsx scripts/seed-test-users.ts"
@@ -30,6 +32,7 @@
     "drizzle-orm": "^0.45.3",
     "hono": "^4.6.11",
     "jose": "^5.10.0",
+    "sharp": "^0.35.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {

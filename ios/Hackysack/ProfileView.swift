@@ -40,5 +40,6 @@ struct ProfileView: View {
     .environment(FriendsStore())
     .environment(LocationManager())
     .environment(CheckinSocialStore())
+    .environment(SwarmImportStore())
     .environmentObject(CheckinStore.inMemory())
 }

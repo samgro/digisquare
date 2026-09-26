@@ -149,7 +149,10 @@ struct PlaceDecodingTests {
         #expect(object["message"] as? String == "hello")
         #expect(object["visibility"] as? String == "friends")
         #expect(object["source"] as? String == "manual")
-        #expect(Set(object.keys) == ["placeId", "message", "visibility", "source"])
+        // Nothing about the place but its id: the server snapshots the rest.
+        #expect(Set(object.keys) == ["placeId", "message", "visibility", "source", "timeZoneOffsetMinutes", "photos"])
+        #expect(object["timeZoneOffsetMinutes"] as? Int == TimeZone.current.secondsFromGMT() / 60)
+        #expect((object["photos"] as? [Any])?.isEmpty == true)
     }
 
     @Test("Every recorded scenario decodes with the app's decoder")

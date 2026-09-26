@@ -33,6 +33,9 @@ final class DevServerLocator {
 
     /// The first location, shared by every caller that arrives before it is done.
     func ensureLocated() async {
+        // Production has a fixed URL. Checked before the task is cached, so a
+        // later switch to localhost still gets its first look.
+        guard APIEnvironment.server == .localhost else { return }
         if locateTask == nil {
             locateTask = Task { await locate() }
         }
@@ -41,6 +44,7 @@ final class DevServerLocator {
 
     /// Probes again, for when the server may have moved or just started.
     func relocate() async {
+        guard APIEnvironment.server == .localhost else { return }
         locateTask = Task { await locate() }
         await locateTask?.value
     }

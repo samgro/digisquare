@@ -1,0 +1,22 @@
+meta {
+  name: Start Authorization
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/imports/swarm/authorization
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Returns { authorizationUrl } for Foursquare's OAuth. Open it in a browser;
+  Foursquare redirects to /imports/swarm/callback, which connects the account,
+  starts the import, and redirects to hackysack://swarm-import?status=started.
+  Answers 503 until the FOURSQUARE_* variables are set.
+}

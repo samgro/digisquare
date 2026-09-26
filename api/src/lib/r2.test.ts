@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AVATAR_MAX_BYTES, createAvatarUploadUrl, isOwnedAvatarKey } from "./r2.js";
+import { IMAGE_MAX_BYTES, createAvatarUploadUrl, isOwnedAvatarKey } from "./r2.js";
 
 const USER_ID = "550e8400-e29b-41d4-a716-446655440000";
 const OTHER_USER_ID = "11111111-1111-1111-1111-111111111111";
@@ -10,7 +10,7 @@ describe("createAvatarUploadUrl", () => {
     const upload = await createAvatarUploadUrl(USER_ID, 48_213);
     expect(upload.key).toMatch(new RegExp(`^avatars/${USER_ID}/[0-9a-f-]{36}\\.jpg$`));
     expect(upload.expiresInSeconds).toBe(300);
-    expect(upload.maxBytes).toBe(AVATAR_MAX_BYTES);
+    expect(upload.maxBytes).toBe(IMAGE_MAX_BYTES);
   });
 
   it("never mints the same key twice", async () => {

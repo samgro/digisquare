@@ -32,6 +32,8 @@ struct UserProfileView: View {
     @State private var checkins: [Checkin] = []
     @State private var hasLoadedCheckins = false
     @State private var checkinsError: String?
+    @State private var checkinsNextCursor: Date?
+    @State private var isLoadingMoreCheckins = false
     @State private var actionError: String?
     @State private var isPerformingAction = false
     @State private var isConfirmingRemoval = false
@@ -417,6 +419,7 @@ struct UserProfileView: View {
             await loadCheckins()
         } else {
             checkins = []
+            checkinsNextCursor = nil
             hasLoadedCheckins = false
         }
     }
@@ -451,8 +454,12 @@ struct UserProfileView: View {
                 CheckinTimelineRows(
                     entries: checkins.map { TimelineEntry(savedCheckin: $0) },
                     onSelect: { selectedCheckin = CheckinDetailDestination(checkin: $0, author: user) },
-                    onComment: { commentingCheckin = $0 }
+                    onComment: { commentingCheckin = $0 },
+                    onReachEnd: { Task { await loadMoreCheckins() } }
                 )
+                if isLoadingMoreCheckins {
+                    LoadingMoreRow()
+                }
             }
             .padding(.bottom, HackysackSpacing.large)
         } else if !hasLoadedCheckins {
@@ -499,15 +506,34 @@ struct UserProfileView: View {
 
     private func loadCheckins() async {
         do {
-            // The API's maximum page. There is no paging yet, so someone
-            // with more than this shows their most recent 100 under a count
-            // that is higher.
-            checkins = try await checkinsAPI.listCheckins(userId: user.id, limit: 100)
+            let firstPage = try await checkinsAPI.listCheckins(userId: user.id)
+            let merged = CheckinPaging.mergeFirstPage(
+                firstPage,
+                into: checkins,
+                loadedCursor: checkinsNextCursor,
+                checkin: { $0 }
+            )
+            (checkins, checkinsNextCursor) = (merged.items, merged.nextCursor)
             checkinsError = nil
         } catch {
             checkinsError = error.localizedDescription
         }
         hasLoadedCheckins = true
+    }
+
+    /// A failure is left for the next scroll to retry rather than shown,
+    /// since the loaded checkins are still fine.
+    private func loadMoreCheckins() async {
+        guard let cursor = checkinsNextCursor, !isLoadingMoreCheckins else { return }
+        isLoadingMoreCheckins = true
+        defer { isLoadingMoreCheckins = false }
+        do {
+            let page = try await checkinsAPI.listCheckins(userId: user.id, before: cursor)
+            checkins = CheckinPaging.appendPage(page, to: checkins, checkin: { $0 })
+            checkinsNextCursor = CheckinPaging.nextCursor(after: page, checkin: { $0 })
+        } catch {
+            DevLog.network("Couldn't load more checkins: \(error)")
+        }
     }
 }
 

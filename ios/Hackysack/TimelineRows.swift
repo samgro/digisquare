@@ -314,15 +314,16 @@ enum TimelineRow: Identifiable, Equatable {
     }
 }
 
-/// Groups entries by calendar day, most recent first, inserting a day header
-/// ahead of each group's first entry. Suggested checkins are dated by their
-/// visit's arrival, so they fall into the day the user was actually there.
+/// Groups entries by the day they happened on, where they happened, most
+/// recent first, inserting a day header ahead of each group's first entry.
+/// Suggested checkins are dated by their visit's arrival, so they fall into
+/// the day the user was actually there.
 func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
     let sortedEntries = entries.sorted { $0.checkin.createdAt > $1.checkin.createdAt }
     var rows: [TimelineRow] = []
     var lastDay: Date?
     for entry in sortedEntries {
-        let day = calendar.startOfDay(for: entry.checkin.createdAt)
+        let day = entry.checkin.localDay(in: calendar)
         if day != lastDay {
             rows.append(.dayHeader(day))
             lastDay = day
@@ -345,6 +346,8 @@ struct CheckinTimelineRows: View {
     // Only used by saved entries.
     var onSelect: (Checkin) -> Void = { _ in }
     var onComment: (Checkin) -> Void = { _ in }
+    /// Called when the last row scrolls into view, to load the next page.
+    var onReachEnd: () -> Void = {}
 
     var body: some View {
         let rows = timelineRows(for: entries)
@@ -363,8 +366,22 @@ struct CheckinTimelineRows: View {
                     onSelect: { onSelect(entry.checkin) },
                     onComment: { onComment(entry.checkin) }
                 )
+                .onAppear {
+                    if index == rows.count - 1 {
+                        onReachEnd()
+                    }
+                }
             }
         }
+    }
+}
+
+/// A spinner under a list while its next page loads.
+struct LoadingMoreRow: View {
+    var body: some View {
+        ProgressView()
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, HackysackSpacing.medium)
     }
 }
 

@@ -85,6 +85,13 @@
       "when": 1790379752207,
       "tag": "0011_coverage_jobs_heartbeat",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1790387129948,
+      "tag": "0012_add_swarm_import_and_checkin_photos",
+      "breakpoints": true
     }
   ]
 }

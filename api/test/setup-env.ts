@@ -20,3 +20,8 @@ process.env.R2_ACCESS_KEY_ID ??= "test-access-key";
 process.env.R2_SECRET_ACCESS_KEY ??= "test-secret-key";
 process.env.R2_BUCKET_NAME ??= "hackysack-avatars-test";
 process.env.R2_PUBLIC_BASE_URL ??= "https://avatars.test.invalid";
+process.env.FOURSQUARE_CLIENT_ID ??= "test-foursquare-client-id";
+process.env.FOURSQUARE_CLIENT_SECRET ??= "test-foursquare-client-secret";
+process.env.FOURSQUARE_REDIRECT_URL ??= "https://api.test.invalid/imports/swarm/callback";
+// 32 zero bytes, base64.
+process.env.FOURSQUARE_TOKEN_ENCRYPTION_KEY ??= "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";

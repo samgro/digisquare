@@ -17,6 +17,11 @@ struct RootView: View {
     var body: some View {
         ZStack(alignment: .top) {
             content
+                // A switch of API server (simulator builds only) starts the
+                // signed-in screens over, so their stores never carry one
+                // server's friends or notifications to the other, even when
+                // the same user id is signed in on both.
+                .id(authManager.server)
             // Debug simulator builds only: the dev server has moved on to a
             // newer commit. A different branch is handled by WrongServerWindow.
             if BuildGate.shared.verdict == .commitDiffers,

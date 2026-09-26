@@ -18,6 +18,8 @@ enum SignOutReason: Sendable {
 /// would silently become @MainActor and lose the serialization this type
 /// exists to provide. Do not "simplify" it into a final class.
 actor AuthSessionStore {
+    /// The Keychain account of the server these tokens belong to.
+    private let keychainAccount: String
     private var credentials: StoredCredentials?
     private var refreshTask: Task<StoredCredentials, any Error>?
 
@@ -26,9 +28,11 @@ actor AuthSessionStore {
     private let onCredentialsChanged: @Sendable (StoredCredentials?) async -> Void
 
     init(
+        keychainAccount: String,
         credentials: StoredCredentials?,
         onCredentialsChanged: @escaping @Sendable (StoredCredentials?) async -> Void
     ) {
+        self.keychainAccount = keychainAccount
         self.credentials = credentials
         self.onCredentialsChanged = onCredentialsChanged
     }
@@ -47,7 +51,7 @@ actor AuthSessionStore {
 
     func adopt(_ credentials: StoredCredentials) async {
         self.credentials = credentials
-        try? KeychainStore.save(credentials)
+        try? KeychainStore.save(credentials, account: keychainAccount)
         await onCredentialsChanged(credentials)
     }
 
@@ -67,7 +71,7 @@ actor AuthSessionStore {
     func signOut(reason: SignOutReason) async {
         credentials = nil
         refreshTask = nil
-        try? KeychainStore.delete()
+        try? KeychainStore.delete(account: keychainAccount)
         await onCredentialsChanged(nil)
     }
 
@@ -115,7 +119,7 @@ actor AuthSessionStore {
         let refreshed = try await task.value
         // Persist before returning, so a crash between here and the next
         // request cannot strand us holding a token the server has rotated.
-        try? KeychainStore.save(refreshed)
+        try? KeychainStore.save(refreshed, account: keychainAccount)
         credentials = refreshed
         await onCredentialsChanged(refreshed)
         return refreshed

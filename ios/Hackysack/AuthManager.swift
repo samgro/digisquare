@@ -37,6 +37,9 @@ final class AuthManager {
         }
     }
 
+    /// The API this session belongs to. Only simulator builds can change it.
+    private(set) var server = APIEnvironment.server
+
     @ObservationIgnored private var sessionStore: AuthSessionStore!
 
     init() {
@@ -47,7 +50,7 @@ final class AuthManager {
         var stored: StoredCredentials?
         var isKeychainLocked = false
         do {
-            stored = try KeychainStore.load()
+            stored = try KeychainStore.load(account: server.keychainAccount)
             state = stored.map { Self.stateFor($0.profile) } ?? .signedOut
         } catch KeychainError.interactionNotAllowed {
             // Device still locked. Stay in .launching and retry rather than
@@ -62,13 +65,7 @@ final class AuthManager {
         // frame, so the timeline fires its first request immediately; a
         // deferred seed could lose that race and the request would go out
         // with no token.
-        //
-        // The closure hops to the main actor because it drives `state`, which
-        // SwiftUI reads.
-        sessionStore = AuthSessionStore(credentials: stored) { [weak self] credentials in
-            await self?.applyCredentials(credentials)
-        }
-        APIClient.shared.authSessionStore = sessionStore
+        sessionStore = makeSessionStore(for: server, credentials: stored)
 
         if isKeychainLocked {
             Task { await retryKeychainLoad() }
@@ -76,6 +73,36 @@ final class AuthManager {
             refreshIfProfileLooksIncomplete()
         }
     }
+
+    /// The closure hops to the main actor because it drives `state`, which
+    /// SwiftUI reads. It carries the store's server so a refresh that lands
+    /// after a switch to another server can't overwrite the new session's state.
+    private func makeSessionStore(for server: APIServer, credentials: StoredCredentials?) -> AuthSessionStore {
+        let store = AuthSessionStore(keychainAccount: server.keychainAccount, credentials: credentials) { [weak self] credentials in
+            await self?.applyCredentials(credentials, from: server)
+        }
+        APIClient.shared.authSessionStore = store
+        return store
+    }
+
+    #if targetEnvironment(simulator)
+    /// Points the app at another API and picks up that server's session,
+    /// signed in or not. The other server's session stays in the Keychain for
+    /// switching back.
+    func switchServer(to newServer: APIServer) {
+        guard newServer != server else { return }
+        APIEnvironment.server = newServer
+        server = newServer
+        lastError = nil
+        BuildGate.shared.reset()
+        // The simulator is never locked, so an unreadable item is just no session.
+        let stored = try? KeychainStore.load(account: newServer.keychainAccount)
+        sessionStore = makeSessionStore(for: newServer, credentials: stored)
+        state = stored.map { Self.stateFor($0.profile) } ?? .signedOut
+        refreshIfProfileLooksIncomplete()
+        Task { await BuildGate.shared.check() }
+    }
+    #endif
 
     /// A profile cached before hometown existed decodes with no hometown, so
     /// an existing user would be held on profile setup even though the server
@@ -94,9 +121,9 @@ final class AuthManager {
         for _ in 0..<10 {
             try? await Task.sleep(for: .seconds(1))
             do {
-                let stored = try KeychainStore.load()
+                let stored = try KeychainStore.load(account: server.keychainAccount)
                 await sessionStore.seed(stored)
-                applyCredentials(stored)
+                applyCredentials(stored, from: server)
                 refreshIfProfileLooksIncomplete()
                 return
             } catch KeychainError.interactionNotAllowed {
@@ -109,7 +136,8 @@ final class AuthManager {
         state = .signedOut
     }
 
-    private func applyCredentials(_ credentials: StoredCredentials?) {
+    private func applyCredentials(_ credentials: StoredCredentials?, from credentialsServer: APIServer) {
+        guard credentialsServer == server else { return }
         guard let credentials else {
             state = .signedOut
             return
@@ -287,38 +315,6 @@ final class AuthManager {
 
     /// Uploads avatar bytes straight to R2 and returns the key to attach.
     func uploadAvatar(_ jpegData: Data) async throws -> String {
-        struct UploadRequest: Encodable {
-            let contentType: String
-            let contentLength: Int
-        }
-        struct UploadResponse: Decodable {
-            let uploadUrl: URL
-            let key: String
-            let expiresInSeconds: Int
-            let maxBytes: Int
-        }
-
-        let upload: UploadResponse = try await APIClient.shared.request(
-            method: "POST",
-            path: "users/me/avatar-upload",
-            body: UploadRequest(contentType: "image/jpeg", contentLength: jpegData.count)
-        )
-
-        var putRequest = URLRequest(url: upload.uploadUrl)
-        putRequest.httpMethod = "PUT"
-        // Must match what the server signed, byte for byte. URLSession sets
-        // Content-Length from the body itself. Do NOT set Authorization: it
-        // conflicts with the query-string credentials and R2 answers 403.
-        putRequest.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
-
-        // Deliberately a bare URLSession rather than APIClient — this request
-        // goes to R2, not to our API, and must carry no bearer token.
-        let (_, response) = try await URLSession.shared.upload(for: putRequest, from: jpegData)
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200..<300).contains(httpResponse.statusCode) else {
-            throw APIError.invalidResponse
-        }
-
-        return upload.key
+        try await APIClient.shared.uploadJPEG(jpegData, uploadPath: "users/me/avatar-upload")
     }
 }

@@ -27,7 +27,9 @@ final class BuildGate {
     var isBlocking: Bool { verdict.isBlocking }
 
     func record(server: BuildIdentity?) {
-        guard let app else { return }
+        // Production reports its build but never enforces it, and it runs
+        // main, so judging it would block every branch build that points at it.
+        guard let app, APIEnvironment.server == .localhost else { return }
         // Every response reports in; only a change is published, so the
         // views watching the gate are not re-rendered per request.
         if self.server != server {
@@ -47,7 +49,7 @@ final class BuildGate {
     /// Asks the server what it is running, without a token, so the answer
     /// is known before the welcome screen offers a sign-in.
     func check() async {
-        guard app != nil else { return }
+        guard app != nil, APIEnvironment.server == .localhost else { return }
         // While blocked, the right server may have come up on another port
         // since the last look; otherwise the first location stands.
         if isBlocking {
@@ -62,6 +64,13 @@ final class BuildGate {
             // The response header or the 409 body already recorded the
             // verdict; a server that is down changes nothing.
         }
+    }
+
+    /// Forgets the last server's verdict when the app switches servers, so a
+    /// block on one dev server does not follow the app to production.
+    func reset() {
+        server = nil
+        verdict = .match
     }
 }
 
@@ -83,6 +92,7 @@ final class BuildGate {
     func record(server: BuildIdentity?) {}
     func record(serverWireValue: String?) {}
     func check() async {}
+    func reset() {}
 }
 
 #endif

@@ -10,6 +10,7 @@ import SwiftUI
 /// business, so it lives a level down.
 struct SettingsView: View {
     @Environment(AuthManager.self) private var authManager
+    @Environment(SwarmImportStore.self) private var swarmImportStore
 
     @State private var isConfirmingSignOut = false
 
@@ -24,6 +25,27 @@ struct SettingsView: View {
 
     var body: some View {
         List {
+            // First: for most people it is the one thing here they came to do.
+            Section {
+                NavigationLink {
+                    SwarmImportView()
+                } label: {
+                    HStack(spacing: 12) {
+                        Text("🐝")
+                            .font(.title3)
+                            .accessibilityHidden(true)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Import your Swarm checkins")
+                            if let swarmStatus {
+                                Text(swarmStatus)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+            }
+
             if let profile {
                 Section("Account") {
                     // An Apple user who hid their address, or one created by
@@ -40,6 +62,16 @@ struct SettingsView: View {
                     )
                 }
             }
+
+            #if targetEnvironment(simulator)
+            Section {
+                APIServerPicker()
+            } header: {
+                Text("API Server")
+            } footer: {
+                Text("Each server keeps its own sign-in.")
+            }
+            #endif
 
             #if DEBUG
             Section("Debug") {
@@ -75,6 +107,18 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
+    /// "Connected · importing" or "Connected · 3,812 checkins"; nothing until
+    /// Swarm is connected, when the row speaks for itself.
+    private var swarmStatus: String? {
+        guard swarmImportStore.isConnected else { return nil }
+        guard let latestImport = swarmImportStore.latestImport else { return "Connected" }
+        switch latestImport.status {
+        case .running: return "Connected · importing"
+        case .failed: return "Connected · last import stopped"
+        case .completed: return "Connected · \(latestImport.progressDetail)"
+        }
+    }
+
     private static var appVersion: String {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
     }
@@ -88,6 +132,7 @@ struct SettingsView: View {
     NavigationStack {
         SettingsView()
             .environment(AuthManager())
+            .environment(SwarmImportStore())
             .environment(LocationManager())
             .environmentObject(CheckinStore.inMemory())
     }

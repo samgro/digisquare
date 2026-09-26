@@ -161,6 +161,34 @@ does not match what was signed byte for byte, the body length differs from the
 declared `contentLength`, or an `Authorization` header was sent alongside the
 query-string credentials.
 
+Checkin photos, taken in the app or imported from Swarm, go in the same bucket
+under `checkin-photos/`.
+
+## 3b. Foursquare (Swarm import)
+
+Users can import their Swarm history. The app sends them through Foursquare's
+OAuth, Foursquare redirects back to this API, and the API imports their
+checkins in the background: each Foursquare venue becomes a `places` row with
+`source = 'foursquare'` (kept out of search until matched to Overture's copy
+of the venue), Foursquare's categories are mapped to Overture's
+(`src/lib/foursquare-category-mapping.ts`; regenerate the code list for a new
+release with `npm run overture:categories`), and photos are copied into the R2
+bucket above.
+
+1. Go to https://foursquare.com/developers and create (or open) a project.
+2. Copy the **Client ID** and **Client Secret** — save them as
+   `FOURSQUARE_CLIENT_ID` and `FOURSQUARE_CLIENT_SECRET`.
+3. Add this API's callback as a **Redirect URI**, once per environment, e.g.
+   `http://localhost:3000/imports/swarm/callback` and
+   `https://<your-railway-domain>/imports/swarm/callback`. Save the one for
+   each environment as `FOURSQUARE_REDIRECT_URL`; it must match exactly.
+4. Generate a key for encrypting stored Foursquare tokens with
+   `openssl rand -base64 32` and save it as `FOURSQUARE_TOKEN_ENCRYPTION_KEY`.
+   Changing it later disconnects everyone's Swarm account.
+
+These are optional: without all four, the API still boots and the
+`/imports/swarm` routes answer 503.
+
 ## 4. Railway (hosting)
 
 1. Go to https://railway.app and sign in.
@@ -174,7 +202,8 @@ query-string credentials.
      tokens.
    - `APPLE_BUNDLE_IDENTIFIER` — `samgro.Hackysack`. Apple identity tokens are
      checked against this, so a mismatch rejects every sign-in.
-   - The five `R2_*` variables from step 3 below.
+   - The five `R2_*` variables from step 3 above.
+   - The four `FOURSQUARE_*` variables from step 3b, to enable Swarm import.
    - Railway automatically injects `PORT`; you don't need to set it manually, but the app will fall back to `3000` if it's missing.
 
    **Set these before deploying.** The app validates its whole environment at
@@ -202,9 +231,15 @@ query-string credentials.
    Homebrew); the migration enables it.
 
    To work against a Neon branch instead, put its `DATABASE_URL` (and
-   anything else that differs) in `.env.branch` at the repo root. It is
+   anything else that differs) in `.env.branch` next to `.env`. It is
    gitignored and overrides both `.env` and the shell, for the server, the
-   scripts and `db:migrate` alike.
+   scripts and `db:migrate` alike. `npm run db:branch` prints which database
+   that resolves to and which file it came from; every drizzle-kit command
+   prints the same line before it connects. Because it overrides the shell as
+   well, a one-off `DATABASE_URL=… npm run db:migrate` would still reach the
+   branch; to run against the `.env` database from such a checkout on purpose
+   (applying a migration to production), set `SKIP_ENV_BRANCH=1` and check
+   that the printed line says `from .env`.
 
    `npm run dev` takes the first free port from 3001 up, and logs which, so
    several checkouts (git worktrees) can run at once; the simulator app

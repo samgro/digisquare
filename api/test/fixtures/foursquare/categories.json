@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "code": 200,
+    "requestId": "fixture"
+  },
+  "response": {
+    "categories": [
+      {
+        "id": "63be6904847c3692a84b9b9a",
+        "name": "Community and Government",
+        "pluralName": "Communities and Government",
+        "shortName": "Community and Government",
+        "icon": {
+          "prefix": "https://ss3.4sqi.net/img/categories_v2/building/default_",
+          "suffix": ".png"
+        },
+        "categoryCode": 12000,
+        "categories": [
+          {
+            "id": "4e67e38e036454776db1fb3a",
+            "name": "Residential Building",
+            "pluralName": "Residential Buildings",
+            "shortName": "Residence",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/building/home_",
+              "suffix": ".png"
+            },
+            "categoryCode": 12094,
+            "categories": [
+              {
+                "id": "4bf58dd8d48988d103941735",
+                "name": "Home (private)",
+                "pluralName": "Homes (private)",
+                "shortName": "Home (private)",
+                "icon": {
+                  "prefix": "https://ss3.4sqi.net/img/categories_v2/building/home_",
+                  "suffix": ".png"
+                },
+                "categoryCode": 12123,
+                "categories": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "63be6904847c3692a84b9bb5",
+        "name": "Dining and Drinking",
+        "pluralName": "Dining and Drinking",
+        "shortName": "Dining and Drinking",
+        "icon": {
+          "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+          "suffix": ".png"
+        },
+        "categoryCode": 13000,
+        "categories": [
+          {
+            "id": "4d4b7105d754a06374d81259",
+            "name": "Restaurant",
+            "pluralName": "Restaurants",
+            "shortName": "Restaurant",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+              "suffix": ".png"
+            },
+            "categoryCode": 13065,
+            "categories": [
+              {
+                "id": "4bf58dd8d48988d142941735",
+                "name": "Asian Restaurant",
+                "pluralName": "Asian Restaurants",
+                "shortName": "Asian",
+                "icon": {
+                  "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+                  "suffix": ".png"
+                },
+                "categoryCode": 13072,
+                "categories": [
+                  {
+                    "id": "52af0bd33cf9994f4e043bdd",
+                    "name": "Hotpot Restaurant",
+                    "pluralName": "Hotpot Restaurants",
+                    "shortName": "Hotpot",
+                    "icon": {
+                      "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+                      "suffix": ".png"
+                    },
+                    "categoryCode": 13196,
+                    "categories": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "63be6904847c3692a84b9bb6",
+            "name": "Cafe, Coffee, and Tea House",
+            "pluralName": "Cafes, Coffee, and Tea Houses",
+            "shortName": "Cafe, Coffee, and Tea House",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+              "suffix": ".png"
+            },
+            "categoryCode": 13032,
+            "categories": [
+              {
+                "id": "4bf58dd8d48988d1e0931735",
+                "name": "Coffee Shop",
+                "pluralName": "Coffee Shops",
+                "shortName": "Coffee Shop",
+                "icon": {
+                  "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+                  "suffix": ".png"
+                },
+                "categoryCode": 13035,
+                "categories": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

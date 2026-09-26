@@ -15,12 +15,17 @@ test that fails on the old behavior first, then fix it.
 Places live in the `places` table (PostGIS): Overture Maps places fetched by
 the coverage worker (`src/lib/coverage-worker.ts`, straight from the release
 files with DuckDB) or seeded with `npm run coverage:seed`, venues users add
-from the app, and rows backfilled from pre-Overture checkins. `primaryType`
-and `types` hold Overture category codes (`coffee_shop`, `airport`,
+from the app, rows backfilled from pre-Overture checkins, and the venues of
+imported Swarm checkins (`source = 'foursquare'`, one per Foursquare venue,
+hidden from search until matched to Overture's copy). `primaryType` and
+`types` hold Overture category codes (`coffee_shop`, `airport`,
 `stadium_arena`...); the iOS footprint and icon tables are keyed on them, so
-use the Overture spelling everywhere, never Google's. Venue grounds
-(`extent`) come from Overture's base theme polygons, matched in
-`src/lib/extent-matching.ts`.
+use the Overture spelling everywhere, never Google's or Foursquare's.
+Foursquare categories are mapped in `src/lib/foursquare-category-mapping.ts`
+against the code list in `src/lib/overture-categories.ts` (generated with
+`npm run overture:categories`); the source's own label survives in
+`categoryName`. Venue grounds (`extent`) come from Overture's base theme
+polygons, matched in `src/lib/extent-matching.ts`.
 
 The searches in `src/lib/places-search.ts` cast to geography and the GiST
 indexes are on that cast; a plain geometry index would go unused. Anything

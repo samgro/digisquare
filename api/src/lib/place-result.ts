@@ -9,7 +9,7 @@ export interface PlaceExtentResult {
 
 export interface PlaceResult {
   id: string;
-  source: "overture" | "user" | "google";
+  source: "overture" | "user" | "google" | "foursquare";
   name: string;
   /** "450 10th St, San Francisco, CA 94103, US", or null with no parts. */
   address: string | null;
@@ -30,6 +30,12 @@ export interface PlaceResult {
   /** Overture category codes, the primary one first. */
   types: string[];
   primaryType: string | null;
+  /**
+   * The source's own label for the primary category, when it has one: a
+   * Foursquare venue's "Hotpot Restaurant". Null for Overture rows, whose
+   * codes the app labels itself.
+   */
+  categoryName: string | null;
   /** Checkins here from everyone, the app's stand-in for popularity. */
   checkinCount: number;
   /** Only its creator and their friends can find it. */
@@ -133,6 +139,7 @@ export function toPlaceResult(place: PlaceCandidate): PlaceResult {
     distanceMeters: place.distanceMeters ?? null,
     types: place.types,
     primaryType: place.primaryType,
+    categoryName: place.categoryName,
     checkinCount: place.checkinCount,
     isPrivate: place.isPrivate,
     retired: place.retiredAt !== null,

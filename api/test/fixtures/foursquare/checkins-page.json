@@ -1,0 +1,105 @@
+{
+  "meta": { "code": 200, "requestId": "fixture" },
+  "response": {
+    "checkins": {
+      "count": 3,
+      "items": [
+        {
+          "id": "5f1a2b3c4d5e6f7a8b9c0d1e",
+          "createdAt": 1600000000,
+          "type": "checkin",
+          "shout": "  Hotpot night  ",
+          "timeZoneOffset": -420,
+          "entities": [],
+          "venue": {
+            "id": "4a8b9c0d1e2f3a4b5c6d7e8f",
+            "name": "Little Sheep",
+            "location": {
+              "address": "1655 Lincoln Ave",
+              "crossStreet": "at Main St",
+              "city": "San Jose",
+              "state": "CA",
+              "postalCode": "95125",
+              "cc": "US",
+              "country": "United States",
+              "formattedAddress": ["1655 Lincoln Ave (at Main St)", "San Jose, CA 95125", "United States"],
+              "lat": 37.3,
+              "lng": -121.9
+            },
+            "categories": [
+              {
+                "id": "4bf58dd8d48988d1e0931735",
+                "name": "Coffee Shop",
+                "pluralName": "Coffee Shops",
+                "shortName": "Coffee Shop",
+                "icon": { "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_", "suffix": ".png" }
+              },
+              {
+                "id": "52af0bd33cf9994f4e043bdd",
+                "name": "Hotpot Restaurant",
+                "pluralName": "Hotpot Restaurants",
+                "shortName": "Hotpot",
+                "icon": { "prefix": "https://ss3.4sqi.net/img/categories_v2/food/hotpot_", "suffix": ".png" },
+                "primary": true
+              }
+            ]
+          },
+          "photos": {
+            "count": 2,
+            "items": [
+              {
+                "id": "5f1a2b3c4d5e6f7a8b9c0d20",
+                "createdAt": 1600000005,
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/1234_first.jpg",
+                "width": 1440,
+                "height": 1920,
+                "visibility": "public"
+              },
+              {
+                "id": "5f1a2b3c4d5e6f7a8b9c0d21",
+                "createdAt": 1600000006,
+                "prefix": "https://fastly.4sqi.net/img/general/",
+                "suffix": "/1234_second.jpg",
+                "width": 1920,
+                "height": 1440,
+                "visibility": "public"
+              }
+            ]
+          },
+          "with": [{ "id": "123", "firstName": "Alex", "lastName": "Doe" }],
+          "likes": { "count": 2, "groups": [] },
+          "isMayor": true,
+          "source": { "name": "Swarm for iOS", "url": "https://www.swarmapp.com" }
+        },
+        {
+          "id": "5f1a2b3c4d5e6f7a8b9c0d1f",
+          "createdAt": 1599990000,
+          "type": "checkin",
+          "private": true,
+          "visibility": "private",
+          "venue": {
+            "id": "4b0c1d2e3f4a5b6c7d8e9f0a",
+            "name": "Home",
+            "location": { "lat": 37.31, "lng": -121.91, "cc": "US", "country": "United States" },
+            "categories": [
+              {
+                "id": "4bf58dd8d48988d103941735",
+                "name": "Home (private)",
+                "pluralName": "Homes (private)",
+                "shortName": "Home",
+                "primary": true
+              }
+            ]
+          },
+          "photos": { "count": 0, "items": [] }
+        },
+        {
+          "id": "5f1a2b3c4d5e6f7a8b9c0d2a",
+          "type": "shout",
+          "shout": "Missing its createdAt, so it cannot be imported"
+        }
+      ]
+    }
+  }
+}

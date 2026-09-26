@@ -9,6 +9,12 @@
  * one. Two lanes run side by side: one claims only `fix` jobs, the ones a
  * user is waiting on, so a city, seed or refresh in progress never delays
  * them; the other takes everything else in priority order.
+ *
+ * An idle worker leaves the database alone for an hour at a time, so Neon
+ * can scale the compute to zero (it suspends after 5 quiet minutes). Jobs
+ * enqueued in this process wake it at once, and a failed attempt wakes it
+ * when the job may be retried; only jobs queued by another process, like
+ * `npm run coverage:retry`, wait for the hourly poll.
  */
 
 import { and, asc, eq, inArray, isNull, lt, ne, or, sql } from "drizzle-orm";
@@ -57,11 +63,18 @@ import {
 
 const MAXIMUM_ATTEMPTS = 3;
 const RETRY_DELAY_MINUTES = 5;
-const REFRESH_SCAN_INTERVAL_MS = 60 * 60 * 1000;
+/** Past the retry delay, so the job is claimable when the worker wakes for it. */
+const RETRY_WAKE_MARGIN_MS = 5 * 1000;
 /** How often a running job proves it is alive, and how long a silence counts as dead. */
 const HEARTBEAT_INTERVAL_MS = 60 * 1000;
 const STALE_HEARTBEAT_MINUTES = 5;
-const STALE_SCAN_INTERVAL_MS = 5 * 60 * 1000;
+/**
+ * How often an idle worker checks the queue, and how often it looks for
+ * stale jobs and cells to refresh. Anything under Neon's 5 minute suspend
+ * timeout would keep the database compute awake around the clock.
+ */
+const IDLE_POLL_INTERVAL_MS = 60 * 60 * 1000;
+const HOUSEKEEPING_INTERVAL_MS = 60 * 60 * 1000;
 
 /** The job kinds each worker lane claims. */
 export const WORKER_LANES: readonly (readonly JobKind[])[] = [["fix"], ["city", "seed", "refresh"]];
@@ -179,7 +192,10 @@ async function finishJob(job: CoverageJob, outcome: JobOutcome): Promise<void> {
   }
 }
 
-async function failJob(job: CoverageJob, error: unknown): Promise<void> {
+/** How a job's run ended: done, back in the queue for another attempt, or out of attempts. */
+export type JobRunResult = "done" | "retrying" | "failed";
+
+async function failJob(job: CoverageJob, error: unknown): Promise<JobRunResult> {
   const message = error instanceof Error ? error.message : String(error);
   const exhausted = job.attempts >= MAXIMUM_ATTEMPTS;
   await database
@@ -194,6 +210,7 @@ async function failJob(job: CoverageJob, error: unknown): Promise<void> {
       .set({ status: "failed", updatedAt: sql`now()` })
       .where(and(eq(coverageCells.jobId, job.id), eq(coverageCells.status, "pending")));
   }
+  return exhausted ? "failed" : "retrying";
 }
 
 /**
@@ -225,6 +242,9 @@ export async function enqueueCityAround(source: OvertureSource, fixJob: Coverage
       await enqueueJob({ kind: "city", cells: tile.cells, requestedByUserId: fixJob.requestedByUserId, parentJobId: fixJob.id }),
     );
   }
+  if (jobs.length > 0) {
+    notifyEnqueued();
+  }
   return jobs;
 }
 
@@ -237,7 +257,7 @@ function tilesNearestFirst(cells: Cell[], point: { latitude: number; longitude: 
 }
 
 /** Runs one claimed job to completion, whatever the outcome. */
-export async function runJob(source: OvertureSource, job: CoverageJob): Promise<void> {
+export async function runJob(source: OvertureSource, job: CoverageJob): Promise<JobRunResult> {
   const label = `${job.kind} job ${job.id}`;
   const log = (message: string) => console.log(`[coverage] ${label}: ${message}`);
   const heartbeat = setInterval(() => {
@@ -259,9 +279,10 @@ export async function runJob(source: OvertureSource, job: CoverageJob): Promise<
         log(`enqueued ${cityJobs.length} city jobs`);
       }
     }
+    return "done";
   } catch (error) {
     console.error(`[coverage] ${label} failed`, error);
-    await failJob(job, error);
+    return await failJob(job, error);
   } finally {
     clearInterval(heartbeat);
   }
@@ -357,12 +378,14 @@ export async function scheduleRefreshJobs(): Promise<CoverageJob[]> {
 
 export interface CoverageWorkerOptions {
   source: OvertureSource;
+  /** How long an idle lane sleeps between claims; an hour unless a test shortens it. */
   pollIntervalMs?: number;
 }
 
 /**
  * The loop: claim a job, run it, repeat; when the queue is empty, wait for
- * an enqueue in this process or the poll interval, whichever comes first.
+ * an enqueue in this process, a failed job's retry, or the hourly poll,
+ * whichever comes first.
  */
 export class CoverageWorker {
   private running = false;
@@ -371,7 +394,7 @@ export class CoverageWorker {
   /** Set when a job was enqueued while no lane was asleep, so none sleeps past it. */
   private enqueuedWhileAwake = false;
   private unsubscribe: (() => void) | null = null;
-  private readonly timers: NodeJS.Timeout[] = [];
+  private readonly timers = new Set<NodeJS.Timeout>();
   /** Jobs claimed by this process and not yet finished or failed. */
   private readonly activeJobIds = new Set<string>();
 
@@ -383,10 +406,7 @@ export class CoverageWorker {
     }
     this.running = true;
     this.unsubscribe = onJobEnqueued(() => this.wake());
-    this.timers.push(
-      setInterval(() => {
-        scheduleRefreshJobs().catch((error) => console.error("[coverage] refresh scan failed", error));
-      }, REFRESH_SCAN_INTERVAL_MS),
+    this.timers.add(
       setInterval(() => {
         recoverStaleJobs()
           .then((recovered) => {
@@ -396,7 +416,8 @@ export class CoverageWorker {
             }
           })
           .catch((error) => console.error("[coverage] stale job scan failed", error));
-      }, STALE_SCAN_INTERVAL_MS),
+        scheduleRefreshJobs().catch((error) => console.error("[coverage] refresh scan failed", error));
+      }, HOUSEKEEPING_INTERVAL_MS),
     );
     void this.run();
   }
@@ -409,8 +430,9 @@ export class CoverageWorker {
     this.running = false;
     this.unsubscribe?.();
     for (const timer of this.timers) {
-      clearInterval(timer);
+      clearTimeout(timer);
     }
+    this.timers.clear();
     this.wake();
     try {
       const requeued = await requeueJobs([...this.activeJobIds]);
@@ -456,7 +478,9 @@ export class CoverageWorker {
       if (job) {
         this.activeJobIds.add(job.id);
         try {
-          await runJob(this.options.source, job);
+          if ((await runJob(this.options.source, job)) === "retrying") {
+            this.wakeForRetry();
+          }
         } finally {
           this.activeJobIds.delete(job.id);
         }
@@ -466,6 +490,15 @@ export class CoverageWorker {
     }
   }
 
+  /** Wakes the lanes once a failed job may be claimed again, rather than at the next hourly poll. */
+  private wakeForRetry(): void {
+    const timer = setTimeout(() => {
+      this.timers.delete(timer);
+      this.wake();
+    }, RETRY_DELAY_MINUTES * 60 * 1000 + RETRY_WAKE_MARGIN_MS);
+    this.timers.add(timer);
+  }
+
   /** Until the next poll, a wake-up, or immediately if one arrived mid-claim. */
   private sleep(): Promise<void> {
     if (this.enqueuedWhileAwake) {
@@ -473,7 +506,7 @@ export class CoverageWorker {
       return Promise.resolve();
     }
     return new Promise<void>((resolve) => {
-      const timer = setTimeout(() => waker(), this.options.pollIntervalMs ?? 15_000);
+      const timer = setTimeout(() => waker(), this.options.pollIntervalMs ?? IDLE_POLL_INTERVAL_MS);
       const waker = () => {
         clearTimeout(timer);
         this.wakers.delete(waker);

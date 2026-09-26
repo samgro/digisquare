@@ -73,11 +73,13 @@ function checkinRow(overrides: Record<string, unknown> = {}) {
     placeLocality: "San Francisco",
     placePrimaryType: "coffee_shop",
     placeTypes: ["coffee_shop", "cafe"],
+    placeCategoryName: null,
     latitude: 37.7823,
     longitude: -122.4076,
     message: "Cortado o'clock",
     visibility: "friends",
     source: "manual",
+    timeZoneOffsetMinutes: null,
     createdAt: new Date("2026-09-20T15:00:00.000Z"),
     updatedAt: new Date("2026-09-20T15:00:00.000Z"),
     ...overrides,
@@ -245,10 +247,13 @@ describe("POST /checkins visibility and source", () => {
       placeLocality: "San Francisco",
       placePrimaryType: "coffee_shop",
       placeTypes: ["coffee_shop", "cafe"],
+      placeCategoryName: null,
       location: { latitude: 37.7823, longitude: -122.4076 },
       message: null,
       visibility: "private",
       source: "visit",
+      photos: [],
+      timeZoneOffsetMinutes: null,
       likeCount: 0,
       commentCount: 0,
       likedByMe: false,
@@ -590,5 +595,149 @@ describe("DELETE /checkins/:id/comments/:commentId", () => {
     const response = await send("DELETE", `/${CHECKIN_ID}/comments/nope`);
     expect(response.status).toBe(400);
     expect(controls.operations).toEqual([]);
+  });
+});
+
+describe("checkin photos", () => {
+  const PHOTO_ID = "990e8400-e29b-41d4-a716-446655440000";
+  const OLDER_CHECKIN_ID = "881e8400-e29b-41d4-a716-446655440000";
+  const OWNED_PHOTO_KEY = `checkin-photos/${CURRENT_USER_ID}/aa0e8400-e29b-41d4-a716-446655440000.jpg`;
+
+  function photoRow(overrides: Record<string, unknown> = {}) {
+    return {
+      id: PHOTO_ID,
+      checkinId: CHECKIN_ID,
+      position: 0,
+      storageKey: null,
+      sourceUrl: "https://fastly.4sqi.net/img/general/original/photo.jpg",
+      externalId: "photo",
+      width: 1440,
+      height: 1920,
+      copyFailedAt: null,
+      createdAt: new Date("2026-09-20T15:00:00.000Z"),
+      ...overrides,
+    };
+  }
+
+  function listRow(checkin: Record<string, unknown>) {
+    return { checkin, likeCount: 0, commentCount: 0, likedByMe: false };
+  }
+
+  it("lists each checkin's photos in one extra query, served from the source until copied", async () => {
+    controls.queue([listRow(checkinRow()), listRow(checkinRow({ id: OLDER_CHECKIN_ID }))], [photoRow()]);
+
+    const response = await send("GET", "/");
+
+    expect(response.status).toBe(200);
+    expect(controls.operations).toEqual(["select", "select"]);
+    const body = (await response.json()) as { results: { photos: unknown[] }[] };
+    expect(body.results[0]!.photos).toEqual([
+      {
+        id: PHOTO_ID,
+        url: "https://fastly.4sqi.net/img/general/original/photo.jpg",
+        width: 1440,
+        height: 1920,
+      },
+    ]);
+    expect(body.results[1]!.photos).toEqual([]);
+  });
+
+  it("serves a photo from R2 once it has been copied", async () => {
+    controls.queue(
+      [listRow(checkinRow())],
+      [photoRow({ storageKey: `checkin-photos/${CURRENT_USER_ID}/${PHOTO_ID}.jpg` })],
+    );
+
+    const response = await send("GET", "/");
+
+    const body = (await response.json()) as { results: { photos: { url: string }[] }[] };
+    expect(body.results[0]!.photos[0]!.url).toBe(
+      `https://avatars.test.invalid/checkin-photos/${CURRENT_USER_ID}/${PHOTO_ID}.jpg`,
+    );
+  });
+
+  it("inserts the checkin and its photos together", async () => {
+    controls.queue(
+      [placeRow()],
+      [checkinRow()],
+      [photoRow({ storageKey: OWNED_PHOTO_KEY, sourceUrl: null, externalId: null })],
+    );
+
+    const response = await send("POST", "/", {
+      placeId: PLACE_ID,
+      photos: [{ key: OWNED_PHOTO_KEY, width: 1200, height: 900 }],
+    });
+
+    expect(response.status).toBe(201);
+    expect(controls.operations).toEqual(["select", "insert", "insert", "batch"]);
+    const body = (await response.json()) as { photos: { url: string }[] };
+    expect(body.photos[0]!.url).toBe(`https://avatars.test.invalid/${OWNED_PHOTO_KEY}`);
+  });
+
+  it("snapshots the place's own category label and the client's time zone", async () => {
+    controls.queue(
+      [{ ...placeRow(), categoryName: "Hotpot Restaurant" }],
+      [checkinRow({ placeCategoryName: "Hotpot Restaurant", timeZoneOffsetMinutes: -420 })],
+    );
+
+    const response = await send("POST", "/", { placeId: PLACE_ID, timeZoneOffsetMinutes: -420 });
+
+    expect(response.status).toBe(201);
+    const inserted = controls.chainedCalls.find((call) => call.method === "values")!.arguments[0];
+    expect(inserted).toMatchObject({ placeCategoryName: "Hotpot Restaurant", timeZoneOffsetMinutes: -420 });
+    const body = (await response.json()) as Record<string, unknown>;
+    expect(body.placeCategoryName).toBe("Hotpot Restaurant");
+    expect(body.timeZoneOffsetMinutes).toBe(-420);
+    expect(body.photos).toEqual([]);
+  });
+
+  it("refuses a photo key minted for someone else, before touching the database", async () => {
+    const response = await send("POST", "/", {
+      placeId: PLACE_ID,
+      photos: [{ key: OWNED_PHOTO_KEY.replace(CURRENT_USER_ID, OTHER_USER_ID) }],
+    });
+
+    expect(response.status).toBe(400);
+    expect(controls.operations).toEqual([]);
+  });
+
+  it("refuses an avatar key passed off as a checkin photo", async () => {
+    const response = await send("POST", "/", {
+      placeId: PLACE_ID,
+      photos: [{ key: OWNED_PHOTO_KEY.replace("checkin-photos", "avatars") }],
+    });
+
+    expect(response.status).toBe(400);
+  });
+
+  it("caps the number of photos", async () => {
+    const response = await send("POST", "/", {
+      placeId: PLACE_ID,
+      photos: Array.from({ length: 5 }, () => ({ key: OWNED_PHOTO_KEY })),
+    });
+
+    expect(response.status).toBe(400);
+  });
+});
+
+describe("POST /checkins/photo-uploads", () => {
+  it("mints an upload url under checkin-photos for the caller", async () => {
+    const response = await send("POST", "/photo-uploads", {
+      contentType: "image/jpeg",
+      contentLength: 500_000,
+    });
+
+    expect(response.status).toBe(200);
+    const body = (await response.json()) as { key: string; uploadUrl: string };
+    expect(body.key.startsWith(`checkin-photos/${CURRENT_USER_ID}/`)).toBe(true);
+  });
+
+  it("refuses an upload over the size limit", async () => {
+    const response = await send("POST", "/photo-uploads", {
+      contentType: "image/jpeg",
+      contentLength: 5_000_000,
+    });
+
+    expect(response.status).toBe(400);
   });
 });

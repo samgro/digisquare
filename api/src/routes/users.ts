@@ -8,7 +8,7 @@ import {
   users as usersTable,
 } from "../db/schema.js";
 import { loadFriendshipStates } from "../lib/friendships.js";
-import { AVATAR_MAX_BYTES, createAvatarUploadUrl, isOwnedAvatarKey } from "../lib/r2.js";
+import { IMAGE_MAX_BYTES, createAvatarUploadUrl, isOwnedAvatarKey } from "../lib/r2.js";
 import { toPrivateUserResult, toPublicUserResult } from "../lib/user-result.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
@@ -31,7 +31,7 @@ const updateProfileSchema = z
 
 const avatarUploadSchema = z.object({
   contentType: z.literal("image/jpeg"),
-  contentLength: z.number().int().positive().max(AVATAR_MAX_BYTES),
+  contentLength: z.number().int().positive().max(IMAGE_MAX_BYTES),
 });
 
 const idParamSchema = z.object({

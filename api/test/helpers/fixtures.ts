@@ -30,3 +30,15 @@ export function loadRankingFixture(name: string): RankingFixture {
   const filePath = path.join(rankingFixturesDirectory, `${name}.json`);
   return JSON.parse(readFileSync(filePath, "utf-8")) as RankingFixture;
 }
+
+/** A recorded Foursquare v2 response, from test/fixtures/foursquare. */
+export function loadFoursquareFixture(fileName: string): unknown {
+  const filePath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "..",
+    "fixtures",
+    "foursquare",
+    fileName,
+  );
+  return JSON.parse(readFileSync(filePath, "utf-8"));
+}

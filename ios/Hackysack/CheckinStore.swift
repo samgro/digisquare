@@ -15,14 +15,18 @@ enum CheckinSyncStatus: Equatable {
 }
 
 /// A row in the current user's timeline. Entries created locally keep their
-/// draft so a failed save can be retried; entries loaded from the server have
-/// none. Suggested entries carry the pending suggestion they were built from.
+/// draft and photos so a failed save can be retried; entries loaded from the
+/// server have neither. Suggested entries carry the pending suggestion they
+/// were built from.
 struct TimelineEntry: Identifiable, Equatable {
     let id: UUID
-    let draft: CheckinDraft?
+    /// Photos that finish uploading are recorded on the draft, so a retry
+    /// only uploads the ones still missing.
+    var draft: CheckinDraft?
     var checkin: Checkin
     var syncStatus: CheckinSyncStatus
     var suggestion: PendingCheckin? = nil
+    var pendingPhotos: [PreparedPhoto] = []
 }
 
 extension TimelineEntry {
@@ -46,6 +50,9 @@ final class CheckinStore: ObservableObject {
     @Published private(set) var suggestions: [PendingCheckin] = []
     @Published private(set) var hasLoadedTimeline = false
     @Published private(set) var timelineError: String?
+    /// Continues the timeline after the loaded entries; nil once it is all loaded.
+    @Published private(set) var timelineNextCursor: Date?
+    @Published private(set) var isLoadingMoreTimeline = false
 
     /// Everything the timeline shows. Suggestions are placed by their visit's
     /// arrival time, so the timeline's day grouping interleaves them naturally.
@@ -125,8 +132,8 @@ final class CheckinStore: ObservableObject {
             return
         }
         do {
-            let serverCheckins = try await checkinsAPI.listCheckins(userId: currentUserId)
-            mergeTimeline(with: serverCheckins)
+            let firstPage = try await checkinsAPI.listCheckins(userId: currentUserId)
+            mergeTimeline(with: firstPage)
             timelineError = nil
         } catch {
             timelineError = error.localizedDescription
@@ -134,9 +141,44 @@ final class CheckinStore: ObservableObject {
         hasLoadedTimeline = true
     }
 
-    /// Optimistically inserts the checkin at the top of the timeline and saves it in the background.
-    func submit(place: Place, message: String?, visibility: CheckinVisibility = .friends) {
-        submit(draft: CheckinDraft(place: place, message: message, visibility: visibility))
+    /// Drops every loaded and in-flight checkin, for a switch to another API
+    /// server whose timeline must not be merged with this one's. Suggestions
+    /// stay: they come from this device's visits, not from any server.
+    func resetTimeline() {
+        savedEntries = []
+        hasLoadedTimeline = false
+        timelineError = nil
+        timelineNextCursor = nil
+    }
+
+    /// Loads the next page of older checkins. A failure is left for the next
+    /// scroll to retry rather than shown, since the loaded ones are still fine.
+    func loadMoreTimeline() async {
+        guard let currentUserId, let cursor = timelineNextCursor, !isLoadingMoreTimeline else { return }
+        isLoadingMoreTimeline = true
+        defer { isLoadingMoreTimeline = false }
+        do {
+            let page = try await checkinsAPI.listCheckins(userId: currentUserId, before: cursor)
+            savedEntries = CheckinPaging.appendPage(
+                page.map { TimelineEntry(savedCheckin: $0) },
+                to: savedEntries,
+                checkin: \.checkin
+            )
+            timelineNextCursor = CheckinPaging.nextCursor(after: page, checkin: { $0 })
+        } catch {
+            DevLog.network("Couldn't load more of the timeline: \(error)")
+        }
+    }
+
+    /// Optimistically inserts the checkin at the top of the timeline and saves
+    /// it in the background, uploading its photos first.
+    func submit(
+        place: Place,
+        message: String?,
+        visibility: CheckinVisibility = .friends,
+        photos: [PreparedPhoto] = []
+    ) {
+        submit(draft: CheckinDraft(place: place, message: message, visibility: visibility), photos: photos)
     }
 
     func retry(entryId: UUID) {
@@ -144,28 +186,40 @@ final class CheckinStore: ObservableObject {
         Task { await save(entryId: entryId) }
     }
 
-    private func submit(draft: CheckinDraft) {
+    private func submit(draft: CheckinDraft, photos: [PreparedPhoto] = []) {
         let entry = TimelineEntry(
             id: UUID(),
             draft: draft,
             // The placeholder needs an owner even though the draft no longer
             // carries one — the server assigns the real one from the token.
-            checkin: Checkin(placeholderFor: draft, userId: currentUserId ?? ""),
-            syncStatus: .saving
+            checkin: Checkin(placeholderFor: draft, photos: photos, userId: currentUserId ?? ""),
+            syncStatus: .saving,
+            pendingPhotos: photos
         )
         savedEntries.insert(entry, at: 0)
         Task { await save(entryId: entry.id) }
     }
 
     private func save(entryId: UUID) async {
-        guard let entry = savedEntries.first(where: { $0.id == entryId }), let draft = entry.draft else {
+        guard let entry = savedEntries.first(where: { $0.id == entryId }), var draft = entry.draft else {
             return
         }
         do {
+            // In order, so the photos keep the order they were picked in.
+            for photo in entry.pendingPhotos.dropFirst(draft.photos.count) {
+                draft.photos.append(try await checkinsAPI.uploadPhoto(photo))
+                let uploadedPhotos = draft.photos
+                updateEntry(entryId) { $0.draft?.photos = uploadedPhotos }
+            }
             let savedCheckin = try await saveCheckin(draft)
             updateEntry(entryId) {
                 $0.checkin = savedCheckin
                 $0.syncStatus = .saved
+                $0.pendingPhotos = []
+            }
+            // The saved checkin shows the uploaded copies now.
+            for photo in entry.pendingPhotos {
+                try? FileManager.default.removeItem(at: photo.localURL)
             }
             recordConfirmedCheckin(savedCheckin)
         } catch {
@@ -173,11 +227,18 @@ final class CheckinStore: ObservableObject {
         }
     }
 
-    /// Replaces saved rows with the server's list while keeping in-flight and failed
-    /// local entries at the top. Existing row identities are preserved so the list
-    /// doesn't re-animate every row on refresh.
-    private func mergeTimeline(with serverCheckins: [Checkin]) {
-        let serverIds = Set(serverCheckins.map(\.id))
+    /// Folds a reloaded first page into the timeline, keeping in-flight and
+    /// failed local entries at the top and any older pages already loaded.
+    /// Existing row identities are preserved so the list doesn't re-animate
+    /// every row on refresh.
+    private func mergeTimeline(with firstPage: [Checkin]) {
+        let merged = CheckinPaging.mergeFirstPage(
+            firstPage,
+            into: savedEntries.filter { $0.syncStatus == .saved }.map(\.checkin),
+            loadedCursor: timelineNextCursor,
+            checkin: { $0 }
+        )
+        let serverIds = Set(merged.items.map(\.id))
         let pendingEntries = savedEntries.filter { entry in
             entry.syncStatus != .saved && !serverIds.contains(entry.checkin.id)
         }
@@ -185,7 +246,7 @@ final class CheckinStore: ObservableObject {
             savedEntries.map { ($0.checkin.id, $0.id) },
             uniquingKeysWith: { first, _ in first }
         )
-        savedEntries = pendingEntries + serverCheckins.map { checkin in
+        savedEntries = pendingEntries + merged.items.map { checkin in
             TimelineEntry(
                 id: existingEntryIds[checkin.id] ?? UUID(),
                 draft: nil,
@@ -193,6 +254,7 @@ final class CheckinStore: ObservableObject {
                 syncStatus: .saved
             )
         }
+        timelineNextCursor = merged.nextCursor
     }
 
     /// A like, comment or edit changed the checkin; the timeline's copy
@@ -310,8 +372,9 @@ final class CheckinStore: ObservableObject {
 }
 
 private extension Checkin {
-    /// A local stand-in shown in the timeline until the server responds.
-    init(placeholderFor draft: CheckinDraft, userId: String) {
+    /// A local stand-in shown in the timeline until the server responds. Its
+    /// photos point at the local copies, which load like any other URL.
+    init(placeholderFor draft: CheckinDraft, photos: [PreparedPhoto], userId: String) {
         let now = Date()
         let place = draft.place
         self.init(
@@ -323,10 +386,15 @@ private extension Checkin {
             placeLocality: place.locality,
             placePrimaryType: place.primaryType,
             placeTypes: place.types.isEmpty ? nil : place.types,
+            placeCategoryName: place.categoryName,
             location: place.location,
             message: draft.message,
             visibility: draft.visibility,
             source: draft.source,
+            photos: photos.map { photo in
+                CheckinPhoto(id: photo.id.uuidString, url: photo.localURL, width: photo.width, height: photo.height)
+            },
+            timeZoneOffsetMinutes: draft.timeZoneOffsetMinutes,
             createdAt: draft.createdAt ?? now,
             updatedAt: now
         )
@@ -351,10 +419,12 @@ extension TimelineEntry {
                 placeLocality: place.locality,
                 placePrimaryType: place.primaryType,
                 placeTypes: place.types,
+                placeCategoryName: place.categoryName,
                 location: place.location,
                 message: nil,
                 visibility: suggestion.visibility,
                 source: .visit,
+                timeZoneOffsetMinutes: TimeZone.current.secondsFromGMT(for: suggestion.visit.arrivalDate) / 60,
                 createdAt: suggestion.visit.arrivalDate,
                 updatedAt: suggestion.createdAt
             ),

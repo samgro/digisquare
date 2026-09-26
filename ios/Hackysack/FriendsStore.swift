@@ -16,6 +16,9 @@ final class FriendsStore {
     private(set) var feed: [FriendCheckin] = []
     private(set) var hasLoadedFeed = false
     private(set) var feedError: String?
+    /// Continues the feed after the loaded checkins; nil once it is all loaded.
+    private(set) var feedNextCursor: Date?
+    private(set) var isLoadingMoreFeed = false
 
     @ObservationIgnored private let friendsAPI = FriendsAPI()
 
@@ -27,13 +30,35 @@ final class FriendsStore {
             // against a stale friends list or the other way round, which
             // would pick the wrong empty state.
             async let loadedFriends = friendsAPI.friends()
-            async let loadedFeed = friendsAPI.friendCheckins()
-            (friends, feed) = try await (loadedFriends, loadedFeed)
+            async let loadedFeed = friendsAPI.friendCheckins(limit: CheckinPaging.pageSize)
+            let (friendsResult, firstPage) = try await (loadedFriends, loadedFeed)
+            let merged = CheckinPaging.mergeFirstPage(
+                firstPage,
+                into: feed,
+                loadedCursor: feedNextCursor,
+                checkin: \.checkin
+            )
+            (friends, feed, feedNextCursor) = (friendsResult, merged.items, merged.nextCursor)
             feedError = nil
         } catch {
             feedError = error.localizedDescription
         }
         hasLoadedFeed = true
+    }
+
+    /// Loads the next page of older checkins. A failure is left for the next
+    /// scroll to retry rather than shown, since the loaded ones are still fine.
+    func loadMoreFeed() async {
+        guard let cursor = feedNextCursor, !isLoadingMoreFeed else { return }
+        isLoadingMoreFeed = true
+        defer { isLoadingMoreFeed = false }
+        do {
+            let page = try await friendsAPI.friendCheckins(limit: CheckinPaging.pageSize, before: cursor)
+            feed = CheckinPaging.appendPage(page, to: feed, checkin: \.checkin)
+            feedNextCursor = CheckinPaging.nextCursor(after: page, checkin: \.checkin)
+        } catch {
+            DevLog.network("Couldn't load more of the feed: \(error)")
+        }
     }
 
     /// A like, comment or edit changed the checkin; the feed's copy follows.

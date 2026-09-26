@@ -3,7 +3,7 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { config } from "../config.js";
 
-export const AVATAR_MAX_BYTES = 2_000_000;
+export const IMAGE_MAX_BYTES = 2_000_000;
 
 const UPLOAD_URL_TTL_SECONDS = 300;
 
@@ -17,7 +17,15 @@ const r2Client = new S3Client({
   },
 });
 
-export interface AvatarUpload {
+/** Where a stored object is served from. Clients never see raw keys. */
+export function publicUrlFor(key: string): string {
+  return `${config.R2_PUBLIC_BASE_URL.replace(/\/+$/, "")}/${key}`;
+}
+
+/** The folders client uploads may land in, one per kind of image. */
+export type ImageKeyPrefix = "avatars" | "checkin-photos";
+
+export interface ImageUpload {
   key: string;
   uploadUrl: string;
   expiresInSeconds: number;
@@ -25,18 +33,19 @@ export interface AvatarUpload {
 }
 
 /**
- * Mints a short-lived URL the client can PUT an avatar to directly, so image
+ * Mints a short-lived URL the client can PUT a JPEG to directly, so image
  * bytes never pass through this server.
  *
- * The key embeds the user id, which is what lets PATCH /users/me prove a
- * caller owns the object they are claiming — without that check any user
- * could point their avatar at anyone else's image.
+ * The key embeds the user id, which is what lets the route that later claims
+ * the key prove the caller owns it (isOwnedImageKey) — without that check any
+ * user could attach anyone else's image.
  */
-export async function createAvatarUploadUrl(
+export async function createImageUploadUrl(
+  prefix: ImageKeyPrefix,
   userId: string,
   contentLength: number,
-): Promise<AvatarUpload> {
-  const key = `avatars/${userId}/${randomUUID()}.jpg`;
+): Promise<ImageUpload> {
+  const key = `${prefix}/${userId}/${randomUUID()}.jpg`;
 
   const uploadUrl = await getSignedUrl(
     r2Client,
@@ -59,27 +68,49 @@ export async function createAvatarUploadUrl(
     key,
     uploadUrl,
     expiresInSeconds: UPLOAD_URL_TTL_SECONDS,
-    maxBytes: AVATAR_MAX_BYTES,
+    maxBytes: IMAGE_MAX_BYTES,
   };
+}
+
+export function createAvatarUploadUrl(userId: string, contentLength: number) {
+  return createImageUploadUrl("avatars", userId, contentLength);
+}
+
+/** Uploads a JPEG the server produced itself, such as a copied Swarm photo. */
+export async function putJpegObject(key: string, body: Buffer): Promise<void> {
+  await r2Client.send(
+    new PutObjectCommand({
+      Bucket: config.R2_BUCKET_NAME,
+      Key: key,
+      Body: body,
+      ContentType: "image/jpeg",
+      ContentLength: body.length,
+    }),
+  );
 }
 
 const UUID_FILENAME_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.jpg$/;
 
 /**
- * True only for keys createAvatarUploadUrl minted for this exact user.
+ * True only for keys createImageUploadUrl minted for this exact user and
+ * prefix.
  *
  * Compares the three path segments directly rather than interpolating the
  * user id into a pattern, so nothing in the id can ever be read as regex
  * syntax. The segment count is checked first, which is what stops a crafted
  * key from smuggling extra path in front of or behind the expected shape.
  */
-export function isOwnedAvatarKey(avatarKey: string, userId: string): boolean {
-  const segments = avatarKey.split("/");
+export function isOwnedImageKey(prefix: ImageKeyPrefix, key: string, userId: string): boolean {
+  const segments = key.split("/");
   if (segments.length !== 3) {
     return false;
   }
 
-  const [prefix, ownerId, fileName] = segments;
-  return prefix === "avatars" && ownerId === userId && UUID_FILENAME_PATTERN.test(fileName!);
+  const [keyPrefix, ownerId, fileName] = segments;
+  return keyPrefix === prefix && ownerId === userId && UUID_FILENAME_PATTERN.test(fileName!);
+}
+
+export function isOwnedAvatarKey(avatarKey: string, userId: string): boolean {
+  return isOwnedImageKey("avatars", avatarKey, userId);
 }

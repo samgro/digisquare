@@ -53,6 +53,48 @@ export async function verifyAccessToken(
   }
 }
 
+const OAUTH_STATE_AUDIENCE = "hackysack-oauth-state";
+const OAUTH_STATE_TTL = "10m";
+
+/**
+ * The `state` for a third-party OAuth round trip. The callback arrives from
+ * the provider's redirect with no bearer token, so this is the only thing
+ * that says which user started the flow. Signing it stops anyone from
+ * attaching their own Foursquare account to someone else's Hackysack account,
+ * and the provider claim stops a state minted for one provider being replayed
+ * against another.
+ */
+export async function createOAuthStateToken(userId: string, provider: string): Promise<string> {
+  return new SignJWT({ provider })
+    .setProtectedHeader({ alg: "HS256" })
+    .setSubject(userId)
+    .setIssuer(ACCESS_TOKEN_ISSUER)
+    .setAudience(OAUTH_STATE_AUDIENCE)
+    .setIssuedAt()
+    .setExpirationTime(OAUTH_STATE_TTL)
+    .sign(signingKey);
+}
+
+/** The user who started the flow, or null for anything else. */
+export async function verifyOAuthStateToken(
+  token: string,
+  provider: string,
+): Promise<string | null> {
+  try {
+    const { payload } = await jwtVerify(token, signingKey, {
+      algorithms: ["HS256"],
+      issuer: ACCESS_TOKEN_ISSUER,
+      audience: OAUTH_STATE_AUDIENCE,
+    });
+    if (payload.provider !== provider || typeof payload.sub !== "string" || !payload.sub) {
+      return null;
+    }
+    return payload.sub;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Refresh tokens are opaque, not JWTs: they must be revocable, and a JWT is
  * not. 256 bits of entropy means there is no offline-guessing surface, so a
