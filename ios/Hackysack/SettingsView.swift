@@ -63,6 +63,16 @@ struct SettingsView: View {
                 }
             }
 
+            #if targetEnvironment(simulator)
+            Section {
+                APIServerPicker()
+            } header: {
+                Text("API Server")
+            } footer: {
+                Text("Each server keeps its own sign-in.")
+            }
+            #endif
+
             #if DEBUG
             Section("Debug") {
                 DebugVisitMenu()

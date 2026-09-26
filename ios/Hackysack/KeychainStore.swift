@@ -19,9 +19,10 @@ enum KeychainError: Error {
 // synchronous and thread-safe, so they belong on whatever actor calls them.
 nonisolated enum KeychainStore {
     private static let service = "samgro.Hackysack.auth"
-    private static let account = "session"
 
-    private static var baseQuery: [String: Any] {
+    /// `account` is the API server's (`APIServer.keychainAccount`), so each
+    /// server's session is stored apart.
+    private static func baseQuery(account: String) -> [String: Any] {
         [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
@@ -29,7 +30,7 @@ nonisolated enum KeychainStore {
         ]
     }
 
-    static func save(_ credentials: StoredCredentials) throws {
+    static func save(_ credentials: StoredCredentials, account: String) throws {
         let data = try JSONEncoder().encode(credentials)
 
         let attributes: [String: Any] = [
@@ -45,6 +46,7 @@ nonisolated enum KeychainStore {
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
         ]
 
+        let baseQuery = baseQuery(account: account)
         let updateStatus = SecItemUpdate(baseQuery as CFDictionary, attributes as CFDictionary)
         if updateStatus == errSecSuccess {
             return
@@ -65,8 +67,8 @@ nonisolated enum KeychainStore {
     /// `.interactionNotAllowed` when the device is locked, so the caller can
     /// wait rather than concluding the user is signed out and deleting the
     /// item.
-    static func load() throws -> StoredCredentials? {
-        var query = baseQuery
+    static func load(account: String) throws -> StoredCredentials? {
+        var query = baseQuery(account: account)
         query[kSecReturnData as String] = true
         query[kSecMatchLimit as String] = kSecMatchLimitOne
 
@@ -89,8 +91,8 @@ nonisolated enum KeychainStore {
         }
     }
 
-    static func delete() throws {
-        let status = SecItemDelete(baseQuery as CFDictionary)
+    static func delete(account: String) throws {
+        let status = SecItemDelete(baseQuery(account: account) as CFDictionary)
         guard status == errSecSuccess || status == errSecItemNotFound else {
             throw KeychainError.status(status)
         }

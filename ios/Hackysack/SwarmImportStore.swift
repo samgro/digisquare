@@ -23,16 +23,12 @@ final class SwarmImportStore {
     /// with everything it brought in.
     @ObservationIgnored var onImportFinished: () -> Void = {}
 
-    @ObservationIgnored private let swarmImportAPI: SwarmImportAPI
+    @ObservationIgnored private let swarmImportAPI = SwarmImportAPI()
     @ObservationIgnored private var pollingTask: Task<Void, Never>?
     @ObservationIgnored private var dismissalTask: Task<Void, Never>?
 
     private static let pollInterval: Duration = .seconds(3)
     private static let finishedBannerDuration: Duration = .seconds(6)
-
-    init(swarmImportAPI: SwarmImportAPI = SwarmImportAPI()) {
-        self.swarmImportAPI = swarmImportAPI
-    }
 
     var hasLoaded: Bool { state != nil }
     var isConnected: Bool { state?.connected ?? false }

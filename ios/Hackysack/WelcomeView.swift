@@ -66,6 +66,16 @@ struct WelcomeView: View {
             if isAuthenticating {
                 ProgressView()
             }
+
+            #if targetEnvironment(simulator)
+            VStack(spacing: HackysackSpacing.small) {
+                Text("API Server")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                APIServerPicker()
+                    .disabled(isAuthenticating)
+            }
+            #endif
         }
         .padding(.horizontal, HackysackSpacing.large)
         .padding(.bottom, HackysackSpacing.extraLarge)
@@ -130,4 +140,5 @@ struct WelcomeView: View {
 #Preview {
     WelcomeView()
         .environment(AuthManager())
+        .environmentObject(CheckinStore.inMemory())
 }

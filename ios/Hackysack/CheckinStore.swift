@@ -141,6 +141,16 @@ final class CheckinStore: ObservableObject {
         hasLoadedTimeline = true
     }
 
+    /// Drops every loaded and in-flight checkin, for a switch to another API
+    /// server whose timeline must not be merged with this one's. Suggestions
+    /// stay: they come from this device's visits, not from any server.
+    func resetTimeline() {
+        savedEntries = []
+        hasLoadedTimeline = false
+        timelineError = nil
+        timelineNextCursor = nil
+    }
+
     /// Loads the next page of older checkins. A failure is left for the next
     /// scroll to retry rather than shown, since the loaded ones are still fine.
     func loadMoreTimeline() async {

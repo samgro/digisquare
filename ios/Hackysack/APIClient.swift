@@ -213,8 +213,8 @@ final class APIClient {
         var urlRequest = originalRequest
         var attachedAccessToken: String?
 
-        // Simulator builds first find which local port serves this build's
-        // branch; nothing outside the simulator, where the URL is fixed.
+        // Simulator builds on localhost first find which local port serves
+        // this build's branch; production's URL is fixed.
         await DevServerLocator.shared.ensureLocated()
 
         // A dev server from another checkout gets nothing at all, so no
@@ -224,7 +224,8 @@ final class APIClient {
             DevLog.network("✗ \(originalRequest.url?.path ?? "") skipped: server is \(server.wireValue), this build is \(app.wireValue)")
             throw APIError.wrongServer(server: server.wireValue, app: app.wireValue)
         }
-        if let app = BuildIdentity.app {
+        // Only dev servers check the build; production is never sent it.
+        if APIEnvironment.server == .localhost, let app = BuildIdentity.app {
             urlRequest.setValue(app.wireValue, forHTTPHeaderField: "X-Hackysack-Client-Build")
         }
 
