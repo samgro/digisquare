@@ -6,8 +6,9 @@
 import SwiftUI
 
 /// The content shared by every place a checkin is shown: the place name as
-/// the title, its category/neighborhood/city, and when it happened — used by
-/// both the timeline and friends feed so the two stay visually identical.
+/// the title, its category/neighborhood/city, when it happened, the message
+/// and the photos — used by both the timeline and friends feed so the two
+/// stay visually identical.
 struct CheckinDetailsRow: View {
     let checkin: Checkin
     /// A small byline above the place name. `nil` on the timeline, where
@@ -17,6 +18,8 @@ struct CheckinDetailsRow: View {
     var onPersonTap: (() -> Void)? = nil
     /// Off on the timeline, where day headers already say the date.
     var showsDate = true
+    /// Off on the detail page, which shows the photos full width instead.
+    var showsPhotos = true
     /// One on a suggestion, where the buttons beside the row would otherwise
     /// wrap most names; the full name is in the edit sheet.
     var placeNameLineLimit = 2
@@ -58,6 +61,9 @@ struct CheckinDetailsRow: View {
                         .font(.caption)
                         .accessibilityLabel("Private")
                 }
+                if checkin.source == .swarm {
+                    Text("· via Swarm")
+                }
             }
             .font(.subheadline)
             .foregroundStyle(.secondary)
@@ -67,14 +73,18 @@ struct CheckinDetailsRow: View {
                     .font(.body)
                     .padding(.top, 2)
             }
+
+            if showsPhotos, !checkin.photos.isEmpty {
+                CheckinPhotoStrip(photos: checkin.photos)
+                    .padding(.top, 6)
+            }
         }
     }
 
     /// "Coffee Shop · Sacramento, CA", or whichever of category/locality is
     /// available, or `nil` when neither is.
     private var detailLine: String? {
-        let category = checkin.placePrimaryType.map { PlaceTypeSymbol.displayName(for: $0) }
-        let parts = [category, checkin.locality].compactMap { $0 }
+        let parts = [checkin.categoryName, checkin.locality].compactMap { $0 }
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
 
@@ -99,6 +109,7 @@ struct CheckinDetailsRow: View {
         CheckinDetailsRow(checkin: .preview(), showsDate: false)
         CheckinDetailsRow(checkin: .preview(message: nil, primaryType: "park"), showsDate: false)
         CheckinDetailsRow(checkin: .preview(message: "Just me", visibility: .onlyMe), showsDate: false)
+        CheckinDetailsRow(checkin: .preview(source: .swarm, categoryName: "Hotpot Restaurant"), showsDate: false)
     }
     .listStyle(.plain)
 }

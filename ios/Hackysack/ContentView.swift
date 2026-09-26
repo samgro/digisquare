@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var friendsStore = FriendsStore()
     @State private var notificationsStore = NotificationsStore()
     @State private var socialStore = CheckinSocialStore()
+    @State private var swarmImportStore = SwarmImportStore()
     @Environment(\.scenePhase) private var scenePhase
 
     /// The signed-in user's id, or nil while signing in. ContentView only
@@ -34,6 +35,7 @@ struct ContentView: View {
         .environment(friendsStore)
         .environment(notificationsStore)
         .environment(socialStore)
+        .environment(swarmImportStore)
         .onAppear {
             locationManager.requestPermissionsIfNeeded()
             // The scenePhase observer below only fires on a change. After
@@ -44,7 +46,9 @@ struct ContentView: View {
             }
             checkinStore.currentUserId = signedInUserId
             connectSocialStore()
+            connectSwarmImportStore()
             Task { await notificationsStore.refreshUnreadCount() }
+            Task { await swarmImportStore.refresh() }
         }
         .onChange(of: signedInUserId) { _, newUserId in
             // Keeps the timeline pointed at the right account if the signed-in
@@ -55,8 +59,11 @@ struct ContentView: View {
             friendsStore = FriendsStore()
             notificationsStore = NotificationsStore()
             socialStore = CheckinSocialStore()
+            swarmImportStore = SwarmImportStore()
             connectSocialStore()
+            connectSwarmImportStore()
             Task { await notificationsStore.refreshUnreadCount() }
+            Task { await swarmImportStore.refresh() }
         }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
@@ -71,6 +78,8 @@ struct ContentView: View {
                 // Keeps the bell badge current when coming back to the app;
                 // likes, comments and requests arrive while it's in the background.
                 Task { await notificationsStore.refreshUnreadCount() }
+                // An import keeps running on the server while the app is away.
+                Task { await swarmImportStore.refresh() }
             case .background:
                 locationManager.stopUpdatingLocation()
             case .inactive:
@@ -90,6 +99,18 @@ struct ContentView: View {
         socialStore.onCheckinChanged = { checkin in
             checkinStore.apply(checkin)
             friendsStore.apply(checkin)
+        }
+    }
+
+    /// A finished import means thousands of new rows; both feeds reload.
+    private func connectSwarmImportStore() {
+        let checkinStore = checkinStore
+        let friendsStore = friendsStore
+        swarmImportStore.onImportFinished = {
+            Task {
+                await checkinStore.loadTimeline()
+                await friendsStore.loadFeed()
+            }
         }
     }
 }

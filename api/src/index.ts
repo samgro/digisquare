@@ -1,9 +1,10 @@
 import { serve } from "@hono/node-server";
 import { app } from "./app.js";
-import { config } from "./config.js";
+import { config, swarmImportConfig } from "./config.js";
 import { CoverageWorker } from "./lib/coverage-worker.js";
 import { findOpenPort } from "./lib/open-port.js";
 import { s3Source } from "./lib/overture-remote.js";
+import { resumeRunningImports } from "./lib/swarm-import.js";
 
 // Locally, several checkouts run their own API at once: each takes the
 // first free port from 3001 up, and the simulator app finds its own server
@@ -27,6 +28,14 @@ serve({ fetch: app.fetch, port }, (info) => {
 // API process because there is no separate worker on Railway.
 const coverageWorker = new CoverageWorker({ source: s3Source(config.OVERTURE_RELEASE) });
 coverageWorker.start();
+
+// Swarm imports run in-process too, so a deploy interrupts them; each saves
+// its place after every page, and this picks them back up from there.
+if (swarmImportConfig()) {
+  resumeRunningImports().catch((error: unknown) => {
+    console.error("Failed to resume Swarm imports", error);
+  });
+}
 
 // A deploy sends SIGTERM while a job may be running; the worker hands it
 // back to the queue before the process exits, within a bound in case the

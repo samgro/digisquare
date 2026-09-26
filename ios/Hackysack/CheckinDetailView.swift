@@ -44,7 +44,12 @@ struct CheckinDetailView: View {
 
                 HStack(alignment: .top, spacing: 12) {
                     PlaceIconView(primaryType: checkin.placePrimaryType)
-                    CheckinDetailsRow(checkin: checkin)
+                    CheckinDetailsRow(checkin: checkin, showsPhotos: false)
+                }
+
+                if !checkin.photos.isEmpty {
+                    CheckinPhotoGallery(photos: checkin.photos)
+                        .clipShape(RoundedRectangle(cornerRadius: HackysackRadius.card, style: .continuous))
                 }
 
                 CheckinActionBar(checkin: checkin) {

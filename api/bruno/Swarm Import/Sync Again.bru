@@ -1,0 +1,21 @@
+meta {
+  name: Sync Again
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/imports/swarm
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  Starts an incremental sync with the stored connection: it re-reads from a
+  month before the newest imported checkin. 202 with the import, or 409 when
+  Swarm is not connected or an import is already running.
+}

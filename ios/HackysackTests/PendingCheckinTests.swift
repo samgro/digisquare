@@ -41,10 +41,12 @@ struct PendingCheckinTests {
             placeLocality: nil,
             placePrimaryType: nil,
             placeTypes: nil,
+            placeCategoryName: nil,
             location: location,
             message: nil,
             visibility: .friends,
             source: .manual,
+            timeZoneOffsetMinutes: nil,
             createdAt: createdAt,
             updatedAt: createdAt
         )

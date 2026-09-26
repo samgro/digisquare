@@ -509,7 +509,7 @@ struct EditProfileView: View {
             if let croppedImage {
                 saveStatus = "Uploading photo…"
                 do {
-                    guard let jpegData = Self.compressedJPEG(from: croppedImage) else {
+                    guard let jpegData = ImageCompression.jpegData(from: croppedImage) else {
                         throw APIError.invalidResponse
                     }
                     avatarKey = try await authManager.uploadAvatar(jpegData)
@@ -571,18 +571,6 @@ struct EditProfileView: View {
             saveStatus = nil
             isSaving = false
         }
-    }
-
-    /// Targets well under the server's 2 MB cap. A 512x512 photo at quality
-    /// 0.8 is normally 40-90 KB; the fallbacks exist for pathological images.
-    private static func compressedJPEG(from image: UIImage) -> Data? {
-        for quality in [0.8, 0.6, 0.4] {
-            guard let data = image.jpegData(compressionQuality: quality) else { continue }
-            if data.count <= 2_000_000 {
-                return data
-            }
-        }
-        return nil
     }
 }
 

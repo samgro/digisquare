@@ -133,8 +133,8 @@ struct CheckInView: View {
         if place.id == suggestedPlaceId {
             onChangeLocation = showRankedList
         }
-        return CheckInComposeView(place: place, onChangeLocation: onChangeLocation) { message, visibility in
-            checkinStore.submit(place: place, message: message, visibility: visibility)
+        return CheckInComposeView(place: place, onChangeLocation: onChangeLocation) { message, visibility, photos in
+            checkinStore.submit(place: place, message: message, visibility: visibility, photos: photos)
             // This is the cover's dismiss (CheckInView owns the stack), so it closes
             // the whole flow rather than popping back to the place list.
             dismiss()

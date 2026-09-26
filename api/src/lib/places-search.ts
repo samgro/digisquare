@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, getTableColumns, isNull, or, sql, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, getTableColumns, isNull, ne, or, sql, type SQL } from "drizzle-orm";
 import { database } from "../db/index.js";
 import { checkins, places } from "../db/schema.js";
 import { friendIdsOf } from "./friendships.js";
@@ -146,9 +146,19 @@ export function isVisiblePlace(viewerUserId: string | null): SQL {
   ) as SQL;
 }
 
-/** Visible, and still present in the current Overture release. */
+/**
+ * Visible, and still present in the current Overture release. Venues that
+ * came in with a Swarm import are left out: Overture almost always has the
+ * same venue under its own id, so listing both would show every imported
+ * place twice until the two are matched. They still load by id, for the
+ * checkins that point at them.
+ */
 function isSearchable(viewerUserId: string | null): SQL {
-  return and(isVisiblePlace(viewerUserId), isNull(places.retiredAt)) as SQL;
+  return and(
+    isVisiblePlace(viewerUserId),
+    isNull(places.retiredAt),
+    ne(places.source, "foursquare"),
+  ) as SQL;
 }
 
 function selectCandidates(

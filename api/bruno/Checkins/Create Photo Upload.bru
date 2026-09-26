@@ -1,0 +1,28 @@
+meta {
+  name: Create Photo Upload
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{baseUrl}}/checkins/photo-uploads
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "contentType": "image/jpeg",
+    "contentLength": 500000
+  }
+}
+
+docs {
+  Mints a presigned R2 PUT for one checkin photo, JPEG only, up to 2 MB. PUT
+  the bytes to uploadUrl with the same Content-Type and Content-Length, then
+  send the key in POST /checkins as photos: [{ key, width, height }] (max 4).
+}

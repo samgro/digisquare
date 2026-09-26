@@ -144,6 +144,41 @@ final class APIClient {
         try throwIfFailure(data: data, response: response)
     }
 
+    // MARK: - Uploads
+
+    /// Asks our API at `uploadPath` for a presigned URL, PUTs the JPEG
+    /// straight to storage, and returns the key to attach to whatever the
+    /// image belongs to.
+    func uploadJPEG(_ jpegData: Data, uploadPath: String) async throws -> String {
+        struct UploadRequest: Encodable {
+            let contentType: String
+            let contentLength: Int
+        }
+
+        let upload: ImageUpload = try await request(
+            method: "POST",
+            path: uploadPath,
+            body: UploadRequest(contentType: "image/jpeg", contentLength: jpegData.count)
+        )
+
+        var putRequest = URLRequest(url: upload.uploadUrl)
+        putRequest.httpMethod = "PUT"
+        // Must match what the server signed, byte for byte. URLSession sets
+        // Content-Length from the body itself. Do NOT set Authorization: it
+        // conflicts with the query-string credentials and R2 answers 403.
+        putRequest.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+
+        // Deliberately not perform(): this request goes to R2, not to our
+        // API, and must carry no bearer token.
+        let (_, response) = try await urlSession.upload(for: putRequest, from: jpegData)
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200..<300).contains(httpResponse.statusCode) else {
+            throw APIError.invalidResponse
+        }
+
+        return upload.key
+    }
+
     // MARK: - Plumbing
 
     private func buildRequest<Body: Encodable>(

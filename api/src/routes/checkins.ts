@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { Hono } from "hono";
 import { and, desc, eq, or, sql } from "drizzle-orm";
 import { z } from "zod";
@@ -7,11 +8,16 @@ import {
   CHECKIN_VISIBILITIES,
   checkinComments as checkinCommentsTable,
   checkinLikes as checkinLikesTable,
+  checkinPhotos as checkinPhotosTable,
   checkins as checkinsTable,
   notifications as notificationsTable,
   users as usersTable,
 } from "../db/schema.js";
-import { toCheckinResult } from "../lib/checkin-result.js";
+import {
+  loadPhotosByCheckinId,
+  toCheckinPhotoResult,
+  toCheckinResult,
+} from "../lib/checkin-result.js";
 import {
   checkinSocialColumns,
   findVisibleCheckin,
@@ -22,11 +28,14 @@ import { formatAddress } from "../lib/place-result.js";
 import { findPlaceById } from "../lib/places-search.js";
 import { isVisibleCheckin } from "../lib/friendships.js";
 import { createdBefore, paginationQuerySchema } from "../lib/pagination.js";
+import { IMAGE_MAX_BYTES, createImageUploadUrl, isOwnedImageKey } from "../lib/r2.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
 
 /** How far ahead of the server clock a client-supplied `createdAt` may be. */
 const MAXIMUM_CREATED_AT_SKEW_MILLISECONDS = 5 * 60 * 1000;
+
+const MAX_PHOTOS_PER_CHECKIN = 4;
 
 const createdAtSchema = z
   .string()
@@ -50,6 +59,24 @@ const createCheckinSchema = z.object({
   // started, so the timeline shows when the user was there rather than when
   // they tapped Accept.
   createdAt: createdAtSchema.optional(),
+  // Minutes east of UTC where the checkin happened, e.g. -420 in California.
+  timeZoneOffsetMinutes: z.number().int().min(-720).max(840).nullable().optional(),
+  // Keys from POST /checkins/photo-uploads, already uploaded, in display order.
+  photos: z
+    .array(
+      z.object({
+        key: z.string().min(1),
+        width: z.number().int().positive().nullable().optional(),
+        height: z.number().int().positive().nullable().optional(),
+      }),
+    )
+    .max(MAX_PHOTOS_PER_CHECKIN)
+    .optional(),
+});
+
+const photoUploadSchema = z.object({
+  contentType: z.literal("image/jpeg"),
+  contentLength: z.number().int().positive().max(IMAGE_MAX_BYTES),
 });
 
 // The venue is fixed once checked in; only what you said and who sees it
@@ -103,38 +130,105 @@ checkins.post("/", async (context) => {
     return context.json({ error: "Invalid checkin", details: parsed.error.flatten() }, 400);
   }
 
+  const userId = context.get("userId");
+  const photos = parsed.data.photos ?? [];
+  // Photo keys are minted per user, so anything else is someone else's image
+  // or a made-up key, and attaching it would publish it under this checkin.
+  if (photos.some((photo) => !isOwnedImageKey("checkin-photos", photo.key, userId))) {
+    return context.json({ error: "Invalid photo key" }, 400);
+  }
+
   try {
     // Looked up as the caller, so a stranger's private venue and a place
     // Overture has since dropped are both "not found".
-    const place = await findPlaceById(parsed.data.placeId, context.get("userId"));
+    const place = await findPlaceById(parsed.data.placeId, userId);
     if (!place || place.retiredAt !== null) {
       return context.json({ error: "Place not found" }, 404);
     }
 
-    const [created] = await database
+    // Generated here rather than by Postgres so the photo rows can reference
+    // it in the same batch; a batched insert cannot feed its id to the next.
+    const checkinId = randomUUID();
+    const insertCheckin = database
       .insert(checkinsTable)
       .values({
-        userId: context.get("userId"),
+        id: checkinId,
+        userId,
         placeId: place.id,
         placeName: place.name,
         placeAddress: formatAddress(place),
         placeLocality: place.addressLocality,
         placePrimaryType: place.primaryType,
         placeTypes: place.types,
+        placeCategoryName: place.categoryName,
         latitude: place.latitude,
         longitude: place.longitude,
         message: parsed.data.message ?? null,
         visibility: parsed.data.visibility,
         source: parsed.data.source,
+        timeZoneOffsetMinutes: parsed.data.timeZoneOffsetMinutes ?? null,
         ...(parsed.data.createdAt === undefined ? {} : { createdAt: parsed.data.createdAt }),
       })
       .returning();
 
     // Nobody has had a chance to like it yet, so the counts are zero.
-    return context.json(toCheckinResult(created), 201);
+    if (photos.length === 0) {
+      const [created] = await insertCheckin;
+      return context.json(toCheckinResult(created!), 201);
+    }
+
+    // One batch, so a checkin never lands without the photos it was sent with.
+    const [createdCheckins, createdPhotos] = await database.batch([
+      insertCheckin,
+      database
+        .insert(checkinPhotosTable)
+        .values(
+          photos.map((photo, position) => ({
+            checkinId,
+            position,
+            storageKey: photo.key,
+            width: photo.width ?? null,
+            height: photo.height ?? null,
+          })),
+        )
+        .returning(),
+    ]);
+
+    return context.json(
+      toCheckinResult(createdCheckins[0]!, undefined, createdPhotos.map(toCheckinPhotoResult)),
+      201,
+    );
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to create checkin" }, 500);
+  }
+});
+
+// A presigned URL to PUT one photo to before creating the checkin it belongs
+// to; the key comes back in that request's `photos`.
+checkins.post("/photo-uploads", async (context) => {
+  let body: unknown;
+  try {
+    body = await context.req.json();
+  } catch {
+    return context.json({ error: "Invalid JSON body" }, 400);
+  }
+
+  const parsed = photoUploadSchema.safeParse(body);
+  if (!parsed.success) {
+    return context.json({ error: "Invalid upload request", details: parsed.error.flatten() }, 400);
+  }
+
+  try {
+    const upload = await createImageUploadUrl(
+      "checkin-photos",
+      context.get("userId"),
+      parsed.data.contentLength,
+    );
+    return context.json(upload);
+  } catch (error) {
+    console.error(error);
+    return context.json({ error: "Failed to create upload url" }, 500);
   }
 });
 
@@ -166,8 +260,13 @@ checkins.get("/", async (context) => {
       .where(and(...conditions))
       .orderBy(desc(checkinsTable.createdAt))
       .limit(limit);
+    const photosByCheckinId = await loadPhotosByCheckinId(rows.map((row) => row.checkin.id));
 
-    return context.json({ results: rows.map((row) => toCheckinResult(row.checkin, row)) });
+    return context.json({
+      results: rows.map((row) =>
+        toCheckinResult(row.checkin, row, photosByCheckinId.get(row.checkin.id)),
+      ),
+    });
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to fetch checkins" }, 500);
@@ -193,7 +292,8 @@ checkins.get("/:id", async (context) => {
       return context.json({ error: "Checkin not found" }, 404);
     }
 
-    return context.json(toCheckinResult(row.checkin, row));
+    const photosByCheckinId = await loadPhotosByCheckinId([row.checkin.id]);
+    return context.json(toCheckinResult(row.checkin, row, photosByCheckinId.get(row.checkin.id)));
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to fetch checkin" }, 500);
@@ -238,7 +338,8 @@ checkins.patch("/:id", async (context) => {
     }
 
     const social = await loadCheckinSocial(updated.id, currentUserId);
-    return context.json(toCheckinResult(updated, social));
+    const photosByCheckinId = await loadPhotosByCheckinId([updated.id]);
+    return context.json(toCheckinResult(updated, social, photosByCheckinId.get(updated.id)));
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to update checkin" }, 500);

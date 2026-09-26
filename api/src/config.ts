@@ -26,6 +26,16 @@ const environmentSchema = z.object({
   R2_SECRET_ACCESS_KEY: z.string().min(1),
   R2_BUCKET_NAME: z.string().min(1),
   R2_PUBLIC_BASE_URL: z.string().url(),
+
+  // Swarm import. Optional so the API still boots without it; the
+  // /imports/swarm routes answer 503 until all four are set (see
+  // swarmImportConfig below).
+  FOURSQUARE_CLIENT_ID: z.string().min(1).optional(),
+  FOURSQUARE_CLIENT_SECRET: z.string().min(1).optional(),
+  // This API's /imports/swarm/callback, exactly as registered with Foursquare.
+  FOURSQUARE_REDIRECT_URL: z.string().url().optional(),
+  // 32 random bytes, base64: openssl rand -base64 32
+  FOURSQUARE_TOKEN_ENCRYPTION_KEY: z.string().min(1).optional(),
 });
 
 const parsedEnvironment = environmentSchema.safeParse(process.env);
@@ -39,3 +49,24 @@ if (!parsedEnvironment.success) {
 }
 
 export const config = parsedEnvironment.data;
+
+export interface SwarmImportConfig {
+  clientId: string;
+  clientSecret: string;
+  redirectUrl: string;
+  tokenEncryptionKey: string;
+}
+
+/** Everything the Swarm import needs, or null when it is not configured. */
+export function swarmImportConfig(): SwarmImportConfig | null {
+  const {
+    FOURSQUARE_CLIENT_ID: clientId,
+    FOURSQUARE_CLIENT_SECRET: clientSecret,
+    FOURSQUARE_REDIRECT_URL: redirectUrl,
+    FOURSQUARE_TOKEN_ENCRYPTION_KEY: tokenEncryptionKey,
+  } = config;
+  if (!clientId || !clientSecret || !redirectUrl || !tokenEncryptionKey) {
+    return null;
+  }
+  return { clientId, clientSecret, redirectUrl, tokenEncryptionKey };
+}

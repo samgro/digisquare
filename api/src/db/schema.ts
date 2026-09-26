@@ -14,6 +14,7 @@ import {
   check,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
+import { jsonb } from "drizzle-orm/pg-core";
 
 /**
  * A PostGIS multipolygon. Drizzle only knows points natively, so this is
@@ -138,19 +139,79 @@ export const authRateLimits = pgTable("auth_rate_limits", {
 export const CHECKIN_VISIBILITIES = ["friends", "private"] as const;
 export type CheckinVisibility = (typeof CHECKIN_VISIBILITIES)[number];
 
-export const CHECKIN_SOURCES = ["manual", "visit"] as const;
+// "swarm" rows were imported from the user's Swarm history; they carry Swarm's
+// checkin id in externalId.
+export const CHECKIN_SOURCES = ["manual", "visit", "swarm"] as const;
 export type CheckinSource = (typeof CHECKIN_SOURCES)[number];
 
+// Foursquare's category tree, upserted from /v2/venues/categories at the start
+// of every Swarm import. Ids are Foursquare's 24-hex category ids, which the
+// newer Places API also uses, so they stay useful for matching later.
+export const foursquareCategories = pgTable("foursquare_categories", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  pluralName: text("plural_name"),
+  shortName: text("short_name"),
+  // Foursquare's numeric id for the same category (e.g. 13035), kept because
+  // some Foursquare products still key on it.
+  categoryCode: integer("category_code"),
+  parentId: text("parent_id"),
+  iconPrefix: text("icon_prefix"),
+  iconSuffix: text("icon_suffix"),
+  // The Overture category this one reconciles to, resolved from
+  // lib/foursquare-category-mapping.ts. Stored so it can be queried and
+  // corrected per row without a deploy; null when Overture has nothing close.
+  overtureCategory: text("overture_category"),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
 /**
- * Every venue a checkin can point at. Rows come from three places: the
+ * A Foursquare venue seen in an imported Swarm checkin, exactly as Foursquare
+ * described it, raw payload included. The `places` row the checkins point at
+ * is made from this; keeping the original alongside means venues can be
+ * matched to Overture places later without going back to Foursquare.
+ */
+export const foursquareVenues = pgTable("foursquare_venues", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  address: text("address"),
+  crossStreet: text("cross_street"),
+  city: text("city"),
+  state: text("state"),
+  postalCode: text("postal_code"),
+  countryCode: text("country_code"),
+  country: text("country"),
+  formattedAddress: text("formatted_address"),
+  latitude: doublePrecision("latitude"),
+  longitude: doublePrecision("longitude"),
+  // No foreign key: a venue can arrive naming a category that is missing
+  // from the category tree Foursquare returned.
+  primaryCategoryId: text("primary_category_id"),
+  categoryIds: text("category_ids").array(),
+  raw: jsonb("raw").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+/**
+ * Every venue a checkin can point at. Rows come from four places: the
  * Overture Maps places dataset (imported with `npm run overture:import`, keyed
- * by GERS id), venues users create from the app, and the venues the old
+ * by GERS id), venues users create from the app, the venues the old
  * Google-backed checkins referenced, backfilled by migration 0008 so history
- * kept its identity when the Google Places integration was removed.
+ * kept its identity when the Google Places integration was removed, and the
+ * venues of imported Swarm checkins (one row per Foursquare venue, made from
+ * `foursquare_venues`). Foursquare rows are kept out of search until they are
+ * matched to Overture's copy of the same venue, so nothing shows up twice.
  *
  * `types` are Overture category codes (`coffee_shop`, `airport`, ...), the
- * primary one first. The old Google types on `google` rows were mapped to
- * the closest Overture category where one exists.
+ * primary one first. The old Google types on `google` rows and Foursquare's
+ * categories on `foursquare` rows were mapped to the closest Overture
+ * category where one exists; `categoryName` keeps the source's own label.
  *
  * `location` is a PostGIS point kept in step with `latitude`/`longitude` by
  * Postgres itself (a generated column), so the GiST index serves the nearby
@@ -163,15 +224,23 @@ export const places = pgTable(
   {
     id: uuid("id").primaryKey().defaultRandom(),
 
-    source: text("source", { enum: ["overture", "user", "google"] }).notNull(),
+    source: text("source", { enum: ["overture", "user", "google", "foursquare"] }).notNull(),
     // Overture's GERS id. Stable across releases, so re-importing upserts.
     overtureId: text("overture_id"),
     // Only on rows backfilled from pre-Overture checkins.
     googlePlaceId: text("google_place_id"),
+    // Only on rows made by a Swarm import, which upserts on it.
+    foursquareVenueId: text("foursquare_venue_id").references(() => foursquareVenues.id),
 
     name: text("name").notNull(),
     primaryType: text("primary_type"),
     types: text("types").array().notNull().default(sql`'{}'::text[]`),
+    // The source's own label for the primary category, when it has one.
+    // Overture rows have none: the app labels their codes itself. A
+    // Foursquare venue keeps Foursquare's name, so "Hotpot Restaurant"
+    // survives mapping to the broader asian_restaurant, and a category the
+    // Overture taxonomy lacks altogether still has a label to show.
+    categoryName: text("category_name"),
 
     // Overture's address parts: `freeform` is the street line (house number
     // and street), `region` an ISO 3166-2 code such as US-CA and `country`
@@ -226,6 +295,7 @@ export const places = pgTable(
   (table) => [
     uniqueIndex("places_overture_id_unique_idx").on(table.overtureId),
     uniqueIndex("places_google_place_id_unique_idx").on(table.googlePlaceId),
+    uniqueIndex("places_foursquare_venue_id_unique_idx").on(table.foursquareVenueId),
     // Indexed as geography, which is what the searches compare in meters;
     // a plain geometry index would sit unused behind the cast.
     index("places_location_gist_idx").using("gist", sql`(${table.location}::geography)`),
@@ -241,11 +311,11 @@ export const places = pgTable(
     index("places_created_by_user_id_idx").on(table.createdByUserId),
     check(
       "places_source_check",
-      sql`${table.source} in ('overture', 'user', 'google')`,
+      sql`${table.source} in ('overture', 'user', 'google', 'foursquare')`,
     ),
     check(
       "places_source_identifier_check",
-      sql`(${table.source} = 'overture') = (${table.overtureId} is not null) and (${table.source} = 'google') = (${table.googlePlaceId} is not null)`,
+      sql`(${table.source} = 'overture') = (${table.overtureId} is not null) and (${table.source} = 'google') = (${table.googlePlaceId} is not null) and (${table.source} = 'foursquare') = (${table.foursquareVenueId} is not null)`,
     ),
   ],
 );
@@ -343,6 +413,9 @@ export const checkins = pgTable(
     placeLocality: text("place_locality"),
     placePrimaryType: text("place_primary_type"),
     placeTypes: text("place_types").array(),
+    // The place's categoryName at checkin time: a label such as "Hotpot
+    // Restaurant" when the source gave one.
+    placeCategoryName: text("place_category_name"),
     latitude: doublePrecision("latitude"),
     longitude: doublePrecision("longitude"),
 
@@ -350,8 +423,18 @@ export const checkins = pgTable(
 
     /** Who can see the checkin. Private checkins never appear in the friends feed. */
     visibility: text("visibility", { enum: CHECKIN_VISIBILITIES }).notNull().default("friends"),
-    /** Whether the user checked in by hand or accepted a suggestion from a detected visit. */
+    /**
+     * Whether the user checked in by hand, accepted a suggestion from a
+     * detected visit, or imported the checkin from Swarm.
+     */
     source: text("source", { enum: CHECKIN_SOURCES }).notNull().default("manual"),
+    // The source's id for an imported checkin, which is what makes
+    // re-importing an upsert.
+    externalId: text("external_id"),
+
+    // The checkin's local offset from UTC, so history shows the time where it
+    // happened rather than where the reader is.
+    timeZoneOffsetMinutes: integer("time_zone_offset_minutes"),
 
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
@@ -362,6 +445,107 @@ export const checkins = pgTable(
   (table) => [
     index("checkins_user_id_idx").on(table.userId),
     index("checkins_place_id_idx").on(table.placeId),
+    // Per user, so two accounts that connect the same Swarm account each get
+    // their own copy rather than one import rewriting the other's rows.
+    uniqueIndex("checkins_user_source_external_id_unique_idx")
+      .on(table.userId, table.source, table.externalId)
+      .where(sql`${table.externalId} is not null`),
+  ],
+);
+
+// The source's full payload for an imported checkin: companions, event,
+// likes, sticker and everything else we don't model yet.
+export const importedCheckinPayloads = pgTable("imported_checkin_payloads", {
+  checkinId: uuid("checkin_id")
+    .primaryKey()
+    .references(() => checkins.id, { onDelete: "cascade" }),
+  source: text("source", { enum: ["swarm"] }).notNull(),
+  payload: jsonb("payload").notNull(),
+  fetchedAt: timestamp("fetched_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// A photo on a checkin. Uploaded photos have a storageKey from the start.
+// Imported photos start with only sourceUrl, which is served until the
+// background copy to R2 fills in storageKey.
+export const checkinPhotos = pgTable(
+  "checkin_photos",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    checkinId: uuid("checkin_id")
+      .notNull()
+      .references(() => checkins.id, { onDelete: "cascade" }),
+    position: integer("position").notNull().default(0),
+    storageKey: text("storage_key"),
+    sourceUrl: text("source_url"),
+    // The source's photo id, for imported photos.
+    externalId: text("external_id"),
+    width: integer("width"),
+    height: integer("height"),
+    // Set when the copy to R2 gave up; the photo keeps serving sourceUrl.
+    copyFailedAt: timestamp("copy_failed_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("checkin_photos_checkin_id_idx").on(table.checkinId),
+    uniqueIndex("checkin_photos_checkin_external_id_unique_idx").on(
+      table.checkinId,
+      table.externalId,
+    ),
+    check(
+      "checkin_photos_has_location_check",
+      sql`${table.storageKey} is not null or ${table.sourceUrl} is not null`,
+    ),
+  ],
+);
+
+// A user's linked Foursquare account. The token is long-lived with no
+// refresh, so it is stored encrypted (lib/token-encryption.ts).
+export const foursquareConnections = pgTable("foursquare_connections", {
+  userId: uuid("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  foursquareUserId: text("foursquare_user_id").notNull(),
+  accessTokenCiphertext: text("access_token_ciphertext").notNull(),
+  connectedAt: timestamp("connected_at", { withTimezone: true }).notNull().defaultNow(),
+  lastImportedAt: timestamp("last_imported_at", { withTimezone: true }),
+});
+
+// One run of the Swarm importer. Progress is saved after every page so a run
+// interrupted by a deploy resumes where it stopped.
+export const swarmImports = pgTable(
+  "swarm_imports",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    status: text("status", { enum: ["running", "completed", "failed"] })
+      .notNull()
+      .default("running"),
+    phase: text("phase", { enum: ["checkins", "photos"] })
+      .notNull()
+      .default("checkins"),
+    // Unix seconds. beforeTimestamp is the resume cursor; afterTimestamp
+    // bounds an incremental sync.
+    beforeTimestamp: integer("before_timestamp"),
+    afterTimestamp: integer("after_timestamp"),
+    checkinsImported: integer("checkins_imported").notNull().default(0),
+    // How many checkins this run should bring in, from Foursquare's count of
+    // the user's checkins less what earlier runs already imported. Null until
+    // Foursquare has been asked, when the app shows progress as indeterminate.
+    checkinsExpected: integer("checkins_expected"),
+    photosTotal: integer("photos_total").notNull().default(0),
+    photosCopied: integer("photos_copied").notNull().default(0),
+    error: text("error"),
+    startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
+    finishedAt: timestamp("finished_at", { withTimezone: true }),
+  },
+  (table) => [
+    index("swarm_imports_user_id_started_at_idx").on(table.userId, table.startedAt.desc()),
+    // At most one running import per user, so two taps on Sync cannot race.
+    uniqueIndex("swarm_imports_one_running_per_user_idx")
+      .on(table.userId)
+      .where(sql`${table.status} = 'running'`),
   ],
 );
 

@@ -1,5 +1,5 @@
-import { config } from "../config.js";
 import type { users } from "../db/schema.js";
+import { publicUrlFor } from "./r2.js";
 
 type UserRow = typeof users.$inferSelect;
 
@@ -7,7 +7,7 @@ export function avatarUrlFor(avatarKey: string | null): string | null {
   if (!avatarKey) {
     return null;
   }
-  return `${config.R2_PUBLIC_BASE_URL.replace(/\/+$/, "")}/${avatarKey}`;
+  return publicUrlFor(avatarKey);
 }
 
 /**

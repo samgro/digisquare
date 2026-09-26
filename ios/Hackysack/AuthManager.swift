@@ -287,38 +287,6 @@ final class AuthManager {
 
     /// Uploads avatar bytes straight to R2 and returns the key to attach.
     func uploadAvatar(_ jpegData: Data) async throws -> String {
-        struct UploadRequest: Encodable {
-            let contentType: String
-            let contentLength: Int
-        }
-        struct UploadResponse: Decodable {
-            let uploadUrl: URL
-            let key: String
-            let expiresInSeconds: Int
-            let maxBytes: Int
-        }
-
-        let upload: UploadResponse = try await APIClient.shared.request(
-            method: "POST",
-            path: "users/me/avatar-upload",
-            body: UploadRequest(contentType: "image/jpeg", contentLength: jpegData.count)
-        )
-
-        var putRequest = URLRequest(url: upload.uploadUrl)
-        putRequest.httpMethod = "PUT"
-        // Must match what the server signed, byte for byte. URLSession sets
-        // Content-Length from the body itself. Do NOT set Authorization: it
-        // conflicts with the query-string credentials and R2 answers 403.
-        putRequest.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
-
-        // Deliberately a bare URLSession rather than APIClient — this request
-        // goes to R2, not to our API, and must carry no bearer token.
-        let (_, response) = try await URLSession.shared.upload(for: putRequest, from: jpegData)
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200..<300).contains(httpResponse.statusCode) else {
-            throw APIError.invalidResponse
-        }
-
-        return upload.key
+        try await APIClient.shared.uploadJPEG(jpegData, uploadPath: "users/me/avatar-upload")
     }
 }

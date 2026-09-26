@@ -8,7 +8,7 @@ import {
   notifications as notificationsTable,
   users as usersTable,
 } from "../db/schema.js";
-import { toCheckinResult } from "../lib/checkin-result.js";
+import { loadPhotosByCheckinId, toCheckinResult } from "../lib/checkin-result.js";
 import { checkinSocialColumns } from "../lib/checkin-social.js";
 import { isUniqueViolation } from "../lib/database-errors.js";
 import { friendIdsOf, isPairFriendship, isVisibleCheckin } from "../lib/friendships.js";
@@ -90,10 +90,11 @@ friends.get("/checkins", async (context) => {
       )
       .orderBy(desc(checkinsTable.createdAt))
       .limit(parsed.data.limit);
+    const photosByCheckinId = await loadPhotosByCheckinId(rows.map((row) => row.checkin.id));
 
     return context.json({
       results: rows.map((row) => ({
-        ...toCheckinResult(row.checkin, row),
+        ...toCheckinResult(row.checkin, row, photosByCheckinId.get(row.checkin.id)),
         user: toUserSummary(row.user),
       })),
     });

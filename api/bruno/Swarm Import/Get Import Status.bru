@@ -1,0 +1,21 @@
+meta {
+  name: Get Import Status
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/imports/swarm
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+docs {
+  { connected, latestImport } where latestImport has status (running,
+  completed, failed), phase (checkins, photos), checkinsImported, photosTotal,
+  photosCopied and error.
+}

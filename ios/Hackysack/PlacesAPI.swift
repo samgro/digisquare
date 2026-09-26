@@ -14,6 +14,9 @@ nonisolated enum PlaceSource: String, Codable, Sendable {
     case user
     /// Carried over from a checkin made while the app used Google Places.
     case google
+    /// The venue of a checkin imported from Swarm. Kept out of search until
+    /// matched to Overture's copy of the same venue.
+    case foursquare
 
     init(from decoder: Decoder) throws {
         let rawValue = try decoder.singleValueContainer().decode(String.self)
@@ -99,6 +102,10 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
     /// Overture category codes, the primary one first.
     let types: [String]
     let primaryType: String?
+    /// The source's own label for the primary category, when it has one: a
+    /// Foursquare venue's "Hotpot Restaurant". Nil for Overture places, whose
+    /// codes the app labels itself.
+    let categoryName: String?
     /// Checkins here from everyone. The app's stand-in for popularity.
     let checkinCount: Int
     /// Only its creator and their friends can find it.
@@ -123,6 +130,7 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
         distanceMeters: Double? = nil,
         types: [String] = [],
         primaryType: String? = nil,
+        categoryName: String? = nil,
         checkinCount: Int = 0,
         isPrivate: Bool = false,
         retired: Bool = false,
@@ -143,6 +151,7 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
         self.distanceMeters = distanceMeters
         self.types = types
         self.primaryType = primaryType
+        self.categoryName = categoryName
         self.checkinCount = checkinCount
         self.isPrivate = isPrivate
         self.retired = retired
@@ -152,7 +161,8 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
 
     private enum CodingKeys: String, CodingKey {
         case id, source, name, address, street, locality, region, postcode, country
-        case location, extent, distanceMeters, types, primaryType, checkinCount, isPrivate, retired, website, phone
+        case location, extent, distanceMeters, types, primaryType, categoryName, checkinCount, isPrivate, retired
+        case website, phone
     }
 
     /// Spelled out so the fields the API added over time (`source`,
@@ -173,6 +183,7 @@ nonisolated struct Place: Codable, Identifiable, Hashable, Sendable {
         distanceMeters = try container.decodeIfPresent(Double.self, forKey: .distanceMeters)
         types = try container.decodeIfPresent([String].self, forKey: .types) ?? []
         primaryType = try container.decodeIfPresent(String.self, forKey: .primaryType)
+        categoryName = try container.decodeIfPresent(String.self, forKey: .categoryName)
         checkinCount = try container.decodeIfPresent(Int.self, forKey: .checkinCount) ?? 0
         isPrivate = try container.decodeIfPresent(Bool.self, forKey: .isPrivate) ?? false
         retired = try container.decodeIfPresent(Bool.self, forKey: .retired) ?? false

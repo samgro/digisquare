@@ -50,16 +50,41 @@ extension Checkin {
         return trimmed.isEmpty ? nil : trimmed
     }
 
-    /// Just the time, "7:12 PM", for rows that sit under a day header.
+    /// "Coffee Shop": the place's own label when the source gave one (a
+    /// Swarm import keeps Foursquare's), else the Overture category's name.
+    var categoryName: String? {
+        placeCategoryName ?? placePrimaryType.map { PlaceTypeSymbol.displayName(for: $0) }
+    }
+
+    /// Where the checkin happened, when known, so history reads in local time:
+    /// a dinner in Tokyo shows 7 PM, not whatever the time was back home.
+    var timeZone: TimeZone {
+        timeZoneOffsetMinutes.flatMap { TimeZone(secondsFromGMT: $0 * 60) } ?? .current
+    }
+
+    /// The calendar day the checkin happened on, where it happened, as the
+    /// start of that day in `calendar`, so it can be grouped and compared
+    /// with "today" here.
+    func localDay(in calendar: Calendar = .current) -> Date {
+        var checkinCalendar = calendar
+        checkinCalendar.timeZone = timeZone
+        let components = checkinCalendar.dateComponents([.year, .month, .day], from: createdAt)
+        return calendar.date(from: components) ?? calendar.startOfDay(for: createdAt)
+    }
+
+    /// Just the time, "7:12 PM", in the checkin's local time, for rows that
+    /// sit under a day header.
     var formattedCheckinTime: String {
-        createdAt.formatted(date: .omitted, time: .shortened)
+        var timeStyle = Date.FormatStyle(date: .omitted, time: .shortened)
+        timeStyle.timeZone = timeZone
+        return createdAt.formatted(timeStyle)
     }
 
     /// "Today · 7:12 PM", "Yesterday · 7:12 PM", "Thursday · 7:12 PM" within
     /// the past week, or "Sep 12 · 7:12 PM" further back, for rows with no day
-    /// header above them.
+    /// header above them. The day is the one where the checkin happened.
     var formattedCheckinDateAndTime: String {
-        let day = RelativeDay.label(for: createdAt, includesWeekday: false)
+        let day = RelativeDay.label(for: localDay(), includesWeekday: false)
         return "\(day) · \(formattedCheckinTime)"
     }
 }
