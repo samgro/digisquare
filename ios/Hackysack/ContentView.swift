@@ -5,6 +5,7 @@
 //  Created by Sam Grossberg on 9/18/26.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
@@ -13,6 +14,9 @@ struct ContentView: View {
     // scene to deliver a visit.
     @Environment(LocationManager.self) private var locationManager
     @EnvironmentObject private var checkinStore: CheckinStore
+    /// The signed-in user's local checkin history. Created once their id is
+    /// known and replaced if the account changes underneath this view.
+    @State private var historySync: CheckinHistorySync?
     @State private var friendsStore = FriendsStore()
     @State private var notificationsStore = NotificationsStore()
     @State private var socialStore = CheckinSocialStore()
@@ -24,12 +28,17 @@ struct ContentView: View {
     private var signedInUserId: String? { authManager.currentProfile?.id }
 
     var body: some View {
-        TabView {
-            Tab("Timeline", systemImage: Glyphs.timelineTab) {
-                TimelineView()
-            }
-            Tab("Friends", systemImage: Glyphs.friendsTab) {
-                FriendsView()
+        // A ZStack rather than a Group: modifiers on a Group apply to each
+        // branch separately, so swapping the spinner for the tabs would
+        // restart the sync task below.
+        ZStack {
+            if let historySync {
+                tabs
+                    .environment(historySync)
+                    .modelContainer(historySync.container)
+            } else {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .environment(friendsStore)
@@ -65,16 +74,26 @@ struct ContentView: View {
             Task { await notificationsStore.refreshUnreadCount() }
             Task { await swarmImportStore.refresh() }
         }
+        .task(id: signedInUserId) {
+            // Runs at sign-in and at every launch with a saved session, and
+            // keeps the local history in sync, silently, for as long as the
+            // user stays signed in.
+            guard let signedInUserId else { return }
+            let historySync = CheckinHistorySync(
+                container: CheckinDatabase.makeContainer(userId: signedInUserId)
+            )
+            self.historySync = historySync
+            checkinStore.historySync = historySync
+            await historySync.run()
+        }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
             case .active:
                 locationManager.startUpdatingLocation()
                 // Suggestions made while the app was in the background are
-                // already in the store; this picks up anything saved from
-                // another device.
-                if checkinStore.hasLoadedTimeline {
-                    Task { await checkinStore.loadTimeline() }
-                }
+                // already in the store; this picks up anything checked in or
+                // edited on another device, and new likes and comments.
+                Task { await checkinStore.refreshTimeline() }
                 // Keeps the bell badge current when coming back to the app;
                 // likes, comments and requests arrive while it's in the background.
                 Task { await notificationsStore.refreshUnreadCount() }
@@ -86,6 +105,17 @@ struct ContentView: View {
                 break
             @unknown default:
                 break
+            }
+        }
+    }
+
+    private var tabs: some View {
+        TabView {
+            Tab("Timeline", systemImage: Glyphs.timelineTab) {
+                TimelineView()
+            }
+            Tab("Friends", systemImage: Glyphs.friendsTab) {
+                FriendsView()
             }
         }
     }
@@ -102,15 +132,14 @@ struct ContentView: View {
         }
     }
 
-    /// A finished import means thousands of new rows; both feeds reload.
+    /// A finished import means thousands of new rows: the local history
+    /// syncs them down and the friends feed reloads.
     private func connectSwarmImportStore() {
         let checkinStore = checkinStore
         let friendsStore = friendsStore
         swarmImportStore.onImportFinished = {
-            Task {
-                await checkinStore.loadTimeline()
-                await friendsStore.loadFeed()
-            }
+            checkinStore.historySync?.requestSync()
+            Task { await friendsStore.loadFeed() }
         }
     }
 }

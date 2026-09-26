@@ -166,15 +166,14 @@ struct UserProfileView: View {
     /// pull-to-refresh. Someone else's profile loads once.
     private struct ReloadKey: Equatable {
         let currentUserProfile: UserProfile?
-        let savedCheckinCount: Int
+        let lastSavedCheckinId: String?
     }
 
     private var reloadKey: ReloadKey {
         guard let currentUserProfile else {
-            return ReloadKey(currentUserProfile: nil, savedCheckinCount: 0)
+            return ReloadKey(currentUserProfile: nil, lastSavedCheckinId: nil)
         }
-        let savedCheckinCount = checkinStore.timelineEntries.filter { $0.syncStatus == .saved }.count
-        return ReloadKey(currentUserProfile: currentUserProfile, savedCheckinCount: savedCheckinCount)
+        return ReloadKey(currentUserProfile: currentUserProfile, lastSavedCheckinId: checkinStore.lastSavedCheckinId)
     }
 
     private var displayName: String {
@@ -452,7 +451,7 @@ struct UserProfileView: View {
         } else if !checkins.isEmpty {
             LazyVStack(alignment: .leading, spacing: 0) {
                 CheckinTimelineRows(
-                    entries: checkins.map { TimelineEntry(savedCheckin: $0) },
+                    items: checkins.map { .entry(TimelineEntry(savedCheckin: $0)) },
                     onSelect: { selectedCheckin = CheckinDetailDestination(checkin: $0, author: user) },
                     onComment: { commentingCheckin = $0 },
                     onReachEnd: { Task { await loadMoreCheckins() } }

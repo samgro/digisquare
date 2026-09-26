@@ -53,6 +53,15 @@ struct PendingCheckin: Codable, Identifiable, Equatable {
     /// a separate trip there, not a duplicate of this one.
     static let adjacentCheckinWindow: TimeInterval = 12 * 60 * 60
 
+    /// When a checkin has to have been made to count toward
+    /// `isCovered(by:now:)`, so callers can narrow a long history first.
+    func coverageWindow(now: Date) -> ClosedRange<Date> {
+        let stayEnd = visit.departureDate ?? now
+        let windowStart = visit.arrivalDate.addingTimeInterval(-Self.adjacentCheckinWindow)
+        let windowEnd = stayEnd.addingTimeInterval(Self.adjacentCheckinWindow)
+        return windowStart...max(windowStart, windowEnd)
+    }
+
     /// Whether a real checkin already stands for this stay, which would make
     /// the suggestion a duplicate. That is the case when the user checked in
     /// anywhere while they were there, or when the checkin just before the

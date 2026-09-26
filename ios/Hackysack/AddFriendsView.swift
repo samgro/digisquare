@@ -70,29 +70,9 @@ struct AddFriendsView: View {
     // MARK: Content
 
     private var header: some View {
-        HStack(spacing: 8) {
-            Image(systemName: Glyphs.search)
-                .foregroundStyle(.secondary)
-            AutofocusSearchField(
-                text: $searchText,
-                isFocused: $isSearchFieldFocused,
-                prompt: "Search by name"
-            )
-            // Full height so the clear button can have a 44pt tap target,
-            // which also stands in for trailing padding.
-            .frame(maxHeight: .infinity)
-        }
-        .padding(.leading, 16)
-        .padding(.trailing, 2)
-        .frame(height: 48)
-        .contentShape(Capsule())
-        .onTapGesture {
-            isSearchFieldFocused = true
-        }
-        .glassEffect(.regular.interactive(), in: .capsule)
-        .padding(.horizontal, 16)
-        .padding(.top, 8)
-        .padding(.bottom, 8)
+        SearchHeaderField(text: $searchText, isFocused: $isSearchFieldFocused, prompt: "Search by name")
+            .padding(.top, 8)
+            .padding(.bottom, 8)
     }
 
     @ViewBuilder

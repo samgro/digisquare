@@ -48,11 +48,29 @@ nonisolated struct CheckinHistoryEntry: Decodable, Hashable, Sendable {
     }
 }
 
-/// Where the checkin picker gets the user's past checkins from.
-///
-/// Today that is the in-memory timeline (the most recent 50 saved on the
-/// server, plus anything still saving). A local store of every checkin can
-/// replace this conformance without touching the picker or the ranker.
+extension CheckinHistoryEntry {
+    /// Straight from the stored columns, skipping the full `Checkin` a
+    /// record would otherwise build, since a history can run to thousands.
+    @MainActor
+    init(record: CheckinRecord) {
+        var location: PlaceLocation?
+        if let latitude = record.latitude, let longitude = record.longitude {
+            location = PlaceLocation(latitude: latitude, longitude: longitude)
+        }
+        self.init(
+            placeId: record.placeId,
+            createdAt: record.createdAt,
+            placeName: record.placeName,
+            placeAddress: record.placeAddress,
+            placePrimaryType: record.placePrimaryType,
+            placeTypes: record.placeTypes ?? [],
+            location: location
+        )
+    }
+}
+
+/// Where the checkin picker gets the user's past checkins from: every
+/// checkin in the local database, plus anything still saving.
 @MainActor
 protocol CheckinHistorySource {
     var checkinHistory: [CheckinHistoryEntry] { get }
@@ -61,6 +79,10 @@ protocol CheckinHistorySource {
 extension CheckinStore: CheckinHistorySource {
     var checkinHistory: [CheckinHistoryEntry] {
         // Suggestions are left out: the user hasn't said they were there yet.
-        savedEntries.map { CheckinHistoryEntry(checkin: $0.checkin) }
+        // A saved checkin can sit in both places until the database takes it.
+        let pending = pendingEntries
+            .filter { historySync?.isStored($0.checkin.id) != true }
+            .map { CheckinHistoryEntry(checkin: $0.checkin) }
+        return pending + (historySync?.historyEntries ?? [])
     }
 }

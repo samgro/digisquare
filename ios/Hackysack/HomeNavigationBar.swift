@@ -8,12 +8,11 @@ import SwiftUI
 /// The bar on the Timeline and Friends tabs: your avatar on the left, which
 /// opens your profile; and on the right a search button and the bell, badged
 /// with what is new. Each destination is pushed onto the tab's own stack.
-struct HomeNavigationBar: ViewModifier {
-    /// The pushed search screen's title, e.g. "Search Checkins".
-    let searchTitle: String
+struct HomeNavigationBar<SearchDestination: View>: ViewModifier {
     /// What the search button says to VoiceOver, e.g. "Search your checkins".
     let searchLabel: String
-    let searchDescription: String
+    /// The screen the search button pushes.
+    @ViewBuilder let searchDestination: () -> SearchDestination
 
     @Environment(AuthManager.self) private var authManager
     @Environment(NotificationsStore.self) private var notificationsStore
@@ -72,17 +71,24 @@ struct HomeNavigationBar: ViewModifier {
                 NotificationsView()
             }
             .navigationDestination(isPresented: $isShowingSearch) {
-                SearchPlaceholderView(title: searchTitle, description: searchDescription)
+                searchDestination()
             }
     }
 }
 
 extension View {
+    func homeNavigationBar<SearchDestination: View>(
+        searchLabel: String,
+        @ViewBuilder searchDestination: @escaping () -> SearchDestination
+    ) -> some View {
+        modifier(HomeNavigationBar(searchLabel: searchLabel, searchDestination: searchDestination))
+    }
+
+    /// For a tab whose search isn't built yet: the button leads to a
+    /// placeholder saying so.
     func homeNavigationBar(searchTitle: String, searchLabel: String, searchDescription: String) -> some View {
-        modifier(HomeNavigationBar(
-            searchTitle: searchTitle,
-            searchLabel: searchLabel,
-            searchDescription: searchDescription
-        ))
+        homeNavigationBar(searchLabel: searchLabel) {
+            SearchPlaceholderView(title: searchTitle, description: searchDescription)
+        }
     }
 }

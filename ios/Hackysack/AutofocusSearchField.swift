@@ -84,6 +84,38 @@ struct AutofocusSearchField: UIViewRepresentable {
     }
 }
 
+/// The glass capsule search field at the top of a pushed search screen, such
+/// as Add Friends or Search Checkins. Put it in a top safe area inset.
+struct SearchHeaderField: View {
+    @Binding var text: String
+    @Binding var isFocused: Bool
+    let prompt: String
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: Glyphs.search)
+                .foregroundStyle(.secondary)
+            AutofocusSearchField(
+                text: $text,
+                isFocused: $isFocused,
+                prompt: prompt
+            )
+            // Full height so the clear button can have a 44pt tap target,
+            // which also stands in for trailing padding.
+            .frame(maxHeight: .infinity)
+        }
+        .padding(.leading, 16)
+        .padding(.trailing, 2)
+        .frame(height: 48)
+        .contentShape(Capsule())
+        .onTapGesture {
+            isFocused = true
+        }
+        .glassEffect(.regular.interactive(), in: .capsule)
+        .padding(.horizontal, 16)
+    }
+}
+
 final class AutofocusTextField: UITextField {
     /// Whether to focus the first time the field is added to a window. This
     /// happens before a screen starts animating in, which is what lets the
