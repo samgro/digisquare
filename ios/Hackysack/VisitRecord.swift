@@ -74,7 +74,7 @@ struct VisitRecord: Codable, Identifiable, Equatable {
 /// the user likes to check into even when they spend all day there.
 struct VisitedPlaceEvent: Codable, Equatable {
     let coordinate: GeoCoordinate
-    let googlePlaceId: String
+    let placeId: String
     let date: Date
 }
 

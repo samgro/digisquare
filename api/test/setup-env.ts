@@ -10,15 +10,8 @@
  *
  * These are only shapes, not credentials. Nothing here reaches a real service:
  * tests stub fetch and never touch the database.
- *
- * GOOGLE_PLACES_API_KEY has to be here too, because config validates it even
- * though google-places.ts does not read it from config. That costs nothing:
- * google-places.ts reads process.env at call time, so places.test.ts keeps
- * full control via vi.stubEnv — including stubbing it to "" to exercise the
- * missing-key path, which still works because nothing consults the cached
- * config value.
- */
-process.env.GOOGLE_PLACES_API_KEY ??= "test-config-placeholder-key";
+ * */
+process.env.OVERTURE_RELEASE ??= "2026-09-23.0";
 process.env.DATABASE_URL ??= "postgres://user:password@localhost:5432/hackysack_test";
 process.env.AUTH_JWT_SECRET ??= "test-secret-at-least-thirty-two-characters-long";
 process.env.APPLE_BUNDLE_IDENTIFIER ??= "samgro.Hackysack";

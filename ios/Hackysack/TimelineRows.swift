@@ -5,43 +5,59 @@
 
 import SwiftUI
 
-/// Maps Google Places primary types to glyphs and display names.
+/// Maps Overture place categories to glyphs and display names.
 enum PlaceTypeSymbol {
     static func systemImageName(for primaryType: String?) -> String {
         guard let primaryType else { return Glyphs.placeDefault }
         switch primaryType {
-        case "cafe", "coffee_shop", "bakery", "tea_house":
+        case "cafe", "coffee_shop", "bakery", "tea_room", "bubble_tea", "cafeteria", "coffee_roastery":
             return Glyphs.placeCafe
-        case "bar", "pub", "wine_bar", "night_club":
+        case "bar", "pub", "wine_bar", "cocktail_bar", "beer_bar", "sports_bar", "dive_bar", "gastropub",
+             "irish_pub", "brewery", "winery", "dance_club", "lounge_bar", "hotel_bar", "beach_bar", "beer_garden":
             return Glyphs.placeBar
-        case "park", "hiking_area", "national_park", "garden", "dog_park":
+        case "park", "hiking_trail", "national_park", "state_park", "garden", "botanical_garden", "dog_park",
+             "nature_reserve", "campground", "beach", "skate_park":
             return Glyphs.placePark
-        case "gym", "fitness_center", "sports_complex":
+        case "gym", "boxing_gym", "rock_climbing_gym", "yoga_studio", "sports_and_recreation_venue",
+             "swimming_pool", "tennis_court", "sports_club_and_league", "golf_course", "ski_resort", "ski_area":
             return Glyphs.placeGym
-        case "store", "shopping_mall", "grocery_store", "supermarket", "clothing_store", "convenience_store":
+        case "stadium_arena":
+            return Glyphs.placeStadium
+        case "shopping", "shopping_center", "grocery_store", "supermarket", "clothing_store", "convenience_store",
+             "department_store", "bookstore", "hardware_store", "liquor_store", "pharmacy", "florist",
+             "wholesale_store", "pet_store", "farmers_market":
             return Glyphs.placeStore
-        case "movie_theater", "performing_arts_theater":
+        case "cinema", "theatre", "theaters_and_performance_venues", "music_venue", "topic_concert_venue",
+             "drive_in_theater":
             return Glyphs.placeTheater
-        case "museum", "art_gallery", "library":
+        case "museum", "art_gallery", "library", "landmark_and_historical_building", "monument", "town_hall",
+             "courthouse", "college_university", "school":
             return Glyphs.placeMuseum
-        case "hotel", "lodging":
+        case "hotel", "resort", "bed_and_breakfast", "hostel", "motel":
             return Glyphs.placeHotel
-        case "airport", "train_station", "subway_station", "bus_station", "transit_station":
+        case "airport", "airport_terminal", "train_station", "light_rail_and_subway_stations", "bus_station",
+             "public_transportation":
             return Glyphs.placeTransit
         default:
-            if primaryType.hasSuffix("restaurant") || primaryType.hasPrefix("meal_") {
+            if primaryType.hasSuffix("_museum") {
+                return Glyphs.placeMuseum
+            }
+            if primaryType.hasSuffix("_stadium") {
+                return Glyphs.placeStadium
+            }
+            if primaryType.hasSuffix("restaurant") || primaryType == "food_truck" || primaryType == "food_court"
+                || primaryType.hasPrefix("ice_cream") {
                 return Glyphs.placeRestaurant
             }
             return Glyphs.placeDefault
         }
     }
 
-    /// "coffee_shop" → "Coffee Shop"
+    /// "coffee_shop" → "Coffee Shop", with the curated names in
+    /// `PlaceCategory` taking precedence ("light_rail_and_subway_stations" →
+    /// "Subway Station").
     static func displayName(for primaryType: String) -> String {
-        primaryType
-            .split(separator: "_")
-            .map { $0.capitalized }
-            .joined(separator: " ")
+        PlaceCategory.displayName(for: primaryType)
     }
 }
 

@@ -13,20 +13,11 @@ extension Place {
         return CLLocation(latitude: location.latitude, longitude: location.longitude)
     }
 
-    /// Just the street portion of the Google formatted address.
-    ///
-    /// "450 10th St, San Francisco, CA 94103, USA" becomes "450 10th St".
-    /// An address with no comma is returned whole. Returns `nil` when there is no
-    /// address, or when there is nothing but whitespace before the first comma —
-    /// in that case we would otherwise mislabel the city as a street.
+    /// Just the street line: "450 10th St". Returns `nil` when the place has
+    /// none, rather than showing the city where a street belongs.
     var streetLine: String? {
-        guard let address else { return nil }
-        let firstComponent = address.split(
-            separator: ",",
-            maxSplits: 1,
-            omittingEmptySubsequences: false
-        ).first ?? ""
-        let trimmed = firstComponent.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let street else { return nil }
+        let trimmed = street.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed
     }
 
@@ -34,14 +25,29 @@ extension Place {
     /// "5 ft" / "350 ft" / "0.62 mi" in the US, "5 yd" / "0.62 mi" in the UK,
     /// "5 m" / "1,5 km" in metric locales.
     ///
-    /// Returns `nil` when either the user's location or the place's coordinate is
-    /// unknown. The format style already defaults to `Locale.autoupdatingCurrent`,
-    /// so it tracks Settings changes and is cheap enough not to need caching.
+    /// Measured to the venue's grounds when it has them (so an airport reads
+    /// "0 ft" from a gate, not "0.9 mi" to its pin), else to its pin. Falls
+    /// back to the distance the server measured when the user's location is
+    /// unknown. Returns `nil` when neither is available. The format style
+    /// already defaults to `Locale.autoupdatingCurrent`, so it tracks
+    /// Settings changes and is cheap enough not to need caching.
     func formattedDistance(from userLocation: CLLocation?) -> String? {
-        guard let userLocation, let coordinateLocation else { return nil }
-        let distanceInMeters = userLocation.distance(from: coordinateLocation)
+        guard let distanceInMeters = distanceInMeters(from: userLocation) else { return nil }
         let distance = Measurement<UnitLength>(value: distanceInMeters, unit: .meters)
         return distance.formatted(.measurement(width: .abbreviated, usage: .road))
+    }
+
+    private func distanceInMeters(from userLocation: CLLocation?) -> Double? {
+        guard let userLocation else { return distanceMeters }
+        let fix = PlaceLocation(
+            latitude: userLocation.coordinate.latitude,
+            longitude: userLocation.coordinate.longitude
+        )
+        if let extent, extent.rings.contains(where: { !$0.isEmpty }) {
+            return extent.contains(fix) ? 0 : extent.distanceToEdge(from: fix)
+        }
+        guard let coordinateLocation else { return distanceMeters }
+        return userLocation.distance(from: coordinateLocation)
     }
 
     /// "60 ft · 450 10th St", or whichever of the two parts is available, or `nil`

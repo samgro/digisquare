@@ -72,12 +72,17 @@ final class VisitProcessor {
         checkinStore: CheckinStore,
         detector: FrequentPlaceDetector? = nil,
         calendar: Calendar = .current,
+        // Passive: an area nobody has loaded just comes back empty, like one
+        // with nothing nearby. There is no user waiting to be told to try
+        // again, so a background visit must not start a download or spend
+        // the user's daily area fetches on a trip.
         lookupPlaces: @escaping PlacesLookup = { coordinate, radius in
             try await PlacesAPI().searchPlaces(
                 latitude: coordinate.latitude,
                 longitude: coordinate.longitude,
-                radius: radius
-            )
+                radius: radius,
+                passive: true
+            ).results
         }
     ) {
         self.visitHistory = visitHistory

@@ -1,2387 +1,1077 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "name": "golden-gate-park-de-young",
   "description": "At the entrance of the de Young Museum, inside Golden Gate Park, with the Academy of Sciences across the concourse.",
-  "recordedAt": "2026-09-24T00:12:56.502Z",
+  "recordedAt": null,
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 37.771334,
     "longitude": -122.468539,
     "horizontalAccuracy": 30
   },
-  "google": {
-    "largeVenues": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "POPULARITY",
-        "includedTypes": [
-          "airport",
-          "stadium",
-          "university",
-          "amusement_park",
-          "zoo",
-          "ski_resort",
-          "golf_course",
-          "national_park",
-          "state_park",
-          "park"
-        ],
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 37.771334,
-              "longitude": -122.468539
-            },
-            "radius": 2000
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJY_dFYHKHhYARMKc772iLvnE",
-            "types": [
-              "park",
-              "garden",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA, USA",
-            "location": {
-              "latitude": 37.7689203,
-              "longitude": -122.482977
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7641986,
-                "longitude": -122.510832
-              },
-              "high": {
-                "latitude": 37.77463409999999,
-                "longitude": -122.45265549999999
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 44773,
-            "displayName": {
-              "text": "Golden Gate Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJYxVpxFmHhYARVSKbL2FJ6VY",
-            "types": [
-              "university",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "505 Parnassus Ave, San Francisco, CA 94143, USA",
-            "location": {
-              "latitude": 37.762645899999995,
-              "longitude": -122.45871059999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.761580219708506,
-                "longitude": -122.45963818029148
-              },
-              "high": {
-                "latitude": 37.764278180291505,
-                "longitude": -122.4569402197085
-              }
-            },
-            "rating": 4.4,
-            "userRatingCount": 691,
-            "displayName": {
-              "text": "University of California San Francisco Parnassus Campus",
-              "languageCode": "en"
-            },
-            "primaryType": "university"
-          },
-          {
-            "id": "ChIJW5w2V2iHhYARQoOl_ZsQlOg",
-            "types": [
-              "botanical_garden",
-              "garden",
-              "tourist_attraction",
-              "museum",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1199 9th Ave, San Francisco, CA 94122, USA",
-            "location": {
-              "latitude": 37.767709599999996,
-              "longitude": -122.4693109
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7667169197085,
-                "longitude": -122.47302450000001
-              },
-              "high": {
-                "latitude": 37.7694148802915,
-                "longitude": -122.4664984
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 8109,
-            "displayName": {
-              "text": "San Francisco Botanical Garden",
-              "languageCode": "en"
-            },
-            "primaryType": "botanical_garden"
-          },
-          {
-            "id": "ChIJuyASMUqHhYARTvh_g2_KVmo",
-            "types": [
-              "university",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2130 Fulton St, San Francisco, CA 94117, USA",
-            "location": {
-              "latitude": 37.7765643,
-              "longitude": -122.4507187
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7748842197085,
-                "longitude": -122.45303039999997
-              },
-              "high": {
-                "latitude": 37.777582180291496,
-                "longitude": -122.44933239999999
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 266,
-            "displayName": {
-              "text": "University of San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "university"
-          },
-          {
-            "id": "ChIJldoU6FCHhYAREFqwcwO0fr8",
-            "types": [
-              "stadium",
-              "sports_complex",
-              "event_venue",
-              "athletic_field",
-              "sports_activity_location",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "670 Kezar Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7668135,
-              "longitude": -122.45601250000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7656430697085,
-                "longitude": -122.45803199999999
-              },
-              "high": {
-                "latitude": 37.768341030291495,
-                "longitude": -122.45322519999999
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 688,
-            "displayName": {
-              "text": "Kezar Stadium",
-              "languageCode": "en"
-            },
-            "primaryType": "stadium"
-          },
-          {
-            "id": "ChIJ_aOxME6HhYARYRaTOEP1dEA",
-            "types": [
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "John F Kennedy Dr & Martin Luther King Jr. Drive, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.768728599999996,
-              "longitude": -122.47344450000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.767831119708504,
-                "longitude": -122.47537763029149
-              },
-              "high": {
-                "latitude": 37.7705290802915,
-                "longitude": -122.47267966970851
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 268,
-            "displayName": {
-              "text": "Blue Heron Lake",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJeV1_FEuHhYARxrU36x27Zc8",
-            "types": [
-              "university",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2350 Turk Blvd, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.778863,
-              "longitude": -122.44850509999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.777301219708505,
-                "longitude": -122.44983313029147
-              },
-              "high": {
-                "latitude": 37.779999180291505,
-                "longitude": -122.44713516970847
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 16,
-            "displayName": {
-              "text": "USF School Of Education",
-              "languageCode": "en"
-            },
-            "primaryType": "university"
-          },
-          {
-            "id": "ChIJB67UfEmHhYARDPKAzW9fnTw",
-            "types": [
-              "university",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "2820 Turk Blvd, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7792783,
-              "longitude": -122.45205779999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.777814219708496,
-                "longitude": -122.45338683029148
-              },
-              "high": {
-                "latitude": 37.780512180291495,
-                "longitude": -122.4506888697085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 48,
-            "displayName": {
-              "text": "USF Lone Mountain",
-              "languageCode": "en"
-            },
-            "primaryType": "university"
-          },
-          {
-            "id": "ChIJnbm6ME6HhYARsKOW-ExeNOg",
-            "types": [
-              "historical_landmark",
-              "historical_place",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "501 Stanyan St, San Francisco, CA 94117, USA",
-            "location": {
-              "latitude": 37.771776599999995,
-              "longitude": -122.4547685
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.77039331970849,
-                "longitude": -122.45609823029147
-              },
-              "high": {
-                "latitude": 37.77309128029149,
-                "longitude": -122.4534002697085
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 151,
-            "displayName": {
-              "text": "McLaren Lodge",
-              "languageCode": "en"
-            },
-            "primaryType": "historical_landmark"
-          },
-          {
-            "id": "ChIJ38PBV2qHhYARQNvZBtima_M",
-            "types": [
-              "garden",
-              "state_park",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Golden Gate Park, John F Kennedy Dr, San Francisco, CA 94117, USA",
-            "location": {
-              "latitude": 37.7718863,
-              "longitude": -122.47133950000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7711864697085,
-                "longitude": -122.4724767802915
-              },
-              "high": {
-                "latitude": 37.773884430291496,
-                "longitude": -122.46977881970851
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 595,
-            "displayName": {
-              "text": "Rose Garden",
-              "languageCode": "en"
-            },
-            "primaryType": "garden"
-          },
-          {
-            "id": "ChIJt-pzsLKAhYARATMpQzWxo_E",
-            "types": [
-              "university",
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "1860 Hayes St, San Francisco, CA 94117, USA",
-            "location": {
-              "latitude": 37.7740693,
-              "longitude": -122.4471193
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7725975197085,
-                "longitude": -122.44826443029149
-              },
-              "high": {
-                "latitude": 37.7752954802915,
-                "longitude": -122.44556646970851
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 11,
-            "displayName": {
-              "text": "John Adams Campus, City College of San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "university"
-          },
-          {
-            "id": "ChIJ3z0XWAuHhYARyswQwPWGknI",
-            "types": [
-              "golf_course",
-              "athletic_field",
-              "sports_activity_location",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "99 Marx Meadow Dr, San Francisco, CA 94121, USA",
-            "location": {
-              "latitude": 37.771128499999996,
-              "longitude": -122.48615799999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.769593369708495,
-                "longitude": -122.48766968029149
-              },
-              "high": {
-                "latitude": 37.772291330291495,
-                "longitude": -122.48497171970851
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 575,
-            "displayName": {
-              "text": "Golden Gate Park Disc Golf Course",
-              "languageCode": "en"
-            },
-            "primaryType": "athletic_field"
-          },
-          {
-            "id": "ChIJFS16LmCHhYAR9-5CGavbV2k",
-            "types": [
-              "park",
-              "city_park",
-              "scenic_spot",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Moraga &, 14th Ave, San Francisco, CA 94122, USA",
-            "location": {
-              "latitude": 37.756422199999996,
-              "longitude": -122.4717361
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7551095697085,
-                "longitude": -122.4727358802915
-              },
-              "high": {
-                "latitude": 37.7578075302915,
-                "longitude": -122.47003791970852
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 1071,
-            "displayName": {
-              "text": "Grandview Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJqfCTeBiHhYARt_0t7D65SWU",
-            "types": [
-              "city_park",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "98 Funston Ave, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7872822,
-              "longitude": -122.4697225
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.785753819708496,
-                "longitude": -122.47179408029152
-              },
-              "high": {
-                "latitude": 37.788451780291496,
-                "longitude": -122.46909611970852
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 721,
-            "displayName": {
-              "text": "Mountain Lake Park",
-              "languageCode": "en"
-            },
-            "primaryType": "city_park"
-          },
-          {
-            "id": "ChIJA5OA_YWAhYARhmsqNSUugxY",
-            "types": [
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Nancy Pelosi Drive &, Bowling Green Dr, San Francisco, CA 94122, USA",
-            "location": {
-              "latitude": 37.7697139,
-              "longitude": -122.4620104
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.768501819708504,
-                "longitude": -122.46311680000001
-              },
-              "high": {
-                "latitude": 37.771199780291504,
-                "longitude": -122.46036589999999
-              }
-            },
-            "rating": 4.8,
-            "userRatingCount": 419,
-            "displayName": {
-              "text": "National AIDS Memorial Grove",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJYy7nrG6HhYARUn-AXchcHd8",
-            "types": [
-              "hiking_area",
-              "park",
-              "sports_activity_location",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Golden Gate Park, 7684 CA-1, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.768639799999995,
-              "longitude": -122.47531989999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.767762469708494,
-                "longitude": -122.4763954302915
-              },
-              "high": {
-                "latitude": 37.77046043029149,
-                "longitude": -122.47369746970851
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 321,
-            "displayName": {
-              "text": "Strawberry Hill",
-              "languageCode": "en"
-            },
-            "primaryType": "hiking_area"
-          },
-          {
-            "id": "ChIJgZQ3j0-HhYARHGdC0FXeNq4",
-            "types": [
-              "picnic_ground",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "240 John F Kennedy Dr, San Francisco, CA 94117, USA",
-            "location": {
-              "latitude": 37.771571,
-              "longitude": -122.457653
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.770252419708505,
-                "longitude": -122.457653
-              },
-              "high": {
-                "latitude": 37.772950380291505,
-                "longitude": -122.45453499999998
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 475,
-            "displayName": {
-              "text": "Peacock Meadow",
-              "languageCode": "en"
-            },
-            "primaryType": "picnic_ground"
-          },
-          {
-            "id": "ChIJDTzwSPh9j4ARGgKkwhdYqc0",
-            "types": [
-              "nature_preserve",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94131, USA",
-            "location": {
-              "latitude": 37.7592201,
-              "longitude": -122.4572304
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.757919,
-                "longitude": -122.45792378029148
-              },
-              "high": {
-                "latitude": 37.7608287,
-                "longitude": -122.4552258197085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 742,
-            "displayName": {
-              "text": "Mount Sutro Open Space Reserve",
-              "languageCode": "en"
-            },
-            "primaryType": "nature_preserve"
-          },
-          {
-            "id": "ChIJ76Wd13OHhYARorpaY79_m6U",
-            "types": [
-              "garden",
-              "tourist_attraction",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "335 Martin Luther King Jr Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.768895799999996,
-              "longitude": -122.4672329
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.76732246970851,
-                "longitude": -122.46878343029148
-              },
-              "high": {
-                "latitude": 37.7700204302915,
-                "longitude": -122.46608546970849
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 300,
-            "displayName": {
-              "text": "Shakespeare Garden",
-              "languageCode": "en"
-            },
-            "primaryType": "garden"
-          },
-          {
-            "id": "ChIJpwqhARuHhYAR8qUtoxnE9Nc",
-            "types": [
-              "city_park",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "18th Ave & Lake St, Lake St, San Francisco, CA 94121, USA",
-            "location": {
-              "latitude": 37.7852403,
-              "longitude": -122.4781632
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.783879419708505,
-                "longitude": -122.47976693029149
-              },
-              "high": {
-                "latitude": 37.786577380291504,
-                "longitude": -122.4770689697085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 66,
-            "displayName": {
-              "text": "Richmond Playground Park",
-              "languageCode": "en"
-            },
-            "primaryType": "city_park"
-          }
-        ]
-      }
-    },
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 37.771334,
-              "longitude": -122.468539
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJq6pH9kGHhYARiGEUzrWWk0U",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771392399999996,
-              "longitude": -122.46842900000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7698973197085,
-                "longitude": -122.4695999302915
-              },
-              "high": {
-                "latitude": 37.77259528029149,
-                "longitude": -122.4669019697085
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJ__889kGHhYAR9VjRJvdeUis",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771361999999996,
-              "longitude": -122.4684069
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.769894869708494,
-                "longitude": -122.4696066302915
-              },
-              "high": {
-                "latitude": 37.77259283029149,
-                "longitude": -122.46690866970852
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJI7NivpmAhYAR6snCTw3_I5U",
-            "types": [
-              "gift_shop",
-              "book_store",
-              "store",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr Store, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7713393,
-              "longitude": -122.46837929999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7698527197085,
-                "longitude": -122.46957168029148
-              },
-              "high": {
-                "latitude": 37.772550680291495,
-                "longitude": -122.4668737197085
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 90,
-            "displayName": {
-              "text": "de Young Museum Store",
-              "languageCode": "en"
-            },
-            "primaryType": "gift_shop"
-          },
-          {
-            "id": "ChIJq2pMHUKHhYARU37SfZ6bsNY",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771191099999996,
-              "longitude": -122.46864459999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7696922697085,
-                "longitude": -122.46997698029148
-              },
-              "high": {
-                "latitude": 37.7723902302915,
-                "longitude": -122.46727901970849
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJOzrg-UGHhYARlwiPcLIYMIc",
-            "types": [
-              "health",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7714658,
-              "longitude": -122.4686651
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.769890019708505,
-                "longitude": -122.46974958029148
-              },
-              "high": {
-                "latitude": 37.772587980291505,
-                "longitude": -122.4670516197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 19,
-            "displayName": {
-              "text": "Koi Fitness",
-              "languageCode": "en"
-            },
-            "primaryType": "health"
-          },
-          {
-            "id": "ChIJI7NivpmAhYARSuRPlbbn_2w",
-            "types": [
-              "art_museum",
-              "tourist_attraction",
-              "museum",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771468999999996,
-              "longitude": -122.46867549999997
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7704713697085,
-                "longitude": -122.46976243029151
-              },
-              "high": {
-                "latitude": 37.7731693302915,
-                "longitude": -122.46706446970852
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 9854,
-            "displayName": {
-              "text": "de Young Museum",
-              "languageCode": "en"
-            },
-            "primaryType": "art_museum"
-          },
-          {
-            "id": "ChIJ__-0AkKHhYARVLWNwpcV1wA",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7711687,
-              "longitude": -122.4686722
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7696706697085,
-                "longitude": -122.4699917302915
-              },
-              "high": {
-                "latitude": 37.772368630291496,
-                "longitude": -122.4672937697085
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJVVVVVXKHhYARPWqqMGP79Yk",
-            "types": [
-              "non_profit_organization",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771516,
-              "longitude": -122.46864699999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7699435697085,
-                "longitude": -122.46972313029148
-              },
-              "high": {
-                "latitude": 37.7726415302915,
-                "longitude": -122.4670251697085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 628,
-            "displayName": {
-              "text": "Fine Arts Museums of San Francisco",
-              "languageCode": "en"
-            },
-            "primaryType": "non_profit_organization"
-          },
-          {
-            "id": "ChIJOxek9kGHhYARe5K0xRbTOPQ",
-            "types": [
-              "subpremise",
-              "point_of_interest",
-              "establishment",
-              "street_address"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771581999999995,
-              "longitude": -122.46833090000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.77023498968996,
-                "longitude": -122.46968175679967
-              },
-              "high": {
-                "latitude": 37.77293295027296,
-                "longitude": -122.4669837962167
-              }
-            },
-            "displayName": {
-              "text": "Golden Gate Park",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJOxek9kGHhYARe5K0xRbTOPQ",
-            "types": [
-              "subpremise",
-              "point_of_interest",
-              "establishment",
-              "street_address"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771581999999995,
-              "longitude": -122.46833090000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.77023498968996,
-                "longitude": -122.46968175679967
-              },
-              "high": {
-                "latitude": 37.77293295027296,
-                "longitude": -122.4669837962167
-              }
-            },
-            "displayName": {
-              "text": "Golden Gate Park",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJ32r3YVyHhYAR5NOsFttHtYo",
-            "types": [
-              "sculpture",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr Store, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7714041,
-              "longitude": -122.4681291
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.769957519708505,
-                "longitude": -122.46936713029147
-              },
-              "high": {
-                "latitude": 37.772655480291505,
-                "longitude": -122.4666691697085
-              }
-            },
-            "rating": 4.6,
-            "userRatingCount": 5,
-            "displayName": {
-              "text": "Andy Goldsworthy’s Drawn Stone",
-              "languageCode": "en"
-            },
-            "primaryType": "sculpture"
-          },
-          {
-            "id": "ChIJUdZI8UGHhYARN15xzIQ2RA0",
-            "types": [
-              "subpremise",
-              "point_of_interest",
-              "establishment",
-              "street_address"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7716512,
-              "longitude": -122.46837569999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7700956697085,
-                "longitude": -122.46947573029146
-              },
-              "high": {
-                "latitude": 37.7727936302915,
-                "longitude": -122.46677776970847
-              }
-            },
-            "displayName": {
-              "text": "Vending Machine",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJAQCt-0GHhYARrWE424TFfnY",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771597899999996,
-              "longitude": -122.46884909999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.769946819708494,
-                "longitude": -122.46989978029148
-              },
-              "high": {
-                "latitude": 37.77264478029149,
-                "longitude": -122.46720181970849
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJq-oa9EGHhYARp2OoAMIznto",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7716139,
-              "longitude": -122.4682687
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7700771697085,
-                "longitude": -122.4694078302915
-              },
-              "high": {
-                "latitude": 37.7727751302915,
-                "longitude": -122.46670986970851
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJAQCr-0GHhYARWZrXLdYh48U",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7716165,
-              "longitude": -122.46884909999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.769966419708496,
-                "longitude": -122.46984268029149
-              },
-              "high": {
-                "latitude": 37.772664380291495,
-                "longitude": -122.4671447197085
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJVVX480GHhYARfww1q3dsDns",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7716634,
-              "longitude": -122.46827420000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7701071197085,
-                "longitude": -122.4694244802915
-              },
-              "high": {
-                "latitude": 37.7728050802915,
-                "longitude": -122.4667265197085
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJ__9s9EGHhYARjHrotkq1ngk",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771628,
-              "longitude": -122.46820790000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7700956697085,
-                "longitude": -122.46938593029148
-              },
-              "high": {
-                "latitude": 37.7727936302915,
-                "longitude": -122.4666879697085
-              }
-            },
-            "displayName": {
-              "text": "Male Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJVVUQ-0GHhYAR8jnEKfofWxM",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.771658699999996,
-              "longitude": -122.46889329999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7699864697085,
-                "longitude": -122.46986368029147
-              },
-              "high": {
-                "latitude": 37.7726844302915,
-                "longitude": -122.46716571970849
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          },
-          {
-            "id": "ChIJI7NivpmAhYARYpThv2G8f9c",
-            "types": [
-              "cafe",
-              "cafeteria",
-              "museum",
-              "restaurant",
-              "food",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.770955,
-              "longitude": -122.4688688
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7694781197085,
-                "longitude": -122.4700705802915
-              },
-              "high": {
-                "latitude": 37.7721760802915,
-                "longitude": -122.46737261970851
-              }
-            },
-            "rating": 3.6,
-            "userRatingCount": 212,
-            "displayName": {
-              "text": "de Young Café",
-              "languageCode": "en"
-            },
-            "primaryType": "cafe"
-          },
-          {
-            "id": "ChIJ_z8qi0GHhYARj134Rz1EC7M",
-            "types": [
-              "public_bathroom",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "San Francisco, CA 94118, USA",
-            "location": {
-              "latitude": 37.7716138,
-              "longitude": -122.467937
-            },
-            "viewport": {
-              "low": {
-                "latitude": 37.7701492697085,
-                "longitude": -122.46915543029148
-              },
-              "high": {
-                "latitude": 37.7728472302915,
-                "longitude": -122.46645746970849
-              }
-            },
-            "displayName": {
-              "text": "Bathroom",
-              "languageCode": "en"
-            },
-            "primaryType": "public_bathroom"
-          }
-        ]
-      }
-    }
-  },
   "places": [
     {
       "id": "ChIJq6pH9kGHhYARiGEUzrWWk0U",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771392399999996,
         "longitude": -122.46842900000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7698973197085,
-          "longitude": -122.4695999302915
-        },
-        "high": {
-          "latitude": 37.77259528029149,
-          "longitude": -122.4669019697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ__889kGHhYAR9VjRJvdeUis",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771361999999996,
         "longitude": -122.4684069
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.769894869708494,
-          "longitude": -122.4696066302915
-        },
-        "high": {
-          "latitude": 37.77259283029149,
-          "longitude": -122.46690866970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJI7NivpmAhYAR6snCTw3_I5U",
+      "source": "overture",
       "name": "de Young Museum Store",
-      "address": "50 Hagiwara Tea Garden Dr Store, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr Store, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr Store",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7713393,
         "longitude": -122.46837929999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7698527197085,
-          "longitude": -122.46957168029148
-        },
-        "high": {
-          "latitude": 37.772550680291495,
-          "longitude": -122.4668737197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "gift_shop",
         "book_store",
-        "store",
-        "point_of_interest",
-        "establishment"
+        "shopping"
       ],
       "primaryType": "gift_shop",
-      "rating": 4.3,
-      "userRatingCount": 90
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJq2pMHUKHhYARU37SfZ6bsNY",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771191099999996,
         "longitude": -122.46864459999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7696922697085,
-          "longitude": -122.46997698029148
-        },
-        "high": {
-          "latitude": 37.7723902302915,
-          "longitude": -122.46727901970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJOzrg-UGHhYARlwiPcLIYMIc",
+      "source": "overture",
       "name": "Koi Fitness",
-      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7714658,
         "longitude": -122.4686651
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.769890019708505,
-          "longitude": -122.46974958029148
-        },
-        "high": {
-          "latitude": 37.772587980291505,
-          "longitude": -122.4670516197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "health",
-        "point_of_interest",
-        "establishment"
+        "health"
       ],
       "primaryType": "health",
-      "rating": 5,
-      "userRatingCount": 19
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+      "source": "overture",
       "name": "de Young Museum",
-      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771468999999996,
         "longitude": -122.46867549999997
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7704713697085,
-          "longitude": -122.46976243029151
-        },
-        "high": {
-          "latitude": 37.7731693302915,
-          "longitude": -122.46706446970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "art_museum",
-        "tourist_attraction",
-        "museum",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "museum"
       ],
       "primaryType": "art_museum",
-      "rating": 4.6,
-      "userRatingCount": 9854
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ__-0AkKHhYARVLWNwpcV1wA",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7711687,
         "longitude": -122.4686722
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7696706697085,
-          "longitude": -122.4699917302915
-        },
-        "high": {
-          "latitude": 37.772368630291496,
-          "longitude": -122.4672937697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJVVVVVXKHhYARPWqqMGP79Yk",
+      "source": "overture",
       "name": "Fine Arts Museums of San Francisco",
-      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771516,
         "longitude": -122.46864699999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7699435697085,
-          "longitude": -122.46972313029148
-        },
-        "high": {
-          "latitude": 37.7726415302915,
-          "longitude": -122.4670251697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "non_profit_organization",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association"
       ],
       "primaryType": "non_profit_organization",
-      "rating": 4.7,
-      "userRatingCount": 628
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJOxek9kGHhYARe5K0xRbTOPQ",
+      "source": "overture",
       "name": "Golden Gate Park",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771581999999995,
         "longitude": -122.46833090000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.77023498968996,
-          "longitude": -122.46968175679967
-        },
-        "high": {
-          "latitude": 37.77293295027296,
-          "longitude": -122.4669837962167
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "subpremise",
-        "point_of_interest",
-        "establishment",
         "street_address"
       ],
       "primaryType": null,
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ32r3YVyHhYAR5NOsFttHtYo",
+      "source": "overture",
       "name": "Andy Goldsworthy’s Drawn Stone",
-      "address": "50 Hagiwara Tea Garden Dr Store, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr Store, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr Store",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7714041,
         "longitude": -122.4681291
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.769957519708505,
-          "longitude": -122.46936713029147
-        },
-        "high": {
-          "latitude": 37.772655480291505,
-          "longitude": -122.4666691697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "sculpture",
-        "point_of_interest",
-        "establishment"
+        "sculpture"
       ],
       "primaryType": "sculpture",
-      "rating": 4.6,
-      "userRatingCount": 5
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJUdZI8UGHhYARN15xzIQ2RA0",
+      "source": "overture",
       "name": "Vending Machine",
-      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7716512,
         "longitude": -122.46837569999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7700956697085,
-          "longitude": -122.46947573029146
-        },
-        "high": {
-          "latitude": 37.7727936302915,
-          "longitude": -122.46677776970847
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "subpremise",
-        "point_of_interest",
-        "establishment",
         "street_address"
       ],
       "primaryType": null,
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJAQCt-0GHhYARrWE424TFfnY",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771597899999996,
         "longitude": -122.46884909999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.769946819708494,
-          "longitude": -122.46989978029148
-        },
-        "high": {
-          "latitude": 37.77264478029149,
-          "longitude": -122.46720181970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJq-oa9EGHhYARp2OoAMIznto",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7716139,
         "longitude": -122.4682687
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7700771697085,
-          "longitude": -122.4694078302915
-        },
-        "high": {
-          "latitude": 37.7727751302915,
-          "longitude": -122.46670986970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJAQCr-0GHhYARWZrXLdYh48U",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7716165,
         "longitude": -122.46884909999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.769966419708496,
-          "longitude": -122.46984268029149
-        },
-        "high": {
-          "latitude": 37.772664380291495,
-          "longitude": -122.4671447197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJVVX480GHhYARfww1q3dsDns",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7716634,
         "longitude": -122.46827420000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7701071197085,
-          "longitude": -122.4694244802915
-        },
-        "high": {
-          "latitude": 37.7728050802915,
-          "longitude": -122.4667265197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ__9s9EGHhYARjHrotkq1ngk",
+      "source": "overture",
       "name": "Male Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771628,
         "longitude": -122.46820790000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7700956697085,
-          "longitude": -122.46938593029148
-        },
-        "high": {
-          "latitude": 37.7727936302915,
-          "longitude": -122.4666879697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJVVUQ-0GHhYAR8jnEKfofWxM",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.771658699999996,
         "longitude": -122.46889329999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7699864697085,
-          "longitude": -122.46986368029147
-        },
-        "high": {
-          "latitude": 37.7726844302915,
-          "longitude": -122.46716571970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJI7NivpmAhYARYpThv2G8f9c",
+      "source": "overture",
       "name": "de Young Café",
-      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+      "address": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
+      "street": "50 Hagiwara Tea Garden Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.770955,
         "longitude": -122.4688688
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7694781197085,
-          "longitude": -122.4700705802915
-        },
-        "high": {
-          "latitude": 37.7721760802915,
-          "longitude": -122.46737261970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "cafe",
         "cafeteria",
         "museum",
         "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment"
+        "food"
       ],
       "primaryType": "cafe",
-      "rating": 3.6,
-      "userRatingCount": 212
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ_z8qi0GHhYARj134Rz1EC7M",
+      "source": "overture",
       "name": "Bathroom",
-      "address": "San Francisco, CA 94118, USA",
+      "address": "San Francisco, CA 94118, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7716138,
         "longitude": -122.467937
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7701492697085,
-          "longitude": -122.46915543029148
-        },
-        "high": {
-          "latitude": 37.7728472302915,
-          "longitude": -122.46645746970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "public_bathroom",
-        "point_of_interest",
-        "establishment"
+        "public_restrooms"
       ],
-      "primaryType": "public_bathroom",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_restrooms",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJY_dFYHKHhYARMKc772iLvnE",
+      "source": "overture",
       "name": "Golden Gate Park",
-      "address": "San Francisco, CA, USA",
+      "address": "San Francisco, CA, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": null,
+      "country": "US",
       "location": {
         "latitude": 37.7689203,
         "longitude": -122.482977
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7641986,
-          "longitude": -122.510832
-        },
-        "high": {
-          "latitude": 37.77463409999999,
-          "longitude": -122.45265549999999
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "garden",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.8,
-      "userRatingCount": 44773
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJYxVpxFmHhYARVSKbL2FJ6VY",
+      "source": "overture",
       "name": "University of California San Francisco Parnassus Campus",
-      "address": "505 Parnassus Ave, San Francisco, CA 94143, USA",
+      "address": "505 Parnassus Ave, San Francisco, CA 94143, US",
+      "street": "505 Parnassus Ave",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94143",
+      "country": "US",
       "location": {
         "latitude": 37.762645899999995,
         "longitude": -122.45871059999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.761580219708506,
-          "longitude": -122.45963818029148
-        },
-        "high": {
-          "latitude": 37.764278180291505,
-          "longitude": -122.4569402197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "university",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "college_university",
+        "educational_institution"
       ],
-      "primaryType": "university",
-      "rating": 4.4,
-      "userRatingCount": 691
+      "primaryType": "college_university",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJW5w2V2iHhYARQoOl_ZsQlOg",
+      "source": "overture",
       "name": "San Francisco Botanical Garden",
-      "address": "1199 9th Ave, San Francisco, CA 94122, USA",
+      "address": "1199 9th Ave, San Francisco, CA 94122, US",
+      "street": "1199 9th Ave",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94122",
+      "country": "US",
       "location": {
         "latitude": 37.767709599999996,
         "longitude": -122.4693109
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7667169197085,
-          "longitude": -122.47302450000001
-        },
-        "high": {
-          "latitude": 37.7694148802915,
-          "longitude": -122.4664984
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "botanical_garden",
         "garden",
-        "tourist_attraction",
+        "attractions_and_activities",
         "museum",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "botanical_garden",
-      "rating": 4.8,
-      "userRatingCount": 8109
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJuyASMUqHhYARTvh_g2_KVmo",
+      "source": "overture",
       "name": "University of San Francisco",
-      "address": "2130 Fulton St, San Francisco, CA 94117, USA",
+      "address": "2130 Fulton St, San Francisco, CA 94117, US",
+      "street": "2130 Fulton St",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94117",
+      "country": "US",
       "location": {
         "latitude": 37.7765643,
         "longitude": -122.4507187
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7748842197085,
-          "longitude": -122.45303039999997
-        },
-        "high": {
-          "latitude": 37.777582180291496,
-          "longitude": -122.44933239999999
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "university",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "college_university",
+        "educational_institution"
       ],
-      "primaryType": "university",
-      "rating": 4.5,
-      "userRatingCount": 266
+      "primaryType": "college_university",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJldoU6FCHhYAREFqwcwO0fr8",
+      "source": "overture",
       "name": "Kezar Stadium",
-      "address": "670 Kezar Dr, San Francisco, CA 94118, USA",
+      "address": "670 Kezar Dr, San Francisco, CA 94118, US",
+      "street": "670 Kezar Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7668135,
         "longitude": -122.45601250000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7656430697085,
-          "longitude": -122.45803199999999
-        },
-        "high": {
-          "latitude": 37.768341030291495,
-          "longitude": -122.45322519999999
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "stadium",
-        "sports_complex",
+        "stadium_arena",
+        "sports_and_recreation_venue",
         "event_venue",
         "athletic_field",
-        "sports_activity_location",
-        "point_of_interest",
-        "establishment"
+        "sports_activity_location"
       ],
-      "primaryType": "stadium",
-      "rating": 4.7,
-      "userRatingCount": 688
+      "primaryType": "stadium_arena",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ_aOxME6HhYARYRaTOEP1dEA",
+      "source": "overture",
       "name": "Blue Heron Lake",
-      "address": "John F Kennedy Dr & Martin Luther King Jr. Drive, San Francisco, CA 94118, USA",
+      "address": "John F Kennedy Dr & Martin Luther King Jr. Drive, San Francisco, CA 94118, US",
+      "street": "John F Kennedy Dr & Martin Luther King Jr. Drive",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.768728599999996,
         "longitude": -122.47344450000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.767831119708504,
-          "longitude": -122.47537763029149
-        },
-        "high": {
-          "latitude": 37.7705290802915,
-          "longitude": -122.47267966970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "park",
-      "rating": 4.8,
-      "userRatingCount": 268
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJeV1_FEuHhYARxrU36x27Zc8",
+      "source": "overture",
       "name": "USF School Of Education",
-      "address": "2350 Turk Blvd, San Francisco, CA 94118, USA",
+      "address": "2350 Turk Blvd, San Francisco, CA 94118, US",
+      "street": "2350 Turk Blvd",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.778863,
         "longitude": -122.44850509999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.777301219708505,
-          "longitude": -122.44983313029147
-        },
-        "high": {
-          "latitude": 37.779999180291505,
-          "longitude": -122.44713516970847
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "university",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "college_university",
+        "educational_institution"
       ],
-      "primaryType": "university",
-      "rating": 4.5,
-      "userRatingCount": 16
+      "primaryType": "college_university",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJB67UfEmHhYARDPKAzW9fnTw",
+      "source": "overture",
       "name": "USF Lone Mountain",
-      "address": "2820 Turk Blvd, San Francisco, CA 94118, USA",
+      "address": "2820 Turk Blvd, San Francisco, CA 94118, US",
+      "street": "2820 Turk Blvd",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7792783,
         "longitude": -122.45205779999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.777814219708496,
-          "longitude": -122.45338683029148
-        },
-        "high": {
-          "latitude": 37.780512180291495,
-          "longitude": -122.4506888697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "university",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "college_university",
+        "educational_institution"
       ],
-      "primaryType": "university",
-      "rating": 4.7,
-      "userRatingCount": 48
+      "primaryType": "college_university",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJnbm6ME6HhYARsKOW-ExeNOg",
+      "source": "overture",
       "name": "McLaren Lodge",
-      "address": "501 Stanyan St, San Francisco, CA 94117, USA",
+      "address": "501 Stanyan St, San Francisco, CA 94117, US",
+      "street": "501 Stanyan St",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94117",
+      "country": "US",
       "location": {
         "latitude": 37.771776599999995,
         "longitude": -122.4547685
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.77039331970849,
-          "longitude": -122.45609823029147
-        },
-        "high": {
-          "latitude": 37.77309128029149,
-          "longitude": -122.4534002697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "historical_landmark",
         "historical_place",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "historical_landmark",
-      "rating": 4.5,
-      "userRatingCount": 151
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ38PBV2qHhYARQNvZBtima_M",
+      "source": "overture",
       "name": "Rose Garden",
       "address": "Golden Gate Park, John F Kennedy Dr, San Francisco, CA 94117, USA",
+      "street": "Golden Gate Park, John F Kennedy Dr, San Francisco, CA 94117, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.7718863,
         "longitude": -122.47133950000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7711864697085,
-          "longitude": -122.4724767802915
-        },
-        "high": {
-          "latitude": 37.773884430291496,
-          "longitude": -122.46977881970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "garden",
         "state_park",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "garden",
-      "rating": 4.7,
-      "userRatingCount": 595
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJt-pzsLKAhYARATMpQzWxo_E",
+      "source": "overture",
       "name": "John Adams Campus, City College of San Francisco",
-      "address": "1860 Hayes St, San Francisco, CA 94117, USA",
+      "address": "1860 Hayes St, San Francisco, CA 94117, US",
+      "street": "1860 Hayes St",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94117",
+      "country": "US",
       "location": {
         "latitude": 37.7740693,
         "longitude": -122.4471193
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7725975197085,
-          "longitude": -122.44826443029149
-        },
-        "high": {
-          "latitude": 37.7752954802915,
-          "longitude": -122.44556646970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "university",
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "college_university",
+        "educational_institution"
       ],
-      "primaryType": "university",
-      "rating": 4.6,
-      "userRatingCount": 11
+      "primaryType": "college_university",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ3z0XWAuHhYARyswQwPWGknI",
+      "source": "overture",
       "name": "Golden Gate Park Disc Golf Course",
-      "address": "99 Marx Meadow Dr, San Francisco, CA 94121, USA",
+      "address": "99 Marx Meadow Dr, San Francisco, CA 94121, US",
+      "street": "99 Marx Meadow Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94121",
+      "country": "US",
       "location": {
         "latitude": 37.771128499999996,
         "longitude": -122.48615799999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.769593369708495,
-          "longitude": -122.48766968029149
-        },
-        "high": {
-          "latitude": 37.772291330291495,
-          "longitude": -122.48497171970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "golf_course",
         "athletic_field",
-        "sports_activity_location",
-        "point_of_interest",
-        "establishment"
+        "golf_course",
+        "sports_activity_location"
       ],
       "primaryType": "athletic_field",
-      "rating": 4.8,
-      "userRatingCount": 575
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJFS16LmCHhYAR9-5CGavbV2k",
+      "source": "overture",
       "name": "Grandview Park",
       "address": "Moraga &, 14th Ave, San Francisco, CA 94122, USA",
+      "street": "Moraga &, 14th Ave, San Francisco, CA 94122, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.756422199999996,
         "longitude": -122.4717361
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.7551095697085,
-          "longitude": -122.4727358802915
-        },
-        "high": {
-          "latitude": 37.7578075302915,
-          "longitude": -122.47003791970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "city_park",
         "scenic_spot",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.8,
-      "userRatingCount": 1071
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJqfCTeBiHhYARt_0t7D65SWU",
+      "source": "overture",
       "name": "Mountain Lake Park",
-      "address": "98 Funston Ave, San Francisco, CA 94118, USA",
+      "address": "98 Funston Ave, San Francisco, CA 94118, US",
+      "street": "98 Funston Ave",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.7872822,
         "longitude": -122.4697225
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.785753819708496,
-          "longitude": -122.47179408029152
-        },
-        "high": {
-          "latitude": 37.788451780291496,
-          "longitude": -122.46909611970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "city_park",
-      "rating": 4.7,
-      "userRatingCount": 721
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJA5OA_YWAhYARhmsqNSUugxY",
+      "source": "overture",
       "name": "National AIDS Memorial Grove",
       "address": "Nancy Pelosi Drive &, Bowling Green Dr, San Francisco, CA 94122, USA",
+      "street": "Nancy Pelosi Drive &, Bowling Green Dr, San Francisco, CA 94122, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.7697139,
         "longitude": -122.4620104
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.768501819708504,
-          "longitude": -122.46311680000001
-        },
-        "high": {
-          "latitude": 37.771199780291504,
-          "longitude": -122.46036589999999
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "tourist_attraction",
         "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.8,
-      "userRatingCount": 419
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJYy7nrG6HhYARUn-AXchcHd8",
+      "source": "overture",
       "name": "Strawberry Hill",
       "address": "Golden Gate Park, 7684 CA-1, San Francisco, CA 94118, USA",
+      "street": "Golden Gate Park, 7684 CA-1, San Francisco, CA 94118, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.768639799999995,
         "longitude": -122.47531989999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.767762469708494,
-          "longitude": -122.4763954302915
-        },
-        "high": {
-          "latitude": 37.77046043029149,
-          "longitude": -122.47369746970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "hiking_area",
+        "hiking_trail",
         "park",
-        "sports_activity_location",
-        "point_of_interest",
-        "establishment"
+        "sports_activity_location"
       ],
-      "primaryType": "hiking_area",
-      "rating": 4.7,
-      "userRatingCount": 321
+      "primaryType": "hiking_trail",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJgZQ3j0-HhYARHGdC0FXeNq4",
+      "source": "overture",
       "name": "Peacock Meadow",
-      "address": "240 John F Kennedy Dr, San Francisco, CA 94117, USA",
+      "address": "240 John F Kennedy Dr, San Francisco, CA 94117, US",
+      "street": "240 John F Kennedy Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94117",
+      "country": "US",
       "location": {
         "latitude": 37.771571,
         "longitude": -122.457653
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.770252419708505,
-          "longitude": -122.457653
-        },
-        "high": {
-          "latitude": 37.772950380291505,
-          "longitude": -122.45453499999998
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "picnic_ground",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "picnic_ground",
-      "rating": 4.7,
-      "userRatingCount": 475
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJDTzwSPh9j4ARGgKkwhdYqc0",
+      "source": "overture",
       "name": "Mount Sutro Open Space Reserve",
-      "address": "San Francisco, CA 94131, USA",
+      "address": "San Francisco, CA 94131, US",
+      "street": null,
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94131",
+      "country": "US",
       "location": {
         "latitude": 37.7592201,
         "longitude": -122.4572304
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.757919,
-          "longitude": -122.45792378029148
-        },
-        "high": {
-          "latitude": 37.7608287,
-          "longitude": -122.4552258197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "nature_preserve",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "nature_preserve",
-      "rating": 4.7,
-      "userRatingCount": 742
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ76Wd13OHhYARorpaY79_m6U",
+      "source": "overture",
       "name": "Shakespeare Garden",
-      "address": "335 Martin Luther King Jr Dr, San Francisco, CA 94118, USA",
+      "address": "335 Martin Luther King Jr Dr, San Francisco, CA 94118, US",
+      "street": "335 Martin Luther King Jr Dr",
+      "locality": "San Francisco",
+      "region": "US-CA",
+      "postcode": "94118",
+      "country": "US",
       "location": {
         "latitude": 37.768895799999996,
         "longitude": -122.4672329
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.76732246970851,
-          "longitude": -122.46878343029148
-        },
-        "high": {
-          "latitude": 37.7700204302915,
-          "longitude": -122.46608546970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "garden",
-        "tourist_attraction",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities",
+        "park"
       ],
       "primaryType": "garden",
-      "rating": 4.7,
-      "userRatingCount": 300
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJpwqhARuHhYAR8qUtoxnE9Nc",
+      "source": "overture",
       "name": "Richmond Playground Park",
       "address": "18th Ave & Lake St, Lake St, San Francisco, CA 94121, USA",
+      "street": "18th Ave & Lake St, Lake St, San Francisco, CA 94121, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 37.7852403,
         "longitude": -122.4781632
       },
-      "viewport": {
-        "low": {
-          "latitude": 37.783879419708505,
-          "longitude": -122.47976693029149
-        },
-        "high": {
-          "latitude": 37.786577380291504,
-          "longitude": -122.4770689697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "city_park",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "city_park",
-      "rating": 4.3,
-      "userRatingCount": 66
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     }
   ],
   "placeKeys": {
@@ -2394,17 +1084,15 @@
     "none": [],
     "parkRunner": [
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-06-21T14:33:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2412,17 +1100,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-06-25T14:26:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2430,17 +1116,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-06-30T14:19:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2448,17 +1132,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-04T14:12:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2466,17 +1148,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-09T14:05:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2484,17 +1164,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-13T14:48:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2502,17 +1180,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-18T14:41:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2520,17 +1196,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-22T14:34:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2538,17 +1212,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-27T14:27:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2556,17 +1228,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-07-31T14:20:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2574,17 +1244,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-08-05T14:13:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2592,17 +1260,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-08-09T14:06:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2610,17 +1276,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-08-14T14:49:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2628,17 +1292,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-08-18T14:42:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2646,17 +1308,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-08-23T14:35:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2664,17 +1324,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-08-27T14:28:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2682,17 +1340,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-09-01T14:21:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2700,17 +1356,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-09-05T14:14:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2718,17 +1372,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-09-10T14:07:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2736,17 +1388,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJY_dFYHKHhYARMKc772iLvnE",
+        "placeId": "ChIJY_dFYHKHhYARMKc772iLvnE",
         "createdAt": "2026-09-14T14:00:00.000Z",
         "placeName": "Golden Gate Park",
-        "placeAddress": "San Francisco, CA, USA",
+        "placeAddress": "San Francisco, CA, US",
         "placePrimaryType": "park",
         "placeTypes": [
           "park",
           "garden",
-          "tourist_attraction",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities"
         ],
         "location": {
           "latitude": 37.7689203,
@@ -2756,17 +1406,15 @@
     ],
     "museumMember": [
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-03-23T18:49:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2774,17 +1422,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-04-14T18:42:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2792,17 +1438,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-05-07T18:35:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2810,17 +1454,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-05-29T18:28:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2828,17 +1470,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-06-21T18:21:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2846,17 +1486,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-07-13T18:14:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2864,17 +1502,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-08-05T18:07:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2882,17 +1518,15 @@
         }
       },
       {
-        "googlePlaceId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
+        "placeId": "ChIJI7NivpmAhYARSuRPlbbn_2w",
         "createdAt": "2026-08-27T18:00:00.000Z",
         "placeName": "de Young Museum",
-        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, USA",
+        "placeAddress": "50 Hagiwara Tea Garden Dr, San Francisco, CA 94118, US",
         "placePrimaryType": "art_museum",
         "placeTypes": [
           "art_museum",
-          "tourist_attraction",
-          "museum",
-          "point_of_interest",
-          "establishment"
+          "attractions_and_activities",
+          "museum"
         ],
         "location": {
           "latitude": 37.771468999999996,
@@ -2915,10 +1549,6 @@
           [
             "deYoung",
             "museumStore"
-          ],
-          [
-            "park",
-            "kezarStadium"
           ]
         ]
       }
@@ -2930,8 +1560,8 @@
       "fixAgeSeconds": 5,
       "history": "parkRunner",
       "expect": {
-        "top": "park",
-        "suggested": "park"
+        "top": "deYoung",
+        "suggested": null
       }
     },
     {

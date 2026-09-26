@@ -30,7 +30,7 @@ nonisolated struct RankingWeights: Sendable {
     /// indoors and between tall buildings.
     var spatial = 2.5
     var spatialDegreesOfFreedom = 3.0
-    /// Typical error of Google's pin placement, folded into the fix's sigma.
+    /// Typical error of a pin's placement, folded into the fix's sigma.
     var pinPlacementError = 12.0
     /// Reported accuracies below this are treated as this.
     var minimumAccuracy = 5.0
@@ -41,6 +41,14 @@ nonisolated struct RankingWeights: Sendable {
     /// Price a venue pays for its area relative to the fix's blur, per class.
     var containerSize = 0.35
     var destinationSize = 0.15
+    /// A destination venue whose recorded grounds contain the fix pays no
+    /// size price and earns this instead: standing in an airport, the airport
+    /// is the checkin, whatever storefront the fix happens to touch. Sized to
+    /// clear the suggestion margin over a storefront nobody has checked in at
+    /// (about -0.1 at zero distance), but not one the user is a regular at.
+    var insideDestinationGrounds = 1.2
+    /// Per log-checkin at the place, from everyone. Nothing at a place nobody
+    /// has checked in at yet, so a new venue is ranked on geometry alone.
     var popularity = 0.2
     var history = 1.0
     var historyHalfLifeDays = 90.0
@@ -49,7 +57,7 @@ nonisolated struct RankingWeights: Sendable {
     /// Score for a place with no coordinate: still listed, never suggested.
     var missingLocation = -6.0
     /// History places this close to the fix are added as candidates even when
-    /// Google's twenty results did not include them.
+    /// the twenty nearest results did not include them.
     var historyInjectionMinimumRadius = 100.0
 
     /// The top place must beat the runner-up by this many nats (about 3:1
@@ -151,16 +159,22 @@ nonisolated struct PlaceRanker: Sendable {
 
             // Being anywhere inside a big venue is less specific than being
             // at a storefront; destination venues are canonical checkins so
-            // they pay a smaller share of that.
-            let sizeWeight: Double
-            switch footprint.kind {
-            case .container: sizeWeight = weights.containerSize
-            case .destination: sizeWeight = weights.destinationSize
-            case .point: sizeWeight = 0
+            // they pay a smaller share of that, and none at all when their
+            // recorded grounds say the user is inside.
+            let insideRecordedGrounds = footprint.polygon != nil && effectiveDistance == 0
+            if footprint.kind == .destination && insideRecordedGrounds {
+                score += weights.insideDestinationGrounds
+            } else {
+                let sizeWeight: Double
+                switch footprint.kind {
+                case .container: sizeWeight = weights.containerSize
+                case .destination: sizeWeight = weights.destinationSize
+                case .point: sizeWeight = 0
+                }
+                score -= sizeWeight * log(1 + ratio * ratio)
             }
-            score -= sizeWeight * log(1 + ratio * ratio)
 
-            score += weights.popularity * log(1 + Double(place.userRatingCount ?? 0))
+            score += weights.popularity * log(1 + Double(place.checkinCount))
             score += typePrior
 
             var visitCount = 0
@@ -214,11 +228,12 @@ nonisolated struct PlaceRanker: Sendable {
         return PlaceRanking(ranked: ranked, suggestion: suggestion(from: ranked, fix: fix, now: now))
     }
 
-    /// Google's relevance order for a typed query is the right order; the only
+    /// The server's order for a typed query (word-start matches, then the
+    /// most checked-in, then the nearest) is the right order; the only
     /// adjustment is to float places the user has been to before.
     func orderForQuery(candidates: [Place], history: [CheckinHistoryEntry]) -> [RankedPlace] {
         let visitCounts = history.reduce(into: [String: Int]()) { counts, entry in
-            counts[entry.googlePlaceId, default: 0] += 1
+            counts[entry.placeId, default: 0] += 1
         }
         let rankedPlaces = candidates.map { place in
             RankedPlace(
@@ -255,8 +270,23 @@ nonisolated struct PlaceRanker: Sendable {
     private func probabilityOfBeingInside(_ venue: RankedPlace, among ranked: [RankedPlace]) -> Double {
         let footprint = PlaceFootprint(for: venue.place)
         // A storefront's radius only absorbs the pin error, so its neighbors
-        // are alternatives to it, not parts of it.
-        guard footprint.kind != .point else { return venue.probability }
+        // are alternatives to it, not parts of it. The venues whose recorded
+        // grounds enclose it are not alternatives either: being at Peet's in
+        // the terminal is also being in the airport, so the airport's share
+        // counts for Peet's rather than against it.
+        guard footprint.kind != .point else {
+            guard let location = venue.place.location else { return venue.probability }
+            return ranked.reduce(0) { total, candidate in
+                if candidate.id == venue.id {
+                    return total + candidate.probability
+                }
+                let enclosing = PlaceFootprint(for: candidate.place)
+                guard enclosing.polygon != nil, enclosing.effectiveDistance(from: location, to: candidate.place) == 0 else {
+                    return total
+                }
+                return total + candidate.probability
+            }
+        }
         return ranked.reduce(0) { total, candidate in
             if candidate.id == venue.id {
                 return total + candidate.probability
@@ -269,7 +299,7 @@ nonisolated struct PlaceRanker: Sendable {
         }
     }
 
-    /// In a dense area Google's twenty results can miss the very place the
+    /// In a dense area the twenty nearest results can miss the very place the
     /// user keeps coming back to. Anything from history within a couple of
     /// accuracy radii is added as a candidate built from the stored checkin.
     private func injectedHistoryPlaces(
@@ -281,20 +311,17 @@ nonisolated struct PlaceRanker: Sendable {
         var seen = knownIdentifiers
         var injected: [Place] = []
         for entry in history {
-            guard !seen.contains(entry.googlePlaceId), let location = entry.location else { continue }
+            guard !seen.contains(entry.placeId), let location = entry.location else { continue }
             guard GeoDistance.meters(from: fix.coordinate, to: location) <= injectionRadius else { continue }
-            seen.insert(entry.googlePlaceId)
+            seen.insert(entry.placeId)
             injected.append(
                 Place(
-                    id: entry.googlePlaceId,
+                    id: entry.placeId,
                     name: entry.placeName,
                     address: entry.placeAddress,
                     location: location,
-                    viewport: nil,
                     types: entry.placeTypes,
-                    primaryType: entry.placePrimaryType,
-                    rating: nil,
-                    userRatingCount: nil
+                    primaryType: entry.placePrimaryType
                 )
             )
         }
@@ -332,7 +359,7 @@ nonisolated struct HistoryStatistics: Sendable {
         for entry in entries {
             let ageDays = max(0, now.timeIntervalSince(entry.createdAt) / 86_400)
             let weight = pow(0.5, ageDays / halfLifeDays)
-            var statistics = byPlace[entry.googlePlaceId] ?? PlaceStatistics()
+            var statistics = byPlace[entry.placeId] ?? PlaceStatistics()
             statistics.visitCount += 1
             statistics.decayedVisits += weight
             let hour = calendar.component(.hour, from: entry.createdAt)
@@ -344,7 +371,7 @@ nonisolated struct HistoryStatistics: Sendable {
             } else {
                 statistics.weekdayVisits += weight
             }
-            byPlace[entry.googlePlaceId] = statistics
+            byPlace[entry.placeId] = statistics
         }
         self.byPlace = byPlace
     }

@@ -37,58 +37,82 @@ nonisolated enum PlaceFootprintClass: Sendable {
 
 /// The physical extent of a place, used to turn "distance to the pin" into
 /// "distance to the venue".
+///
+/// A place with recorded grounds (a polygon from Overture's base theme:
+/// airports, parks, campuses, stadium grounds) is measured against them:
+/// zero inside, else the distance to the nearest edge. Without one the
+/// extent is a guess from the category: every airport is a 1.5 km disc,
+/// every park a 150 m one, which finds an airport from a gate but also lets
+/// a regional airfield's disc cover the town next to it.
 nonisolated struct PlaceFootprint: Sendable {
-    /// Half the venue's extent in meters: for a rectangle, half its shorter side.
+    /// Half the venue's extent in meters: for recorded grounds, half the
+    /// shorter side of their bounding box.
     let radius: Double
     let kind: PlaceFootprintClass
-    /// Google's bounding box when it is large enough to be informative. Nil
+    /// The recorded grounds when they are big enough to be informative. Nil
     /// means the venue is modeled as a disc of `radius` around its pin.
-    let rectangle: PlaceViewport?
+    let polygon: PlaceExtent?
 
-    /// Google returns a default box roughly 250 m across for point venues, so a
-    /// box only counts as the venue's real extent when its shorter half-side
-    /// clears that comfortably.
-    static let informativeViewportHalfSide = 200.0
-
-    /// Storefront radius. Generous on purpose: Google pins are often a shop
-    /// width off, and the user is somewhere inside the shop, not at the pin.
+    /// Storefront radius. Generous on purpose: pins are often a shop width
+    /// off, and the user is somewhere inside the shop, not at the pin.
     static let pointRadius = 25.0
+
+    /// A polygon only counts as the venue's extent when its shorter half-side
+    /// clears this: a mapped building outline says nothing the storefront
+    /// radius does not, and a park-sized one says a lot.
+    static let informativeExtentHalfSide = 200.0
 
     private struct TableEntry {
         let radius: Double
         let kind: PlaceFootprintClass
     }
 
+    /// Keyed by Overture category code.
     private static let table: [String: TableEntry] = [
         "airport": TableEntry(radius: 1500, kind: .destination),
-        "university": TableEntry(radius: 600, kind: .destination),
+        "college_university": TableEntry(radius: 600, kind: .destination),
         "amusement_park": TableEntry(radius: 600, kind: .destination),
         "zoo": TableEntry(radius: 600, kind: .destination),
         "ski_resort": TableEntry(radius: 600, kind: .destination),
+        "ski_area": TableEntry(radius: 600, kind: .destination),
         "golf_course": TableEntry(radius: 600, kind: .destination),
         "national_park": TableEntry(radius: 600, kind: .destination),
         "state_park": TableEntry(radius: 600, kind: .destination),
-        "stadium": TableEntry(radius: 300, kind: .destination),
+        "stadium_arena": TableEntry(radius: 300, kind: .destination),
+        "airport_terminal": TableEntry(radius: 300, kind: .container),
         "park": TableEntry(radius: 150, kind: .container),
-        "shopping_mall": TableEntry(radius: 150, kind: .container),
+        "shopping_center": TableEntry(radius: 150, kind: .container),
         "train_station": TableEntry(radius: 150, kind: .container),
-        "transit_station": TableEntry(radius: 150, kind: .container),
+        "public_transportation": TableEntry(radius: 150, kind: .container),
+        "light_rail_and_subway_stations": TableEntry(radius: 150, kind: .container),
         "hospital": TableEntry(radius: 150, kind: .container),
-        "sports_complex": TableEntry(radius: 150, kind: .container),
-        "convention_center": TableEntry(radius: 150, kind: .container),
+        "sports_and_recreation_venue": TableEntry(radius: 150, kind: .container),
+        "convention_and_exhibition_center": TableEntry(radius: 150, kind: .container),
         "campground": TableEntry(radius: 150, kind: .container),
         "marina": TableEntry(radius: 150, kind: .container),
         "botanical_garden": TableEntry(radius: 150, kind: .container),
+        "nature_reserve": TableEntry(radius: 150, kind: .container),
         // The building is the checkin; the listings inside are its offices.
-        "city_hall": TableEntry(radius: 60, kind: .destination),
+        "town_hall": TableEntry(radius: 60, kind: .destination),
         "courthouse": TableEntry(radius: 60, kind: .destination),
         "hotel": TableEntry(radius: 60, kind: .container),
-        "resort_hotel": TableEntry(radius: 60, kind: .container),
+        "resort": TableEntry(radius: 60, kind: .container),
         "museum": TableEntry(radius: 60, kind: .container),
         "school": TableEntry(radius: 60, kind: .container),
-        "local_government_office": TableEntry(radius: 60, kind: .container),
+        "local_and_state_government_offices": TableEntry(radius: 60, kind: .container),
         "garden": TableEntry(radius: 60, kind: .container),
         "plaza": TableEntry(radius: 60, kind: .container),
+        "public_plaza": TableEntry(radius: 60, kind: .container),
+        "community_center": TableEntry(radius: 60, kind: .container),
+    ]
+
+    /// Overture has a category per kind of museum and stadium
+    /// (`art_museum`, `soccer_stadium`, ...); these fold them onto the
+    /// generic entry.
+    private static let suffixTable: [(suffix: String, entry: TableEntry)] = [
+        ("_museum", table["museum"]!),
+        ("_stadium", table["stadium_arena"]!),
+        ("_airports", table["airport"]!),
     ]
 
     /// Log-prior adjustments for place types that a nearest-first search
@@ -96,98 +120,157 @@ nonisolated struct PlaceFootprint: Sendable {
     /// so the places stay in the list for the rare time they are wanted.
     private static let typePriors: [String: Double] = [
         "parking": -1.5,
-        "parking_lot": -1.5,
-        "parking_garage": -1.5,
-        "public_bathroom": -1.5,
-        "electric_vehicle_charging_station": -1.0,
+        "bike_parking": -1.5,
+        "motorcycle_parking": -1.5,
+        "public_restrooms": -1.5,
+        "ev_charging_station": -1.0,
         // Offices listed inside a building someone would actually check in at:
         // a town hall's departments, the startups registered at a coworking
         // address. Recorded fixtures have a dozen of these within 25 m.
-        "government_office": -1.0,
-        "local_government_office": -1.0,
+        "government_services": -1.0,
+        "local_and_state_government_offices": -1.0,
         "corporate_office": -1.0,
-        "association_or_organization": -1.0,
-        "general_contractor": -1.0,
-        "consultant": -1.0,
-        "finance": -1.0,
-        "service": -1.0,
-        "atm": -1.0,
-        "bus_stop": -0.5,
-        "storage": -0.5,
-        "premise": -1.5,
-        "street_address": -1.5,
-        "subpremise": -1.5,
-        "plus_code": -1.5,
-        "route": -1.5,
+        "public_and_government_association": -1.0,
+        "non_governmental_association": -1.0,
+        "professional_services": -1.0,
+        "financial_service": -1.0,
+        "atms": -1.0,
+        "bus_station": -0.5,
+        "self_storage_facility": -0.5,
+        "storage_facility": -0.5,
     ]
 
-    static func lookup<Value>(_ table: [String: Value], for place: Place) -> Value? {
-        if let primaryType = place.primaryType, let value = table[primaryType] {
-            return value
+    private static func tableEntry(for category: String) -> TableEntry? {
+        if let entry = table[category] {
+            return entry
+        }
+        return suffixTable.first { category.hasSuffix($0.suffix) }?.entry
+    }
+
+    /// Judged on the primary category alone when there is one: a restaurant
+    /// whose alternates include `airport` is a restaurant in an airport, and
+    /// a town hall that is also tagged `local_and_state_government_offices`
+    /// must not be penalized as one of its own departments. Only a place
+    /// with no primary category is judged on its alternates.
+    static func lookup<Value>(for place: Place, _ resolve: (String) -> Value?) -> Value? {
+        if let primaryType = place.primaryType {
+            return resolve(primaryType)
         }
         for type in place.types {
-            if let value = table[type] {
+            if let value = resolve(type) {
                 return value
             }
         }
         return nil
     }
 
-    /// Judged on the primary type alone when there is one: a town hall is
-    /// also tagged `local_government_office`, and that must not count
-    /// against it.
     static func typePrior(for place: Place) -> Double {
-        if let primaryType = place.primaryType {
-            return typePriors[primaryType] ?? 0
-        }
-        return lookup(typePriors, for: place) ?? 0
+        lookup(for: place) { typePriors[$0] } ?? 0
     }
 
     init(for place: Place) {
-        let tabled = Self.lookup(Self.table, for: place)
+        let tabled = Self.lookup(for: place, Self.tableEntry)
             ?? TableEntry(radius: Self.pointRadius, kind: .point)
 
-        if let viewport = place.viewport {
-            let halfNorth = (viewport.high.latitude - viewport.low.latitude) / 2 * GeoDistance.metersPerDegreeLatitude
-            let centerLatitude = (viewport.high.latitude + viewport.low.latitude) / 2
-            let halfEast = (viewport.high.longitude - viewport.low.longitude) / 2
+        if let extent = place.extent, !extent.rings.isEmpty {
+            let box = extent.boundingBox
+            let halfNorth = (box.north - box.south) / 2 * GeoDistance.metersPerDegreeLatitude
+            let centerLatitude = (box.north + box.south) / 2
+            let halfEast = (box.east - box.west) / 2
                 * GeoDistance.metersPerDegreeLongitude(atLatitude: centerLatitude)
             let shorterHalfSide = min(halfNorth, halfEast)
-            if shorterHalfSide > Self.informativeViewportHalfSide {
+            if shorterHalfSide > Self.informativeExtentHalfSide {
                 radius = shorterHalfSide
-                // A big box around something the table calls a storefront is
+                // A big polygon around something the table calls a storefront is
                 // still a big venue; treat it as one whose parts matter.
                 kind = tabled.kind == .point ? .container : tabled.kind
-                rectangle = viewport
+                polygon = extent
                 return
             }
         }
 
         radius = tabled.radius
-        // Google sends a real viewport for venues it knows are big, so a table
-        // radius beyond its default box is a guess: without that confirmation
-        // the venue does not get the smaller destination size price. This is
-        // what keeps a regional airport 300 m away from beating the building
-        // the user is standing in.
-        if tabled.kind == .destination, tabled.radius > Self.informativeViewportHalfSide {
-            kind = .container
-        } else {
-            kind = tabled.kind
-        }
-        rectangle = nil
+        kind = tabled.kind
+        polygon = nil
     }
 
     /// Meters from `fix` to the nearest point of the venue; zero inside it.
     /// Nil when the place has no coordinate at all.
     func effectiveDistance(from fix: PlaceLocation, to place: Place) -> Double? {
-        if let rectangle {
-            let clamped = PlaceLocation(
-                latitude: min(max(fix.latitude, rectangle.low.latitude), rectangle.high.latitude),
-                longitude: min(max(fix.longitude, rectangle.low.longitude), rectangle.high.longitude)
-            )
-            return GeoDistance.meters(from: fix, to: clamped)
+        if let polygon {
+            if polygon.contains(fix) { return 0 }
+            return polygon.distanceToEdge(from: fix)
         }
         guard let location = place.location else { return nil }
         return max(0, GeoDistance.meters(from: fix, to: location) - radius)
+    }
+}
+
+nonisolated extension PlaceExtent {
+    /// Point-in-polygon by ray casting over every ring.
+    func contains(_ point: PlaceLocation) -> Bool {
+        rings.contains { ring in Self.ringContains(ring, point) }
+    }
+
+    private static func ringContains(_ ring: [PlaceLocation], _ point: PlaceLocation) -> Bool {
+        guard ring.count >= 3 else { return false }
+        var inside = false
+        var previous = ring.count - 1
+        for index in ring.indices {
+            let current = ring[index]
+            let earlier = ring[previous]
+            let crosses = (current.latitude > point.latitude) != (earlier.latitude > point.latitude)
+            if crosses {
+                let intersection = (earlier.longitude - current.longitude)
+                    * (point.latitude - current.latitude)
+                    / (earlier.latitude - current.latitude)
+                    + current.longitude
+                if point.longitude < intersection {
+                    inside.toggle()
+                }
+            }
+            previous = index
+        }
+        return inside
+    }
+
+    /// Meters from a point outside the grounds to their nearest edge. Flat
+    /// earth, like the rest of the ranker.
+    func distanceToEdge(from point: PlaceLocation) -> Double {
+        let metersPerDegreeLongitude = GeoDistance.metersPerDegreeLongitude(atLatitude: point.latitude)
+        func planar(_ location: PlaceLocation) -> (x: Double, y: Double) {
+            (
+                (location.longitude - point.longitude) * metersPerDegreeLongitude,
+                (location.latitude - point.latitude) * GeoDistance.metersPerDegreeLatitude
+            )
+        }
+        var nearest = Double.infinity
+        for ring in rings where ring.count >= 2 {
+            var previous = planar(ring[ring.count - 1])
+            for vertex in ring {
+                let current = planar(vertex)
+                nearest = min(nearest, Self.distanceToSegment(from: previous, to: current))
+                previous = current
+            }
+        }
+        return nearest.isFinite ? nearest : 0
+    }
+
+    /// Distance from the origin to the segment between two planar points.
+    private static func distanceToSegment(
+        from start: (x: Double, y: Double),
+        to end: (x: Double, y: Double)
+    ) -> Double {
+        let deltaX = end.x - start.x
+        let deltaY = end.y - start.y
+        let lengthSquared = deltaX * deltaX + deltaY * deltaY
+        var fraction = 0.0
+        if lengthSquared > 0 {
+            fraction = -(start.x * deltaX + start.y * deltaY) / lengthSquared
+            fraction = min(max(fraction, 0), 1)
+        }
+        let closestX = start.x + fraction * deltaX
+        let closestY = start.y + fraction * deltaY
+        return (closestX * closestX + closestY * closestY).squareRoot()
     }
 }

@@ -12,9 +12,10 @@ export function toCheckinResult(checkin: CheckinRow, social?: Partial<CheckinSoc
   return {
     id: checkin.id,
     userId: checkin.userId,
-    googlePlaceId: checkin.googlePlaceId,
+    placeId: checkin.placeId,
     placeName: checkin.placeName,
     placeAddress: checkin.placeAddress,
+    placeLocality: checkin.placeLocality,
     placePrimaryType: checkin.placePrimaryType,
     placeTypes: checkin.placeTypes,
     location:

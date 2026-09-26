@@ -1,0 +1,16 @@
+meta {
+  name: Get Place
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/places/{{placeId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Fetches one place by id, including its `checkinCount`. Expect the venue
+  from Create Venue; an unknown uuid is a 404 and a non-uuid a 400.
+}

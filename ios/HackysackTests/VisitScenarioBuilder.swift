@@ -211,9 +211,9 @@ struct VisitScenarioBuilder {
         )
     }
 
-    mutating func addCheckin(at spot: ScenarioSpot, googlePlaceId: String, day: Int, hour: Double) {
+    mutating func addCheckin(at spot: ScenarioSpot, placeId: String, day: Int, hour: Double) {
         checkins.append(
-            VisitedPlaceEvent(coordinate: jitteredCoordinate(around: spot), googlePlaceId: googlePlaceId, date: date(day: day, hour: hour))
+            VisitedPlaceEvent(coordinate: jitteredCoordinate(around: spot), placeId: placeId, date: date(day: day, hour: hour))
         )
     }
 

@@ -15,6 +15,20 @@ struct RootView: View {
     @Environment(AuthManager.self) private var authManager
 
     var body: some View {
+        ZStack(alignment: .top) {
+            content
+            // Debug simulator builds only: the dev server has moved on to a
+            // newer commit. A different branch is handled by WrongServerWindow.
+            if BuildGate.shared.verdict == .commitDiffers,
+               let app = BuildGate.shared.app,
+               let server = BuildGate.shared.server {
+                BuildMismatchBanner(app: app, server: server)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
         switch authManager.state {
         case .launching:
             ProgressView()

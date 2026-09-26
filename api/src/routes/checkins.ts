@@ -18,6 +18,8 @@ import {
   loadCheckinSocial,
   toCommentResult,
 } from "../lib/checkin-social.js";
+import { formatAddress } from "../lib/place-result.js";
+import { findPlaceById } from "../lib/places-search.js";
 import { isVisibleCheckin } from "../lib/friendships.js";
 import { createdBefore, paginationQuerySchema } from "../lib/pagination.js";
 import { requireAuth } from "../middleware/require-auth.js";
@@ -34,17 +36,13 @@ const createdAtSchema = z
     message: "createdAt must not be in the future",
   });
 
-// No userId here on purpose: identity comes from the access token. The
-// schema is left non-strict so an older client still sending one is simply
+// No userId here on purpose: identity comes from the access token. Nor any
+// place details: the server snapshots them from the `places` row, so a
+// client cannot file a checkin at one place under another's name. The schema
+// is left non-strict so an older client still sending those is simply
 // ignored rather than rejected with a 400 it cannot act on.
 const createCheckinSchema = z.object({
-  googlePlaceId: z.string().trim().min(1),
-  placeName: z.string().trim().min(1),
-  placeAddress: z.string().trim().min(1).nullable().optional(),
-  placePrimaryType: z.string().trim().min(1).nullable().optional(),
-  placeTypes: z.array(z.string().trim().min(1)).nullable().optional(),
-  latitude: z.number().min(-90).max(90).nullable().optional(),
-  longitude: z.number().min(-180).max(180).nullable().optional(),
+  placeId: z.string().uuid(),
   message: z.string().trim().min(1).max(2000).nullable().optional(),
   visibility: z.enum(CHECKIN_VISIBILITIES).default("friends"),
   source: z.enum(CHECKIN_SOURCES).default("manual"),
@@ -77,7 +75,7 @@ const commentParamsSchema = z.object({
 
 const listQuerySchema = paginationQuerySchema.extend({
   userId: z.string().uuid().optional(),
-  googlePlaceId: z.string().trim().min(1).optional(),
+  placeId: z.string().uuid().optional(),
 });
 
 const commentsQuerySchema = paginationQuerySchema.extend({
@@ -106,17 +104,25 @@ checkins.post("/", async (context) => {
   }
 
   try {
+    // Looked up as the caller, so a stranger's private venue and a place
+    // Overture has since dropped are both "not found".
+    const place = await findPlaceById(parsed.data.placeId, context.get("userId"));
+    if (!place || place.retiredAt !== null) {
+      return context.json({ error: "Place not found" }, 404);
+    }
+
     const [created] = await database
       .insert(checkinsTable)
       .values({
         userId: context.get("userId"),
-        googlePlaceId: parsed.data.googlePlaceId,
-        placeName: parsed.data.placeName,
-        placeAddress: parsed.data.placeAddress ?? null,
-        placePrimaryType: parsed.data.placePrimaryType ?? null,
-        placeTypes: parsed.data.placeTypes ?? null,
-        latitude: parsed.data.latitude ?? null,
-        longitude: parsed.data.longitude ?? null,
+        placeId: place.id,
+        placeName: place.name,
+        placeAddress: formatAddress(place),
+        placeLocality: place.addressLocality,
+        placePrimaryType: place.primaryType,
+        placeTypes: place.types,
+        latitude: place.latitude,
+        longitude: place.longitude,
         message: parsed.data.message ?? null,
         visibility: parsed.data.visibility,
         source: parsed.data.source,
@@ -142,14 +148,14 @@ checkins.get("/", async (context) => {
   }
 
   const currentUserId = context.get("userId");
-  const { userId, googlePlaceId, limit, before } = parsed.data;
+  const { userId, placeId, limit, before } = parsed.data;
   const conditions = [
     // Only your own checkins and your friends' non-private ones. A stranger's
     // userId is filtered to an empty list rather than refused, so the response
     // does not confirm the user exists.
     isVisibleCheckin(currentUserId),
     userId ? eq(checkinsTable.userId, userId) : undefined,
-    googlePlaceId ? eq(checkinsTable.googlePlaceId, googlePlaceId) : undefined,
+    placeId ? eq(checkinsTable.placeId, placeId) : undefined,
     createdBefore(checkinsTable.createdAt, before),
   ].filter((condition) => condition !== undefined);
 

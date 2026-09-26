@@ -1,6 +1,7 @@
 import { vi } from "vitest";
 
-type QueryResult = unknown[];
+/** Rows for a builder query, or `{ rows }` for `database.execute`. */
+type QueryResult = unknown;
 
 /** A queued entry that makes the query reject instead of resolving. */
 class QueuedFailure {
@@ -79,6 +80,7 @@ export function createDatabaseStub(): {
     insert: operation("insert"),
     update: operation("update"),
     delete: operation("delete"),
+    execute: operation("execute"),
     // batch resolves to one array per queued statement result.
     batch: vi.fn(async (statements: unknown[]) => {
       operations.push("batch");

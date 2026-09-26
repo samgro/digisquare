@@ -214,7 +214,7 @@ final class CheckinStore: ObservableObject {
         visitHistory.recordCheckin(
             VisitedPlaceEvent(
                 coordinate: GeoCoordinate(latitude: location.latitude, longitude: location.longitude),
-                googlePlaceId: checkin.googlePlaceId,
+                placeId: checkin.placeId,
                 date: checkin.createdAt
             )
         )
@@ -313,19 +313,17 @@ private extension Checkin {
     /// A local stand-in shown in the timeline until the server responds.
     init(placeholderFor draft: CheckinDraft, userId: String) {
         let now = Date()
-        var location: PlaceLocation?
-        if let latitude = draft.latitude, let longitude = draft.longitude {
-            location = PlaceLocation(latitude: latitude, longitude: longitude)
-        }
+        let place = draft.place
         self.init(
             id: "local-\(UUID().uuidString)",
             userId: userId,
-            googlePlaceId: draft.googlePlaceId,
-            placeName: draft.placeName,
-            placeAddress: draft.placeAddress,
-            placePrimaryType: draft.placePrimaryType,
-            placeTypes: draft.placeTypes,
-            location: location,
+            placeId: place.id,
+            placeName: place.name,
+            placeAddress: place.address,
+            placeLocality: place.locality,
+            placePrimaryType: place.primaryType,
+            placeTypes: place.types.isEmpty ? nil : place.types,
+            location: place.location,
             message: draft.message,
             visibility: draft.visibility,
             source: draft.source,
@@ -347,9 +345,10 @@ extension TimelineEntry {
             checkin: Checkin(
                 id: "suggestion-\(suggestion.id.uuidString)",
                 userId: userId,
-                googlePlaceId: place.id,
+                placeId: place.id,
                 placeName: place.name,
                 placeAddress: place.address,
+                placeLocality: place.locality,
                 placePrimaryType: place.primaryType,
                 placeTypes: place.types,
                 location: place.location,

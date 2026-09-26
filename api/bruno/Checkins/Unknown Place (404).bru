@@ -1,0 +1,27 @@
+meta {
+  name: Unknown Place (404)
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/checkins
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "placeId": "a2c1f0e4-6b7d-4e3a-9c1f-1d2e3f4a5b6c"
+  }
+}
+
+docs {
+  A well-formed uuid that no place has. Expect 404 {"error": "Place not
+  found"} and nothing inserted. An old Google place id in this field is a 400
+  instead, since it is not a uuid.
+}

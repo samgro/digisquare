@@ -64,8 +64,8 @@ struct VisitHistoryStoreTests {
         let old = now.addingTimeInterval(-100 * 24 * 3600)
         store.record(VisitRecord(coordinate: coordinate, horizontalAccuracy: 40, arrivalDate: old, departureDate: old.addingTimeInterval(3600)))
         store.record(visit(departureOffset: 3600))
-        store.recordCheckin(VisitedPlaceEvent(coordinate: coordinate, googlePlaceId: "cafe", date: old))
-        store.recordCheckin(VisitedPlaceEvent(coordinate: coordinate, googlePlaceId: "cafe", date: arrival))
+        store.recordCheckin(VisitedPlaceEvent(coordinate: coordinate, placeId: "cafe", date: old))
+        store.recordCheckin(VisitedPlaceEvent(coordinate: coordinate, placeId: "cafe", date: arrival))
         store.recordRejection(RemovedSuggestion(coordinate: coordinate, date: old))
 
         store.prune(now: now)
@@ -82,7 +82,7 @@ struct VisitHistoryStoreTests {
 
         let store = VisitHistoryStore(fileStore: fileStore)
         store.record(visit(departureOffset: 3600))
-        store.recordCheckin(VisitedPlaceEvent(coordinate: coordinate, googlePlaceId: "cafe", date: arrival))
+        store.recordCheckin(VisitedPlaceEvent(coordinate: coordinate, placeId: "cafe", date: arrival))
         store.recordRejection(RemovedSuggestion(coordinate: coordinate, date: arrival))
 
         let reloaded = VisitHistoryStore(fileStore: fileStore)

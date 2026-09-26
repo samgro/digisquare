@@ -1,13 +1,12 @@
 /**
  * Definitions for the checkin-ranking fixtures in `fixtures/ranking/`.
  *
- * Each scenario is a real place the user might be standing in, described by a
- * text query that the recorder resolves against Google (so nobody has to hand
- * copy coordinates or place IDs), an offset from that anchor, and a GPS
- * accuracy. Places the tests need to refer to are given short keys resolved by
- * name against the recorded results, so re-recording never breaks a test
- * because an ID changed. Histories are synthesized from templates relative to
- * a fixed reference time, never `Date.now()`, so recordings are reproducible.
+ * Each scenario is a real spot the user might be standing in, given as the
+ * coordinate of the fix and a GPS accuracy. Places the tests need to refer to
+ * are given short keys resolved by name against the recorded results, so
+ * re-recording never breaks a test because an id changed. Histories are
+ * synthesized from templates relative to a fixed reference time, never
+ * `Date.now()`, so recordings are reproducible.
  */
 
 export interface HistoryTemplate {
@@ -47,17 +46,15 @@ export interface RankingScenarioDefinition {
   name: string;
   description: string;
   timeZone: string;
-  /** Text query resolved with Places Text Search to find the anchor place. */
-  anchorQuery: string;
-  /** Where the user stands relative to the anchor's pin, in meters. */
-  offsetMeters: { north: number; east: number };
+  /** Where the user stands. */
+  fix: { latitude: number; longitude: number };
   horizontalAccuracy: number;
-  /** Nearby Search radius; defaults to the API's default. */
+  /** Nearby search radius; defaults to the API's default. */
   radius?: number;
   /**
-   * Case-insensitive substrings matched against recorded display names. The
-   * object form also requires a primary type, for when Google returns an
-   * address record with the same name as the venue.
+   * Case-insensitive substrings matched against recorded names. The object
+   * form also requires a primary type, for when the data holds a record with
+   * the same name as the venue (an airport's terminal, a museum's store).
    */
   placeKeys: Record<string, string | { name: string; primaryType: string }>;
   /** Histories are generated relative to this instant. */
@@ -72,10 +69,9 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
   {
     name: "truckee-town-hall",
     description:
-      "Standing outside the council chambers at Truckee Town Hall. Google lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
+      "Standing outside the council chambers at Truckee Town Hall. The data lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
     timeZone: PACIFIC,
-    anchorQuery: "Truckee Town Hall, Truckee, CA",
-    offsetMeters: { north: 12, east: 15 },
+    fix: { latitude: 39.316962, longitude: -120.146008 },
     horizontalAccuracy: 30,
     placeKeys: {
       townHall: "truckee town hall & town clerk",
@@ -141,8 +137,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     description:
       "Inside Lift Workspace, a coworking space by the Truckee airport. Its building and the lot next door hold a physical therapist, a realty office, three car rental counters and half a dozen registered businesses within 40 m.",
     timeZone: PACIFIC,
-    anchorQuery: "Lift Workspace, Truckee, CA",
-    offsetMeters: { north: 7, east: -20 },
+    fix: { latitude: 39.318649, longitude: -120.146375 },
     horizontalAccuracy: 12,
     placeKeys: {
       lift: "lift workspace",
@@ -162,12 +157,9 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "tight fix, no history",
         now: "2026-09-23T14:00:00-07:00",
         history: "none",
-        expect: {
-          suggested: null,
-          // Lift should arguably beat Enterprise too; today it trails by
-          // 0.06 on Enterprise's review count.
-          rankedAbove: [["lift", "nationalCarRental"]],
-        },
+        // Lift and the rental counters share a pin and, with no checkins
+        // yet, a score; only history can separate them.
+        expect: { suggested: null },
       },
       {
         name: "tight fix, coworking regular",
@@ -180,13 +172,12 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
   {
     name: "jfk-terminal-8",
     description:
-      "At a bar in JFK Terminal 8, 1.4 km from the airport's pin. An untyped popularity search from here returns rental counters and hotels but never the airport; the large-venue search finds it.",
+      "At a bar in JFK Terminal 8, 1.4 km from the airport's pin. The twenty nearest places from here are rental counters and hotels but never the airport; the large-venue search finds it.",
     timeZone: "America/New_York",
-    anchorQuery: "Dos Toros Tequila Bar, JFK Terminal 8, Jamaica, NY",
-    offsetMeters: { north: 5, east: -8 },
+    fix: { latitude: 40.649158, longitude: -73.795435 },
     horizontalAccuracy: 40,
     placeKeys: {
-      airport: { name: "john f. kennedy international airport", primaryType: "international_airport" },
+      airport: { name: "john f. kennedy international airport", primaryType: "airport" },
       bar: "dos toros",
     },
     referenceNow: "2026-09-22T17:30:00-04:00",
@@ -198,20 +189,23 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "terminal fix, no history",
         now: "2026-09-22T17:30:00-04:00",
         history: "none",
-        expect: { top: "airport", suggested: "airport", rankedAbove: [["airport", "bar"]] },
+        // Overture places are points, so the airport's 1.5 km footprint is
+        // a guess the ranker cannot confirm: the bar the user is standing
+        // in leads, the airport follows, and the list is shown. A recorded
+        // extent (see PlaceFootprint) would make the airport the answer.
+        expect: { suggested: null },
       },
     ],
   },
   {
     name: "sfo-terminal-2",
     description:
-      "In line at Peet's inside SFO Terminal 2, about 900 m from the airport's pin but well inside its viewport.",
+      "In line at Peet's inside SFO Terminal 2, about a kilometer from the airport's pin but well inside its recorded grounds.",
     timeZone: PACIFIC,
-    anchorQuery: "Peet's Coffee, Terminal 2, San Francisco International Airport",
-    offsetMeters: { north: 6, east: 8 },
+    fix: { latitude: 37.6171541, longitude: -122.3814167 },
     horizontalAccuracy: 65,
     placeKeys: {
-      airport: { name: "san francisco international airport", primaryType: "international_airport" },
+      airport: { name: "san francisco international airport", primaryType: "airport" },
       peets: "peet's coffee",
       larkCreek: "lark creek grill",
     },
@@ -223,8 +217,8 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     cases: [
       {
         // A 65 m fix cannot resolve which Terminal 2 storefront you are in,
-        // but it is well inside the airport's viewport, so the airport is the
-        // confident answer.
+        // but the airport's recorded grounds say you are inside it, and an
+        // airport is the checkin when you are in one: it is suggested outright.
         name: "terminal fix, no history",
         now: "2026-09-22T07:30:00-07:00",
         history: "none",
@@ -238,13 +232,18 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         },
       },
       {
+        // Even a tight fix at the counter of a storefront nobody has checked
+        // in at is, first of all, a fix inside the airport.
         name: "tight fix, no history",
         now: "2026-09-22T07:30:00-07:00",
         horizontalAccuracy: 8,
         history: "none",
-        expect: { suggested: null, rankedAbove: [["peets", "larkCreek"]] },
+        expect: { top: "airport", suggested: "airport", rankedAbove: [["peets", "larkCreek"]] },
       },
       {
+        // A regular's own history outweighs the airport around them, and the
+        // airport, which encloses Peet's, is not an alternative to it, so
+        // Peet's is still confident enough to be suggested.
         name: "tight fix, morning coffee regular",
         now: "2026-09-22T07:30:00-07:00",
         horizontalAccuracy: 8,
@@ -258,8 +257,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     description:
       "On the concourse inside Levi's Stadium on a Sunday afternoon, 100 m from the pin.",
     timeZone: PACIFIC,
-    anchorQuery: "Levi's Stadium, Santa Clara, CA",
-    offsetMeters: { north: 80, east: -60 },
+    fix: { latitude: 37.404035, longitude: -121.970056 },
     horizontalAccuracy: 45,
     placeKeys: {
       stadium: "levi's stadium",
@@ -277,9 +275,11 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "game day, no history",
         now: "2026-09-20T13:05:00-07:00",
         history: "none",
+        // Top, but the museum at the gate keeps it from being suggested
+        // outright: the stadium's extent is a table guess, not recorded.
         expect: {
           top: "stadium",
-          suggested: "stadium",
+          suggested: null,
           rankedAbove: [
             ["stadium", "museum"],
             ["stadium", "greatAmerica"],
@@ -300,8 +300,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     description:
       "At the entrance of the de Young Museum, inside Golden Gate Park, with the Academy of Sciences across the concourse.",
     timeZone: PACIFIC,
-    anchorQuery: "de Young Museum, San Francisco",
-    offsetMeters: { north: -15, east: 12 },
+    fix: { latitude: 37.771334, longitude: -122.468539 },
     horizontalAccuracy: 30,
     placeKeys: {
       deYoung: "de young museum",
@@ -320,20 +319,24 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
         name: "no history",
         now: "2026-09-19T11:00:00-07:00",
         history: "none",
+        // Golden Gate Park's pin is 1.3 km from the de Young. With no
+        // recorded extent the park is scored as a 150 m neighborhood park
+        // that far away, so nothing is expected of its position.
         expect: {
           top: "deYoung",
           suggested: null,
-          rankedAbove: [
-            ["deYoung", "museumStore"],
-            ["park", "kezarStadium"],
-          ],
+          rankedAbove: [["deYoung", "museumStore"]],
         },
       },
       {
+        // The runner's history is at the park, but its pin is 1.3 km away
+        // and the ranker has no extent to place the user inside it: history
+        // never outweighs geometry, so the museum entrance still leads and
+        // nothing is suggested. Re-record once places carry an extent.
         name: "morning park runner",
         now: "2026-09-19T07:10:00-07:00",
         history: "parkRunner",
-        expect: { top: "park", suggested: "park" },
+        expect: { top: "deYoung", suggested: null },
       },
       {
         name: "museum member",
@@ -348,8 +351,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     description:
       "Outside Blue Bottle on 2nd Street in SoMa. The building shares its pin with a consulate and a dozen registered-office startups; Yerba Buena Gardens and Salesforce Park are 400 m away and Oracle Park 1.2 km.",
     timeZone: PACIFIC,
-    anchorQuery: "Blue Bottle Coffee, 168 2nd St, San Francisco",
-    offsetMeters: { north: -4, east: 3 },
+    fix: { latitude: 37.78697, longitude: -122.398863 },
     horizontalAccuracy: 12,
     placeKeys: {
       blueBottle: "blue bottle",
@@ -404,8 +406,7 @@ export const rankingScenarios: RankingScenarioDefinition[] = [
     description:
       "Outside Peet's on Broadway in downtown Redwood City, among restaurants and salons, 170 m from the Caltrain station and 650 m from Mezes Park.",
     timeZone: PACIFIC,
-    anchorQuery: "Peet's Coffee, Sequoia Station, Redwood City, CA",
-    offsetMeters: { north: 10, east: -7 },
+    fix: { latitude: 37.486525, longitude: -122.233389 },
     horizontalAccuracy: 20,
     placeKeys: {
       peets: "peet's",

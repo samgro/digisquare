@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194
+  url: {{baseUrl}}/places?lat=37.7749&lng=-122.4194&accuracy=25
   body: none
   auth: none
 }
@@ -13,9 +13,18 @@ get {
 params:query {
   lat: 37.7749
   lng: -122.4194
+  accuracy: 25
 }
 
 docs {
-  Nearby places around San Francisco, ranked by popularity.
-  No `q` param, so the API calls Google's searchNearby endpoint.
+  Nearby places around San Francisco from the `places` table: the twenty
+  nearest, then venues whose recorded grounds contain the point (each with
+  `extent` and `distanceMeters: 0`), then large venues by category within
+  2 km. `coverage` reports whether the area is loaded: `ready`, `importing`
+  (with `estimatedSecondsRemaining`), `missing` or `failed`. Anonymous
+  requests never trigger a fetch; send the bearer token to have an uncovered
+  area fetched, and to see your private venues.
+
+  `accuracy` is the phone's horizontal accuracy in meters; above 1000 the
+  nearest-first search is skipped and only large venues are returned.
 }

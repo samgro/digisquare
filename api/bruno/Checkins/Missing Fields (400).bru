@@ -16,14 +16,15 @@ auth:bearer {
 
 body:json {
   {
-    "placeName": "Golden Gate Park"
+    "message": "Where am I?"
   }
 }
 
 docs {
-  No googlePlaceId provided. Expect a 400 with zod validation details.
+  No placeId provided. Expect a 400 with zod validation details.
 
   Note there is no userId to omit any more: identity comes from the bearer
   token, and a userId in the body is ignored rather than rejected, so an older
-  client still sending one is not broken by a 400 it cannot act on.
+  client still sending one is not broken by a 400 it cannot act on. The same
+  goes for the old place snapshot fields (placeName, latitude...): ignored.
 }

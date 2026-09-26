@@ -9,6 +9,8 @@
 export type AppVariables = {
   userId: string;
   sessionId: string;
+  /** Set by optionalAuth: the caller when signed in, null when anonymous. */
+  viewerUserId: string | null;
 };
 
 export type AppEnv = { Variables: AppVariables };

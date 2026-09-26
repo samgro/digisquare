@@ -4,13 +4,27 @@ import {
   text,
   integer,
   doublePrecision,
-  timestamp,
   boolean,
+  timestamp,
+  geometry,
+  customType,
   index,
   uniqueIndex,
+  primaryKey,
   check,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
+
+/**
+ * A PostGIS multipolygon. Drizzle only knows points natively, so this is
+ * declared as a custom type; it is only ever read and written through raw
+ * SQL (`ST_AsGeoJSON`, `ST_GeomFromGeoJSON`), never as a JavaScript value.
+ */
+const multiPolygon = customType<{ data: string; driverData: string }>({
+  dataType() {
+    return "geometry(MultiPolygon, 4326)";
+  },
+});
 
 export const users = pgTable(
   "users",
@@ -127,6 +141,189 @@ export type CheckinVisibility = (typeof CHECKIN_VISIBILITIES)[number];
 export const CHECKIN_SOURCES = ["manual", "visit"] as const;
 export type CheckinSource = (typeof CHECKIN_SOURCES)[number];
 
+/**
+ * Every venue a checkin can point at. Rows come from three places: the
+ * Overture Maps places dataset (imported with `npm run overture:import`, keyed
+ * by GERS id), venues users create from the app, and the venues the old
+ * Google-backed checkins referenced, backfilled by migration 0008 so history
+ * kept its identity when the Google Places integration was removed.
+ *
+ * `types` are Overture category codes (`coffee_shop`, `airport`, ...), the
+ * primary one first. The old Google types on `google` rows were mapped to
+ * the closest Overture category where one exists.
+ *
+ * `location` is a PostGIS point kept in step with `latitude`/`longitude` by
+ * Postgres itself (a generated column), so the GiST index serves the nearby
+ * searches while the API keeps reading plain coordinates. `extent` is the
+ * venue's grounds as a polygon, when Overture's base theme has one (an
+ * airport, a park, a campus), matched by `extent-matching.ts`.
+ */
+export const places = pgTable(
+  "places",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    source: text("source", { enum: ["overture", "user", "google"] }).notNull(),
+    // Overture's GERS id. Stable across releases, so re-importing upserts.
+    overtureId: text("overture_id"),
+    // Only on rows backfilled from pre-Overture checkins.
+    googlePlaceId: text("google_place_id"),
+
+    name: text("name").notNull(),
+    primaryType: text("primary_type"),
+    types: text("types").array().notNull().default(sql`'{}'::text[]`),
+
+    // Overture's address parts: `freeform` is the street line (house number
+    // and street), `region` an ISO 3166-2 code such as US-CA and `country`
+    // an ISO 3166-1 alpha-2 code. User-created venues follow the same shape.
+    addressStreet: text("address_street"),
+    addressLocality: text("address_locality"),
+    addressRegion: text("address_region"),
+    addressPostcode: text("address_postcode"),
+    addressCountry: text("address_country"),
+
+    // Nullable only for legacy rows: the app never saved a coordinate for
+    // some Google places. Overture and user venues always have a pin.
+    latitude: doublePrecision("latitude"),
+    longitude: doublePrecision("longitude"),
+    location: geometry("location", { type: "point", mode: "xy", srid: 4326 }).generatedAlwaysAs(
+      sql`ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)`,
+    ),
+
+    extent: multiPolygon("extent"),
+    // The base-theme feature the extent came from, so re-imports replace
+    // rather than duplicate, and its area for choosing between overlaps.
+    extentOvertureId: text("extent_overture_id"),
+    extentAreaSquareMeters: doublePrecision("extent_area_square_meters"),
+
+    // A private venue is found in searches only by its creator and their
+    // friends. Overture and legacy rows are public.
+    isPrivate: boolean("is_private").notNull().default(false),
+
+    // The Overture release this row was last present in. A refresh retires
+    // rows the new release no longer has (see coverage-worker.ts) instead of
+    // deleting them, because checkins point at them.
+    lastSeenRelease: text("last_seen_release"),
+    retiredAt: timestamp("retired_at", { withTimezone: true }),
+
+    // Overture's 0..1 existence confidence. Null for other sources.
+    confidence: doublePrecision("confidence"),
+    website: text("website"),
+    phone: text("phone"),
+
+    // Who added a `user` venue. Kept when the account is deleted so other
+    // people's checkins there keep a valid place.
+    createdByUserId: uuid("created_by_user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => [
+    uniqueIndex("places_overture_id_unique_idx").on(table.overtureId),
+    uniqueIndex("places_google_place_id_unique_idx").on(table.googlePlaceId),
+    // Indexed as geography, which is what the searches compare in meters;
+    // a plain geometry index would sit unused behind the cast.
+    index("places_location_gist_idx").using("gist", sql`(${table.location}::geography)`),
+    index("places_extent_gist_idx").using("gist", sql`(${table.extent}::geography)`),
+    // And as plain geometry, for the predicates that never cast: matching
+    // venue grounds to the pins inside them (ST_Contains) and finding the
+    // places inside an imported area's box (&&). Without it each of those
+    // is a scan of the whole table.
+    index("places_location_geometry_gist_idx").using("gist", table.location),
+    // Trigram index so `name ILIKE '%cos%'` finds Costco without a scan.
+    // Needs pg_trgm, which migration 0008 enables.
+    index("places_name_trgm_idx").using("gin", sql`lower(${table.name}) gin_trgm_ops`),
+    index("places_created_by_user_id_idx").on(table.createdByUserId),
+    check(
+      "places_source_check",
+      sql`${table.source} in ('overture', 'user', 'google')`,
+    ),
+    check(
+      "places_source_identifier_check",
+      sql`(${table.source} = 'overture') = (${table.overtureId} is not null) and (${table.source} = 'google') = (${table.googlePlaceId} is not null)`,
+    ),
+  ],
+);
+
+/**
+ * One background fetch of Overture data for a bounding box. `fix` jobs are
+ * the few cells around a user who searched somewhere uncovered; `city` jobs
+ * grow that to the whole city afterwards; `seed` jobs load a region an
+ * operator asked for; `refresh` jobs roll ready cells to a newer release.
+ * Lower `priority` runs first, so a waiting user always beats a city.
+ */
+export const coverageJobs = pgTable(
+  "coverage_jobs",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    kind: text("kind", { enum: ["fix", "city", "seed", "refresh"] }).notNull(),
+    priority: integer("priority").notNull(),
+    west: doublePrecision("west").notNull(),
+    south: doublePrecision("south").notNull(),
+    east: doublePrecision("east").notNull(),
+    north: doublePrecision("north").notNull(),
+    status: text("status", { enum: ["pending", "importing", "ready", "failed"] })
+      .notNull()
+      .default("pending"),
+    requestedByUserId: uuid("requested_by_user_id").references(() => users.id, {
+      onDelete: "set null",
+    }),
+    // The fix job a city job grew out of. No foreign key: it points within
+    // the same table and adds nothing.
+    parentJobId: uuid("parent_job_id"),
+    overtureRelease: text("overture_release").notNull(),
+    attempts: integer("attempts").notNull().default(0),
+    lastError: text("last_error"),
+    placeCount: integer("place_count"),
+    extentCount: integer("extent_count"),
+    requestedAt: timestamp("requested_at", { withTimezone: true }).notNull().defaultNow(),
+    startedAt: timestamp("started_at", { withTimezone: true }),
+    // Bumped every minute while a worker is on the job. A job whose
+    // heartbeat stops is one whose worker died, and it goes back to the
+    // queue; a long job that keeps beating is left alone.
+    heartbeatAt: timestamp("heartbeat_at", { withTimezone: true }),
+    completedAt: timestamp("completed_at", { withTimezone: true }),
+  },
+  (table) => [
+    index("coverage_jobs_status_priority_idx").on(table.status, table.priority, table.requestedAt),
+    check(
+      "coverage_jobs_bounds_check",
+      sql`${table.west} <= ${table.east} and ${table.south} <= ${table.north}`,
+    ),
+  ],
+);
+
+/**
+ * Which 0.1 degree cells of the world hold Overture data. A search from a
+ * cell that is not `ready` is what triggers a fetch. Cells are keyed by
+ * floor(longitude / 0.1), floor(latitude / 0.1).
+ */
+export const coverageCells = pgTable(
+  "coverage_cells",
+  {
+    cellX: integer("cell_x").notNull(),
+    cellY: integer("cell_y").notNull(),
+    status: text("status", { enum: ["pending", "ready", "failed"] }).notNull(),
+    jobId: uuid("job_id").references(() => coverageJobs.id, { onDelete: "set null" }),
+    overtureRelease: text("overture_release"),
+    readyAt: timestamp("ready_at", { withTimezone: true }),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => [
+    primaryKey({ columns: [table.cellX, table.cellY] }),
+    index("coverage_cells_status_idx").on(table.status),
+    index("coverage_cells_job_id_idx").on(table.jobId),
+  ],
+);
+
 export const checkins = pgTable(
   "checkins",
   {
@@ -136,9 +333,14 @@ export const checkins = pgTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
 
-    googlePlaceId: text("google_place_id").notNull(),
+    placeId: uuid("place_id")
+      .notNull()
+      .references(() => places.id),
+    // A snapshot of the place at checkin time, so a timeline never changes
+    // under the user when the venue is renamed or re-imported.
     placeName: text("place_name").notNull(),
     placeAddress: text("place_address"),
+    placeLocality: text("place_locality"),
     placePrimaryType: text("place_primary_type"),
     placeTypes: text("place_types").array(),
     latitude: doublePrecision("latitude"),
@@ -159,7 +361,7 @@ export const checkins = pgTable(
   },
   (table) => [
     index("checkins_user_id_idx").on(table.userId),
-    index("checkins_google_place_id_idx").on(table.googlePlaceId),
+    index("checkins_place_id_idx").on(table.placeId),
   ],
 );
 

@@ -6,8 +6,18 @@
 import CoreLocation
 import SwiftUI
 
+/// Where the checkin flow can go from the place list.
+enum CheckInRoute: Hashable {
+    /// Write a message for this place and submit.
+    case compose(Place)
+    /// Add a venue the data does not have, then compose for it.
+    case createPlace
+}
+
 /// First step of the checkin flow: pick a nearby place. Selecting one pushes
 /// `CheckInComposeView`; submitting there saves the checkin and closes this cover.
+/// A place that is not listed can be added from the list's last row or from
+/// the empty states, which pushes `CreatePlaceView` instead.
 ///
 /// Places come back from the API in search order and are re-ranked here with
 /// `PlaceRanker` using the fix's accuracy, each venue's size and the user's
@@ -19,8 +29,10 @@ struct CheckInView: View {
     @Environment(LocationManager.self) private var locationManager
     @EnvironmentObject private var checkinStore: CheckinStore
 
-    @State private var navigationPath: [Place] = []
+    @State private var navigationPath: [CheckInRoute] = []
     @State private var rankedPlaces: [RankedPlace] = []
+    /// Whether the server has place data for the area, from the last search.
+    @State private var coverage: PlaceCoverage = .ready
     @State private var searchText = ""
     @State private var isLoading = false
     @State private var errorMessage: String?
@@ -37,6 +49,12 @@ struct CheckInView: View {
     @State private var suggestedPlaceId: String?
     @State private var debounceTask: Task<Void, Never>?
     @State private var loadTask: Task<Void, Never>?
+    /// Searches again each time the server's estimate for an area elapses,
+    /// for as long as the area is still being fetched.
+    @State private var coverageRetryTask: Task<Void, Never>?
+    /// How many of those retries have come back still importing, so the
+    /// copy stops promising "about a minute" once that has passed.
+    @State private var coverageRetryCount = 0
 
     private let placesAPI = PlacesAPI()
     private let ranker = PlaceRanker()
@@ -53,8 +71,17 @@ struct CheckInView: View {
             content
                 .navigationTitle("Check In")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationDestination(for: Place.self) { place in
-                    composeView(for: place)
+                .navigationDestination(for: CheckInRoute.self) { route in
+                    switch route {
+                    case .compose(let place):
+                        composeView(for: place)
+                    case .createPlace:
+                        CreatePlaceView(initialName: searchText) { place in
+                            // The new venue replaces the form on the stack, so
+                            // Back from compose returns to the list, not the form.
+                            navigationPath = [.compose(place)]
+                        }
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
@@ -95,6 +122,7 @@ struct CheckInView: View {
                 .onDisappear {
                     debounceTask?.cancel()
                     loadTask?.cancel()
+                    coverageRetryTask?.cancel()
                     isLoading = false
                 }
         }
@@ -140,17 +168,27 @@ struct CheckInView: View {
     }
 
     private var placesList: some View {
-        List(rankedPlaces) { rankedPlace in
-            NavigationLink(value: rankedPlace.place) {
-                PlaceRow(
-                    place: rankedPlace.place,
-                    userLocation: locationManager.location,
-                    visitCount: rankedPlace.visitCount
-                )
+        List {
+            if coverage.status == .importing {
+                CoverageBanner(coverage: coverage, isTakingLonger: coverageRetryCount > 0)
             }
-            // Without this the borderless style tints the row's text with the
-            // accent color, which is why the name currently renders blue.
-            .buttonStyle(.plain)
+            ForEach(rankedPlaces) { rankedPlace in
+                NavigationLink(value: CheckInRoute.compose(rankedPlace.place)) {
+                    PlaceRow(
+                        place: rankedPlace.place,
+                        userLocation: locationManager.location,
+                        visitCount: rankedPlace.visitCount
+                    )
+                }
+                // Without this the borderless style tints the row's text with the
+                // accent color, which is why the name currently renders blue.
+                .buttonStyle(.plain)
+            }
+            NavigationLink(value: CheckInRoute.createPlace) {
+                Label("Can't find it? Add a place", systemImage: "plus.circle")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(Color.accentColor)
+            }
         }
         .listStyle(.plain)
         .scrollDismissesKeyboard(.interactively)
@@ -158,11 +196,40 @@ struct CheckInView: View {
 
     @ViewBuilder
     private var emptyState: some View {
-        if searchText.isEmpty {
-            NoPlacesNearbyView()
-        } else {
-            ContentUnavailableView.search(text: searchText)
+        switch coverage.status {
+        case .importing:
+            AreaLoadingView(
+                coverage: coverage,
+                isTakingLonger: coverageRetryCount > 0,
+                onRetry: search,
+                onAddPlace: { navigationPath.append(.createPlace) }
+            )
+        case .missing, .failed:
+            NoAreaDataView(coverage: coverage, onAddPlace: { navigationPath.append(.createPlace) })
+        case .ready:
+            if searchText.isEmpty {
+                NoPlacesNearbyView {
+                    navigationPath.append(.createPlace)
+                }
+            } else {
+                ContentUnavailableView {
+                    Label("No Results for \"\(searchText)\"", systemImage: "magnifyingglass")
+                } description: {
+                    Text("Check the spelling, or add it as a new place.")
+                } actions: {
+                    addPlaceButton
+                }
+            }
         }
+    }
+
+    private var addPlaceButton: some View {
+        Button {
+            navigationPath.append(.createPlace)
+        } label: {
+            Label("Add a Place", systemImage: "plus")
+        }
+        .buttonStyle(.borderedProminent)
     }
 
     /// True while we are still waiting on the very first set of results, either
@@ -212,19 +279,40 @@ struct CheckInView: View {
         loadTask?.cancel()
         loadTask = Task {
             do {
-                let results = try await placesAPI.searchPlaces(
+                let searchResult = try await placesAPI.searchPlaces(
                     latitude: fix.latitude,
                     longitude: fix.longitude,
                     query: query,
                     horizontalAccuracy: fix.horizontalAccuracy
                 )
                 guard !Task.isCancelled else { return }
-                present(results: results, query: query, fix: fix)
+                coverage = searchResult.coverage
+                if coverage.status != .importing {
+                    coverageRetryCount = 0
+                }
+                scheduleCoverageRetry()
+                present(results: searchResult.results, query: query, fix: fix)
             } catch {
                 guard !Task.isCancelled else { return }
                 errorMessage = error.localizedDescription
             }
             isLoading = false
+        }
+    }
+
+    /// While the server is fetching the area, search again when its estimate
+    /// elapses (and again after that, while it is still fetching), so a user
+    /// who waits on this screen sees the places appear without tapping
+    /// anything.
+    private func scheduleCoverageRetry() {
+        coverageRetryTask?.cancel()
+        guard coverage.status == .importing else { return }
+        let delay = max(coverage.estimatedSecondsRemaining ?? 60, 30)
+        coverageRetryTask = Task {
+            try? await Task.sleep(for: .seconds(delay))
+            guard !Task.isCancelled else { return }
+            coverageRetryCount += 1
+            search()
         }
     }
 
@@ -267,7 +355,7 @@ struct CheckInView: View {
         var transaction = Transaction()
         transaction.disablesAnimations = true
         withTransaction(transaction) {
-            navigationPath = [suggestion]
+            navigationPath = [.compose(suggestion)]
         }
     }
 }
@@ -283,14 +371,96 @@ private extension LocationFix {
     }
 }
 
+/// Shown while the server fetches place data for an area nobody has searched
+/// from before. The wait comes from the server's own estimate.
+private struct AreaLoadingView: View {
+    let coverage: PlaceCoverage
+    /// The estimate has already passed once; stop quoting it.
+    var isTakingLonger = false
+    let onRetry: () -> Void
+    let onAddPlace: () -> Void
+
+    var body: some View {
+        ContentUnavailableView {
+            Label("Getting Places for This Area", systemImage: "arrow.down.circle.dotted")
+        } description: {
+            Text(
+                isTakingLonger
+                    ? "Still downloading places for this area. A dense city can take a few minutes; "
+                        + "we'll keep checking."
+                    : "This is the first search around here, so we're downloading places for it. "
+                        + "Try again in about \(coverage.waitDescription ?? "a few minutes")."
+            )
+        } actions: {
+            Button(action: onRetry) {
+                Label("Try Again", systemImage: "arrow.clockwise")
+            }
+            .buttonStyle(.borderedProminent)
+            Button(action: onAddPlace) {
+                Label("Add a Place", systemImage: "plus")
+            }
+        }
+    }
+}
+
+/// The server has no data for the area and is not fetching it: the user is
+/// over their allowance, the fetch failed, or they are signed out. The copy
+/// never says how long a limit lasts.
+private struct NoAreaDataView: View {
+    let coverage: PlaceCoverage
+    let onAddPlace: () -> Void
+
+    var body: some View {
+        ContentUnavailableView {
+            Label("No Place Data Here Yet", systemImage: "map")
+        } description: {
+            if coverage.status == .failed {
+                Text("Downloading this area didn't work. We'll try again later; meanwhile you can add the place yourself.")
+            } else {
+                Text("We can't get places for this area right now. Try again later, or add the place yourself.")
+            }
+        } actions: {
+            Button(action: onAddPlace) {
+                Label("Add a Place", systemImage: "plus")
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
+}
+
+/// A thin row above the list while more places for the area are on the way.
+private struct CoverageBanner: View {
+    let coverage: PlaceCoverage
+    var isTakingLonger = false
+
+    var body: some View {
+        Label(
+            isTakingLonger
+                ? "More places for this area are still on the way."
+                : "More places for this area are on the way (about \(coverage.waitDescription ?? "a few minutes")).",
+            systemImage: "arrow.down.circle.dotted"
+        )
+        .font(.footnote)
+        .foregroundStyle(.secondary)
+        .listRowBackground(Color.clear)
+    }
+}
+
 /// Extracted so the empty state can be previewed and iterated on without booting
 /// the whole screen against a running API.
 private struct NoPlacesNearbyView: View {
+    var onAddPlace: () -> Void = {}
+
     var body: some View {
         ContentUnavailableView {
             Label("No Places Nearby", systemImage: Glyphs.noPlacesNearby)
         } description: {
-            Text("Search for a place by name to check in.")
+            Text("Search for a place by name, or add one.")
+        } actions: {
+            Button(action: onAddPlace) {
+                Label("Add a Place", systemImage: "plus")
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }
@@ -321,6 +491,29 @@ private struct NoPlacesNearbyView: View {
         NoPlacesNearbyView()
             .navigationTitle("Check In")
             .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview("Area Loading") {
+    NavigationStack {
+        AreaLoadingView(
+            coverage: PlaceCoverage(status: .importing, estimatedSecondsRemaining: 150),
+            onRetry: {},
+            onAddPlace: {}
+        )
+        .navigationTitle("Check In")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview("No Area Data") {
+    NavigationStack {
+        NoAreaDataView(
+            coverage: PlaceCoverage(status: .missing, estimatedSecondsRemaining: nil),
+            onAddPlace: {}
+        )
+        .navigationTitle("Check In")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

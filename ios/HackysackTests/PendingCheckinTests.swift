@@ -35,9 +35,10 @@ struct PendingCheckinTests {
         return Checkin(
             id: UUID().uuidString,
             userId: "user",
-            googlePlaceId: "place",
+            placeId: "place",
             placeName: "Somewhere",
             placeAddress: nil,
+            placeLocality: nil,
             placePrimaryType: nil,
             placeTypes: nil,
             location: location,

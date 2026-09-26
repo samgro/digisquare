@@ -1,29 +1,24 @@
 /**
  * Builds a `fixtures/ranking/<name>.json` file from a scenario definition and
- * the raw Google responses. Everything derived (the merged `/places` output,
- * place keys, synthesized histories) is computed here so that the recorder and
- * the tests agree by construction, and so a re-record is reproducible.
+ * the `/places` response recorded for it. Everything derived (place keys,
+ * synthesized histories) is computed here so that the recorder and the tests
+ * agree by construction, and so a re-record is reproducible.
  */
 
-import { mergeNearbyResults, type GooglePlace, type PlacesSearchResponse } from "../src/lib/google-places.js";
-import { toResult, type PlaceResult } from "../src/routes/places.js";
+import type { PlaceResult } from "../src/lib/place-result.js";
 import type { HistoryTemplate, RankingScenarioDefinition } from "./ranking-scenarios.js";
 
-export const RANKING_FIXTURE_SCHEMA_VERSION = 1;
-
-export interface RecordedSearch {
-  request: unknown;
-  response: PlacesSearchResponse;
-}
-
-export interface RecordedGoogleData {
-  /** Absent when the recorder skipped the distance search. */
-  distance?: RecordedSearch;
-  largeVenues: RecordedSearch;
-}
+/**
+ * Version 2 dropped the raw Google responses (`google`) along with the
+ * viewport and rating fields on each place, and renamed `googlePlaceId` to
+ * `placeId` in histories. Places are now exactly what `GET /places` returns
+ * from the Overture-backed database. Version 3 added `extent`,
+ * `distanceMeters`, `isPrivate` and `retired` to each place.
+ */
+export const RANKING_FIXTURE_SCHEMA_VERSION = 3;
 
 export interface FixtureHistoryEntry {
-  googlePlaceId: string;
+  placeId: string;
   createdAt: string;
   placeName: string;
   placeAddress: string | null;
@@ -49,33 +44,18 @@ export interface RankingFixture {
   schemaVersion: number;
   name: string;
   description: string;
-  /** Null while the Google data is hand-authored rather than recorded. */
+  /**
+   * Null while the places are hand-authored stand-ins rather than recorded
+   * from an API backed by imported Overture data.
+   */
   recordedAt: string | null;
   timeZone: string;
   fix: { latitude: number; longitude: number; horizontalAccuracy: number };
-  google: RecordedGoogleData;
-  /** Exactly what `GET /places` returns for the recorded responses. */
+  /** Exactly what `GET /places` returned for `fix`. */
   places: PlaceResult[];
   placeKeys: Record<string, string>;
   histories: Record<string, FixtureHistoryEntry[]>;
   cases: RankingFixtureCase[];
-}
-
-const METERS_PER_DEGREE_LATITUDE = 111_320;
-
-export function offsetCoordinate(
-  origin: { latitude: number; longitude: number },
-  offsetMeters: { north: number; east: number },
-): { latitude: number; longitude: number } {
-  const latitude = origin.latitude + offsetMeters.north / METERS_PER_DEGREE_LATITUDE;
-  const metersPerDegreeLongitude =
-    METERS_PER_DEGREE_LATITUDE * Math.cos((origin.latitude * Math.PI) / 180);
-  const longitude = origin.longitude + offsetMeters.east / metersPerDegreeLongitude;
-  return { latitude: roundCoordinate(latitude), longitude: roundCoordinate(longitude) };
-}
-
-function roundCoordinate(value: number): number {
-  return Math.round(value * 1e6) / 1e6;
 }
 
 export function resolvePlaceKeys(
@@ -207,7 +187,7 @@ export function synthesizeHistory(
       timeZone,
     );
     entries.push({
-      googlePlaceId: place.id,
+      placeId: place.id,
       createdAt: createdAt.toISOString(),
       placeName: place.name,
       placeAddress: place.address,
@@ -221,17 +201,9 @@ export function synthesizeHistory(
 
 export function buildRankingFixture(
   definition: RankingScenarioDefinition,
-  anchor: { latitude: number; longitude: number },
-  google: RecordedGoogleData,
+  places: PlaceResult[],
   recordedAt: string | null,
 ): RankingFixture {
-  const resultLists: GooglePlace[][] = [];
-  if (google.distance) {
-    resultLists.push(google.distance.response.places ?? []);
-  }
-  resultLists.push(google.largeVenues.response.places ?? []);
-  const places = mergeNearbyResults(resultLists).map(toResult);
-
   const placeKeys = resolvePlaceKeys(definition, places);
   const placesById = new Map(places.map((place) => [place.id, place]));
   const referenceNow = new Date(definition.referenceNow);
@@ -278,11 +250,7 @@ export function buildRankingFixture(
     description: definition.description,
     recordedAt,
     timeZone: definition.timeZone,
-    fix: {
-      ...offsetCoordinate(anchor, definition.offsetMeters),
-      horizontalAccuracy: definition.horizontalAccuracy,
-    },
-    google,
+    fix: { ...definition.fix, horizontalAccuracy: definition.horizontalAccuracy },
     places,
     placeKeys,
     histories,

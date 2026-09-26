@@ -97,14 +97,12 @@ extension PendingCheckin {
             departureDate: isOngoing ? nil : Date().addingTimeInterval(-5 * 60)
         )
         let alternative = Place(
-            id: "ChIJalternative",
+            id: "b3d2e1f5-7c8e-4f4b-8d2a-2e3f4a5b6c7d",
             name: "Linden Street Bakery",
-            address: "320 Linden St, San Francisco",
+            address: "320 Linden St, San Francisco, CA 94102, US",
             location: PlaceLocation(latitude: 37.7765, longitude: -122.4229),
             types: ["bakery"],
-            primaryType: "bakery",
-            rating: 4.2,
-            userRatingCount: 340
+            primaryType: "bakery"
         )
         return PendingCheckin(
             visit: visit,

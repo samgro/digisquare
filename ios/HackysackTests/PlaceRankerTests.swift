@@ -128,20 +128,38 @@ private func place(
     north: Double,
     east: Double,
     primaryType: String? = "cafe",
-    types: [String] = ["cafe", "point_of_interest"],
-    ratings: Int? = 500,
-    viewport: PlaceViewport? = nil
+    types: [String] = ["cafe"],
+    checkins: Int = 5,
+    extent: PlaceExtent? = nil
 ) -> Place {
     Place(
         id: id,
         name: id,
-        address: nil,
         location: location(north: north, east: east),
-        viewport: viewport,
+        extent: extent,
         types: types,
         primaryType: primaryType,
-        rating: ratings == nil ? nil : 4.5,
-        userRatingCount: ratings
+        checkinCount: checkins
+    )
+}
+
+/// An axis-aligned rectangle of grounds, in meters from the origin.
+private func rectangleExtent(south: Double, west: Double, north: Double, east: Double) -> PlaceExtent {
+    let southWest = location(north: south, east: west)
+    let northEast = location(north: north, east: east)
+    let ring = [
+        southWest,
+        PlaceLocation(latitude: southWest.latitude, longitude: northEast.longitude),
+        northEast,
+        PlaceLocation(latitude: northEast.latitude, longitude: southWest.longitude),
+        southWest,
+    ]
+    return PlaceExtent(
+        boundingBox: PlaceExtent.BoundingBox(
+            south: southWest.latitude, west: southWest.longitude, north: northEast.latitude, east: northEast.longitude
+        ),
+        rings: [ring],
+        areaSquareMeters: (north - south) * (east - west)
     )
 }
 
@@ -160,7 +178,7 @@ private func visits(at placeIdentifier: String, count: Int, hour: Int, before no
         components.hour = hour
         components.minute = 10
         return CheckinHistoryEntry(
-            googlePlaceId: placeIdentifier,
+            placeId: placeIdentifier,
             createdAt: pacific.date(from: components)!,
             placeName: placeIdentifier,
             placeTypes: ["cafe"],
@@ -178,8 +196,8 @@ struct PlaceRankerModelTests {
     @Test("A tight fix ranks the nearest storefront first")
     func nearestWinsWithTightFix() {
         let candidates = [
-            place("far-but-popular", north: 120, east: 0, ratings: 20_000),
-            place("next-door", north: 8, east: 4, ratings: 40),
+            place("far-but-popular", north: 120, east: 0, checkins: 200),
+            place("next-door", north: 8, east: 4, checkins: 1),
         ]
         let ranking = ranker.rank(candidates: candidates, fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
 
@@ -190,8 +208,8 @@ struct PlaceRankerModelTests {
     @Test("Frequent visits outrank a far more popular neighbor")
     func historyBeatsPopularity() {
         let candidates = [
-            place("famous", north: 15, east: 0, ratings: 30_000),
-            place("my-cafe", north: -15, east: 0, ratings: 50),
+            place("famous", north: 15, east: 0, checkins: 300),
+            place("my-cafe", north: -15, east: 0, checkins: 2),
         ]
         let history = visits(at: "my-cafe", count: 12, hour: 8, before: tuesdayMorning)
         let ranking = ranker.rank(candidates: candidates, fix: fix(accuracy: 20, now: tuesdayMorning), history: history, now: tuesdayMorning, calendar: pacific)
@@ -213,7 +231,7 @@ struct PlaceRankerModelTests {
         #expect(staleWeight < 1.1 && staleWeight > 0.9)
 
         let oneVisitNinetyDaysAgo = HistoryStatistics(
-            entries: [CheckinHistoryEntry(googlePlaceId: "x", createdAt: tuesdayMorning.addingTimeInterval(-90 * 86_400), placeName: "x")],
+            entries: [CheckinHistoryEntry(placeId: "x", createdAt: tuesdayMorning.addingTimeInterval(-90 * 86_400), placeName: "x")],
             now: tuesdayMorning,
             calendar: pacific,
             halfLifeDays: 90
@@ -240,9 +258,9 @@ struct PlaceRankerModelTests {
         let candidates = [place("tailgate", north: 5, east: 0)]
         let saturday = date("2026-09-19T13:00:00-07:00")
         let history = [
-            CheckinHistoryEntry(googlePlaceId: "tailgate", createdAt: date("2026-09-12T13:00:00-07:00"), placeName: "tailgate"),
-            CheckinHistoryEntry(googlePlaceId: "tailgate", createdAt: date("2026-09-06T13:00:00-07:00"), placeName: "tailgate"),
-            CheckinHistoryEntry(googlePlaceId: "tailgate", createdAt: date("2026-08-30T13:00:00-07:00"), placeName: "tailgate"),
+            CheckinHistoryEntry(placeId: "tailgate", createdAt: date("2026-09-12T13:00:00-07:00"), placeName: "tailgate"),
+            CheckinHistoryEntry(placeId: "tailgate", createdAt: date("2026-09-06T13:00:00-07:00"), placeName: "tailgate"),
+            CheckinHistoryEntry(placeId: "tailgate", createdAt: date("2026-08-30T13:00:00-07:00"), placeName: "tailgate"),
         ]
         let weekend = ranker.rank(candidates: candidates, fix: fix(accuracy: 15, now: saturday), history: history, now: saturday, calendar: pacific)
         let tuesday = date("2026-09-22T13:00:00-07:00")
@@ -251,36 +269,160 @@ struct PlaceRankerModelTests {
         #expect(weekend.ranked[0].score > weekday.ranked[0].score + 0.3)
     }
 
-    @Test("A viewport larger than Google's default box becomes the venue's footprint")
-    func viewportFootprint() throws {
-        // The pin is a kilometer away but the box covers the fix.
-        let bigBox = PlaceViewport(low: location(north: -500, east: -1500), high: location(north: 500, east: 1500))
-        let airport = place("airport", north: 100, east: 1000, primaryType: "airport", types: ["airport"], ratings: 20_000, viewport: bigBox)
+    @Test("A large venue's footprint comes from its category")
+    func categoryFootprint() throws {
+        let airport = place("airport", north: 100, east: 1000, primaryType: "airport", types: ["airport"])
         let footprint = PlaceFootprint(for: airport)
         #expect(footprint.kind == .destination)
-        #expect(footprint.rectangle != nil)
+        #expect(footprint.radius == 1500)
+        // Inside the disc the distance is zero; outside it is measured to its edge.
         #expect(footprint.effectiveDistance(from: origin, to: airport) == 0)
-
-        // Outside the box the distance is measured to its edge, not the pin.
-        let outside = location(north: 700, east: 0)
+        let outside = location(north: 100, east: -700)
         let toEdge = try #require(footprint.effectiveDistance(from: outside, to: airport))
         #expect(abs(toEdge - 200) < 1)
 
-        // Google's default ~250 m box is not informative.
-        let defaultBox = PlaceViewport(low: location(north: -150, east: -150), high: location(north: 150, east: 150))
-        let cafe = place("cafe", north: 0, east: 0, viewport: defaultBox)
-        let cafeFootprint = PlaceFootprint(for: cafe)
-        #expect(cafeFootprint.rectangle == nil)
-        #expect(cafeFootprint.kind == .point)
-        #expect(cafeFootprint.radius == PlaceFootprint.pointRadius)
+        let park = place("park", north: 0, east: 0, primaryType: "park", types: ["park"])
+        #expect(PlaceFootprint(for: park).kind == .container)
+        #expect(PlaceFootprint(for: park).radius == 150)
+
+        let cafe = place("cafe", north: 0, east: 0)
+        #expect(PlaceFootprint(for: cafe).kind == .point)
+        #expect(PlaceFootprint(for: cafe).radius == PlaceFootprint.pointRadius)
+    }
+
+    @Test("Recorded grounds become the footprint: zero inside, distance to the edge outside")
+    func polygonFootprint() throws {
+        // The pin is a kilometer away but the grounds cover the fix.
+        let grounds = rectangleExtent(south: -500, west: -1500, north: 500, east: 1500)
+        let airport = place("airport", north: 100, east: 1000, primaryType: "airport", types: ["airport"], extent: grounds)
+        let footprint = PlaceFootprint(for: airport)
+        #expect(footprint.kind == .destination)
+        #expect(footprint.polygon != nil)
+        #expect(abs(footprint.radius - 500) < 1)
+        #expect(footprint.effectiveDistance(from: origin, to: airport) == 0)
+
+        // Outside the grounds the distance is measured to their edge, not the pin.
+        let outside = location(north: 700, east: 0)
+        let toEdge = try #require(footprint.effectiveDistance(from: outside, to: airport))
+        #expect(abs(toEdge - 200) < 1)
+        let corner = location(north: 800, east: 1900)
+        let toCorner = try #require(footprint.effectiveDistance(from: corner, to: airport))
+        #expect(abs(toCorner - 500) < 1)
+
+        // A building outline is not informative; the storefront radius stands.
+        let outline = rectangleExtent(south: -20, west: -30, north: 20, east: 30)
+        let cafe = place("cafe", north: 0, east: 0, extent: outline)
+        #expect(PlaceFootprint(for: cafe).polygon == nil)
+        #expect(PlaceFootprint(for: cafe).kind == .point)
+
+        // Big grounds around something the table calls a storefront make it a container.
+        let campus = rectangleExtent(south: -400, west: -400, north: 400, east: 400)
+        let office = place("office", north: 0, east: 0, primaryType: "corporate_office", types: ["corporate_office"], extent: campus)
+        #expect(PlaceFootprint(for: office).kind == .container)
+    }
+
+    @Test("Inside an airport's recorded grounds the airport is suggested over the gate's storefronts, even from a tight fix")
+    func insideDestinationGrounds() {
+        // SFO-sized grounds, pin 900 m away; a cafe, a bookstore and a check-in
+        // counter within a few meters, none with any checkins.
+        let grounds = rectangleExtent(south: -1200, west: -2500, north: 1200, east: 800)
+        let airport = place("sfo", north: 0, east: -900, primaryType: "airport", types: ["airport"], checkins: 0, extent: grounds)
+        let cafe = place("cafe", north: 16, east: 0, primaryType: "cafe", types: ["cafe"], checkins: 0)
+        let books = place("books", north: 0, east: 18, primaryType: "bookstore", types: ["bookstore"], checkins: 0)
+        let counter = place("counter", north: -20, east: 5, primaryType: "airport", types: ["airport"], checkins: 0)
+
+        for accuracy in [5.0, 65.0] {
+            let ranking = ranker.rank(candidates: [cafe, books, counter, airport], fix: fix(accuracy: accuracy, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+            #expect(ranking.ranked.first?.place.id == "sfo", "accuracy \(accuracy)")
+            #expect(ranking.suggestion?.id == "sfo", "accuracy \(accuracy)")
+        }
+
+        // Without the grounds the airport is a 1.5 km disc around a pin 900 m
+        // off: still in reach, but not the answer from a tight fix.
+        let pinOnly = place("sfo", north: 0, east: -900, primaryType: "airport", types: ["airport"], checkins: 0)
+        let tight = ranker.rank(candidates: [cafe, books, counter, pinOnly], fix: fix(accuracy: 5, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(tight.ranked.first?.place.id != "sfo")
+
+        // A regular's morning cafe still wins over the airport around it.
+        let regular = ranker.rank(
+            candidates: [cafe, books, counter, airport],
+            fix: fix(accuracy: 5, now: tuesdayMorning),
+            history: visits(at: "cafe", count: 6, hour: 7, before: tuesdayMorning),
+            now: tuesdayMorning,
+            calendar: pacific
+        )
+        #expect(regular.ranked.first?.place.id == "cafe")
+    }
+
+    @Test("Recorded grounds keep a venue in the running 1.3 km from its pin")
+    func groundsBeatDistanceToPin() {
+        // A park whose pin is 1.3 km west of the fix, with grounds that reach
+        // 200 m past it; a museum 30 m away, as the de Young sits in Golden
+        // Gate Park.
+        let parkGrounds = rectangleExtent(south: -300, west: -1500, north: 300, east: 200)
+        let park = place("park", north: 0, east: -1300, primaryType: "park", types: ["park"], checkins: 40, extent: parkGrounds)
+        let museum = place("museum", north: 30, east: 0, primaryType: "museum", types: ["museum"], checkins: 20)
+
+        // At the museum's door the museum is the more specific answer, but the
+        // park is inside its grounds too (distance zero) and close enough
+        // behind that the picker shows the list instead of jumping to the
+        // museum.
+        let atMuseum = ranker.rank(candidates: [museum, park], fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(atMuseum.ranked.map(\.place.id) == ["museum", "park"])
+        #expect(atMuseum.ranked[1].effectiveDistance == 0)
+        #expect(atMuseum.ranked[0].score - atMuseum.ranked[1].score < RankingWeights.standard.suggestionMinimumMargin)
+        #expect(atMuseum.suggestion == nil)
+
+        // Without the polygon the park is judged from its pin, over a kilometer
+        // off, and is nowhere near.
+        let pinOnly = place("park", north: 0, east: -1300, primaryType: "park", types: ["park"], checkins: 40)
+        let withoutGrounds = ranker.rank(candidates: [museum, pinOnly], fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
+        #expect((withoutGrounds.ranked[1].effectiveDistance ?? 0) > 1000)
+        #expect(withoutGrounds.ranked[0].score - withoutGrounds.ranked[1].score > 5)
+
+        // Deeper in the grounds, away from the museum, the park wins outright
+        // and is suggested, even from a coarse fix.
+        let inTheGrounds = location(north: 0, east: -600)
+        let deeper = LocationFix(
+            latitude: inTheGrounds.latitude,
+            longitude: inTheGrounds.longitude,
+            horizontalAccuracy: 65,
+            timestamp: tuesdayMorning.addingTimeInterval(-5)
+        )
+        let awayFromMuseum = ranker.rank(candidates: [museum, park], fix: deeper, history: [], now: tuesdayMorning, calendar: pacific)
+        #expect(awayFromMuseum.ranked.first?.place.id == "park")
+        #expect(awayFromMuseum.suggestion?.id == "park")
+    }
+
+    @Test("Overture's specific museum and stadium categories fold onto the generic entry")
+    func suffixCategories() {
+        let artMuseum = place("art", north: 0, east: 0, primaryType: "art_museum", types: ["art_museum"])
+        #expect(PlaceFootprint(for: artMuseum).kind == .container)
+        #expect(PlaceFootprint(for: artMuseum).radius == 60)
+
+        let ballpark = place("ballpark", north: 0, east: 0, primaryType: "baseball_stadium", types: ["baseball_stadium"])
+        #expect(PlaceFootprint(for: ballpark).kind == .destination)
+        #expect(PlaceFootprint(for: ballpark).radius == 300)
+    }
+
+    @Test("A footprint is judged on the primary category, not the alternates")
+    func footprintUsesPrimaryCategory() {
+        // A restaurant inside an airport lists the airport among its
+        // alternates; it is still a restaurant, and a storefront.
+        let terminalRestaurant = place("tacos", north: 0, east: 0, primaryType: "mexican_restaurant", types: ["mexican_restaurant", "airport"])
+        #expect(PlaceFootprint(for: terminalRestaurant).kind == .point)
+
+        // Only a place with no primary category is judged on its alternates.
+        let untyped = place("somewhere", north: 0, east: 0, primaryType: nil, types: ["shopping", "park"])
+        #expect(PlaceFootprint(for: untyped).kind == .container)
+        #expect(PlaceFootprint(for: untyped).radius == 150)
     }
 
     @Test("A coarse fix inside a large venue ranks the venue above its storefronts")
     func coarseFixPrefersLargeVenue() {
-        let bigBox = PlaceViewport(low: location(north: -1500, east: -1500), high: location(north: 1500, east: 1500))
         let candidates = [
-            place("gate-cafe", north: 20, east: 0, ratings: 800),
-            place("airport", north: 900, east: 600, primaryType: "airport", types: ["airport"], ratings: 20_000, viewport: bigBox),
+            place("gate-cafe", north: 20, east: 0, checkins: 8),
+            place("airport", north: 900, east: 600, primaryType: "airport", types: ["airport"], checkins: 40),
         ]
         let coarse = ranker.rank(candidates: candidates, fix: fix(accuracy: 65, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
         #expect(coarse.ranked.first?.place.id == "airport")
@@ -294,8 +436,8 @@ struct PlaceRankerModelTests {
     @Test("Parking lots and ATMs are penalized and never suggested")
     func typePriors() {
         let candidates = [
-            place("lot", north: 3, east: 0, primaryType: "parking", types: ["parking"], ratings: nil),
-            place("cafe", north: 20, east: 0, ratings: 300),
+            place("lot", north: 3, east: 0, primaryType: "parking", types: ["parking"], checkins: 0),
+            place("cafe", north: 20, east: 0, checkins: 30),
         ]
         let ranking = ranker.rank(candidates: candidates, fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
 
@@ -308,8 +450,8 @@ struct PlaceRankerModelTests {
 
     @Test("A type prior comes from the primary type when there is one")
     func typePriorUsesPrimaryType() {
-        let townHall = place("town-hall", north: 0, east: 0, primaryType: "city_hall", types: ["city_hall", "local_government_office"])
-        let department = place("planning", north: 0, east: 0, primaryType: "local_government_office", types: ["local_government_office"])
+        let townHall = place("town-hall", north: 0, east: 0, primaryType: "town_hall", types: ["town_hall", "local_and_state_government_offices"])
+        let department = place("planning", north: 0, east: 0, primaryType: "local_and_state_government_offices", types: ["local_and_state_government_offices"])
         let untyped = place("office", north: 0, east: 0, primaryType: nil, types: ["corporate_office"])
 
         #expect(PlaceFootprint.typePrior(for: townHall) == 0)
@@ -317,14 +459,13 @@ struct PlaceRankerModelTests {
         #expect(PlaceFootprint.typePrior(for: untyped) < 0)
     }
 
-    @Test("A large venue type without a real viewport pays the full size price")
-    func unconfirmedDestination() {
-        let airport = place("airport", north: 300, east: 0, primaryType: "airport", types: ["airport"], ratings: 90)
-        #expect(PlaceFootprint(for: airport).kind == .container)
-
-        // The building the user is standing in beats a regional airport whose
-        // extent Google does not know.
-        let townHall = place("town-hall", north: 15, east: 0, primaryType: "city_hall", types: ["city_hall"], ratings: 1)
+    @Test("A regional airport's guessed footprint does not swallow the building next door")
+    func destinationBesideStorefront() {
+        // Every airport is modeled as a 1.5 km disc, so the town hall is
+        // "inside" the airfield. The building the user is standing at still
+        // wins on distance and size.
+        let airport = place("airport", north: 900, east: 0, primaryType: "airport", types: ["airport"], checkins: 3)
+        let townHall = place("town-hall", north: 15, east: 0, primaryType: "town_hall", types: ["town_hall"], checkins: 1)
         let ranking = ranker.rank(
             candidates: [airport, townHall],
             fix: fix(accuracy: 30, now: tuesdayMorning),
@@ -335,12 +476,12 @@ struct PlaceRankerModelTests {
         #expect(ranking.ranked.first?.place.id == "town-hall")
     }
 
-    @Test("A history place Google left out is added when it is close by")
+    @Test("A history place the search left out is added when it is close by")
     func historyInjection() {
-        let candidates = [place("cafe", north: 60, east: 0, ratings: 300)]
+        let candidates = [place("cafe", north: 60, east: 0, checkins: 30)]
         let history = [
             CheckinHistoryEntry(
-                googlePlaceId: "my-office",
+                placeId: "my-office",
                 createdAt: tuesdayMorning.addingTimeInterval(-86_400),
                 placeName: "My Office",
                 placePrimaryType: "corporate_office",
@@ -348,7 +489,7 @@ struct PlaceRankerModelTests {
                 location: location(north: 10, east: 0)
             ),
             CheckinHistoryEntry(
-                googlePlaceId: "far-away",
+                placeId: "far-away",
                 createdAt: tuesdayMorning.addingTimeInterval(-86_400),
                 placeName: "Far Away",
                 location: location(north: 900, east: 0)
@@ -363,7 +504,7 @@ struct PlaceRankerModelTests {
 
     @Test("A place without a coordinate is listed last and never suggested")
     func missingLocation() {
-        let nowhere = Place(id: "nowhere", name: "Nowhere", address: nil, location: nil, types: [], primaryType: nil, rating: nil, userRatingCount: 50_000)
+        let nowhere = Place(id: "nowhere", name: "Nowhere", location: nil, checkinCount: 500)
         let ranking = ranker.rank(candidates: [nowhere, place("cafe", north: 5, east: 0)], fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
 
         #expect(ranking.ranked.last?.place.id == "nowhere")
@@ -375,8 +516,8 @@ struct PlaceRankerModelTests {
 
     @Test("A clear leader among many listings still shows the list")
     func suggestionNeedsProbability() {
-        let leader = place("leader", north: 0, east: 0, ratings: 20_000)
-        let crowded = [leader] + (1...15).map { place("tenant-\($0)", north: 5, east: 0, ratings: nil) }
+        let leader = place("leader", north: 0, east: 0, checkins: 300)
+        let crowded = [leader] + (1...15).map { place("tenant-\($0)", north: 5, east: 0, checkins: 0) }
         let crowdedRanking = ranker.rank(candidates: crowded, fix: fix(accuracy: 10, now: tuesdayMorning), history: [], now: tuesdayMorning, calendar: pacific)
         #expect(crowdedRanking.ranked.first?.place.id == "leader")
         #expect(crowdedRanking.ranked[0].score - crowdedRanking.ranked[1].score >= RankingWeights.standard.suggestionMinimumMargin)
@@ -389,7 +530,7 @@ struct PlaceRankerModelTests {
 
     @Test("No suggestion from a coarse, stale or invalid fix")
     func suggestionGates() {
-        let candidates = [place("cafe", north: 5, east: 0, ratings: 300)]
+        let candidates = [place("cafe", north: 5, east: 0, checkins: 30)]
         func suggestion(accuracy: Double, age: TimeInterval = 5) -> Place? {
             ranker.rank(candidates: candidates, fix: fix(accuracy: accuracy, now: tuesdayMorning, age: age), history: [], now: tuesdayMorning, calendar: pacific).suggestion
         }
@@ -415,10 +556,10 @@ struct PlaceRankerModelTests {
         #expect(ranking.ranked[1].probability > ranking.ranked[2].probability)
     }
 
-    @Test("Typed queries keep Google's order but float visited places")
+    @Test("Typed queries keep the server's order but float visited places")
     func queryOrdering() {
         let candidates = [place("a", north: 0, east: 0), place("b", north: 0, east: 0), place("c", north: 0, east: 0)]
-        let history = [CheckinHistoryEntry(googlePlaceId: "c", createdAt: tuesdayMorning, placeName: "c")]
+        let history = [CheckinHistoryEntry(placeId: "c", createdAt: tuesdayMorning, placeName: "c")]
 
         let ordered = ranker.orderForQuery(candidates: candidates, history: history)
 

@@ -120,10 +120,10 @@ struct FrequentPlaceDetectorTests {
 
         var withCheckins = withoutCheckins
         for day in [10, 25, 40] {
-            withCheckins.addCheckin(at: ScenarioSpots.coffeeShop, googlePlaceId: "wework-1", day: day, hour: 9.5)
+            withCheckins.addCheckin(at: ScenarioSpots.coffeeShop, placeId: "wework-1", day: day, hour: 9.5)
         }
         let assessment = withCheckins.assessArrival(at: ScenarioSpots.coffeeShop)
-        #expect(assessment.reason == .regularCheckinSpot(googlePlaceId: "wework-1"))
+        #expect(assessment.reason == .regularCheckinSpot(placeId: "wework-1"))
         #expect(assessment.shouldSuggest)
     }
 
@@ -131,7 +131,7 @@ struct FrequentPlaceDetectorTests {
         var builder = VisitScenarioBuilder()
         builder.addHomeNights(days: builder.days)
         builder.addWorkdays(at: ScenarioSpots.coffeeShop, days: builder.days, from: 9, to: 15)
-        builder.addCheckin(at: ScenarioSpots.coffeeShop, googlePlaceId: "wework-1", day: 30, hour: 9.5)
+        builder.addCheckin(at: ScenarioSpots.coffeeShop, placeId: "wework-1", day: 30, hour: 9.5)
         #expect(builder.assessArrival(at: ScenarioSpots.coffeeShop).reason == .habitualPlace(.work))
     }
 
@@ -252,8 +252,8 @@ struct FrequentPlaceDetectorTests {
 
     @Test func removalsWinOverTheCheckinExemption() {
         var builder = commuter()
-        builder.addCheckin(at: ScenarioSpots.coffeeShop, googlePlaceId: "cafe-1", day: 20, hour: 8.5)
-        builder.addCheckin(at: ScenarioSpots.coffeeShop, googlePlaceId: "cafe-1", day: 30, hour: 8.5)
+        builder.addCheckin(at: ScenarioSpots.coffeeShop, placeId: "cafe-1", day: 20, hour: 8.5)
+        builder.addCheckin(at: ScenarioSpots.coffeeShop, placeId: "cafe-1", day: 30, hour: 8.5)
         builder.addRejection(at: ScenarioSpots.coffeeShop, daysAgo: 3)
         #expect(builder.assessArrival(at: ScenarioSpots.coffeeShop).reason == .rejectedRecently)
     }

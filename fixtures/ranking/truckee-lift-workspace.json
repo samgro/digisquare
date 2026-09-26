@@ -1,1555 +1,701 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "name": "truckee-lift-workspace",
   "description": "Inside Lift Workspace, a coworking space by the Truckee airport. Its building and the lot next door hold a physical therapist, a realty office, three car rental counters and half a dozen registered businesses within 40 m.",
-  "recordedAt": "2026-09-24T00:12:54.386Z",
+  "recordedAt": null,
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 39.318649,
     "longitude": -120.146375,
     "horizontalAccuracy": 12
   },
-  "google": {
-    "largeVenues": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "POPULARITY",
-        "includedTypes": [
-          "airport",
-          "stadium",
-          "university",
-          "amusement_park",
-          "zoo",
-          "ski_resort",
-          "golf_course",
-          "national_park",
-          "state_park",
-          "park"
-        ],
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 39.318649,
-              "longitude": -120.146375
-            },
-            "radius": 2000
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
-            "types": [
-              "airport",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3195165,
-              "longitude": -120.14499269999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317974569708504,
-                "longitude": -120.1465016302915
-              },
-              "high": {
-                "latitude": 39.3206725302915,
-                "longitude": -120.14380366970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 93,
-            "displayName": {
-              "text": "Truckee Tahoe Airport",
-              "languageCode": "en"
-            },
-            "primaryType": "airport"
-          },
-          {
-            "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "12200 Joerger Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3292632,
-              "longitude": -120.15625539999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.32800211970851,
-                "longitude": -120.15758223029148
-              },
-              "high": {
-                "latitude": 39.3307000802915,
-                "longitude": -120.1548842697085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 167,
-            "displayName": {
-              "text": "Riverview Sports Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
-            "types": [
-              "park",
-              "non_profit_organization",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "12200 Joerger Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3298561,
-              "longitude": -120.1572441
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.32828206970851,
-                "longitude": -120.1584364802915
-              },
-              "high": {
-                "latitude": 39.33098003029151,
-                "longitude": -120.1557385197085
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 115,
-            "displayName": {
-              "text": "Riverview Bike Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJEZuMWo_fm4AR8m31lmRS8oI",
-            "types": [
-              "golf_course",
-              "tourist_attraction",
-              "athletic_field",
-              "sports_activity_location",
-              "park",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10040 Reynold Way, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.324411999999995,
-              "longitude": -120.16790509999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3228629197085,
-                "longitude": -120.1690616302915
-              },
-              "high": {
-                "latitude": 39.3255608802915,
-                "longitude": -120.16636366970852
-              }
-            },
-            "rating": 4.3,
-            "userRatingCount": 133,
-            "displayName": {
-              "text": "Ponderosa Golf Course",
-              "languageCode": "en"
-            },
-            "primaryType": "golf_course"
-          },
-          {
-            "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
-            "types": [
-              "airport",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.319265699999995,
-              "longitude": -120.14508239999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31780711970849,
-                "longitude": -120.1464736302915
-              },
-              "high": {
-                "latitude": 39.32050508029149,
-                "longitude": -120.1437756697085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 6,
-            "displayName": {
-              "text": "Elevated Aviation",
-              "languageCode": "en"
-            },
-            "primaryType": "airport"
-          }
-        ]
-      }
-    },
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 39.318649,
-              "longitude": -120.146375
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJ37fm0Trem4ARn_6vYGSdmQA",
-            "types": [
-              "physiotherapist",
-              "doctor",
-              "health",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3186113,
-              "longitude": -120.146379
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317181419708504,
-                "longitude": -120.14778843029148
-              },
-              "high": {
-                "latitude": 39.3198793802915,
-                "longitude": -120.14509046970849
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 20,
-            "displayName": {
-              "text": "Synergy Healing Arts",
-              "languageCode": "en"
-            },
-            "primaryType": "physiotherapist"
-          },
-          {
-            "id": "ChIJBQaJ0jJgmYAR1rlWarBCGs4",
-            "types": [
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3186515,
-              "longitude": -120.14627759999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3171895697085,
-                "longitude": -120.14771103029146
-              },
-              "high": {
-                "latitude": 39.319887530291496,
-                "longitude": -120.14501306970848
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 2,
-            "displayName": {
-              "text": "Surf Air",
-              "languageCode": "en"
-            },
-            "primaryType": "transportation_service"
-          },
-          {
-            "id": "ChIJQVl-oc9hmYARr4qiIgGogCE",
-            "types": [
-              "real_estate_agency",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185922,
-              "longitude": -120.146284
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317153569708495,
-                "longitude": -120.14769998029149
-              },
-              "high": {
-                "latitude": 39.319851530291494,
-                "longitude": -120.14500201970851
-              }
-            },
-            "displayName": {
-              "text": "Cooper Realty - Probate & Trust Experts",
-              "languageCode": "en"
-            },
-            "primaryType": "real_estate_agency"
-          },
-          {
-            "id": "ChIJgzcl0tphmYAR_zvpGJelrAc",
-            "types": [
-              "car_rental",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.318604,
-              "longitude": -120.14619359999998
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3171595697085,
-                "longitude": -120.14733823029148
-              },
-              "high": {
-                "latitude": 39.3198575302915,
-                "longitude": -120.1446402697085
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 8,
-            "displayName": {
-              "text": "National Car Rental",
-              "languageCode": "en"
-            },
-            "primaryType": "car_rental"
-          },
-          {
-            "id": "ChIJQzA87KFhmYAR01kd6omKorc",
-            "types": [
-              "physiotherapist",
-              "medical_clinic",
-              "health",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Zimmer Physical Therapy",
-              "languageCode": "en"
-            },
-            "primaryType": "physiotherapist"
-          },
-          {
-            "id": "ChIJRygFoyo_fSARYPa1jGPjvaw",
-            "types": [
-              "non_profit_organization",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "rating": 4,
-            "userRatingCount": 4,
-            "displayName": {
-              "text": "Healthy Forest Alliance Foundation",
-              "languageCode": "en"
-            },
-            "primaryType": "non_profit_organization"
-          },
-          {
-            "id": "ChIJL41vOsw_r60RISYi68KDSYc",
-            "types": [
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Drawscape",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJR2fRYy5hmYARqV1ew0HkEEA",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "displayName": {
-              "text": "Anothr Lap",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJM76EeZ6onaQRJXO7Rbtgzns",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "displayName": {
-              "text": "Tahoe Property Services",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJ0b7Qh9JhmYAR3TyHpNVgn2I",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "displayName": {
-              "text": "Sunflow Energy Corporation",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJ7XwXKz5hmYARNlg9tdg9ctk",
-            "types": [
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317154719708505,
-                "longitude": -120.14730998029148
-              },
-              "high": {
-                "latitude": 39.319852680291504,
-                "longitude": -120.1446120197085
-              }
-            },
-            "displayName": {
-              "text": "Tahoe Silicon Mountain",
-              "languageCode": "en"
-            },
-            "primaryType": "service"
-          },
-          {
-            "id": "ChIJCfYjKUBhmYARht3coRUL4HA",
-            "types": [
-              "coworking_space",
-              "fitness_center",
-              "wellness_center",
-              "parking_lot",
-              "parking",
-              "community_center",
-              "gym",
-              "real_estate_agency",
-              "event_venue",
-              "transportation_service",
-              "sports_activity_location",
-              "health",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185864,
-              "longitude": -120.146143
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3171730197085,
-                "longitude": -120.14761763029149
-              },
-              "high": {
-                "latitude": 39.3198709802915,
-                "longitude": -120.1449196697085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 21,
-            "displayName": {
-              "text": "Lift Workspace: Cowork, Conference, and Wellness Center",
-              "languageCode": "en"
-            },
-            "primaryType": "coworking_space"
-          },
-          {
-            "id": "ChIJw6CRhjXem4ARnUwmORNjzC8",
-            "types": [
-              "car_rental",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185954,
-              "longitude": -120.14597930000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31715526970851,
-                "longitude": -120.14723823029149
-              },
-              "high": {
-                "latitude": 39.31985323029151,
-                "longitude": -120.14454026970851
-              }
-            },
-            "rating": 3.9,
-            "userRatingCount": 101,
-            "displayName": {
-              "text": "Enterprise Rent-A-Car",
-              "languageCode": "en"
-            },
-            "primaryType": "car_rental"
-          },
-          {
-            "id": "ChIJ-6IBd7hhmYARY-1v1L_Ixlk",
-            "types": [
-              "car_rental",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3185055,
-              "longitude": -120.1460113
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3171324697085,
-                "longitude": -120.1472500302915
-              },
-              "high": {
-                "latitude": 39.319830430291496,
-                "longitude": -120.14455206970851
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 26,
-            "displayName": {
-              "text": "Go Rentals",
-              "languageCode": "en"
-            },
-            "primaryType": "car_rental"
-          },
-          {
-            "id": "ChIJM65CcMffm4ARXeEErGGuSwQ",
-            "types": [
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10000 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3184703,
-              "longitude": -120.14574239999997
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3171363197085,
-                "longitude": -120.14712718029149
-              },
-              "high": {
-                "latitude": 39.319834280291495,
-                "longitude": -120.14442921970851
-              }
-            },
-            "displayName": {
-              "text": "Sierra CCW Firearms Training",
-              "languageCode": "en"
-            }
-          },
-          {
-            "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
-            "types": [
-              "fire_station",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10277 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3175662,
-              "longitude": -120.14602310000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.316137169708504,
-                "longitude": -120.1474220302915
-              },
-              "high": {
-                "latitude": 39.318835130291504,
-                "longitude": -120.1447240697085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 2,
-            "displayName": {
-              "text": "Truckee Fire Protection District Station 96",
-              "languageCode": "en"
-            },
-            "primaryType": "fire_station"
-          },
-          {
-            "id": "ChIJp3i00jJgmYARscFb-Q01Jsg",
-            "types": [
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.319294,
-              "longitude": -120.14515000000002
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317822319708505,
-                "longitude": -120.14651263029153
-              },
-              "high": {
-                "latitude": 39.3205202802915,
-                "longitude": -120.14381466970853
-              }
-            },
-            "displayName": {
-              "text": "Tahoe Flying Club",
-              "languageCode": "en"
-            },
-            "primaryType": "association_or_organization"
-          },
-          {
-            "id": "ChIJnyflgHj4RaER2OFhQjTRer4",
-            "types": [
-              "tourist_attraction",
-              "tour_agency",
-              "travel_agency",
-              "transportation_service",
-              "consultant",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.319286999999996,
-              "longitude": -120.14513099999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31781881970849,
-                "longitude": -120.14650298029147
-              },
-              "high": {
-                "latitude": 39.32051678029149,
-                "longitude": -120.14380501970848
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 20,
-            "displayName": {
-              "text": "North Tahoe Aviation",
-              "languageCode": "en"
-            },
-            "primaryType": "tour_agency"
-          },
-          {
-            "id": "ChIJIxgNSalhmYARb-XTKXlmj78",
-            "types": [
-              "tour_agency",
-              "travel_agency",
-              "transportation_service",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.319286999999996,
-              "longitude": -120.14513099999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31781881970849,
-                "longitude": -120.14650298029147
-              },
-              "high": {
-                "latitude": 39.32051678029149,
-                "longitude": -120.14380501970848
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 3,
-            "displayName": {
-              "text": "Beryl West Adventures",
-              "languageCode": "en"
-            },
-            "primaryType": "transportation_service"
-          },
-          {
-            "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3175822,
-              "longitude": -120.1458042
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.316146319708494,
-                "longitude": -120.14696978029149
-              },
-              "high": {
-                "latitude": 39.31884428029149,
-                "longitude": -120.14427181970851
-              }
-            },
-            "displayName": {
-              "text": "Truckee Parking District",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          }
-        ]
-      }
-    }
-  },
   "places": [
     {
       "id": "ChIJ37fm0Trem4ARn_6vYGSdmQA",
+      "source": "overture",
       "name": "Synergy Healing Arts",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3186113,
         "longitude": -120.146379
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317181419708504,
-          "longitude": -120.14778843029148
-        },
-        "high": {
-          "latitude": 39.3198793802915,
-          "longitude": -120.14509046970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "physiotherapist",
         "doctor",
-        "health",
-        "point_of_interest",
-        "establishment"
+        "health"
       ],
       "primaryType": "physiotherapist",
-      "rating": 5,
-      "userRatingCount": 20
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJBQaJ0jJgmYAR1rlWarBCGs4",
+      "source": "overture",
       "name": "Surf Air",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3186515,
         "longitude": -120.14627759999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3171895697085,
-          "longitude": -120.14771103029146
-        },
-        "high": {
-          "latitude": 39.319887530291496,
-          "longitude": -120.14501306970848
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "transportation_service"
       ],
       "primaryType": "transportation_service",
-      "rating": 5,
-      "userRatingCount": 2
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJQVl-oc9hmYARr4qiIgGogCE",
+      "source": "overture",
       "name": "Cooper Realty - Probate & Trust Experts",
-      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185922,
         "longitude": -120.146284
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317153569708495,
-          "longitude": -120.14769998029149
-        },
-        "high": {
-          "latitude": 39.319851530291494,
-          "longitude": -120.14500201970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "real_estate_agency",
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJgzcl0tphmYAR_zvpGJelrAc",
+      "source": "overture",
       "name": "National Car Rental",
-      "address": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste B",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.318604,
         "longitude": -120.14619359999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3171595697085,
-          "longitude": -120.14733823029148
-        },
-        "high": {
-          "latitude": 39.3198575302915,
-          "longitude": -120.1446402697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "car_rental",
-      "rating": 4.5,
-      "userRatingCount": 8
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJQzA87KFhmYAR01kd6omKorc",
+      "source": "overture",
       "name": "Zimmer Physical Therapy",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "physiotherapist",
         "medical_clinic",
         "health",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "physiotherapist",
-      "rating": 5,
-      "userRatingCount": 1
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJRygFoyo_fSARYPa1jGPjvaw",
+      "source": "overture",
       "name": "Healthy Forest Alliance Foundation",
-      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "non_profit_organization",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association"
       ],
       "primaryType": "non_profit_organization",
-      "rating": 4,
-      "userRatingCount": 4
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJL41vOsw_r60RISYi68KDSYc",
+      "source": "overture",
       "name": "Drawscape",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
-      "types": [
-        "point_of_interest",
-        "establishment"
-      ],
+      "extent": null,
+      "distanceMeters": null,
+      "types": [],
       "primaryType": null,
-      "rating": 5,
-      "userRatingCount": 1
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJR2fRYy5hmYARqV1ew0HkEEA",
+      "source": "overture",
       "name": "Anothr Lap",
-      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "service",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "professional_services",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJM76EeZ6onaQRJXO7Rbtgzns",
+      "source": "overture",
       "name": "Tahoe Property Services",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "service",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "professional_services",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ0b7Qh9JhmYAR3TyHpNVgn2I",
+      "source": "overture",
       "name": "Sunflow Energy Corporation",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "service",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "professional_services",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ7XwXKz5hmYARNlg9tdg9ctk",
+      "source": "overture",
       "name": "Tahoe Silicon Mountain",
-      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317154719708505,
-          "longitude": -120.14730998029148
-        },
-        "high": {
-          "latitude": 39.319852680291504,
-          "longitude": -120.1446120197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "service",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "professional_services",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJCfYjKUBhmYARht3coRUL4HA",
+      "source": "overture",
       "name": "Lift Workspace: Cowork, Conference, and Wellness Center",
-      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185864,
         "longitude": -120.146143
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3171730197085,
-          "longitude": -120.14761763029149
-        },
-        "high": {
-          "latitude": 39.3198709802915,
-          "longitude": -120.1449196697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "coworking_space",
-        "fitness_center",
+        "gym",
         "wellness_center",
         "parking_lot",
         "parking",
         "community_center",
-        "gym",
         "real_estate_agency",
         "event_venue",
         "transportation_service",
         "sports_activity_location",
         "health",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "coworking_space",
-      "rating": 5,
-      "userRatingCount": 21
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJw6CRhjXem4ARnUwmORNjzC8",
+      "source": "overture",
       "name": "Enterprise Rent-A-Car",
-      "address": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste B",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185954,
         "longitude": -120.14597930000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31715526970851,
-          "longitude": -120.14723823029149
-        },
-        "high": {
-          "latitude": 39.31985323029151,
-          "longitude": -120.14454026970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "car_rental",
-      "rating": 3.9,
-      "userRatingCount": 101
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ-6IBd7hhmYARY-1v1L_Ixlk",
+      "source": "overture",
       "name": "Go Rentals",
-      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3185055,
         "longitude": -120.1460113
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3171324697085,
-          "longitude": -120.1472500302915
-        },
-        "high": {
-          "latitude": 39.319830430291496,
-          "longitude": -120.14455206970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "car_rental",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "car_rental",
-      "rating": 5,
-      "userRatingCount": 26
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJM65CcMffm4ARXeEErGGuSwQ",
+      "source": "overture",
       "name": "Sierra CCW Firearms Training",
-      "address": "10000 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10000 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10000 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3184703,
         "longitude": -120.14574239999997
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3171363197085,
-          "longitude": -120.14712718029149
-        },
-        "high": {
-          "latitude": 39.319834280291495,
-          "longitude": -120.14442921970851
-        }
-      },
-      "types": [
-        "point_of_interest",
-        "establishment"
-      ],
+      "extent": null,
+      "distanceMeters": null,
+      "types": [],
       "primaryType": null,
-      "rating": null,
-      "userRatingCount": null
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
+      "source": "overture",
       "name": "Truckee Fire Protection District Station 96",
-      "address": "10277 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10277 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10277 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3175662,
         "longitude": -120.14602310000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.316137169708504,
-          "longitude": -120.1474220302915
-        },
-        "high": {
-          "latitude": 39.318835130291504,
-          "longitude": -120.1447240697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "fire_station",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "government_services",
+        "professional_services"
       ],
       "primaryType": "fire_station",
-      "rating": 5,
-      "userRatingCount": 2
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJp3i00jJgmYARscFb-Q01Jsg",
+      "source": "overture",
       "name": "Tahoe Flying Club",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.319294,
         "longitude": -120.14515000000002
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317822319708505,
-          "longitude": -120.14651263029153
-        },
-        "high": {
-          "latitude": 39.3205202802915,
-          "longitude": -120.14381466970853
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association"
       ],
-      "primaryType": "association_or_organization",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_and_government_association",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJnyflgHj4RaER2OFhQjTRer4",
+      "source": "overture",
       "name": "North Tahoe Aviation",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.319286999999996,
         "longitude": -120.14513099999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31781881970849,
-          "longitude": -120.14650298029147
-        },
-        "high": {
-          "latitude": 39.32051678029149,
-          "longitude": -120.14380501970848
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "tourist_attraction",
         "tour_agency",
+        "attractions_and_activities",
         "travel_agency",
         "transportation_service",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "tour_agency",
-      "rating": 5,
-      "userRatingCount": 20
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJIxgNSalhmYARb-XTKXlmj78",
+      "source": "overture",
       "name": "Beryl West Adventures",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.319286999999996,
         "longitude": -120.14513099999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31781881970849,
-          "longitude": -120.14650298029147
-        },
-        "high": {
-          "latitude": 39.32051678029149,
-          "longitude": -120.14380501970848
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
+        "transportation_service",
         "tour_agency",
         "travel_agency",
-        "transportation_service",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "transportation_service",
-      "rating": 5,
-      "userRatingCount": 3
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
+      "source": "overture",
       "name": "Truckee Parking District",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3175822,
         "longitude": -120.1458042
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.316146319708494,
-          "longitude": -120.14696978029149
-        },
-        "high": {
-          "latitude": 39.31884428029149,
-          "longitude": -120.14427181970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
+      "source": "overture",
       "name": "Truckee Tahoe Airport",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3195165,
         "longitude": -120.14499269999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317974569708504,
-          "longitude": -120.1465016302915
-        },
-        "high": {
-          "latitude": 39.3206725302915,
-          "longitude": -120.14380366970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "transportation_service"
       ],
       "primaryType": "airport",
-      "rating": 4.5,
-      "userRatingCount": 93
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
+      "source": "overture",
       "name": "Riverview Sports Park",
-      "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
+      "address": "12200 Joerger Dr, Truckee, CA 96161, US",
+      "street": "12200 Joerger Dr",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3292632,
         "longitude": -120.15625539999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.32800211970851,
-          "longitude": -120.15758223029148
-        },
-        "high": {
-          "latitude": 39.3307000802915,
-          "longitude": -120.1548842697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.7,
-      "userRatingCount": 167
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
+      "source": "overture",
       "name": "Riverview Bike Park",
-      "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
+      "address": "12200 Joerger Dr, Truckee, CA 96161, US",
+      "street": "12200 Joerger Dr",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3298561,
         "longitude": -120.1572441
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.32828206970851,
-          "longitude": -120.1584364802915
-        },
-        "high": {
-          "latitude": 39.33098003029151,
-          "longitude": -120.1557385197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "non_profit_organization",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association"
       ],
       "primaryType": "park",
-      "rating": 4.9,
-      "userRatingCount": 115
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJEZuMWo_fm4AR8m31lmRS8oI",
+      "source": "overture",
       "name": "Ponderosa Golf Course",
-      "address": "10040 Reynold Way, Truckee, CA 96161, USA",
+      "address": "10040 Reynold Way, Truckee, CA 96161, US",
+      "street": "10040 Reynold Way",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.324411999999995,
         "longitude": -120.16790509999998
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3228629197085,
-          "longitude": -120.1690616302915
-        },
-        "high": {
-          "latitude": 39.3255608802915,
-          "longitude": -120.16636366970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "golf_course",
-        "tourist_attraction",
+        "attractions_and_activities",
         "athletic_field",
         "sports_activity_location",
-        "park",
-        "point_of_interest",
-        "establishment"
+        "park"
       ],
       "primaryType": "golf_course",
-      "rating": 4.3,
-      "userRatingCount": 133
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
+      "source": "overture",
       "name": "Elevated Aviation",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.319265699999995,
         "longitude": -120.14508239999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31780711970849,
-          "longitude": -120.1464736302915
-        },
-        "high": {
-          "latitude": 39.32050508029149,
-          "longitude": -120.1437756697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "transportation_service"
       ],
       "primaryType": "airport",
-      "rating": 5,
-      "userRatingCount": 6
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     }
   ],
   "placeKeys": {
@@ -1562,27 +708,24 @@
     "none": [],
     "coworkingRegular": [
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-07-24T17:49:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1590,27 +733,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-07-31T17:42:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1618,27 +758,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-08-07T17:35:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1646,27 +783,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-08-14T17:28:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1674,27 +808,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-08-24T17:21:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1702,27 +833,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-08-31T17:14:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1730,27 +858,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-09-08T17:07:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1758,27 +883,24 @@
         }
       },
       {
-        "googlePlaceId": "ChIJCfYjKUBhmYARht3coRUL4HA",
+        "placeId": "ChIJCfYjKUBhmYARht3coRUL4HA",
         "createdAt": "2026-09-15T17:00:00.000Z",
         "placeName": "Lift Workspace: Cowork, Conference, and Wellness Center",
-        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, USA",
+        "placeAddress": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
         "placePrimaryType": "coworking_space",
         "placeTypes": [
           "coworking_space",
-          "fitness_center",
+          "gym",
           "wellness_center",
           "parking_lot",
           "parking",
           "community_center",
-          "gym",
           "real_estate_agency",
           "event_venue",
           "transportation_service",
           "sports_activity_location",
           "health",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "professional_services"
         ],
         "location": {
           "latitude": 39.3185864,
@@ -1795,13 +917,7 @@
       "fixAgeSeconds": 5,
       "history": "none",
       "expect": {
-        "suggested": null,
-        "rankedAbove": [
-          [
-            "lift",
-            "nationalCarRental"
-          ]
-        ]
+        "suggested": null
       }
     },
     {

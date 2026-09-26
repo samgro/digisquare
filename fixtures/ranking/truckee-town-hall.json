@@ -1,1496 +1,680 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "name": "truckee-town-hall",
-  "description": "Standing outside the council chambers at Truckee Town Hall. Google lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
-  "recordedAt": "2026-09-24T00:12:53.885Z",
+  "description": "Standing outside the council chambers at Truckee Town Hall. The data lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
+  "recordedAt": null,
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 39.316962,
     "longitude": -120.146008,
     "horizontalAccuracy": 30
   },
-  "google": {
-    "largeVenues": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "POPULARITY",
-        "includedTypes": [
-          "airport",
-          "stadium",
-          "university",
-          "amusement_park",
-          "zoo",
-          "ski_resort",
-          "golf_course",
-          "national_park",
-          "state_park",
-          "park"
-        ],
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 39.316962,
-              "longitude": -120.146008
-            },
-            "radius": 2000
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
-            "types": [
-              "airport",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3195165,
-              "longitude": -120.14499269999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.317974569708504,
-                "longitude": -120.1465016302915
-              },
-              "high": {
-                "latitude": 39.3206725302915,
-                "longitude": -120.14380366970852
-              }
-            },
-            "rating": 4.5,
-            "userRatingCount": 93,
-            "displayName": {
-              "text": "Truckee Tahoe Airport",
-              "languageCode": "en"
-            },
-            "primaryType": "airport"
-          },
-          {
-            "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
-            "types": [
-              "park",
-              "tourist_attraction",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "12200 Joerger Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3292632,
-              "longitude": -120.15625539999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.32800211970851,
-                "longitude": -120.15758223029148
-              },
-              "high": {
-                "latitude": 39.3307000802915,
-                "longitude": -120.1548842697085
-              }
-            },
-            "rating": 4.7,
-            "userRatingCount": 167,
-            "displayName": {
-              "text": "Riverview Sports Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
-            "types": [
-              "park",
-              "non_profit_organization",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "12200 Joerger Dr, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3298561,
-              "longitude": -120.1572441
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.32828206970851,
-                "longitude": -120.1584364802915
-              },
-              "high": {
-                "latitude": 39.33098003029151,
-                "longitude": -120.1557385197085
-              }
-            },
-            "rating": 4.9,
-            "userRatingCount": 115,
-            "displayName": {
-              "text": "Riverview Bike Park",
-              "languageCode": "en"
-            },
-            "primaryType": "park"
-          },
-          {
-            "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
-            "types": [
-              "airport",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.319265699999995,
-              "longitude": -120.14508239999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31780711970849,
-                "longitude": -120.1464736302915
-              },
-              "high": {
-                "latitude": 39.32050508029149,
-                "longitude": -120.1437756697085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 6,
-            "displayName": {
-              "text": "Elevated Aviation",
-              "languageCode": "en"
-            },
-            "primaryType": "airport"
-          }
-        ]
-      }
-    },
-    "distance": {
-      "request": {
-        "maxResultCount": 20,
-        "rankPreference": "DISTANCE",
-        "locationRestriction": {
-          "circle": {
-            "center": {
-              "latitude": 39.316962,
-              "longitude": -120.146008
-            },
-            "radius": 1500
-          }
-        }
-      },
-      "response": {
-        "places": [
-          {
-            "id": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
-            "types": [
-              "government_office",
-              "police",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3168657,
-              "longitude": -120.14598459999999
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315632619708495,
-                "longitude": -120.14746868029148
-              },
-              "high": {
-                "latitude": 39.318330580291494,
-                "longitude": -120.1447707197085
-              }
-            },
-            "rating": 3.8,
-            "userRatingCount": 27,
-            "displayName": {
-              "text": "Truckee Police Department",
-              "languageCode": "en"
-            },
-            "primaryType": "government_office"
-          },
-          {
-            "id": "ChIJoaqkkXVhmYAR81eoce-A2Bk",
-            "types": [
-              "government_office",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Keep Truckee Green",
-              "languageCode": "en"
-            },
-            "primaryType": "government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARUf0DzdWiRbk",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Truckee Engineering Department",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJe_1ZJbjfm4ARkLzrF8ghx3Y",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "rating": 3.7,
-            "userRatingCount": 3,
-            "displayName": {
-              "text": "Truckee Planning Department",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARB6TjIBwaSoM",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "association_or_organization",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Truckee Town Redevelopment",
-              "languageCode": "en"
-            },
-            "primaryType": "association_or_organization"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARUtBhW1WNhpQ",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Truckee Town Human Resources",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARrExesWHRIQA",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Truckee Town Engineer",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARmm3dcVwxJhY",
-            "types": [
-              "general_contractor",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Public Works Department",
-              "languageCode": "en"
-            },
-            "primaryType": "general_contractor"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYAR2psVNlEPYb4",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Truckee Encroachment Permits",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARPxUgkLaIUVA",
-            "types": [
-              "accounting",
-              "finance",
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Finance Department",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARuW7aywQ2t94",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316905399999996,
-              "longitude": -120.1461501
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315622769708504,
-                "longitude": -120.1476433802915
-              },
-              "high": {
-                "latitude": 39.318320730291504,
-                "longitude": -120.1449454197085
-              }
-            },
-            "displayName": {
-              "text": "Truckee Town Facilities",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
-            "types": [
-              "city_hall",
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.31685470000001,
-              "longitude": -120.1461822
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31557321970851,
-                "longitude": -120.14767803029149
-              },
-              "high": {
-                "latitude": 39.31827118029151,
-                "longitude": -120.1449800697085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Truckee Town Hall & Town Clerk",
-              "languageCode": "en"
-            },
-            "primaryType": "city_hall"
-          },
-          {
-            "id": "ChIJuf3q4IphmYARYQ6NMwRJ73w",
-            "types": [
-              "consultant",
-              "association_or_organization",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3168007,
-              "longitude": -120.1462009
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315523069708505,
-                "longitude": -120.14770513029148
-              },
-              "high": {
-                "latitude": 39.3182210302915,
-                "longitude": -120.1450071697085
-              }
-            },
-            "rating": 3,
-            "userRatingCount": 1,
-            "displayName": {
-              "text": "Truckee Chamber of Commerce - Administration Offices",
-              "languageCode": "en"
-            },
-            "primaryType": "association_or_organization"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARhGSgf0nmIx8",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd #202, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3168007,
-              "longitude": -120.1462009
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.315523069708505,
-                "longitude": -120.14770513029148
-              },
-              "high": {
-                "latitude": 39.3182210302915,
-                "longitude": -120.1450071697085
-              }
-            },
-            "displayName": {
-              "text": "Truckee Town Code Compliance",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJqwSYds1hmYARkPz4Cxu8Ajk",
-            "types": [
-              "electric_vehicle_charging_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316798,
-              "longitude": -120.146344
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3154964197085,
-                "longitude": -120.1477961302915
-              },
-              "high": {
-                "latitude": 39.3181943802915,
-                "longitude": -120.1450981697085
-              }
-            },
-            "displayName": {
-              "text": "ChargePoint Charging Station",
-              "languageCode": "en"
-            },
-            "primaryType": "electric_vehicle_charging_station"
-          },
-          {
-            "id": "ChIJdfVNbs1hmYARMbjicKB-uPE",
-            "types": [
-              "bus_stop",
-              "transit_stop",
-              "transit_station",
-              "transportation_service",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3172465,
-              "longitude": -120.14646320000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.3159216697085,
-                "longitude": -120.14778883029147
-              },
-              "high": {
-                "latitude": 39.3186196302915,
-                "longitude": -120.14509086970848
-              }
-            },
-            "displayName": {
-              "text": "Airport Rd and Truckee Town Hall",
-              "languageCode": "en"
-            },
-            "primaryType": "bus_stop"
-          },
-          {
-            "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
-            "types": [
-              "fire_station",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10277 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3175662,
-              "longitude": -120.14602310000001
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.316137169708504,
-                "longitude": -120.1474220302915
-              },
-              "high": {
-                "latitude": 39.318835130291504,
-                "longitude": -120.1447240697085
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 2,
-            "displayName": {
-              "text": "Truckee Fire Protection District Station 96",
-              "languageCode": "en"
-            },
-            "primaryType": "fire_station"
-          },
-          {
-            "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3175822,
-              "longitude": -120.1458042
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.316146319708494,
-                "longitude": -120.14696978029149
-              },
-              "high": {
-                "latitude": 39.31884428029149,
-                "longitude": -120.14427181970851
-              }
-            },
-            "displayName": {
-              "text": "Truckee Parking District",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJjxd7Dc1hmYARrlQyDTtBX1g",
-            "types": [
-              "local_government_office",
-              "government_office",
-              "point_of_interest",
-              "service",
-              "establishment"
-            ],
-            "formattedAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.3175822,
-              "longitude": -120.1458042
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.316146319708494,
-                "longitude": -120.14696978029149
-              },
-              "high": {
-                "latitude": 39.31884428029149,
-                "longitude": -120.14427181970851
-              }
-            },
-            "displayName": {
-              "text": "Truckee Town Safety & Building",
-              "languageCode": "en"
-            },
-            "primaryType": "local_government_office"
-          },
-          {
-            "id": "ChIJyZOme81hmYARH3HPxCwOCbU",
-            "types": [
-              "educational_institution",
-              "point_of_interest",
-              "establishment"
-            ],
-            "formattedAddress": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
-            "location": {
-              "latitude": 39.316849,
-              "longitude": -120.146902
-            },
-            "viewport": {
-              "low": {
-                "latitude": 39.31549416970851,
-                "longitude": -120.14823733029148
-              },
-              "high": {
-                "latitude": 39.3181921302915,
-                "longitude": -120.14553936970849
-              }
-            },
-            "rating": 5,
-            "userRatingCount": 19,
-            "displayName": {
-              "text": "TRUCKEE FLIGHT TRAINING",
-              "languageCode": "en"
-            },
-            "primaryType": "educational_institution"
-          }
-        ]
-      }
-    }
-  },
   "places": [
     {
       "id": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
+      "source": "overture",
       "name": "Truckee Police Department",
-      "address": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd #3306",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3168657,
         "longitude": -120.14598459999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315632619708495,
-          "longitude": -120.14746868029148
-        },
-        "high": {
-          "latitude": 39.318330580291494,
-          "longitude": -120.1447707197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "government_office",
+        "government_services",
         "police",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
-      "primaryType": "government_office",
-      "rating": 3.8,
-      "userRatingCount": 27
+      "primaryType": "government_services",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJoaqkkXVhmYAR81eoce-A2Bk",
+      "source": "overture",
       "name": "Keep Truckee Green",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "government_office",
-        "point_of_interest",
-        "establishment"
+        "government_services"
       ],
-      "primaryType": "government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "government_services",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARUf0DzdWiRbk",
+      "source": "overture",
       "name": "Truckee Engineering Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJe_1ZJbjfm4ARkLzrF8ghx3Y",
+      "source": "overture",
       "name": "Truckee Planning Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": 3.7,
-      "userRatingCount": 3
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARB6TjIBwaSoM",
+      "source": "overture",
       "name": "Truckee Town Redevelopment",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association",
+        "local_and_state_government_offices",
+        "government_services"
       ],
-      "primaryType": "association_or_organization",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "public_and_government_association",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARUtBhW1WNhpQ",
+      "source": "overture",
       "name": "Truckee Town Human Resources",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": 5,
-      "userRatingCount": 1
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARrExesWHRIQA",
+      "source": "overture",
       "name": "Truckee Town Engineer",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARmm3dcVwxJhY",
+      "source": "overture",
       "name": "Public Works Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "general_contractor",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "professional_services"
       ],
       "primaryType": "general_contractor",
-      "rating": 5,
-      "userRatingCount": 1
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYAR2psVNlEPYb4",
+      "source": "overture",
       "name": "Truckee Encroachment Permits",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARPxUgkLaIUVA",
+      "source": "overture",
       "name": "Finance Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
+        "local_and_state_government_offices",
         "accounting",
-        "finance",
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "financial_service",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARuW7aywQ2t94",
+      "source": "overture",
       "name": "Truckee Town Facilities",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316905399999996,
         "longitude": -120.1461501
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315622769708504,
-          "longitude": -120.1476433802915
-        },
-        "high": {
-          "latitude": 39.318320730291504,
-          "longitude": -120.1449454197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+      "source": "overture",
       "name": "Truckee Town Hall & Town Clerk",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.31685470000001,
         "longitude": -120.1461822
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31557321970851,
-          "longitude": -120.14767803029149
-        },
-        "high": {
-          "latitude": 39.31827118029151,
-          "longitude": -120.1449800697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "city_hall",
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "town_hall",
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "city_hall",
-      "rating": 5,
-      "userRatingCount": 1
+      "primaryType": "town_hall",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJuf3q4IphmYARYQ6NMwRJ73w",
+      "source": "overture",
       "name": "Truckee Chamber of Commerce - Administration Offices",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3168007,
         "longitude": -120.1462009
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315523069708505,
-          "longitude": -120.14770513029148
-        },
-        "high": {
-          "latitude": 39.3182210302915,
-          "longitude": -120.1450071697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "consultant",
-        "association_or_organization",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "public_and_government_association",
+        "professional_services"
       ],
-      "primaryType": "association_or_organization",
-      "rating": 3,
-      "userRatingCount": 1
+      "primaryType": "public_and_government_association",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARhGSgf0nmIx8",
+      "source": "overture",
       "name": "Truckee Town Code Compliance",
-      "address": "10183 Truckee Airport Rd #202, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd #202, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd #202",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3168007,
         "longitude": -120.1462009
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.315523069708505,
-          "longitude": -120.14770513029148
-        },
-        "high": {
-          "latitude": 39.3182210302915,
-          "longitude": -120.1450071697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJqwSYds1hmYARkPz4Cxu8Ajk",
+      "source": "overture",
       "name": "ChargePoint Charging Station",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.316798,
         "longitude": -120.146344
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3154964197085,
-          "longitude": -120.1477961302915
-        },
-        "high": {
-          "latitude": 39.3181943802915,
-          "longitude": -120.1450981697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "electric_vehicle_charging_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "ev_charging_station",
+        "transportation_service"
       ],
-      "primaryType": "electric_vehicle_charging_station",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "ev_charging_station",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJdfVNbs1hmYARMbjicKB-uPE",
+      "source": "overture",
       "name": "Airport Rd and Truckee Town Hall",
-      "address": "Truckee, CA 96161, USA",
+      "address": "Truckee, CA 96161, US",
+      "street": null,
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3172465,
         "longitude": -120.14646320000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.3159216697085,
-          "longitude": -120.14778883029147
-        },
-        "high": {
-          "latitude": 39.3186196302915,
-          "longitude": -120.14509086970848
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "bus_stop",
+        "bus_station",
         "transit_stop",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "public_transportation",
+        "transportation_service"
       ],
-      "primaryType": "bus_stop",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "bus_station",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
+      "source": "overture",
       "name": "Truckee Fire Protection District Station 96",
-      "address": "10277 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10277 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10277 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3175662,
         "longitude": -120.14602310000001
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.316137169708504,
-          "longitude": -120.1474220302915
-        },
-        "high": {
-          "latitude": 39.318835130291504,
-          "longitude": -120.1447240697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "fire_station",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "government_services",
+        "professional_services"
       ],
       "primaryType": "fire_station",
-      "rating": 5,
-      "userRatingCount": 2
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
+      "source": "overture",
       "name": "Truckee Parking District",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3175822,
         "longitude": -120.1458042
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.316146319708494,
-          "longitude": -120.14696978029149
-        },
-        "high": {
-          "latitude": 39.31884428029149,
-          "longitude": -120.14427181970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJjxd7Dc1hmYARrlQyDTtBX1g",
+      "source": "overture",
       "name": "Truckee Town Safety & Building",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3175822,
         "longitude": -120.1458042
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.316146319708494,
-          "longitude": -120.14696978029149
-        },
-        "high": {
-          "latitude": 39.31884428029149,
-          "longitude": -120.14427181970851
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "local_government_office",
-        "government_office",
-        "point_of_interest",
-        "service",
-        "establishment"
+        "local_and_state_government_offices",
+        "government_services",
+        "professional_services"
       ],
-      "primaryType": "local_government_office",
-      "rating": null,
-      "userRatingCount": null
+      "primaryType": "local_and_state_government_offices",
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJyZOme81hmYARH3HPxCwOCbU",
+      "source": "overture",
       "name": "TRUCKEE FLIGHT TRAINING",
       "address": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
+      "street": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
+      "locality": null,
+      "region": null,
+      "postcode": null,
+      "country": null,
       "location": {
         "latitude": 39.316849,
         "longitude": -120.146902
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31549416970851,
-          "longitude": -120.14823733029148
-        },
-        "high": {
-          "latitude": 39.3181921302915,
-          "longitude": -120.14553936970849
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
-        "educational_institution",
-        "point_of_interest",
-        "establishment"
+        "educational_institution"
       ],
       "primaryType": "educational_institution",
-      "rating": 5,
-      "userRatingCount": 19
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
+      "source": "overture",
       "name": "Truckee Tahoe Airport",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3195165,
         "longitude": -120.14499269999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.317974569708504,
-          "longitude": -120.1465016302915
-        },
-        "high": {
-          "latitude": 39.3206725302915,
-          "longitude": -120.14380366970852
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "transportation_service"
       ],
       "primaryType": "airport",
-      "rating": 4.5,
-      "userRatingCount": 93
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
+      "source": "overture",
       "name": "Riverview Sports Park",
-      "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
+      "address": "12200 Joerger Dr, Truckee, CA 96161, US",
+      "street": "12200 Joerger Dr",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3292632,
         "longitude": -120.15625539999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.32800211970851,
-          "longitude": -120.15758223029148
-        },
-        "high": {
-          "latitude": 39.3307000802915,
-          "longitude": -120.1548842697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
-        "tourist_attraction",
-        "point_of_interest",
-        "establishment"
+        "attractions_and_activities"
       ],
       "primaryType": "park",
-      "rating": 4.7,
-      "userRatingCount": 167
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
+      "source": "overture",
       "name": "Riverview Bike Park",
-      "address": "12200 Joerger Dr, Truckee, CA 96161, USA",
+      "address": "12200 Joerger Dr, Truckee, CA 96161, US",
+      "street": "12200 Joerger Dr",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.3298561,
         "longitude": -120.1572441
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.32828206970851,
-          "longitude": -120.1584364802915
-        },
-        "high": {
-          "latitude": 39.33098003029151,
-          "longitude": -120.1557385197085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "park",
         "non_profit_organization",
-        "association_or_organization",
-        "point_of_interest",
-        "establishment"
+        "public_and_government_association"
       ],
       "primaryType": "park",
-      "rating": 4.9,
-      "userRatingCount": 115
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     },
     {
       "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
+      "source": "overture",
       "name": "Elevated Aviation",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, USA",
+      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10356 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "US-CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
         "latitude": 39.319265699999995,
         "longitude": -120.14508239999999
       },
-      "viewport": {
-        "low": {
-          "latitude": 39.31780711970849,
-          "longitude": -120.1464736302915
-        },
-        "high": {
-          "latitude": 39.32050508029149,
-          "longitude": -120.1437756697085
-        }
-      },
+      "extent": null,
+      "distanceMeters": null,
       "types": [
         "airport",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
+        "transportation_service"
       ],
       "primaryType": "airport",
-      "rating": 5,
-      "userRatingCount": 6
+      "checkinCount": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
     }
   ],
   "placeKeys": {
@@ -1503,18 +687,16 @@
     "none": [],
     "councilRegular": [
       {
-        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-06-24T17:35:00.000Z",
         "placeName": "Truckee Town Hall & Town Clerk",
-        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-        "placePrimaryType": "city_hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+        "placePrimaryType": "town_hall",
         "placeTypes": [
-          "city_hall",
-          "local_government_office",
-          "government_office",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "town_hall",
+          "local_and_state_government_offices",
+          "government_services",
+          "professional_services"
         ],
         "location": {
           "latitude": 39.31685470000001,
@@ -1522,18 +704,16 @@
         }
       },
       {
-        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-07-09T17:28:00.000Z",
         "placeName": "Truckee Town Hall & Town Clerk",
-        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-        "placePrimaryType": "city_hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+        "placePrimaryType": "town_hall",
         "placeTypes": [
-          "city_hall",
-          "local_government_office",
-          "government_office",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "town_hall",
+          "local_and_state_government_offices",
+          "government_services",
+          "professional_services"
         ],
         "location": {
           "latitude": 39.31685470000001,
@@ -1541,18 +721,16 @@
         }
       },
       {
-        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-07-24T17:21:00.000Z",
         "placeName": "Truckee Town Hall & Town Clerk",
-        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-        "placePrimaryType": "city_hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+        "placePrimaryType": "town_hall",
         "placeTypes": [
-          "city_hall",
-          "local_government_office",
-          "government_office",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "town_hall",
+          "local_and_state_government_offices",
+          "government_services",
+          "professional_services"
         ],
         "location": {
           "latitude": 39.31685470000001,
@@ -1560,18 +738,16 @@
         }
       },
       {
-        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-08-07T17:14:00.000Z",
         "placeName": "Truckee Town Hall & Town Clerk",
-        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-        "placePrimaryType": "city_hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+        "placePrimaryType": "town_hall",
         "placeTypes": [
-          "city_hall",
-          "local_government_office",
-          "government_office",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "town_hall",
+          "local_and_state_government_offices",
+          "government_services",
+          "professional_services"
         ],
         "location": {
           "latitude": 39.31685470000001,
@@ -1579,18 +755,16 @@
         }
       },
       {
-        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-08-21T17:07:00.000Z",
         "placeName": "Truckee Town Hall & Town Clerk",
-        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-        "placePrimaryType": "city_hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+        "placePrimaryType": "town_hall",
         "placeTypes": [
-          "city_hall",
-          "local_government_office",
-          "government_office",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "town_hall",
+          "local_and_state_government_offices",
+          "government_services",
+          "professional_services"
         ],
         "location": {
           "latitude": 39.31685470000001,
@@ -1598,18 +772,16 @@
         }
       },
       {
-        "googlePlaceId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
         "createdAt": "2026-09-07T17:00:00.000Z",
         "placeName": "Truckee Town Hall & Town Clerk",
-        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, USA",
-        "placePrimaryType": "city_hall",
+        "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+        "placePrimaryType": "town_hall",
         "placeTypes": [
-          "city_hall",
-          "local_government_office",
-          "government_office",
-          "point_of_interest",
-          "service",
-          "establishment"
+          "town_hall",
+          "local_and_state_government_offices",
+          "government_services",
+          "professional_services"
         ],
         "location": {
           "latitude": 39.31685470000001,

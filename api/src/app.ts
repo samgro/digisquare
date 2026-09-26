@@ -1,5 +1,7 @@
 import { Hono } from "hono";
 import type { AppEnv } from "./types.js";
+import { currentBuildIdentity } from "./lib/build-identity.js";
+import { buildGate } from "./middleware/build-gate.js";
 import { auth } from "./routes/auth.js";
 import { places } from "./routes/places.js";
 import { users } from "./routes/users.js";
@@ -10,7 +12,14 @@ import { testUsers } from "./routes/test-users.js";
 
 export const app = new Hono<AppEnv>();
 
-app.get("/", (context) => context.json({ status: "ok" }));
+// First, so a Debug simulator build from another checkout is refused before
+// any route can touch the database.
+app.use("*", buildGate);
+
+app.get("/", async (context) => {
+  const build = await currentBuildIdentity();
+  return context.json({ status: "ok", build: build ? { branch: build.branch, commit: build.commit } : null });
+});
 // Open. Everything under /users, /checkins, /friends and /notifications
 // applies requireAuth inside its own router.
 app.route("/auth", auth);
