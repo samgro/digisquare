@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
+import { z } from "zod";
 
 /**
  * Where DATABASE_URL points and which file said so, for printing before a
@@ -58,14 +59,76 @@ export function describeDatabaseTarget(databaseUrl = process.env.DATABASE_URL): 
 }
 
 /** One line for a terminal, never including credentials. */
-export function formatDatabaseTarget(target: DatabaseTarget | null): string {
+export function formatDatabaseTarget(target: DatabaseTarget | null, branch?: NeonBranch | null): string {
   if (!target) {
     return "Database: DATABASE_URL is not set";
   }
-  const where = target.neonEndpoint ? `Neon endpoint ${target.neonEndpoint}` : target.host;
+  let where = target.neonEndpoint ? `Neon endpoint ${target.neonEndpoint}` : target.host;
+  if (branch) {
+    const role = branch.isDefault ? ", the default branch" : "";
+    where = `Neon branch "${branch.branchName}"${role} of project ${branch.projectName} (${target.neonEndpoint})`;
+  }
   const from =
     target.source === ".env"
       ? "from api/.env — in a worktree that is the main checkout's database"
       : `from ${target.source}`;
   return `Database: ${where}, ${target.database} (${from})`;
+}
+
+export interface NeonBranch {
+  projectName: string;
+  branchName: string;
+  /** The project's default (production) branch, as opposed to a throwaway. */
+  isDefault: boolean;
+}
+
+const NEON_API_BASE_URL = "https://console.neon.tech/api/v2";
+
+const projectsSchema = z.object({ projects: z.array(z.object({ id: z.string(), name: z.string() })) });
+const endpointsSchema = z.object({
+  endpoints: z.array(z.object({ id: z.string(), branch_id: z.string() })),
+});
+const branchSchema = z.object({
+  branch: z.object({ name: z.string(), default: z.boolean().optional() }),
+});
+
+async function neonApi<Shape>(path: string, apiKey: string, schema: z.ZodType<Shape>): Promise<Shape> {
+  const response = await fetch(`${NEON_API_BASE_URL}${path}`, {
+    headers: { Authorization: `Bearer ${apiKey}`, Accept: "application/json" },
+  });
+  if (!response.ok) {
+    throw new Error(`Neon API ${path} answered ${response.status}`);
+  }
+  return schema.parse(await response.json());
+}
+
+/**
+ * The branch behind a Neon endpoint, by name, from Neon's API. The name is
+ * not in the connection string, so this needs an API key (Account settings
+ * → API keys in the Neon console). Searches every project the key can see
+ * unless `projectId` narrows it. Null when no project has the endpoint.
+ */
+export async function lookupNeonBranch(
+  endpointId: string,
+  apiKey: string,
+  projectId?: string,
+): Promise<NeonBranch | null> {
+  const projects = projectId
+    ? [{ id: projectId, name: projectId }]
+    : (await neonApi("/projects", apiKey, projectsSchema)).projects;
+
+  for (const project of projects) {
+    const { endpoints } = await neonApi(`/projects/${project.id}/endpoints`, apiKey, endpointsSchema);
+    const endpoint = endpoints.find((candidate) => candidate.id === endpointId);
+    if (!endpoint) {
+      continue;
+    }
+    const { branch } = await neonApi(
+      `/projects/${project.id}/branches/${endpoint.branch_id}`,
+      apiKey,
+      branchSchema,
+    );
+    return { projectName: project.name, branchName: branch.name, isDefault: branch.default ?? false };
+  }
+  return null;
 }
