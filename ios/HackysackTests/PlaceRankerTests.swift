@@ -450,12 +450,12 @@ struct PlaceRankerModelTests {
 
     @Test("A type prior comes from the primary type when there is one")
     func typePriorUsesPrimaryType() {
-        let townHall = place("town-hall", north: 0, east: 0, primaryType: "town_hall", types: ["town_hall", "local_and_state_government_offices"])
-        let department = place("planning", north: 0, east: 0, primaryType: "local_and_state_government_offices", types: ["local_and_state_government_offices"])
-        let untyped = place("office", north: 0, east: 0, primaryType: nil, types: ["corporate_office"])
+        let garageWithShop = place("garage-shop", north: 0, east: 0, primaryType: "convenience_store", types: ["convenience_store", "parking"])
+        let garage = place("garage", north: 0, east: 0, primaryType: "parking", types: ["parking"])
+        let untyped = place("lot", north: 0, east: 0, primaryType: nil, types: ["parking"])
 
-        #expect(PlaceFootprint.typePrior(for: townHall) == 0)
-        #expect(PlaceFootprint.typePrior(for: department) < 0)
+        #expect(PlaceFootprint.typePrior(for: garageWithShop) == 0)
+        #expect(PlaceFootprint.typePrior(for: garage) < 0)
         #expect(PlaceFootprint.typePrior(for: untyped) < 0)
     }
 

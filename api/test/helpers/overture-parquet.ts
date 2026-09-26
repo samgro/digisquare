@@ -16,9 +16,20 @@ interface SampleRow {
   websites?: string[] | null;
   phones?: string[] | null;
   operating_status?: string | null;
+  basic_category?: string | null;
+  sources?: { property?: string | null; dataset?: string | null; record_id?: string | null; update_time?: string | null }[] | null;
   subtype?: string;
   class?: string;
   bbox: { xmin: number; xmax: number; ymin: number; ymax: number };
+}
+
+/** One bridge-file row: a source record that went into the place `id`. */
+interface SampleBridgeRow {
+  id: string;
+  dataset: string;
+  provider: string;
+  record_id: string;
+  update_time: string;
 }
 
 export interface OvertureSamples {
@@ -27,6 +38,7 @@ export interface OvertureSamples {
   land_use: SampleRow[];
   infrastructure: SampleRow[];
   division_area: SampleRow[];
+  bridge: SampleBridgeRow[];
 }
 
 /** Real rows from the 2026-09-23 release, trimmed to a handful. */
@@ -79,19 +91,30 @@ const NAMES_TYPE = "STRUCT(\"primary\" VARCHAR)";
 const TAXONOMY_TYPE = "STRUCT(\"primary\" VARCHAR, hierarchy VARCHAR[], alternates VARCHAR[])";
 const ADDRESS_TYPE = "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]";
 const BBOX_TYPE = "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)";
+// The release's `sources` struct has more fields (license, confidence,
+// between...); only the ones the parser reads are written.
+const SOURCES_TYPE = "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR)[]";
 
 function placeSelect(row: SampleRow): string {
   const names = row.names ? { primary: row.names.primary ?? null } : null;
   const taxonomy = row.taxonomy
     ? { primary: row.taxonomy.primary ?? null, hierarchy: row.taxonomy.hierarchy ?? null, alternates: row.taxonomy.alternates ?? null }
     : null;
+  const sources = row.sources?.map((source) => ({
+    property: source.property ?? null,
+    dataset: source.dataset ?? null,
+    record_id: source.record_id ?? null,
+    update_time: source.update_time ?? null,
+  }));
   return `SELECT ${literal(row.id)} AS id, from_hex(${literal(row.geometry.__wkb_hex__)}) AS geometry,
     ${structLiteral(names, NAMES_TYPE)} AS names, ${structLiteral(taxonomy, TAXONOMY_TYPE)} AS taxonomy,
+    ${literal(row.basic_category ?? null)}::VARCHAR AS basic_category,
     ${literal(row.confidence ?? null)}::DOUBLE AS confidence,
     ${row.addresses ? literal(row.addresses) : "NULL"}::${ADDRESS_TYPE} AS addresses,
     ${row.websites ? literal(row.websites) : "NULL"}::VARCHAR[] AS websites,
     ${row.phones ? literal(row.phones) : "NULL"}::VARCHAR[] AS phones,
     ${literal(row.operating_status ?? null)}::VARCHAR AS operating_status,
+    ${sources ? literal(sources) : "NULL"}::${SOURCES_TYPE} AS sources,
     ${structLiteral(row.bbox, BBOX_TYPE)} AS bbox`;
 }
 
@@ -129,10 +152,20 @@ export async function writeSampleRelease(samples: OvertureSamples = loadOverture
          ${structLiteral(row.bbox, BBOX_TYPE)} AS bbox`,
     ),
   );
+  await write(
+    "bridge-places-place",
+    samples.bridge.map(
+      (row) =>
+        `SELECT ${literal(row.id)}::VARCHAR AS id, ${literal(row.dataset)}::VARCHAR AS dataset,
+         ${literal(row.provider)}::VARCHAR AS provider, ${literal(row.record_id)}::VARCHAR AS record_id,
+         ${literal(row.update_time)}::VARCHAR AS update_time`,
+    ),
+  );
   connection.closeSync();
   return {
     release: samples.release,
     remote: false,
     parquetGlob: (theme, type) => path.join(directory, `${theme}-${type}.parquet`),
+    bridgeGlob: (theme, type) => path.join(directory, `bridge-${theme}-${type}.parquet`),
   };
 }

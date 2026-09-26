@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { overtureCategories, parseOverturePlace, type OverturePlaceFeature } from "./overture.js";
+import { CATEGORY_BOOST, UNCATEGORIZED_PENALTY } from "./place-quality.js";
 
 function feature(overrides: Partial<OverturePlaceFeature> = {}): OverturePlaceFeature {
   return {
@@ -13,9 +14,10 @@ function feature(overrides: Partial<OverturePlaceFeature> = {}): OverturePlaceFe
       names: { primary: "Blue Bottle Coffee" },
       taxonomy: {
         primary: "coffee_shop",
-        hierarchy: ["eat_and_drink", "cafe", "coffee_shop"],
+        hierarchy: ["food_and_drink", "non_alcoholic_beverage_venue", "coffee_shop"],
         alternates: ["cafe", "coffee_shop"],
       },
+      basic_category: "coffee_shop",
       confidence: 0.9527,
       websites: ["https://bluebottlecoffee.com"],
       phones: ["+14152520800"],
@@ -23,6 +25,10 @@ function feature(overrides: Partial<OverturePlaceFeature> = {}): OverturePlaceFe
         { freeform: "66 Mint St", locality: "San Francisco", region: "US-CA", postcode: "94103", country: "us" },
       ],
       operating_status: "open",
+      sources: [
+        { property: "", dataset: "meta", record_id: "268437223252604", update_time: "2026-09-14T00:00:00.000Z" },
+        { property: "/properties/confidence", dataset: "Overture", record_id: null, update_time: "2026-09-17T22:52:12Z" },
+      ],
       ...overrides.properties,
     } as OverturePlaceFeature["properties"],
     ...overrides,
@@ -38,6 +44,8 @@ describe("parseOverturePlace", () => {
       name: "Blue Bottle Coffee",
       primaryType: "coffee_shop",
       types: ["coffee_shop", "cafe"],
+      basicCategory: "coffee_shop",
+      taxonomyHierarchy: ["food_and_drink", "non_alcoholic_beverage_venue", "coffee_shop"],
       addressStreet: "66 Mint St",
       addressLocality: "San Francisco",
       addressRegion: "US-CA",
@@ -48,6 +56,46 @@ describe("parseOverturePlace", () => {
       confidence: 0.9527,
       website: "https://bluebottlecoffee.com",
       phone: "+14152520800",
+      sourceDataset: "meta",
+      sourceUpdatedAt: new Date("2026-09-14T00:00:00.000Z"),
+      operatingStatus: "open",
+      prior: CATEGORY_BOOST,
+    });
+  });
+
+  it("takes the provider from the sources entry for the whole record", () => {
+    const parsed = parseOverturePlace(
+      feature({
+        properties: {
+          ...feature().properties,
+          sources: [
+            { property: "/properties/confidence", dataset: "Overture", update_time: "2026-09-17T22:52:12Z" },
+            { property: null, dataset: "Microsoft", update_time: "2016-04-12" },
+          ],
+        },
+      }),
+    );
+    expect(parsed.row?.sourceDataset).toBe("Microsoft");
+    expect(parsed.row?.sourceUpdatedAt).toEqual(new Date("2016-04-12"));
+  });
+
+  it("scores the row from its signals", () => {
+    const registryRecord = parseOverturePlace(
+      feature({
+        properties: {
+          ...feature().properties,
+          names: { primary: "Jesus Gabriel Yanez" },
+          taxonomy: { primary: "health_care", hierarchy: ["health_care"], alternates: null },
+          basic_category: "health_care",
+          sources: [{ property: "", dataset: "BrightQuery", update_time: "2026-09-17T20:01:51.007Z" }],
+        },
+      }),
+    );
+    expect(registryRecord.row).toMatchObject({
+      sourceDataset: "BrightQuery",
+      taxonomyHierarchy: ["health_care"],
+      // Registry feed, no real category, and a practitioner category.
+      prior: -2 - 3 - 1.5,
     });
   });
 
@@ -75,6 +123,8 @@ describe("parseOverturePlace", () => {
       name: "Somewhere",
       primaryType: null,
       types: [],
+      basicCategory: null,
+      taxonomyHierarchy: [],
       addressStreet: null,
       addressCountry: null,
       confidence: null,
@@ -82,6 +132,10 @@ describe("parseOverturePlace", () => {
       phone: null,
       latitude: 0,
       longitude: 0,
+      sourceDataset: null,
+      sourceUpdatedAt: null,
+      operatingStatus: null,
+      prior: UNCATEGORIZED_PENALTY,
     });
   });
 

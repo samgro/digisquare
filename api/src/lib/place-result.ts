@@ -30,6 +30,8 @@ export interface PlaceResult {
   /** Overture category codes, the primary one first. */
   types: string[];
   primaryType: string | null;
+  /** Overture's coarse category ("restaurant", "financial_service"), when known. */
+  basicCategory: string | null;
   /**
    * The source's own label for the primary category, when it has one: a
    * Foursquare venue's "Hotpot Restaurant". Null for Overture rows, whose
@@ -38,6 +40,12 @@ export interface PlaceResult {
   categoryName: string | null;
   /** Checkins here from everyone, the app's stand-in for popularity. */
   checkinCount: number;
+  /**
+   * Log-odds that this is somewhere anyone checks in, from the record's
+   * quality, its category and how many providers vouch for it (see
+   * place-quality.ts). The ranker adds it to its score. 0 when unknown.
+   */
+  prior: number;
   /** Only its creator and their friends can find it. */
   isPrivate: boolean;
   /** Dropped by a newer Overture release; kept for the checkins that point at it. */
@@ -139,8 +147,10 @@ export function toPlaceResult(place: PlaceCandidate): PlaceResult {
     distanceMeters: place.distanceMeters ?? null,
     types: place.types,
     primaryType: place.primaryType,
+    basicCategory: place.basicCategory,
     categoryName: place.categoryName,
     checkinCount: place.checkinCount,
+    prior: place.prior,
     isPrivate: place.isPrivate,
     retired: place.retiredAt !== null,
     website: place.website,

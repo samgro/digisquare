@@ -37,6 +37,7 @@ function placeRow(overrides: Record<string, unknown> = {}) {
     name: "Costco Wholesale",
     primaryType: "wholesale_store",
     types: ["wholesale_store", "grocery_store"],
+    categoryName: null,
     addressStreet: "450 10th St",
     addressLocality: "San Francisco",
     addressRegion: "US-CA",
@@ -47,6 +48,13 @@ function placeRow(overrides: Record<string, unknown> = {}) {
     confidence: 0.93,
     website: null,
     phone: null,
+    basicCategory: null,
+    taxonomyHierarchy: null,
+    sourceDataset: null,
+    sourceUpdatedAt: null,
+    operatingStatus: null,
+    providerCount: null,
+    prior: 0,
     createdByUserId: null,
     extentOvertureId: null,
     extentAreaSquareMeters: null,
@@ -76,6 +84,7 @@ function rowFromResult(result: PlaceResult) {
     name: result.name,
     primaryType: result.primaryType,
     types: result.types,
+    categoryName: result.categoryName ?? null,
     addressStreet: result.street,
     addressLocality: result.locality,
     addressRegion: result.region,
@@ -85,6 +94,8 @@ function rowFromResult(result: PlaceResult) {
     longitude: result.location?.longitude ?? null,
     website: result.website,
     phone: result.phone,
+    basicCategory: result.basicCategory ?? null,
+    prior: result.prior ?? 0,
     checkinCount: result.checkinCount,
     isPrivate: result.isPrivate,
     retiredAt: result.retired ? new Date("2026-09-01T00:00:00.000Z") : null,
@@ -150,7 +161,10 @@ describe("GET /places?q=", () => {
       distanceMeters: null,
       types: ["wholesale_store", "grocery_store"],
       primaryType: "wholesale_store",
+      basicCategory: null,
+      categoryName: null,
       checkinCount: 2,
+      prior: 0,
       isPrivate: false,
       retired: false,
       website: null,
@@ -343,7 +357,7 @@ describe("GET /places ranking scenarios", () => {
   for (const fixtureName of fixtureNames) {
     it(`replays ${fixtureName} into the recorded places`, async () => {
       const fixture = loadRankingFixture(fixtureName);
-      expect(fixture.schemaVersion).toBe(3);
+      expect(fixture.schemaVersion).toBe(4);
 
       const rows = fixture.places.map(rowFromResult);
       const searchesByDistance = fixture.fix.horizontalAccuracy <= 1000;

@@ -191,6 +191,9 @@ export const foursquareVenues = pgTable("foursquare_venues", {
   // from the category tree Foursquare returned.
   primaryCategoryId: text("primary_category_id"),
   categoryIds: text("category_ids").array(),
+  // The GERS id of Overture's copy of this venue, when the release's bridge
+  // files list the Foursquare record under it (`npm run overture:bridge`).
+  overtureId: text("overture_id"),
   raw: jsonb("raw").notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()
@@ -279,6 +282,27 @@ export const places = pgTable(
     confidence: doublePrecision("confidence"),
     website: text("website"),
     phone: text("phone"),
+
+    // The signals behind `prior`, kept so it can be recomputed and queried
+    // (see lib/place-quality.ts). Overture rows only; the rest stay null.
+    // The provider the record came from ("meta", "BrightQuery", ...) and
+    // that record's update time.
+    sourceDataset: text("source_dataset"),
+    sourceUpdatedAt: timestamp("source_updated_at", { withTimezone: true }),
+    // Overture's coarse category ("restaurant", "financial_service") and
+    // the taxonomy path to the primary category, root first.
+    basicCategory: text("basic_category"),
+    taxonomyHierarchy: text("taxonomy_hierarchy").array(),
+    // "open" or "temporarily_closed"; null when no provider confirmed it.
+    // Permanently closed places are never imported.
+    operatingStatus: text("operating_status"),
+    // How many providers matched this venue in the release's bridge files,
+    // written by `npm run overture:bridge` after an import; null until then.
+    providerCount: integer("provider_count"),
+    // Log-odds that this is somewhere anyone checks in, from the record's
+    // quality and its category, before the corroboration bonus that
+    // `provider_count` earns when the row is read.
+    prior: doublePrecision("prior"),
 
     // Who added a `user` venue. Kept when the account is deleted so other
     // people's checkins there keep a valid place.

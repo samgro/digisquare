@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "name": "truckee-town-hall",
   "description": "Standing outside the council chambers at Truckee Town Hall. The data lists a dozen town departments (police, engineering, planning...) within 25 m of it; every popular place is hundreds of meters away.",
-  "recordedAt": null,
+  "recordedAt": "2026-09-26T15:28:36.535Z",
   "timeZone": "America/Los_Angeles",
   "fix": {
     "latitude": 39.316962,
@@ -11,320 +11,13 @@
   },
   "places": [
     {
-      "id": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
-      "source": "overture",
-      "name": "Truckee Police Department",
-      "address": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd #3306",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.3168657,
-        "longitude": -120.14598459999999
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "government_services",
-        "police",
-        "professional_services"
-      ],
-      "primaryType": "government_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJoaqkkXVhmYAR81eoce-A2Bk",
-      "source": "overture",
-      "name": "Keep Truckee Green",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "government_services"
-      ],
-      "primaryType": "government_services",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARUf0DzdWiRbk",
-      "source": "overture",
-      "name": "Truckee Engineering Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJe_1ZJbjfm4ARkLzrF8ghx3Y",
-      "source": "overture",
-      "name": "Truckee Planning Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARB6TjIBwaSoM",
-      "source": "overture",
-      "name": "Truckee Town Redevelopment",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "public_and_government_association",
-        "local_and_state_government_offices",
-        "government_services"
-      ],
-      "primaryType": "public_and_government_association",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARUtBhW1WNhpQ",
-      "source": "overture",
-      "name": "Truckee Town Human Resources",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARrExesWHRIQA",
-      "source": "overture",
-      "name": "Truckee Town Engineer",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARmm3dcVwxJhY",
-      "source": "overture",
-      "name": "Public Works Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "general_contractor",
-        "professional_services"
-      ],
-      "primaryType": "general_contractor",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYAR2psVNlEPYb4",
-      "source": "overture",
-      "name": "Truckee Encroachment Permits",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARPxUgkLaIUVA",
-      "source": "overture",
-      "name": "Finance Department",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "accounting",
-        "financial_service",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYARuW7aywQ2t94",
-      "source": "overture",
-      "name": "Truckee Town Facilities",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
-      "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
-      "country": "US",
-      "location": {
-        "latitude": 39.316905399999996,
-        "longitude": -120.1461501
-      },
-      "extent": null,
-      "distanceMeters": null,
-      "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
-      ],
-      "primaryType": "local_and_state_government_offices",
-      "checkinCount": 0,
-      "isPrivate": false,
-      "retired": false,
-      "website": null,
-      "phone": null
-    },
-    {
-      "id": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
-      "source": "overture",
+      "id": "fb604eb9-5d4a-43f3-b683-60c20fea97ca",
+      "source": "google",
       "name": "Truckee Town Hall & Town Clerk",
       "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
       "street": "10183 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
@@ -332,460 +25,2162 @@
         "longitude": -120.1461822
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 19.17274097,
       "types": [
         "town_hall",
+        "point_of_interest",
+        "professional_services",
         "local_and_state_government_offices",
         "government_services",
-        "professional_services"
+        "establishment"
       ],
       "primaryType": "town_hall",
-      "checkinCount": 0,
+      "basicCategory": null,
+      "categoryName": null,
+      "checkinCount": 1,
+      "prior": 0,
       "isPrivate": false,
       "retired": false,
       "website": null,
       "phone": null
     },
     {
-      "id": "ChIJuf3q4IphmYARYQ6NMwRJ73w",
+      "id": "7924c5d2-d575-4cf3-9442-25dcac318930",
       "source": "overture",
-      "name": "Truckee Chamber of Commerce - Administration Offices",
+      "name": "Truckee Police",
+      "address": "10183 Truckee Airport Rd #3306, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd #3306",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.316803,
+        "longitude": -120.146182
+      },
+      "extent": null,
+      "distanceMeters": 23.16838412,
+      "types": [
+        "police_station"
+      ],
+      "primaryType": "police_station",
+      "basicCategory": "police_station",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.truckeepolice.gov/",
+      "phone": "+15305502323"
+    },
+    {
+      "id": "79094980-6fb9-4e4f-a5a7-5a69b3a6c9e5",
+      "source": "overture",
+      "name": "Truckee Chamber of Commerce",
       "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
       "street": "10183 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.3168007,
-        "longitude": -120.1462009
+        "latitude": 39.316781,
+        "longitude": -120.146196
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 25.81980289,
       "types": [
-        "public_and_government_association",
-        "professional_services"
+        "social_or_community_service"
       ],
-      "primaryType": "public_and_government_association",
+      "primaryType": "social_or_community_service",
+      "basicCategory": "social_or_community_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -1.5,
       "isPrivate": false,
       "retired": false,
       "website": null,
-      "phone": null
+      "phone": "+15305872757"
     },
     {
-      "id": "ChIJjxd7Dc1hmYARhGSgf0nmIx8",
+      "id": "2b0f8f6f-e9ff-4b37-b4c2-d97ba4c4ed2c",
       "source": "overture",
-      "name": "Truckee Town Code Compliance",
-      "address": "10183 Truckee Airport Rd #202, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd #202",
+      "name": "Sierra Business Council",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161-3306, US",
+      "street": "10183 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
+      "region": "CA",
+      "postcode": "96161-3306",
       "country": "US",
       "location": {
-        "latitude": 39.3168007,
-        "longitude": -120.1462009
+        "latitude": 39.3167383,
+        "longitude": -120.1461795
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 28.90579979,
       "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
+        "charity_organization"
       ],
-      "primaryType": "local_and_state_government_offices",
+      "primaryType": "charity_organization",
+      "basicCategory": "civic_organization",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -3,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://sierrabusiness.org",
+      "phone": "15305824800"
     },
     {
-      "id": "ChIJqwSYds1hmYARkPz4Cxu8Ajk",
+      "id": "0d7e4552-a389-422a-b7cf-562e08d797ef",
       "source": "overture",
-      "name": "ChargePoint Charging Station",
+      "name": "Truckee Town Hall and Town Clerk",
       "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
       "street": "10183 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.316798,
-        "longitude": -120.146344
+        "latitude": 39.31693616,
+        "longitude": -120.14641788
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 35.46370167,
       "types": [
-        "ev_charging_station",
-        "transportation_service"
+        "town_hall"
       ],
-      "primaryType": "ev_charging_station",
+      "primaryType": "town_hall",
+      "basicCategory": "government_office",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.townoftruckee.com/",
+      "phone": "+15305827700"
     },
     {
-      "id": "ChIJdfVNbs1hmYARMbjicKB-uPE",
+      "id": "a3f63a2d-b6ef-4d6e-8e36-33dcf85fe41d",
       "source": "overture",
-      "name": "Airport Rd and Truckee Town Hall",
-      "address": "Truckee, CA 96161, US",
-      "street": null,
+      "name": "Keep Truckee Green",
+      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10183 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.3172465,
-        "longitude": -120.14646320000001
+        "latitude": 39.31697935,
+        "longitude": -120.14645234
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 38.36763049,
       "types": [
-        "bus_station",
-        "transit_stop",
-        "public_transportation",
-        "transportation_service"
+        "environmental_conservation_organization"
       ],
-      "primaryType": "bus_station",
+      "primaryType": "environmental_conservation_organization",
+      "basicCategory": "environmental_or_ecological_service",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://www.keeptruckeegreen.org/",
+      "phone": "+15305827903"
     },
     {
-      "id": "ChIJyVVeE81hmYARqkX1YU27tYc",
+      "id": "4f61f94f-8b2d-4d1c-a5ca-e34ac63c29b5",
       "source": "overture",
       "name": "Truckee Fire Protection District Station 96",
-      "address": "10277 Truckee Airport Rd, Truckee, CA 96161, US",
+      "address": "10277 Truckee Airport Rd, Truckee, CA 96161-3313, US",
       "street": "10277 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
+      "region": "CA",
+      "postcode": "96161-3313",
       "country": "US",
       "location": {
-        "latitude": 39.3175662,
-        "longitude": -120.14602310000001
+        "latitude": 39.3176135,
+        "longitude": -120.1457949
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 74.62863768,
       "types": [
-        "fire_station",
-        "government_services",
-        "professional_services"
+        "fire_station"
       ],
       "primaryType": "fire_station",
+      "basicCategory": "fire_station",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -2,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "truckeefire.org",
+      "phone": "15305827850"
     },
     {
-      "id": "ChIJP6h7EsDfm4ARQVud3niuaW8",
+      "id": "1c5f8778-7d84-4c20-93c8-6ea5d4f628ec",
       "source": "overture",
-      "name": "Truckee Parking District",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
+      "name": "Truckee Flight Training",
+      "address": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "Truckee Tahoe Airport, Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.3175822,
-        "longitude": -120.1458042
+        "latitude": 39.31684987,
+        "longitude": -120.14690246
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 78.13510339,
       "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
+        "flight_school"
       ],
-      "primaryType": "local_and_state_government_offices",
+      "primaryType": "flight_school",
+      "basicCategory": "specialty_school",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -1.0478401454333173,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.truckeeflighttraining.com/",
+      "phone": "+12087218361"
     },
     {
-      "id": "ChIJjxd7Dc1hmYARrlQyDTtBX1g",
+      "id": "a99ee4bc-e7d8-43f7-96dc-d5f08aad1aa8",
       "source": "overture",
-      "name": "Truckee Town Safety & Building",
-      "address": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10183 Truckee Airport Rd",
+      "name": "Kelly-Moore Paints",
+      "address": "40153 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "40153 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.3175822,
-        "longitude": -120.1458042
+        "latitude": 39.31614,
+        "longitude": -120.14657
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 103.33112315,
       "types": [
-        "local_and_state_government_offices",
-        "government_services",
-        "professional_services"
+        "home_decor_store"
       ],
-      "primaryType": "local_and_state_government_offices",
+      "primaryType": "home_decor_store",
+      "basicCategory": "hardware_home_and_garden_store",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 0,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://kellymooreshop.com/",
+      "phone": "5305507201"
     },
     {
-      "id": "ChIJyZOme81hmYARH3HPxCwOCbU",
+      "id": "cac30a27-e183-4442-ad49-2140bfc29170",
       "source": "overture",
-      "name": "TRUCKEE FLIGHT TRAINING",
-      "address": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
-      "street": "Truckee Tahoe Airport, Truckee Airport Rd, Truckee, CA 96161, USA",
-      "locality": null,
-      "region": null,
-      "postcode": null,
-      "country": null,
+      "name": "Town & Country Storage",
+      "address": "40155 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "40155 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
       "location": {
-        "latitude": 39.316849,
-        "longitude": -120.146902
+        "latitude": 39.3167669,
+        "longitude": -120.1447167
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 113.44702141,
       "types": [
-        "educational_institution"
+        "self_storage_facility"
       ],
-      "primaryType": "educational_institution",
+      "primaryType": "self_storage_facility",
+      "basicCategory": "storage_facility",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://townncountrystorage.com/",
+      "phone": "5305873652"
+    },
+    {
+      "id": "c7c43dbf-d482-4dd6-8f82-bffe843cc59a",
+      "source": "overture",
+      "name": "VTour",
+      "address": "12313 Soaring Way, Truckee, CA 96161, US",
+      "street": "12313 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31681782,
+        "longitude": -120.14733523
+      },
+      "extent": null,
+      "distanceMeters": 115.57243225,
+      "types": [
+        "professional_service"
+      ],
+      "primaryType": "professional_service",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.experiencevtour.com/",
+      "phone": "+15305829800"
+    },
+    {
+      "id": "be8eadb3-f0eb-482e-ae6f-b41114b24a84",
+      "source": "overture",
+      "name": "Truckee Consignment",
+      "address": "40153 Airport Road Buliding 2, Truckee, CA 96161, US",
+      "street": "40153 Airport Road Buliding 2",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.316037,
+        "longitude": -120.146862
+      },
+      "extent": null,
+      "distanceMeters": 126.37368302,
+      "types": [
+        "second_hand_clothing_store"
+      ],
+      "primaryType": "second_hand_clothing_store",
+      "basicCategory": "second_hand_store",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://truckeeconsign.com/",
+      "phone": "5305509661"
+    },
+    {
+      "id": "7861f273-d683-4199-a592-f2666e324d10",
+      "source": "overture",
+      "name": "Law Office of Troy M. Ortiz",
+      "address": "40165 Truckee Airport Rd, Suite 301-A, Truckee, CA 96161, US",
+      "street": "40165 Truckee Airport Rd, Suite 301-A",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.3158066,
+        "longitude": -120.146298
+      },
+      "extent": null,
+      "distanceMeters": 130.68954943,
+      "types": [
+        "business_law"
+      ],
+      "primaryType": "business_law",
+      "basicCategory": "attorney_or_law_firm",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.troyortizlaw.com/",
+      "phone": "5303037311"
+    },
+    {
+      "id": "629159e8-a2de-486f-bebb-527c027d94a8",
+      "source": "overture",
+      "name": "Porter Simon Law Offices",
+      "address": "40200 Truckee Airport Rd 1, Truckee, CA 96161, US",
+      "street": "40200 Truckee Airport Rd 1",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31818,
+        "longitude": -120.14594
+      },
+      "extent": null,
+      "distanceMeters": 135.35133969,
+      "types": [
+        "business_law"
+      ],
+      "primaryType": "business_law",
+      "basicCategory": "attorney_or_law_firm",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.portersimon.com/",
+      "phone": "5305872002"
+    },
+    {
+      "id": "b68d9bc2-5ccc-4825-b677-f9029cfd4403",
+      "source": "overture",
+      "name": "Tahoe Moving And Storage",
+      "address": "40153 Truckee Airport Rd  Ste 3, Truckee, CA 96161-3347, US",
+      "street": "40153 Truckee Airport Rd  Ste 3",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3347",
+      "country": "US",
+      "location": {
+        "latitude": 39.3161143,
+        "longitude": -120.1471709
+      },
+      "extent": null,
+      "distanceMeters": 137.53116282,
+      "types": [
+        "mover"
+      ],
+      "primaryType": "mover",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://tahoemovingcompany.com/movers/truckee-ca",
+      "phone": "15305363888"
+    },
+    {
+      "id": "10e4e360-e591-4838-85e1-9be8c1d54747",
+      "source": "overture",
+      "name": "Contractors Association of Truckee Tahoe",
+      "address": "12313 Soaring Way # 1A, Truckee, CA 96161, US",
+      "street": "12313 Soaring Way # 1A",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31638076,
+        "longitude": -120.14745837
+      },
+      "extent": null,
+      "distanceMeters": 140.74352572,
+      "types": [
+        "social_or_community_service"
+      ],
+      "primaryType": "social_or_community_service",
+      "basicCategory": "social_or_community_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.ca-tt.com/",
+      "phone": "+15305509999"
+    },
+    {
+      "id": "d4fe7e60-bc43-4647-bb5b-2a72bbba09b4",
+      "source": "overture",
+      "name": "Law Doc",
+      "address": "40165 Truckee Airport Rd #301c, Truckee, CA 96161, US",
+      "street": "40165 Truckee Airport Rd #301c",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31559251,
+        "longitude": -120.14623656
+      },
+      "extent": null,
+      "distanceMeters": 153.31520491,
+      "types": [
+        "personal_injury_law"
+      ],
+      "primaryType": "personal_injury_law",
+      "basicCategory": "attorney_or_law_firm",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.0294477452841666,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://law-doc.com/",
+      "phone": "+15305108112"
+    },
+    {
+      "id": "5f1e8eae-57c4-4a15-8717-d98934630688",
+      "source": "overture",
+      "name": "Dr. Rachel Appelblatt",
+      "address": "40165 Truckee Airport Rd, Truckee, CA 96161-4113, US",
+      "street": "40165 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4113",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "dental_clinic"
+      ],
+      "primaryType": "dental_clinic",
+      "basicCategory": "dental_clinic",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.tfhd.com",
+      "phone": "15305875440"
+    },
+    {
+      "id": "36e10370-7637-4aae-a89e-ae5a99ac13fd",
+      "source": "overture",
+      "name": "Advanced Asphalt",
+      "address": "40165 Truckee Airport Rd  Ste 301c, Truckee, CA 96161-4108, US",
+      "street": "40165 Truckee Airport Rd  Ste 301c",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4108",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "paving_contractor"
+      ],
+      "primaryType": "paving_contractor",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.aasphalt.com",
+      "phone": "15305820800"
+    },
+    {
+      "id": "039b158a-1f6c-484b-8e2e-1cdce4dfd74a",
+      "source": "overture",
+      "name": "Pine Forest",
+      "address": "40165 Truckee Airport Rd, Truckee, CA 96161-4113, US",
+      "street": "40165 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4113",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "homeowner_association"
+      ],
+      "primaryType": "homeowner_association",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://pineforestoa.org",
+      "phone": "15305873355"
+    },
+    {
+      "id": "e59d0766-5279-4b09-8a0a-0991ab73b611",
+      "source": "overture",
+      "name": "North Tahoe Tax Service, Cpa",
+      "address": "40165 Truckee Airport Rd  Ste 302, Truckee, CA 96161-4108, US",
+      "street": "40165 Truckee Airport Rd  Ste 302",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4108",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "tax_service"
+      ],
+      "primaryType": "tax_service",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.northtahoetaxservice.com",
+      "phone": "15304144182"
+    },
+    {
+      "id": "1adbc3f6-7f7e-4d34-92f2-9e1966e54e1d",
+      "source": "overture",
+      "name": "The Meadows Association",
+      "address": "40165 Truckee Airport Rd, Truckee, CA 96161-4113, US",
+      "street": "40165 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4113",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "civic_organization"
+      ],
+      "primaryType": "civic_organization",
+      "basicCategory": "civic_organization",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://themeadowsassoc.com/contacts",
+      "phone": "15305873355"
+    },
+    {
+      "id": "862124a2-fbb4-43e8-877c-12117157c545",
+      "source": "overture",
+      "name": "Paradigm8 (p|8)",
+      "address": "40165 Truckee Airport Rd  Ste 301c, Truckee, CA 96161-4108, US",
+      "street": "40165 Truckee Airport Rd  Ste 301c",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4108",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "home_developer"
+      ],
+      "primaryType": "home_developer",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://paradigm8.com",
+      "phone": null
+    },
+    {
+      "id": "fefb9324-6bd4-4712-8751-7bebb17bae40",
+      "source": "overture",
+      "name": "Cambridge Estates Homeowners Association",
+      "address": "40165 Truckee Airport Rd  Ste 304, Truckee, CA 96161-4108, US",
+      "street": "40165 Truckee Airport Rd  Ste 304",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4108",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "homeowner_association"
+      ],
+      "primaryType": "homeowner_association",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "15305873355"
+    },
+    {
+      "id": "23e65d97-3b44-41e3-a7d1-97e061982fa5",
+      "source": "overture",
+      "name": "Camco-condominium Association",
+      "address": "40165 Truckee Airport Rd  Ste 304, Truckee, CA 96161-4108, US",
+      "street": "40165 Truckee Airport Rd  Ste 304",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4108",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "condominium"
+      ],
+      "primaryType": "condominium",
+      "basicCategory": "condominium",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.skitrailscondoassociation.com",
+      "phone": "15305873355"
+    },
+    {
+      "id": "6fe5cd17-7933-4653-be63-0f869f7667b9",
+      "source": "overture",
+      "name": "High West Landscape Architects",
+      "address": "40165 Truckee Airport Rd Ste 301a, Truckee, CA 96161-4108, US",
+      "street": "40165 Truckee Airport Rd Ste 301a",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4108",
+      "country": "US",
+      "location": {
+        "latitude": 39.315531,
+        "longitude": -120.1461833
+      },
+      "extent": null,
+      "distanceMeters": 159.58946017,
+      "types": [
+        "landscape_architect"
+      ],
+      "primaryType": "landscape_architect",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.hwlandscapearchitects.com",
+      "phone": "+15305534000"
+    },
+    {
+      "id": "c5a86a2b-3e16-4296-85d2-5216b8261a6b",
+      "source": "overture",
+      "name": "Lake Tahoe and Truckee Real Estate",
+      "address": "12277 Soaring Way, Truckee, CA 96161-3201, US",
+      "street": "12277 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3201",
+      "country": "US",
+      "location": {
+        "latitude": 39.317,
+        "longitude": -120.14786
+      },
+      "extent": null,
+      "distanceMeters": 159.7695238,
+      "types": [
+        "real_estate_agent"
+      ],
+      "primaryType": "real_estate_agent",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://NorthLakeTahoeProperty.com/",
+      "phone": "+15302146085"
+    },
+    {
+      "id": "8cf93d5a-258e-4ad1-aa50-486e47a11ee9",
+      "source": "overture",
+      "name": "Today Encounter News",
+      "address": "12277 Soaring Way, Truckee, CA 96161-3201, US",
+      "street": "12277 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3201",
+      "country": "US",
+      "location": {
+        "latitude": 39.317,
+        "longitude": -120.14786
+      },
+      "extent": null,
+      "distanceMeters": 159.7695238,
+      "types": [
+        "real_estate_service"
+      ],
+      "primaryType": "real_estate_service",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.692823920608653,
       "isPrivate": false,
       "retired": false,
       "website": null,
       "phone": null
     },
     {
-      "id": "ChIJ8-hbhsthmYARcPdss0-xprU",
+      "id": "9aef5cc7-a1a7-45e8-9300-acbed3b6cfb1",
+      "source": "overture",
+      "name": "New Tahoe Electric",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.318416,
+        "longitude": -120.1457563
+      },
+      "extent": null,
+      "distanceMeters": 162.8781452,
+      "types": [
+        "it_service_and_computer_repair"
+      ],
+      "primaryType": "it_service_and_computer_repair",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.newtahoeelectric.com/",
+      "phone": "5306084149"
+    },
+    {
+      "id": "5ddad3c1-faa9-4e79-8485-959f95c3c934",
+      "source": "overture",
+      "name": "Go Rentals",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.318416,
+        "longitude": -120.1457563
+      },
+      "extent": null,
+      "distanceMeters": 162.8781452,
+      "types": [
+        "travel_service"
+      ],
+      "primaryType": "travel_service",
+      "basicCategory": "travel_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.gorentals.com/location/truckee",
+      "phone": "5303232777"
+    },
+    {
+      "id": "df6029ee-39cc-41c5-ab87-d51449041c6a",
+      "source": "overture",
+      "name": "Tahoe Oral Surgery and Implant Center",
+      "address": "40165 Truckee-Tahoe Airport Rd, Truckee, CA 96161, US",
+      "street": "40165 Truckee-Tahoe Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31553648,
+        "longitude": -120.14646832
+      },
+      "extent": null,
+      "distanceMeters": 163.16622011,
+      "types": [
+        "oral_and_maxillofacial_surgery"
+      ],
+      "primaryType": "oral_and_maxillofacial_surgery",
+      "basicCategory": "surgery",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.tahoeoralsurgery.com/",
+      "phone": "+15305875440"
+    },
+    {
+      "id": "9c6ee215-40f2-4030-85bb-b0504a99bc50",
+      "source": "overture",
+      "name": "High Sierra Custom Door",
+      "address": "40161 Truckee Airport Rd, Truckee, CA 96161-4112, US",
+      "street": "40161 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4112",
+      "country": "US",
+      "location": {
+        "latitude": 39.3155093,
+        "longitude": -120.1456547
+      },
+      "extent": null,
+      "distanceMeters": 164.13370707,
+      "types": [
+        "door_sales_service"
+      ],
+      "primaryType": "door_sales_service",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.highsierracustomdoor.com",
+      "phone": "15305871993"
+    },
+    {
+      "id": "bd9d3c5f-a9a3-4e28-bbda-0eb0ae90cb60",
+      "source": "overture",
+      "name": "Apricity Law",
+      "address": "40165 Truckee Airport Rd Ste 301-A, Truckee, CA 96161, US",
+      "street": "40165 Truckee Airport Rd Ste 301-A",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.315475,
+        "longitude": -120.1463
+      },
+      "extent": null,
+      "distanceMeters": 166.99852964,
+      "types": [],
+      "primaryType": null,
+      "basicCategory": null,
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.apricitylegal.com/",
+      "phone": "5303037311"
+    },
+    {
+      "id": "dd473fcb-188f-46c9-8948-da5a1865b1e3",
+      "source": "overture",
+      "name": "Sierra Crest Dental",
+      "address": "40169 Truckee Airport Rd #204, Truckee, CA 96161, US",
+      "street": "40169 Truckee Airport Rd #204",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31560309,
+        "longitude": -120.14688442
+      },
+      "extent": null,
+      "distanceMeters": 168.74200043,
+      "types": [
+        "dental_clinic"
+      ],
+      "primaryType": "dental_clinic",
+      "basicCategory": "dental_clinic",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.sierracrestdental.com/",
+      "phone": "+15305624835"
+    },
+    {
+      "id": "894df00a-7b39-46bd-af06-4c410a13ed33",
+      "source": "overture",
+      "name": "Ski Butlers Ski Rental Delivery",
+      "address": "40169 Truckee Airport Rd, Truckee, CA 96161-4114, US",
+      "street": "40169 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4114",
+      "country": "US",
+      "location": {
+        "latitude": 39.3155512,
+        "longitude": -120.1467954
+      },
+      "extent": null,
+      "distanceMeters": 170.71548405,
+      "types": [
+        "jet_skis_rental"
+      ],
+      "primaryType": "jet_skis_rental",
+      "basicCategory": "recreational_equipment_rental",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "skibutlers.com",
+      "phone": "15305828277"
+    },
+    {
+      "id": "c3a24b73-5373-4036-8d3d-60c191594a3f",
+      "source": "overture",
+      "name": "Skylandia Corporation",
+      "address": "40169 Truckee Airport Rd Ste 203, Truckee, CA 96161-4109, US",
+      "street": "40169 Truckee Airport Rd Ste 203",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4109",
+      "country": "US",
+      "location": {
+        "latitude": 39.3155512,
+        "longitude": -120.1467954
+      },
+      "extent": null,
+      "distanceMeters": 170.71548405,
+      "types": [
+        "insurance_agency"
+      ],
+      "primaryType": "insurance_agency",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "30ca64a2-c52f-4dc6-9c05-0407ea0e91c3",
+      "source": "overture",
+      "name": "Jacqueline Delaney , Dmd",
+      "address": "40169 Truckee Airport Rd Ste 204, Truckee, CA 96161-4109, US",
+      "street": "40169 Truckee Airport Rd Ste 204",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4109",
+      "country": "US",
+      "location": {
+        "latitude": 39.3155512,
+        "longitude": -120.1467954
+      },
+      "extent": null,
+      "distanceMeters": 170.71548405,
+      "types": [
+        "general_dentistry"
+      ],
+      "primaryType": "general_dentistry",
+      "basicCategory": "dental_clinic",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+15305879095"
+    },
+    {
+      "id": "4d6954fe-3588-4d22-b816-051ec4b4b058",
+      "source": "overture",
+      "name": "Aegis Insurance Markets",
+      "address": "40169 Truckee Airport Rd Ste 203, Truckee, CA 96161-4109, US",
+      "street": "40169 Truckee Airport Rd Ste 203",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-4109",
+      "country": "US",
+      "location": {
+        "latitude": 39.3155512,
+        "longitude": -120.1467954
+      },
+      "extent": null,
+      "distanceMeters": 170.71548405,
+      "types": [
+        "insurance_agency"
+      ],
+      "primaryType": "insurance_agency",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://aegisinsurancemarkets.com",
+      "phone": null
+    },
+    {
+      "id": "fddeb0b7-0f0a-40f8-9cd1-1f81793a97bb",
+      "source": "overture",
+      "name": "Marc Blatt: Primerica - Financial Services",
+      "address": "12277 Soaring Way Unit 300, TRUCKEE, CA 96161, US",
+      "street": "12277 Soaring Way Unit 300",
+      "locality": "TRUCKEE",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.3173227,
+        "longitude": -120.1479342
+      },
+      "extent": null,
+      "distanceMeters": 170.87114128,
+      "types": [],
+      "primaryType": null,
+      "basicCategory": null,
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://reps.primerica.com/ca/truckee/marc-blatt",
+      "phone": "8665055469"
+    },
+    {
+      "id": "e3fad60c-74e0-4f65-a1af-3431657c2973",
+      "source": "overture",
+      "name": "National Car Rental",
+      "address": "10266 Truckee Airport Rd Ste B, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste B",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31853589,
+        "longitude": -120.14596152
+      },
+      "extent": null,
+      "distanceMeters": 174.78167802,
+      "types": [
+        "car_rental_service"
+      ],
+      "primaryType": "car_rental_service",
+      "basicCategory": "rental_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.nationalcar.com/",
+      "phone": "+15305508403"
+    },
+    {
+      "id": "8d78837b-b47f-4aaa-a81d-acc78b64fe25",
+      "source": "overture",
+      "name": "Lift Workspace",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31853886,
+        "longitude": -120.14594433
+      },
+      "extent": null,
+      "distanceMeters": 175.15152864,
+      "types": [
+        "party_and_event_planning"
+      ],
+      "primaryType": "party_and_event_planning",
+      "basicCategory": "event_or_party_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.liftworkspace.com/",
+      "phone": "+15305360655"
+    },
+    {
+      "id": "19644f0e-e135-415a-99fc-0d7fce23b2f3",
+      "source": "overture",
+      "name": "Marsden Architects",
+      "address": "12277 Soaring Way  Ste 105, Truckee, CA 96161-3382, US",
+      "street": "12277 Soaring Way  Ste 105",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3382",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "architect"
+      ],
+      "primaryType": "architect",
+      "basicCategory": "design_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://marsdenarchitects.com",
+      "phone": "15303783211"
+    },
+    {
+      "id": "978aa2cb-04ab-4b10-af1f-9d6c95d2b66d",
+      "source": "overture",
+      "name": "New Leaders",
+      "address": "12277 Soaring Way Ste 203, Truckee, CA 96161-3373, US",
+      "street": "12277 Soaring Way Ste 203",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3373",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "business_consulting"
+      ],
+      "primaryType": "business_consulting",
+      "basicCategory": "professional_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "1520ecb7-786c-44ba-af17-b677ee458473",
+      "source": "overture",
+      "name": "Sherrin Fielder, Cpa",
+      "address": "12277 Soaring Way  Ste 104, Truckee, CA 96161-3382, US",
+      "street": "12277 Soaring Way  Ste 104",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3382",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "accountant"
+      ],
+      "primaryType": "accountant",
+      "basicCategory": "financial_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "www.fieldercpa.com",
+      "phone": "17754413200"
+    },
+    {
+      "id": "a00f3efa-fcf1-49a0-a821-3c35d004a4fd",
+      "source": "overture",
+      "name": "Mountain Concepts",
+      "address": "12277 Soaring Way, Truckee, CA 96161-3383, US",
+      "street": "12277 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3383",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "architectural_designer"
+      ],
+      "primaryType": "architectural_designer",
+      "basicCategory": "design_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.mountainconcepts.com",
+      "phone": "15305873224"
+    },
+    {
+      "id": "03116f6d-5545-4bd4-a715-1b55423f7db2",
+      "source": "overture",
+      "name": "Summit Soiree Event Planning & Design",
+      "address": "12277 Soaring Way, Truckee, CA 96161-3383, US",
+      "street": "12277 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3383",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "wedding_planning"
+      ],
+      "primaryType": "wedding_planning",
+      "basicCategory": "event_or_party_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://summitsoiree.com",
+      "phone": "+15304482220"
+    },
+    {
+      "id": "bd82729f-ef83-473e-8fd2-8c7fc9af3812",
+      "source": "overture",
+      "name": "Openpath Investments",
+      "address": "12277 Soaring Way, Truckee, CA 96161-3383, US",
+      "street": "12277 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3383",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "commercial_real_estate"
+      ],
+      "primaryType": "commercial_real_estate",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://openpathinvestments.com",
+      "phone": "14154548002"
+    },
+    {
+      "id": "64e1f60b-5f43-44e8-bc4a-854a27a47241",
+      "source": "overture",
+      "name": "Rebel Fitness Academy",
+      "address": "12277 Soaring Way, Truckee, CA 96161-3383, US",
+      "street": "12277 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3383",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "sport_or_fitness_facility"
+      ],
+      "primaryType": "sport_or_fitness_facility",
+      "basicCategory": "sport_or_fitness_facility",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -0.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "5305507777"
+    },
+    {
+      "id": "bef382c0-a63b-4d2e-ae7e-217a97607c82",
+      "source": "overture",
+      "name": "Red Fox Physical Therapy",
+      "address": "12277 Soaring Way Ste 300e, Truckee, CA 96161-3201, US",
+      "street": "12277 Soaring Way Ste 300e",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3201",
+      "country": "US",
+      "location": {
+        "latitude": 39.3170498,
+        "longitude": -120.1480468
+      },
+      "extent": null,
+      "distanceMeters": 176.09311478,
+      "types": [
+        "physical_therapy"
+      ],
+      "primaryType": "physical_therapy",
+      "basicCategory": "physical_medicine_and_rehabilitation",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": "+15419512703"
+    },
+    {
+      "id": "fcf0a9d4-0246-4c88-b4c8-a58e9da57954",
+      "source": "overture",
+      "name": "AdventureSmith Explorations",
+      "address": "40169 Airport Rd Ste 201, Tahoe City, CA 96161, US",
+      "street": "40169 Airport Rd Ste 201",
+      "locality": "Tahoe City",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.315574353183564,
+        "longitude": -120.14702084424319
+      },
+      "extent": null,
+      "distanceMeters": 177.09768601,
+      "types": [
+        "travel_service"
+      ],
+      "primaryType": "travel_service",
+      "basicCategory": "travel_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.adventuresmithexplorations.com/",
+      "phone": "5305831775"
+    },
+    {
+      "id": "db835624-8b61-402d-8435-edc54dd74d72",
+      "source": "overture",
+      "name": "Enterprise Rent-A-Car",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31855629,
+        "longitude": -120.14588599
+      },
+      "extent": null,
+      "distanceMeters": 177.3130113,
+      "types": [
+        "car_rental_service"
+      ],
+      "primaryType": "car_rental_service",
+      "basicCategory": "rental_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.enterprise.com/en/car-rental-locations/us/ca/truckee-3059.html?mcid=yext%3A245709",
+      "phone": "+15305501550"
+    },
+    {
+      "id": "daed3d3b-1852-47b6-b6cf-1f4137539b2d",
+      "source": "overture",
+      "name": "NXT LVL Construction",
+      "address": "12277 Soaring Way Ste 308, Truckee, CA 96161, US",
+      "street": "12277 Soaring Way Ste 308",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.317087,
+        "longitude": -120.148095
+      },
+      "extent": null,
+      "distanceMeters": 180.5140044,
+      "types": [
+        "roofing"
+      ],
+      "primaryType": "roofing",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -2,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://nxtlvlconstruction.com/",
+      "phone": "5304483036"
+    },
+    {
+      "id": "ff5211e7-8b39-42e1-b276-b82bfb609356",
+      "source": "overture",
+      "name": "Deck Envy Construction",
+      "address": "12277 Soaring Way Ste 310, Truckee, CA 96161, US",
+      "street": "12277 Soaring Way Ste 310",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.317087,
+        "longitude": -120.148095
+      },
+      "extent": null,
+      "distanceMeters": 180.5140044,
+      "types": [
+        "deck_and_railing_sales_service"
+      ],
+      "primaryType": "deck_and_railing_sales_service",
+      "basicCategory": "home_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://deckenvy.com/",
+      "phone": "5305871700"
+    },
+    {
+      "id": "2a1de47b-bf23-463a-8fa5-e56647460c78",
+      "source": "google",
+      "name": "Lift Workspace: Cowork, Conference, and Wellness Center",
+      "address": "10266 Truckee Airport Rd Ste C, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd Ste C",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.3185864,
+        "longitude": -120.146143
+      },
+      "extent": null,
+      "distanceMeters": 180.71879578,
+      "types": [
+        "coworking_space",
+        "gym",
+        "wellness_center",
+        "parking_lot",
+        "parking",
+        "community_center",
+        "real_estate_agency",
+        "event_venue",
+        "transportation_service",
+        "sports_activity_location",
+        "health",
+        "point_of_interest",
+        "professional_services",
+        "establishment"
+      ],
+      "primaryType": "coworking_space",
+      "basicCategory": null,
+      "categoryName": null,
+      "checkinCount": 2,
+      "prior": 0,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "e06335a4-cd7f-48dc-87e8-07eff5bca97b",
+      "source": "overture",
+      "name": "Hertz",
+      "address": "10266 Truckee Airport Rd, Truckee, CA 96161, US",
+      "street": "10266 Truckee Airport Rd",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.318594,
+        "longitude": -120.146142
+      },
+      "extent": null,
+      "distanceMeters": 181.55530579,
+      "types": [
+        "travel_service"
+      ],
+      "primaryType": "travel_service",
+      "basicCategory": "travel_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.hertz.com/rentacar/location/unitedstates/california/truckee/tkft01",
+      "phone": "5305509191"
+    },
+    {
+      "id": "86ea5b12-6d90-4ddb-8e79-8b555b484d7d",
+      "source": "overture",
+      "name": "Cohen Defense Group",
+      "address": "12277 Soaring Way Ste 305, Truckee, CA 96161, US",
+      "street": "12277 Soaring Way Ste 305",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.317088,
+        "longitude": -120.148109
+      },
+      "extent": null,
+      "distanceMeters": 181.7263051,
+      "types": [
+        "criminal_defense_law"
+      ],
+      "primaryType": "criminal_defense_law",
+      "basicCategory": "attorney_or_law_firm",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://cohendefense.com/",
+      "phone": "5305633009"
+    },
+    {
+      "id": "ffe08371-d190-48fc-8e60-a2d498f710bc",
+      "source": "overture",
+      "name": "Laurie Johnson",
+      "address": "12277 Soaring Way Ste 300-J, Truckee, CA 96161, US",
+      "street": "12277 Soaring Way Ste 300-J",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161",
+      "country": "US",
+      "location": {
+        "latitude": 39.31708309,
+        "longitude": -120.1481203
+      },
+      "extent": null,
+      "distanceMeters": 182.65700106,
+      "types": [
+        "real_estate_agent"
+      ],
+      "primaryType": "real_estate_agent",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -1.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://NorthLakeTahoeProperty.com/",
+      "phone": "+15302146085"
+    },
+    {
+      "id": "ad9fb922-5a1c-499b-9c12-5b8c8d3c014c",
+      "source": "overture",
+      "name": "West River Associates",
+      "address": "12313 Soaring Way Ste 2c, Truckee, CA 96161-3354, US",
+      "street": "12313 Soaring Way Ste 2c",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3354",
+      "country": "US",
+      "location": {
+        "latitude": 39.3171237,
+        "longitude": -120.1481221
+      },
+      "extent": null,
+      "distanceMeters": 183.19849643,
+      "types": [
+        "commercial_real_estate"
+      ],
+      "primaryType": "commercial_real_estate",
+      "basicCategory": "real_estate_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "http://www.westrivertruckee.com",
+      "phone": "+15305365166"
+    },
+    {
+      "id": "0931f40d-f38b-4ecb-a79e-20443b9c91bd",
+      "source": "overture",
+      "name": "Citizen Communications, Llc",
+      "address": "12313 Soaring Way, Truckee, CA 96161-3370, US",
+      "street": "12313 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3370",
+      "country": "US",
+      "location": {
+        "latitude": 39.3171237,
+        "longitude": -120.1481221
+      },
+      "extent": null,
+      "distanceMeters": 183.19849643,
+      "types": [
+        "software_development"
+      ],
+      "primaryType": "software_development",
+      "basicCategory": "technical_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": null,
+      "phone": null
+    },
+    {
+      "id": "346fabdb-8b9b-4a0a-bbf2-cc2916a9aee2",
+      "source": "overture",
+      "name": "Casey Custom Builders",
+      "address": "12313 Soaring Way, Truckee, CA 96161-3370, US",
+      "street": "12313 Soaring Way",
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": "96161-3370",
+      "country": "US",
+      "location": {
+        "latitude": 39.3171237,
+        "longitude": -120.1481221
+      },
+      "extent": null,
+      "distanceMeters": 183.19849643,
+      "types": [
+        "building_or_construction_service"
+      ],
+      "primaryType": "building_or_construction_service",
+      "basicCategory": "building_or_construction_service",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": -3.5,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.caseycustombuilders.com/contact",
+      "phone": null
+    },
+    {
+      "id": "1f47bf40-5160-4b0a-8e8c-93bb99a98257",
       "source": "overture",
       "name": "Truckee Tahoe Airport",
       "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
       "street": "10356 Truckee Airport Rd",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.3195165,
-        "longitude": -120.14499269999999
+        "latitude": 39.31937733,
+        "longitude": -120.14501277
       },
-      "extent": null,
-      "distanceMeters": null,
+      "extent": {
+        "boundingBox": {
+          "south": 39.3078539,
+          "west": -120.1573205,
+          "north": 39.3273382,
+          "east": -120.1253057
+        },
+        "rings": [
+          [
+            [
+              -120.1255739,
+              39.326704
+            ],
+            [
+              -120.1419978,
+              39.3264534
+            ],
+            [
+              -120.1419783,
+              39.3231104
+            ],
+            [
+              -120.1486781,
+              39.3262253
+            ],
+            [
+              -120.1496585,
+              39.3247979
+            ],
+            [
+              -120.1554964,
+              39.3273382
+            ],
+            [
+              -120.1564166,
+              39.3268763
+            ],
+            [
+              -120.1567546,
+              39.3265692
+            ],
+            [
+              -120.157181,
+              39.3259156
+            ],
+            [
+              -120.1573205,
+              39.3250898
+            ],
+            [
+              -120.1572856,
+              39.3239715
+            ],
+            [
+              -120.1571998,
+              39.3235897
+            ],
+            [
+              -120.1567304,
+              39.3229527
+            ],
+            [
+              -120.1554295,
+              39.3221082
+            ],
+            [
+              -120.1552445,
+              39.3218405
+            ],
+            [
+              -120.1551456,
+              39.3212449
+            ],
+            [
+              -120.1518159,
+              39.3197559
+            ],
+            [
+              -120.1521577,
+              39.3192965
+            ],
+            [
+              -120.1470611,
+              39.317015
+            ],
+            [
+              -120.1468706,
+              39.3170649
+            ],
+            [
+              -120.1465487,
+              39.3174985
+            ],
+            [
+              -120.142262,
+              39.31562
+            ],
+            [
+              -120.1413378,
+              39.3140842
+            ],
+            [
+              -120.141533,
+              39.3139719
+            ],
+            [
+              -120.1419393,
+              39.3134022
+            ],
+            [
+              -120.1419899,
+              39.3120999
+            ],
+            [
+              -120.1400645,
+              39.3112265
+            ],
+            [
+              -120.139339,
+              39.3107635
+            ],
+            [
+              -120.1386268,
+              39.3102004
+            ],
+            [
+              -120.1369465,
+              39.3082233
+            ],
+            [
+              -120.1362169,
+              39.3082109
+            ],
+            [
+              -120.1342267,
+              39.3092029
+            ],
+            [
+              -120.1322794,
+              39.3082939
+            ],
+            [
+              -120.130198,
+              39.3078539
+            ],
+            [
+              -120.1274622,
+              39.3080283
+            ],
+            [
+              -120.1258528,
+              39.3087256
+            ],
+            [
+              -120.1253057,
+              39.3102862
+            ],
+            [
+              -120.1272371,
+              39.3208824
+            ],
+            [
+              -120.1276714,
+              39.3224755
+            ],
+            [
+              -120.1277465,
+              39.3232556
+            ],
+            [
+              -120.1271886,
+              39.3250027
+            ],
+            [
+              -120.1255739,
+              39.326704
+            ]
+          ]
+        ],
+        "areaSquareMeters": 3582931.607356416
+      },
+      "distanceMeters": 29.32978485,
       "types": [
-        "airport",
-        "transportation_service"
+        "airport"
       ],
       "primaryType": "airport",
+      "basicCategory": "airport",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1.5,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.truckeetahoeairport.com/",
+      "phone": "+15305874119"
     },
     {
-      "id": "ChIJn9PrISdgmYARWfGaRaZBLE0",
+      "id": "5883a98b-35da-4e40-90c3-ea2c8e80a0bc",
       "source": "overture",
-      "name": "Riverview Sports Park",
+      "name": "Truckee Donner Recreation and Park District",
       "address": "12200 Joerger Dr, Truckee, CA 96161, US",
       "street": "12200 Joerger Dr",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.3292632,
-        "longitude": -120.15625539999999
+        "latitude": 39.325,
+        "longitude": -120.15761
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 1340.64492686,
       "types": [
-        "park",
-        "attractions_and_activities"
+        "park"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1,
+      "isPrivate": false,
+      "retired": false,
+      "website": "https://www.tdrpd.org/",
+      "phone": "+15305827720"
+    },
+    {
+      "id": "5252b76a-f1e0-45d1-9c8c-03e62980b53a",
+      "source": "overture",
+      "name": "Truckee River Regional Park",
+      "address": "Truckee, CA, US",
+      "street": null,
+      "locality": "Truckee",
+      "region": "CA",
+      "postcode": null,
+      "country": "US",
+      "location": {
+        "latitude": 39.32063407469,
+        "longitude": -120.16140259492
+      },
+      "extent": null,
+      "distanceMeters": 1388.75973294,
+      "types": [
+        "park"
+      ],
+      "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
+      "checkinCount": 0,
+      "prior": 1,
       "isPrivate": false,
       "retired": false,
       "website": null,
       "phone": null
     },
     {
-      "id": "ChIJOz_KFSdgmYARMCWq9Twp_qo",
+      "id": "01019831-1ba7-48f1-9f6a-c919d9355f5d",
       "source": "overture",
-      "name": "Riverview Bike Park",
-      "address": "12200 Joerger Dr, Truckee, CA 96161, US",
-      "street": "12200 Joerger Dr",
+      "name": "Truckee Donner Recreation and Park District",
+      "address": "10040 Reynold Way, Truckee, CA 96161-1800, US",
+      "street": "10040 Reynold Way",
       "locality": "Truckee",
-      "region": "US-CA",
-      "postcode": "96161",
+      "region": "CA",
+      "postcode": "96161-1800",
       "country": "US",
       "location": {
-        "latitude": 39.3298561,
-        "longitude": -120.1572441
+        "latitude": 39.323674753551,
+        "longitude": -120.1638007164
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 1705.76347572,
       "types": [
-        "park",
-        "non_profit_organization",
-        "public_and_government_association"
+        "park"
       ],
       "primaryType": "park",
+      "basicCategory": "park",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "http://www.ponderosagolfcoursetruckee.com/",
+      "phone": "+15305873501"
     },
     {
-      "id": "ChIJVVUlLc1hmYARPHo5u09JatQ",
+      "id": "2c372709-6b82-4c0b-b3f8-02738798d3a4",
       "source": "overture",
-      "name": "Elevated Aviation",
-      "address": "10356 Truckee Airport Rd, Truckee, CA 96161, US",
-      "street": "10356 Truckee Airport Rd",
+      "name": "Schaffer's Mill Golf Club",
+      "address": "9000 Heartwood Dr, Truckee, CA 96161, US",
+      "street": "9000 Heartwood Dr",
       "locality": "Truckee",
-      "region": "US-CA",
+      "region": "CA",
       "postcode": "96161",
       "country": "US",
       "location": {
-        "latitude": 39.319265699999995,
-        "longitude": -120.14508239999999
+        "latitude": 39.306728415853534,
+        "longitude": -120.16354850736955
       },
       "extent": null,
-      "distanceMeters": null,
+      "distanceMeters": 1891.9117056,
       "types": [
-        "airport",
-        "transportation_service"
+        "golf_course"
       ],
-      "primaryType": "airport",
+      "primaryType": "golf_course",
+      "basicCategory": "golf_course",
+      "categoryName": null,
       "checkinCount": 0,
+      "prior": 1,
       "isPrivate": false,
       "retired": false,
-      "website": null,
-      "phone": null
+      "website": "https://www.schaffersmill.com",
+      "phone": "(530) 587-9909"
     }
   ],
   "placeKeys": {
-    "townHall": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
-    "police": "ChIJjxd7Dc1hmYARTbTBkB8cqho",
-    "sportsPark": "ChIJn9PrISdgmYARWfGaRaZBLE0",
-    "airport": "ChIJ8-hbhsthmYARcPdss0-xprU"
+    "townHall": "0d7e4552-a389-422a-b7cf-562e08d797ef",
+    "police": "7924c5d2-d575-4cf3-9442-25dcac318930",
+    "sportsPark": "5252b76a-f1e0-45d1-9c8c-03e62980b53a",
+    "airport": "1f47bf40-5160-4b0a-8e8c-93bb99a98257"
   },
   "histories": {
     "none": [],
     "councilRegular": [
       {
-        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "0d7e4552-a389-422a-b7cf-562e08d797ef",
         "createdAt": "2026-06-24T17:35:00.000Z",
-        "placeName": "Truckee Town Hall & Town Clerk",
+        "placeName": "Truckee Town Hall and Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
         "placePrimaryType": "town_hall",
         "placeTypes": [
-          "town_hall",
-          "local_and_state_government_offices",
-          "government_services",
-          "professional_services"
+          "town_hall"
         ],
         "location": {
-          "latitude": 39.31685470000001,
-          "longitude": -120.1461822
+          "latitude": 39.31693616,
+          "longitude": -120.14641788
         }
       },
       {
-        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "0d7e4552-a389-422a-b7cf-562e08d797ef",
         "createdAt": "2026-07-09T17:28:00.000Z",
-        "placeName": "Truckee Town Hall & Town Clerk",
+        "placeName": "Truckee Town Hall and Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
         "placePrimaryType": "town_hall",
         "placeTypes": [
-          "town_hall",
-          "local_and_state_government_offices",
-          "government_services",
-          "professional_services"
+          "town_hall"
         ],
         "location": {
-          "latitude": 39.31685470000001,
-          "longitude": -120.1461822
+          "latitude": 39.31693616,
+          "longitude": -120.14641788
         }
       },
       {
-        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "0d7e4552-a389-422a-b7cf-562e08d797ef",
         "createdAt": "2026-07-24T17:21:00.000Z",
-        "placeName": "Truckee Town Hall & Town Clerk",
+        "placeName": "Truckee Town Hall and Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
         "placePrimaryType": "town_hall",
         "placeTypes": [
-          "town_hall",
-          "local_and_state_government_offices",
-          "government_services",
-          "professional_services"
+          "town_hall"
         ],
         "location": {
-          "latitude": 39.31685470000001,
-          "longitude": -120.1461822
+          "latitude": 39.31693616,
+          "longitude": -120.14641788
         }
       },
       {
-        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "0d7e4552-a389-422a-b7cf-562e08d797ef",
         "createdAt": "2026-08-07T17:14:00.000Z",
-        "placeName": "Truckee Town Hall & Town Clerk",
+        "placeName": "Truckee Town Hall and Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
         "placePrimaryType": "town_hall",
         "placeTypes": [
-          "town_hall",
-          "local_and_state_government_offices",
-          "government_services",
-          "professional_services"
+          "town_hall"
         ],
         "location": {
-          "latitude": 39.31685470000001,
-          "longitude": -120.1461822
+          "latitude": 39.31693616,
+          "longitude": -120.14641788
         }
       },
       {
-        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "0d7e4552-a389-422a-b7cf-562e08d797ef",
         "createdAt": "2026-08-21T17:07:00.000Z",
-        "placeName": "Truckee Town Hall & Town Clerk",
+        "placeName": "Truckee Town Hall and Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
         "placePrimaryType": "town_hall",
         "placeTypes": [
-          "town_hall",
-          "local_and_state_government_offices",
-          "government_services",
-          "professional_services"
+          "town_hall"
         ],
         "location": {
-          "latitude": 39.31685470000001,
-          "longitude": -120.1461822
+          "latitude": 39.31693616,
+          "longitude": -120.14641788
         }
       },
       {
-        "placeId": "ChIJjxd7Dc1hmYAR_qiNsGB9RCM",
+        "placeId": "0d7e4552-a389-422a-b7cf-562e08d797ef",
         "createdAt": "2026-09-07T17:00:00.000Z",
-        "placeName": "Truckee Town Hall & Town Clerk",
+        "placeName": "Truckee Town Hall and Town Clerk",
         "placeAddress": "10183 Truckee Airport Rd, Truckee, CA 96161, US",
         "placePrimaryType": "town_hall",
         "placeTypes": [
-          "town_hall",
-          "local_and_state_government_offices",
-          "government_services",
-          "professional_services"
+          "town_hall"
         ],
         "location": {
-          "latitude": 39.31685470000001,
-          "longitude": -120.1461822
+          "latitude": 39.31693616,
+          "longitude": -120.14641788
         }
       }
     ]

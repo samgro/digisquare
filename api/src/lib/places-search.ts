@@ -2,15 +2,20 @@ import { and, asc, desc, eq, getTableColumns, isNull, ne, or, sql, type SQL } fr
 import { database } from "../db/index.js";
 import { checkins, places } from "../db/schema.js";
 import { friendIdsOf } from "./friendships.js";
+import {
+  CORROBORATION_BONUS_PER_PROVIDER,
+  HIDDEN_PRIOR_THRESHOLD,
+  MAXIMUM_CORROBORATING_PROVIDERS,
+} from "./place-quality.js";
 
 type PlaceRow = typeof places.$inferSelect;
 
 /**
  * A `places` row plus what a search adds: how many checkins (from everyone)
- * point at it, its extent as GeoJSON with its bounding box, and its
- * distance from the searched fix.
+ * point at it, its extent as GeoJSON with its bounding box, its distance
+ * from the searched fix, and its prior with the corroboration bonus added.
  */
-export interface PlaceCandidate extends Omit<PlaceRow, "location" | "extent"> {
+export interface PlaceCandidate extends Omit<PlaceRow, "location" | "extent" | "prior"> {
   checkinCount: number;
   /** `ST_AsGeoJSON` of the simplified extent, or null. */
   extentGeoJson: string | null;
@@ -20,10 +25,21 @@ export interface PlaceCandidate extends Omit<PlaceRow, "location" | "extent"> {
   extentEast: number | null;
   /** Null when the row was fetched by id rather than around a fix. */
   distanceMeters: number | null;
+  /** The stored prior plus the corroboration bonus; 0 for rows that have none. */
+  prior: number;
 }
 
-/** How many rows each of the searches returns at most. */
+/** How many rows the grounds, large-venue and name searches return at most. */
 export const SEARCH_RESULT_LIMIT = 20;
+
+/**
+ * How many nearest pins are returned. On a dense block twenty reach only
+ * about 45 m from the fix, which a normal GPS error clears: measured at La
+ * Taqueria in the Mission, more than seventy places sit within 77 m of its
+ * pin. Sixty reach far enough for the client's ranking to have the right
+ * venue among its candidates.
+ */
+export const NEAREST_RESULT_LIMIT = 60;
 
 /**
  * Above this accuracy the fix is a cell-tower or reduced-accuracy guess, so
@@ -50,6 +66,21 @@ export const LARGE_VENUE_TYPES = [
   "state_park",
   "park",
 ] as const;
+
+/**
+ * Overture has a category per kind of stadium and airfield
+ * (`baseball_stadium`, `international_airports`); these match them all, as
+ * the iOS footprint table's suffix entries do.
+ */
+export const LARGE_VENUE_TYPE_SUFFIXES = ["_stadium", "_airports"] as const;
+
+/** `types` holds one of the large-venue categories, spelled out or by suffix. */
+const isLargeVenueSql = sql`(${places.types} && ${pgTextArray(LARGE_VENUE_TYPES)}
+  or exists (select 1 from unnest(${places.types}) as place_type
+             where ${sql.join(
+               LARGE_VENUE_TYPE_SUFFIXES.map((suffix) => sql`place_type like ${`%${suffix}`}`),
+               sql` or `,
+             )}))`;
 
 /**
  * A category search matches on a venue's pin, so the circle has to reach
@@ -113,6 +144,18 @@ const extentColumns = {
   extentEast: sql<number | null>`ST_XMax(${places.extent}::geometry)`,
 };
 
+/**
+ * `corroborationBonus` from place-quality.ts in SQL: what the providers
+ * beyond the first that matched the venue are worth. A null count (the
+ * bridge files not read yet) counts as one provider.
+ */
+// The constants are inlined rather than bound: a bound "0.5" next to an
+// integer expression is read as an integer and rejected.
+const corroborationBonusSql = sql<number>`${sql.raw(String(CORROBORATION_BONUS_PER_PROVIDER))}::double precision * least(greatest(coalesce(${places.providerCount}, 1) - 1, 0), ${sql.raw(String(MAXIMUM_CORROBORATING_PROVIDERS))})`;
+
+/** The prior the app ranks on: the stored one plus the corroboration bonus. */
+const priorSql = sql<number>`coalesce(${places.prior}, 0) + ${corroborationBonusSql}`;
+
 function candidateColumns(fix: { latitude: number; longitude: number } | null) {
   const { location: _location, extent: _extent, ...plainColumns } = getTableColumns(places);
   return {
@@ -120,6 +163,7 @@ function candidateColumns(fix: { latitude: number; longitude: number } | null) {
     checkinCount: checkinCountSql,
     ...extentColumns,
     distanceMeters: fix ? distanceMetersSql(fix) : sql<number | null>`null::double precision`,
+    prior: priorSql,
   };
 }
 
@@ -189,16 +233,23 @@ export function findPlaceById(placeIdentifier: string, viewerUserId: string | nu
   ).then((rows) => rows[0]);
 }
 
-/** The `limit` places whose pin is nearest the center, within `radius` meters. */
+/**
+ * The places whose pin is nearest the center, within `radius` meters. The
+ * records the prior marks as junk (a registry entry with no category) are
+ * left out here, and only here: they would fill the list on a dense block
+ * for nothing, but a name search still finds them for the rare time one is
+ * wanted.
+ */
 export function searchNearest(circle: Circle, viewerUserId: string | null): Promise<PlaceCandidate[]> {
   return selectCandidates(
     circle,
     and(
       isSearchable(viewerUserId),
       sql`ST_DWithin(${places.location}::geography, ${fixGeography(circle)}, ${circle.radius})`,
+      sql`${priorSql} >= ${sql.raw(String(HIDDEN_PRIOR_THRESHOLD))}`,
     )!,
     [asc(sql`ST_Distance(${places.location}::geography, ${fixGeography(circle)})`)],
-    SEARCH_RESULT_LIMIT,
+    NEAREST_RESULT_LIMIT,
   );
 }
 
@@ -225,7 +276,10 @@ export function searchByExtent(circle: Circle, viewerUserId: string | null): Pro
 
 /**
  * Large venues by category within at least 2 km, best-known first: the
- * fallback for venues Overture's base theme has no polygon for.
+ * fallback for venues Overture's base theme has no polygon for. Nearest
+ * first after that, not best-prior first: every one of these is scored as
+ * if the user could be anywhere inside it, so a well-attested college a
+ * kilometer away is a worse candidate than an obscure park next door.
  */
 export function searchLargeVenues(circle: Circle, viewerUserId: string | null): Promise<PlaceCandidate[]> {
   const searchCircle = largeVenueSearchCircle(circle);
@@ -233,8 +287,9 @@ export function searchLargeVenues(circle: Circle, viewerUserId: string | null): 
     searchCircle,
     and(
       isSearchable(viewerUserId),
-      sql`${places.types} && ${pgTextArray(LARGE_VENUE_TYPES)}`,
+      isLargeVenueSql,
       sql`ST_DWithin(${places.location}::geography, ${fixGeography(searchCircle)}, ${searchCircle.radius})`,
+      sql`${priorSql} >= ${sql.raw(String(HIDDEN_PRIOR_THRESHOLD))}`,
     )!,
     [desc(checkinCountSql), asc(distanceMetersSql(searchCircle))],
     SEARCH_RESULT_LIMIT,

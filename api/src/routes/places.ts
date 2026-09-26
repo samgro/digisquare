@@ -162,6 +162,7 @@ places.post("/", requireAuth, async (context) => {
       toPlaceResult({
         ...created,
         checkinCount: 0,
+        prior: 0,
         extentGeoJson: null,
         extentSouth: null,
         extentWest: null,

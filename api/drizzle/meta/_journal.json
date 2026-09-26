@@ -92,6 +92,13 @@
       "when": 1790387129948,
       "tag": "0012_add_swarm_import_and_checkin_photos",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1790399278865,
+      "tag": "0013_add_place_quality_signals",
+      "breakpoints": true
     }
   ]
 }
