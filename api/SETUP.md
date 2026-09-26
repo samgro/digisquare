@@ -231,9 +231,11 @@ These are optional: without all four, the API still boots and the
    Homebrew); the migration enables it.
 
    To work against a Neon branch instead, put its `DATABASE_URL` (and
-   anything else that differs) in `.env.branch` at the repo root. It is
+   anything else that differs) in `.env.branch` next to `.env`. It is
    gitignored and overrides both `.env` and the shell, for the server, the
-   scripts and `db:migrate` alike.
+   scripts and `db:migrate` alike. `npm run db:branch` prints which database
+   that resolves to and which file it came from; every drizzle-kit command
+   prints the same line before it connects.
 
    `npm run dev` takes the first free port from 3001 up, and logs which, so
    several checkouts (git worktrees) can run at once; the simulator app

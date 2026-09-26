@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 /**
  * Where DATABASE_URL points and which file said so, for printing before a
  * migration or seed runs. Worktrees share `api/.env` with the main checkout
- * (production) and override it with `.env.branch`, so the one thing worth
- * knowing before writing to Postgres is which of the two won.
+ * (production) and override it with `api/.env.branch`, so the one thing
+ * worth knowing before writing to Postgres is which of the two won.
  */
 export interface DatabaseTarget {
   host: string;
@@ -18,7 +18,7 @@ export interface DatabaseTarget {
 }
 
 const ENVIRONMENT_PATH = fileURLToPath(new URL("../../.env", import.meta.url));
-const BRANCH_ENVIRONMENT_PATH = fileURLToPath(new URL("../../../.env.branch", import.meta.url));
+const BRANCH_ENVIRONMENT_PATH = fileURLToPath(new URL("../../.env.branch", import.meta.url));
 
 function databaseUrlIn(path: string): string | undefined {
   if (!existsSync(path)) {
