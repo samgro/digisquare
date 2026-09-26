@@ -48,6 +48,13 @@ final class BuildGate {
     /// is known before the welcome screen offers a sign-in.
     func check() async {
         guard app != nil else { return }
+        // While blocked, the right server may have come up on another port
+        // since the last look; otherwise the first location stands.
+        if isBlocking {
+            await DevServerLocator.shared.relocate()
+        } else {
+            await DevServerLocator.shared.ensureLocated()
+        }
         do {
             let status: ServerStatus = try await APIClient.shared.request(path: "", authenticated: false, bypassingBuildGate: true)
             record(server: status.build?.identity)

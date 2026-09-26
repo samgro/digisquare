@@ -2,10 +2,18 @@ import { serve } from "@hono/node-server";
 import { app } from "./app.js";
 import { config } from "./config.js";
 import { CoverageWorker } from "./lib/coverage-worker.js";
+import { findOpenPort } from "./lib/open-port.js";
 import { s3Source } from "./lib/overture-remote.js";
 
-serve({ fetch: app.fetch, port: config.PORT }, (info) => {
-  console.log(`Server running at http://localhost:${info.port}`);
+// Locally, several checkouts run their own API at once: each takes the
+// first free port from the default up, and the simulator app finds its own
+// server by branch. Where PORT is set (Railway) it is used as is, so a port
+// clash there fails loudly instead of drifting.
+const port = process.env.PORT ? config.PORT : await findOpenPort(config.PORT);
+
+serve({ fetch: app.fetch, port }, (info) => {
+  const note = info.port === config.PORT ? "" : ` (${config.PORT} was busy)`;
+  console.log(`Server running at http://localhost:${info.port}${note}`);
 });
 
 // Fetches Overture data for areas users search from that the database does

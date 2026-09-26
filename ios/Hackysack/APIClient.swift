@@ -178,6 +178,10 @@ final class APIClient {
         var urlRequest = originalRequest
         var attachedAccessToken: String?
 
+        // Simulator builds first find which local port serves this build's
+        // branch; nothing outside the simulator, where the URL is fixed.
+        await DevServerLocator.shared.ensureLocated()
+
         // A dev server from another checkout gets nothing at all, so no
         // session or write can land in its database by accident.
         if !bypassingBuildGate, BuildGate.shared.isBlocking,

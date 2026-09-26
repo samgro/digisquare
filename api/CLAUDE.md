@@ -46,3 +46,12 @@ HACKYSACK_API_URL=http://localhost:3000 npm run fixtures:record -- sfo-terminal-
 A file whose `recordedAt` is null is stand-in data and should be re-recorded.
 The current files were converted from the old Google recordings, with the
 Google types mapped to Overture categories, and are all in that state.
+
+# Running locally
+
+`npm run dev` takes the first free port from 3000 up (several checkouts run
+at once), so read the port from its "Server running at" line rather than
+assuming 3000; set `PORT` to pin one. The simulator app finds its own server
+by probing ports 3000-3009 for the one on its branch, so it needs no
+configuration. Bruno's Local environment is fixed to 3000; change `baseUrl`
+there when the server landed elsewhere.
