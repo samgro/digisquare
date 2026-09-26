@@ -120,32 +120,25 @@ struct TimelineView: View {
 
     /// A new account's first sight of the timeline. Most people arriving
     /// here have years of Swarm history, so bringing it over is the first
-    /// thing offered; checking in by hand is the other way to start.
-    @ViewBuilder
+    /// thing offered; checking in by hand is the other way to start. Shown
+    /// whenever there are no checkins, whatever the import store knows: while
+    /// an import runs, the banner above it says so.
     private var emptyState: some View {
-        if swarmImportStore.hasLoaded, !swarmImportStore.isConnected, swarmImportStore.bannerImport == nil {
-            ContentUnavailableView {
-                Label {
-                    Text("Import your Swarm checkins")
-                } icon: {
-                    Text("🐝")
-                        .font(.system(size: 56))
-                        .accessibilityHidden(true)
-                }
-            } description: {
-                Text("Bring your whole history over, photos and all. Or tap + to check in somewhere new.")
-            } actions: {
-                Button("Import from Swarm") {
-                    isShowingSwarmImport = true
-                }
-                .buttonStyle(.borderedProminent)
+        ContentUnavailableView {
+            Label {
+                Text("Import your Swarm checkins")
+            } icon: {
+                Text("🐝")
+                    .font(.system(size: 56))
+                    .accessibilityHidden(true)
             }
-        } else {
-            ContentUnavailableView(
-                "No Checkins Yet",
-                systemImage: Glyphs.noCheckins,
-                description: Text("Tap + to check in somewhere.")
-            )
+        } description: {
+            Text("Bring your whole history over, photos and all. Or tap + to check in somewhere new.")
+        } actions: {
+            Button("Import from Swarm") {
+                isShowingSwarmImport = true
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }
