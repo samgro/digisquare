@@ -57,7 +57,8 @@ no build, i.e. one from before this check); a server on the same branch but
 a newer commit only shows a banner. So after switching branches, rebuild
 the app, or the server it talks to will refuse it. See `BuildGate.swift`.
 
-Dev servers take the first free port from 3000 up, so a simulator build does
-not assume 3000: `DevServerLocator` probes ports 3000-3009 before the first
-request and uses the server on this build's branch (else the first that
-answered, which the gate then explains). Nothing to configure.
+Dev servers take the first free port from 3001 up (3000 is kept for the
+user's manual testing), so a simulator build does not assume a port:
+`DevServerLocator` probes ports 3000-3009 before the first request and uses
+the server on this build's branch (else the first that answered, which the
+gate then explains). Nothing to configure.

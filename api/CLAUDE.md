@@ -49,9 +49,10 @@ Google types mapped to Overture categories, and are all in that state.
 
 # Running locally
 
-`npm run dev` takes the first free port from 3000 up (several checkouts run
+`npm run dev` takes the first free port from 3001 up (several checkouts run
 at once), so read the port from its "Server running at" line rather than
-assuming 3000; set `PORT` to pin one. The simulator app finds its own server
-by probing ports 3000-3009 for the one on its branch, so it needs no
-configuration. Bruno's Local environment is fixed to 3000; change `baseUrl`
-there when the server landed elsewhere.
+assuming one. Port 3000 is reserved for the user's manual testing (Bruno's
+Local environment points there): never start a server with `PORT=3000`, and
+never assume 3000 is this checkout's server. The simulator app finds its own
+server by probing ports 3000-3009 for the one on its branch, so it needs no
+configuration.

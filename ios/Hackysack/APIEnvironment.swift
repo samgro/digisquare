@@ -7,10 +7,10 @@ import Foundation
 
 enum APIEnvironment {
     #if targetEnvironment(simulator)
-    /// Where a dev server starts looking for a free port. Several checkouts
-    /// run at once, each one port up from the last, so the simulator app
-    /// does not assume this: DevServerLocator probes and sets the port that
-    /// serves this build's branch.
+    /// Used until DevServerLocator has looked. Dev servers take the first
+    /// free port from 3001 up (3000 is kept for manual testing), so the app
+    /// never assumes a port: the locator probes and sets the one that serves
+    /// this build's branch.
     static let defaultDevServerPort = 3000
     static var devServerPort = defaultDevServerPort
 

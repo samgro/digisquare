@@ -6,13 +6,19 @@ import { findOpenPort } from "./lib/open-port.js";
 import { s3Source } from "./lib/overture-remote.js";
 
 // Locally, several checkouts run their own API at once: each takes the
-// first free port from the default up, and the simulator app finds its own
-// server by branch. Where PORT is set (Railway) it is used as is, so a port
-// clash there fails loudly instead of drifting.
-const port = process.env.PORT ? config.PORT : await findOpenPort(config.PORT);
+// first free port from 3001 up, and the simulator app finds its own server
+// by branch. 3000 is kept for manual testing (Bruno points there) and is
+// only used when asked for with PORT=3000. Where PORT is set it is used as
+// is, so a clash on Railway fails loudly instead of drifting.
+const FIRST_AUTOMATIC_PORT = 3001;
+const port = process.env.PORT ? config.PORT : await findOpenPort(FIRST_AUTOMATIC_PORT);
 
 serve({ fetch: app.fetch, port }, (info) => {
-  const note = info.port === config.PORT ? "" : ` (${config.PORT} was busy)`;
+  const note = process.env.PORT
+    ? ""
+    : info.port === FIRST_AUTOMATIC_PORT
+      ? " (3000 is kept for manual testing; PORT=3000 to use it)"
+      : ` (${FIRST_AUTOMATIC_PORT} was busy)`;
   console.log(`Server running at http://localhost:${info.port}${note}`);
 });
 

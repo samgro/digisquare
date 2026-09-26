@@ -206,11 +206,12 @@ query-string credentials.
    gitignored and overrides both `.env` and the shell, for the server, the
    scripts and `db:migrate` alike.
 
-   `npm run dev` takes the first free port from 3000 up, and logs which, so
+   `npm run dev` takes the first free port from 3001 up, and logs which, so
    several checkouts (git worktrees) can run at once; the simulator app
-   probes ports 3000-3009 and uses the server on its own branch. Set `PORT`
-   to pin a port. Those checkouts also share the token secret, so the app
-   could not otherwise tell them apart. A
+   probes ports 3000-3009 and uses the server on its own branch. Port 3000
+   is kept for manual testing: run `PORT=3000 npm run dev` for that, which
+   is where Bruno's Local environment points. Those checkouts also share the
+   token secret, so the app could not otherwise tell them apart. A
    Debug simulator build is therefore stamped with the branch and commit it
    was built from and sends them on every request; a dev server on another
    branch answers 409 and the app shows a full-screen "Wrong Dev Server"
