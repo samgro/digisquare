@@ -65,6 +65,8 @@ describe("toSwarmCheckinRows", () => {
       placeName: "Little Sheep",
       placeAddress: "1655 Lincoln Ave, San Jose, CA 95125, US",
       placeLocality: "San Jose",
+      placeRegion: "US-CA",
+      placeCountry: "US",
       placePrimaryType: "asian_restaurant",
       placeTypes: ["asian_restaurant", "coffee_shop"],
       placeCategoryName: "Hotpot Restaurant",

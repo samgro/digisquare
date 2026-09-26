@@ -34,7 +34,7 @@ enum CheckinSource: String, Codable, Equatable {
 
 /// A photo on a checkin, served from wherever the server says: R2 for photos
 /// taken here and copied Swarm photos, Foursquare for ones not yet copied.
-struct CheckinPhoto: Decodable, Identifiable, Hashable {
+struct CheckinPhoto: Codable, Identifiable, Hashable {
     let id: String
     let url: URL
     let width: Int?
@@ -54,6 +54,11 @@ struct Checkin: Decodable, Identifiable, Hashable {
     let placeAddress: String?
     /// Absent on rows saved before the API stored it separately.
     let placeLocality: String?
+    /// ISO 3166-2, e.g. "US-CA". A few places carried over from Google have
+    /// a plain name instead, and some places have none.
+    let placeRegion: String?
+    /// ISO 3166-1 alpha-2, e.g. "US", apart from the same Google leftovers.
+    let placeCountry: String?
     let placePrimaryType: String?
     let placeTypes: [String]?
     /// The place's own label for its category, such as Foursquare's "Hotpot
@@ -79,7 +84,8 @@ struct Checkin: Decodable, Identifiable, Hashable {
 
 extension Checkin {
     private enum CodingKeys: String, CodingKey {
-        case id, userId, placeId, placeName, placeAddress, placeLocality, placePrimaryType, placeTypes
+        case id, userId, placeId, placeName, placeAddress, placeLocality, placeRegion, placeCountry
+        case placePrimaryType, placeTypes
         case placeCategoryName, location, message, visibility, source, photos, timeZoneOffsetMinutes
         case likeCount, commentCount, likedByMe, createdAt, updatedAt
     }
@@ -95,6 +101,8 @@ extension Checkin {
         placeName = try container.decode(String.self, forKey: .placeName)
         placeAddress = try container.decodeIfPresent(String.self, forKey: .placeAddress)
         placeLocality = try container.decodeIfPresent(String.self, forKey: .placeLocality)
+        placeRegion = try container.decodeIfPresent(String.self, forKey: .placeRegion)
+        placeCountry = try container.decodeIfPresent(String.self, forKey: .placeCountry)
         placePrimaryType = try container.decodeIfPresent(String.self, forKey: .placePrimaryType)
         placeTypes = try container.decodeIfPresent([String].self, forKey: .placeTypes)
         placeCategoryName = try container.decodeIfPresent(String.self, forKey: .placeCategoryName)
@@ -224,6 +232,18 @@ struct ImageUpload: Decodable {
     let key: String
 }
 
+/// One page of `GET /checkins/sync`. The cursor is opaque: persist it and
+/// send it back verbatim.
+struct CheckinSyncPage: Decodable {
+    let results: [Checkin]
+    let nextCursor: String
+    /// False once the local copy is caught up. The last `nextCursor` is still
+    /// the place to resume from when looking for later changes.
+    let hasMore: Bool
+    /// Every checkin the signed-in user owns, for progress reporting.
+    let totalCount: Int
+}
+
 /// Every /checkins route requires a bearer token, so these go through
 /// APIClient rather than URLSession directly — that is what attaches the
 /// Authorization header and retries once through a token refresh on a 401.
@@ -277,6 +297,16 @@ struct CheckinsAPI {
             queryItems: queryItems
         )
         return response.results
+    }
+
+    /// Pages through every checkin the signed-in user owns. Pass nil to start
+    /// from scratch.
+    func syncCheckins(cursor: String?, limit: Int) async throws -> CheckinSyncPage {
+        var queryItems = [URLQueryItem(name: "limit", value: String(limit))]
+        if let cursor {
+            queryItems.append(URLQueryItem(name: "cursor", value: cursor))
+        }
+        return try await client.request(path: "checkins/sync", queryItems: queryItems)
     }
 
     // MARK: Likes

@@ -59,15 +59,25 @@ extension Checkin {
     /// Where the checkin happened, when known, so history reads in local time:
     /// a dinner in Tokyo shows 7 PM, not whatever the time was back home.
     var timeZone: TimeZone {
-        timeZoneOffsetMinutes.flatMap { TimeZone(secondsFromGMT: $0 * 60) } ?? .current
+        Self.timeZone(offsetMinutes: timeZoneOffsetMinutes)
+    }
+
+    static func timeZone(offsetMinutes: Int?) -> TimeZone {
+        offsetMinutes.flatMap { TimeZone(secondsFromGMT: $0 * 60) } ?? .current
     }
 
     /// The calendar day the checkin happened on, where it happened, as the
     /// start of that day in `calendar`, so it can be grouped and compared
     /// with "today" here.
     func localDay(in calendar: Calendar = .current) -> Date {
+        Self.localDay(of: createdAt, timeZoneOffsetMinutes: timeZoneOffsetMinutes, in: calendar)
+    }
+
+    /// `localDay(in:)` from just the two fields it reads, so a stored record
+    /// can be grouped without being turned into a whole `Checkin`.
+    static func localDay(of createdAt: Date, timeZoneOffsetMinutes: Int?, in calendar: Calendar = .current) -> Date {
         var checkinCalendar = calendar
-        checkinCalendar.timeZone = timeZone
+        checkinCalendar.timeZone = timeZone(offsetMinutes: timeZoneOffsetMinutes)
         let components = checkinCalendar.dateComponents([.year, .month, .day], from: createdAt)
         return calendar.date(from: components) ?? calendar.startOfDay(for: createdAt)
     }

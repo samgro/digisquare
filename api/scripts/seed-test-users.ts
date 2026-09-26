@@ -117,6 +117,8 @@ async function seed() {
         placeName: place.name,
         placeAddress: formatAddress(place),
         placeLocality: place.addressLocality,
+        placeRegion: place.addressRegion,
+        placeCountry: place.addressCountry,
         placePrimaryType: place.primaryType,
         placeTypes: place.types,
         latitude: place.latitude,

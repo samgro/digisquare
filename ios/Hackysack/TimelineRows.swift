@@ -298,37 +298,105 @@ private struct SuggestionIconButton: View {
     }
 }
 
+/// One checkin on a timeline: an entry held in memory (pending, suggested,
+/// or loaded for a profile), or a record from the local database.
+///
+/// Records are converted to a `Checkin` only when their row is built, which
+/// in a lazy stack means only when it scrolls into view. A history of
+/// thousands then costs one `createdAt` read per checkin to lay out, not a
+/// full copy of every one on each update.
+enum TimelineItem: Identifiable, Equatable {
+    case entry(TimelineEntry)
+    case record(CheckinRecord)
+
+    var id: String {
+        switch self {
+        case .entry(let entry):
+            return entry.id.uuidString
+        case .record(let record):
+            return record.id
+        }
+    }
+
+    var createdAt: Date {
+        switch self {
+        case .entry(let entry):
+            return entry.checkin.createdAt
+        case .record(let record):
+            return record.createdAt
+        }
+    }
+
+    /// The day it happened on, where it happened; see `Checkin.localDay(in:)`.
+    func localDay(in calendar: Calendar) -> Date {
+        switch self {
+        case .entry(let entry):
+            return entry.checkin.localDay(in: calendar)
+        case .record(let record):
+            return Checkin.localDay(
+                of: record.createdAt,
+                timeZoneOffsetMinutes: record.timeZoneOffsetMinutes,
+                in: calendar
+            )
+        }
+    }
+
+    var entry: TimelineEntry {
+        switch self {
+        case .entry(let entry):
+            return entry
+        case .record(let record):
+            return TimelineEntry(savedCheckin: record.checkin)
+        }
+    }
+
+    static func == (first: TimelineItem, second: TimelineItem) -> Bool {
+        switch (first, second) {
+        case let (.entry(firstEntry), .entry(secondEntry)):
+            return firstEntry == secondEntry
+        case let (.record(firstRecord), .record(secondRecord)):
+            // Records are live objects; the row reads their changes itself.
+            return firstRecord.id == secondRecord.id
+        default:
+            return false
+        }
+    }
+}
+
 /// A day divider or a checkin, interleaved in display order so the timeline
 /// can be rendered as one flat, continuously-connected list.
 enum TimelineRow: Identifiable, Equatable {
     case dayHeader(Date)
-    case entry(TimelineEntry)
+    case item(TimelineItem)
 
     var id: String {
         switch self {
         case .dayHeader(let day):
             return "day-\(day.timeIntervalSince1970)"
-        case .entry(let entry):
-            return "entry-\(entry.id)"
+        case .item(let item):
+            return "entry-\(item.id)"
         }
     }
 }
 
-/// Groups entries by the day they happened on, where they happened, most
-/// recent first, inserting a day header ahead of each group's first entry.
+/// Groups items by the day they happened on, where they happened, most
+/// recent first, inserting a day header ahead of each group's first item.
 /// Suggested checkins are dated by their visit's arrival, so they fall into
 /// the day the user was actually there.
-func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -> [TimelineRow] {
-    let sortedEntries = entries.sorted { $0.checkin.createdAt > $1.checkin.createdAt }
+///
+/// The sort is stable and close to linear on input that is already mostly in
+/// order, which is how the timeline's thousands of records arrive.
+func timelineRows(for items: [TimelineItem], calendar: Calendar = .current) -> [TimelineRow] {
+    let sortedItems = items.sorted { $0.createdAt > $1.createdAt }
     var rows: [TimelineRow] = []
     var lastDay: Date?
-    for entry in sortedEntries {
-        let day = entry.checkin.localDay(in: calendar)
+    for item in sortedItems {
+        let day = item.localDay(in: calendar)
         if day != lastDay {
             rows.append(.dayHeader(day))
             lastDay = day
         }
-        rows.append(.entry(entry))
+        rows.append(.item(item))
     }
     return rows
 }
@@ -336,9 +404,9 @@ func timelineRows(for entries: [TimelineEntry], calendar: Calendar = .current) -
 /// A whole timeline's rows: checkins grouped under day headers, with one
 /// connector line threaded through them. Put it in a LazyVStack with no
 /// spacing, as the line relies on consecutive rows touching. Shared by the
-/// Timeline tab and the timeline on someone's profile.
+/// Timeline tab, search results and the timeline on someone's profile.
 struct CheckinTimelineRows: View {
-    let entries: [TimelineEntry]
+    let items: [TimelineItem]
     var onRetry: (TimelineEntry) -> Void = { _ in }
     // Only used by suggested entries, which only the Timeline tab has.
     var onConfirm: (TimelineEntry) -> Void = { _ in }
@@ -350,12 +418,13 @@ struct CheckinTimelineRows: View {
     var onReachEnd: () -> Void = {}
 
     var body: some View {
-        let rows = timelineRows(for: entries)
+        let rows = timelineRows(for: items)
         ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
             switch row {
             case .dayHeader(let day):
                 TimelineDayHeaderRow(day: day, showTopLine: index != 0)
-            case .entry(let entry):
+            case .item(let item):
+                let entry = item.entry
                 TimelineEntryRow(
                     entry: entry,
                     showTopLine: index != 0,

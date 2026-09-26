@@ -45,7 +45,7 @@ struct FriendsView: View {
             }
             // Your own checkins are in the feed too, so one saved from the
             // button on this tab shows up without a pull to refresh.
-            .onChange(of: newestSavedCheckinId) { _, _ in
+            .onChange(of: checkinStore.lastSavedCheckinId) { _, _ in
                 Task { await friendsStore.loadFeed() }
             }
         }
@@ -59,12 +59,6 @@ struct FriendsView: View {
         if item.id == friendsStore.feed.first?.id { edges.insert(.top) }
         if item.id == friendsStore.feed.last?.id { edges.insert(.bottom) }
         return edges
-    }
-
-    /// The timeline is newest first, so this changes when a checkin finishes
-    /// saving rather than when it is first submitted with a placeholder.
-    private var newestSavedCheckinId: String? {
-        checkinStore.savedEntries.first { $0.syncStatus == .saved }?.checkin.id
     }
 
     @ViewBuilder

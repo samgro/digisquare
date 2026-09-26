@@ -3,12 +3,15 @@
 //  Hackysack
 //
 
+import SwiftData
 import SwiftUI
 
 struct TimelineView: View {
     @EnvironmentObject private var checkinStore: CheckinStore
+    @Environment(CheckinHistorySync.self) private var historySync
     @Environment(AuthManager.self) private var authManager
     @Environment(SwarmImportStore.self) private var swarmImportStore
+    @Query(sort: \CheckinRecord.createdAt, order: .reverse) private var records: [CheckinRecord]
     @State private var editingSuggestion: PendingCheckin?
     @State private var selectedCheckin: CheckinDetailDestination?
     @State private var commentingCheckin: Checkin?
@@ -21,11 +24,9 @@ struct TimelineView: View {
                 CheckInFAB()
             }
             .navigationTitle("Timeline")
-            .homeNavigationBar(
-                searchTitle: "Search Checkins",
-                searchLabel: "Search your checkins",
-                searchDescription: "Searching your checkins is coming soon."
-            )
+            .homeNavigationBar(searchLabel: "Search your checkins") {
+                CheckinSearchView()
+            }
             .navigationDestination(item: $selectedCheckin) { destination in
                 CheckinDetailView(destination: destination)
             }
@@ -34,9 +35,6 @@ struct TimelineView: View {
             }
             .sheet(item: $commentingCheckin) { checkin in
                 CommentsSheet(checkin: checkin)
-            }
-            .task {
-                await checkinStore.loadTimeline()
             }
             .sheet(item: $editingSuggestion) { suggestion in
                 EditSuggestionSheet(
@@ -58,46 +56,61 @@ struct TimelineView: View {
             ?? UserSummary(id: checkinStore.currentUserId ?? "", name: nil, avatarURL: nil)
     }
 
+    /// Pending checkins and suggestions alongside everything in the local
+    /// database. A saved checkin the database couldn't take stays pending
+    /// until a sync brings it down; after that the record replaces it.
+    private var items: [TimelineItem] {
+        var entries = checkinStore.timelineEntries
+        guard !entries.isEmpty else { return records.map(TimelineItem.record) }
+        if entries.contains(where: { $0.syncStatus == .saved }) {
+            let recordIds = Set(records.map(\.id))
+            entries.removeAll { $0.syncStatus == .saved && recordIds.contains($0.checkin.id) }
+        }
+        return entries.map(TimelineItem.entry) + records.map(TimelineItem.record)
+    }
+
     @ViewBuilder
     private var content: some View {
-        let timelineEntries = checkinStore.timelineEntries
-        if !timelineEntries.isEmpty {
+        let visibleItems = items
+        if !visibleItems.isEmpty {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 0) {
                     swarmImportBanner
                     CheckinTimelineRows(
-                        entries: timelineEntries,
+                        items: visibleItems,
                         onRetry: { checkinStore.retry(entryId: $0.id) },
                         onConfirm: { checkinStore.accept(suggestionId: $0.id) },
                         onReject: { editingSuggestion = $0.suggestion },
                         onSelect: { selectedCheckin = CheckinDetailDestination(checkin: $0, author: author) },
-                        onComment: { commentingCheckin = $0 },
-                        onReachEnd: { Task { await checkinStore.loadMoreTimeline() } }
+                        onComment: { commentingCheckin = $0 }
                     )
-                    if checkinStore.isLoadingMoreTimeline {
-                        LoadingMoreRow()
-                    }
                 }
             }
-            .animation(.default, value: timelineEntries)
+            // Entries change state in place (saving → failed) without their
+            // id changing, so they are compared whole; records only by id.
+            .animation(.default, value: checkinStore.timelineEntries)
+            .animation(.default, value: records.map(\.id))
             .animation(.default, value: swarmImportStore.bannerImport)
             .refreshable {
-                await checkinStore.loadTimeline()
+                await checkinStore.refreshTimeline()
                 await swarmImportStore.refresh()
             }
-        } else if !checkinStore.hasLoadedTimeline {
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else if let timelineError = checkinStore.timelineError {
+        } else if case .failed(let failure) = historySync.status {
+            // Only reached with nothing stored yet. Once there is anything to
+            // show, a failed sync stays silent here; the search screen is
+            // where sync problems are explained.
             ContentUnavailableView {
                 Label("Couldn't Load Timeline", systemImage: Glyphs.loadError)
             } description: {
-                Text(timelineError)
+                Text(failure.message)
             } actions: {
                 Button("Try Again") {
-                    Task { await checkinStore.loadTimeline() }
+                    historySync.requestSync()
                 }
             }
+        } else if !historySync.hasCompletedInitialSync {
+            ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {
             VStack(spacing: 0) {
                 swarmImportBanner
@@ -144,11 +157,14 @@ struct TimelineView: View {
 }
 
 #Preview {
+    let historySync = CheckinHistorySync.preview(checkins: [.preview(id: "preview-coffee")])
     TimelineView()
         .environment(LocationManager())
         .environment(AuthManager())
         .environment(NotificationsStore())
         .environment(CheckinSocialStore())
         .environment(SwarmImportStore())
+        .environment(historySync)
         .environmentObject(CheckinStore.inMemory())
+        .modelContainer(historySync.container)
 }

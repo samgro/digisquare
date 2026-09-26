@@ -140,6 +140,9 @@ final class AuthManager {
         guard credentialsServer == server else { return }
         guard let credentials else {
             state = .signedOut
+            // The local checkin history belongs to whoever just signed out,
+            // and must not outlive their session on a shared device.
+            CheckinDatabase.removeAllDatabases()
             return
         }
         state = Self.stateFor(credentials.profile)

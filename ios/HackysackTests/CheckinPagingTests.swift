@@ -25,6 +25,8 @@ struct CheckinPagingTests {
                 placeName: "Somewhere",
                 placeAddress: nil,
                 placeLocality: nil,
+                placeRegion: nil,
+                placeCountry: nil,
                 placePrimaryType: nil,
                 placeTypes: nil,
                 placeCategoryName: nil,

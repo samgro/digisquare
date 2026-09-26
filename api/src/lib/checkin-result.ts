@@ -40,6 +40,8 @@ export function toCheckinResult(
     placeName: checkin.placeName,
     placeAddress: checkin.placeAddress,
     placeLocality: checkin.placeLocality,
+    placeRegion: checkin.placeRegion,
+    placeCountry: checkin.placeCountry,
     placePrimaryType: checkin.placePrimaryType,
     placeTypes: checkin.placeTypes,
     placeCategoryName: checkin.placeCategoryName,

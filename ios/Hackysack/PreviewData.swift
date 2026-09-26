@@ -45,6 +45,8 @@ extension Checkin {
             placeName: Place.preview.name,
             placeAddress: Place.preview.address,
             placeLocality: Place.preview.locality,
+            placeRegion: Place.preview.region,
+            placeCountry: Place.preview.country,
             placePrimaryType: primaryType,
             placeTypes: Place.preview.types,
             placeCategoryName: categoryName,
@@ -60,6 +62,15 @@ extension Checkin {
             createdAt: createdAt,
             updatedAt: createdAt
         )
+    }
+}
+
+extension CheckinHistorySync {
+    /// An in-memory history holding `checkins`, for previews. It never syncs.
+    static func preview(checkins: [Checkin] = []) -> CheckinHistorySync {
+        let historySync = CheckinHistorySync(container: CheckinDatabase.makeInMemoryContainer())
+        historySync.store(checkins)
+        return historySync
     }
 }
 

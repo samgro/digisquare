@@ -249,7 +249,7 @@ struct VisitProcessorTests {
         harness.store.confirm(suggestionId: suggestion.id, place: suggestion.alternativePlaces[0], visibility: .onlyMe)
 
         #expect(harness.store.suggestions.isEmpty)
-        let saved = harness.store.savedEntries.first
+        let saved = harness.store.pendingEntries.first
         #expect(saved?.syncStatus == .saving)
         #expect(saved?.draft?.placeId == "bakery-1")
         #expect(saved?.draft?.visibility == .onlyMe)

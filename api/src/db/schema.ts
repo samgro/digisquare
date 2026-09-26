@@ -411,6 +411,11 @@ export const checkins = pgTable(
     placeName: text("place_name").notNull(),
     placeAddress: text("place_address"),
     placeLocality: text("place_locality"),
+    // The place's `addressRegion` (ISO 3166-2, e.g. US-CA) and
+    // `addressCountry` (ISO 3166-1 alpha-2), so the app can filter a
+    // history by state and country without parsing the address line.
+    placeRegion: text("place_region"),
+    placeCountry: text("place_country"),
     placePrimaryType: text("place_primary_type"),
     placeTypes: text("place_types").array(),
     // The place's categoryName at checkin time: a label such as "Hotpot
@@ -437,6 +442,10 @@ export const checkins = pgTable(
     timeZoneOffsetMinutes: integer("time_zone_offset_minutes"),
 
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    // When anything the owner's copy shows last changed: an edit, a like or
+    // comment added or removed, or a photo added, removed or copied to R2
+    // (bumped by the triggers in migration 0014).
+    // GET /checkins/sync walks this to find what to send.
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
       .defaultNow()
@@ -450,6 +459,9 @@ export const checkins = pgTable(
     uniqueIndex("checkins_user_source_external_id_unique_idx")
       .on(table.userId, table.source, table.externalId)
       .where(sql`${table.externalId} is not null`),
+    // Keyset indexes for the two phases of GET /checkins/sync.
+    index("checkins_user_id_created_at_id_idx").on(table.userId, table.createdAt, table.id),
+    index("checkins_user_id_updated_at_id_idx").on(table.userId, table.updatedAt, table.id),
   ],
 );
 
@@ -466,7 +478,9 @@ export const importedCheckinPayloads = pgTable("imported_checkin_payloads", {
 
 // A photo on a checkin. Uploaded photos have a storageKey from the start.
 // Imported photos start with only sourceUrl, which is served until the
-// background copy to R2 fills in storageKey.
+// background copy to R2 fills in storageKey. Adding or removing a photo, or
+// filling in storageKey, bumps the checkin's updated_at through a trigger
+// (migration 0014), so synced copies pick up the new url.
 export const checkinPhotos = pgTable(
   "checkin_photos",
   {
@@ -594,7 +608,8 @@ export const friendships = pgTable(
 
 // One row per person per checkin; the unique index is what makes a double
 // tap on the heart a no-op rather than a race (neon-http has no interactive
-// transactions to check-then-insert inside).
+// transactions to check-then-insert inside). Adding or removing a row bumps
+// the checkin's updated_at through a trigger (migration 0014).
 export const checkinLikes = pgTable(
   "checkin_likes",
   {
@@ -614,6 +629,8 @@ export const checkinLikes = pgTable(
   ],
 );
 
+// Adding or removing a comment bumps the checkin's updated_at through a
+// trigger (migration 0014), like a like does.
 export const checkinComments = pgTable(
   "checkin_comments",
   {
