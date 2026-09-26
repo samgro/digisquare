@@ -1,0 +1,37 @@
+meta {
+  name: Sync Checkins
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{baseUrl}}/checkins/sync?limit=2
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+params:query {
+  limit: 2
+  ~cursor: {{syncCursor}}
+}
+
+vars:post-response {
+  syncCursor: res.body.nextCursor
+}
+
+docs {
+  Pages through every checkin you own, for the app's local search copy.
+  `totalCount` is in every response, including the first.
+
+  Run it once with `cursor` disabled to start over. Then enable `cursor` and
+  run it repeatedly: the post-response var carries `nextCursor` forward. The
+  newest checkins come first (the backfill phase). After a short page the
+  cursor switches to the changes phase, which returns anything created or
+  edited since the backfill began, oldest edit first. `hasMore: false` means
+  you are caught up. Edit a checkin, wait five seconds, and run it again to
+  see just that checkin come back.
+}

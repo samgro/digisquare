@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { Hono } from "hono";
-import { and, desc, eq, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { database } from "../db/index.js";
 import {
@@ -29,6 +29,13 @@ import { findPlaceById } from "../lib/places-search.js";
 import { isVisibleCheckin } from "../lib/friendships.js";
 import { createdBefore, paginationQuerySchema } from "../lib/pagination.js";
 import { IMAGE_MAX_BYTES, createImageUploadUrl, isOwnedImageKey } from "../lib/r2.js";
+import {
+  CURSOR_TIMESTAMP_FORMAT,
+  ZERO_UUID,
+  decodeSyncCursor,
+  encodeSyncCursor,
+  type SyncCursor,
+} from "../lib/sync-cursor.js";
 import { requireAuth } from "../middleware/require-auth.js";
 import type { AppEnv } from "../types.js";
 
@@ -109,6 +116,21 @@ const commentsQuerySchema = paginationQuerySchema.extend({
   limit: z.coerce.number().int().positive().max(100).default(50),
 });
 
+const syncQuerySchema = z.object({
+  cursor: z.string().min(1).optional(),
+  limit: z.coerce.number().int().positive().max(500).default(200),
+});
+
+// The changes phase never returns rows younger than this. A row's updated_at
+// is stamped before its transaction commits, so without the window the cursor
+// could move past a timestamp whose row is not visible yet, and that row would
+// never be synced. It also absorbs small skew between the API's clock (which
+// stamps updates via $onUpdate) and the database's (which stamps inserts).
+const SETTLE_WINDOW = sql`interval '5 seconds'`;
+// How far before the first backfill request the changes phase starts. Rows
+// edited in that overlap come down twice, which is harmless: clients upsert.
+const BACKFILL_OVERLAP = sql`interval '1 minute'`;
+
 const createCommentSchema = z.object({
   body: z.string().trim().min(1).max(1000),
 });
@@ -158,6 +180,8 @@ checkins.post("/", async (context) => {
         placeName: place.name,
         placeAddress: formatAddress(place),
         placeLocality: place.addressLocality,
+        placeRegion: place.addressRegion,
+        placeCountry: place.addressCountry,
         placePrimaryType: place.primaryType,
         placeTypes: place.types,
         placeCategoryName: place.categoryName,
@@ -270,6 +294,128 @@ checkins.get("/", async (context) => {
   } catch (error) {
     console.error(error);
     return context.json({ error: "Failed to fetch checkins" }, 500);
+  }
+});
+
+/**
+ * Pages through every checkin the caller owns so a client can keep a complete
+ * local copy. Clients loop while `hasMore`, persisting `nextCursor` after each
+ * page, and keep the last cursor to pick up later changes.
+ *
+ * Likes and comments do not touch a checkin's updated_at, so the counts in a
+ * synced copy are as of when it was last synced. The app refreshes its newest
+ * checkins through GET /checkins, which is where new likes land.
+ *
+ * Registered before /:id, which would otherwise reject "sync" as an invalid
+ * uuid.
+ */
+checkins.get("/sync", async (context) => {
+  const parsed = syncQuerySchema.safeParse(context.req.query());
+  if (!parsed.success) {
+    return context.json(
+      { error: "Invalid query parameters", details: parsed.error.flatten() },
+      400,
+    );
+  }
+
+  let cursor: SyncCursor | null = null;
+  if (parsed.data.cursor !== undefined) {
+    cursor = decodeSyncCursor(parsed.data.cursor);
+    if (!cursor) {
+      // Clients treat this as "start over", so it must stay a 400 rather than
+      // falling back to a first page the client would mistake for a resume.
+      return context.json({ error: "Invalid sync cursor" }, 400);
+    }
+  }
+
+  const currentUserId = context.get("userId");
+  const { limit } = parsed.data;
+  const ownedByCaller = eq(checkinsTable.userId, currentUserId);
+
+  try {
+    // An aggregate always yields exactly one row, even for a user with no
+    // checkins, so `since` is available for the very first request too.
+    const [summary] = await database
+      .select({
+        totalCount: sql<number>`count(*)::int`,
+        since: sql<string>`to_char((now() - ${BACKFILL_OVERLAP}) at time zone 'UTC', ${CURSOR_TIMESTAMP_FORMAT})`,
+      })
+      .from(checkinsTable)
+      .where(ownedByCaller);
+
+    const pageColumns = {
+      checkin: checkinsTable,
+      ...checkinSocialColumns(currentUserId),
+      createdAtKey: sql<string>`to_char(${checkinsTable.createdAt} at time zone 'UTC', ${CURSOR_TIMESTAMP_FORMAT})`,
+      updatedAtKey: sql<string>`to_char(${checkinsTable.updatedAt} at time zone 'UTC', ${CURSOR_TIMESTAMP_FORMAT})`,
+    };
+
+    if (cursor === null || cursor.phase === "backfill") {
+      const since = cursor?.since ?? summary.since;
+      const rows = await database
+        .select(pageColumns)
+        .from(checkinsTable)
+        .where(
+          cursor
+            ? and(
+                ownedByCaller,
+                sql`(${checkinsTable.createdAt}, ${checkinsTable.id}) < (${cursor.createdAt}::timestamptz, ${cursor.id}::uuid)`,
+              )
+            : ownedByCaller,
+        )
+        .orderBy(desc(checkinsTable.createdAt), desc(checkinsTable.id))
+        .limit(limit);
+
+      const lastRow = rows.at(-1);
+      // A short page means the history is exhausted. Hand over to the
+      // changes phase, which still has to run once to catch anything created
+      // or edited while the backfill was paging — so hasMore stays true.
+      const nextCursor: SyncCursor =
+        rows.length === limit && lastRow
+          ? { phase: "backfill", createdAt: lastRow.createdAtKey, id: lastRow.checkin.id, since }
+          : { phase: "changes", updatedAt: since, id: ZERO_UUID };
+
+      const photosByCheckinId = await loadPhotosByCheckinId(rows.map((row) => row.checkin.id));
+      return context.json({
+        results: rows.map((row) =>
+          toCheckinResult(row.checkin, row, photosByCheckinId.get(row.checkin.id)),
+        ),
+        nextCursor: encodeSyncCursor(nextCursor),
+        hasMore: true,
+        totalCount: summary.totalCount,
+      });
+    }
+
+    const rows = await database
+      .select(pageColumns)
+      .from(checkinsTable)
+      .where(
+        and(
+          ownedByCaller,
+          sql`(${checkinsTable.updatedAt}, ${checkinsTable.id}) > (${cursor.updatedAt}::timestamptz, ${cursor.id}::uuid)`,
+          sql`${checkinsTable.updatedAt} < now() - ${SETTLE_WINDOW}`,
+        ),
+      )
+      .orderBy(asc(checkinsTable.updatedAt), asc(checkinsTable.id))
+      .limit(limit);
+
+    const lastRow = rows.at(-1);
+    const nextCursor: SyncCursor = lastRow
+      ? { phase: "changes", updatedAt: lastRow.updatedAtKey, id: lastRow.checkin.id }
+      : cursor;
+
+    const photosByCheckinId = await loadPhotosByCheckinId(rows.map((row) => row.checkin.id));
+    return context.json({
+      results: rows.map((row) =>
+        toCheckinResult(row.checkin, row, photosByCheckinId.get(row.checkin.id)),
+      ),
+      nextCursor: encodeSyncCursor(nextCursor),
+      hasMore: rows.length === limit,
+      totalCount: summary.totalCount,
+    });
+  } catch (error) {
+    console.error(error);
+    return context.json({ error: "Failed to sync checkins" }, 500);
   }
 });
 

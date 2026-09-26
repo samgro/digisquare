@@ -3,6 +3,7 @@ import type { SQL } from "drizzle-orm";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createDatabaseStub } from "../../test/helpers/stub-database.js";
 import { createAccessToken } from "../lib/tokens.js";
+import { decodeSyncCursor, encodeSyncCursor, ZERO_UUID } from "../lib/sync-cursor.js";
 
 const { database, controls } = createDatabaseStub();
 
@@ -71,6 +72,8 @@ function checkinRow(overrides: Record<string, unknown> = {}) {
     placeName: "Blue Bottle Coffee",
     placeAddress: "66 Mint St, San Francisco, CA 94103, US",
     placeLocality: "San Francisco",
+    placeRegion: "US-CA",
+    placeCountry: "US",
     placePrimaryType: "coffee_shop",
     placeTypes: ["coffee_shop", "cafe"],
     placeCategoryName: null,
@@ -123,6 +126,20 @@ describe("POST /checkins", () => {
       message: "Cortado o'clock",
     });
     expect(body).not.toHaveProperty("googlePlaceId");
+  });
+
+  it("snapshots the place's region and country for filtering by area", async () => {
+    controls.queue([placeRow()], [checkinRow()]);
+
+    const response = await send("POST", "/", VALID_BODY);
+    expect(response.status).toBe(201);
+
+    expect(argumentsOf("values")[0]).toMatchObject({
+      placeLocality: "San Francisco",
+      placeRegion: "US-CA",
+      placeCountry: "US",
+    });
+    expect(await response.json()).toMatchObject({ placeRegion: "US-CA", placeCountry: "US" });
   });
 
   it("404s at a place a newer Overture release dropped", async () => {
@@ -245,6 +262,8 @@ describe("POST /checkins visibility and source", () => {
       placeName: "Blue Bottle Coffee",
       placeAddress: "66 Mint St, San Francisco, CA 94103, US",
       placeLocality: "San Francisco",
+      placeRegion: "US-CA",
+      placeCountry: "US",
       placePrimaryType: "coffee_shop",
       placeTypes: ["coffee_shop", "cafe"],
       placeCategoryName: null,
@@ -737,6 +756,178 @@ describe("POST /checkins/photo-uploads", () => {
       contentType: "image/jpeg",
       contentLength: 5_000_000,
     });
+
+    expect(response.status).toBe(400);
+  });
+});
+
+describe("GET /checkins/sync", () => {
+  const SINCE = "2026-09-22T11:59:00.000000Z";
+
+  /** A page row: the checkin, its social columns, and its cursor keys. */
+  function syncRow(index: number) {
+    const createdAt = new Date(Date.UTC(2026, 8, 22, 12, 0, 0) - index * 60_000);
+    const checkin = checkinRow({
+      id: `00000000-0000-4000-8000-${String(index).padStart(12, "0")}`,
+      createdAt,
+      updatedAt: createdAt,
+    });
+    return {
+      checkin,
+      likeCount: 2,
+      commentCount: 1,
+      likedByMe: false,
+      // Microseconds past what a Date can hold, as Postgres formats them.
+      createdAtKey: `${createdAt.toISOString().slice(0, -1)}123Z`,
+      updatedAtKey: `${createdAt.toISOString().slice(0, -1)}456Z`,
+    };
+  }
+
+  interface SyncBody {
+    results: Array<Record<string, unknown>>;
+    nextCursor: string;
+    hasMore: boolean;
+    totalCount: number;
+  }
+
+  async function sync(query = "") {
+    const response = await send("GET", `/sync${query}`);
+    return { response, body: (await response.json()) as SyncBody };
+  }
+
+  it("requires a bearer token", async () => {
+    const response = await checkins.request("/sync");
+    expect(response.status).toBe(401);
+  });
+
+  it("is not swallowed by the /:id route", async () => {
+    controls.queue([{ totalCount: 0, since: SINCE }], []);
+
+    const { response } = await sync();
+
+    expect(response.status).toBe(200);
+  });
+
+  it("returns checkins in the shape every other route does, with the total count", async () => {
+    controls.queue([{ totalCount: 3, since: SINCE }], [syncRow(0), syncRow(1)]);
+
+    const { body } = await sync("?limit=2");
+
+    expect(body.totalCount).toBe(3);
+    expect(body.results.map((result) => result.id)).toEqual([syncRow(0).checkin.id, syncRow(1).checkin.id]);
+    expect(body.results[0]).toMatchObject({
+      placeId: PLACE_ID,
+      placeLocality: "San Francisco",
+      placeRegion: "US-CA",
+      placeCountry: "US",
+      visibility: "friends",
+      likeCount: 2,
+      commentCount: 1,
+      likedByMe: false,
+    });
+    expect(body.results[0]).not.toHaveProperty("createdAtKey");
+  });
+
+  it("continues the backfill from the last row's full-precision timestamp", async () => {
+    controls.queue([{ totalCount: 3, since: SINCE }], [syncRow(0), syncRow(1)]);
+
+    const { body } = await sync("?limit=2");
+
+    expect(body.hasMore).toBe(true);
+    expect(decodeSyncCursor(body.nextCursor)).toEqual({
+      phase: "backfill",
+      createdAt: syncRow(1).createdAtKey,
+      id: syncRow(1).checkin.id,
+      since: SINCE,
+    });
+  });
+
+  it("hands over to the changes phase once the backfill runs short", async () => {
+    const cursor = encodeSyncCursor({
+      phase: "backfill",
+      createdAt: syncRow(1).createdAtKey,
+      id: syncRow(1).checkin.id,
+      since: SINCE,
+    });
+    controls.queue([{ totalCount: 3, since: "2026-09-22T13:00:00.000000Z" }], [syncRow(2)]);
+
+    const { body } = await sync(`?limit=2&cursor=${cursor}`);
+
+    expect(body.results).toHaveLength(1);
+    // Still true: the changes phase has to run once to catch edits made
+    // while the backfill was paging.
+    expect(body.hasMore).toBe(true);
+    // Resumes from when the backfill began, not from this request.
+    expect(decodeSyncCursor(body.nextCursor)).toEqual({
+      phase: "changes",
+      updatedAt: SINCE,
+      id: ZERO_UUID,
+    });
+  });
+
+  it("hands an empty history straight to the changes phase", async () => {
+    controls.queue([{ totalCount: 0, since: SINCE }], []);
+
+    const { body } = await sync();
+
+    expect(body.results).toEqual([]);
+    expect(body.hasMore).toBe(true);
+    expect(decodeSyncCursor(body.nextCursor)?.phase).toBe("changes");
+  });
+
+  it("advances the changes cursor and reports when the client is caught up", async () => {
+    const cursor = encodeSyncCursor({ phase: "changes", updatedAt: SINCE, id: ZERO_UUID });
+    controls.queue([{ totalCount: 3, since: SINCE }], [syncRow(1)]);
+
+    const { body } = await sync(`?limit=2&cursor=${cursor}`);
+
+    expect(body.hasMore).toBe(false);
+    expect(decodeSyncCursor(body.nextCursor)).toEqual({
+      phase: "changes",
+      updatedAt: syncRow(1).updatedAtKey,
+      id: syncRow(1).checkin.id,
+    });
+  });
+
+  it("keeps the changes cursor when nothing has changed", async () => {
+    const cursor = encodeSyncCursor({ phase: "changes", updatedAt: SINCE, id: ZERO_UUID });
+    controls.queue([{ totalCount: 3, since: SINCE }], []);
+
+    const { body } = await sync(`?cursor=${cursor}`);
+
+    expect(body.hasMore).toBe(false);
+    expect(body.nextCursor).toBe(cursor);
+  });
+
+  it("reports more changes when a changes page is full", async () => {
+    const cursor = encodeSyncCursor({ phase: "changes", updatedAt: SINCE, id: ZERO_UUID });
+    controls.queue([{ totalCount: 3, since: SINCE }], [syncRow(1), syncRow(0)]);
+
+    const { body } = await sync(`?limit=2&cursor=${cursor}`);
+
+    expect(body.hasMore).toBe(true);
+  });
+
+  it("400s on a cursor this server did not issue", async () => {
+    const { response, body } = await sync("?cursor=not-a-cursor");
+
+    expect(response.status).toBe(400);
+    expect(body).toEqual({ error: "Invalid sync cursor" });
+    expect(controls.operations).toEqual([]);
+  });
+
+  it("400s on a cursor with a malformed timestamp", async () => {
+    const forged = Buffer.from(
+      JSON.stringify({ phase: "changes", updatedAt: "yesterday", id: ZERO_UUID }),
+    ).toString("base64url");
+
+    const { response } = await sync(`?cursor=${forged}`);
+
+    expect(response.status).toBe(400);
+  });
+
+  it("400s when the limit is above the maximum", async () => {
+    const { response } = await sync("?limit=501");
 
     expect(response.status).toBe(400);
   });

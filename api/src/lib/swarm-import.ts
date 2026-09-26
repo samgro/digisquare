@@ -396,6 +396,8 @@ async function writeCheckinsPage(
           placeName: sql`excluded.place_name`,
           placeAddress: sql`excluded.place_address`,
           placeLocality: sql`excluded.place_locality`,
+          placeRegion: sql`excluded.place_region`,
+          placeCountry: sql`excluded.place_country`,
           placePrimaryType: sql`excluded.place_primary_type`,
           placeTypes: sql`excluded.place_types`,
           placeCategoryName: sql`excluded.place_category_name`,
@@ -541,6 +543,8 @@ export function toSwarmCheckinRows(
           })
         : null,
       placeLocality: place.addressLocality ?? null,
+      placeRegion: place.addressRegion ?? null,
+      placeCountry: place.addressCountry ?? null,
       placePrimaryType: primaryType,
       placeTypes: types.length > 0 ? types : null,
       placeCategoryName: place.categoryName ?? null,

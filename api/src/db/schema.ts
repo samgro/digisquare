@@ -411,6 +411,11 @@ export const checkins = pgTable(
     placeName: text("place_name").notNull(),
     placeAddress: text("place_address"),
     placeLocality: text("place_locality"),
+    // The place's `addressRegion` (ISO 3166-2, e.g. US-CA) and
+    // `addressCountry` (ISO 3166-1 alpha-2), so the app can filter a
+    // history by state and country without parsing the address line.
+    placeRegion: text("place_region"),
+    placeCountry: text("place_country"),
     placePrimaryType: text("place_primary_type"),
     placeTypes: text("place_types").array(),
     // The place's categoryName at checkin time: a label such as "Hotpot
@@ -450,6 +455,9 @@ export const checkins = pgTable(
     uniqueIndex("checkins_user_source_external_id_unique_idx")
       .on(table.userId, table.source, table.externalId)
       .where(sql`${table.externalId} is not null`),
+    // Keyset indexes for the two phases of GET /checkins/sync.
+    index("checkins_user_id_created_at_id_idx").on(table.userId, table.createdAt, table.id),
+    index("checkins_user_id_updated_at_id_idx").on(table.userId, table.updatedAt, table.id),
   ],
 );
 
