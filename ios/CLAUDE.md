@@ -15,7 +15,7 @@ xcodebuild -project Hackysack.xcodeproj -scheme Hackysack \
 
 Use `clean build`, not just `build` — an incremental build skips recompiling
 files you didn't touch, so a warning already sitting in an untouched file
-(including one introduced by a change to a *different* file, like a shared
+(including one introduced by a change to a _different_ file, like a shared
 method losing its actor isolation at a call site elsewhere) won't show up.
 
 Run this before finishing any change to the ios app. Check the output for
@@ -23,6 +23,12 @@ Run this before finishing any change to the ios app. Check the output for
 compiler before returning — do not leave warnings for the user to clean up.
 The `appintentsmetadataprocessor` "Metadata extraction skipped" warning is
 expected (the app has no AppIntents.framework dependency) and can be ignored.
+
+# Simulator
+
+Don't verify things in the simulator that you have reasonable confidence that
+you've fixed. Just print instructions for how to validate at the end of output.
+Only use the simulator if it's helpful for debugging something non-trivial.
 
 # Testing
 
