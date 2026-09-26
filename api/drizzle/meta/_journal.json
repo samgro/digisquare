@@ -99,6 +99,13 @@
       "when": 1790396318776,
       "tag": "0013_checkin_regions_and_sync_indexes",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1790396614003,
+      "tag": "0014_touch_checkin_on_social_change",
+      "breakpoints": true
     }
   ]
 }

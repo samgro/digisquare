@@ -442,6 +442,10 @@ export const checkins = pgTable(
     timeZoneOffsetMinutes: integer("time_zone_offset_minutes"),
 
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    // When anything the owner's copy shows last changed: an edit, a like or
+    // comment added or removed, or a photo added, removed or copied to R2
+    // (bumped by the triggers in migration 0014).
+    // GET /checkins/sync walks this to find what to send.
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
       .defaultNow()
@@ -474,7 +478,9 @@ export const importedCheckinPayloads = pgTable("imported_checkin_payloads", {
 
 // A photo on a checkin. Uploaded photos have a storageKey from the start.
 // Imported photos start with only sourceUrl, which is served until the
-// background copy to R2 fills in storageKey.
+// background copy to R2 fills in storageKey. Adding or removing a photo, or
+// filling in storageKey, bumps the checkin's updated_at through a trigger
+// (migration 0014), so synced copies pick up the new url.
 export const checkinPhotos = pgTable(
   "checkin_photos",
   {
@@ -602,7 +608,8 @@ export const friendships = pgTable(
 
 // One row per person per checkin; the unique index is what makes a double
 // tap on the heart a no-op rather than a race (neon-http has no interactive
-// transactions to check-then-insert inside).
+// transactions to check-then-insert inside). Adding or removing a row bumps
+// the checkin's updated_at through a trigger (migration 0014).
 export const checkinLikes = pgTable(
   "checkin_likes",
   {
@@ -622,6 +629,8 @@ export const checkinLikes = pgTable(
   ],
 );
 
+// Adding or removing a comment bumps the checkin's updated_at through a
+// trigger (migration 0014), like a like does.
 export const checkinComments = pgTable(
   "checkin_comments",
   {

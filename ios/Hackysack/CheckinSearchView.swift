@@ -100,6 +100,9 @@ struct CheckinSearchView: View {
                 }
             }
             .scrollDismissesKeyboard(.immediately)
+            .refreshable {
+                await historySync.refresh()
+            }
         }
     }
 

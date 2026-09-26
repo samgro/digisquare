@@ -136,22 +136,12 @@ final class CheckinStore: ObservableObject {
 
     // MARK: Timeline
 
-    /// Brings the timeline up to date: a sync pass for anything new or
-    /// edited, plus a reload of the newest checkins, since a like or comment
-    /// doesn't count as an edit and the sync never sees them. Older
-    /// checkins' counts catch up when one is opened.
-    ///
-    /// Failures are quiet; the timeline explains sync trouble itself.
+    /// Brings the timeline up to date, for pull to refresh: waits for a sync
+    /// pass that starts now. The sync carries edits and new checkins, and
+    /// like and comment counts too. Failures are quiet; the timeline explains
+    /// sync trouble itself.
     func refreshTimeline() async {
-        guard let currentUserId, let historySync else { return }
-        async let syncPass: Void = historySync.refresh()
-        do {
-            let recentCheckins = try await checkinsAPI.listCheckins(userId: currentUserId)
-            historySync.store(recentCheckins)
-        } catch {
-            DevLog.network("Couldn't refresh recent checkins: \(error)")
-        }
-        await syncPass
+        await historySync?.refresh()
     }
 
     /// Drops every in-flight checkin, for a switch to another API server

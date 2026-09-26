@@ -93,7 +93,7 @@ struct ContentView: View {
                 // Suggestions made while the app was in the background are
                 // already in the store; this picks up anything checked in or
                 // edited on another device, and new likes and comments.
-                Task { await checkinStore.refreshTimeline() }
+                historySync?.requestSync()
                 // Keeps the bell badge current when coming back to the app;
                 // likes, comments and requests arrive while it's in the background.
                 Task { await notificationsStore.refreshUnreadCount() }

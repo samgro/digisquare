@@ -38,9 +38,7 @@ final class CheckinRecord {
     var photos: [CheckinPhoto] = []
     /// Minutes east of UTC where the checkin happened.
     var timeZoneOffsetMinutes: Int?
-    /// As of the last sync, or the last change made on this device. The sync
-    /// only notices edits, not likes or comments, so older checkins' counts
-    /// can lag until the checkin is opened.
+    /// As of the last sync, or the last change made on this device.
     var likeCount: Int = 0
     var commentCount: Int = 0
     var likedByMe: Bool = false

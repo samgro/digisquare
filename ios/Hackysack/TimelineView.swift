@@ -36,9 +36,6 @@ struct TimelineView: View {
             .sheet(item: $commentingCheckin) { checkin in
                 CommentsSheet(checkin: checkin)
             }
-            .task {
-                await checkinStore.refreshTimeline()
-            }
             .sheet(item: $editingSuggestion) { suggestion in
                 EditSuggestionSheet(
                     suggestion: suggestion,

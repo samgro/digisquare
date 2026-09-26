@@ -302,9 +302,9 @@ checkins.get("/", async (context) => {
  * local copy. Clients loop while `hasMore`, persisting `nextCursor` after each
  * page, and keep the last cursor to pick up later changes.
  *
- * Likes and comments do not touch a checkin's updated_at, so the counts in a
- * synced copy are as of when it was last synced. The app refreshes its newest
- * checkins through GET /checkins, which is where new likes land.
+ * A like, comment or photo change bumps its checkin's updated_at (a
+ * trigger), so the changes phase carries fresh counts and photo urls as well
+ * as edits.
  *
  * Registered before /:id, which would otherwise reject "sync" as an invalid
  * uuid.

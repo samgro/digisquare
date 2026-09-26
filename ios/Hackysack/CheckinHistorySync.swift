@@ -15,7 +15,10 @@ import SwiftData
 /// sync that is killed or loses its connection picks up from the last page
 /// it saved. Failures are retried on their own: offline waits for the
 /// network to come back, server errors back off exponentially, and 429s wait
-/// as long as the server asks. Nothing here shows UI. The search screen reads
+/// as long as the server asks. Once caught up it checks again every minute,
+/// which is how likes, comments and edits from elsewhere arrive while the app
+/// is open; the server counts a like or comment as a change to the checkin.
+/// Nothing here shows UI. The search screen reads
 /// `status` and the counts to explain what it's working with.
 @Observable
 final class CheckinHistorySync {
@@ -69,6 +72,10 @@ final class CheckinHistorySync {
     /// While offline the network monitor is what wakes the sync, so this
     /// is only a safety net in case it misses the reconnect.
     private static let offlineRecheckInterval: Duration = .seconds(60)
+    /// How often to look for changes once caught up. An empty changes page
+    /// is two small indexed queries, and iOS stops the timer in the
+    /// background; coming back to the app asks for a pass straight away.
+    private static let pollInterval: Duration = .seconds(60)
 
     private var modelContext: ModelContext { container.mainContext }
 
@@ -103,7 +110,7 @@ final class CheckinHistorySync {
                 hasRestartedFromScratch = false
                 status = .upToDate
                 finishedPassCount += 1
-                await pause(for: nil)
+                await pause(for: Self.pollInterval)
             } catch {
                 guard !Task.isCancelled else { return }
                 finishedPassCount += 1
@@ -154,8 +161,7 @@ final class CheckinHistorySync {
         store([checkin])
     }
 
-    /// Adds or refreshes checkins fetched outside the sync, such as the
-    /// newest page with fresh like and comment counts.
+    /// Adds or refreshes checkins fetched outside the sync.
     @discardableResult
     func store(_ checkins: [Checkin]) -> Bool {
         guard !checkins.isEmpty else { return true }
@@ -242,6 +248,10 @@ final class CheckinHistorySync {
 
     private func upsert(_ checkin: Checkin) {
         if let record = recordsById[checkin.id] {
+            // A page fetched just before an edit can land after the edit's
+            // own response. Equal timestamps still apply: a like made here
+            // doesn't change updatedAt, nor does a server-side backfill.
+            guard checkin.updatedAt >= record.updatedAt else { return }
             record.update(from: checkin)
         } else {
             let record = CheckinRecord(checkin: checkin)
