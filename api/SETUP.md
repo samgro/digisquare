@@ -235,7 +235,11 @@ These are optional: without all four, the API still boots and the
    gitignored and overrides both `.env` and the shell, for the server, the
    scripts and `db:migrate` alike. `npm run db:branch` prints which database
    that resolves to and which file it came from; every drizzle-kit command
-   prints the same line before it connects.
+   prints the same line before it connects. Because it overrides the shell as
+   well, a one-off `DATABASE_URL=… npm run db:migrate` would still reach the
+   branch; to run against the `.env` database from such a checkout on purpose
+   (applying a migration to production), set `SKIP_ENV_BRANCH=1` and check
+   that the printed line says `from .env`.
 
    `npm run dev` takes the first free port from 3001 up, and logs which, so
    several checkouts (git worktrees) can run at once; the simulator app
