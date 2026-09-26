@@ -41,10 +41,14 @@ describe("lookupNeonBranch", () => {
 
   it("follows the endpoint to its branch across the key's projects", async () => {
     fetchStub = stubFetch([
+      { match: "/users/me/organizations", json: { organizations: [{ id: "org-personal" }, { id: "org-work" }] } },
+      { match: "/projects?org_id=org-personal", json: { projects: [{ id: "other", name: "Other" }] } },
+      { match: "/projects?org_id=org-work", json: { projects: [{ id: "hacky", name: "hackysack" }] } },
       { match: "/projects/other/endpoints", json: { endpoints: [{ id: "ep-elsewhere", branch_id: "br-x" }] } },
       { match: "/projects/hacky/endpoints", json: { endpoints: [{ id: "ep-patient-firefly-arsdf60v", branch_id: "br-1" }] } },
       { match: "/projects/hacky/branches/br-1", json: { branch: { name: "foursquare", default: false } } },
-      { match: "/projects", json: { projects: [{ id: "other", name: "Other" }, { id: "hacky", name: "hackysack" }] } },
+      // Neon refuses the bare list for an account whose projects are all in organizations.
+      { match: "/projects", status: 400, json: { message: "org_id is required" } },
     ]);
 
     const branch = await lookupNeonBranch("ep-patient-firefly-arsdf60v", API_KEY);
@@ -72,10 +76,22 @@ describe("lookupNeonBranch", () => {
 
   it("is null when no project has the endpoint", async () => {
     fetchStub = stubFetch([
+      { match: "/users/me/organizations", json: { organizations: [] } },
       { match: "/projects/hacky/endpoints", json: { endpoints: [] } },
+      // An older account with personal projects outside any organization.
       { match: "/projects", json: { projects: [{ id: "hacky", name: "hackysack" }] } },
     ]);
 
     expect(await lookupNeonBranch("ep-unknown", API_KEY)).toBeNull();
+  });
+
+  it("passes Neon's explanation along when a call fails", async () => {
+    fetchStub = stubFetch([
+      { match: "/users/me/organizations", status: 401, json: { message: "authentication failed" } },
+    ]);
+
+    await expect(lookupNeonBranch("ep-unknown", API_KEY)).rejects.toThrow(
+      "Neon API /users/me/organizations answered 401: authentication failed",
+    );
   });
 });

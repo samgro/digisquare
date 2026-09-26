@@ -84,7 +84,9 @@ export interface NeonBranch {
 
 const NEON_API_BASE_URL = "https://console.neon.tech/api/v2";
 
-const projectsSchema = z.object({ projects: z.array(z.object({ id: z.string(), name: z.string() })) });
+const projectSchema = z.object({ id: z.string(), name: z.string() });
+const projectsSchema = z.object({ projects: z.array(projectSchema) });
+const organizationsSchema = z.object({ organizations: z.array(z.object({ id: z.string() })) });
 const endpointsSchema = z.object({
   endpoints: z.array(z.object({ id: z.string(), branch_id: z.string() })),
 });
@@ -92,14 +94,54 @@ const branchSchema = z.object({
   branch: z.object({ name: z.string(), default: z.boolean().optional() }),
 });
 
+class NeonApiError extends Error {
+  constructor(
+    path: string,
+    readonly status: number,
+    detail: string | undefined,
+  ) {
+    super(`Neon API ${path} answered ${status}${detail ? `: ${detail}` : ""}`);
+    this.name = "NeonApiError";
+  }
+}
+
 async function neonApi<Shape>(path: string, apiKey: string, schema: z.ZodType<Shape>): Promise<Shape> {
   const response = await fetch(`${NEON_API_BASE_URL}${path}`, {
     headers: { Authorization: `Bearer ${apiKey}`, Accept: "application/json" },
   });
+  const body: unknown = await response.json().catch(() => null);
   if (!response.ok) {
-    throw new Error(`Neon API ${path} answered ${response.status}`);
+    const detail = z.object({ message: z.string() }).safeParse(body);
+    throw new NeonApiError(path, response.status, detail.success ? detail.data.message : undefined);
   }
-  return schema.parse(await response.json());
+  return schema.parse(body);
+}
+
+/**
+ * Every project the key can see. Projects live in organizations, and Neon
+ * answers `/projects` with a 400 for an account whose projects all do, so
+ * each organization is asked for its own; the bare call is kept for the
+ * personal projects an older account may still have outside any.
+ */
+async function listProjects(apiKey: string): Promise<z.infer<typeof projectSchema>[]> {
+  const { organizations } = await neonApi("/users/me/organizations", apiKey, organizationsSchema);
+  const projects: z.infer<typeof projectSchema>[] = [];
+  for (const organization of organizations) {
+    const inOrganization = await neonApi(
+      `/projects?org_id=${encodeURIComponent(organization.id)}`,
+      apiKey,
+      projectsSchema,
+    );
+    projects.push(...inOrganization.projects);
+  }
+  try {
+    projects.push(...(await neonApi("/projects", apiKey, projectsSchema)).projects);
+  } catch (error) {
+    if (!(error instanceof NeonApiError && error.status === 400)) {
+      throw error;
+    }
+  }
+  return projects.filter((project, index) => projects.findIndex((other) => other.id === project.id) === index);
 }
 
 /**
@@ -113,9 +155,7 @@ export async function lookupNeonBranch(
   apiKey: string,
   projectId?: string,
 ): Promise<NeonBranch | null> {
-  const projects = projectId
-    ? [{ id: projectId, name: projectId }]
-    : (await neonApi("/projects", apiKey, projectsSchema)).projects;
+  const projects = projectId ? [{ id: projectId, name: projectId }] : await listProjects(apiKey);
 
   for (const project of projects) {
     const { endpoints } = await neonApi(`/projects/${project.id}/endpoints`, apiKey, endpointsSchema);
